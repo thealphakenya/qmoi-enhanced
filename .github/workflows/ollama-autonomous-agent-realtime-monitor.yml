@@ -6,147 +6,83 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 #
 # PURPOSE
 # -------
-# Independent monitoring and durable telemetry system for:
+# Independent monitoring, reconciliation and durable telemetry collection for:
 #
 #   - Ollama PR validation workflow
 #   - Ollama autonomous-agent workflow
-#   - Pull requests
-#   - Workflow runs
-#   - Workflow jobs
-#   - Job steps
-#   - Checks
-#   - Commit/branch/SHA information
-#   - Validation results
-#   - Agent runtime output
-#   - Current agent state
-#   - Historical agent activity
+#   - workflow runs
+#   - workflow jobs
+#   - job steps
+#   - pull requests
+#   - commit / branch / SHA information
+#   - check-runs
+#   - commit statuses
+#   - agent runtime telemetry
+#   - agent iterations
+#   - agent tasks
+#   - agent tool calls
+#   - agent errors
+#   - checkpoints
+#   - current state
 #
-# This workflow DOES NOT:
+# IMPORTANT
+# ---------
+# This workflow is an OBSERVER.
 #
-#   - cancel the autonomous agent
-#   - restart the autonomous agent
-#   - merge PRs
+# It does NOT:
+#
+#   - cancel the agent
+#   - restart the agent
+#   - merge pull requests
 #   - modify agent source code
 #   - modify validation workflows
-#   - modify unrelated repository files
+#   - execute code from PR branches
+#   - execute arbitrary telemetry contents
 #
-# It only observes and persists monitoring information.
-#
-#
-# ============================================================================
-# IMPORTANT ARCHITECTURE
-# ============================================================================
-#
-# A GitHub Actions workflow is not an appropriate infinite daemon.
-#
-# Therefore this tracker uses:
-#
-#       workflow_run events
-#              +
-#       scheduled reconciliation
-#              +
-#       manual inspection
-#              +
-#       persistent ollamatracks/
-#              +
-#       GitHub Actions artifacts
-#              +
-#       GitHub job summaries
-#
-# Every invocation is finite.
-#
-# The monitoring SYSTEM can continue for months because another scheduled
-# or event-driven invocation can reconcile the current state.
+# The only repository modification performed by this workflow is updating
+# the dedicated ollamatracks/ persistence area.
 #
 #
-# ============================================================================
-# TRACKING DIRECTORY
-# ============================================================================
+# ARCHITECTURE
+# ------------
 #
-# The workflow ALWAYS ensures this directory exists:
-#
-#     ollamatracks/
-#
-# Persistent state:
-#
-#     CURRENT_STATUS.txt
-#     LATEST_ACTIVITY.txt
-#     STATE.txt
-#     PR_STATUS.txt
-#     TRACKING_INDEX.txt
-#     LAST_RECONCILIATION.txt
-#
-# Historical immutable records:
-#
-#     000001_tracker_initialized.txt
-#     000002_workflow_requested.txt
-#     000003_workflow_started.txt
-#     000004_job_state_changed.txt
-#     000005_pr_status_changed.txt
-#     000006_validation_completed.txt
-#     ...
-#
-# Six digits provide deterministic chronological ordering.
-#
-# Historical files are NEVER intentionally overwritten.
-#
-# Mutable state files are deliberately separate from historical records.
+#   Validation workflow
+#          |
+#          v
+#   workflow_run events
+#          |
+#          +----------------------+
+#          |                      |
+#          v                      v
+#   Event reconciliation     Scheduled reconciliation
+#          |                      |
+#          +----------+-----------+
+#                     |
+#                     v
+#             GitHub API state
+#                     |
+#                     +
+#                     |
+#                     v
+#              Agent telemetry
+#             agent-events.jsonl
+#                     |
+#                     v
+#                ollamatracks/
 #
 #
-# ============================================================================
-# EVENT NAMING RULE
-# ============================================================================
+# This is deliberately finite and event-driven.
 #
-# Historical files:
-#
-#     NNNNNN_event-type.txt
-#
-# Example:
-#
-#     000147_agent_iteration_started.txt
-#
-# Sequence:
-#
-#     000001
-#     000002
-#     000003
-#     ...
-#
-# The sequence is determined from the highest existing historical record.
-#
-# ============================================================================
-#
-# EXACT TIME
-# ============================================================================
-#
-# All tracker-generated events use UTC timestamps with milliseconds:
-#
-#     2026-08-15T12:34:56.123Z
-#
-# GitHub-provided timestamps are also preserved.
-#
-# IMPORTANT:
-#
-# The tracker can only know the exact time an external event was observed
-# unless the Ollama Python agent itself emits internal task/iteration
-# timestamps.
-#
-# Therefore the companion Python agent should eventually emit:
-#
-#     QMOI_TRACK|iteration_started|...
-#     QMOI_TRACK|task_started|...
-#     QMOI_TRACK|task_completed|...
-#     QMOI_TRACK|tool_started|...
-#     QMOI_TRACK|tool_completed|...
-#
-# This workflow is prepared to preserve that telemetry when it is emitted.
+# GitHub-hosted Actions jobs are not intended to be permanent daemons.
+# A scheduled reconciliation provides continued observation without keeping
+# one runner alive indefinitely.
 #
 # ============================================================================
 
 on:
 
   # --------------------------------------------------------------------------
-  # OBSERVE VALIDATION WORKFLOW
+  # VALIDATION WORKFLOW EVENTS
   # --------------------------------------------------------------------------
 
   workflow_run:
@@ -165,57 +101,74 @@ on:
     - cron: "*/5 * * * *"
 
   # --------------------------------------------------------------------------
-  # MANUAL MONITORING
+  # MANUAL INSPECTION
   # --------------------------------------------------------------------------
 
   workflow_dispatch:
+
     inputs:
 
       run_id:
-        description: "Optional Ollama validation workflow run ID to inspect"
+        description: "Optional validation workflow run ID to inspect"
         required: false
         type: string
+        default: ""
 
       force_snapshot:
-        description: "Create a historical snapshot even when state did not change"
+        description: "Create a historical snapshot even when state is unchanged"
         required: false
-        default: true
         type: boolean
+        default: false
 
       inspect_prs:
-        description: "Perform detailed pull-request monitoring"
+        description: "Inspect pull requests"
         required: false
-        default: true
         type: boolean
+        default: true
 
       inspect_jobs:
-        description: "Inspect workflow jobs and their states"
+        description: "Inspect workflow jobs and steps"
         required: false
-        default: true
         type: boolean
+        default: true
 
       inspect_checks:
-        description: "Inspect check-runs associated with monitored PR commits"
+        description: "Inspect check-runs and commit statuses"
         required: false
-        default: true
         type: boolean
+        default: true
 
       cleanup_old_files:
-        description: "Remove only exact duplicate historical snapshots"
+        description: "Remove exact duplicate historical snapshots"
         required: false
-        default: false
         type: boolean
+        default: false
 
 
 # ============================================================================
 # PERMISSIONS
+# ============================================================================
+#
+# SECURITY PRINCIPLE:
+# Use the minimum permission required.
+#
+# The tracker needs:
+#
+#   actions: read
+#   checks: read
+#   contents: write
+#   pull-requests: read
+#   statuses: read
+#
+# pull-requests: write is intentionally NOT required.
+#
 # ============================================================================
 
 permissions:
   actions: read
   checks: read
   contents: write
-  pull-requests: write
+  pull-requests: read
   statuses: read
 
 
@@ -223,13 +176,14 @@ permissions:
 # CONCURRENCY
 # ============================================================================
 #
-# Only one tracker writer should modify ollamatracks at a time.
+# Protect the repository tracking area from simultaneous writers.
 #
-# cancel-in-progress remains FALSE so an active reconciliation is never
-# deliberately terminated by this workflow.
+# cancel-in-progress is FALSE because historical monitoring events should not
+# deliberately cancel one another.
 #
-# The queue behavior is intentional: monitoring events should not replace
-# another active monitoring writer.
+# queue: max allows multiple pending reconciliations.
+#
+# GitHub currently supports up to 100 pending runs for queue: max.
 # ============================================================================
 
 concurrency:
@@ -246,7 +200,11 @@ env:
 
   TRACK_DIR: ollamatracks
 
-  TRACK_SCHEMA_VERSION: "2.0"
+  RUNTIME_DIR: ollamatracks/runtime
+
+  TELEMETRY_FILE: ollamatracks/runtime/agent-events.jsonl
+
+  TRACK_SCHEMA_VERSION: "3.0"
 
   TARGET_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
 
@@ -257,6 +215,10 @@ env:
   MAX_CHECK_RUNS: "100"
 
   MAX_PRS_TO_INSPECT: "100"
+
+  MAX_TELEMETRY_LINES: "5000"
+
+  MAX_TELEMETRY_BYTES: "5242880"
 
 
 # ============================================================================
@@ -280,52 +242,42 @@ jobs:
       # ======================================================================
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: true
 
       # ======================================================================
-      # INITIALIZE TRACKING INFRASTRUCTURE
+      # INITIALIZE TRACKING AREA
       # ======================================================================
 
-      - name: Ensure ollamatracks exists
+      - name: Initialize tracking infrastructure
         shell: bash
         run: |
           set -Eeuo pipefail
 
           mkdir -p "$TRACK_DIR"
+          mkdir -p "$RUNTIME_DIR"
 
           touch "$TRACK_DIR/TRACKING_INDEX.txt"
           touch "$TRACK_DIR/CURRENT_STATUS.txt"
+          touch "$TRACK_DIR/LATEST_ACTIVITY.txt"
           touch "$TRACK_DIR/STATE.txt"
           touch "$TRACK_DIR/PR_STATUS.txt"
-          touch "$TRACK_DIR/LATEST_ACTIVITY.txt"
           touch "$TRACK_DIR/LAST_RECONCILIATION.txt"
 
-          echo "============================================================"
-          echo "OLLAMA TRACKING DIRECTORY"
-          echo "============================================================"
+          touch "$TELEMETRY_FILE"
 
-          pwd
-          echo
-
-          echo "Directory:"
-          echo "$TRACK_DIR"
-
-          echo
-          echo "Existing tracking files:"
-          find "$TRACK_DIR" -maxdepth 1 -type f \
-            -printf '%f\n' |
-            sort -V
+          echo "Tracking infrastructure initialized."
 
       # ======================================================================
-      # RECONCILIATION ENGINE
+      # COLLECT EVERYTHING
       # ======================================================================
 
-      - name: Collect Ollama, workflow, job, check and PR state
+      - name: Collect workflow, job, PR, check and agent telemetry
         id: collect
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
+
         env:
 
           MANUAL_RUN_ID: ${{ inputs.run_id }}
@@ -351,7 +303,7 @@ jobs:
             const crypto = require("crypto");
 
             // =================================================================
-            // BASIC CONTEXT
+            // CONFIGURATION
             // =================================================================
 
             const owner = context.repo.owner;
@@ -359,6 +311,14 @@ jobs:
 
             const trackDir =
               process.env.TRACK_DIR || "ollamatracks";
+
+            const runtimeDir =
+              process.env.RUNTIME_DIR ||
+              path.join(trackDir, "runtime");
+
+            const telemetryFile =
+              process.env.TELEMETRY_FILE ||
+              path.join(runtimeDir, "agent-events.jsonl");
 
             const targetWorkflow =
               process.env.TARGET_WORKFLOW_NAME ||
@@ -368,7 +328,7 @@ jobs:
               String(process.env.MANUAL_RUN_ID || "").trim();
 
             const forceSnapshot =
-              String(process.env.FORCE_SNAPSHOT || "true") !== "false";
+              String(process.env.FORCE_SNAPSHOT || "false") === "true";
 
             const inspectPRs =
               String(process.env.INSPECT_PRS || "true") !== "false";
@@ -382,38 +342,67 @@ jobs:
             const cleanupOldFiles =
               String(process.env.CLEANUP_OLD_FILES || "false") === "true";
 
-            fs.mkdirSync(trackDir, {
-              recursive: true
-            });
+            const maxTelemetryLines =
+              Number(process.env.MAX_TELEMETRY_LINES || "5000");
+
+            const maxTelemetryBytes =
+              Number(process.env.MAX_TELEMETRY_BYTES || "5242880");
+
+            fs.mkdirSync(trackDir, { recursive: true });
+            fs.mkdirSync(runtimeDir, { recursive: true });
 
             // =================================================================
-            // PRECISE UTC TIMESTAMP
+            // TIME
             // =================================================================
 
             const now = new Date();
 
-            const pad = (value, length = 2) =>
-              String(value).padStart(length, "0");
+            function isoUtc(date = now) {
+              return date.toISOString();
+            }
 
-            const timestamp =
-              now.getUTCFullYear() +
-              "-" +
-              pad(now.getUTCMonth() + 1) +
-              "-" +
-              pad(now.getUTCDate()) +
-              "T" +
-              pad(now.getUTCHours()) +
-              ":" +
-              pad(now.getUTCMinutes()) +
-              ":" +
-              pad(now.getUTCSeconds()) +
-              "." +
-              pad(now.getUTCMilliseconds(), 3) +
-              "Z";
+            const timestamp = isoUtc();
 
             // =================================================================
-            // HELPERS
+            // FILE HELPERS
             // =================================================================
+
+            function readFile(file) {
+
+              try {
+
+                if (!fs.existsSync(file)) {
+                  return "";
+                }
+
+                return fs.readFileSync(file, "utf8");
+
+              } catch (error) {
+
+                core.warning(
+                  `Unable to read ${file}: ${error.message}`
+                );
+
+                return "";
+              }
+            }
+
+            function writeFile(file, content) {
+
+              const temporary =
+                `${file}.tmp-${process.pid}`;
+
+              fs.writeFileSync(
+                temporary,
+                content,
+                "utf8"
+              );
+
+              fs.renameSync(
+                temporary,
+                file
+              );
+            }
 
             function safe(value, fallback = "unknown") {
 
@@ -434,26 +423,15 @@ jobs:
                 .digest("hex");
             }
 
-            function readFile(file) {
+            function bool(value) {
 
-              if (!fs.existsSync(file)) {
-                return "";
-              }
-
-              return fs.readFileSync(
-                file,
-                "utf8"
-              );
+              return value === true ||
+                String(value).toLowerCase() === "true";
             }
 
-            function writeFile(file, content) {
-
-              fs.writeFileSync(
-                file,
-                content,
-                "utf8"
-              );
-            }
+            // =================================================================
+            // HISTORICAL SEQUENCE
+            // =================================================================
 
             function nextSequence() {
 
@@ -474,7 +452,10 @@ jobs:
                 const number =
                   Number(match[1]);
 
-                if (number > highest) {
+                if (
+                  Number.isSafeInteger(number) &&
+                  number > highest
+                ) {
                   highest = number;
                 }
               }
@@ -482,9 +463,14 @@ jobs:
               return highest + 1;
             }
 
+            // =================================================================
+            // HISTORICAL EVENT
+            // =================================================================
+
             function recordHistoricalEvent(
               eventName,
-              content
+              content,
+              metadata = {}
             ) {
 
               const sequence =
@@ -497,36 +483,62 @@ jobs:
                 `${sequenceText}_${safe(eventName)}.txt`;
 
               const filepath =
-                path.join(
-                  trackDir,
-                  filename
-                );
+                path.join(trackDir, filename);
 
               const body = [
+
                 "OLLAMA AUTONOMOUS AGENT TRACKING EVENT",
                 "=======================================",
                 "",
+                `Schema version: ${process.env.TRACK_SCHEMA_VERSION || "3.0"}`,
                 `Sequence: ${sequenceText}`,
                 `Event: ${eventName}`,
                 `Timestamp UTC: ${timestamp}`,
+
                 `Repository: ${owner}/${repo}`,
+
                 `Tracker workflow run ID: ${context.runId}`,
                 `Tracker workflow attempt: ${context.runAttempt}`,
+
                 `GitHub event: ${context.eventName}`,
+
+                metadata.run_id !== undefined
+                  ? `Observed workflow run ID: ${metadata.run_id}`
+                  : "",
+
+                metadata.sha
+                  ? `Observed SHA: ${metadata.sha}`
+                  : "",
+
+                metadata.branch
+                  ? `Observed branch: ${metadata.branch}`
+                  : "",
+
                 "",
+
                 content,
+
                 "",
+
                 "END EVENT",
                 ""
-              ].join("\n");
+
+              ].filter(Boolean).join("\n");
 
               writeFile(
                 filepath,
                 body
               );
 
-              return filename;
+              return {
+                filename,
+                sequence: sequenceText
+              };
             }
+
+            // =================================================================
+            // LATEST ACTIVITY
+            // =================================================================
 
             function updateLatestActivity(
               eventName,
@@ -545,40 +557,22 @@ jobs:
                   `Timestamp UTC: ${timestamp}`,
                   `Event: ${eventName}`,
                   `Description: ${description}`,
+                  "",
                   `Tracker workflow run: ${context.runId}`,
                   `Tracker workflow attempt: ${context.runAttempt}`,
                   "",
-                  "This file represents the latest observed state.",
+                  "This file represents the latest observed activity.",
                   ""
                 ].join("\n")
               );
             }
 
             // =================================================================
-            // PREVIOUS STATE
-            // =================================================================
-
-            const stateFile =
-              path.join(
-                trackDir,
-                "STATE.txt"
-              );
-
-            const currentFile =
-              path.join(
-                trackDir,
-                "CURRENT_STATUS.txt"
-              );
-
-            const previousState =
-              readFile(stateFile);
-
-            // =================================================================
-            // DISCOVER TARGET WORKFLOW
+            // WORKFLOW DISCOVERY
             // =================================================================
 
             let workflowId = null;
-
+            let workflowPath = "";
             let workflowDiscoveryError = "";
 
             try {
@@ -604,6 +598,9 @@ jobs:
                 workflowId =
                   matching.id;
 
+                workflowPath =
+                  matching.path || "";
+
               } else {
 
                 workflowDiscoveryError =
@@ -616,12 +613,12 @@ jobs:
                 error.message;
 
               core.warning(
-                `Workflow discovery warning: ${error.message}`
+                `Workflow discovery failed: ${error.message}`
               );
             }
 
             // =================================================================
-            // DISCOVER WORKFLOW RUNS
+            // WORKFLOW RUN DISCOVERY
             // =================================================================
 
             let runs = [];
@@ -646,7 +643,7 @@ jobs:
               } catch (error) {
 
                 core.warning(
-                  `Workflow run discovery warning: ${error.message}`
+                  `Workflow run discovery failed: ${error.message}`
                 );
               }
             }
@@ -685,11 +682,30 @@ jobs:
                 } catch (error) {
 
                   core.warning(
-                    `Manual run lookup warning: ${error.message}`
+                    `Manual run lookup failed: ${error.message}`
                   );
                 }
               }
             }
+
+            // =================================================================
+            // DEDUPLICATE RUNS
+            // =================================================================
+
+            const uniqueRuns =
+              new Map();
+
+            for (const run of runs) {
+              uniqueRuns.set(run.id, run);
+            }
+
+            runs =
+              Array.from(uniqueRuns.values())
+                .sort(
+                  (a, b) =>
+                    new Date(b.created_at) -
+                    new Date(a.created_at)
+                );
 
             // =================================================================
             // ACTIVE RUNS
@@ -707,9 +723,7 @@ jobs:
             const activeRuns =
               runs.filter(
                 run =>
-                  activeStatuses.has(
-                    run.status
-                  )
+                  activeStatuses.has(run.status)
               );
 
             // =================================================================
@@ -735,7 +749,7 @@ jobs:
                         run_id: run.id,
                         per_page: Number(
                           process.env.MAX_JOBS_PER_RUN || "100"
-                        )
+                        }
                       }
                     );
 
@@ -752,47 +766,102 @@ jobs:
                 queued: 0,
                 waiting: 0,
                 in_progress: 0,
+                completed: 0,
                 success: 0,
                 failure: 0,
                 cancelled: 0,
                 skipped: 0,
                 timed_out: 0,
                 neutral: 0,
-                other: 0
+                action_required: 0,
+                unknown: 0
               };
+
+              const jobDetails = [];
 
               for (const job of jobs) {
 
                 if (job.status === "queued") {
                   jobCounts.queued++;
-                }
-
-                if (job.status === "waiting") {
+                } else if (job.status === "waiting") {
                   jobCounts.waiting++;
-                }
-
-                if (job.status === "in_progress") {
+                } else if (job.status === "in_progress") {
                   jobCounts.in_progress++;
+                } else if (job.status === "completed") {
+                  jobCounts.completed++;
                 }
 
-                if (job.conclusion === "success") {
-                  jobCounts.success++;
-                } else if (job.conclusion === "failure") {
-                  jobCounts.failure++;
-                } else if (job.conclusion === "cancelled") {
-                  jobCounts.cancelled++;
-                } else if (job.conclusion === "skipped") {
-                  jobCounts.skipped++;
-                } else if (job.conclusion === "timed_out") {
-                  jobCounts.timed_out++;
-                } else if (job.conclusion === "neutral") {
-                  jobCounts.neutral++;
-                } else if (
-                  job.conclusion !== null &&
-                  job.conclusion !== undefined
-                ) {
-                  jobCounts.other++;
+                switch (job.conclusion) {
+
+                  case "success":
+                    jobCounts.success++;
+                    break;
+
+                  case "failure":
+                    jobCounts.failure++;
+                    break;
+
+                  case "cancelled":
+                    jobCounts.cancelled++;
+                    break;
+
+                  case "skipped":
+                    jobCounts.skipped++;
+                    break;
+
+                  case "timed_out":
+                    jobCounts.timed_out++;
+                    break;
+
+                  case "neutral":
+                    jobCounts.neutral++;
+                    break;
+
+                  case "action_required":
+                    jobCounts.action_required++;
+                    break;
+
+                  case null:
+                  case undefined:
+                    break;
+
+                  default:
+                    jobCounts.unknown++;
                 }
+
+                jobDetails.push({
+
+                  id: job.id,
+
+                  name: job.name,
+
+                  status: job.status,
+
+                  conclusion: job.conclusion,
+
+                  started_at: job.started_at,
+
+                  completed_at: job.completed_at,
+
+                  html_url: job.html_url,
+
+                  runner_name: job.runner_name,
+
+                  runner_group_name:
+                    job.runner_group_name,
+
+                  steps: Array.isArray(job.steps)
+                    ? job.steps.map(step => ({
+                        name: step.name,
+                        status: step.status,
+                        conclusion: step.conclusion,
+                        number: step.number,
+                        started_at: step.started_at,
+                        completed_at: step.completed_at
+                      }))
+                    : []
+
+                });
               }
 
               // ===============================================================
@@ -806,9 +875,7 @@ jobs:
                 try {
 
                   if (
-                    Array.isArray(
-                      run.pull_requests
-                    ) &&
+                    Array.isArray(run.pull_requests) &&
                     run.pull_requests.length > 0
                   ) {
 
@@ -836,18 +903,21 @@ jobs:
                 } catch (error) {
 
                   core.warning(
-                    `PR lookup warning for run ${run.id}: ${error.message}`
+                    `PR lookup failed for run ${run.id}: ${error.message}`
                   );
                 }
               }
 
-              // ===============================================================
-              // DETAILED PR REPORTS
-              // ===============================================================
-
               const prReports = [];
 
-              for (const pr of prs) {
+              for (
+                const pr of prs.slice(
+                  0,
+                  Number(
+                    process.env.MAX_PRS_TO_INSPECT || "100"
+                  )
+                )
+              ) {
 
                 let prDetails = pr;
 
@@ -863,116 +933,64 @@ jobs:
                   prDetails =
                     response.data;
 
-                } catch (_) {
-                  // Existing PR information remains usable.
+                } catch (error) {
+
+                  core.warning(
+                    `Detailed PR lookup failed for #${pr.number}: ${error.message}`
+                  );
                 }
 
-                let checkRuns = [];
+                let checks = [];
+                let statuses = [];
+
+                const sha =
+                  prDetails.head?.sha ||
+                  "";
 
                 if (
                   inspectChecks &&
-                  prDetails.head?.sha
+                  sha
                 ) {
 
                   try {
 
-                    const response =
+                    const checkResponse =
                       await github.rest.checks.listForRef({
                         owner,
                         repo,
-                        ref: prDetails.head.sha,
+                        ref: sha,
                         per_page: Number(
                           process.env.MAX_CHECK_RUNS || "100"
                         )
                       });
 
-                    checkRuns =
-                      response.data.check_runs || [];
+                    checks =
+                      checkResponse.data.check_runs || [];
 
                   } catch (error) {
 
                     core.warning(
-                      `Check-run lookup warning for PR #${prDetails.number}: ${error.message}`
+                      `Check-run lookup failed for PR #${prDetails.number}: ${error.message}`
                     );
                   }
-                }
 
-                const checkSummary = {
-                  total: checkRuns.length,
-                  queued: 0,
-                  in_progress: 0,
-                  completed: 0,
-                  success: 0,
-                  failure: 0,
-                  neutral: 0,
-                  cancelled: 0,
-                  skipped: 0,
-                  timed_out: 0,
-                  action_required: 0,
-                  other: 0
-                };
+                  try {
 
-                for (const check of checkRuns) {
+                    const statusResponse =
+                      await github.rest.repos.getCombinedStatusForRef({
+                        owner,
+                        repo,
+                        ref: sha
+                      });
 
-                  if (
-                    check.status === "queued"
-                  ) {
-                    checkSummary.queued++;
-                  }
+                    statuses =
+                      statusResponse.data.statuses || [];
 
-                  if (
-                    check.status === "in_progress"
-                  ) {
-                    checkSummary.in_progress++;
-                  }
+                  } catch (error) {
 
-                  if (
-                    check.status === "completed"
-                  ) {
-                    checkSummary.completed++;
-                  }
-
-                  switch (
-                    check.conclusion
-                  ) {
-
-                    case "success":
-                      checkSummary.success++;
-                      break;
-
-                    case "failure":
-                      checkSummary.failure++;
-                      break;
-
-                    case "neutral":
-                      checkSummary.neutral++;
-                      break;
-
-                    case "cancelled":
-                      checkSummary.cancelled++;
-                      break;
-
-                    case "skipped":
-                      checkSummary.skipped++;
-                      break;
-
-                    case "timed_out":
-                      checkSummary.timed_out++;
-                      break;
-
-                    case "action_required":
-                      checkSummary.action_required++;
-                      break;
-
-                    default:
-
-                      if (
-                        check.conclusion !== null &&
-                        check.conclusion !== undefined
-                      ) {
-                        checkSummary.other++;
-                      }
-
+                    core.warning(
+                      `Commit-status lookup failed for PR #${prDetails.number}: ${error.message}`
+                    );
                   }
                 }
 
@@ -988,9 +1006,10 @@ jobs:
                     prDetails.state,
 
                   draft:
-                    Boolean(
-                      prDetails.draft
-                    ),
+                    Boolean(prDetails.draft),
+
+                  merged:
+                    Boolean(prDetails.merged),
 
                   mergeable:
                     prDetails.mergeable,
@@ -999,7 +1018,7 @@ jobs:
                     prDetails.mergeable_state,
 
                   head_sha:
-                    prDetails.head?.sha || "",
+                    sha,
 
                   head_ref:
                     prDetails.head?.ref || "",
@@ -1010,43 +1029,33 @@ jobs:
                   url:
                     prDetails.html_url || "",
 
+                  user:
+                    prDetails.user?.login || "unknown",
+
                   updated_at:
                     prDetails.updated_at || "",
 
-                  check_summary:
-                    checkSummary,
-
                   checks:
-                    checkRuns.map(
-                      check => ({
-                        id:
-                          check.id,
+                    checks.map(check => ({
+                      id: check.id,
+                      name: check.name,
+                      status: check.status,
+                      conclusion: check.conclusion,
+                      started_at: check.started_at,
+                      completed_at: check.completed_at,
+                      html_url: check.html_url
+                    })),
 
-                        name:
-                          check.name,
-
-                        status:
-                          check.status,
-
-                        conclusion:
-                          check.conclusion,
-
-                        started_at:
-                          check.started_at,
-
-                        completed_at:
-                          check.completed_at,
-
-                        url:
-                          check.html_url
-                      })
-                    )
+                  statuses:
+                    statuses.map(status => ({
+                      context: status.context,
+                      state: status.state,
+                      description: status.description,
+                      target_url: status.target_url,
+                      updated_at: status.updated_at
+                    }))
                 });
               }
-
-              // ===============================================================
-              // SAVE RUN REPORT
-              // ===============================================================
 
               runReports.push({
 
@@ -1055,6 +1064,9 @@ jobs:
 
                 name:
                   run.name,
+
+                display_title:
+                  run.display_title,
 
                 status:
                   run.status,
@@ -1071,6 +1083,9 @@ jobs:
                 sha:
                   run.head_sha,
 
+                path:
+                  run.path,
+
                 created_at:
                   run.created_at,
 
@@ -1080,44 +1095,24 @@ jobs:
                 run_started_at:
                   run.run_started_at,
 
+                run_attempt:
+                  run.run_attempt,
+
                 url:
                   run.html_url,
 
                 actor:
-                  run.actor?.login ||
+                  run.actor?.login || "unknown",
+
+                triggering_actor:
+                  run.triggering_actor?.login ||
                   "unknown",
 
                 jobs:
                   jobCounts,
 
                 job_details:
-                  jobs.map(
-                    job => ({
-                      id:
-                        job.id,
-
-                      name:
-                        job.name,
-
-                      status:
-                        job.status,
-
-                      conclusion:
-                        job.conclusion,
-
-                      started_at:
-                        job.started_at,
-
-                      completed_at:
-                        job.completed_at,
-
-                      url:
-                        job.html_url,
-
-                      runner_name:
-                        job.runner_name
-                    })
-                  ),
+                  jobDetails,
 
                 prs:
                   prReports
@@ -1125,1113 +1120,188 @@ jobs:
             }
 
             // =================================================================
-            // PRIMARY RUN
+            // AGENT TELEMETRY
+            // =================================================================
+            //
+            // Expected JSONL format:
+            //
+            // {
+            //   "schema_version": "1.0",
+            //   "event": "iteration_started",
+            //   "timestamp": "...",
+            //   "run_id": "...",
+            //   "iteration": 12,
+            //   "task": "...",
+            //   "status": "running"
+            // }
+            //
+            // The tracker NEVER executes telemetry contents.
+            // It only parses and records them.
             // =================================================================
 
-            let primaryRun = null;
+            let telemetryEvents = [];
+            let telemetryWarnings = [];
 
-            if (manualRunId) {
+            if (fs.existsSync(telemetryFile)) {
 
-              primaryRun =
-                runReports.find(
-                  run =>
-                    String(run.id) ===
-                    manualRunId
-                ) || null;
-            }
+              try {
 
-            if (!primaryRun) {
-
-              primaryRun =
-                activeRuns.length > 0
-                  ? runReports.find(
-                      run =>
-                        run.id ===
-                        activeRuns[0].id
-                    )
-                  : runReports[0] || null;
-            }
-
-            // =================================================================
-            // OVERALL METRICS
-            // =================================================================
-
-            const totalRuns =
-              runReports.length;
-
-            const successfulRuns =
-              runReports.filter(
-                run =>
-                  run.conclusion === "success"
-              ).length;
-
-            const failedRuns =
-              runReports.filter(
-                run =>
-                  run.conclusion === "failure"
-              ).length;
-
-            const activeRunCount =
-              activeRuns.length;
-
-            const activeJobCount =
-              runReports.reduce(
-                (sum, run) =>
-                  sum +
-                  Number(
-                    run.jobs.in_progress || 0
-                  ) +
-                  Number(
-                    run.jobs.queued || 0
-                  ) +
-                  Number(
-                    run.jobs.waiting || 0
-                  ),
-                0
-              );
-
-            const allPRs = [];
-
-            for (
-              const run of runReports
-            ) {
-
-              for (
-                const pr of run.prs || []
-              ) {
+                const stat =
+                  fs.statSync(telemetryFile);
 
                 if (
-                  !allPRs.some(
-                    existing =>
-                      existing.number ===
-                      pr.number
-                  )
+                  stat.size >
+                  maxTelemetryBytes
                 ) {
 
-                  allPRs.push(pr);
-                }
-              }
-            }
-
-            // =================================================================
-            // STATE OBJECT
-            // =================================================================
-
-            const stateObject = {
-
-              schema_version:
-                process.env.TRACK_SCHEMA_VERSION ||
-                "2.0",
-
-              observed_at:
-                timestamp,
-
-              repository:
-                `${owner}/${repo}`,
-
-              tracker_run_id:
-                context.runId,
-
-              tracker_attempt:
-                context.runAttempt,
-
-              event:
-                context.eventName,
-
-              target_workflow:
-                targetWorkflow,
-
-              target_workflow_id:
-                workflowId,
-
-              target_workflow_found:
-                Boolean(workflowId),
-
-              active_run_count:
-                activeRunCount,
-
-              active_job_count:
-                activeJobCount,
-
-              total_runs_inspected:
-                totalRuns,
-
-              successful_runs:
-                successfulRuns,
-
-              failed_runs:
-                failedRuns,
-
-              active_runs:
-                activeRuns.map(
-                  run => ({
-                    id:
-                      run.id,
-
-                    status:
-                      run.status,
-
-                    branch:
-                      run.head_branch,
-
-                    sha:
-                      run.head_sha,
-
-                    created_at:
-                      run.created_at,
-
-                    updated_at:
-                      run.updated_at,
-
-                    url:
-                      run.html_url
-                  })
-                ),
-
-              primary_run:
-                primaryRun,
-
-              pull_requests:
-                allPRs,
-
-              discovery_error:
-                workflowDiscoveryError || null
-            };
-
-            const stateText =
-              JSON.stringify(
-                stateObject,
-                null,
-                2
-              );
-
-            const stateHash =
-              sha256(
-                stateText
-              );
-
-            const previousHashMatch =
-              previousState.includes(
-                `STATE_HASH=${stateHash}`
-              );
-
-            const materialChange =
-              !previousHashMatch;
-
-            // =================================================================
-            // CURRENT STATUS
-            // =================================================================
-
-            let currentState =
-              "NO_ACTIVE_OLLAMA_RUN";
-
-            if (
-              activeRunCount > 0
-            ) {
-
-              currentState =
-                "OLLAMA_WORKFLOW_ACTIVE";
-
-            } else if (
-              primaryRun?.conclusion ===
-              "success"
-            ) {
-
-              currentState =
-                "VALIDATION_COMPLETED_SUCCESSFULLY";
-
-            } else if (
-              primaryRun?.conclusion ===
-              "failure"
-            ) {
-
-              currentState =
-                "VALIDATION_FAILED";
-
-            } else if (
-              totalRuns === 0
-            ) {
-
-              currentState =
-                "NO_VALIDATION_RUN_DISCOVERED";
-            }
-
-            const currentStatus = [
-              "OLLAMA AUTONOMOUS AGENT - CURRENT STATUS",
-              "=========================================",
-              "",
-              `Timestamp UTC: ${timestamp}`,
-              "",
-              `Current state: ${currentState}`,
-              `Target workflow: ${targetWorkflow}`,
-              `Target workflow ID: ${workflowId || "NOT FOUND"}`,
-              "",
-              `Active Ollama runs: ${activeRunCount}`,
-              `Active jobs: ${activeJobCount}`,
-              `Runs inspected: ${totalRuns}`,
-              `Successful runs: ${successfulRuns}`,
-              `Failed runs: ${failedRuns}`,
-              `Pull requests discovered: ${allPRs.length}`,
-              "",
-              "PRIMARY RUN",
-              "-----------",
-              `Run ID: ${primaryRun?.id || "N/A"}`,
-              `Status: ${primaryRun?.status || "N/A"}`,
-              `Conclusion: ${primaryRun?.conclusion || "N/A"}`,
-              `Branch: ${primaryRun?.branch || "N/A"}`,
-              `Commit: ${primaryRun?.sha || "N/A"}`,
-              `Created: ${primaryRun?.created_at || "N/A"}`,
-              `Updated: ${primaryRun?.updated_at || "N/A"}`,
-              `URL: ${primaryRun?.url || "N/A"}`,
-              "",
-              "CURRENT JOBS",
-              "------------"
-            ];
-
-            if (
-              primaryRun &&
-              primaryRun.job_details?.length
-            ) {
-
-              for (
-                const job of
-                primaryRun.job_details
-              ) {
-
-                currentStatus.push(
-                  `- ${job.name}: ${job.status} / ${job.conclusion || "not completed"}`
-                );
-              }
-
-            } else {
-
-              currentStatus.push(
-                "- No job details available."
-              );
-            }
-
-            currentStatus.push(
-              "",
-              "PULL REQUESTS",
-              "-------------"
-            );
-
-            if (
-              allPRs.length
-            ) {
-
-              for (
-                const pr of allPRs
-              ) {
-
-                currentStatus.push(
-                  `PR #${pr.number}: ${pr.state} | ${pr.head_ref} -> ${pr.base_ref}`
-                );
-
-                currentStatus.push(
-                  `  SHA: ${pr.head_sha}`
-                );
-
-                currentStatus.push(
-                  `  Draft: ${pr.draft}`
-                );
-
-                currentStatus.push(
-                  `  Mergeable: ${pr.mergeable}`
-                );
-
-                currentStatus.push(
-                  `  Mergeable state: ${pr.mergeable_state}`
-                );
-
-                currentStatus.push(
-                  `  Checks: ${pr.check_summary?.completed || 0}/${pr.check_summary?.total || 0} completed`
-                );
-
-                currentStatus.push(
-                  `  Check failures: ${pr.check_summary?.failure || 0}`
-                );
-              }
-
-            } else {
-
-              currentStatus.push(
-                "- No associated pull request discovered."
-              );
-            }
-
-            currentStatus.push(
-              "",
-              `State hash: ${stateHash}`,
-              "",
-              "This file represents the latest reconciled state.",
-              ""
-            );
-
-            writeFile(
-              currentFile,
-              currentStatus.join("\n")
-            );
-
-            // =================================================================
-            // STATE.TXT
-            // =================================================================
-
-            writeFile(
-              stateFile,
-              [
-                `STATE_HASH=${stateHash}`,
-                `STATE_TIMESTAMP_UTC=${timestamp}`,
-                `STATE=${currentState}`,
-                "",
-                stateText,
-                ""
-              ].join("\n")
-            );
-
-            // =================================================================
-            // PR_STATUS.TXT
-            // =================================================================
-
-            const prStatus = [
-              "OLLAMA AUTONOMOUS AGENT - PR MONITOR",
-              "====================================",
-              "",
-              `Timestamp UTC: ${timestamp}`,
-              `Repository: ${owner}/${repo}`,
-              `Target workflow: ${targetWorkflow}`,
-              ""
-            ];
-
-            if (
-              allPRs.length === 0
-            ) {
-
-              prStatus.push(
-                "No associated pull requests were discovered."
-              );
-
-            } else {
-
-              for (
-                const pr of allPRs
-              ) {
-
-                prStatus.push(
-                  `PR #${pr.number}`
-                );
-
-                prStatus.push(
-                  `Title: ${pr.title}`
-                );
-
-                prStatus.push(
-                  `State: ${pr.state}`
-                );
-
-                prStatus.push(
-                  `Draft: ${pr.draft}`
-                );
-
-                prStatus.push(
-                  `Head: ${pr.head_ref}`
-                );
-
-                prStatus.push(
-                  `Base: ${pr.base_ref}`
-                );
-
-                prStatus.push(
-                  `Head SHA: ${pr.head_sha}`
-                );
-
-                prStatus.push(
-                  `Mergeable: ${pr.mergeable}`
-                );
-
-                prStatus.push(
-                  `Mergeable state: ${pr.mergeable_state}`
-                );
-
-                prStatus.push(
-                  `Checks total: ${pr.check_summary?.total || 0}`
-                );
-
-                prStatus.push(
-                  `Checks completed: ${pr.check_summary?.completed || 0}`
-                );
-
-                prStatus.push(
-                  `Checks in progress: ${pr.check_summary?.in_progress || 0}`
-                );
-
-                prStatus.push(
-                  `Checks failed: ${pr.check_summary?.failure || 0}`
-                );
-
-                prStatus.push(
-                  `URL: ${pr.url}`
-                );
-
-                prStatus.push("");
-              }
-            }
-
-            writeFile(
-              path.join(
-                trackDir,
-                "PR_STATUS.txt"
-              ),
-              prStatus.join("\n")
-            );
-
-            // =================================================================
-            // LAST RECONCILIATION
-            // =================================================================
-
-            writeFile(
-              path.join(
-                trackDir,
-                "LAST_RECONCILIATION.txt"
-              ),
-              [
-                "OLLAMA TRACKER RECONCILIATION",
-                "============================",
-                "",
-                `Timestamp UTC: ${timestamp}`,
-                `Tracker workflow run: ${context.runId}`,
-                `Tracker attempt: ${context.runAttempt}`,
-                `GitHub event: ${context.eventName}`,
-                "",
-                `Target workflow: ${targetWorkflow}`,
-                `Target workflow ID: ${workflowId || "N/A"}`,
-                "",
-                `Active runs: ${activeRunCount}`,
-                `Active jobs: ${activeJobCount}`,
-                `PRs: ${allPRs.length}`,
-                "",
-                `Material state change: ${materialChange}`,
-                `Force snapshot: ${forceSnapshot}`,
-                "",
-                "Reconciliation completed.",
-                ""
-              ].join("\n")
-            );
-
-            // =================================================================
-            // HISTORICAL EVENT CREATION
-            // =================================================================
-            //
-            // Create a historical file when:
-            //
-            //   1. state changed
-            //   2. the event is workflow_run
-            //   3. a manual force_snapshot was requested
-            //   4. an active run exists
-            //
-            // Scheduled reconciliations with absolutely no change do not
-            // generate unlimited duplicate historical files.
-            // =================================================================
-
-            let historicalFile = null;
-
-            const shouldRecord =
-              forceSnapshot ||
-              materialChange ||
-              context.eventName === "workflow_run" ||
-              manualRunId ||
-              activeRunCount > 0;
-
-            if (shouldRecord) {
-
-              let eventName =
-                "reconciliation_snapshot";
-
-              if (
-                context.eventName ===
-                "workflow_run"
-              ) {
-
-                const action =
-                  context.payload.workflow_run?.status ||
-                  context.payload.action ||
-                  "event";
-
-                eventName =
-                  `workflow_${safe(action)}`;
-              }
-
-              if (
-                activeRunCount > 0
-              ) {
-
-                eventName =
-                  "ollama_active_snapshot";
-              }
-
-              const historicalContent = [
-
-                `Observation timestamp UTC: ${timestamp}`,
-
-                `GitHub event: ${context.eventName}`,
-
-                `Tracker run ID: ${context.runId}`,
-
-                `Tracker attempt: ${context.runAttempt}`,
-
-                "",
-
-                `Target workflow: ${targetWorkflow}`,
-
-                `Target workflow ID: ${workflowId || "N/A"}`,
-
-                "",
-
-                `Current state: ${currentState}`,
-
-                `Active runs: ${activeRunCount}`,
-
-                `Active jobs: ${activeJobCount}`,
-
-                `Runs inspected: ${totalRuns}`,
-
-                `Successful runs: ${successfulRuns}`,
-
-                `Failed runs: ${failedRuns}`,
-
-                `Pull requests: ${allPRs.length}`,
-
-                "",
-
-                "PRIMARY RUN",
-
-                `ID: ${primaryRun?.id || "N/A"}`,
-
-                `Status: ${primaryRun?.status || "N/A"}`,
-
-                `Conclusion: ${primaryRun?.conclusion || "N/A"}`,
-
-                `Branch: ${primaryRun?.branch || "N/A"}`,
-
-                `SHA: ${primaryRun?.sha || "N/A"}`,
-
-                `Created: ${primaryRun?.created_at || "N/A"}`,
-
-                `Updated: ${primaryRun?.updated_at || "N/A"}`,
-
-                `URL: ${primaryRun?.url || "N/A"}`,
-
-                "",
-
-                "ACTIVE RUNS",
-
-                ...activeRuns.map(
-                  run =>
-                    `- ${run.id} | ${run.status} | ${run.head_branch} | ${run.head_sha}`
-                ),
-
-                "",
-
-                "PR DETAILS",
-
-                ...allPRs.flatMap(
-                  pr => [
-                    `PR #${pr.number}`,
-                    `Title: ${pr.title}`,
-                    `State: ${pr.state}`,
-                    `Draft: ${pr.draft}`,
-                    `Head: ${pr.head_ref}`,
-                    `Base: ${pr.base_ref}`,
-                    `SHA: ${pr.head_sha}`,
-                    `Mergeable: ${pr.mergeable}`,
-                    `Mergeable state: ${pr.mergeable_state}`,
-                    `Checks: ${JSON.stringify(pr.check_summary || {})}`,
-                    `URL: ${pr.url}`,
-                    ""
-                  ]
-                ),
-
-                "COMPLETE MACHINE STATE",
-
-                JSON.stringify(
-                  stateObject,
-                  null,
-                  2
-                )
-              ].join("\n");
-
-              historicalFile =
-                recordHistoricalEvent(
-                  eventName,
-                  historicalContent
-                );
-
-              updateLatestActivity(
-                eventName,
-                currentState
-              );
-            }
-
-            // =================================================================
-            // TRACKING INDEX
-            // =================================================================
-
-            const indexFile =
-              path.join(
-                trackDir,
-                "TRACKING_INDEX.txt"
-              );
-
-            const historicalFiles =
-              fs.readdirSync(
-                trackDir
-              )
-              .filter(
-                file =>
-                  /^\d{6}_.+\.txt$/i.test(
-                    file
-                  )
-              )
-              .sort();
-
-            const indexContent = [
-              "OLLAMA AUTONOMOUS AGENT TRACKING INDEX",
-              "=======================================",
-              "",
-              "Purpose:",
-              "Chronological durable monitoring ledger.",
-              "",
-              `Schema version: ${process.env.TRACK_SCHEMA_VERSION || "2.0"}`,
-              `Last rebuilt UTC: ${timestamp}`,
-              "",
-              "Historical records:",
-              ""
-            ];
-
-            for (
-              const file of historicalFiles
-            ) {
-
-              indexContent.push(
-                file
-              );
-            }
-
-            indexContent.push(
-              "",
-              "Mutable state files:",
-              "",
-              "CURRENT_STATUS.txt",
-              "LATEST_ACTIVITY.txt",
-              "STATE.txt",
-              "PR_STATUS.txt",
-              "LAST_RECONCILIATION.txt",
-              "TRACKING_INDEX.txt",
-              "",
-              "Naming rule:",
-              "NNNNNN_event-name.txt",
-              "",
-              "Historical files are never intentionally overwritten.",
-              "",
-              "Exact internal agent task timestamps require telemetry emitted",
-              "by the autonomous-agent process itself.",
-              ""
-            );
-
-            writeFile(
-              indexFile,
-              indexContent.join("\n")
-            );
-
-            // =================================================================
-            // OPTIONAL DUPLICATE CLEANUP
-            // =================================================================
-            //
-            // Only exact duplicate historical content is removed.
-            //
-            // This never removes a unique event.
-            // =================================================================
-
-            if (cleanupOldFiles) {
-
-              const seen =
-                new Map();
-
-              const files =
-                fs.readdirSync(
-                  trackDir
-                )
-                .filter(
-                  file =>
-                    /^\d{6}_.+\.txt$/i.test(
-                      file
-                    )
-                )
-                .sort();
-
-              for (
-                const file of files
-              ) {
-
-                const fullPath =
-                  path.join(
-                    trackDir,
-                    file
+                  telemetryWarnings.push(
+                    `Telemetry file exceeds ${maxTelemetryBytes} bytes; reading only the tail.`
                   );
 
-                const content =
-                  readFile(
-                    fullPath
-                  );
+                  const buffer =
+                    fs.readFileSync(
+                      telemetryFile
+                    );
 
-                const hash =
-                  sha256(
-                    content
-                  );
+                  const tail =
+                    buffer.subarray(
+                      Math.max(
+                        0,
+                        buffer.length -
+                        maxTelemetryBytes
+                      )
+                    );
 
-                if (
-                  seen.has(hash)
-                ) {
+                  const text =
+                    tail.toString("utf8");
 
-                  fs.unlinkSync(
-                    fullPath
-                  );
+                  telemetryEvents =
+                    text
+                      .split(/\r?\n/)
+                      .filter(Boolean)
+                      .slice(-maxTelemetryLines)
+                      .map((line, index) => {
+
+                        try {
+
+                          const event =
+                            JSON.parse(line);
+
+                          return {
+                            valid: true,
+                            line: index + 1,
+                            event
+                          };
+
+                        } catch (error) {
+
+                          return {
+                            valid: false,
+                            line: index + 1,
+                            error: error.message,
+                            raw_sha256: sha256(line),
+                            raw_preview:
+                              line.slice(0, 500)
+                          };
+                        }
+
+                      });
 
                 } else {
 
-                  seen.set(
-                    hash,
-                    file
-                  );
+                  const text =
+                    fs.readFileSync(
+                      telemetryFile,
+                      "utf8"
+                    );
+
+                  telemetryEvents =
+                    text
+                      .split(/\r?\n/)
+                      .filter(Boolean)
+                      .slice(-maxTelemetryLines)
+                      .map((line, index) => {
+
+                        try {
+
+                          return {
+                            valid: true,
+                            line: index + 1,
+                            event: JSON.parse(line)
+                          };
+
+                        } catch (error) {
+
+                          return {
+                            valid: false,
+                            line: index + 1,
+                            error: error.message,
+                            raw_sha256: sha256(line),
+                            raw_preview:
+                              line.slice(0, 500)
+                          };
+                        }
+
+                      });
                 }
+
+              } catch (error) {
+
+                telemetryWarnings.push(
+                  `Telemetry read failed: ${error.message}`
+                );
               }
-
-              // Rebuild index after cleanup.
-              const remaining =
-                fs.readdirSync(
-                  trackDir
-                )
-                .filter(
-                  file =>
-                    /^\d{6}_.+\.txt$/i.test(
-                      file
-                    )
-                )
-                .sort();
-
-              writeFile(
-                indexFile,
-                [
-                  "OLLAMA AUTONOMOUS AGENT TRACKING INDEX",
-                  "=======================================",
-                  "",
-                  `Rebuilt UTC: ${timestamp}`,
-                  "",
-                  ...remaining,
-                  ""
-                ].join("\n")
-              );
             }
 
             // =================================================================
-            // OUTPUTS
+            // TELEMETRY SUMMARY
             // =================================================================
 
-            core.setOutput(
-              "current_state",
-              currentState
-            );
-
-            core.setOutput(
-              "active_runs",
-              String(activeRunCount)
-            );
-
-            core.setOutput(
-              "active_jobs",
-              String(activeJobCount)
-            );
-
-            core.setOutput(
-              "prs",
-              String(allPRs.length)
-            );
-
-            core.setOutput(
-              "historical_file",
-              historicalFile || ""
-            );
-
-            core.setOutput(
-              "state_hash",
-              stateHash
-            );
-
-            core.setOutput(
-              "material_change",
-              String(materialChange)
-            );
-
-            // =================================================================
-            // CONSOLE DASHBOARD
-            // =================================================================
-
-            console.log("");
-            console.log("============================================================");
-            console.log("OLLAMA AUTONOMOUS AGENT - REALTIME MONITOR");
-            console.log("============================================================");
-            console.log("");
-            console.log(`Observation UTC: ${timestamp}`);
-            console.log(`Repository: ${owner}/${repo}`);
-            console.log(`Target workflow: ${targetWorkflow}`);
-            console.log(`Workflow ID: ${workflowId || "N/A"}`);
-            console.log("");
-            console.log(`Current state: ${currentState}`);
-            console.log(`Active runs: ${activeRunCount}`);
-            console.log(`Active jobs: ${activeJobCount}`);
-            console.log(`Runs inspected: ${totalRuns}`);
-            console.log(`Successful runs: ${successfulRuns}`);
-            console.log(`Failed runs: ${failedRuns}`);
-            console.log(`PRs discovered: ${allPRs.length}`);
-            console.log("");
-            console.log(
-              `Historical record: ${historicalFile || "none - unchanged"}`
-            );
-            console.log(`State changed: ${materialChange}`);
-            console.log("");
-            console.log("Tracking directory:");
-            console.log(trackDir);
-            console.log("");
-            console.log("============================================================");
-
-      # ======================================================================
-      # JOB SUMMARY
-      # ======================================================================
-
-      - name: Publish realtime monitoring dashboard
-        if: always()
-        env:
-          CURRENT_STATE: ${{ steps.collect.outputs.current_state }}
-          ACTIVE_RUNS: ${{ steps.collect.outputs.active_runs }}
-          ACTIVE_JOBS: ${{ steps.collect.outputs.active_jobs }}
-          PRS: ${{ steps.collect.outputs.prs }}
-          HISTORICAL_FILE: ${{ steps.collect.outputs.historical_file }}
-          STATE_HASH: ${{ steps.collect.outputs.state_hash }}
-          MATERIAL_CHANGE: ${{ steps.collect.outputs.material_change }}
-        shell: bash
-        run: |
-
-          set -Eeuo pipefail
-
-          {
-            echo "# 🤖 Ollama Autonomous Agent — Realtime PR Tracker"
-            echo
-            echo "## Current status"
-            echo
-            echo "| Metric | Current value |"
-            echo "|---|---|"
-            echo "| State | \`${CURRENT_STATE:-unknown}\` |"
-            echo "| Active Ollama runs | \`${ACTIVE_RUNS:-0}\` |"
-            echo "| Active jobs | \`${ACTIVE_JOBS:-0}\` |"
-            echo "| Pull requests | \`${PRS:-0}\` |"
-            echo "| Material state change | \`${MATERIAL_CHANGE:-unknown}\` |"
-            echo
-            echo "## Historical record"
-            echo
-            if [ -n "${HISTORICAL_FILE:-}" ]; then
-              echo "Created: \`${HISTORICAL_FILE}\`"
-            else
-              echo "No new historical event was required during this reconciliation."
-            fi
-            echo
-            echo "## Persistent tracking"
-            echo
-            echo '```text'
-            echo "ollamatracks/"
-            find "$TRACK_DIR" -maxdepth 1 -type f \
-              -printf '%f\n' |
-              sort -V
-            echo '```'
-            echo
-            echo "## State hash"
-            echo
-            echo "\`${STATE_HASH:-unknown}\`"
-            echo
-            echo "> This workflow observes and records state. It does not cancel,"
-            echo "> restart, merge, or otherwise control the autonomous agent."
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      # ======================================================================
-      # ARTIFACT
-      # ======================================================================
-
-      - name: Upload complete Ollama tracking artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ollama-pr-tracks-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ollamatracks/
-          if-no-files-found: warn
-          retention-days: 90
-
-      # ======================================================================
-      # PERSIST TO REPOSITORY
-      # ======================================================================
-
-      - name: Configure Git identity
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          git config user.name \
-            "github-actions[bot]"
-
-          git config user.email \
-            "41898282+github-actions[bot]@users.noreply.github.com"
-
-      # ======================================================================
-      # SHOW EXACT CHANGES BEFORE COMMIT
-      # ======================================================================
+            const telemetrySummary = {
 
-      - name: Inspect tracking changes
-        shell: bash
-        run: |
-          set -Eeuo pipefail
+              total:
+                telemetryEvents.length,
 
-          echo "Tracking files:"
-          find "$TRACK_DIR" -maxdepth 1 -type f \
-            -printf '%f\n' |
-            sort -V
+              valid:
+                telemetryEvents.filter(
+                  item => item.valid
+                ).length,
 
-          echo
-          echo "Git status:"
-          git status --short -- "$TRACK_DIR"
+              invalid:
+                telemetryEvents.filter(
+                  item => !item.valid
+                ).length,
 
-      # ======================================================================
-      # COMMIT ONLY OLLAMATRACKS
-      # ======================================================================
-      #
-      # CRITICAL SAFETY PROPERTY:
-      #
-      # This workflow NEVER does:
-      #
-      #     git add .
-      #
-      # It stages ONLY ollamatracks/.
-      #
-      # Therefore unrelated agent/source changes are not accidentally
-      # committed by the monitoring workflow.
-      # ======================================================================
+              iterations_started: 0,
 
-      - name: Persist ollamatracks
-        if: always()
-        shell: bash
-        run: |
+              iterations_completed: 0,
 
-          set -Eeuo pipefail
+              tasks_started: 0,
 
-          git add -- "$TRACK_DIR"
+              tasks_completed: 0,
 
-          if git diff --cached --quiet; then
-            echo "No tracking changes require persistence."
-            exit 0
-          fi
+              tools_started: 0,
 
-          timestamp="$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
+              tools_completed: 0,
 
-          git commit \
-            -m "chore(ollamatracks): realtime monitoring update $timestamp [skip ci]"
+              errors: 0,
 
-          # ------------------------------------------------------------------
-          # Retry push safely.
-          #
-          # Another tracker run may have updated the same branch after this
-          # checkout. Rebase and retry rather than blindly force pushing.
-          # ------------------------------------------------------------------
+              checkpoints: 0,
 
-          max_attempts=5
+              current_state: "UNKNOWN",
 
-          for attempt in $(seq 1 "$max_attempts"); do
+              current_iteration: null,
 
-            echo "Push attempt $attempt/$max_attempts"
+              current_task: null,
 
-            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              current_tool: null
 
-              echo "Tracking information successfully persisted."
+            };
 
-              exit 0
+            let latestTelemetry = null;
 
-            fi
+            for (
+              const item of telemetryEvents
+            ) {
 
-            echo "Push failed. Refreshing remote state."
-
-            git fetch origin "${GITHUB_REF_NAME}"
-
-            git rebase \
-              "origin/${GITHUB_REF_NAME}" || {
-
-                echo "Rebase conflict detected."
-
-                git rebase --abort || true
-
-                echo "Unable to automatically rebase tracking commit."
-
-                exit 1
-              }
-
-          done
-
-          echo "Unable to persist tracking data after $max_attempts attempts."
-
-          exit 1
-
-
-  # ==========================================================================
-  # FINAL MONITOR RESULT
-  # ==========================================================================
-
-  final-status:
-
-    name: Final Tracker Status
-
-    needs:
-      - reconcile
-
-    if: always()
-
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Publish final tracker status
-        env:
-          RECONCILE_RESULT: ${{ needs.reconcile.result }}
-        shell: bash
-        run: |
-
-          set -Eeuo pipefail
-
-          echo "============================================================"
-          echo "OLLAMA PR REALTIME TRACKER - FINAL STATUS"
-          echo "============================================================"
-          echo
-          echo "Reconciliation result: ${RECONCILE_RESULT}"
-          echo
-
-          if [ "${RECONCILE_RESULT}" = "success" ]; then
-
-            echo "✅ Monitoring reconciliation completed."
-
-          elif [ "${RECONCILE_RESULT}" = "skipped" ]; then
-
-            echo "ℹ️ Monitoring reconciliation was skipped."
-
-          else
-
-            echo "⚠️ Monitoring reconciliation completed with warnings/errors."
-
-          fi
-
-          echo
-          echo "The tracker itself does not control the Ollama autonomous agent."
-          echo "============================================================"
+              if (!item
