@@ -1,23 +1,27 @@
 name: PR Status Monitor & Auto-Report
 
-# 🔴 REAL-TIME MONITORING OF OLLAMA AUTONOMOUS AGENT
-# This workflow provides detailed tracking of PR validation workflow execution
+# REAL-TIME MONITORING OF OLLAMA AUTONOMOUS AGENT
+#
 # Features:
-#   - Live job status tracking
+#   - Workflow run monitoring
+#   - Job status tracking
 #   - Test result aggregation
 #   - Quality/reliability metrics
 #   - Performance analytics
-#   - Automatic alerts on failures
-#   - Agent behavior documentation
+#   - Automatic status reporting
+#   - Manual monitoring through workflow_dispatch
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
     inputs:
       run_id:
-        description: 'Specific run ID to monitor (optional)'
+        description: "Specific workflow run ID to monitor (optional)"
         required: false
+        type: string
+
   workflow_run:
-    workflows: ["Ollama PR Validation - 293+ Platform Features"]
+    workflows:
+      - "Ollama PR Validation - 293+ Platform Features"
     types:
       - completed
       - requested
@@ -33,177 +37,487 @@ jobs:
   collect-workflow-metrics:
     name: Collect & Analyze Workflow Metrics
     runs-on: ubuntu-latest
+
     outputs:
       jobs_total: ${{ steps.metrics.outputs.jobs_total }}
       jobs_passed: ${{ steps.metrics.outputs.jobs_passed }}
       jobs_failed: ${{ steps.metrics.outputs.jobs_failed }}
+      jobs_in_progress: ${{ steps.metrics.outputs.jobs_in_progress }}
+      jobs_skipped: ${{ steps.metrics.outputs.jobs_skipped }}
       elapsed_time: ${{ steps.metrics.outputs.elapsed_time }}
       pass_rate: ${{ steps.metrics.outputs.pass_rate }}
-    
+      workflow_conclusion: ${{ steps.metrics.outputs.workflow_conclusion }}
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      
+          fetch-depth: 1
+
       - name: Collect workflow metrics
         id: metrics
         uses: actions/github-script@v7
+        env:
+          MANUAL_RUN_ID: ${{ inputs.run_id }}
         with:
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
           script: |
-            // Get the workflow run to analyze
-            const runId = context.payload.inputs?.run_id || context.payload.workflow_run?.id || context.runId;
-            
-            const { data: run } = await github.rest.actions.getWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: runId,
-            });
-            
-            console.log('='.repeat(70));
-            console.log('🔴 OLLAMA AUTONOMOUS AGENT - WORKFLOW METRICS COLLECTION');
-            console.log('='.repeat(70));
+            const manualRunId = process.env.MANUAL_RUN_ID || '';
+
+            // Determine which workflow run should be monitored.
+            let runId;
+
+            if (manualRunId.trim()) {
+              runId = Number(manualRunId.trim());
+
+              if (!Number.isInteger(runId) || runId <= 0) {
+                core.setFailed(`Invalid run_id: ${manualRunId}`);
+                return;
+              }
+            } else if (context.eventName === 'workflow_run') {
+              runId = context.payload.workflow_run?.id;
+            } else {
+              runId = context.runId;
+            }
+
+            if (!runId) {
+              core.setFailed('Unable to determine workflow run ID.');
+              return;
+            }
+
+            console.log('='.repeat(80));
+            console.log('OLLAMA AUTONOMOUS AGENT - WORKFLOW METRICS');
+            console.log('='.repeat(80));
+            console.log(`Monitoring run ID: ${runId}`);
             console.log('');
-            console.log('Run Details:');
-            console.log(`  ID: ${run.id}`);
-            console.log(`  Name: ${run.name}`);
-            console.log(`  Status: ${run.status}`);
-            console.log(`  Conclusion: ${run.conclusion || 'In Progress'}`);
-            console.log(`  Branch: ${run.head_branch}`);
-            console.log(`  Commit: ${run.head_sha.substring(0, 7)}`);
-            console.log(`  Created: ${run.created_at}`);
-            console.log(`  Updated: ${run.updated_at}`);
+
+            // Retrieve workflow run information.
+            const { data: run } =
+              await github.rest.actions.getWorkflowRun({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: runId
+              });
+
+            console.log('Run Details');
+            console.log('-----------');
+            console.log(`ID:          ${run.id}`);
+            console.log(`Name:        ${run.name}`);
+            console.log(`Status:      ${run.status}`);
+            console.log(`Conclusion:  ${run.conclusion || 'in progress'}`);
+            console.log(`Event:       ${run.event}`);
+            console.log(`Branch:      ${run.head_branch || 'N/A'}`);
+            console.log(`Commit:      ${(run.head_sha || '').substring(0, 7)}`);
+            console.log(`Created:     ${run.created_at}`);
+            console.log(`Updated:     ${run.updated_at}`);
+            console.log(`URL:         ${run.html_url}`);
             console.log('');
-            
-            // Get all jobs for this run
-            const { data: jobsData } = await github.rest.actions.listJobsForWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: runId,
-              per_page: 100,
-            });
-            
-            const jobs = jobsData.jobs;
-            console.log(`Jobs Total: ${jobs.length}`);
+
+            // Retrieve all jobs.
+            const jobs = [];
+
+            for await (const response of github.paginate.iterator(
+              github.rest.actions.listJobsForWorkflowRun,
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                run_id: runId,
+                per_page: 100
+              }
+            )) {
+              jobs.push(...response.data);
+            }
+
+            console.log(`Jobs discovered: ${jobs.length}`);
             console.log('');
-            
-            // Analyze jobs
-            const jobsPassed = jobs.filter(j => j.conclusion === 'success').length;
-            const jobsFailed = jobs.filter(j => j.conclusion === 'failure').length;
-            const jobsInProgress = jobs.filter(j => j.status === 'in_progress').length;
-            const jobsSkipped = jobs.filter(j => j.conclusion === 'skipped').length;
-            
-            console.log('Job Status Distribution:');
-            console.log(`  ✅ Passed:      ${jobsPassed}/${jobs.length}`);
-            console.log(`  ❌ Failed:      ${jobsFailed}/${jobs.length}`);
-            console.log(`  ⏳ In Progress: ${jobsInProgress}/${jobs.length}`);
-            console.log(`  ⏭️  Skipped:     ${jobsSkipped}/${jobs.length}`);
-            console.log('');
-            
-            const passRate = jobs.length > 0 ? ((jobsPassed / jobs.length) * 100).toFixed(1) : 0;
-            console.log(`Pass Rate: ${passRate}%`);
-            
-            // Calculate elapsed time
+
+            // Calculate job metrics.
+            const jobsPassed =
+              jobs.filter(job => job.conclusion === 'success').length;
+
+            const jobsFailed =
+              jobs.filter(job => job.conclusion === 'failure').length;
+
+            const jobsInProgress =
+              jobs.filter(job =>
+                job.status === 'in_progress' ||
+                job.status === 'queued' ||
+                job.status === 'waiting'
+              ).length;
+
+            const jobsSkipped =
+              jobs.filter(job => job.conclusion === 'skipped').length;
+
+            const jobsCancelled =
+              jobs.filter(job => job.conclusion === 'cancelled').length;
+
+            const jobsNeutral =
+              jobs.filter(job => job.conclusion === 'neutral').length;
+
+            const jobsTimedOut =
+              jobs.filter(job => job.conclusion === 'timed_out').length;
+
+            const passRate =
+              jobs.length > 0
+                ? ((jobsPassed / jobs.length) * 100).toFixed(1)
+                : '0.0';
+
+            // Calculate workflow elapsed time.
             const createdAt = new Date(run.created_at);
-            const updatedAt = new Date(run.updated_at);
-            const elapsedMs = updatedAt - createdAt;
+            const updatedAt = new Date(run.updated_at || new Date());
+
+            let elapsedMs = updatedAt - createdAt;
+
+            if (!Number.isFinite(elapsedMs) || elapsedMs < 0) {
+              elapsedMs = 0;
+            }
+
             const elapsedSec = Math.floor(elapsedMs / 1000);
             const elapsedMin = Math.floor(elapsedSec / 60);
             const elapsedHours = Math.floor(elapsedMin / 60);
-            
-            let elapsedStr = '';
+
+            let elapsedStr;
+
             if (elapsedHours > 0) {
-              elapsedStr = `${elapsedHours}h ${elapsedMin % 60}m ${elapsedSec % 60}s`;
+              elapsedStr =
+                `${elapsedHours}h ` +
+                `${elapsedMin % 60}m ` +
+                `${elapsedSec % 60}s`;
             } else if (elapsedMin > 0) {
-              elapsedStr = `${elapsedMin}m ${elapsedSec % 60}s`;
+              elapsedStr =
+                `${elapsedMin}m ` +
+                `${elapsedSec % 60}s`;
             } else {
               elapsedStr = `${elapsedSec}s`;
             }
-            
-            console.log(`Elapsed Time: ${elapsedStr}`);
+
+            console.log('Job Status Distribution');
+            console.log('-----------------------');
+            console.log(`Passed:       ${jobsPassed}`);
+            console.log(`Failed:       ${jobsFailed}`);
+            console.log(`In progress:  ${jobsInProgress}`);
+            console.log(`Skipped:      ${jobsSkipped}`);
+            console.log(`Cancelled:    ${jobsCancelled}`);
+            console.log(`Neutral:      ${jobsNeutral}`);
+            console.log(`Timed out:    ${jobsTimedOut}`);
+            console.log(`Total:        ${jobs.length}`);
+            console.log(`Pass rate:    ${passRate}%`);
+            console.log(`Elapsed time: ${elapsedStr}`);
             console.log('');
-            
-            // Job details
-            console.log('Job Details:');
-            jobs.forEach((job, idx) => {
-              const statusIcon = job.conclusion === 'success' ? '✅' : 
-                                job.conclusion === 'failure' ? '❌' :
-                                job.status === 'in_progress' ? '⏳' : '⏭️ ';
-              const jobElapsed = new Date(job.completed_at || new Date()) - new Date(job.started_at);
-              const jobSec = Math.floor(jobElapsed / 1000);
-              console.log(`  ${statusIcon} [${idx + 1}/${jobs.length}] ${job.name}`);
-              console.log(`      Status: ${job.status} | Conclusion: ${job.conclusion || 'N/A'} | Time: ${jobSec}s`);
-            });
-            
+
+            // Detailed job information.
+            console.log('Job Details');
+            console.log('-----------');
+
+            if (jobs.length === 0) {
+              console.log('No jobs are currently available.');
+            } else {
+              jobs.forEach((job, index) => {
+                let icon = '⏭️';
+
+                if (job.conclusion === 'success') {
+                  icon = '✅';
+                } else if (job.conclusion === 'failure') {
+                  icon = '❌';
+                } else if (
+                  job.status === 'in_progress' ||
+                  job.status === 'queued' ||
+                  job.status === 'waiting'
+                ) {
+                  icon = '⏳';
+                } else if (job.conclusion === 'cancelled') {
+                  icon = '🚫';
+                }
+
+                let jobElapsed = 0;
+
+                if (job.started_at) {
+                  const start = new Date(job.started_at);
+                  const end = job.completed_at
+                    ? new Date(job.completed_at)
+                    : new Date();
+
+                  jobElapsed = Math.max(
+                    0,
+                    Math.floor((end - start) / 1000)
+                  );
+                }
+
+                console.log(
+                  `${icon} [${index + 1}/${jobs.length}] ${job.name}`
+                );
+
+                console.log(
+                  `    Status: ${job.status || 'unknown'}`
+                );
+
+                console.log(
+                  `    Conclusion: ${job.conclusion || 'N/A'}`
+                );
+
+                console.log(
+                  `    Duration: ${jobElapsed}s`
+                );
+              });
+            }
+
             console.log('');
-            console.log('='.repeat(70));
-            
-            // Set outputs
-            core.setOutput('jobs_total', jobs.length.toString());
-            core.setOutput('jobs_passed', jobsPassed.toString());
-            core.setOutput('jobs_failed', jobsFailed.toString());
+            console.log('='.repeat(80));
+
+            // Export GitHub Actions outputs.
+            core.setOutput('jobs_total', String(jobs.length));
+            core.setOutput('jobs_passed', String(jobsPassed));
+            core.setOutput('jobs_failed', String(jobsFailed));
+            core.setOutput('jobs_in_progress', String(jobsInProgress));
+            core.setOutput('jobs_skipped', String(jobsSkipped));
             core.setOutput('elapsed_time', elapsedStr);
-            core.setOutput('pass_rate', passRate.toString());
+            core.setOutput('pass_rate', String(passRate));
+            core.setOutput(
+              'workflow_conclusion',
+              run.conclusion || 'in_progress'
+            );
+
+      - name: Display metrics summary
+        run: |
+          echo "=========================================="
+          echo "WORKFLOW METRICS SUMMARY"
+          echo "=========================================="
+          echo "Total jobs:      ${{ steps.metrics.outputs.jobs_total }}"
+          echo "Passed:          ${{ steps.metrics.outputs.jobs_passed }}"
+          echo "Failed:          ${{ steps.metrics.outputs.jobs_failed }}"
+          echo "In progress:     ${{ steps.metrics.outputs.jobs_in_progress }}"
+          echo "Skipped:         ${{ steps.metrics.outputs.jobs_skipped }}"
+          echo "Pass rate:       ${{ steps.metrics.outputs.pass_rate }}%"
+          echo "Elapsed time:    ${{ steps.metrics.outputs.elapsed_time }}"
+          echo "Conclusion:      ${{ steps.metrics.outputs.workflow_conclusion }}"
+          echo "=========================================="
 
   monitor-and-report:
     name: Monitor PR Validation & Report Status
-    needs: collect-workflow-metrics
+    needs:
+      - collect-workflow-metrics
+
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.event == 'pull_request' || github.event_name == 'workflow_dispatch'
-    
+
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event_name == 'workflow_run' &&
+        github.event.workflow_run.event == 'pull_request'
+      )
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-      
+          fetch-depth: 1
+
       - name: Download validation artifacts
-        uses: actions/download-artifact@v3
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v4
         continue-on-error: true
-      
+        with:
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
+          run-id: ${{ github.event.workflow_run.id }}
+          merge-multiple: true
+
       - name: Check workflow status
+        env:
+          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          WORKFLOW_STATUS: ${{ github.event.workflow_run.status }}
+          WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
         run: |
           echo "=========================================="
-          echo "PR Validation Workflow Status Monitor"
+          echo "PR VALIDATION WORKFLOW STATUS MONITOR"
           echo "=========================================="
           echo ""
-          echo "Workflow: ${{ github.event.workflow_run.name }}"
-          echo "Status: ${{ github.event.workflow_run.conclusion }}"
-          echo "Run ID: ${{ github.event.workflow_run.id }}"
+
+          echo "Workflow:   ${WORKFLOW_NAME:-Manual Run}"
+          echo "Status:     ${WORKFLOW_STATUS:-N/A}"
+          echo "Conclusion: ${WORKFLOW_CONCLUSION:-N/A}"
+          echo "Run ID:     ${WORKFLOW_RUN_ID:-N/A}"
           echo ""
-          
-          if [ "${{ github.event.workflow_run.conclusion }}" == "success" ]; then
-            echo "✅ All validation checks PASSED"
-            exit 0
+
+          if [ "${WORKFLOW_CONCLUSION:-}" = "success" ]; then
+            echo "✅ All validation checks PASSED."
+          elif [ "${WORKFLOW_CONCLUSION:-}" = "failure" ]; then
+            echo "❌ Validation workflow FAILED."
+          elif [ "${WORKFLOW_CONCLUSION:-}" = "cancelled" ]; then
+            echo "🚫 Validation workflow was CANCELLED."
+          elif [ "${WORKFLOW_CONCLUSION:-}" = "timed_out" ]; then
+            echo "⏱️ Validation workflow TIMED OUT."
+          elif [ "${WORKFLOW_CONCLUSION:-}" = "skipped" ]; then
+            echo "⏭️ Validation workflow was SKIPPED."
           else
-            echo "⚠️ Validation requires attention"
-            exit 0
+            echo "⏳ Validation workflow is still in progress or was manually requested."
           fi
-      
-      - name: Report validation results
+
+          echo ""
+          echo "Metrics:"
+          echo "  Total jobs:  ${{ needs.collect-workflow-metrics.outputs.jobs_total }}"
+          echo "  Passed:      ${{ needs.collect-workflow-metrics.outputs.jobs_passed }}"
+          echo "  Failed:      ${{ needs.collect-workflow-metrics.outputs.jobs_failed }}"
+          echo "  In progress: ${{ needs.collect-workflow-metrics.outputs.jobs_in_progress }}"
+          echo "  Pass rate:   ${{ needs.collect-workflow-metrics.outputs.pass_rate }}%"
+          echo "  Elapsed:     ${{ needs.collect-workflow-metrics.outputs.elapsed_time }}"
+          echo ""
+
+      - name: Generate validation report
         uses: actions/github-script@v7
+        env:
+          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
+          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          WORKFLOW_STATUS: ${{ github.event.workflow_run.status }}
+          WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          JOBS_TOTAL: ${{ needs.collect-workflow-metrics.outputs.jobs_total }}
+          JOBS_PASSED: ${{ needs.collect-workflow-metrics.outputs.jobs_passed }}
+          JOBS_FAILED: ${{ needs.collect-workflow-metrics.outputs.jobs_failed }}
+          JOBS_IN_PROGRESS: ${{ needs.collect-workflow-metrics.outputs.jobs_in_progress }}
+          PASS_RATE: ${{ needs.collect-workflow-metrics.outputs.pass_rate }}
+          ELAPSED_TIME: ${{ needs.collect-workflow-metrics.outputs.elapsed_time }}
         with:
-          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
           script: |
-            const workflow = context.payload.workflow_run;
-            const status = workflow.conclusion;
-            
-            console.log('='.repeat(50));
+            const runId = process.env.WORKFLOW_RUN_ID || 'N/A';
+            const workflowName = process.env.WORKFLOW_NAME || 'Manual monitoring run';
+            const status = process.env.WORKFLOW_STATUS || 'N/A';
+            const conclusion = process.env.WORKFLOW_CONCLUSION || 'N/A';
+            const branch = process.env.HEAD_BRANCH || 'N/A';
+            const sha = process.env.HEAD_SHA || 'N/A';
+
+            const jobsTotal = process.env.JOBS_TOTAL || '0';
+            const jobsPassed = process.env.JOBS_PASSED || '0';
+            const jobsFailed = process.env.JOBS_FAILED || '0';
+            const jobsInProgress =
+              process.env.JOBS_IN_PROGRESS || '0';
+            const passRate = process.env.PASS_RATE || '0.0';
+            const elapsed = process.env.ELAPSED_TIME || '0s';
+
+            console.log('');
+            console.log('='.repeat(70));
             console.log('OLLAMA PR VALIDATION STATUS REPORT');
-            console.log('='.repeat(50));
+            console.log('='.repeat(70));
             console.log('');
-            console.log(`Workflow: ${workflow.name}`);
-            console.log(`Status: ${status === 'success' ? '✅ PASSED' : '⚠️ IN PROGRESS/FAILED'}`);
-            console.log(`Run ID: ${workflow.id}`);
-            console.log(`Head Branch: ${workflow.head_branch}`);
-            console.log(`Head Commit: ${workflow.head_commit}`);
+
+            console.log(`Workflow:       ${workflowName}`);
+            console.log(`Run ID:         ${runId}`);
+            console.log(`Status:         ${status}`);
+            console.log(`Conclusion:     ${conclusion}`);
+            console.log(`Head Branch:    ${branch}`);
+            console.log(`Head Commit:    ${sha.substring(0, 7)}`);
             console.log('');
-            
-            if (status === 'success') {
-              console.log('✅ PR Validation Complete');
-              console.log('✅ All 293+ platform-specific features validated');
-              console.log('✅ 40+ comprehensive tests passed');
-              console.log('✅ Documentation verified');
+
+            console.log('Metrics');
+            console.log('-------');
+            console.log(`Jobs Total:     ${jobsTotal}`);
+            console.log(`Jobs Passed:    ${jobsPassed}`);
+            console.log(`Jobs Failed:    ${jobsFailed}`);
+            console.log(`In Progress:    ${jobsInProgress}`);
+            console.log(`Pass Rate:      ${passRate}%`);
+            console.log(`Elapsed Time:   ${elapsed}`);
+            console.log('');
+
+            if (conclusion === 'success') {
+              console.log('STATUS: READY FOR MERGE');
               console.log('');
-              console.log('Status: READY FOR MERGE');
+              console.log('Validation completed successfully.');
+            } else if (conclusion === 'failure') {
+              console.log('STATUS: VALIDATION FAILED');
+              console.log('');
+              console.log('One or more validation jobs failed.');
+            } else if (conclusion === 'cancelled') {
+              console.log('STATUS: VALIDATION CANCELLED');
+            } else if (conclusion === 'timed_out') {
+              console.log('STATUS: VALIDATION TIMED OUT');
+            } else {
+              console.log('STATUS: VALIDATION NOT YET COMPLETE');
             }
+
+            console.log('');
+            console.log('='.repeat(70));
+
+            // If this is a completed PR validation failure,
+            // create a warning comment on the associated PR when possible.
+            if (
+              context.eventName === 'workflow_run' &&
+              conclusion === 'failure'
+            ) {
+              const workflowRun = context.payload.workflow_run;
+
+              const pullRequests =
+                workflowRun?.pull_requests || [];
+
+              if (pullRequests.length > 0) {
+                for (const pr of pullRequests) {
+                  try {
+                    await github.rest.issues.createComment({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: pr.number,
+                      body:
+                        `## ⚠️ PR Validation Failed\n\n` +
+                        `The workflow **${workflowName}** failed.\n\n` +
+                        `- **Run:** ${runId}\n` +
+                        `- **Branch:** ${branch}\n` +
+                        `- **Commit:** ${sha.substring(0, 7)}\n` +
+                        `- **Jobs:** ${jobsPassed}/${jobsTotal} passed\n` +
+                        `- **Pass rate:** ${passRate}%\n` +
+                        `- **Duration:** ${elapsed}\n\n` +
+                        `Please inspect the failed workflow jobs before merging.`
+                    });
+
+                    console.log(
+                      `Posted validation failure report to PR #${pr.number}.`
+                    );
+                  } catch (error) {
+                    console.log(
+                      `Unable to comment on PR #${pr.number}: ${error.message}`
+                    );
+                  }
+                }
+              } else {
+                console.log(
+                  'No associated pull request was available for reporting.'
+                );
+              }
+            }
+
+  final-status:
+    name: Final Monitor Status
+    needs:
+      - collect-workflow-metrics
+      - monitor-and-report
+
+    runs-on: ubuntu-latest
+
+    if: always()
+
+    steps:
+      - name: Publish final status
+        env:
+          METRICS_RESULT: ${{ needs.collect-workflow-metrics.result }}
+          REPORT_RESULT: ${{ needs.monitor-and-report.result }}
+          CONCLUSION: ${{ needs.collect-workflow-metrics.outputs.workflow_conclusion }}
+          PASS_RATE: ${{ needs.collect-workflow-metrics.outputs.pass_rate }}
+        run: |
+          echo "=========================================="
+          echo "PR MONITOR FINAL STATUS"
+          echo "=========================================="
+          echo ""
+          echo "Metrics job: ${METRICS_RESULT}"
+          echo "Report job:  ${REPORT_RESULT}"
+          echo "Workflow:    ${CONCLUSION}"
+          echo "Pass rate:   ${PASS_RATE}%"
+          echo ""
+
+          if [ "${METRICS_RESULT}" = "success" ] && \
+             [ "${REPORT_RESULT}" = "success" ]; then
+            echo "✅ PR monitoring completed successfully."
+          else
+            echo "⚠️ PR monitoring completed with warnings or skipped work."
+          fi
+
+          echo "=========================================="
