@@ -2037,4 +2037,33 @@ jobs:
             else {
 
               overall =
-                "NO ACTIVE OLLAMA
+                "NO ACTIVE OLLAMA/PR WORK DETECTED";
+
+              overallIcon =
+                "⚪";
+
+            }
+
+            // ================================================================
+            // CURRENT ACTIVITY FILE
+            // ================================================================
+
+            let currentText = "";
+
+            currentText +=
+              "============================================================\n";
+
+            currentText +=
+              "WHAT OLLAMA AUTONOMOUS AGENT IS DOING RIGHT NOW\n";
+
+            currentText +=
+              "============================================================\n\n";
+
+            currentText +=
+              `Observed: ${nowISO}\n\n`;
+
+            currentText +=
+              `Overall state: ${overallIcon} ${overall}\n\n`;
+
+            if (
+              currentAgent
