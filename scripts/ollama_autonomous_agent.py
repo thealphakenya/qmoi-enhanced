@@ -403,7 +403,7 @@ class OllamaAutonomousAgent:
 
 
 # ============================================================================
-# CORE AGENT ORCHESTRATOR
+# CORE AGENT ORCHESTRATOR & AUTO-HEALING TEST VALIDATOR
 # ============================================================================
 
 class QmoiPhoneAgent:
@@ -428,24 +428,33 @@ class QmoiPhoneAgent:
             pythonpath = f"{pythonpath}:{env['PYTHONPATH']}"
         env["PYTHONPATH"] = pythonpath
 
-        # Syntax check
+        # 1. Ensure pytest is installed in the active python environment (Auto-healing missing dependency)
+        try:
+            import pytest  # type: ignore
+        except ImportError:
+            self.telemetry.action("pytest not found in environment. Auto-installing pytest and test dependencies...")
+            install_res = self.runner.run([sys.executable, "-m", "pip", "install", "pytest", "requests"], allow_failure=True)
+            if not install_res.success:
+                self.telemetry.error("Failed to automatically install pytest and test dependencies.")
+
+        # 2. Syntax compilation check
         comp = self.runner.run([sys.executable, "-m", "compileall", str(SCRIPTS_DIR), str(TESTS_DIR)])
         if not comp.success:
-            self.telemetry.error("Syntax compilation failed")
+            self.telemetry.error("Syntax compilation check failed")
             return 1
 
-        # Test suite execution with self-healing retry mechanism
+        # 3. Execute test suite with automatic failure isolation & self-healing retry
         if TESTS_DIR.exists():
-            test_res = self.runner.run(["pytest", str(TESTS_DIR), "-v"], cwd=ROOT_DIR)
+            test_res = self.runner.run([sys.executable, "-m", "pytest", str(TESTS_DIR), "-v"], cwd=ROOT_DIR)
             if not test_res.success:
                 self.telemetry.error(f"Test suite encountered errors:\n{test_res.stderr}")
-                # Auto-healing attempt: clear cache and retry
+                # Auto-healing attempt: clear cache and re-run with fallback flag
                 self.runner.run([sys.executable, "-m", "pytest", "--cache-clear", str(TESTS_DIR)], cwd=ROOT_DIR)
-                retry_res = self.runner.run(["pytest", str(TESTS_DIR), "-q"], cwd=ROOT_DIR)
+                retry_res = self.runner.run([sys.executable, "-m", "pytest", "-q", str(TESTS_DIR)], cwd=ROOT_DIR)
                 if not retry_res.success:
                     return 1
 
-        # Reconcile and push telemetry or changes safely
+        # 4. Reconcile and push successfully
         self.runner.safe_git_push_reconcile()
 
         self.telemetry.task("validation", "All tests and platform features verified successfully", "completed")
