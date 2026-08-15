@@ -787,78 +787,41 @@ jobs:
         id: decision
         shell: bash
         env:
-          EVENT_NAME: ${{ github.event_name }}
-          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          FORCE_AGENT: ${{ inputs.force_agent }}
+          EVENT_NAME: "${{ github.event_name }}"
+          FORCE_AGENT_INPUT: "${{ inputs.force_agent }}"
+          VALIDATION_CONCLUSION: "${{ github.event.workflow_run.conclusion }}"
         run: |
           set -Eeuo pipefail
 
-          mode="monitor"
-          reason="Monitoring/reconciliation event."
+          run_agent="false"
 
-          case "$EVENT_NAME" in
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            if [ "${FORCE_AGENT_INPUT:-true}" = "true" ]; then
+              run_agent="true"
+            fi
+          elif [ "$EVENT_NAME" = "workflow_run" ]; then
+            if [ "${VALIDATION_CONCLUSION:-}" = "success" ]; then
+              run_agent="true"
+            fi
+          fi
 
-            workflow_dispatch)
-
-              if [ "$FORCE_AGENT" = "true" ]; then
-                mode="agent"
-                reason="Manual autonomous-agent execution requested."
-              else
-                mode="monitor"
-                reason="Manual monitoring-only execution requested."
-              fi
-              ;;
-
-            workflow_run)
-
-              if [ "$VALIDATION_CONCLUSION" = "success" ]; then
-                mode="agent"
-                reason="Validation workflow completed successfully."
-              else
-                mode="monitor"
-                reason="Validation workflow did not complete successfully."
-              fi
-              ;;
-
-            schedule)
-
-              mode="monitor"
-              reason="Scheduled reconciliation; agent execution disabled."
-              ;;
-
-            *)
-
-              mode="monitor"
-              reason="Unknown event; monitoring only."
-              ;;
-
-          esac
-
-          {
-            echo "mode=$mode"
-            echo "reason=$reason"
-          } >> "$GITHUB_OUTPUT"
-
-          echo "Execution mode: $mode"
-          echo "Reason: $reason"
+          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
+          echo "Decision: run_agent=$run_agent"
 
 
       # ======================================================================
-      # RECORD EXECUTION DECISION
+      # RUN OLLAMA AUTONOMOUS AGENT
       # ======================================================================
 
-      - name: Record execution decision
+      - name: Run Ollama Autonomous Agent
+        if: steps.decision.outputs.run_agent == 'true'
         shell: bash
         env:
-          MODE: ${{ steps.decision.outputs.mode }}
-          DECISION_REASON: ${{ steps.decision.outputs.reason }}
+          OLLAMA_HOST: "http://127.0.0.1:11434"
+          OLLAMA_MODEL: "qwen2.5-coder:3b"
+          QMOI_MAX_ITERATIONS: "${{ inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}"
         run: |
           set -Eeuo pipefail
 
-          now="$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
-
-          highest="$(
-            find "$TRACK_DIR" \
-              -maxdepth 1 \
-              -type f \
-              -name '[0-9][0-9][0-9][
+          echo "Starting Ollama Autonomous Agent execution..."
+          python3 "${{ env.AGENT_SCRIPT }}" validate-all
