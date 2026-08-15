@@ -6,58 +6,157 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 #
 # PURPOSE
 # -------
-# Durable monitoring/reconciliation system for:
+# Durable, finite reconciliation and telemetry system for:
 #
 #   * Ollama PR validation workflow
 #   * Ollama autonomous-agent workflow
 #   * workflow runs
-#   * jobs
+#   * workflow jobs
+#   * job steps
 #   * pull requests
 #   * commits / branches / SHAs
 #   * check runs
-#   * validation results
-#   * agent telemetry
+#   * commit statuses
+#   * autonomous-agent telemetry
 #   * current agent state
+#   * historical activity
 #
-# IMPORTANT
-# ---------
-# This workflow is a finite reconciler, NOT an infinite daemon.
+# This workflow is OBSERVATIONAL.
 #
-# It uses:
+# It does NOT:
 #
-#   workflow_run
-#       +
-#   schedule
-#       +
-#   workflow_dispatch
-#       +
-#   persistent ollamatracks/
-#       +
-#   GitHub Actions artifacts/logs
+#   * execute pull-request code
+#   * cancel agent runs
+#   * restart agent runs
+#   * merge pull requests
+#   * approve pull requests
+#   * modify agent source
+#   * modify validation source
+#   * modify unrelated repository files
 #
-# The Python autonomous agent should additionally emit structured telemetry
-# into:
+# The Python autonomous agent is expected to emit structured telemetry into:
 #
 #   ollamatracks/agent-events.jsonl
 #
-# using the schema documented in this workflow.
+# The tracker consumes that telemetry and combines it with GitHub's authoritative
+# workflow/PR/check state.
+#
+# ============================================================================
+# ARCHITECTURE
+# ============================================================================
+#
+#                    GitHub Actions
+#                         |
+#             +-----------+-----------+
+#             |                       |
+#       workflow_run              schedule
+#             |                       |
+#             +-----------+-----------+
+#                         |
+#                    THIS TRACKER
+#                         |
+#       +-----------------+------------------+
+#       |                 |                  |
+#   Workflows           PRs              Telemetry
+#       |                 |                  |
+#       +-----------------+------------------+
+#                         |
+#                  ollamatracks/
+#                         |
+#       +-----------------+------------------+
+#       |                 |                  |
+#   CURRENT_STATUS    STATE             History
+#   LATEST_ACTIVITY   PR_STATUS         NNNNNN_*.txt
+#
+# This is a finite reconciler, not an infinite daemon.
 #
 # ============================================================================
 # SECURITY MODEL
 # ============================================================================
 #
-# This workflow is privileged because workflow_run executes in the context of
-# the base repository.
+# workflow_run workflows execute with privileges associated with the base
+# repository. Therefore this workflow MUST NOT checkout or execute untrusted
+# pull-request code.
 #
-# NEVER checkout an untrusted pull-request head in this workflow.
+# The checkout intentionally targets the repository default branch.
 #
-# The checkout below intentionally uses the repository's default branch.
+# Pull-request information is obtained through the GitHub API only.
 #
-# The tracker observes repository state; it does NOT execute PR code.
+# Agent telemetry is treated as DATA, not executable code.
+#
+# ============================================================================
+# TRACKING DIRECTORY
+# ============================================================================
+#
+# Mutable state:
+#
+#   ollamatracks/CURRENT_STATUS.txt
+#   ollamatracks/LATEST_ACTIVITY.txt
+#   ollamatracks/STATE.txt
+#   ollamatracks/PR_STATUS.txt
+#   ollamatracks/LAST_RECONCILIATION.txt
+#   ollamatracks/TRACKING_INDEX.txt
+#
+# Structured telemetry:
+#
+#   ollamatracks/agent-events.jsonl
+#
+# Immutable historical records:
+#
+#   ollamatracks/000001_tracker_started.txt
+#   ollamatracks/000002_workflow_snapshot.txt
+#   ollamatracks/000003_agent_telemetry.txt
+#   ...
+#
+# Historical records are never intentionally overwritten.
+#
+# ============================================================================
+# TELEMETRY CONTRACT
+# ============================================================================
+#
+# Recommended agent-events.jsonl event format:
+#
+# {
+#   "schema_version": "3.0",
+#   "timestamp": "2026-08-15T12:34:56.123Z",
+#   "event": "task_started",
+#   "run_id": "123456",
+#   "iteration": 4,
+#   "task_id": "validate-build",
+#   "tool": "pytest",
+#   "status": "running",
+#   "message": "Running test suite"
+# }
+#
+# Supported event categories include:
+#
+#   run_started
+#   run_completed
+#   iteration_started
+#   iteration_completed
+#   task_started
+#   task_completed
+#   tool_started
+#   tool_completed
+#   command_started
+#   command_completed
+#   validation_started
+#   validation_completed
+#   repair_started
+#   repair_completed
+#   checkpoint_created
+#   error
+#   agent_state_changed
+#   agent_completed
+#   agent_failed
+#
+# The tracker does not require every field to exist.
+# Malformed telemetry lines are ignored and counted.
 #
 # ============================================================================
 
 on:
+
   workflow_run:
     workflows:
       - "Ollama PR Validation - 293+ Platform Features"
@@ -72,6 +171,7 @@ on:
 
   workflow_dispatch:
     inputs:
+
       run_id:
         description: "Optional workflow run ID to inspect"
         required: false
@@ -85,19 +185,19 @@ on:
         default: true
 
       inspect_prs:
-        description: "Inspect pull requests"
+        description: "Inspect open pull requests"
         required: false
         type: boolean
         default: true
 
       inspect_jobs:
-        description: "Inspect workflow jobs"
+        description: "Inspect workflow jobs and steps"
         required: false
         type: boolean
         default: true
 
       inspect_checks:
-        description: "Inspect check runs"
+        description: "Inspect check runs and commit statuses"
         required: false
         type: boolean
         default: true
@@ -119,12 +219,14 @@ permissions:
 # CONCURRENCY
 # ============================================================================
 #
-# Only one writer modifies ollamatracks at a time.
+# All tracker writers should use this same repository-level concurrency group.
 #
-# queue: max is supported by GitHub Actions and permits multiple pending
-# executions instead of replacing the existing pending execution.
+# queue: max permits multiple pending executions while ensuring that only one
+# writer is actively modifying the tracking state at a time.
 #
 # cancel-in-progress MUST remain false.
+#
+# GitHub documents queue: max as allowing up to 100 pending runs.
 # ============================================================================
 
 concurrency:
@@ -138,18 +240,26 @@ concurrency:
 # ============================================================================
 
 env:
+
   TRACK_DIR: ollamatracks
+
   TRACK_SCHEMA_VERSION: "3.0"
 
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
+
   AGENT_WORKFLOW_NAME: "Ollama Autonomous Agent Trigger & Live Tracker"
 
   MAX_RUNS: "20"
+
   MAX_JOBS_PER_RUN: "100"
-  MAX_CHECKS: "100"
+
+  MAX_CHECKS_PER_PR: "20"
+
+  MAX_TOTAL_CHECKS: "100"
+
   MAX_PRS: "100"
 
-  PYTHON_VERSION: "3.12"
+  MAX_TELEMETRY_LINES: "2000"
 
 
 # ============================================================================
@@ -197,15 +307,14 @@ jobs:
           touch "$TRACK_DIR/STATE.txt"
           touch "$TRACK_DIR/PR_STATUS.txt"
           touch "$TRACK_DIR/LAST_RECONCILIATION.txt"
+          touch "$TRACK_DIR/agent-events.jsonl"
 
-          if [ ! -f "$TRACK_DIR/TRACKING_INDEX.txt" ] || \
-             [ ! -s "$TRACK_DIR/TRACKING_INDEX.txt" ]; then
-
+          if [ ! -s "$TRACK_DIR/TRACKING_INDEX.txt" ]; then
             cat > "$TRACK_DIR/TRACKING_INDEX.txt" <<'EOF'
           OLLAMA AUTONOMOUS AGENT TRACKING INDEX
           ======================================
 
-          Schema version: 3.0
+          Tracking schema version: 3.0
 
           Historical records:
             NNNNNN_event_name.txt
@@ -219,63 +328,103 @@ jobs:
             PR_STATUS.txt
             LAST_RECONCILIATION.txt
 
-          Structured agent telemetry:
+          Structured autonomous-agent telemetry:
             agent-events.jsonl
 
           Event categories:
+
             TRACKER
             WORKFLOW
             JOB
+            STEP
             PR
             CHECK
+            STATUS
             VALIDATION
             AGENT
             ITERATION
             TASK
             TOOL
-            ERROR
+            COMMAND
+            REPAIR
             CHECKPOINT
+            ERROR
             SUMMARY
+
+          The tracker observes and reconciles state.
+
+          It does not:
+            - cancel workflows
+            - restart workflows
+            - merge PRs
+            - approve PRs
+            - execute PR code
+            - modify agent source
           EOF
           fi
 
 
       # ======================================================================
-      # COLLECT STATE
+      # COLLECT AUTHORITATIVE GITHUB STATE + AGENT TELEMETRY
       # ======================================================================
 
-      - name: Collect GitHub state
+      - name: Collect GitHub and Ollama state
         id: collect
         uses: actions/github-script@v8
         env:
+
           TRACK_DIR: ${{ env.TRACK_DIR }}
 
+          TRACK_SCHEMA_VERSION: ${{ env.TRACK_SCHEMA_VERSION }}
+
           VALIDATION_WORKFLOW_NAME: ${{ env.VALIDATION_WORKFLOW_NAME }}
+
           AGENT_WORKFLOW_NAME: ${{ env.AGENT_WORKFLOW_NAME }}
 
           MAX_RUNS: ${{ env.MAX_RUNS }}
+
           MAX_JOBS_PER_RUN: ${{ env.MAX_JOBS_PER_RUN }}
-          MAX_CHECKS: ${{ env.MAX_CHECKS }}
+
+          MAX_CHECKS_PER_PR: ${{ env.MAX_CHECKS_PER_PR }}
+
+          MAX_TOTAL_CHECKS: ${{ env.MAX_TOTAL_CHECKS }}
+
           MAX_PRS: ${{ env.MAX_PRS }}
 
+          MAX_TELEMETRY_LINES: ${{ env.MAX_TELEMETRY_LINES }}
+
           MANUAL_RUN_ID: ${{ inputs.run_id }}
+
           FORCE_SNAPSHOT: ${{ inputs.force_snapshot }}
+
           INSPECT_PRS: ${{ inputs.inspect_prs }}
+
           INSPECT_JOBS: ${{ inputs.inspect_jobs }}
+
           INSPECT_CHECKS: ${{ inputs.inspect_checks }}
 
         with:
+
           github-token: ${{ github.token }}
 
           script: |
+
             const fs = require("fs");
             const path = require("path");
             const crypto = require("crypto");
 
+            // =================================================================
+            // CONTEXT
+            // =================================================================
+
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            const trackDir = process.env.TRACK_DIR || "ollamatracks";
+            const trackDir =
+              process.env.TRACK_DIR || "ollamatracks";
+
+            const schemaVersion =
+              process.env.TRACK_SCHEMA_VERSION || "3.0";
 
             const validationWorkflowName =
               process.env.VALIDATION_WORKFLOW_NAME ||
@@ -286,146 +435,40 @@ jobs:
               "Ollama Autonomous Agent Trigger & Live Tracker";
 
             const maxRuns =
-              Number(process.env.MAX_RUNS || "20");
+              clampInteger(
+                process.env.MAX_RUNS,
+                20,
+                1,
+                100
+              );
 
             const maxJobs =
-              Number(process.env.MAX_JOBS_PER_RUN || "100");
+              clampInteger(
+                process.env.MAX_JOBS_PER_RUN,
+                100,
+                1,
+                100
+              );
 
-            const maxChecks =
-              Number(process.env.MAX_CHECKS || "100");
+            const maxChecksPerPR =
+              clampInteger(
+                process.env.MAX_CHECKS_PER_PR,
+                20,
+                1,
+                100
+              );
+
+            const maxTotalChecks =
+              clampInteger(
+                process.env.MAX_TOTAL_CHECKS,
+                100,
+                1,
+                1000
+              );
 
             const maxPRs =
-              Number(process.env.MAX_PRS || "100");
-
-            const manualRunId =
-              String(process.env.MANUAL_RUN_ID || "").trim();
-
-            const forceSnapshot =
-              String(process.env.FORCE_SNAPSHOT || "true") !== "false";
-
-            const inspectPRs =
-              String(process.env.INSPECT_PRS || "true") !== "false";
-
-            const inspectJobs =
-              String(process.env.INSPECT_JOBS || "true") !== "false";
-
-            const inspectChecks =
-              String(process.env.INSPECT_CHECKS || "true") !== "false";
-
-            fs.mkdirSync(trackDir, { recursive: true });
-
-            // =================================================================
-            // TIME
-            // =================================================================
-
-            function utcNow() {
-              return new Date().toISOString();
-            }
-
-            const timestamp = utcNow();
-
-            // =================================================================
-            // HELPERS
-            // =================================================================
-
-            function safe(value) {
-              return String(value ?? "unknown")
-                .replace(/[^a-zA-Z0-9._-]+/g, "-")
-                .replace(/^-+|-+$/g, "")
-                .slice(0, 100) || "unknown";
-            }
-
-            function sha256(value) {
-              return crypto
-                .createHash("sha256")
-                .update(String(value))
-                .digest("hex");
-            }
-
-            function read(file) {
-              try {
-                return fs.readFileSync(file, "utf8");
-              } catch {
-                return "";
-              }
-            }
-
-            function write(file, content) {
-              fs.writeFileSync(file, content, "utf8");
-            }
-
-            function append(file, content) {
-              fs.appendFileSync(file, content, "utf8");
-            }
-
-            function historicalFiles() {
-              return fs
-                .readdirSync(trackDir)
-                .filter(name => /^\d{6}_.+\.txt$/i.test(name));
-            }
-
-            function nextSequence() {
-              let highest = 0;
-
-              for (const file of historicalFiles()) {
-                const match = /^(\d{6})_/.exec(file);
-
-                if (!match) {
-                  continue;
-                }
-
-                const number = Number(match[1]);
-
-                if (number > highest) {
-                  highest = number;
-                }
-              }
-
-              return highest + 1;
-            }
-
-            function recordEvent(eventName, data = {}) {
-              const sequence = nextSequence();
-
-              const sequenceText =
-                String(sequence).padStart(6, "0");
-
-              const filename =
-                `${sequenceText}_${safe(eventName)}.txt`;
-
-              const filepath =
-                path.join(trackDir, filename);
-
-              const lines = [
-                "OLLAMA AUTONOMOUS AGENT TRACKING EVENT",
-                "=======================================",
-                "",
-                `Schema version: ${process.env.TRACK_SCHEMA_VERSION || "3.0"}`,
-                `Sequence: ${sequenceText}`,
-                `Event: ${eventName}`,
-                `Timestamp UTC: ${timestamp}`,
-                `Repository: ${owner}/${repo}`,
-                `Tracker workflow: ${context.workflow}`,
-                `Tracker run ID: ${context.runId}`,
-                `Tracker attempt: ${context.runAttempt}`,
-                `GitHub event: ${context.eventName}`,
-                ""
-              ];
-
-              for (const [key, value] of Object.entries(data)) {
-                if (typeof value === "object") {
-                  lines.push(`${key}:`);
-                  lines.push(JSON.stringify(value, null, 2));
-                } else {
-                  lines.push(`${key}: ${String(value)}`);
-                }
-              }
-
-              lines.push("");
-              lines.push("END EVENT");
-              lines.push("");
-
-              write(filepath, lines.join("\n"));
-
-              return {
-               
+              clampInteger(
+                process.env.MAX_PRS,
+                100,
+                1,
+                
