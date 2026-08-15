@@ -4,7 +4,7 @@ QMOI / Ollama Autonomous Agent (Advanced Production Edition with Model Evolution
 =================================================================================
 
 Production-oriented autonomous validation, diagnosis, repair, self-patching,
-telemetry, and Model Evolution O engine for the QMOI repository.
+telemetry, and Model Evolution O engine for the QMOI / Alpha-Q-ai repository.
 
 Model Evolution O Features:
 ---------------------------
