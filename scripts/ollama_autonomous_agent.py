@@ -5,10 +5,11 @@ QMOI / Ollama Autonomous Agent (Advanced Production Edition)
 
 Production-oriented autonomous validation, diagnosis, repair, self-patching,
 and telemetry engine for the QMOI repository with Advanced Auto-Healing,
-Workspace Snapshots, AI-Powered Error Diagnosis, and Resilient Toolchain Verification.
+Workspace Snapshots, AI-Powered Error Diagnosis, Toolchain Bootstrapping,
+and Resilient Verification.
 
 This implementation guarantees maximum reliability:
-    DISCOVER -> PLAN -> EXECUTE -> VERIFY -> (on failure) -> DIAGNOSE -> PATCH -> RE-VERIFY
+    BOOTSTRAP -> DISCOVER -> PLAN -> EXECUTE -> VERIFY -> (on failure) -> DIAGNOSE -> PATCH -> RE-VERIFY
     with automated rollback, credential validation, toolchain bootstrapping, and bounded retries.
 
 Usage
@@ -261,7 +262,6 @@ class WorkspaceSnapshot:
     def create_snapshot(tag: str) -> Path:
         snap_path = SNAPSHOTS_DIR / f"snapshot_{file_timestamp()}_{safe_name(tag)}"
         snap_path.mkdir(parents=True, exist_ok=True)
-        # Snapshot key python files and configs
         for pattern in ["*.py", "*.json", "*.yml", "*.yaml", "requirements.txt"]:
             for file_path in ROOT_DIR.glob(pattern):
                 if file_path.is_file() and "ollamatracks" not in file_path.parts:
@@ -308,7 +308,7 @@ class Telemetry:
         self.state: Dict[str, Any] = {
             "execution_id": self.execution_id,
             "agent": "QMOI Ollama Advanced Autonomous Agent",
-            "version": "4.0",
+            "version": "4.1",
             "started_at": self.started_at,
             "updated_at": self.started_at,
             "status": "starting",
@@ -424,7 +424,7 @@ class Telemetry:
         json_line = json.dumps(event, ensure_ascii=False, sort_keys=True)
         append_text(JSONL_FILE, json_line + "\n")
 
-        readable = f"[{timestamp}] [{event_id}] [{status.upperصر}] [{event_type}] {redact(message)}\n".replace("صر", "")
+        readable = f"[{timestamp}] [{event_id}] [{status.upper()}] [{event_type}] {redact(message)}\n"
         if details:
             readable += json.dumps(details, ensure_ascii=False, sort_keys=True) + "\n"
 
@@ -620,6 +620,41 @@ class CommandRunner:
 
 
 # ============================================================================
+# TOOLCHAIN BOOTSTRAPPER
+# ============================================================================
+
+class ToolchainBootstrapper:
+    """Guarantees that required packages, tools, and test runners are available."""
+    def __init__(self, telemetry: Telemetry, runner: CommandRunner):
+        self.telemetry = telemetry
+        self.runner = runner
+
+    def bootstrap_dependencies(self) -> bool:
+        self.telemetry.task("bootstrap", "Bootstrap required toolchain dependencies", "started")
+        
+        # Ensure pip is up to date and install test dependencies if present
+        req_file = ROOT_DIR / "requirements.txt"
+        if req_file.exists():
+            res = self.runner.run([sys.executable, "-m", "pip", "install", "-r", str(req_file)], allow_failure=True)
+            if not res.success:
+                self.telemetry.error("Failed to install requirements.txt", details={"stderr": res.stderr})
+
+        # Ensure pytest is installed
+        try:
+            import pytest
+        except ImportError:
+            self.telemetry.action("pytest not found in environment. Installing pytest...", status="started")
+            res = self.runner.run([sys.executable, "-m", "pip", "install", "pytest"], allow_failure=True)
+            if not res.success:
+                self.telemetry.error("Failed to auto-install pytest", details={"stderr": res.stderr})
+                self.telemetry.task("bootstrap", "Bootstrap failed for pytest", "failed")
+                return False
+
+        self.telemetry.task("bootstrap", "Toolchain dependencies successfully bootstrapped", "completed")
+        return True
+
+
+# ============================================================================
 # OLLAMA CLIENT & ADVANCED AI DIAGNOSIS/HEALING
 # ============================================================================
 
@@ -706,6 +741,7 @@ class QmoiPhoneAgent:
     def __init__(self) -> None:
         self.telemetry = Telemetry()
         self.runner = CommandRunner(self.telemetry)
+        self.bootstrapper = ToolchainBootstrapper(self.telemetry, self.runner)
         self.ollama = OllamaClient(self.telemetry)
 
     def doctor(self) -> int:
@@ -729,6 +765,10 @@ class QmoiPhoneAgent:
         self.telemetry.status(status="running", phase="validate-all")
         self.telemetry.iteration(1, "started", "Starting advanced validate-all workflow")
 
+        # 0. Bootstrap Toolchain & Dependencies
+        if not self.bootstrapper.bootstrap_dependencies():
+            self.telemetry.error("Toolchain bootstrapping failed")
+
         # 1. Discover components
         self.telemetry.task("discover", "Discover repository components", "started", iteration=1)
         py_files = list(ROOT_DIR.glob("*.py")) + list(SCRIPTS_DIR.glob("*.py"))
@@ -747,10 +787,10 @@ class QmoiPhoneAgent:
                 return self.validate_all(max_iterations - 1)
             return 1
 
-        # 3. Test Suite Execution if pytest is available
-        if command_exists("pytest") and TESTS_DIR.exists():
+        # 3. Test Suite Execution with guaranteed pytest availability
+        if TESTS_DIR.exists():
             self.telemetry.task("verify_tests", "Execute pytest test suite", "started", iteration=1)
-            test_res = self.runner.run(["pytest", str(TESTS_DIR)], task_id="verify_tests", allow_failure=True)
+            test_res = self.runner.run(["pytest", str(TESTS_DIR), "-v"], task_id="verify_tests", allow_failure=True)
             if test_res.success:
                 self.telemetry.task("verify_tests", "Test suite passed successfully", "completed", iteration=1)
             else:
@@ -769,7 +809,6 @@ class QmoiPhoneAgent:
 
         fixed = self.ollama.diagnose_and_patch(error_msg, target_file)
         if fixed:
-            # Re-verify
             verify_res = self.runner.run([sys.executable, "-m", "compileall", str(SCRIPTS_DIR)], allow_failure=True)
             if verify_res.success:
                 self.telemetry.action("Self-healing verification passed after AI patch", status="success")
