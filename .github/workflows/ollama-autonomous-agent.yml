@@ -197,7 +197,7 @@ env:
 
 
 # ============================================================================
-# JOB
+# JOBS
 # ============================================================================
 
 jobs:
@@ -239,6 +239,17 @@ jobs:
             pyproject.toml
             poetry.lock
             uv.lock
+
+
+      # ======================================================================
+      # EXECUTE TEST SUITE WITH PYTHONPATH CONFIGURED
+      # ======================================================================
+
+      - name: Execute Test Suite (40+ Tests)
+        env:
+          PYTHONPATH: ${{ github.workspace }}/scripts
+        run: |
+          python -m pytest tests/test_ollama_autonomous_agent.py -v
 
 
       # ======================================================================
@@ -788,33 +799,45 @@ jobs:
         shell: bash
         env:
           EVENT_NAME: "${{ github.event_name }}"
-          FORCE_AGENT_INPUT: "${{ inputs.force_agent }}"
+          EVENT_ACTION: "${{ github.event.action }}"
           VALIDATION_CONCLUSION: "${{ github.event.workflow_run.conclusion }}"
+          FORCE_AGENT_INPUT: "${{ inputs.force_agent }}"
         run: |
           set -Eeuo pipefail
 
-          run_agent="false"
+          execute_agent="false"
+          reason=""
 
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             if [ "${FORCE_AGENT_INPUT:-true}" = "true" ]; then
-              run_agent="true"
+              execute_agent="true"
+              reason="Manual dispatch with force_agent=true"
+            else
+              reason="Manual dispatch with force_agent=false"
             fi
           elif [ "$EVENT_NAME" = "workflow_run" ]; then
             if [ "${VALIDATION_CONCLUSION:-}" = "success" ]; then
-              run_agent="true"
+              execute_agent="true"
+              reason="Validation workflow succeeded"
+            else
+              reason="Validation workflow did not succeed (conclusion: ${VALIDATION_CONCLUSION:-unknown})"
             fi
+          elif [ "$EVENT_NAME" = "schedule" ]; then
+            reason="Scheduled reconciliation run (agent execution disabled)"
+          else
+            reason="Unknown event trigger: $EVENT_NAME"
           fi
 
-          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
-          echo "Decision: run_agent=$run_agent"
+          echo "execute_agent=$execute_agent" >> "$GITHUB_OUTPUT"
+          echo "Decision reason: $reason"
 
 
       # ======================================================================
-      # RUN OLLAMA AUTONOMOUS AGENT
+      # EXECUTE AUTONOMOUS AGENT (IF AUTHORIZED)
       # ======================================================================
 
-      - name: Run Ollama Autonomous Agent
-        if: steps.decision.outputs.run_agent == 'true'
+      - name: Run Autonomous Agent
+        if: steps.decision.outputs.execute_agent == 'true'
         shell: bash
         env:
           OLLAMA_HOST: "http://127.0.0.1:11434"
@@ -822,6 +845,27 @@ jobs:
           QMOI_MAX_ITERATIONS: "${{ inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}"
         run: |
           set -Eeuo pipefail
+          python "$AGENT_SCRIPT" validate-all
 
-          echo "Starting Ollama Autonomous Agent execution..."
-          python3 "${{ env.AGENT_SCRIPT }}" validate-all
+
+      # ======================================================================
+      # COMMIT & PUSH TRACKING STATE CHANGES
+      # ======================================================================
+
+      - name: Commit tracking state updates
+        if: always()
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          git config --global user.name "QMOI Autonomous Agent Bot"
+          git config --global user.email "action@github.com"
+
+          git add "$TRACK_DIR"
+
+          if git diff --staged --quiet; then
+            echo "No tracking changes to commit."
+          else
+            git commit -m "chore(ollamatracks): update agent telemetry and tracking state [skip ci]"
+            git push origin "${{ github.event.repository.default_branch }}" || echo "Push skipped or failed gracefully."
+          fi
