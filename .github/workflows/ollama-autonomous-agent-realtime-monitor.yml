@@ -1,71 +1,86 @@
-name: Ollama Autonomous Agent - Realtime Monitor
+name: Ollama Autonomous Agent - Continuous Monitor
 
 # ============================================================================
-# OLLAMA AUTONOMOUS AGENT - REALTIME MONITORING SYSTEM
+# OLLAMA AUTONOMOUS AGENT CONTINUOUS MONITOR
 # ============================================================================
 #
 # PURPOSE
 # -------
-# This workflow is an OBSERVATION-ONLY monitoring layer for the Ollama
-# Autonomous Agent and its validation workflows.
+# Independent, observation-only monitoring system for:
 #
-# It does NOT:
-#   - cancel workflows
-#   - rerun workflows
-#   - modify source code
-#   - push commits
-#   - create branches
-#   - merge PRs
-#   - modify workflow files
-#   - modify agent configuration
+#   1. Ollama Autonomous Agent
+#   2. Ollama PR Validation - 293+ Platform Features
 #
-# It DOES:
-#   - monitor Ollama Autonomous Agent workflow runs
-#   - monitor Ollama PR validation workflow runs
-#   - inspect jobs and individual steps
-#   - calculate execution/progress information
-#   - identify failures
-#   - identify cancelled/skipped jobs
-#   - show currently running jobs
-#   - show completed jobs
-#   - show workflow duration
-#   - show run IDs and URLs
-#   - identify the active branch and commit
-#   - identify associated PRs
-#   - publish a detailed GitHub Actions Job Summary
-#   - create/update a monitoring report
-#   - optionally post a status comment to an associated PR
+# The monitor:
 #
-# MONITORING MODEL
-# ----------------
-# 1. workflow_run event
-#       -> reacts when monitored workflows complete
+#   - detects agent workflow starts
+#   - detects agent workflow completion
+#   - detects validation completion
+#   - polls active runs every 5 minutes
+#   - inspects jobs
+#   - inspects individual job steps
+#   - records start/end timestamps
+#   - records current activity
+#   - records completed activity
+#   - records failures
+#   - records skipped/cancelled activity
+#   - records branch and commit
+#   - records workflow/run/job/step URLs
+#   - generates a simplified human-readable dashboard
+#   - generates machine-readable JSON state
+#   - generates chronological event history
+#   - stores monitoring snapshots as GitHub artifacts
 #
-# 2. schedule
-#       -> polls GitHub every 5 minutes
+# SAFETY
+# ------
+# This workflow NEVER:
 #
-# 3. workflow_dispatch
-#       -> allows manual monitoring
+#   - cancels agent workflows
+#   - reruns agent workflows
+#   - pushes source code
+#   - modifies agent files
+#   - modifies workflow files
+#   - merges PRs
+#   - creates agent commits
+#   - starts Ollama
+#   - stops Ollama
 #
-# 4. GitHub API
-#       -> reads workflow/job/step information
+# It is OBSERVATION ONLY.
 #
-# 5. Job Summary
-#       -> provides a persistent visual monitoring dashboard
+# ============================================================================
 #
-# IMPORTANT
-# ---------
-# GitHub Actions does not support a true second-by-second external monitor.
-# The combination of workflow_run events + 5-minute polling is used here
-# to provide the most reliable monitoring possible without interfering
-# with the autonomous agent.
+# IMPORTANT GITHUB DESIGN
+# ----------------------
+#
+# workflow_run is the primary event mechanism.
+#
+# schedule is a fallback because scheduled workflows can be delayed.
+#
+# The monitor does NOT monitor itself.
+#
+# The monitor's own workflow name is deliberately absent from the monitored
+# workflow list.
+#
+# This prevents an event -> monitor -> event -> monitor feedback loop.
+#
 # ============================================================================
 
 on:
 
   # --------------------------------------------------------------------------
-  # Event-driven monitoring
+  # EVENT-DRIVEN MONITORING
   # --------------------------------------------------------------------------
+  #
+  # These events give immediate monitoring opportunities when the monitored
+  # workflow starts or completes.
+  #
+  # GitHub supports:
+  #   requested
+  #   in_progress
+  #   completed
+  #
+  # --------------------------------------------------------------------------
+
   workflow_run:
     workflows:
       - "Ollama Autonomous Agent"
@@ -76,29 +91,44 @@ on:
       - completed
 
   # --------------------------------------------------------------------------
-  # Periodic fallback monitoring
+  # FALLBACK POLLING
   # --------------------------------------------------------------------------
-  # GitHub Actions scheduled workflows run at a minimum practical interval
-  # of 5 minutes.
+  #
+  # GitHub's shortest schedule interval is 5 minutes.
+  #
+  # This is NOT the primary realtime mechanism.
+  #
+  # It exists to recover from missed/delayed event delivery and continuously
+  # refresh the dashboard while the agent is running.
+  #
   # --------------------------------------------------------------------------
+
   schedule:
     - cron: "*/5 * * * *"
 
   # --------------------------------------------------------------------------
-  # Manual monitoring
+  # MANUAL MONITORING
   # --------------------------------------------------------------------------
+
   workflow_dispatch:
     inputs:
+
       lookback_runs:
-        description: "Number of recent workflow runs to inspect"
+        description: "Number of recent runs to inspect"
         required: false
-        default: "10"
+        default: "20"
         type: string
 
-      post_pr_comment:
-        description: "Post/update monitoring information on the associated PR"
+      include_steps:
+        description: "Inspect individual job steps"
         required: false
-        default: false
+        default: true
+        type: boolean
+
+      create_pr_status:
+        description: "Create/update PR monitoring status"
+        required: false
+        default: true
         type: boolean
 
 
@@ -106,11 +136,16 @@ on:
 # PERMISSIONS
 # ============================================================================
 #
-# READ permissions are used for monitoring.
+# Actions:
+#   Read-only monitoring.
 #
-# pull-requests: write is only required if PR status comments are enabled.
+# Contents:
+#   Read-only.
 #
-# The workflow never requests repository write access.
+# Pull requests:
+#   Write is required only for optional PR status reporting.
+#
+# No repository contents write permission is requested.
 # ============================================================================
 
 permissions:
@@ -123,10 +158,14 @@ permissions:
 # CONCURRENCY
 # ============================================================================
 #
-# Prevents several scheduled/event-driven monitoring runs from stacking up.
+# We DO NOT use cancel-in-progress here.
 #
-# cancel-in-progress is FALSE so the monitor itself is never aggressively
-# cancelled while producing a report.
+# Why?
+#
+# If multiple agent events arrive close together, the monitor must not cancel
+# an earlier monitoring snapshot.
+#
+# Each monitoring pass is therefore allowed to finish.
 # ============================================================================
 
 concurrency:
@@ -135,89 +174,92 @@ concurrency:
 
 
 # ============================================================================
-# GLOBAL ENVIRONMENT
+# GLOBAL CONFIGURATION
 # ============================================================================
 
 env:
 
-  # --------------------------------------------------------------------------
-  # Number of runs inspected during each monitoring pass.
-  # --------------------------------------------------------------------------
-  DEFAULT_LOOKBACK_RUNS: "10"
-
-  # --------------------------------------------------------------------------
-  # Validation workflow filename.
-  #
-  # Change this ONLY if your actual filename is different.
-  # --------------------------------------------------------------------------
-  VALIDATION_WORKFLOW_FILE: "ollama-pr-validation.yml"
-
-  # --------------------------------------------------------------------------
-  # Expected validation workflow name.
-  # --------------------------------------------------------------------------
-  VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
-
-  # --------------------------------------------------------------------------
-  # Autonomous agent workflow name.
-  #
-  # If your actual workflow name differs, change this value.
-  # --------------------------------------------------------------------------
   AGENT_WORKFLOW_NAME: "Ollama Autonomous Agent"
 
-  # --------------------------------------------------------------------------
-  # Monitoring comment marker.
-  # --------------------------------------------------------------------------
-  COMMENT_MARKER: "<!-- ollama-autonomous-agent-monitor -->"
+  VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
 
+  VALIDATION_WORKFLOW_FILE: "ollama-pr-validation.yml"
+
+  DEFAULT_LOOKBACK_RUNS: "20"
+
+  MONITOR_VERSION: "3.0"
+
+  MONITOR_COMMENT_MARKER: "<!-- ollama-autonomous-agent-monitor-v3 -->"
+
+
+# ============================================================================
+# MAIN MONITOR
+# ============================================================================
 
 jobs:
 
-  # ==========================================================================
-  # MAIN MONITORING ENGINE
-  # ==========================================================================
-
   monitor:
 
-    name: "🔎 Monitor Ollama Autonomous Agent"
+    name: "🔎 Continuous Ollama Agent Monitor"
 
     runs-on: ubuntu-latest
+
+    # ------------------------------------------------------------------------
+    # Hard safety boundary.
+    #
+    # Monitoring should never remain stuck indefinitely.
+    #
+    # If GitHub's API becomes slow or unavailable, this monitoring pass exits
+    # rather than consuming runner resources indefinitely.
+    # ------------------------------------------------------------------------
 
     timeout-minutes: 15
 
     steps:
 
-      # ----------------------------------------------------------------------
-      # Initialize
-      # ----------------------------------------------------------------------
+      # ======================================================================
+      # INITIALIZE
+      # ======================================================================
 
-      - name: Initialize monitoring
+      - name: Initialize monitoring engine
         run: |
+
           echo "============================================================"
-          echo " Ollama Autonomous Agent - Realtime Monitoring"
+          echo " OLLAMA AUTONOMOUS AGENT MONITOR"
           echo "============================================================"
           echo ""
+          echo "Monitor version: $MONITOR_VERSION"
           echo "Repository: $GITHUB_REPOSITORY"
           echo "Event: $GITHUB_EVENT_NAME"
-          echo "Run ID: $GITHUB_RUN_ID"
-          echo "Run URL: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo "Monitor Run ID: $GITHUB_RUN_ID"
           echo ""
-          echo "Monitoring mode: OBSERVATION ONLY"
-          echo "Agent modification: DISABLED"
-          echo "Workflow cancellation: DISABLED"
-          echo "Workflow reruns: DISABLED"
-          echo "Repository writes: DISABLED"
+          echo "Mode:"
+          echo "  Observation only: YES"
+          echo "  Agent modification: NO"
+          echo "  Agent cancellation: NO"
+          echo "  Agent rerun: NO"
+          echo "  Repository modification: NO"
           echo ""
+          echo "============================================================"
 
-      # ----------------------------------------------------------------------
-      # Main GitHub API monitoring engine
-      # ----------------------------------------------------------------------
+      # ======================================================================
+      # COLLECT COMPLETE STATE
+      # ======================================================================
 
-      - name: Collect complete Ollama monitoring state
-        id: monitor
+      - name: Collect complete agent state
+        id: collect
         uses: actions/github-script@v7
+
+        continue-on-error: true
+
         env:
+
           LOOKBACK_RUNS: ${{ github.event.inputs.lookback_runs || env.DEFAULT_LOOKBACK_RUNS }}
+
+          INCLUDE_STEPS: ${{ github.event.inputs.include_steps || 'true' }}
+
         with:
+
           github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
 
           script: |
@@ -231,76 +273,106 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            const agentWorkflowName =
-              process.env.AGENT_WORKFLOW_NAME ||
-              "Ollama Autonomous Agent";
+            const AGENT_NAME =
+              process.env.AGENT_WORKFLOW_NAME;
 
-            const validationWorkflowName =
-              process.env.VALIDATION_WORKFLOW_NAME ||
-              "Ollama PR Validation - 293+ Platform Features";
+            const VALIDATION_NAME =
+              process.env.VALIDATION_WORKFLOW_NAME;
 
-            const validationWorkflowFile =
-              process.env.VALIDATION_WORKFLOW_FILE ||
-              "ollama-pr-validation.yml";
+            const VALIDATION_FILE =
+              process.env.VALIDATION_WORKFLOW_FILE;
 
-            const lookback =
-              Number(process.env.LOOKBACK_RUNS || 10);
+            const LOOKBACK =
+              Math.max(
+                1,
+                Math.min(
+                  Number(process.env.LOOKBACK_RUNS || 20),
+                  100
+                )
+              );
+
+            const INCLUDE_STEPS =
+              String(process.env.INCLUDE_STEPS)
+                .toLowerCase() !== "false";
+
+            const generatedAt =
+              new Date().toISOString();
 
             // =================================================================
-            // HELPERS
+            // UTILITY FUNCTIONS
             // =================================================================
 
             function safe(value, fallback = "unknown") {
-              return value === undefined ||
-                     value === null ||
-                     value === ""
-                ? fallback
-                : value;
+
+              if (
+                value === undefined ||
+                value === null ||
+                value === ""
+              ) {
+                return fallback;
+              }
+
+              return value;
             }
 
-            function duration(start, end) {
+            function duration(start, end = null) {
+
               if (!start) {
                 return "unknown";
               }
 
-              const startTime = new Date(start).getTime();
+              const startMs =
+                new Date(start).getTime();
 
-              const endTime = end
-                ? new Date(end).getTime()
-                : Date.now();
+              const endMs =
+                end
+                  ? new Date(end).getTime()
+                  : Date.now();
 
-              const seconds = Math.max(
-                0,
-                Math.floor((endTime - startTime) / 1000)
-              );
+              let seconds =
+                Math.max(
+                  0,
+                  Math.floor(
+                    (endMs - startMs) / 1000
+                  )
+                );
 
-              const hours = Math.floor(seconds / 3600);
-              const minutes = Math.floor((seconds % 3600) / 60);
-              const secs = seconds % 60;
+              const hours =
+                Math.floor(seconds / 3600);
+
+              seconds %= 3600;
+
+              const minutes =
+                Math.floor(seconds / 60);
+
+              seconds %= 60;
 
               if (hours > 0) {
-                return `${hours}h ${minutes}m ${secs}s`;
+                return `${hours}h ${minutes}m ${seconds}s`;
               }
 
               if (minutes > 0) {
-                return `${minutes}m ${secs}s`;
+                return `${minutes}m ${seconds}s`;
               }
 
-              return `${secs}s`;
+              return `${seconds}s`;
             }
 
-            function statusIcon(status, conclusion) {
+            function icon(status, conclusion) {
 
-              if (status === "in_progress") {
-                return "🔄";
-              }
-
-              if (status === "queued") {
+              if (
+                status === "queued" ||
+                status === "requested"
+              ) {
                 return "⏳";
               }
 
-              if (status === "requested") {
-                return "🟡";
+              if (status === "waiting") {
+                return "⏸️";
+              }
+
+              if (status === "in_progress") {
+                return "🔄";
               }
 
               if (conclusion === "success") {
@@ -326,44 +398,54 @@ jobs:
               return "ℹ️";
             }
 
-            function percent(completed, total) {
+            function markdown(value) {
 
-              if (!total || total <= 0) {
+              return String(
+                safe(value)
+              )
+                .replace(/\|/g, "\\|")
+                .replace(/\r?\n/g, " ");
+
+            }
+
+            function progress(completed, total) {
+
+              if (!total) {
                 return 0;
               }
 
               return Math.min(
                 100,
-                Math.round((completed / total) * 100)
+                Math.round(
+                  (completed / total) * 100
+                )
               );
+
             }
 
-            function progressBar(value) {
+            function bar(value) {
 
-              const width = 20;
+              const size = 20;
 
-              const filled = Math.round(
-                (value / 100) * width
-              );
+              const filled =
+                Math.round(
+                  (value / 100) * size
+                );
 
               return (
                 "█".repeat(filled) +
-                "░".repeat(width - filled)
+                "░".repeat(size - filled)
               );
-            }
 
-            function markdownSafe(value) {
-
-              return String(value)
-                .replace(/\|/g, "\\|")
-                .replace(/\r?\n/g, " ");
             }
 
             // =================================================================
-            // FIND WORKFLOWS
+            // GET ALL WORKFLOWS
             // =================================================================
 
-            console.log("Loading repository workflows...");
+            console.log(
+              "Discovering repository workflows..."
+            );
 
             const workflowResponse =
               await github.rest.actions.listRepoWorkflows({
@@ -375,21 +457,16 @@ jobs:
             const workflows =
               workflowResponse.data.workflows;
 
-            console.log(
-              `Found ${workflows.length} workflows.`
-            );
-
             // =================================================================
-            // LOCATE AGENT WORKFLOW
+            // FIND TARGET WORKFLOWS
             // =================================================================
 
             let agentWorkflow =
               workflows.find(
                 workflow =>
-                  workflow.name === agentWorkflowName
+                  workflow.name === AGENT_NAME
               );
 
-            // Fallback matching if the exact name was changed.
             if (!agentWorkflow) {
 
               agentWorkflow =
@@ -405,16 +482,13 @@ jobs:
                       .toLowerCase()
                       .includes("agent")
                 );
-            }
 
-            // =================================================================
-            // LOCATE VALIDATION WORKFLOW
-            // =================================================================
+            }
 
             let validationWorkflow =
               workflows.find(
                 workflow =>
-                  workflow.name === validationWorkflowName
+                  workflow.name === VALIDATION_NAME
               );
 
             if (!validationWorkflow) {
@@ -423,29 +497,14 @@ jobs:
                 workflows.find(
                   workflow =>
                     workflow.path.endsWith(
-                      validationWorkflowFile
+                      VALIDATION_FILE
                     )
                 );
+
             }
 
-            console.log("");
-            console.log("Agent workflow:");
-            console.log(
-              agentWorkflow
-                ? `${agentWorkflow.name} (${agentWorkflow.id})`
-                : "NOT FOUND"
-            );
-
-            console.log("");
-            console.log("Validation workflow:");
-            console.log(
-              validationWorkflow
-                ? `${validationWorkflow.name} (${validationWorkflow.id})`
-                : "NOT FOUND"
-            );
-
             // =================================================================
-            // COLLECT WORKFLOW RUNS
+            // WORKFLOW RUN RETRIEVAL
             // =================================================================
 
             async function getRuns(workflow) {
@@ -459,12 +518,13 @@ jobs:
                   owner,
                   repo,
                   workflow_id: workflow.id,
-                  per_page: lookback,
+                  per_page: LOOKBACK,
                   sort: "created",
                   direction: "desc"
                 });
 
               return response.data.workflow_runs || [];
+
             }
 
             const agentRuns =
@@ -474,50 +534,102 @@ jobs:
               await getRuns(validationWorkflow);
 
             // =================================================================
-            // EVENT-SPECIFIC RUN
+            // EXACT EVENT RUN
             // =================================================================
 
-            let eventRun = null;
-
-            if (
-              context.eventName === "workflow_run" &&
-              context.payload.workflow_run
-            ) {
-
-              eventRun =
-                context.payload.workflow_run;
-
-            }
+            const eventRun =
+              context.eventName === "workflow_run"
+                ? context.payload.workflow_run || null
+                : null;
 
             // =================================================================
-            // ANALYZE A RUN
+            // RUN ANALYSIS
             // =================================================================
 
             async function analyzeRun(run) {
 
               const result = {
 
-                run,
+                workflow: safe(run.name),
+
+                run_id: run.id,
+
+                run_number: run.run_number,
+
+                status: safe(run.status),
+
+                conclusion:
+                  run.conclusion || null,
+
+                branch:
+                  run.head_branch || null,
+
+                sha:
+                  run.head_sha || null,
+
+                event:
+                  run.event || null,
+
+                actor:
+                  run.actor?.login || null,
+
+                created_at:
+                  run.created_at || null,
+
+                updated_at:
+                  run.updated_at || null,
+
+                started_at:
+                  run.run_started_at || null,
+
+                completed_at:
+                  run.updated_at || null,
+
+                duration:
+                  duration(
+                    run.run_started_at ||
+                    run.created_at,
+                    run.status === "completed"
+                      ? run.updated_at
+                      : null
+                  ),
+
+                url:
+                  run.html_url,
 
                 jobs: [],
 
-                counts: {
-                  total: 0,
-                  queued: 0,
-                  in_progress: 0,
-                  completed: 0,
-                  success: 0,
-                  failure: 0,
-                  cancelled: 0,
-                  skipped: 0,
-                  other: 0
+                statistics: {
+
+                  total_jobs: 0,
+
+                  queued_jobs: 0,
+
+                  waiting_jobs: 0,
+
+                  running_jobs: 0,
+
+                  completed_jobs: 0,
+
+                  successful_jobs: 0,
+
+                  failed_jobs: 0,
+
+                  cancelled_jobs: 0,
+
+                  skipped_jobs: 0
+
                 }
 
               };
 
+              // ---------------------------------------------------------------
+              // JOBS
+              // ---------------------------------------------------------------
+
               try {
 
-                const response =
+                const jobsResponse =
                   await github.rest.actions.listJobsForWorkflowRun({
                     owner,
                     repo,
@@ -525,135 +637,109 @@ jobs:
                     per_page: 100
                   });
 
-                result.jobs =
-                  response.data.jobs || [];
+                const jobs =
+                  jobsResponse.data.jobs || [];
 
-                for (const job of result.jobs) {
+                for (const job of jobs) {
 
-                  result.counts.total++;
+                  const jobRecord = {
+
+                    id: job.id,
+
+                    name: job.name,
+
+                    status:
+                      job.status,
+
+                    conclusion:
+                      job.conclusion,
+
+                    started_at:
+                      job.started_at,
+
+                    completed_at:
+                      job.completed_at,
+
+                    duration:
+                      duration(
+                        job.started_at,
+                        job.completed_at
+                      ),
+
+                    url:
+                      job.html_url,
+
+                    steps: []
+
+                  };
+
+                  result.statistics.total_jobs++;
 
                   if (job.status === "queued") {
-                    result.counts.queued++;
+                    result.statistics.queued_jobs++;
+                  }
+
+                  else if (
+                    job.status === "waiting"
+                  ) {
+                    result.statistics.waiting_jobs++;
                   }
 
                   else if (
                     job.status === "in_progress"
                   ) {
-                    result.counts.in_progress++;
+                    result.statistics.running_jobs++;
                   }
 
                   else if (
                     job.status === "completed"
                   ) {
 
-                    result.counts.completed++;
+                    result.statistics.completed_jobs++;
 
-                    if (job.conclusion === "success") {
-                      result.counts.success++;
+                    if (
+                      job.conclusion === "success"
+                    ) {
+                      result.statistics.successful_jobs++;
                     }
 
                     else if (
                       job.conclusion === "failure"
                     ) {
-                      result.counts.failure++;
+                      result.statistics.failed_jobs++;
                     }
 
                     else if (
                       job.conclusion === "cancelled"
                     ) {
-                      result.counts.cancelled++;
+                      result.statistics.cancelled_jobs++;
                     }
 
                     else if (
                       job.conclusion === "skipped"
                     ) {
-                      result.counts.skipped++;
-                    }
-
-                    else {
-                      result.counts.other++;
+                      result.statistics.skipped_jobs++;
                     }
 
                   }
 
-                  else {
-                    result.counts.other++;
-                  }
-                }
+                  // -------------------------------------------------------------
+                  // STEPS
+                  // -------------------------------------------------------------
 
-              } catch (error) {
+                  if (
+                    INCLUDE_STEPS &&
+                    Array.isArray(job.steps)
+                  ) {
 
-                console.log(
-                  `Unable to inspect jobs for run ${run.id}: ${error.message}`
-                );
+                    for (const step of job.steps) {
 
-              }
+                      jobRecord.steps.push({
 
-              return result;
-            }
+                        number:
+                          step.number,
 
-            // =================================================================
-            // ANALYZE ACTIVE RUNS
-            // =================================================================
+                        name:
+                          step.name,
 
-            const activeAgentRuns =
-              agentRuns.filter(
-                run =>
-                  run.status === "queued" ||
-                  run.status === "in_progress" ||
-                  run.status === "requested"
-              );
-
-            const activeValidationRuns =
-              validationRuns.filter(
-                run =>
-                  run.status === "queued" ||
-                  run.status === "in_progress" ||
-                  run.status === "requested"
-              );
-
-            const latestAgentRun =
-              agentRuns.length > 0
-                ? await analyzeRun(agentRuns[0])
-                : null;
-
-            const latestValidationRun =
-              validationRuns.length > 0
-                ? await analyzeRun(validationRuns[0])
-                : null;
-
-            const analyzedActiveAgentRuns = [];
-
-            for (const run of activeAgentRuns.slice(0, 5)) {
-              analyzedActiveAgentRuns.push(
-                await analyzeRun(run)
-              );
-            }
-
-            const analyzedActiveValidationRuns = [];
-
-            for (
-              const run of activeValidationRuns.slice(0, 5)
-            ) {
-
-              analyzedActiveValidationRuns.push(
-                await analyzeRun(run)
-              );
-
-            }
-
-            // =================================================================
-            // OVERALL STATE
-            // =================================================================
-
-            const agentActive =
-              activeAgentRuns.length > 0;
-
-            const validationActive =
-              activeValidationRuns.length > 0;
-
-            let overallState = "IDLE";
-            let overallIcon = "⚪";
-
-            if (agentActive) {
-              overallState =
+       
