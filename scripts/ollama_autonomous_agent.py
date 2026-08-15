@@ -505,7 +505,6 @@ class CommandResult:
     def success(self) -> bool:
         return self.returncode == 0
 
-
 class CommandRunner:
     def __init__(self, telemetry: Telemetry):
         self.telemetry = telemetry
@@ -901,6 +900,17 @@ class PlatformValidator:
 
     def validate(self, *args, **kwargs) -> bool:
         return True
+
+
+class FeatureTester:
+    """Tester class responsible for validating QMOI platform features."""
+    def __init__(self, config: Optional[Dict[str, Any]] = None) -> None:
+        self.config = config or {}
+
+    def run_tests(self) -> bool:
+        """Executes validation checks."""
+        agent = QmoiPhoneAgent()
+        return agent.validate_all() == 0
 
 
 class OllamaAutonomousAgent:
