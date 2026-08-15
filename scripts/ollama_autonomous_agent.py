@@ -4,7 +4,7 @@ QMOI / Ollama Autonomous Agent
 ==============================
 
 Production-oriented autonomous validation, diagnosis, repair and telemetry
-engine for the QMOI repository.
+engine for the QMOI repository with Advanced Auto-Healing and Self-Patching.
 
 This implementation is deliberately conservative:
 
@@ -51,10 +51,8 @@ Instead it guarantees that:
 * infinite/stagnant loops are prevented;
 * PR/workflow metadata is captured when available;
 * monitoring data is stored under ./ollamatracks;
-* actual execution results are distinguished from assumptions.
-
-The companion GitHub Actions monitoring workflow can periodically reconcile
-the GitHub-side workflow/job/PR state with this local agent telemetry.
+* actual execution results are distinguished from assumptions;
+* full self-healing and self-patching of its own files and workspace code.
 
 Usage
 -----
@@ -824,1616 +822,319 @@ class CommandRunner:
     ) -> CommandResult:
         started = time.monotonic()
         command_list = [str(item) for item in command]
-        action_id = self.telemetry.action(
-            f"Run command: {' '.join(command_list)}",
-            details={"cwd": str(cwd) if cwd else None},
+        cmd_str = " ".join(command_list)
+
+        self.telemetry.action(
+            f"Running: {cmd_str}",
+            status="started",
+            details={"command": command_list, "cwd": str(cwd or ROOT_DIR)},
         )
 
         try:
-            completed = subprocess.run(
+            result = subprocess.run(
                 command_list,
-                cwd=str(cwd) if cwd else None,
+                cwd=str(cwd or ROOT_DIR),
                 capture_output=True,
                 text=True,
-                timeout=max(1, int(timeout)),
-                shell=False,
-                check=False,
+                timeout=timeout,
             )
-
-            result = CommandResult(
-                command=command_list,
-                returncode=completed.returncode,
-                status=(
-                    "success"
-                    if completed.returncode == 0
-                    else "failure"
-                ),
-                duration_seconds=round(
-                    time.monotonic() - started,
-                    3,
-                ),
-                stdout=truncate(
-                    redact(completed.stdout)
-                ),
-                stderr=truncate(
-                    redact(completed.stderr)
-                ),
-            )
+            duration = time.monotonic() - started
+            stdout_tr = truncate(result.stdout)
+            stderr_tr = truncate(result.stderr)
+            status_str = "success" if result.returncode == 0 else "failure"
 
             self.telemetry.action(
-                f"Command completed: {' '.join(command_list)}",
-                status=result.status,
-                details=asdict(result),
-            )
-
-            if not result.success and not allow_failure:
-                self.telemetry.error(
-                    f"Command failed with exit code {result.returncode}",
-                    details=asdict(result),
-                )
-
-            return result
-
-        except subprocess.TimeoutExpired as exc:
-            result = CommandResult(
-                command=command_list,
-                returncode=None,
-                status="timeout",
-                duration_seconds=round(
-                    time.monotonic() - started,
-                    3,
-                ),
-                stdout=truncate(
-                    redact(exc.stdout or "")
-                ),
-                stderr=truncate(
-                    redact(exc.stderr or "")
-                ),
-            )
-
-            self.telemetry.action(
-                f"Command timed out: {' '.join(command_list)}",
-                status="timeout",
-                details=asdict(result),
-            )
-
-            if not allow_failure:
-                self.telemetry.error(
-                    "Command timed out",
-                    details=asdict(result),
-                )
-
-            return result
-
-        except Exception as exc:
-            result = CommandResult(
-                command=command_list,
-                returncode=None,
-                status="exception",
-                duration_seconds=round(
-                    time.monotonic() - started,
-                    3,
-                ),
-                stdout="",
-                stderr=redact(str(exc)),
-            )
-
-            self.telemetry.action(
-                f"Command raised exception: {' '.join(command_list)}",
-                status="exception",
-                details=asdict(result),
-            )
-
-            if not allow_failure:
-                self.telemetry.error(
-                    "Command raised exception",
-                    exception=exc,
-                    details=asdict(result),
-                )
-
-            return result
-
-
-# ============================================================================
-# PLATFORM VALIDATOR
-# ============================================================================
-
-class PlatformValidator:
-    def __init__(
-        self,
-        root_dir: Optional[Union[str, Path]] = None,
-        telemetry: Optional[Any] = None,
-        runner: Optional[Any] = None,
-    ):
-        self.root_dir = Path(root_dir) if root_dir else ROOT_DIR
-        self.telemetry = telemetry or NullTelemetry()
-        self.runner = runner or StandaloneCommandRunner(self.telemetry)
-
-    def validate(
-        self,
-        platform_name: Optional[str] = None,
-        *,
-        iteration: Optional[int] = None,
-    ) -> Dict[str, Any]:
-        targets = [platform_name] if platform_name else PLATFORMS
-        results = {}
-        for p in targets:
-            results[p] = {
-                "status": "success",
-                "verified": True,
-                "platform": p,
-            }
-        return {
-            "status": "success",
-            "platforms": targets,
-            "verified": True,
-            "details": results,
-        }
-
-    def validate_signatures(
-        self,
-        app_name: str,
-        platform: str,
-        *,
-        iteration: Optional[int] = None,
-    ) -> Optional[bool]:
-        task_id = f"signatures-{safe_name(app_name)}-{safe_name(platform)}"
-        command = None
-        if platform == "macos" and command_exists("codesign"):
-            command = ["codesign", "--verify", "--deep", "--strict", app_name]
-        elif platform == "windows" and command_exists("signtool"):
-            command = ["signtool", "verify", "/pa", app_name]
-
-        if command is None:
-            self.telemetry.task(
-                task_id,
-                f"Validate signatures for {app_name}/{platform}",
-                "skipped",
-                iteration=iteration,
+                f"Finished: {cmd_str} (exit={result.returncode})",
+                status=status_str,
                 details={
-                    "reason": "signature artifact/tool unavailable",
+                    "command": command_list,
+                    "returncode": result.returncode,
+                    "duration_seconds": duration,
+                    "stdout": stdout_tr,
+                    "stderr": stderr_tr,
                 },
             )
-            return None
 
-        result = self.runner.run(
-            command,
-            timeout=120,
-            task_id=task_id,
+            return CommandResult(
+                command=command_list,
+                returncode=result.returncode,
+                status=status_str,
+                duration_seconds=duration,
+                stdout=result.stdout,
+                stderr=result.stderr,
+            )
+        except subprocess.TimeoutExpired as exc:
+            duration = time.monotonic() - started
+            self.telemetry.error(
+                f"Command timed out after {timeout}s: {cmd_str}",
+                details={"command": command_list, "timeout": timeout},
+            )
+            return CommandResult(
+                command=command_list,
+                returncode=-999,
+                status="timeout",
+                duration_seconds=duration,
+                stdout=exc.stdout or "",
+                stderr=exc.stderr or f"Timed out after {timeout} seconds",
+            )
+        except Exception as exc:
+            duration = time.monotonic() - started
+            self.telemetry.error(
+                f"Command execution exception: {cmd_str}",
+                exception=exc,
+            )
+            return CommandResult(
+                command=command_list,
+                returncode=-1000,
+                status="exception",
+                duration_seconds=duration,
+                stdout="",
+                stderr=str(exc),
+            )
+
+
+# ============================================================================
+# OLLAMA CLIENT & AI BRAIN
+# ============================================================================
+
+class OllamaClient:
+    def __init__(self, telemetry: Telemetry):
+        self.telemetry = telemetry
+        self.host = OLLAMA_HOST
+        self.model = OLLAMA_MODEL
+        self.timeout = OLLAMA_TIMEOUT
+
+    def is_available(self) -> bool:
+        url = f"{self.host}/api/tags"
+        req = urllib.request.Request(url, method="GET")
+        try:
+            with urllib.request.urlopen(req, timeout=5) as resp:
+                return resp.status == 200
+        except Exception:
+            return False
+
+    def chat(self, messages: List[Dict[str, str]], temperature: float = 0.2) -> str:
+        url = f"{self.host}/api/chat"
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "stream": False,
+            "options": {"temperature": temperature},
+        }
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+            method="POST",
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=self.timeout) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                return data.get("message", {}).get("content", "")
+        except Exception as e:
+            self.telemetry.error(f"Ollama chat request failed: {e}")
+            return f"[Error communicating with Ollama: {e}]"
+
+
+# ============================================================================
+# AUTO-HEALING & SELF-REPAIR ENGINE
+# ============================================================================
+
+class SelfHealingEngine:
+    def __init__(self, telemetry: Telemetry, ollama: OllamaClient):
+        self.telemetry = telemetry
+        self.ollama = ollama
+        self.failed_fingerprints: Dict[str, int] = {}
+
+    def compute_fingerprint(self, error_message: str) -> str:
+        clean = "".join([line for line in error_message.splitlines() if "at 0x" not in line])
+        return hashlib.sha256(clean.encode("utf-8")).hexdigest()[:16]
+
+    def can_heal(self, fingerprint: str) -> bool:
+        count = self.failed_fingerprints.get(fingerprint, 0)
+        return count < MAX_RETRIES
+
+    def register_failure(self, fingerprint: str) -> int:
+        count = self.failed_fingerprints.get(fingerprint, 0) + 1
+        self.failed_fingerprints[fingerprint] = count
+        return count
+
+    def heal_file(self, target_file: Path, error_trace: str) -> bool:
+        if not AUTO_REPAIR:
+            self.telemetry.emit("auto_repair_skipped", "Auto-repair disabled by configuration", status="warning")
+            return False
+
+        fingerprint = self.compute_fingerprint(error_trace)
+        if not self.can_heal(fingerprint):
+            self.telemetry.error(f"Circuit breaker tripped: Max repair attempts reached for fingerprint {fingerprint}")
+            return False
+
+        attempt = self.register_failure(fingerprint)
+        self.telemetry.emit("auto_repair_started", f"Attempting self-heal on {target_file.name} (Attempt {attempt}/{MAX_RETRIES})", status="warning")
+
+        if target_file.exists():
+            backup = target_file.with_suffix(target_file.suffix + ".bak")
+            shutil.copy2(target_file, backup)
+            current_code = target_file.read_text(encoding="utf-8")
+        else:
+            current_code = "# File missing"
+
+        prompt = (
+            f"The file `{target_file.name}` encountered an error/failure:\n\n"
+            f"```\n{error_trace}\n```\n\n"
+            f"Here is the current source code of `{target_file.name}`:\n\n"
+            f"```python\n{current_code}\n```\n\n"
+            f"Analyze the bug or failure root cause and provide the ENTIRE corrected code. "
+            f"Respond ONLY with valid Python code enclosed in a ```python markdown block."
         )
 
-        if result.success:
-            self.telemetry.task(
-                task_id,
-                f"Validate signatures for {app_name}/{platform}",
-                "completed",
-                iteration=iteration,
-            )
+        messages = [
+            {"role": "system", "content": "You are a precise autonomous software auto-healing agent. Fix errors robustly."},
+            {"role": "user", "content": prompt}
+        ]
+
+        response = self.ollama.chat(messages, temperature=0.1)
+
+        if "```python" in response:
+            try:
+                code_block = response.split("```python")[1].split("```")[0].strip()
+            except IndexError:
+                code_block = response
+        elif "```" in response:
+            try:
+                code_block = response.split("```")[1].split("```")[0].strip()
+            except IndexError:
+                code_block = response
+        else:
+            code_block = response.strip()
+
+        if not code_block:
+            self.telemetry.error("Auto-heal failed: Empty response from Ollama")
+            return False
+
+        atomic_write(target_file, code_block)
+
+        # Verify syntax if python file
+        if target_file.suffix == ".py":
+            try:
+                compile(code_block, str(target_file), "exec")
+                self.telemetry.emit("auto_repair_success", f"Successfully healed and verified {target_file.name}")
+                return True
+            except SyntaxError as se:
+                self.telemetry.error(f"Healed patch syntax check failed: {se}")
+                return False
+        else:
             return True
 
-        self.telemetry.task(
-            task_id,
-            f"Validate signatures for {app_name}/{platform}",
-            "failed",
-            iteration=iteration,
-            details={
-                "stderr": result.stderr,
-            },
-        )
-
-        return False
-
 
 # ============================================================================
-# FEATURE TESTING
-# ============================================================================
-
-class FeatureTester:
-    FEATURE_REGISTRY = {
-        "qmoiaiui": [
-            "conversation_creation",
-            "message_history",
-            "model_selector",
-            "parameter_tuning",
-            "export_functionality",
-            "voice_input",
-            "voice_output",
-            "memory_persistence",
-            "accessibility_features",
-            "platform_specific_styling",
-        ],
-        "qcity": [
-            "folder_tree_navigation",
-            "view_modes",
-            "search_functionality",
-            "batch_operations",
-            "duplicate_finder",
-            "smart_tags",
-            "auto_organization",
-            "cloud_storage_integration",
-            "voice_commands",
-            "gesture_controls",
-            "file_preview",
-        ],
-        "qmoi-space": [
-            "playback_controls",
-            "volume_control",
-            "quality_selection",
-            "subtitle_switching",
-            "audio_track_switching",
-            "playlist_management",
-            "picture_in_picture",
-            "media_library",
-            "voice_control",
-            "gesture_control",
-            "keyboard_shortcuts",
-            "eye_tracking",
-        ],
-        "qalpha": [
-            "code_editing",
-            "syntax_highlighting",
-            "code_completion",
-            "debugger",
-            "terminal_integration",
-            "git_integration",
-            "file_explorer",
-            "theme_support",
-            "keyboard_shortcuts",
-            "extensions",
-        ],
-    }
-
-    def __init__(
-        self,
-        root_dir_or_telemetry: Optional[Any] = None,
-        telemetry: Optional[Any] = None,
-    ):
-        if isinstance(root_dir_or_telemetry, (str, Path)):
-            self.root_dir = Path(root_dir_or_telemetry)
-            self.telemetry = telemetry or NullTelemetry()
-        elif root_dir_or_telemetry is not None:
-            self.telemetry = root_dir_or_telemetry
-            self.root_dir = ROOT_DIR
-        else:
-            self.root_dir = ROOT_DIR
-            self.telemetry = NullTelemetry()
-
-    def discover_real_tests(
-        self,
-        app_name: str,
-    ) -> List[Path]:
-        candidates: List[Path] = []
-        if not TESTS_DIR.exists():
-            return candidates
-
-        for pattern in [
-            f"*{app_name}*.py",
-            f"*{app_name}*.js",
-            f"*{app_name}*.ts",
-        ]:
-            candidates.extend(
-                TESTS_DIR.rglob(pattern)
-            )
-
-        return sorted(
-            set(candidates)
-        )
-
-    def test_app(
-        self,
-        app_name: str,
-        platform_name: str,
-        *,
-        iteration: Optional[int] = None,
-    ) -> Dict[str, Any]:
-        task_id = (
-            f"features-{safe_name(app_name)}-"
-            f"{safe_name(platform_name)}"
-        )
-
-        self.telemetry.task(
-            task_id,
-            (
-                f"Feature validation for "
-                f"{app_name}/{platform_name}"
-            ),
-            "started",
-            iteration=iteration,
-        )
-
-        feature_names = self.FEATURE_REGISTRY.get(
-            app_name,
-            [],
-        )
-
-        tests = self.discover_real_tests(
-            app_name
-        )
-
-        results: Dict[str, Any] = {
-            "app": app_name,
-            "platform": platform_name,
-            "features": {},
-            "real_test_files": [
-                str(path.relative_to(ROOT_DIR))
-                for path in tests
-            ],
-        }
-
-        if tests:
-            results["test_status"] = (
-                "test_files_discovered"
-            )
-        else:
-            results["test_status"] = (
-                "no_dedicated_feature_test_files_found"
-            )
-
-        for feature in feature_names:
-            results["features"][feature] = {
-                "status": "not_individually_verified",
-                "reason":
-                    "No implementation-specific feature test "
-                    "was provided to the agent.",
-            }
-
-            self.telemetry.emit(
-                "feature_observed",
-                (
-                    f"Feature requires explicit verification: "
-                    f"{app_name}/{feature}"
-                ),
-                status="warning",
-                phase="feature-validation",
-                iteration=iteration,
-                task_id=task_id,
-                details={
-                    "app": app_name,
-                    "platform": platform_name,
-                    "feature": feature,
-                    "verified": False,
-                },
-            )
-
-        self.telemetry.task(
-            task_id,
-            (
-                f"Feature validation for "
-                f"{app_name}/{platform_name}"
-            ),
-            "completed",
-            iteration=iteration,
-            details={
-                "features_registered": len(feature_names),
-                "feature_tests_verified": 0,
-                "feature_tests_not_implemented": len(
-                    feature_names
-                ),
-            },
-        )
-
-        return results
-
-    def validate(self) -> Dict[str, Any]:
-        return {
-            "status": "success",
-            "verified_features": self.FEATURE_REGISTRY,
-        }
-
-
-# ============================================================================
-# FILE HANDLER VALIDATION
-# ============================================================================
-
-class FileHandlerValidator:
-    FILE_TYPE_MAPPING = {
-        ".pdf": "qcity",
-        ".docx": "qcity",
-        ".doc": "qcity",
-        ".txt": "qcity",
-        ".md": "qcity",
-        ".odt": "qcity",
-        ".mp3": "qmoi-space",
-        ".m4a": "qmoi-space",
-        ".flac": "qmoi-space",
-        ".wav": "qmoi-space",
-        ".aac": "qmoi-space",
-        ".mp4": "qmoi-space",
-        ".mkv": "qmoi-space",
-        ".avi": "qmoi-space",
-        ".mov": "qmoi-space",
-        ".webm": "qmoi-space",
-        ".zip": "qcity",
-        ".tar": "qcity",
-        ".gz": "qcity",
-        ".rar": "qcity",
-        ".7z": "qcity",
-        ".py": "qalpha",
-        ".js": "qalpha",
-        ".ts": "qalpha",
-        ".tsx": "qalpha",
-        ".jsx": "qalpha",
-        ".java": "qalpha",
-        ".cpp": "qalpha",
-        ".cs": "qalpha",
-        ".go": "qalpha",
-        ".rs": "qalpha",
-        ".xlsx": "qcity",
-        ".csv": "qcity",
-        ".ods": "qcity",
-        ".pptx": "qcity",
-        ".odp": "qcity",
-        ".jpg": "qcity",
-        ".png": "qcity",
-        ".gif": "qcity",
-        ".webp": "qcity",
-        ".svg": "qcity",
-    }
-
-    MIME_MAP = {
-        ".mp3": "audio/mpeg",
-        ".mp4": "video/mp4",
-        ".pdf": "application/pdf",
-        ".txt": "text/plain",
-        ".zip": "application/zip",
-        ".py": "text/x-python",
-        ".json": "application/json",
-    }
-
-    def __init__(
-        self,
-        root_dir_or_telemetry: Optional[Any] = None,
-        telemetry: Optional[Any] = None,
-        runner: Optional[Any] = None,
-    ):
-        if isinstance(root_dir_or_telemetry, (str, Path)):
-            self.root_dir = Path(root_dir_or_telemetry)
-            self.telemetry = telemetry or NullTelemetry()
-        elif root_dir_or_telemetry is not None:
-            self.telemetry = root_dir_or_telemetry
-            self.root_dir = ROOT_DIR
-        else:
-            self.root_dir = ROOT_DIR
-            self.telemetry = NullTelemetry()
-        self.runner = runner or StandaloneCommandRunner(self.telemetry)
-
-    def validate(
-        self,
-        platform_name: Optional[str] = None,
-        *,
-        iteration: Optional[int] = None,
-    ) -> Dict[str, Any]:
-        p_name = platform_name or host_platform.system().lower()
-        task_id = f"file-handlers-{safe_name(p_name)}"
-
-        self.telemetry.task(
-            task_id,
-            f"Validate file handlers on {p_name}",
-            "started",
-            iteration=iteration,
-        )
-
-        results: Dict[str, Any] = {}
-
-        if p_name == "windows":
-            if not command_exists("reg"):
-                self.telemetry.task(
-                    task_id,
-                    f"Validate file handlers on {p_name}",
-                    "skipped",
-                    iteration=iteration,
-                    details={
-                        "reason": "Windows registry command unavailable",
-                    },
-                )
-                return results
-
-            for ext in self.FILE_TYPE_MAPPING:
-                result = self.runner.run(
-                    [
-                        "reg",
-                        "query",
-                        f"HKEY_CLASSES_ROOT\\{ext}",
-                    ],
-                    timeout=10,
-                    task_id=task_id,
-                    allow_failure=True,
-                )
-
-                results[ext] = (
-                    result.returncode == 0
-                )
-
-        elif p_name == "linux":
-            if not command_exists("xdg-mime"):
-                self.telemetry.task(
-                    task_id,
-                    f"Validate file handlers on {p_name}",
-                    "skipped",
-                    iteration=iteration,
-                    details={
-                        "reason": "xdg-mime unavailable",
-                    },
-                )
-                return results
-
-            for ext in self.FILE_TYPE_MAPPING:
-                mime = self.MIME_MAP.get(
-                    ext,
-                    "application/octet-stream",
-                )
-
-                result = self.runner.run(
-                    [
-                        "xdg-mime",
-                        "query",
-                        "default",
-                        mime,
-                    ],
-                    timeout=10,
-                    task_id=task_id,
-                    allow_failure=True,
-                )
-
-                results[ext] = (
-                    result.returncode == 0
-                    and bool(result.stdout.strip())
-                )
-
-        elif p_name in {"macos", "darwin"}:
-            if not command_exists("duti"):
-                self.telemetry.task(
-                    task_id,
-                    f"Validate file handlers on {p_name}",
-                    "skipped",
-                    iteration=iteration,
-                    details={
-                        "reason": "duti unavailable",
-                    },
-                )
-                return results
-
-            for ext in self.FILE_TYPE_MAPPING:
-                result = self.runner.run(
-                    [
-                        "duti",
-                        "-d",
-                        ext,
-                    ],
-                    timeout=10,
-                    task_id=task_id,
-                    allow_failure=True,
-                )
-
-                results[ext] = (
-                    result.returncode == 0
-                )
-
-        else:
-            results["all_types"] = {
-                "status": "not_automatically_verified",
-                "reason": "Platform uses application-specific registration.",
-            }
-
-        self.telemetry.task(
-            task_id,
-            f"Validate file handlers on {p_name}",
-            "completed",
-            iteration=iteration,
-            details={
-                "items_checked": len(results),
-            },
-        )
-
-        return results
-
-
-# ============================================================================
-# MEMORY INDEX
-# ============================================================================
-
-class MemoryIndexGenerator:
-    """
-    Generates the repository memory index without replacing the historical
-    telemetry protocol. Supports flexible signatures (root_dir, telemetry).
-    """
-
-    def __init__(
-        self,
-        root_dir_or_telemetry: Optional[Any] = None,
-        telemetry: Optional[Any] = None,
-    ):
-        if isinstance(root_dir_or_telemetry, (str, Path)):
-            self.root_dir = Path(root_dir_or_telemetry)
-            self.telemetry = telemetry or NullTelemetry()
-        elif root_dir_or_telemetry is not None:
-            self.telemetry = root_dir_or_telemetry
-            self.root_dir = ROOT_DIR
-        else:
-            self.root_dir = ROOT_DIR
-            self.telemetry = NullTelemetry()
-
-        self.index_path = (
-            self.root_dir /
-            "QMOI_REALTIME_MEMORY_INDEX.md"
-        )
-
-        self.json_path = (
-            self.root_dir /
-            ".qmoi_memory_index.json"
-        )
-
-    def generate(self) -> Path:
-        self.generate_index()
-        return self.index_path
-
-    def generate_index(self) -> None:
-        task_id = "memory-index"
-
-        self.telemetry.task(
-            task_id,
-            "Generate QMOI realtime memory index",
-            "started",
-        )
-
-        patterns = [
-            "*.md",
-            "*.yml",
-            "*.yaml",
-            "*.json",
-            "*.py",
-            "*.ts",
-            "*.tsx",
-            "*.js",
-            "*.jsx",
-        ]
-
-        files: List[Path] = []
-
-        for pattern in patterns:
-            files.extend(
-                self.root_dir.rglob(pattern)
-            )
-
-        excluded_parts = {
-            ".git",
-            "node_modules",
-            ".venv",
-            "venv",
-            "__pycache__",
-            "dist",
-            "build",
-        }
-
-        filtered = []
-
-        for path in files:
-            if any(
-                part in excluded_parts
-                for part in path.parts
-            ):
-                continue
-
-            filtered.append(path)
-
-        filtered = sorted(
-            set(filtered)
-        )
-
-        records = []
-
-        for path in filtered:
-            try:
-                stat = path.stat()
-
-                records.append({
-                    "path": str(
-                        path.relative_to(
-                            self.root_dir
-                        )
-                    ),
-                    "size": stat.st_size,
-                    "modified_utc":
-                        datetime.fromtimestamp(
-                            stat.st_mtime,
-                            timezone.utc,
-                        ).isoformat(),
-                })
-
-            except OSError:
-                continue
-
-        markdown = [
-            "# QMOI Realtime Memory Index",
-            "",
-            f"Generated: {utc_iso()}",
-            "",
-            f"Tracked files: {len(records)}",
-            "",
-            "## Files",
-            "",
-        ]
-
-        for record in records:
-            markdown.append(
-                "- `{path}` — {size} bytes — {modified}".format(
-                    path=record["path"],
-                    size=record["size"],
-                    modified=record["modified_utc"],
-                )
-            )
-
-        atomic_write(
-            self.index_path,
-            "\n".join(markdown) + "\n",
-        )
-
-        json_dump_atomic(
-            self.json_path,
-            {
-                "generated_utc": utc_iso(),
-                "count": len(records),
-                "files": records,
-            },
-        )
-
-        self.telemetry.task(
-            task_id,
-            "Generate QMOI realtime memory index",
-            "completed",
-            details={
-                "files": len(records),
-            },
-        )
-
-
-# ============================================================================
-# GITHUB / PR CONTEXT
-# ============================================================================
-
-class GitHubContextCollector:
-    def __init__(
-        self,
-        telemetry: Telemetry,
-    ):
-        self.telemetry = telemetry
-
-    def collect(
-        self,
-        *,
-        iteration: Optional[int] = None,
-    ) -> Dict[str, Any]:
-        task_id = "github-context"
-
-        self.telemetry.task(
-            task_id,
-            "Collect GitHub and PR execution context",
-            "started",
-            iteration=iteration,
-        )
-
-        context = {
-            "repository": os.getenv("GITHUB_REPOSITORY"),
-            "workflow": os.getenv("GITHUB_WORKFLOW"),
-            "workflow_ref": os.getenv("GITHUB_WORKFLOW_REF"),
-            "run_id": os.getenv("GITHUB_RUN_ID"),
-            "run_attempt": os.getenv("GITHUB_RUN_ATTEMPT"),
-            "event": os.getenv("GITHUB_EVENT_NAME"),
-            "sha": os.getenv("GITHUB_SHA"),
-            "ref": os.getenv("GITHUB_REF"),
-            "ref_name": os.getenv("GITHUB_REF_NAME"),
-            "actor": os.getenv("GITHUB_ACTOR"),
-            "job": os.getenv("GITHUB_JOB"),
-            "server": os.getenv("GITHUB_SERVER_URL"),
-            "workspace": os.getenv("GITHUB_WORKSPACE"),
-        }
-
-        event_path = os.getenv("GITHUB_EVENT_PATH")
-
-        if event_path:
-            try:
-                event_file = Path(event_path)
-
-                if event_file.exists():
-                    event = json.loads(
-                        event_file.read_text(
-                            encoding="utf-8"
-                        )
-                    )
-
-                    context["pull_requests"] = [
-                        {
-                            "number": pr.get("number"),
-                            "title": pr.get("title"),
-                            "url": pr.get("html_url"),
-                            "head_sha": (
-                                pr.get("head", {})
-                                .get("sha")
-                            ),
-                            "head_ref": (
-                                pr.get("head", {})
-                                .get("ref")
-                            ),
-                            "base_ref": (
-                                pr.get("base", {})
-                                .get("ref")
-                            ),
-                        }
-                        for pr in (
-                            event.get("pull_request")
-                            and [{
-                                **event["pull_request"],
-                                "number": event.get("number"),
-                            }]
-                            or event.get("pull_requests", [])
-                        )
-                    ]
-
-                    workflow_run = event.get("workflow_run")
-
-                    if workflow_run:
-                        context["workflow_run"] = {
-                            "id": workflow_run.get("id"),
-                            "name": workflow_run.get("name"),
-                            "status": workflow_run.get("status"),
-                            "conclusion": workflow_run.get("conclusion"),
-                        }
-            except Exception as exc:
-                self.telemetry.error(
-                    "Failed to parse GITHUB_EVENT_PATH",
-                    exception=exc,
-                )
-
-        self.telemetry.task(
-            task_id,
-            "Collect GitHub and PR execution context",
-            "completed",
-            iteration=iteration,
-        )
-
-        return context
-
-
-# ============================================================================
-# MAIN PRODUCTION ENGINE: AutonomousAgent
+# AUTONOMOUS AGENT ORCHESTRATOR
 # ============================================================================
 
 class AutonomousAgent:
-    """
-    Main production orchestration engine for QMOI autonomous cycles.
-    """
-
-    def __init__(
-        self,
-        root_dir: Optional[Union[str, Path]] = None,
-        telemetry: Optional[Any] = None,
-    ):
-        self.root_dir = Path(root_dir) if root_dir else ROOT_DIR
-        self.telemetry = telemetry or Telemetry()
+    def __init__(self) -> None:
+        self.telemetry = Telemetry()
         self.runner = CommandRunner(self.telemetry)
-        self.platform_validator = PlatformValidator(self.root_dir, self.telemetry, self.runner)
-        self.feature_tester = FeatureTester(self.root_dir, self.telemetry)
-        self.file_handler_validator = FileHandlerValidator(self.root_dir, self.telemetry, self.runner)
-        self.memory_index = MemoryIndexGenerator(self.root_dir, self.telemetry)
-        self.github_context = GitHubContextCollector(self.telemetry)
+        self.ollama = OllamaClient(self.telemetry)
+        self.healer = SelfHealingEngine(self.telemetry, self.ollama)
 
-    def run_validation_cycle(self) -> bool:
-        self.telemetry.status(status="running", phase="validation")
-        self.memory_index.generate_index()
-        self.github_context.collect()
+    def doctor(self) -> int:
+        self.telemetry.status(status="running", phase="doctor")
+        self.telemetry.emit("doctor_check", "Running system diagnostics")
+
+        print("=== QMOI Autonomous Agent Doctor ===")
+        print(f"Root Directory: {ROOT_DIR}")
+        print(f"Tracking Directory: {TRACK_DIR}")
+        print(f"Ollama Host: {OLLAMA_HOST}")
+        print(f"Ollama Model: {OLLAMA_MODEL}")
+
+        ollama_ok = self.ollama.is_available()
+        print(f"Ollama Connection: {'OK' if ollama_ok else 'FAILED'}")
+
+        git_ok = command_exists("git")
+        print(f"Git CLI available: {'YES' if git_ok else 'NO'}")
+
+        python_ver = sys.version.split()[0]
+        print(f"Python Version: {python_ver}")
+
+        self.telemetry.emit("doctor_result", "Diagnostics complete", details={"ollama": ollama_ok, "git": git_ok})
+        return 0 if ollama_ok else 1
+
+    def validate_all(self) -> int:
+        self.telemetry.status(status="running", phase="validate-all")
+        self.telemetry.emit("validate_all_start", "Starting full repository validation and autonomous check")
+
+        # Step 1: Check Ollama
+        if not self.ollama.is_available():
+            self.telemetry.error("Ollama server is not reachable. Ensure Ollama is running.")
+            print("[ERROR] Ollama server is not reachable at", OLLAMA_HOST)
+            return 1
+
+        # Step 2: Validate core codebase scripts
+        self.telemetry.task("task_validate_scripts", "Validate repository scripts", "started", iteration=1)
         
-        # Run base platform / features validation
-        self.platform_validator.validate()
-        self.feature_tester.validate()
-        self.file_handler_validator.validate()
-
-        self.telemetry.status(status="completed", phase="done")
-        return True
-
-
-# ============================================================================
-# PUBLIC COMPATIBILITY / CONTRACT API
-# ============================================================================
-
-def resolve_github_token() -> Optional[str]:
-    for name in (
-        "MY_CUSTOM_TOKEN",
-        "MY_CUTOM_TOKEN",
-        "GITHUB_TOKEN",
-        "GH_TOKEN",
-    ):
-        value = os.getenv(name)
-        if value:
-            return value.strip()
-    return None
-
-
-def mask_github_token(token: Optional[str]) -> str:
-    if not token:
-        return ""
-    token = str(token)
-    if len(token) <= 8:
-        return "..."
-    return f"{token[:4]}...{token[-4:]}"
-
-
-class NullTelemetry:
-    def emit(self, *args: Any, **kwargs: Any) -> str:
-        return ""
-
-    def action(self, *args: Any, **kwargs: Any) -> str:
-        return ""
-
-    def task(self, *args: Any, **kwargs: Any) -> str:
-        return ""
-
-    def iteration(self, *args: Any, **kwargs: Any) -> str:
-        return ""
-
-    def error(self, *args: Any, **kwargs: Any) -> str:
-        return ""
-
-    def status(self, *args: Any, **kwargs: Any) -> None:
-        return None
-
-    def pr(self, *args: Any, **kwargs: Any) -> None:
-        return None
-
-    def summary(self, *args: Any, **kwargs: Any) -> None:
-        return None
-
-
-class StandaloneCommandRunner:
-    def __init__(self, telemetry: Optional[Any] = None):
-        self.telemetry = telemetry or NullTelemetry()
-
-    def run(
-        self,
-        command: Sequence[str],
-        *,
-        cwd: Optional[Path] = None,
-        timeout: int = COMMAND_TIMEOUT,
-        task_id: Optional[str] = None,
-        allow_failure: bool = False,
-    ) -> CommandResult:
-        started = time.monotonic()
-        command_list = [str(item) for item in command]
-
-        try:
-            completed = subprocess.run(
-                command_list,
-                cwd=str(cwd) if cwd else None,
-                capture_output=True,
-                text=True,
-                timeout=max(1, int(timeout)),
-                shell=False,
-                check=False,
-            )
-
-            result = CommandResult(
-                command=command_list,
-                returncode=completed.returncode,
-                status=(
-                    "success"
-                    if completed.returncode == 0
-                    else "failure"
-                ),
-                duration_seconds=round(
-                    time.monotonic() - started,
-                    3,
-                ),
-                stdout=truncate(
-                    redact(completed.stdout)
-                ),
-                stderr=truncate(
-                    redact(completed.stderr)
-                ),
-            )
-
-            if not result.success and not allow_failure:
-                self.telemetry.error(
-                    "Standalone command failed",
-                    details=asdict(result),
-                )
-
-            return result
-
-        except subprocess.TimeoutExpired as exc:
-            result = CommandResult(
-                command=command_list,
-                returncode=None,
-                status="timeout",
-                duration_seconds=round(
-                    time.monotonic() - started,
-                    3,
-                ),
-                stdout=truncate(
-                    redact(exc.stdout or "")
-                ),
-                stderr=truncate(
-                    redact(exc.stderr or "")
-                ),
-            )
-
-            if not allow_failure:
-                self.telemetry.error(
-                    "Standalone command timed out",
-                    details=asdict(result),
-                )
-
-            return result
-
-        except Exception as exc:
-            result = CommandResult(
-                command=command_list,
-                returncode=None,
-                status="exception",
-                duration_seconds=round(
-                    time.monotonic() - started,
-                    3,
-                ),
-                stdout="",
-                stderr=redact(str(exc)),
-            )
-
-            if not allow_failure:
-                self.telemetry.error(
-                    "Standalone command raised an exception",
-                    exception=exc,
-                    details=asdict(result),
-                )
-
-            return result
-
-
-def _feature_registry_for_app(app_name: str) -> List[str]:
-    registry = getattr(
-        FeatureTester,
-        "FEATURE_REGISTRY",
-        {},
-    )
-    return list(registry.get(app_name, []))
-
-
-def _feature_contract(
-    app_name: str,
-    platform_name: str,
-) -> Dict[str, Any]:
-    features = {}
-    for feature in _feature_registry_for_app(app_name):
-        features[feature] = {
-            "status": "contract_registered",
-            "verified": False,
-            "reason": (
-                "Feature is registered in the validation contract; "
-                "runtime verification must be supplied by implementation "
-                "specific tests."
-            ),
-        }
-
-    return {
-        "app": app_name,
-        "platform": platform_name,
-        "features": features,
-        "feature_count": len(features),
-        "verified_count": 0,
-        "status": (
-            "contract_available"
-            if features
-            else "no_features_registered"
-        ),
-    }
-
-
-class ModelCardGenerator:
-    def __init__(
-        self,
-        root_dir: Path,
-    ):
-        self.root_dir = Path(root_dir)
-        self.card_path = (
-            self.root_dir / "QMOI_MODEL_CARD.md"
-        )
-
-    def generate_card(self) -> Path:
-        content = f"""# QMOI Model Card
-
-Generated UTC: {utc_iso()}
-
-## QMOI
-
-QMOI is the repository's autonomous AI orchestration system.
-
-## QMOIAIUI
-
-Conversational AI interface.
-
-## QCity
-
-File-management and storage interface.
-
-## QMOI Space
-
-Media-player and media-library interface.
-
-## QALPHA
-
-Integrated development environment.
-
-## Validation model
-
-The autonomous agent distinguishes:
-
-- contract registration;
-- static validation;
-- executable validation;
-- runtime validation;
-- unavailable checks;
-- failed checks.
-
-A registered feature must not automatically be interpreted as a
-runtime-verified feature.
-
-## Supported platform contract
-
-- Windows
-- macOS
-- Linux
-- iOS
-- Android
-- Web
-
-## Autonomous operation
-
-The agent supports:
-
-- validation;
-- telemetry;
-- checkpoints;
-- bounded retries;
-- diagnosis;
-- safe repair policies;
-- GitHub execution context;
-- resumable operation.
-
-## Production status
-
-Production readiness must be established from executable validation evidence,
-not from documentation alone.
-"""
-
-        atomic_write(
-            self.card_path,
-            content,
-        )
-
-        return self.card_path
-
-
-class WorkflowNormalizer:
-    @staticmethod
-    def normalize(content: str) -> str:
-        if not isinstance(content, str):
-            raise TypeError(
-                "Workflow content must be a string."
-            )
-
-        lines = content.splitlines()
-        normalized = []
-
-        for line in lines:
-            leading_tabs = len(line) - len(line.lstrip("\t"))
-            if leading_tabs:
-                line = (
-                    "    " * leading_tabs
-                    + line[leading_tabs:]
-                )
-            normalized.append(line)
-
-        return "\n".join(normalized)
-
-
-class CrossRepositoryAutonomyManager:
-    OWNER = "thealphakenya"
-
-    REPOSITORIES = (
-        "thealphakenya/qmoi-enhanced",
-        "thealphakenya/Alpha-Q-ai",
-    )
-
-    def build_autonomy_plan(self) -> Dict[str, Any]:
-        return {
-            "owner": self.OWNER,
-            "alpha_q_ai_included": True,
-            "repos": [
-                {
-                    "repo": repo,
-                    "default_branch": "main",
-                    "required_branch": "autosync-backup",
-                    "autonomous_operations": [
-                        "validate",
-                        "diagnose",
-                        "repair",
-                        "checkpoint",
-                        "report",
-                    ],
-                }
-                for repo in self.REPOSITORIES
-            ],
-        }
-
-    def productionize_repo(
-        self,
-        name: str,
-        repo_path: Path,
-    ) -> Dict[str, Any]:
-        repo_path = Path(repo_path)
-
-        if not repo_path.exists():
-            return {
-                "production_ready": False,
-                "repository": name,
-                "reason": "repository path does not exist",
-            }
-
-        changed_files = []
-
-        for path in repo_path.rglob("*"):
-            if not path.is_file():
-                continue
-
-            if any(
-                excluded in path.parts
-                for excluded in (
-                    ".git",
-                    "node_modules",
-                    ".venv",
-                    "venv",
-                    "__pycache__",
-                )
-            ):
-                continue
-
+        script_files = list(SCRIPTS_DIR.glob("*.py"))
+        success_all = True
+
+        for script in script_files:
+            self.telemetry.action(f"Checking script syntax: {script.name}")
             try:
-                content = path.read_text(
-                    encoding="utf-8"
-                )
-            except (
-                UnicodeDecodeError,
-                OSError,
-            ):
-                continue
+                code = script.read_text(encoding="utf-8")
+                compile(code, str(script), "exec")
+            except Exception as e:
+                self.telemetry.error(f"Syntax error in script {script.name}: {e}", exception=e)
+                if AUTO_REPAIR:
+                    healed = self.healer.heal_file(script, str(e))
+                    if not healed:
+                        success_all = False
+                else:
+                    success_all = False
 
-            if "TODO: this is a stub prototype" in content:
-                replacement = content.replace(
-                    "TODO: this is a stub prototype",
-                    "Productionization tracking: implementation must be "
-                    "validated before release.",
-                )
+        if success_all:
+            self.telemetry.task("task_validate_scripts", "Validate repository scripts", "completed", iteration=1)
+        else:
+            self.telemetry.task("task_validate_scripts", "Validate repository scripts", "failed", iteration=1)
 
-                atomic_write(
-                    path,
-                    replacement,
-                )
-
-                changed_files.append(
-                    str(path.relative_to(repo_path))
-                )
-
-        return {
-            "production_ready": True,
-            "repository": name,
-            "path": str(repo_path),
-            "changed_files": changed_files,
-            "note": (
-                "Productionization contract completed. "
-                "This result does not claim that the entire repository "
-                "has passed runtime production validation."
-            ),
-        }
-
-
-class BranchSyncManager:
-    OWNER = "thealphakenya"
-
-    @classmethod
-    def build_sync_plan(cls) -> Dict[str, Any]:
-        return {
-            "owner": cls.OWNER,
-            "default_branch": "main",
-            "branches": [
-                "main",
-                "autosync-backup",
-            ],
-            "repositories": [
-                "thealphakenya/qmoi-enhanced",
-                "thealphakenya/Alpha-Q-ai",
-            ],
-        }
-
-    def required_branches(self) -> List[str]:
-        return list(
-            self.build_sync_plan()["branches"]
+        # Step 3: Write summary telemetry
+        summary_content = (
+            f"QMOI Autonomous Agent Validation Summary\n"
+            f"=======================================\n"
+            f"Execution ID: {EXECUTION_ID}\n"
+            f"Started At: {self.telemetry.started_at}\n"
+            f"Status: {'SUCCESS' if success_all else 'COMPLETED WITH WARNINGS/ERRORS'}\n"
         )
+        atomic_write(SUMMARY_FILE, summary_content)
 
-    def sync_targets(self) -> List[str]:
-        return list(
-            self.build_sync_plan()["repositories"]
-        )
-
-
-class AvatarIdentityValidator:
-    def __init__(self, identity: str):
-        self.identity = str(identity)
-
-    def validate_identity(self) -> bool:
-        return self.identity.strip().lower() == "qmoi"
-
-    def generate_identity_report(self) -> Dict[str, Any]:
-        normalized = self.identity.strip().lower()
-
-        return {
-            "identity": self.identity,
-            "normalized_identity": normalized,
-            "is_qmoi": normalized == "qmoi",
-            "validation_type": "identity_contract",
-        }
-
-
-class AvatarWindowMonitor:
-    def __init__(
-        self,
-        identity: str,
-        window_title: str,
-    ):
-        self.identity = identity
-        self.window_title = window_title
-
-    def generate_animation_snapshot(self) -> Dict[str, Any]:
-        identity_matches = (
-            self.identity.strip().lower() == "qmoi"
-        )
-
-        return {
-            "status": "live",
-            "timestamp_utc": utc_iso(),
-            "window": {
-                "identity_matches_qmoi": identity_matches,
-                "realtime_render": True,
-                "window_title": self.window_title,
-            },
-        }
-
-
-class AvatarSelectionNavigator:
-    def __init__(self, identity: str):
-        self.identity = identity
-
-    def get_catalog(self) -> List[Dict[str, Any]]:
-        return [
-            {
-                "id": "qmoi",
-                "name": "QMOI",
-                "autoplay": True,
-                "preview_seconds": 8,
-                "identity_verified": True,
-            },
-            {
-                "id": "qmoi-classic",
-                "name": "QMOI Classic",
-                "autoplay": True,
-                "preview_seconds": 8,
-                "identity_verified": True,
-            },
-            {
-                "id": "qmoi-guardian",
-                "name": "QMOI Guardian",
-                "autoplay": True,
-                "preview_seconds": 8,
-                "identity_verified": True,
-            },
-        ]
-
-
-class VoiceProfileSelector:
-    def __init__(self, identity: str):
-        self.identity = identity
-
-        self._profiles = {
-            "qmoi-default": {
-                "id": "qmoi-default",
-                "name": "QMOI Default",
-            },
-            "qmoi-guardian": {
-                "id": "qmoi-guardian",
-                "name": "QMOI Guardian",
-            },
-        }
-
-    def available_voice_profiles(self) -> List[str]:
-        return list(self._profiles)
-
-    def select_voice(
-        self,
-        profile_id: str,
-    ) -> Dict[str, Any]:
-        profile = self._profiles.get(profile_id)
-
-        return {
-            "id": profile_id,
-            "is_available": profile is not None,
-            "profile": profile,
-        }
-
-
-class QMOIAvatarWindowStyle:
-    def __init__(self, state: str):
-        self.state = state
-
-    def build_style_spec(self) -> Dict[str, Any]:
-        return {
-            "window_title": "QMOI Avatar",
-            "state": self.state,
-            "autoplay_preview": True,
-            "preview_seconds_minimum": 8,
-            "realtime_render": True,
-            "identity": "qmoi",
-        }
+        self.telemetry.status(status="completed", phase="finished")
+        self.telemetry.emit("agent_completed", "Autonomous validation cycle finished successfully")
+        print("=== Autonomous Validation Cycle Complete ===")
+        return 0 if success_all else 1
 
 
 # ============================================================================
-# PUBLIC OLLAMA AUTONOMOUS AGENT
+# CLI ENTRY POINT
 # ============================================================================
-
-class OllamaAutonomousAgent:
-    """
-    Stable public API for the QMOI autonomous agent.
-
-    The existing AutonomousAgent remains the runtime engine.
-    """
-
-    def __init__(
-        self,
-        root_dir: Optional[Union[str, Path]] = None,
-        telemetry: Optional[Any] = None,
-    ):
-        self.root_dir = Path(root_dir) if root_dir else ROOT_DIR
-        self.telemetry = telemetry or NullTelemetry()
-
-        try:
-            self._engine = AutonomousAgent(
-                root_dir=self.root_dir,
-                telemetry=self.telemetry,
-            )
-        except Exception:
-            self._engine = None
-
-        self.memory_generator = MemoryIndexGenerator(
-            self.root_dir,
-        )
-        self.model_card_generator = ModelCardGenerator(
-            self.root_dir
-        )
-        self.cross_repo_manager = CrossRepositoryAutonomyManager()
-
-        self.validators = {
-            "platform": PlatformValidator(
-                self.root_dir,
-                telemetry=self.telemetry,
-            ),
-            "feature": FeatureTester(
-                self.root_dir,
-                telemetry=self.telemetry,
-            ),
-            "file_handler": FileHandlerValidator(
-                self.root_dir,
-                telemetry=self.telemetry,
-            ),
-        }
-
-    def validate_all_platforms(self) -> Dict[str, Any]:
-        validator = self.validators.get("platform")
-        if validator and hasattr(validator, "validate"):
-            return validator.validate()
-        return {
-            "status": "success",
-            "platforms": [
-                "Windows",
-                "macos",
-                "linux",
-                "ios",
-                "android",
-                "web",
-            ],
-            "verified": True,
-        }
-
-    def validate_all_features(self) -> Dict[str, Any]:
-        validator = self.validators.get("feature")
-        if validator and hasattr(validator, "validate"):
-            return validator.validate()
-        return {
-            "status": "success",
-            "verified": True,
-        }
-
-    def validate_file_handlers(self) -> Dict[str, Any]:
-        validator = self.validators.get("file_handler")
-        if validator and hasattr(validator, "validate"):
-            return validator.validate()
-        return {
-            "status": "success",
-            "handlers": [".py", ".md", ".json", ".yaml", ".yml"],
-        }
-
-    def update_resume_checkpoint(
-        self,
-        state: Optional[Dict[str, Any]] = None,
-    ) -> Path:
-        checkpoint_dir = self.root_dir / ".checkpoints"
-        checkpoint_dir.mkdir(
-            parents=True,
-            exist_ok=True,
-        )
-        checkpoint_path = checkpoint_dir / "checkpoint.json"
-
-        data = {
-            "timestamp": utc_iso(),
-            "state": state or {"status": "running"},
-        }
-        atomic_write(
-            checkpoint_path,
-            json.dumps(data, indent=2),
-        )
-        return checkpoint_path
-
-    def build_github_proof_contract(self) -> Dict[str, Any]:
-        return {
-            "contract": "GitHub Proof Contract",
-            "timestamp": utc_iso(),
-            "repository_owner": "thealphakenya",
-            "verified": True,
-        }
-
-
-# ============================================================================
-# CLI ENTRYPOINT
-# ============================================================================
-
-def show_status() -> None:
-    if CURRENT_STATUS_FILE.exists():
-        print(CURRENT_STATUS_FILE.read_text(encoding="utf-8"))
-    else:
-        print("No active agent status found.")
-
-
-def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(
-        description="QMOI Ollama Autonomous Agent CLI"
-    )
-    subparsers = parser.add_subparsers(dest="command")
-
-    subparsers.add_parser("validate-all", help="Run full validation cycle")
-    subparsers.add_parser("status", help="Show current agent status")
-    subparsers.add_parser("doctor", help="Run doctor diagnostics")
-
-    return parser
-
 
 def main() -> int:
-    parser = build_parser()
-    args = parser.parse_args()
+    parser = argparse.ArgumentParser(description="QMOI Ollama Autonomous Agent with Auto-Healing")
+    subparsers = parser.add_subparsers(dest="command")
 
+    subparsers.add_parser("doctor", help="Run system diagnostics")
+    subparsers.add_parser("validate-all", help="Run full repository validation and auto-healing cycle")
+    subparsers.add_parser("status", help="Show current agent status")
+
+    args = parser.parse_args()
     agent = AutonomousAgent()
 
-    if args.command == "validate-all":
-        success = agent.run_validation_cycle()
-        return 0 if success else 1
+    if args.command == "doctor":
+        return agent.doctor()
+    elif args.command == "validate-all":
+        return agent.validate_all()
     elif args.command == "status":
-        show_status()
-        return 0
-    elif args.command == "doctor":
-        print("Doctor diagnostics: System stable, telemetry active.")
+        if CURRENT_STATUS_FILE.exists():
+            print(CURRENT_STATUS_FILE.read_text(encoding="utf-8"))
+        else:
+            print("No active status found.")
         return 0
     else:
         parser.print_help()
