@@ -1,161 +1,241 @@
 name: Ollama Autonomous Agent Trigger & Live Tracker
 
-# ================================================================
-# OLLAMA AUTONOMOUS AGENT
-# ================================================================
+# ============================================================================
+# OLLAMA AUTONOMOUS AGENT - TRIGGER + DURABLE TELEMETRY TRACKER
+# ============================================================================
 #
-# Purpose:
-#   Start the Ollama autonomous agent after successful validation
-#   and maintain a durable, human-readable tracking system.
+# ARCHITECTURE
+# ============================================================================
 #
-# Tracking architecture:
+# This workflow has two distinct responsibilities:
 #
+# 1. AGENT EXECUTION
+#    Start the QMOI/Ollama autonomous agent after successful validation or
+#    through an explicit workflow_dispatch.
+#
+# 2. OBSERVABILITY
+#    Maintain the durable ./ollamatracks/ protocol.
+#
+# The Python agent is the authoritative source for internal telemetry.
+#
+# The workflow is the authoritative source for GitHub-level telemetry.
+#
+# Together:
+#
+#   GitHub Actions
+#        |
+#        +---- workflow_run events
+#        +---- schedule reconciliation
+#        +---- workflow_dispatch
+#        |
+#        v
 #   ollamatracks/
-#   ├── 000001_agent_run_started.txt
-#   ├── 000002_validation_completed.txt
-#   ├── 000003_agent_started.txt
-#   ├── 000004_iteration_0001.txt
-#   ├── 000005_iteration_0002.txt
-#   ├── ...
-#   ├── 000010_agent_completed.txt
-#   ├── 000011_agent_summary.txt
-#   ├── CURRENT_STATUS.txt
-#   ├── LATEST_ACTIVITY.txt
-#   ├── PR_STATUS.txt
-#   └── TRACKING_INDEX.txt
+#        |
+#        +---- immutable chronological events
+#        +---- CURRENT_STATUS.txt
+#        +---- LATEST_ACTIVITY.txt
+#        +---- TRACKING_INDEX.txt
+#        +---- STATE.txt
+#        +---- PR_STATUS.txt
+#        +---- agent runtime telemetry
+#        |
+#        v
+#   QMOI/Ollama autonomous agent
+#        |
+#        +---- run
+#        +---- iteration
+#        +---- task
+#        +---- tool
+#        +---- command
+#        +---- validation
+#        +---- repair
+#        +---- checkpoint
+#        +---- error
+#        +---- completion
 #
-# IMPORTANT:
-#   GitHub-hosted jobs have a maximum execution time, so this workflow
-#   does NOT attempt to create an infinite GitHub Actions job.
+# IMPORTANT
+# ============================================================================
 #
-#   Instead, it:
-#     - records durable progress
-#     - preserves checkpoints
-#     - uploads tracking artifacts
-#     - commits tracking records
-#     - supports repeated workflow runs
-#     - avoids self-trigger loops
-#     - records exact UTC timestamps
+# The workflow does NOT attempt to keep a GitHub-hosted runner alive forever.
 #
-# ================================================================
+# GitHub-hosted jobs have a maximum execution duration.
+#
+# Instead:
+#
+#   - the Python agent emits telemetry continuously
+#   - checkpoints are written into ollamatracks/
+#   - the workflow persists the final/current state
+#   - scheduled reconciliation discovers active workflow runs
+#   - workflow_run events provide event-driven monitoring
+#   - Actions logs provide live runner-level visibility
+#   - artifacts provide a secondary durable copy
+#
+# This is intentionally event-driven rather than an infinite workflow loop.
+#
+# ============================================================================
+
 
 on:
 
-  # --------------------------------------------------------------
-  # Start after successful validation
-  # --------------------------------------------------------------
+  # --------------------------------------------------------------------------
+  # Validation workflow lifecycle
+  # --------------------------------------------------------------------------
+
   workflow_run:
     workflows:
       - "Ollama PR Validation - 293+ Platform Features"
+
     types:
-      - completed
       - requested
       - in_progress
+      - completed
 
-  # --------------------------------------------------------------
+  # --------------------------------------------------------------------------
   # Manual execution
-  # --------------------------------------------------------------
+  # --------------------------------------------------------------------------
+
   workflow_dispatch:
+
     inputs:
+
       reason:
-        description: "Reason for manually starting/restarting the agent"
+        description: "Reason for manually starting/reconciling the autonomous agent"
         required: false
         type: string
         default: "Manual autonomous-agent execution"
 
       run_validation:
-        description: "Run validate-all before starting agent"
+        description: "Run validate-all before autonomous execution"
         required: false
         type: boolean
         default: true
 
-  # --------------------------------------------------------------
-  # Periodic reconciliation.
+      force_agent:
+        description: "Start the autonomous agent even if this is not a validation-completed event"
+        required: false
+        type: boolean
+        default: true
+
+      force_snapshot:
+        description: "Force creation of a tracking snapshot"
+        required: false
+        type: boolean
+        default: true
+
+  # --------------------------------------------------------------------------
+  # Periodic reconciliation
+  # --------------------------------------------------------------------------
   #
-  # This does NOT create an infinite runner.
-  # It periodically checks and reconciles durable state.
-  # --------------------------------------------------------------
+  # GitHub supports a minimum scheduled interval of five minutes.
+  #
+  # This is the recovery/reconciliation layer.
+  #
+  # It does not blindly start another autonomous agent.
+  # --------------------------------------------------------------------------
+
   schedule:
     - cron: "*/5 * * * *"
 
 
-# ================================================================
+# ============================================================================
 # PERMISSIONS
-# ================================================================
-#
-# contents: write
-#   Required for committing durable tracking files.
-#
-# actions: read
-#   Required for reading workflow/run/job information.
-#
-# pull-requests: write
-#   Required for PR status reporting.
-#
-# checks/statuses: read
-#   Required for validation/status inspection.
-# ================================================================
+# ============================================================================
 
 permissions:
+
+  # Required to persist ./ollamatracks/
   contents: write
+
+  # Required to inspect workflow runs/jobs.
   actions: read
-  pull-requests: write
+
+  # Only read PR information.
+  pull-requests: read
+
+  # Required for check/status inspection.
   checks: read
   statuses: read
 
 
-# ================================================================
-# CONCURRENCY
-# ================================================================
+# ============================================================================
+# GLOBAL CONCURRENCY
+# ============================================================================
 #
-# DO NOT use cancel-in-progress: true here.
+# ALL TRACKING WRITERS use the same concurrency group.
 #
-# An active agent/monitor must not be accidentally cancelled because
-# another event arrived.
+# This is important.
 #
-# The run ID makes the group unique enough to avoid destroying an
-# unrelated active agent execution.
-# ================================================================
+# A group based only on github.event.workflow_run.id would allow different
+# workflow events to modify ollamatracks concurrently.
+#
+# A single writer group prevents two tracker invocations from allocating the
+# same sequence number or overwriting CURRENT_STATUS simultaneously.
+#
+# We intentionally do not cancel an active writer.
+# ============================================================================
 
 concurrency:
-  group: ollama-agent-${{ github.event.workflow_run.id || github.run_id }}
+
+  group: ollama-autonomous-agent-tracking-writer
+
   cancel-in-progress: false
 
 
-# ================================================================
+# ============================================================================
 # GLOBAL ENVIRONMENT
-# ================================================================
+# ============================================================================
 
 env:
+
   TRACK_DIR: ollamatracks
-  TRACK_SCHEMA_VERSION: "1.0"
+
+  TRACK_SCHEMA_VERSION: "2.0"
+
   PYTHON_VERSION: "3.11"
 
+  TARGET_VALIDATION_WORKFLOW:
+    "Ollama PR Validation - 293+ Platform Features"
+
+  # Number of workflow runs inspected during reconciliation.
+  MAX_RUNS_TO_INSPECT: "25"
+
+  # Number of jobs inspected per workflow run.
+  MAX_JOBS_PER_RUN: "100"
+
+  # Number of recent immutable records shown in summaries.
+  RECENT_EVENTS_TO_DISPLAY: "20"
+
+  # Agent telemetry protocol.
+  OLLAMA_TELEMETRY_PROTOCOL: "ollamatracks-v2"
+
+
+# ============================================================================
+# JOB
+# ============================================================================
+#
+# One writer job deliberately handles initialization, execution and final
+# persistence.
+#
+# This avoids the stale-checkout / duplicate-sequence problem that existed in
+# the previous multi-job implementation.
+# ============================================================================
 
 jobs:
 
-  # ==============================================================
-  # JOB 1
-  # Ensure tracking infrastructure exists
-  # ==============================================================
+  ollama-agent:
 
-  prepare-tracking:
-    name: Initialize Ollama Tracking System
+    name: Ollama Autonomous Agent + Live Tracking
+
     runs-on: ubuntu-latest
 
-    # Never fail the whole workflow simply because a monitoring
-    # operation had a recoverable problem.
-    continue-on-error: false
-
-    outputs:
-      tracking_dir: ${{ steps.init.outputs.tracking_dir }}
-      tracking_sequence: ${{ steps.init.outputs.tracking_sequence }}
+    # Keep below GitHub-hosted runner's six-hour maximum.
+    timeout-minutes: 350
 
     steps:
 
-      # ------------------------------------------------------------
-      # Checkout
-      # ------------------------------------------------------------
+      # ======================================================================
+      # CHECKOUT
+      # ======================================================================
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -163,13 +243,23 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      # ------------------------------------------------------------
-      # Initialize tracking directory
-      # ------------------------------------------------------------
 
-      - name: Create tracking infrastructure
-        id: init
+      # ======================================================================
+      # INITIALIZE TRACKING SYSTEM
+      # ======================================================================
+
+      - name: Initialize ollamatracks protocol
+        id: initialize
         shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ACTION: ${{ github.event.action }}
+          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
+          WORKFLOW_RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+          WORKFLOW_RUN_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          WORKFLOW_RUN_STATUS: ${{ github.event.workflow_run.status }}
+          WORKFLOW_RUN_URL: ${{ github.event.workflow_run.html_url }}
+          MANUAL_REASON: ${{ inputs.reason }}
         run: |
           set -Eeuo pipefail
 
@@ -178,54 +268,230 @@ jobs:
           INDEX="$TRACK_DIR/TRACKING_INDEX.txt"
           CURRENT="$TRACK_DIR/CURRENT_STATUS.txt"
           LATEST="$TRACK_DIR/LATEST_ACTIVITY.txt"
+          STATE="$TRACK_DIR/STATE.txt"
           PR_STATUS="$TRACK_DIR/PR_STATUS.txt"
+          PROTOCOL="$TRACK_DIR/TRACKING_PROTOCOL.txt"
+          MANIFEST="$TRACK_DIR/TRACKING_MANIFEST.txt"
 
-          if [ ! -f "$INDEX" ]; then
-            cat > "$INDEX" <<'EOF'
-          OLLAMA AUTONOMOUS AGENT TRACKING INDEX
-          ======================================
+          now="$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
 
-          Purpose:
-          Durable chronological record of autonomous-agent activity.
+          # ------------------------------------------------------------------
+          # Protocol documentation
+          # ------------------------------------------------------------------
 
-          Naming rule:
-          NNNNNN_event-name.txt
+          if [ ! -f "$PROTOCOL" ]; then
+            cat > "$PROTOCOL" <<'EOF'
+          OLLAMA TRACKING PROTOCOL
+          ========================
 
-          NNNNNN:
-          Six-digit monotonically increasing sequence.
+          Protocol: ollamatracks-v2
+          Schema: 2.0
 
-          Ordering:
-          The numeric prefix is the authoritative creation order.
+          PURPOSE
+          -------
+          This directory is the durable observability protocol for the
+          QMOI/Ollama autonomous agent.
 
-          Timestamp:
-          Every record contains an exact UTC timestamp.
+          AUTHORITATIVE EVENT ORDER
+          --------------------------
+          Historical event records use:
 
-          Record classes:
-          - RUN
-          - VALIDATION
-          - AGENT
-          - ITERATION
-          - TASK
-          - TOOL
-          - PR
-          - CHECKPOINT
-          - ERROR
-          - SUMMARY
+              NNNNNN_event-name.txt
 
-          The tracker must never overwrite historical event files.
+          NNNNNN is a monotonically increasing six-digit sequence.
 
-          Mutable state files:
-          - CURRENT_STATUS.txt
-          - LATEST_ACTIVITY.txt
-          - PR_STATUS.txt
+          The sequence is the authoritative repository record order.
 
-          Historical event files are append-never/overwrite-never records.
+          Every immutable event MUST contain:
+
+              Sequence
+              Event ID
+              Event type
+              Timestamp UTC
+              Repository
+              Workflow
+              Workflow run ID
+              Workflow attempt
+              Actor
+              Agent run ID
+              Iteration
+              Task ID
+              Action
+              Status
+              Result
+
+          TIMESTAMP RULE
+          --------------
+          UTC timestamps use:
+
+              YYYY-MM-DDTHH:MM:SS.mmmZ
+
+          EVENT TYPES
+          -----------
+          RUN
+          VALIDATION
+          AGENT
+          ITERATION
+          TASK
+          ACTION
+          TOOL
+          COMMAND
+          TEST
+          BUILD
+          REPAIR
+          CHECKPOINT
+          PR
+          ERROR
+          WARNING
+          HEARTBEAT
+          STATE
+          SUMMARY
+
+          IMMUTABILITY
+          ------------
+          Historical records must never be overwritten.
+
+          Mutable files are:
+
+              CURRENT_STATUS.txt
+              LATEST_ACTIVITY.txt
+              STATE.txt
+              PR_STATUS.txt
+
+          These represent current state and may be replaced.
+
+          RAW TELEMETRY
+          -------------
+          Structured telemetry may also be retained in:
+
+              telemetry.jsonl
+
+          Each line represents one telemetry event.
+
+          EVENT ID
+          --------
+          Every event should have a unique event_id.
+
+          The recommended form is:
+
+              agent-run-id + timestamp + sequence
+
+          IDEMPOTENCY
+          -----------
+          Reconciliation operations should avoid creating duplicate
+          historical events when the underlying GitHub state has not changed.
+
+          LIVE STATUS
+          -----------
+          CURRENT_STATUS.txt is a projection of the latest known state.
+
+          It is NOT a replacement for historical records.
+
+          RECOVERY
+          --------
+          If the directory does not exist, the workflow must recreate it.
+
+          If mutable state files are missing, they must be recreated.
+
+          If historical records exist, their highest sequence must be
+          discovered and the next sequence must be greater than it.
+
+          NEVER reuse an existing sequence.
           EOF
           fi
 
-          # Find highest sequence already present.
+          # ------------------------------------------------------------------
+          # Tracking index
+          # ------------------------------------------------------------------
+
+          if [ ! -f "$INDEX" ]; then
+            cat > "$INDEX" <<EOF
+          OLLAMA AUTONOMOUS AGENT TRACKING INDEX
+          ======================================
+
+          Protocol: ollamatracks-v2
+          Schema: $TRACK_SCHEMA_VERSION
+
+          Repository: $GITHUB_REPOSITORY
+
+          Created UTC:
+          $now
+
+          Historical records:
+          NNNNNN_event-name.txt
+
+          Sequence:
+          Monotonically increasing six-digit number.
+
+          Mutable state:
+          CURRENT_STATUS.txt
+          LATEST_ACTIVITY.txt
+          STATE.txt
+          PR_STATUS.txt
+
+          Structured stream:
+          telemetry.jsonl
+
+          Historical records are append-only.
+          Mutable state files are projections of the latest state.
+          EOF
+          fi
+
+          # ------------------------------------------------------------------
+          # Manifest
+          # ------------------------------------------------------------------
+
+          if [ ! -f "$MANIFEST" ]; then
+            cat > "$MANIFEST" <<EOF
+          OLLAMA TRACKING MANIFEST
+          ========================
+
+          Protocol: ollamatracks-v2
+          Schema: $TRACK_SCHEMA_VERSION
+
+          Repository: $GITHUB_REPOSITORY
+
+          Tracking directory:
+          $TRACK_DIR
+
+          Required files:
+
+          TRACKING_PROTOCOL.txt
+          TRACKING_MANIFEST.txt
+          TRACKING_INDEX.txt
+          CURRENT_STATUS.txt
+          LATEST_ACTIVITY.txt
+          STATE.txt
+          PR_STATUS.txt
+          telemetry.jsonl
+
+          Historical records:
+
+          NNNNNN_<event>.txt
+
+          Timestamp standard:
+
+          UTC
+          YYYY-MM-DDTHH:MM:SS.mmmZ
+          EOF
+          fi
+
+          touch "$CURRENT"
+          touch "$LATEST"
+          touch "$STATE"
+          touch "$PR_STATUS"
+          touch "$TRACK_DIR/telemetry.jsonl"
+
+          # ------------------------------------------------------------------
+          # Determine next immutable sequence.
+          #
+          # The job itself is serialized by workflow-level concurrency.
+          # ------------------------------------------------------------------
+
           highest="$(
-            find "$TRACK_DIR" -maxdepth 1 -type f \
+            find "$TRACK_DIR" \
+              -maxdepth 1 \
+              -type f \
               -name '[0-9][0-9][0-9][0-9][0-9][0-9]_*.txt' \
               -printf '%f\n' 2>/dev/null |
             sed -E 's/^([0-9]{6})_.*/\1/' |
@@ -243,353 +509,31 @@ jobs:
 
           printf -v sequence "%06d" "$next"
 
-          # Ensure mutable state files always exist.
-          touch "$CURRENT"
-          touch "$LATEST"
-          touch "$PR_STATUS"
+          # ------------------------------------------------------------------
+          # Export metadata.
+          # ------------------------------------------------------------------
 
-          # Initial status.
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          {
+            echo "tracking_sequence=$sequence"
+            echo "tracking_timestamp=$now"
+          } >> "$GITHUB_OUTPUT"
+
+          # ------------------------------------------------------------------
+          # Initialize current status.
+          # ------------------------------------------------------------------
 
           cat > "$CURRENT" <<EOF
           OLLAMA AUTONOMOUS AGENT - CURRENT STATUS
           =========================================
 
-          Timestamp UTC: $now
-          Repository: $GITHUB_REPOSITORY
-          Workflow: $GITHUB_WORKFLOW
-          Workflow Run ID: $GITHUB_RUN_ID
-          Workflow Attempt: $GITHUB_RUN_ATTEMPT
+          Protocol: ollamatracks-v2
+          Schema: $TRACK_SCHEMA_VERSION
 
-          State: TRACKER_INITIALIZED
-          Agent state: UNKNOWN
-          Current task: INITIALIZING
-          Current iteration: UNKNOWN
+          Timestamp UTC:
+          $now
 
-          Tracking directory: $TRACK_DIR
-          Tracking schema: $TRACK_SCHEMA_VERSION
-
-          Last update UTC: $now
-          EOF
-
-          cat > "$LATEST" <<EOF
-          LAST ACTIVITY
-          =============
-
-          Timestamp UTC: $now
-          Event: TRACKER_INITIALIZED
-          Workflow Run ID: $GITHUB_RUN_ID
-          EOF
-
-          {
-            echo "tracking_dir=$TRACK_DIR"
-            echo "tracking_sequence=$sequence"
-          } >> "$GITHUB_OUTPUT"
-
-          echo "Tracking directory: $TRACK_DIR"
-          echo "Next sequence: $sequence"
-
-      # ------------------------------------------------------------
-      # Record initialization event
-      # ------------------------------------------------------------
-
-      - name: Record tracker initialization
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-
-          highest="$(
-            find "$TRACK_DIR" -maxdepth 1 -type f \
-              -name '[0-9][0-9][0-9][0-9][0-9][0-9]_*.txt' \
-              -printf '%f\n' |
-            sed -E 's/^([0-9]{6})_.*/\1/' |
-            sort -n |
-            tail -1
-          )"
-
-          highest="${highest:-0}"
-          next=$((10#$highest + 1))
-
-          printf -v seq "%06d" "$next"
-
-          file="$TRACK_DIR/${seq}_tracker_initialized.txt"
-
-          cat > "$file" <<EOF
-          OLLAMA TRACKING EVENT
-          =====================
-
-          Sequence: $seq
-          Event type: TRACKER
-          Event: TRACKER_INITIALIZED
-
-          Timestamp UTC: $now
-
-          Repository: $GITHUB_REPOSITORY
-          Workflow: $GITHUB_WORKFLOW
-          Workflow run ID: $GITHUB_RUN_ID
-          Workflow attempt: $GITHUB_RUN_ATTEMPT
-          Actor: $GITHUB_ACTOR
-
-          Tracking directory:
-          $TRACK_DIR
-
-          Purpose:
-          Ensure durable autonomous-agent tracking infrastructure exists
-          before agent execution begins.
-
-          Result:
-          SUCCESS
-          EOF
-
-      # ------------------------------------------------------------
-      # Commit tracking infrastructure.
-      #
-      # IMPORTANT:
-      # We explicitly exclude workflow files and other source changes.
-      # This prevents the tracker from accidentally committing unrelated
-      # agent/repository modifications.
-      # ------------------------------------------------------------
-
-      - name: Persist tracking infrastructure
-        shell: bash
-        env:
-          TRACK_DIR: ${{ env.TRACK_DIR }}
-        run: |
-          set -Eeuo pipefail
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -- "$TRACK_DIR"
-
-          if git diff --cached --quiet; then
-            echo "No tracking changes to commit."
-            exit 0
-          fi
-
-          git commit -m "chore(ollamatracks): initialize tracking state [skip ci]"
-
-          # Push only the tracking commit.
-          #
-          # [skip ci] helps prevent ordinary push-triggered workflows
-          # from being activated by tracker-only commits.
-          git push origin "HEAD:${GITHUB_REF_NAME}"
-
-
-  # ==============================================================
-  # JOB 2
-  # Determine whether this event should execute the agent
-  # ==============================================================
-
-  determine-execution:
-    name: Determine Agent Execution State
-    needs: prepare-tracking
-    runs-on: ubuntu-latest
-
-    outputs:
-      should_run: ${{ steps.decision.outputs.should_run }}
-      reason: ${{ steps.decision.outputs.reason }}
-
-    steps:
-
-      - name: Determine execution decision
-        id: decision
-        shell: bash
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          RUN_VALIDATION: ${{ inputs.run_validation }}
-          WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          WORKFLOW_EVENT: ${{ github.event.workflow_run.event }}
-        run: |
-          set -Eeuo pipefail
-
-          should_run="false"
-          reason="Monitoring-only event."
-
-          case "$EVENT_NAME" in
-
-            workflow_dispatch)
-              should_run="true"
-              reason="Manual autonomous-agent execution."
-              ;;
-
-            workflow_run)
-              if [ "$WORKFLOW_CONCLUSION" = "success" ]; then
-                should_run="true"
-                reason="Validation workflow completed successfully."
-              else
-                should_run="false"
-                reason="Validation workflow did not complete successfully."
-              fi
-              ;;
-
-            schedule)
-              # Scheduled executions reconcile/monitor state.
-              #
-              # They deliberately DO NOT start a second autonomous
-              # agent blindly, preventing duplicate agent loops.
-              should_run="false"
-              reason="Scheduled reconciliation/monitoring pass."
-              ;;
-
-            *)
-              should_run="false"
-              reason="Unknown event type."
-              ;;
-
-          esac
-
-          echo "should_run=$should_run" >> "$GITHUB_OUTPUT"
-          echo "reason=$reason" >> "$GITHUB_OUTPUT"
-
-          echo "Agent execution decision:"
-          echo "  Run:    $should_run"
-          echo "  Reason: $reason"
-
-
-  # ==============================================================
-  # JOB 3
-  # Run the actual autonomous agent
-  # ==============================================================
-
-  run-agent:
-    name: Run Ollama Autonomous Agent
-    needs:
-      - prepare-tracking
-      - determine-execution
-
-    if: needs.determine-execution.outputs.should_run == 'true'
-
-    runs-on: ubuntu-latest
-
-    # GitHub-hosted runner maximum is 6 hours.
-    # Keep an explicit value below that platform limit.
-    timeout-minutes: 350
-
-    steps:
-
-      # ------------------------------------------------------------
-      # Checkout
-      # ------------------------------------------------------------
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
-
-      # ------------------------------------------------------------
-      # Python
-      # ------------------------------------------------------------
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      # ------------------------------------------------------------
-      # Dependencies
-      # ------------------------------------------------------------
-
-      - name: Install dependencies
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          python -m pip install --upgrade pip
-
-          if [ -f requirements.txt ]; then
-            python -m pip install -r requirements.txt
-          else
-            echo "No requirements.txt found."
-          fi
-
-      # ------------------------------------------------------------
-      # Initialize local tracker
-      # ------------------------------------------------------------
-
-      - name: Initialize agent runtime tracking
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          mkdir -p "$TRACK_DIR"
-
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-
-          cat > "$TRACK_DIR/CURRENT_STATUS.txt" <<EOF
-          OLLAMA AUTONOMOUS AGENT - CURRENT STATUS
-          =========================================
-
-          Timestamp UTC: $now
-
-          State: STARTING
-          Agent state: STARTING
-          Current task: AUTONOMOUS VALIDATION / AGENT EXECUTION
-          Current iteration: STARTING
-
-          Repository: $GITHUB_REPOSITORY
-          Branch: $GITHUB_REF_NAME
-          Commit: $GITHUB_SHA
-
-          Workflow run ID: $GITHUB_RUN_ID
-          Workflow attempt: $GITHUB_RUN_ATTEMPT
-
-          Execution reason:
-          ${{ needs.determine-execution.outputs.reason }}
-
-          Last update UTC: $now
-          EOF
-
-          cat > "$TRACK_DIR/LATEST_ACTIVITY.txt" <<EOF
-          LAST ACTIVITY
-
-          Timestamp UTC: $now
-          Event: AGENT_EXECUTION_STARTED
-          Run ID: $GITHUB_RUN_ID
-          Commit: $GITHUB_SHA
-          EOF
-
-          echo "Agent runtime tracker initialized."
-
-      # ------------------------------------------------------------
-      # Record agent start
-      # ------------------------------------------------------------
-
-      - name: Record agent start
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-
-          highest="$(
-            find "$TRACK_DIR" -maxdepth 1 -type f \
-              -name '[0-9][0-9][0-9][0-9][0-9][0-9]_*.txt' \
-              -printf '%f\n' |
-            sed -E 's/^([0-9]{6})_.*/\1/' |
-            sort -n |
-            tail -1
-          )"
-
-          highest="${highest:-0}"
-          next=$((10#$highest + 1))
-          printf -v seq "%06d" "$next"
-
-          cat > "$TRACK_DIR/${seq}_agent_started.txt" <<EOF
-          OLLAMA AUTONOMOUS AGENT EVENT
-
-          Sequence: $seq
-          Event type: AGENT
-          Event: AGENT_STARTED
-
-          Timestamp UTC: $now
-
-          Repository: $GITHUB_REPOSITORY
-          Branch: $GITHUB_REF_NAME
-          Commit: $GITHUB_SHA
+          Repository:
+          $GITHUB_REPOSITORY
 
           Workflow:
           $GITHUB_WORKFLOW
@@ -600,282 +544,40 @@ jobs:
           Workflow attempt:
           $GITHUB_RUN_ATTEMPT
 
-          Reason:
-          ${{ needs.determine-execution.outputs.reason }}
+          Trigger event:
+          $EVENT_NAME
+
+          Agent state:
+          INITIALIZING
+
+          Current task:
+          TRACKING_INITIALIZATION
+
+          Current iteration:
+          UNKNOWN
+
+          Current action:
+          INITIALIZING
 
           Status:
           RUNNING
-          EOF
 
-      # ------------------------------------------------------------
-      # Execute agent.
-      #
-      # tee captures every line produced by the Python agent.
-      #
-      # The captured stream becomes:
-      #   - Actions log
-      #   - durable tracking file
-      #   - source for event extraction
-      # ------------------------------------------------------------
-
-      - name: Run autonomous validation and agent
-        id: agent
-        continue-on-error: true
-        shell: bash
-        env:
-          MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
-          MY_CUTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
-          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
-          GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
-
-          # These variables can be consumed by the Python agent.
-          OLLAMA_TRACKING_DIR: ${{ env.TRACK_DIR }}
-          OLLAMA_TRACKING_RUN_ID: ${{ github.run_id }}
-          OLLAMA_TRACKING_ATTEMPT: ${{ github.run_attempt }}
-          OLLAMA_TRACKING_BRANCH: ${{ github.ref_name }}
-          OLLAMA_TRACKING_SHA: ${{ github.sha }}
-        run: |
-          set -o pipefail
-
-          mkdir -p "$TRACK_DIR"
-
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-
-          {
-            echo "============================================================"
-            echo "OLLAMA AUTONOMOUS AGENT START"
-            echo "Timestamp UTC: $now"
-            echo "Workflow Run: $GITHUB_RUN_ID"
-            echo "============================================================"
-
-            python3 scripts/ollama_autonomous_agent.py validate-all
-
-          } 2>&1 | tee "$TRACK_DIR/agent-runtime-output.log"
-
-          agent_exit="${PIPESTATUS[0]}"
-
-          echo "Agent exit code: $agent_exit"
-
-          exit "$agent_exit"
-
-      # ------------------------------------------------------------
-      # Convert runtime output into chronological event records
-      # ------------------------------------------------------------
-
-      - name: Record agent runtime output
-        if: always()
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          mkdir -p "$TRACK_DIR"
-
-          LOG="$TRACK_DIR/agent-runtime-output.log"
-
-          if [ ! -f "$LOG" ]; then
-            echo "No runtime log was generated."
-            exit 0
-          fi
-
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-
-          highest="$(
-            find "$TRACK_DIR" -maxdepth 1 -type f \
-              -name '[0-9][0-9][0-9][0-9][0-9][0-9]_*.txt' \
-              -printf '%f\n' |
-            sed -E 's/^([0-9]{6})_.*/\1/' |
-            sort -n |
-            tail -1
-          )"
-
-          highest="${highest:-0}"
-          next=$((10#$highest + 1))
-          printf -v seq "%06d" "$next"
-
-          # Keep the raw runtime stream durable.
-          cp "$LOG" "$TRACK_DIR/${seq}_agent_runtime_output.txt"
-
-          next=$((next + 1))
-          printf -v seq "%06d" "$next"
-
-          cat > "$TRACK_DIR/${seq}_agent_execution_record.txt" <<EOF
-          OLLAMA AUTONOMOUS AGENT EXECUTION RECORD
-
-          Sequence: $seq
-          Timestamp UTC: $now
-
-          Workflow run ID: $GITHUB_RUN_ID
-          Workflow attempt: $GITHUB_RUN_ATTEMPT
-          Repository: $GITHUB_REPOSITORY
-          Branch: $GITHUB_REF_NAME
-          Commit: $GITHUB_SHA
-
-          Agent command:
-          python3 scripts/ollama_autonomous_agent.py validate-all
-
-          Runtime output:
-          ${seq}_agent_runtime_output.txt
-
-          Interpretation:
-          This file records the complete stdout/stderr stream emitted
-          by the autonomous-agent process during this workflow run.
-
-          IMPORTANT:
-          Exact task/iteration timestamps require the Python agent itself
-          to emit structured progress events. The companion integration
-          described below provides that mechanism.
-          EOF
-
-      # ------------------------------------------------------------
-      # Update current status
-      # ------------------------------------------------------------
-
-      - name: Update current agent status
-        if: always()
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-
-          if [ "${{ steps.agent.outcome }}" = "success" ]; then
-            state="COMPLETED_SUCCESSFULLY"
-          else
-            state="COMPLETED_WITH_ERROR"
-          fi
-
-          cat > "$TRACK_DIR/CURRENT_STATUS.txt" <<EOF
-          OLLAMA AUTONOMOUS AGENT - CURRENT STATUS
-          =========================================
-
-          Timestamp UTC: $now
-
-          State: $state
-          Agent process outcome: ${{ steps.agent.outcome }}
-
-          Workflow run ID: $GITHUB_RUN_ID
-          Workflow attempt: $GITHUB_RUN_ATTEMPT
-
-          Repository: $GITHUB_REPOSITORY
-          Branch: $GITHUB_REF_NAME
-          Commit: $GITHUB_SHA
-
-          Tracking directory:
-          $TRACK_DIR
+          Next historical sequence:
+          $sequence
 
           Last update UTC:
           $now
           EOF
 
-          cat > "$TRACK_DIR/LATEST_ACTIVITY.txt" <<EOF
-          LAST ACTIVITY
+          cat > "$LATEST" <<EOF
+          OLLAMA LATEST ACTIVITY
+          ======================
 
-          Timestamp UTC: $now
-          Event: AGENT_PROCESS_FINISHED
-          Outcome: $state
-          Workflow Run ID: $GITHUB_RUN_ID
-          EOF
+          Timestamp UTC:
+          $now
 
-      # ------------------------------------------------------------
-      # Job summary
-      # ------------------------------------------------------------
-
-      - name: Publish agent tracking summary
-        if: always()
-        shell: bash
-        run: |
-          {
-            echo "# 🤖 Ollama Autonomous Agent"
-            echo ""
-            echo "## Current execution"
-            echo ""
-            echo "| Property | Value |"
-            echo "|---|---|"
-            echo "| Workflow run | \`$GITHUB_RUN_ID\` |"
-            echo "| Attempt | \`$GITHUB_RUN_ATTEMPT\` |"
-            echo "| Branch | \`$GITHUB_REF_NAME\` |"
-            echo "| Commit | \`${GITHUB_SHA:0:7}\` |"
-            echo "| Agent result | \`${{ steps.agent.outcome }}\` |"
-            echo "| Tracking directory | \`$TRACK_DIR/\` |"
-            echo ""
-            echo "## Tracking files"
-            echo ""
-            find "$TRACK_DIR" -maxdepth 1 -type f -printf '%f\n' | sort
-            echo ""
-            echo "## Latest status"
-            echo ""
-            cat "$TRACK_DIR/CURRENT_STATUS.txt"
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      # ------------------------------------------------------------
-      # Upload tracking artifact
-      # ------------------------------------------------------------
-
-      - name: Upload Ollama tracking artifact
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ollama-tracks-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ollamatracks/
-          if-no-files-found: warn
-          retention-days: 90
-
-
-  # ==============================================================
-  # JOB 4
-  # Persist historical tracking records
-  # ==============================================================
-
-  persist-tracking:
-    name: Persist Ollama Tracking Records
-    needs:
-      - prepare-tracking
-      - determine-execution
-      - run-agent
-
-    if: always()
-
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: true
-
-      - name: Recreate tracking state
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          mkdir -p "$TRACK_DIR"
-
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
-
-          highest="$(
-            find "$TRACK_DIR" -maxdepth 1 -type f \
-              -name '[0-9][0-9][0-9][0-9][0-9][0-9]_*.txt' \
-              -printf '%f\n' |
-            sed -E 's/^([0-9]{6})_.*/\1/' |
-            sort -n |
-            tail -1
-          )"
-
-          highest="${highest:-0}"
-          next=$((10#$highest + 1))
-
-          printf -v seq "%06d" "$next"
-
-          cat > "$TRACK_DIR/${seq}_workflow_monitor.txt" <<EOF
-          OLLAMA WORKFLOW MONITOR RECORD
-
-          Sequence: $seq
-          Timestamp UTC: $now
-
-          Repository:
-          $GITHUB_REPOSITORY
+          Event:
+          TRACKER_INITIALIZED
 
           Workflow:
           $GITHUB_WORKFLOW
@@ -883,276 +585,387 @@ jobs:
           Workflow run:
           $GITHUB_RUN_ID
 
+          Attempt:
+          $GITHUB_RUN_ATTEMPT
+
+          Status:
+          SUCCESS
+          EOF
+
+          cat > "$STATE" <<EOF
+          OLLAMA AGENT STATE
+
+          protocol=ollamatracks-v2
+          schema=$TRACK_SCHEMA_VERSION
+          repository=$GITHUB_REPOSITORY
+          workflow=$GITHUB_WORKFLOW
+          workflow_run_id=$GITHUB_RUN_ID
+          workflow_attempt=$GITHUB_RUN_ATTEMPT
+          event=$EVENT_NAME
+          state=INITIALIZING
+          current_iteration=0
+          current_task=TRACKING_INITIALIZATION
+          current_action=INITIALIZING
+          timestamp_utc=$now
+          EOF
+
+          echo "Tracking protocol initialized."
+          echo "Next sequence: $sequence"
+
+
+      # ======================================================================
+      # RECORD INITIALIZATION
+      # ======================================================================
+
+      - name: Record tracking initialization
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          now="$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
+
+          highest="$(
+            find "$TRACK_DIR" \
+              -maxdepth 1 \
+              -type f \
+              -name '[0-9][0-9][0-9][0-9][0-9][0-9]_*.txt' \
+              -printf '%f\n' |
+            sed -E 's/^([0-9]{6})_.*/\1/' |
+            sort -n |
+            tail -1
+          )"
+
+          highest="${highest:-0}"
+          next=$((10#$highest + 1))
+
+          printf -v seq "%06d" "$next"
+
+          cat > "$TRACK_DIR/${seq}_tracker_initialized.txt" <<EOF
+          OLLAMA TRACKING EVENT
+          =====================
+
+          Sequence:
+          $seq
+
+          Event ID:
+          tracker-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${seq}
+
+          Event type:
+          STATE
+
+          Event:
+          TRACKER_INITIALIZED
+
+          Timestamp UTC:
+          $now
+
+          Repository:
+          $GITHUB_REPOSITORY
+
+          Workflow:
+          $GITHUB_WORKFLOW
+
+          Workflow run ID:
+          $GITHUB_RUN_ID
+
           Workflow attempt:
           $GITHUB_RUN_ATTEMPT
 
+          Actor:
+          $GITHUB_ACTOR
+
           Trigger:
-          $GITHUB_EVENT_NAME
+          ${{ github.event_name }}
 
-          Agent job result:
-          ${{ needs.run-agent.result }}
-
-          Execution decision:
-          ${{ needs.determine-execution.outputs.should_run }}
-
-          Execution reason:
-          ${{ needs.determine-execution.outputs.reason }}
-
-          Tracking status:
-          PERSISTENCE_PASS
+          Result:
+          SUCCESS
           EOF
 
-      # ------------------------------------------------------------
-      # PR monitoring
-      # ------------------------------------------------------------
 
-      - name: Collect PR status
-        uses: actions/github-script@v7
-        env:
-          TRACK_DIR: ${{ env.TRACK_DIR }}
-          EVENT_NAME: ${{ github.event_name }}
-        with:
-          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
-          script: |
-            const fs = require('fs');
-            const path = require('path');
+      # ======================================================================
+      # DECIDE EXECUTION MODE
+      # ======================================================================
 
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-
-            let prs = [];
-
-            try {
-              if (context.payload.workflow_run?.pull_requests?.length) {
-                prs = context.payload.workflow_run.pull_requests;
-              } else {
-                const response = await github.rest.pulls.list({
-                  owner,
-                  repo,
-                  state: 'open',
-                  per_page: 100
-                });
-
-                prs = response.data;
-              }
-            } catch (error) {
-              core.warning(`Unable to retrieve PR information: ${error.message}`);
-            }
-
-            const timestamp =
-              new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
-
-            const output = [];
-
-            output.push('OLLAMA AUTONOMOUS AGENT - PR STATUS');
-            output.push('===================================');
-            output.push('');
-            output.push(`Timestamp UTC: ${timestamp}`);
-            output.push(`Repository: ${owner}/${repo}`);
-            output.push(`Workflow Run ID: ${context.runId}`);
-            output.push('');
-
-            if (prs.length === 0) {
-              output.push('No associated/open pull requests found.');
-            } else {
-              for (const pr of prs) {
-                output.push(`PR #${pr.number}`);
-                output.push(`Title: ${pr.title}`);
-                output.push(`State: ${pr.state}`);
-                output.push(`Draft: ${pr.draft}`);
-                output.push(`Head branch: ${pr.head?.ref || 'N/A'}`);
-                output.push(`Base branch: ${pr.base?.ref || 'N/A'}`);
-                output.push(`Head SHA: ${pr.head?.sha || 'N/A'}`);
-                output.push(`URL: ${pr.html_url}`);
-                output.push('');
-              }
-            }
-
-            fs.writeFileSync(
-              path.join(process.env.TRACK_DIR, 'PR_STATUS.txt'),
-              output.join('\n') + '\n',
-              'utf8'
-            );
-
-            core.summary
-              .addHeading('PR Monitoring')
-              .addRaw(output.join('\n'))
-              .write();
-
-      # ------------------------------------------------------------
-      # Finalize tracking index
-      # ------------------------------------------------------------
-
-      - name: Update tracking index
+      - name: Determine execution mode
+        id: decision
         shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          FORCE_AGENT: ${{ inputs.force_agent }}
+          RUN_VALIDATION: ${{ inputs.run_validation }}
         run: |
           set -Eeuo pipefail
 
-          now="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          mode="monitor"
+          reason="Monitoring/reconciliation event."
 
-          {
-            echo ""
-            echo "------------------------------------------------------------"
-            echo "TRACKING SNAPSHOT"
-            echo "Timestamp UTC: $now"
-            echo "Workflow Run: $GITHUB_RUN_ID"
-            echo "Workflow Attempt: $GITHUB_RUN_ATTEMPT"
-            echo "------------------------------------------------------------"
-            echo ""
-            echo "Historical event files:"
-            find "$TRACK_DIR" -maxdepth 1 -type f \
+          case "$EVENT_NAME" in
+
+            workflow_dispatch)
+              if [ "$FORCE_AGENT" = "true" ]; then
+                mode="agent"
+                reason="Manual autonomous-agent execution."
+              else
+                mode="monitor"
+                reason="Manual monitoring-only execution."
+              fi
+              ;;
+
+            workflow_run)
+              if [ "$VALIDATION_CONCLUSION" = "success" ]; then
+                mode="agent"
+                reason="Validation workflow completed successfully."
+              else
+                mode="monitor"
+                reason="Validation workflow is not successfully completed."
+              fi
+              ;;
+
+            schedule)
+              mode="monitor"
+              reason="Scheduled reconciliation pass."
+              ;;
+
+            *)
+              mode="monitor"
+              reason="Unknown event; monitoring only."
+              ;;
+
+          esac
+
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "reason=$reason" >> "$GITHUB_OUTPUT"
+
+          echo "Execution mode: $mode"
+          echo "Reason: $reason"
+
+
+      # ======================================================================
+      # RECORD EXECUTION DECISION
+      # ======================================================================
+
+      - name: Record execution decision
+        shell: bash
+        env:
+          MODE: ${{ steps.decision.outputs.mode }}
+          REASON: ${{ steps.decision.outputs.reason }}
+        run: |
+          set -Eeuo pipefail
+
+          now="$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
+
+          highest="$(
+            find "$TRACK_DIR" \
+              -maxdepth 1 \
+              -type f \
               -name '[0-9][0-9][0-9][0-9][0-9][0-9]_*.txt' \
               -printf '%f\n' |
-              sort -V
-          } >> "$TRACK_DIR/TRACKING_INDEX.txt"
+            sed -E 's/^([0-9]{6})_.*/\1/' |
+            sort -n |
+            tail -1
+          )"
 
-      # ------------------------------------------------------------
-      # Commit only ollamatracks.
+          highest="${highest:-0}"
+          next=$((10#$highest + 1))
+
+          printf -v seq "%06d" "$next"
+
+          event_name="execution_mode_${MODE}"
+
+          cat > "$TRACK_DIR/${seq}_${event_name}.txt" <<EOF
+          OLLAMA EXECUTION DECISION
+
+          Sequence:
+          $seq
+
+          Event type:
+          STATE
+
+          Event:
+          EXECUTION_MODE_SELECTED
+
+          Timestamp UTC:
+          $now
+
+          Workflow run:
+          $GITHUB_RUN_ID
+
+          Attempt:
+          $GITHUB_RUN_ATTEMPT
+
+          Mode:
+          $MODE
+
+          Reason:
+          $REASON
+
+          Result:
+          SUCCESS
+          EOF
+
+
+      # ======================================================================
+      # GITHUB-LEVEL RECONCILIATION
+      # ======================================================================
       #
-      # This is the most important isolation mechanism:
-      # the monitoring workflow never commits unrelated source changes.
-      # ------------------------------------------------------------
+      # This step uses GitHub's API to determine what is happening around the
+      # validation workflow.
+      #
+      # It is deliberately independent of the Python agent.
+      # ======================================================================
 
-      - name: Commit tracking records
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -- "$TRACK_DIR"
-
-          if git diff --cached --quiet; then
-            echo "No tracking changes detected."
-            exit 0
-          fi
-
-          git commit \
-            -m "chore(ollamatracks): update autonomous agent telemetry [skip ci]"
-
-          git push origin "HEAD:${GITHUB_REF_NAME}"
-
-      # ------------------------------------------------------------
-      # Upload durable artifact
-      # ------------------------------------------------------------
-
-      - name: Upload final tracking archive
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ollama-tracking-final-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ollamatracks/
-          if-no-files-found: warn
-          retention-days: 90
-
-
-  # ==============================================================
-  # JOB 5
-  # Scheduled reconciliation
-  #
-  # This prevents the monitoring system from assuming that one
-  # workflow run represents the entire lifetime of the agent.
-  # ==============================================================
-
-  scheduled-reconciliation:
-    name: Reconcile Ollama Agent & PR Status
-    if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Inspect active Ollama workflows
+      - name: Reconcile GitHub workflow and PR state
+        id: reconcile
         uses: actions/github-script@v7
         env:
           TRACK_DIR: ${{ env.TRACK_DIR }}
+          TARGET_WORKFLOW: ${{ env.TARGET_VALIDATION_WORKFLOW }}
+          MAX_RUNS: ${{ env.MAX_RUNS_TO_INSPECT }}
+          MAX_JOBS: ${{ env.MAX_JOBS_PER_RUN }}
         with:
-          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
+          github-token: ${{ github.token }}
+
           script: |
-            const fs = require('fs');
-            const path = require('path');
+            const fs = require("fs");
+            const path = require("path");
 
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            const workflowNames = [
-              'Ollama Autonomous Agent Trigger',
-              'Ollama PR Validation - 293+ Platform Features'
-            ];
+            const trackDir =
+              process.env.TRACK_DIR || "ollamatracks";
 
-            const result = [];
+            const targetWorkflow =
+              process.env.TARGET_WORKFLOW ||
+              "Ollama PR Validation - 293+ Platform Features";
 
-            result.push('OLLAMA AUTONOMOUS AGENT RECONCILIATION');
-            result.push('======================================');
-            result.push('');
-            result.push(`Timestamp UTC: ${new Date().toISOString()}`);
-            result.push(`Repository: ${owner}/${repo}`);
-            result.push('');
+            const maxRuns =
+              Number(process.env.MAX_RUNS || "25");
 
-            for (const workflowName of workflowNames) {
-              try {
-                const workflows =
-                  await github.rest.actions.listWorkflowRunsForRepo({
-                    owner,
-                    repo,
-                    status: 'in_progress',
-                    per_page: 100
-                  });
+            const maxJobs =
+              Number(process.env.MAX_JOBS || "100");
 
-                const matches =
-                  workflows.data.workflow_runs.filter(
-                    run => run.name === workflowName
-                  );
+            fs.mkdirSync(trackDir, { recursive: true });
 
-                result.push(`${workflowName}: ${matches.length} active run(s)`);
+            const now = new Date();
 
-                for (const run of matches) {
-                  result.push(
-                    `  - Run ${run.id} | ${run.status} | ${run.head_branch}`
-                  );
-                }
-              } catch (error) {
-                result.push(
-                  `${workflowName}: ERROR - ${error.message}`
-                );
-              }
+            function iso(date = now) {
+              return date.toISOString();
             }
 
-            result.push('');
-            result.push(
-              'This reconciliation pass is monitoring-only and does not'
-            );
-            result.push(
-              'start another agent instance automatically.'
-            );
+            function safe(value, fallback = "unknown") {
+              const result = String(value ?? fallback)
+                .replace(/[^a-zA-Z0-9._-]+/g, "-")
+                .replace(/-+/g, "-")
+                .replace(/^-|-$/g, "");
 
-            fs.mkdirSync(process.env.TRACK_DIR, {
-              recursive: true
-            });
+              return result || fallback;
+            }
 
-            fs.writeFileSync(
-              path.join(
-                process.env.TRACK_DIR,
-                'LATEST_RECONCILIATION.txt'
-              ),
-              result.join('\n') + '\n',
-              'utf8'
-            );
+            function nextSequence() {
 
-            await core.summary
-              .addHeading('Ollama Reconciliation')
-              .addRaw(result.join('\n'))
-              .write();
+              const files = fs.readdirSync(trackDir);
 
-      - name: Upload reconciliation record
-        uses: actions/upload-artifact@v4
-        with:
-          name: ollama-reconciliation-${{ github.run_id }}
-          path: ollamatracks/
-          if-no-files-found: warn
-          retention-days: 90
+              let highest = 0;
+
+              for (const file of files) {
+
+                const match =
+                  file.match(/^([0-9]{6})_.*\.txt$/);
+
+                if (!match) continue;
+
+                const value =
+                  Number(match[1]);
+
+                if (Number.isFinite(value)) {
+                  highest = Math.max(highest, value);
+                }
+              }
+
+              return String(highest + 1).padStart(6, "0");
+            }
+
+            function writeEvent(event) {
+
+              const seq = nextSequence();
+
+              const eventId =
+                `${event.type.toLowerCase()}-${context.runId}-${Date.now()}-${seq}`;
+
+              const filename =
+                `${seq}_${safe(event.name || event.type.toLowerCase())}.txt`;
+
+              const file =
+                path.join(trackDir, filename);
+
+              const lines = [
+                "OLLAMA TRACKING EVENT",
+                "=====================",
+                "",
+                `Sequence: ${seq}`,
+                `Event ID: ${eventId}`,
+                `Event type: ${event.type || "STATE"}`,
+                `Event: ${event.name || "UNKNOWN"}`,
+                "",
+                `Timestamp UTC: ${iso()}`,
+                "",
+                `Repository: ${owner}/${repo}`,
+                `Workflow: ${context.workflow}`,
+                `Workflow run ID: ${context.runId}`,
+                `Workflow attempt: ${context.runAttempt}`,
+                `Actor: ${context.actor}`,
+                "",
+                `Status: ${event.status || "OBSERVED"}`,
+                "",
+                "Details:",
+                JSON.stringify(event.details || {}, null, 2),
+                "",
+              ];
+
+              fs.writeFileSync(
+                file,
+                lines.join("\n"),
+                "utf8"
+              );
+
+              return {
+                sequence: seq,
+                eventId,
+                file
+              };
+            }
+
+            // --------------------------------------------------------------
+            // Locate target workflow.
+            // --------------------------------------------------------------
+
+            let workflow = null;
+
+            try {
+
+              const workflows =
+                await github.paginate(
+                  github.rest.actions.listRepoWorkflows,
+                  {
+                    owner,
+                    repo,
+                    per_page: 100
+                  }
+                );
+
+              workflow =
+                workflows.find(
+                  item =>
+                    item.name === targetWorkflow
+                ) || null;
+
+            } catch (error) {
+
+              writeEvent({
+                type: "ERROR",
+                name: "workflow_discovery_failed",
+                status: "ERROR",
+                details: {
+                  message:
