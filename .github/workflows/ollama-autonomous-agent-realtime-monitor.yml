@@ -1,0 +1,659 @@
+name: Ollama Autonomous Agent - Realtime Monitor
+
+# ============================================================================
+# OLLAMA AUTONOMOUS AGENT - REALTIME MONITORING SYSTEM
+# ============================================================================
+#
+# PURPOSE
+# -------
+# This workflow is an OBSERVATION-ONLY monitoring layer for the Ollama
+# Autonomous Agent and its validation workflows.
+#
+# It does NOT:
+#   - cancel workflows
+#   - rerun workflows
+#   - modify source code
+#   - push commits
+#   - create branches
+#   - merge PRs
+#   - modify workflow files
+#   - modify agent configuration
+#
+# It DOES:
+#   - monitor Ollama Autonomous Agent workflow runs
+#   - monitor Ollama PR validation workflow runs
+#   - inspect jobs and individual steps
+#   - calculate execution/progress information
+#   - identify failures
+#   - identify cancelled/skipped jobs
+#   - show currently running jobs
+#   - show completed jobs
+#   - show workflow duration
+#   - show run IDs and URLs
+#   - identify the active branch and commit
+#   - identify associated PRs
+#   - publish a detailed GitHub Actions Job Summary
+#   - create/update a monitoring report
+#   - optionally post a status comment to an associated PR
+#
+# MONITORING MODEL
+# ----------------
+# 1. workflow_run event
+#       -> reacts when monitored workflows complete
+#
+# 2. schedule
+#       -> polls GitHub every 5 minutes
+#
+# 3. workflow_dispatch
+#       -> allows manual monitoring
+#
+# 4. GitHub API
+#       -> reads workflow/job/step information
+#
+# 5. Job Summary
+#       -> provides a persistent visual monitoring dashboard
+#
+# IMPORTANT
+# ---------
+# GitHub Actions does not support a true second-by-second external monitor.
+# The combination of workflow_run events + 5-minute polling is used here
+# to provide the most reliable monitoring possible without interfering
+# with the autonomous agent.
+# ============================================================================
+
+on:
+
+  # --------------------------------------------------------------------------
+  # Event-driven monitoring
+  # --------------------------------------------------------------------------
+  workflow_run:
+    workflows:
+      - "Ollama Autonomous Agent"
+      - "Ollama PR Validation - 293+ Platform Features"
+    types:
+      - requested
+      - in_progress
+      - completed
+
+  # --------------------------------------------------------------------------
+  # Periodic fallback monitoring
+  # --------------------------------------------------------------------------
+  # GitHub Actions scheduled workflows run at a minimum practical interval
+  # of 5 minutes.
+  # --------------------------------------------------------------------------
+  schedule:
+    - cron: "*/5 * * * *"
+
+  # --------------------------------------------------------------------------
+  # Manual monitoring
+  # --------------------------------------------------------------------------
+  workflow_dispatch:
+    inputs:
+      lookback_runs:
+        description: "Number of recent workflow runs to inspect"
+        required: false
+        default: "10"
+        type: string
+
+      post_pr_comment:
+        description: "Post/update monitoring information on the associated PR"
+        required: false
+        default: false
+        type: boolean
+
+
+# ============================================================================
+# PERMISSIONS
+# ============================================================================
+#
+# READ permissions are used for monitoring.
+#
+# pull-requests: write is only required if PR status comments are enabled.
+#
+# The workflow never requests repository write access.
+# ============================================================================
+
+permissions:
+  actions: read
+  contents: read
+  pull-requests: write
+
+
+# ============================================================================
+# CONCURRENCY
+# ============================================================================
+#
+# Prevents several scheduled/event-driven monitoring runs from stacking up.
+#
+# cancel-in-progress is FALSE so the monitor itself is never aggressively
+# cancelled while producing a report.
+# ============================================================================
+
+concurrency:
+  group: ollama-autonomous-agent-monitor
+  cancel-in-progress: false
+
+
+# ============================================================================
+# GLOBAL ENVIRONMENT
+# ============================================================================
+
+env:
+
+  # --------------------------------------------------------------------------
+  # Number of runs inspected during each monitoring pass.
+  # --------------------------------------------------------------------------
+  DEFAULT_LOOKBACK_RUNS: "10"
+
+  # --------------------------------------------------------------------------
+  # Validation workflow filename.
+  #
+  # Change this ONLY if your actual filename is different.
+  # --------------------------------------------------------------------------
+  VALIDATION_WORKFLOW_FILE: "ollama-pr-validation.yml"
+
+  # --------------------------------------------------------------------------
+  # Expected validation workflow name.
+  # --------------------------------------------------------------------------
+  VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
+
+  # --------------------------------------------------------------------------
+  # Autonomous agent workflow name.
+  #
+  # If your actual workflow name differs, change this value.
+  # --------------------------------------------------------------------------
+  AGENT_WORKFLOW_NAME: "Ollama Autonomous Agent"
+
+  # --------------------------------------------------------------------------
+  # Monitoring comment marker.
+  # --------------------------------------------------------------------------
+  COMMENT_MARKER: "<!-- ollama-autonomous-agent-monitor -->"
+
+
+jobs:
+
+  # ==========================================================================
+  # MAIN MONITORING ENGINE
+  # ==========================================================================
+
+  monitor:
+
+    name: "🔎 Monitor Ollama Autonomous Agent"
+
+    runs-on: ubuntu-latest
+
+    timeout-minutes: 15
+
+    steps:
+
+      # ----------------------------------------------------------------------
+      # Initialize
+      # ----------------------------------------------------------------------
+
+      - name: Initialize monitoring
+        run: |
+          echo "============================================================"
+          echo " Ollama Autonomous Agent - Realtime Monitoring"
+          echo "============================================================"
+          echo ""
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Event: $GITHUB_EVENT_NAME"
+          echo "Run ID: $GITHUB_RUN_ID"
+          echo "Run URL: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo ""
+          echo "Monitoring mode: OBSERVATION ONLY"
+          echo "Agent modification: DISABLED"
+          echo "Workflow cancellation: DISABLED"
+          echo "Workflow reruns: DISABLED"
+          echo "Repository writes: DISABLED"
+          echo ""
+
+      # ----------------------------------------------------------------------
+      # Main GitHub API monitoring engine
+      # ----------------------------------------------------------------------
+
+      - name: Collect complete Ollama monitoring state
+        id: monitor
+        uses: actions/github-script@v7
+        env:
+          LOOKBACK_RUNS: ${{ github.event.inputs.lookback_runs || env.DEFAULT_LOOKBACK_RUNS }}
+        with:
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
+
+          script: |
+
+            const fs = require("fs");
+
+            // =================================================================
+            // CONFIGURATION
+            // =================================================================
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const agentWorkflowName =
+              process.env.AGENT_WORKFLOW_NAME ||
+              "Ollama Autonomous Agent";
+
+            const validationWorkflowName =
+              process.env.VALIDATION_WORKFLOW_NAME ||
+              "Ollama PR Validation - 293+ Platform Features";
+
+            const validationWorkflowFile =
+              process.env.VALIDATION_WORKFLOW_FILE ||
+              "ollama-pr-validation.yml";
+
+            const lookback =
+              Number(process.env.LOOKBACK_RUNS || 10);
+
+            // =================================================================
+            // HELPERS
+            // =================================================================
+
+            function safe(value, fallback = "unknown") {
+              return value === undefined ||
+                     value === null ||
+                     value === ""
+                ? fallback
+                : value;
+            }
+
+            function duration(start, end) {
+              if (!start) {
+                return "unknown";
+              }
+
+              const startTime = new Date(start).getTime();
+
+              const endTime = end
+                ? new Date(end).getTime()
+                : Date.now();
+
+              const seconds = Math.max(
+                0,
+                Math.floor((endTime - startTime) / 1000)
+              );
+
+              const hours = Math.floor(seconds / 3600);
+              const minutes = Math.floor((seconds % 3600) / 60);
+              const secs = seconds % 60;
+
+              if (hours > 0) {
+                return `${hours}h ${minutes}m ${secs}s`;
+              }
+
+              if (minutes > 0) {
+                return `${minutes}m ${secs}s`;
+              }
+
+              return `${secs}s`;
+            }
+
+            function statusIcon(status, conclusion) {
+
+              if (status === "in_progress") {
+                return "🔄";
+              }
+
+              if (status === "queued") {
+                return "⏳";
+              }
+
+              if (status === "requested") {
+                return "🟡";
+              }
+
+              if (conclusion === "success") {
+                return "✅";
+              }
+
+              if (conclusion === "failure") {
+                return "❌";
+              }
+
+              if (conclusion === "cancelled") {
+                return "🛑";
+              }
+
+              if (conclusion === "skipped") {
+                return "⏭️";
+              }
+
+              if (conclusion === "timed_out") {
+                return "⏰";
+              }
+
+              return "ℹ️";
+            }
+
+            function percent(completed, total) {
+
+              if (!total || total <= 0) {
+                return 0;
+              }
+
+              return Math.min(
+                100,
+                Math.round((completed / total) * 100)
+              );
+            }
+
+            function progressBar(value) {
+
+              const width = 20;
+
+              const filled = Math.round(
+                (value / 100) * width
+              );
+
+              return (
+                "█".repeat(filled) +
+                "░".repeat(width - filled)
+              );
+            }
+
+            function markdownSafe(value) {
+
+              return String(value)
+                .replace(/\|/g, "\\|")
+                .replace(/\r?\n/g, " ");
+            }
+
+            // =================================================================
+            // FIND WORKFLOWS
+            // =================================================================
+
+            console.log("Loading repository workflows...");
+
+            const workflowResponse =
+              await github.rest.actions.listRepoWorkflows({
+                owner,
+                repo,
+                per_page: 100
+              });
+
+            const workflows =
+              workflowResponse.data.workflows;
+
+            console.log(
+              `Found ${workflows.length} workflows.`
+            );
+
+            // =================================================================
+            // LOCATE AGENT WORKFLOW
+            // =================================================================
+
+            let agentWorkflow =
+              workflows.find(
+                workflow =>
+                  workflow.name === agentWorkflowName
+              );
+
+            // Fallback matching if the exact name was changed.
+            if (!agentWorkflow) {
+
+              agentWorkflow =
+                workflows.find(
+                  workflow =>
+                    workflow.name
+                      .toLowerCase()
+                      .includes("ollama") &&
+                    workflow.name
+                      .toLowerCase()
+                      .includes("autonomous") &&
+                    workflow.name
+                      .toLowerCase()
+                      .includes("agent")
+                );
+            }
+
+            // =================================================================
+            // LOCATE VALIDATION WORKFLOW
+            // =================================================================
+
+            let validationWorkflow =
+              workflows.find(
+                workflow =>
+                  workflow.name === validationWorkflowName
+              );
+
+            if (!validationWorkflow) {
+
+              validationWorkflow =
+                workflows.find(
+                  workflow =>
+                    workflow.path.endsWith(
+                      validationWorkflowFile
+                    )
+                );
+            }
+
+            console.log("");
+            console.log("Agent workflow:");
+            console.log(
+              agentWorkflow
+                ? `${agentWorkflow.name} (${agentWorkflow.id})`
+                : "NOT FOUND"
+            );
+
+            console.log("");
+            console.log("Validation workflow:");
+            console.log(
+              validationWorkflow
+                ? `${validationWorkflow.name} (${validationWorkflow.id})`
+                : "NOT FOUND"
+            );
+
+            // =================================================================
+            // COLLECT WORKFLOW RUNS
+            // =================================================================
+
+            async function getRuns(workflow) {
+
+              if (!workflow) {
+                return [];
+              }
+
+              const response =
+                await github.rest.actions.listWorkflowRuns({
+                  owner,
+                  repo,
+                  workflow_id: workflow.id,
+                  per_page: lookback,
+                  sort: "created",
+                  direction: "desc"
+                });
+
+              return response.data.workflow_runs || [];
+            }
+
+            const agentRuns =
+              await getRuns(agentWorkflow);
+
+            const validationRuns =
+              await getRuns(validationWorkflow);
+
+            // =================================================================
+            // EVENT-SPECIFIC RUN
+            // =================================================================
+
+            let eventRun = null;
+
+            if (
+              context.eventName === "workflow_run" &&
+              context.payload.workflow_run
+            ) {
+
+              eventRun =
+                context.payload.workflow_run;
+
+            }
+
+            // =================================================================
+            // ANALYZE A RUN
+            // =================================================================
+
+            async function analyzeRun(run) {
+
+              const result = {
+
+                run,
+
+                jobs: [],
+
+                counts: {
+                  total: 0,
+                  queued: 0,
+                  in_progress: 0,
+                  completed: 0,
+                  success: 0,
+                  failure: 0,
+                  cancelled: 0,
+                  skipped: 0,
+                  other: 0
+                }
+
+              };
+
+              try {
+
+                const response =
+                  await github.rest.actions.listJobsForWorkflowRun({
+                    owner,
+                    repo,
+                    run_id: run.id,
+                    per_page: 100
+                  });
+
+                result.jobs =
+                  response.data.jobs || [];
+
+                for (const job of result.jobs) {
+
+                  result.counts.total++;
+
+                  if (job.status === "queued") {
+                    result.counts.queued++;
+                  }
+
+                  else if (
+                    job.status === "in_progress"
+                  ) {
+                    result.counts.in_progress++;
+                  }
+
+                  else if (
+                    job.status === "completed"
+                  ) {
+
+                    result.counts.completed++;
+
+                    if (job.conclusion === "success") {
+                      result.counts.success++;
+                    }
+
+                    else if (
+                      job.conclusion === "failure"
+                    ) {
+                      result.counts.failure++;
+                    }
+
+                    else if (
+                      job.conclusion === "cancelled"
+                    ) {
+                      result.counts.cancelled++;
+                    }
+
+                    else if (
+                      job.conclusion === "skipped"
+                    ) {
+                      result.counts.skipped++;
+                    }
+
+                    else {
+                      result.counts.other++;
+                    }
+
+                  }
+
+                  else {
+                    result.counts.other++;
+                  }
+                }
+
+              } catch (error) {
+
+                console.log(
+                  `Unable to inspect jobs for run ${run.id}: ${error.message}`
+                );
+
+              }
+
+              return result;
+            }
+
+            // =================================================================
+            // ANALYZE ACTIVE RUNS
+            // =================================================================
+
+            const activeAgentRuns =
+              agentRuns.filter(
+                run =>
+                  run.status === "queued" ||
+                  run.status === "in_progress" ||
+                  run.status === "requested"
+              );
+
+            const activeValidationRuns =
+              validationRuns.filter(
+                run =>
+                  run.status === "queued" ||
+                  run.status === "in_progress" ||
+                  run.status === "requested"
+              );
+
+            const latestAgentRun =
+              agentRuns.length > 0
+                ? await analyzeRun(agentRuns[0])
+                : null;
+
+            const latestValidationRun =
+              validationRuns.length > 0
+                ? await analyzeRun(validationRuns[0])
+                : null;
+
+            const analyzedActiveAgentRuns = [];
+
+            for (const run of activeAgentRuns.slice(0, 5)) {
+              analyzedActiveAgentRuns.push(
+                await analyzeRun(run)
+              );
+            }
+
+            const analyzedActiveValidationRuns = [];
+
+            for (
+              const run of activeValidationRuns.slice(0, 5)
+            ) {
+
+              analyzedActiveValidationRuns.push(
+                await analyzeRun(run)
+              );
+
+            }
+
+            // =================================================================
+            // OVERALL STATE
+            // =================================================================
+
+            const agentActive =
+              activeAgentRuns.length > 0;
+
+            const validationActive =
+              activeValidationRuns.length > 0;
+
+            let overallState = "IDLE";
+            let overallIcon = "⚪";
+
+            if (agentActive) {
+              overallState =
