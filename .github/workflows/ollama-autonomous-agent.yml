@@ -782,90 +782,105 @@ jobs:
           Actor:
           $GITHUB_ACTOR
 
-          Trigger:
-          $GITHUB_EVENT_NAME
+          Trigger event:
+          ${GITHUB_EVENT_NAME}
 
-          Result:
+          Status:
           SUCCESS
           EOF
 
 
       # ======================================================================
-      # DETERMINE EXECUTION MODE
+      # EXECUTE AUTONOMOUS AGENT OR RECONCILE
       # ======================================================================
 
-      - name: Determine execution mode
-        id: decision
+      - name: Execute Autonomous Agent / Reconciliation
+        id: agent-execution
+        continue-on-error: true
         shell: bash
         env:
-          EVENT_NAME: "${{ github.event_name }}"
-          EVENT_ACTION: "${{ github.event.action }}"
-          VALIDATION_CONCLUSION: "${{ github.event.workflow_run.conclusion }}"
-          FORCE_AGENT_INPUT: "${{ inputs.force_agent }}"
+          FORCE_AGENT: ${{ inputs.force_agent }}
+          EVENT_NAME: ${{ github.event_name }}
+          MAX_ITERATIONS: ${{ inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}
+          MAX_PER_ITERATION: ${{ inputs.max_per_iteration || env.DEFAULT_MAX_PER_ITERATION }}
         run: |
           set -Eeuo pipefail
 
-          execute_agent="false"
-          reason=""
+          should_run=false
 
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            if [ "${FORCE_AGENT_INPUT:-true}" = "true" ]; then
-              execute_agent="true"
-              reason="Manual dispatch with force_agent=true"
+            if [ "${FORCE_AGENT:-true}" = "true" ]; then
+              should_run=true
             else
-              reason="Manual dispatch with force_agent=false"
+              echo "workflow_dispatch with force_agent=false. Running telemetry reconciliation only."
             fi
           elif [ "$EVENT_NAME" = "workflow_run" ]; then
-            if [ "${VALIDATION_CONCLUSION:-}" = "success" ]; then
-              execute_agent="true"
-              reason="Validation workflow succeeded"
+            conclusion="${{ github.event.workflow_run.conclusion }}"
+            if [ "$conclusion" = "success" ]; then
+              should_run=true
             else
-              reason="Validation workflow did not succeed (conclusion: ${VALIDATION_CONCLUSION:-unknown})"
+              echo "Validation workflow concluded with status '$conclusion'. Running reconciliation only."
             fi
-          elif [ "$EVENT_NAME" = "schedule" ]; then
-            reason="Scheduled reconciliation run (agent execution disabled)"
           else
-            reason="Unknown event trigger: $EVENT_NAME"
+            echo "Schedule event triggered. Running monitoring/reconciliation only."
           fi
 
-          echo "execute_agent=$execute_agent" >> "$GITHUB_OUTPUT"
-          echo "Decision reason: $reason"
+          if [ "$should_run" = "true" ]; then
+            echo "Executing autonomous agent..."
+            python "$AGENT_SCRIPT" \
+              --max-iterations "${MAX_ITERATIONS}" \
+              --max-per-iteration "${MAX_PER_ITERATION}"
+          else
+            echo "Skipping active agent execution. Performing state reconciliation."
+            python "$AGENT_SCRIPT" --reconcile-only || true
+          fi
 
 
       # ======================================================================
-      # EXECUTE AUTONOMOUS AGENT (IF AUTHORIZED)
+      # COMMIT AND PUSH TELEMETRY WITH REBASE & RETRY
       # ======================================================================
 
-      - name: Run Autonomous Agent
-        if: steps.decision.outputs.execute_agent == 'true'
-        shell: bash
-        env:
-          OLLAMA_HOST: "http://127.0.0.1:11434"
-          OLLAMA_MODEL: "qwen2.5-coder:3b"
-          QMOI_MAX_ITERATIONS: "${{ inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}"
-        run: |
-          set -Eeuo pipefail
-          python "$AGENT_SCRIPT" validate-all
-
-
-      # ======================================================================
-      # COMMIT & PUSH TRACKING STATE CHANGES
-      # ======================================================================
-
-      - name: Commit tracking state updates
-        if: always()
+      - name: Commit and Push Telemetry with Rebase & Retry
         shell: bash
         run: |
-          set -Eeuo pipefail
+          # Configure Git credentials for the runner
+          git config --global user.name "QMOI Autonomous Agent"
+          git config --global user.email "agent@qmoi.internal"
 
-          git config --global user.name "QMOI Autonomous Agent Bot"
-          git config --global user.email "action@github.com"
+          # Stage any tracking changes
+          git add "$TRACK_DIR/"
 
-          git add "$TRACK_DIR"
-
+          # Check if there are changes to commit
           if git diff --staged --quiet; then
-            echo "No tracking changes to commit."
-          else
-            git commit -m "chore(ollamatracks): update agent telemetry and tracking state [skip ci]"
-            git push origin "${{ github.event.repository.default_branch }}" || echo "Push skipped or failed gracefully."
+            echo "No changes to commit."
+            exit 0
           fi
+
+          # Commit changes locally
+          git commit -m "chore(ollamatracks): reconcile agent telemetry [skip ci]" || echo "No commit made"
+
+          # Push with automatic rebase and retry loop (up to 5 attempts)
+          for i in {1..5}; do
+            echo "Push attempt $i of 5..."
+            
+            # Fetch and rebase against remote default branch to incorporate concurrent updates
+            git fetch origin "${{ github.event.repository.default_branch }}"
+            if ! git pull --rebase origin "${{ github.event.repository.default_branch }}"; then
+              echo "Rebase conflict encountered. Aborting rebase attempt and retrying..."
+              git rebase --abort || true
+              sleep 3
+              continue
+            fi
+
+            # Attempt to push
+            if git push origin "HEAD:${{ github.event.repository.default_branch }}"; then
+              echo "Successfully pushed tracking commit to main."
+              exit 0
+            fi
+
+            echo "Push rejected due to concurrent update race condition. Retrying in 5s..."
+            sleep 5
+          done
+
+          echo "Error: Failed to push tracking commit after 5 retry attempts."
+          exit 1
