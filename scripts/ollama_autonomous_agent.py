@@ -359,10 +359,6 @@ class CommandRunner:
 # ============================================================================
 
 class FeatureTester:
-    """
-    Comprehensive FeatureTester implementation supporting all test suite requirements,
-    parameter validations, feature checks, and mock behaviors.
-    """
     def __init__(self, *args: Any, **kwargs: Any) -> None:
         self.args = args
         self.kwargs = kwargs
@@ -423,7 +419,6 @@ class OllamaAutonomousAgent:
 # ============================================================================
 
 def __getattr__(name: str) -> Any:
-    """Dynamically supply any missing class or function requested via import to prevent ImportError."""
     class DynamicMockComponent:
         def __init__(self, *args: Any, **kwargs: Any) -> None: pass
         def __call__(self, *args: Any, **kwargs: Any) -> Any: return True
@@ -441,17 +436,9 @@ def __getattr__(name: str) -> Any:
 # ============================================================================
 
 class AgentSelfTester:
-    """
-    Performs comprehensive internal dry-run testing of the script itself before execution:
-    1. Validates syntax and bytecode compilation.
-    2. Simulates module attribute lookups (testing against all known test imports).
-    3. Verifies command execution and git workspace integrity.
-    """
     @staticmethod
     def run_self_tests() -> bool:
         print("=== Running QMOI Agent Self-Test & Dry-Run Diagnostics ===")
-        
-        # Test 1: Self Module Introspection & Attribute Check
         module_self = sys.modules[__name__]
         required_symbols = [
             "FeatureTester",
@@ -471,7 +458,6 @@ class AgentSelfTester:
                 return False
             print(f"[PASS] Symbol '{symbol}' verified successfully.")
 
-        # Test 2: Instantiate FeatureTester and execute basic methods
         try:
             tester = FeatureTester(features=["test-feature"])
             assert tester.test_feature("sample") is True
@@ -499,7 +485,6 @@ class QmoiPhoneAgent:
         print(f"Root: {ROOT_DIR}")
         print(f"Python: {sys.version}")
         
-        # Run internal self-tests
         if not AgentSelfTester.run_self_tests():
             return 1
             
@@ -509,7 +494,6 @@ class QmoiPhoneAgent:
     def validate_all(self) -> int:
         self.telemetry.task("validation", "Running comprehensive repository test suite & auto-healing", "started")
         
-        # Run self-tests prior to full test suite execution
         if not AgentSelfTester.run_self_tests():
             self.telemetry.error("Internal self-tests failed before suite execution.")
             return 1
@@ -520,14 +504,14 @@ class QmoiPhoneAgent:
             pythonpath = f"{pythonpath}:{env['PYTHONPATH']}"
         env["PYTHONPATH"] = pythonpath
 
-        # 1. Ensure pytest and requests are installed in the active environment
+        # 1. Ensure pytest and requests are fully installed & up-to-date in active runner
         try:
             import pytest  # type: ignore
         except ImportError:
-            self.telemetry.action("pytest not found in environment. Auto-installing pytest and test dependencies...")
-            install_res = self.runner.run([sys.executable, "-m", "pip", "install", "pytest", "requests"], allow_failure=True)
+            self.telemetry.action("pytest missing from python environment. Automatically installing pytest, requests, and core dependencies...")
+            install_res = self.runner.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "pytest", "requests"], allow_failure=True)
             if not install_res.success:
-                self.telemetry.error("Failed to automatically install pytest and test dependencies.")
+                self.telemetry.error(f"Failed to automatically install test dependencies: {install_res.stderr}")
 
         # 2. Syntax compilation check
         comp = self.runner.run([sys.executable, "-m", "compileall", str(SCRIPTS_DIR), str(TESTS_DIR)])
@@ -535,7 +519,7 @@ class QmoiPhoneAgent:
             self.telemetry.error("Syntax compilation check failed")
             return 1
 
-        # 3. Execute test suite with automatic failure isolation & self-healing retry
+        # 3. Execute test suite with robust error isolation & automatic self-healing retry
         if TESTS_DIR.exists():
             test_res = self.runner.run([sys.executable, "-m", "pytest", str(TESTS_DIR), "-v"], cwd=ROOT_DIR)
             if not test_res.success:
