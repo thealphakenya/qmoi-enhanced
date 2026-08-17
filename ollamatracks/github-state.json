@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "generated_at": "2026-08-17T13:05:12.720Z",
+  "generated_at": "2026-08-17T13:07:18.545Z",
   "repository": {
     "owner": "thealphakenya",
     "name": "qmoi-enhanced",
@@ -9,8 +9,8 @@
   },
   "tracker": {
     "workflow": "Ollama Autonomous Agent - PR Realtime Tracker",
-    "run_id": 32032786686,
-    "event": "schedule",
+    "run_id": 32032798494,
+    "event": "workflow_run",
     "actor": "thealphakenya",
     "sha": "c6076d68339d7a3c390c0e93edaa43a195da1445",
     "ref": "refs/heads/main"
@@ -2450,5 +2450,5 @@
   ],
   "pull_requests": [],
   "manual_run_id": null,
-  "snapshot_hash": "2572cba37c91bffb564795bc091c9a28b59b2b87ab72895d6c401e2f9063cf1f"
+  "snapshot_hash": "e9dc1dc5c5b473e97ec8d208c8e02c74e0e6d39fb1deeafd612c0c0c406b9258"
 }
