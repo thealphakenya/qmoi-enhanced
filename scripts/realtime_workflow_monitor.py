@@ -12,6 +12,7 @@ import json
 import time
 import subprocess
 from datetime import datetime
+from pathlib import Path
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, asdict
 from enum import Enum
@@ -79,6 +80,8 @@ class WorkflowMonitor:
         self.repo = repo
         self.token = token or self._resolve_token()
         self.update_interval = update_interval
+        self.track_dir = Path(__file__).resolve().parent.parent / "ollamatracks"
+        self.track_dir.mkdir(parents=True, exist_ok=True)
         
         self.start_time = None
         self.end_time = None
@@ -89,6 +92,7 @@ class WorkflowMonitor:
         self.jobs_snapshot = []
         
         self._setup_gh_token()
+        self._write_tracker_snapshot("monitor_initialized", "Realtime workflow monitor initialized", "initializing", "startup", {})
     
     def _resolve_token(self) -> str:
         """Resolve GitHub token from environment with priority order"""
@@ -467,6 +471,13 @@ class WorkflowMonitor:
         self.current_status = data.get('status', 'unknown')
         self.current_conclusion = data.get('conclusion', '')
         self.jobs_snapshot = data.get('jobs', []) or []
+        self._write_tracker_snapshot(
+            'workflow_status_snapshot',
+            f"GitHub workflow run is {self.current_status}",
+            self.current_status,
+            'monitoring',
+            {'jobs': len(self.jobs_snapshot), 'conclusion': self.current_conclusion},
+        )
         
         # Clear screen and print update
         os.system('clear' if os.name != 'nt' else 'cls')
@@ -581,6 +592,61 @@ class WorkflowMonitor:
         # Save report to file
         self._save_report()
     
+    def _write_tracker_snapshot(self, event: str, description: str, status: str, phase: str, details: Dict[str, Any]) -> None:
+        """Persist the live workflow monitor state into the ollamatracks directory."""
+        timestamp = datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
+        self.track_dir.mkdir(parents=True, exist_ok=True)
+        (self.track_dir / 'CURRENT_STATUS.txt').write_text(
+            "OLLAMA AUTONOMOUS AGENT - CURRENT STATUS\n"
+            "=========================================\n\n"
+            f"Timestamp UTC: {timestamp}\n\n"
+            f"Repository: {self.repo}\n"
+            f"Run ID: {self.run_id}\n"
+            f"Current status: {status}\n"
+            f"Phase: {phase}\n"
+            f"Latest event: {event}\n"
+            f"Description: {description}\n\n"
+            "This is a mutable current-state projection.\n",
+            encoding='utf-8',
+        )
+        (self.track_dir / 'LATEST_ACTIVITY.txt').write_text(
+            "OLLAMA AUTONOMOUS AGENT - LATEST ACTIVITY\n"
+            "==========================================\n\n"
+            f"Timestamp UTC: {timestamp}\n"
+            f"Event: {event}\n"
+            f"Description: {description}\n"
+            f"Repository: {self.repo}\n"
+            f"Tracker run: {self.run_id}\n"
+            f"Status: {status}\n"
+            f"Phase: {phase}\n\n"
+            "This is a mutable current-state projection.\n",
+            encoding='utf-8',
+        )
+        (self.track_dir / 'STATE.txt').write_text(
+            f"status: {status}\nphase: {phase}\nevent: {event}\ndescription: {description}\nlast_updated_utc: {timestamp}\n",
+            encoding='utf-8',
+        )
+        (self.track_dir / 'PR_STATUS.txt').write_text(
+            f"PR Status: {status}\nPhase: {phase}\nEvent: {event}\nRun ID: {self.run_id}\nLast update UTC: {timestamp}\n",
+            encoding='utf-8',
+        )
+        (self.track_dir / 'LAST_RECONCILIATION.txt').write_text(
+            f"{timestamp} | {event} | {status} | {phase} | {description}\n",
+            encoding='utf-8',
+        )
+        telemetry_line = {
+            'timestamp_utc': timestamp,
+            'event': event,
+            'status': status,
+            'phase': phase,
+            'description': description,
+            'details': details,
+            'run_id': self.run_id,
+            'repository': self.repo,
+        }
+        with (self.track_dir / 'telemetry.jsonl').open('a', encoding='utf-8') as handle:
+            handle.write(json.dumps(telemetry_line, default=str, sort_keys=True) + '\n')
+
     def _save_report(self):
         """Save monitoring report to JSON file"""
         try:
@@ -599,6 +665,13 @@ class WorkflowMonitor:
             with open(report_file, 'w') as f:
                 json.dump(report, f, indent=2)
             
+            self._write_tracker_snapshot(
+                'monitor_report_saved',
+                'Monitoring report persisted to JSON and tracker state files',
+                self.current_status or 'completed',
+                'report',
+                {'report_file': report_file, 'jobs_total': len(self.jobs_snapshot)},
+            )
             print(f"{Colors.GREEN}✅ Report saved to: {report_file}{Colors.RESET}\n")
         except Exception as e:
             print(f"{Colors.YELLOW}⚠️ Failed to save report: {e}{Colors.RESET}\n")

@@ -1,0 +1,293 @@
+# ZX.txt - Alpha-Q-ai Repository Workflow Setup Instructions
+
+## Purpose
+This file contains simple yet effective instructions for setting up synchronization workflows in the Alpha-Q-ai repository. These workflows establish bidirectional connection with qmoi-enhanced repository and enable autonomous operations.
+
+## Key Principles
+- Simplicity first: Easy to understand and debug
+- No negative impact: Won't break existing Alpha-Q-ai functionality
+- Full autonomy: Both repos work independently while synced
+- Master-aware: QMOI can execute all instructions autonomously
+
+## Quick Start
+
+### 1. Branch Setup
+```bash
+git checkout -b autosync-backup origin/main
+git push -u origin autosync-backup
+```
+
+### 2. GitHub Actions Setup
+Create `.github/workflows/` directory if not exists and add the following workflows.
+
+### 3. Required Environment Variables
+Add to GitHub repo settings (Settings > Secrets and variables):
+- `MY_CUSTOM_TOKEN`: Personal GitHub token with repo access
+- `QMOI_WEBHOOK_URL`: Webhook for agent notifications (optional)
+
+## Workflow 1: Branch Sync (branch-sync-alpha.yml)
+
+Purpose: Keep main and autosync-backup branches synchronized
+
+```yaml
+name: Alpha-Q-ai Branch Sync
+on:
+  push:
+    branches: [main, autosync-backup]
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MY_CUSTOM_TOKEN }}
+          fetch-depth: 0
+
+      - name: Sync main to autosync-backup
+        run: |
+          git config user.name "QMOI Agent"
+          git config user.email "qmoi@thealphakenya.dev"
+          git fetch origin main autosync-backup
+          git checkout autosync-backup
+          git merge origin/main --no-edit || git merge --abort
+          git push origin autosync-backup || true
+
+      - name: Sync autosync-backup to main (if no conflicts)
+        run: |
+          git checkout main
+          git merge origin/autosync-backup --no-edit || true
+          git push origin main || true
+```
+
+## Workflow 2: qmoi-enhanced Sync (sync-qmoi-enhanced.yml)
+
+Purpose: Synchronize critical files with qmoi-enhanced repository
+
+```yaml
+name: Sync with qmoi-enhanced
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'API.md'
+      - 'ENDPOINTS.md'
+      - 'ROUTES.md'
+      - '.github/workflows/*.yml'
+  schedule:
+    - cron: '30 * * * *'  # Every hour at :30
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MY_CUSTOM_TOKEN }}
+          fetch-depth: 0
+
+      - name: Setup git config
+        run: |
+          git config user.name "QMOI Agent"
+          git config user.email "qmoi@thealphakenya.dev"
+
+      - name: Fetch qmoi-enhanced
+        run: |
+          git remote add qmoi-enhanced https://github.com/thealphakenya/qmoi-enhanced.git || true
+          git fetch qmoi-enhanced main
+
+      - name: Copy critical files to qmoi-enhanced
+        run: |
+          git checkout origin/main -- API.md ENDPOINTS.md ROUTES.md 2>/dev/null || true
+          
+      - name: Create sync PR to qmoi-enhanced
+        uses: peter-evans/create-pull-request@v4
+        with:
+          token: ${{ secrets.MY_CUSTOM_TOKEN }}
+          repository: thealphakenya/qmoi-enhanced
+          branch: sync/alpha-q-ai-${{ github.run_number }}
+          commit-message: '[sync] Update from Alpha-Q-ai'
+          title: '[SYNC] Alpha-Q-ai → qmoi-enhanced'
+          body: |
+            Automatic synchronization from Alpha-Q-ai repository.
+            
+            Files synced:
+            - API.md
+            - ENDPOINTS.md
+            - ROUTES.md
+          draft: false
+```
+
+## Workflow 3: Agent Trigger (agent-trigger-alpha.yml)
+
+Purpose: Trigger QMOI agent for autonomous validation and operations
+
+```yaml
+name: QMOI Agent Autonomous Trigger
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 */6 * * *'  # Every 6 hours
+  workflow_dispatch:
+
+jobs:
+  agent:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.MY_CUSTOM_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Fetch agent from qmoi-enhanced
+        run: |
+          curl -L https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/main/scripts/ollama_autonomous_agent.py \
+            -o /tmp/qmoi_agent.py
+
+      - name: Run QMOI Agent
+        env:
+          MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd /tmp
+          python3 qmoi_agent.py validate-all || true
+
+      - name: Commit agent results
+        run: |
+          git add . || true
+          git commit -m "[agent] Autonomous validation results [skip ci]" || true
+          git push || true
+```
+
+## Workflow 4: PR Auto-Merge (auto-merge-alpha.yml)
+
+Purpose: Automatically merge validated PRs
+
+```yaml
+name: Auto-Merge Validated PRs
+on:
+  pull_request:
+    branches: [main, autosync-backup]
+    types: [opened, synchronize, labeled]
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'auto-merge')
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Auto-merge PR
+        uses: pascalgn/automerge-action@v0.15.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+          MERGE_LABELS: auto-merge
+          MERGE_METHOD: squash
+          MERGE_DELETE_BRANCH: true
+```
+
+## Testing the Setup
+
+### 1. Verify Workflows Installed
+```bash
+gh workflow list
+```
+
+### 2. Test Branch Sync
+```bash
+git checkout main
+git commit --allow-empty -m "test: branch sync trigger"
+git push
+```
+
+### 3. Check Workflow Runs
+```bash
+gh run list
+```
+
+### 4. View Workflow Logs
+```bash
+gh run view <run-id> --log
+```
+
+## Troubleshooting
+
+### Workflow Not Running
+1. Verify token has repo:write permissions
+2. Check branch protection rules
+3. Ensure correct branch names in workflow
+4. Review GitHub Actions logs
+
+### Sync Conflicts
+1. Check SYNC_STATUS.txt in agent logs
+2. Review conflicting files
+3. Resolve manually if needed
+4. Re-trigger workflow
+
+### Token Issues
+1. Verify MY_CUSTOM_TOKEN is set in secrets
+2. Check token hasn't expired
+3. Ensure token has correct permissions
+4. Use `gh auth token` to generate new token if needed
+
+## Advanced: Custom Triggers
+
+### Trigger on Specific Files
+```yaml
+paths:
+  - 'src/**'
+  - 'API.md'
+  - '.github/workflows/**'
+```
+
+### Conditional Execution
+```yaml
+if: |
+  github.event_name == 'push' ||
+  github.event.pull_request.base.ref == 'main'
+```
+
+### Post-Merge Actions
+```yaml
+- name: Notify qmoi-enhanced
+  run: |
+    curl -X POST https://github.com/thealphakenya/qmoi-enhanced/dispatches \
+      -H "Authorization: Bearer ${{ secrets.MY_CUSTOM_TOKEN }}" \
+      -d '{"event_type":"alpha-q-ai-sync"}'
+```
+
+## Success Criteria
+
+When properly set up:
+- ✓ Branch sync completes without errors
+- ✓ Files sync to qmoi-enhanced within 1 hour
+- ✓ Agent runs and validates repository
+- ✓ PRs can be merged automatically
+- ✓ Logs are clear and auditable
+- ✓ No secrets exposed in logs
+
+## Notes
+
+- Keep workflows simple and focused
+- Always use MY_CUSTOM_TOKEN for inter-repo operations
+- Test workflows in a feature branch first
+- Monitor logs for errors and adjust as needed
+- Document any custom modifications
+- These workflows enable full autonomy while maintaining manual override capability
+
+---
+**Instructions Version**: 1.0
+**Last Updated**: 2026-08-17
+**Target**: Alpha-Q-ai Repository Setup
+**Status**: Ready for Implementation

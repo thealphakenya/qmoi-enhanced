@@ -101,13 +101,13 @@ pip install -r requirements.txt
 
 ```bash
 # Full validation suite (recommended before PR)
-python3 scripts/ollama_autonomous_agent_enhanced.py validate-all
+python3 scripts/ollama_autonomous_agent.py validate-all
 
 # Platform compilation validation only
-python3 scripts/ollama_autonomous_agent_enhanced.py validate-all-platforms
+python3 scripts/ollama_autonomous_agent.py validate-all-platforms
 
 # 293+ feature validation
-python3 scripts/ollama_autonomous_agent_enhanced.py validate-all-features
+python3 scripts/ollama_autonomous_agent.py validate-all-features
 ```
 
 ### Running Tests

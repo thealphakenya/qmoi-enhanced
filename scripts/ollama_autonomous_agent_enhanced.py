@@ -42,245 +42,6 @@ DIST_DIR = ROOT_DIR / "dist"
 TESTS_DIR = ROOT_DIR / "tests"
 APPS_DIR = ROOT_DIR / "apps"
 
-
-def resolve_github_token() -> Optional[str]:
-    """Resolve a GitHub token without hardcoding secrets."""
-    for key in ("MY_CUSTOM_TOKEN", "MY_CUTOM_TOKEN", "GITHUB_TOKEN", "GH_TOKEN"):
-        value = os.environ.get(key, "").strip()
-        if value:
-            return value
-
-    try:
-        result = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True, check=False)
-        if result.returncode == 0 and result.stdout.strip():
-            return result.stdout.strip()
-    except Exception:
-        pass
-
-    return None
-
-
-def mask_github_token(token: Optional[str]) -> Optional[str]:
-    """Mask a GitHub token for logs and reporting."""
-    if not token:
-        return None
-    token = token.strip()
-    if len(token) <= 8:
-        return "*" * len(token)
-    return f"{token[:4]}...{token[-4:]}"
-
-
-class BranchSyncManager:
-    """Tracks the main/autosync-backup branch contract and cross-repo sync policy."""
-
-    DEFAULT_BRANCH = "main"
-    BACKUP_BRANCH = "autosync-backup"
-    OWNER = "thealphakenya"
-    TARGET_REPOSITORIES = [
-        f"{OWNER}/qmoi-enhanced",
-        f"{OWNER}/Alpha-Q-ai",
-    ]
-
-    @classmethod
-    def required_branches(cls) -> List[str]:
-        return [cls.DEFAULT_BRANCH, cls.BACKUP_BRANCH]
-
-    @classmethod
-    def sync_targets(cls) -> List[str]:
-        return list(cls.TARGET_REPOSITORIES)
-
-    @classmethod
-    def build_sync_plan(cls) -> Dict[str, Any]:
-        return {
-            "owner": cls.OWNER,
-            "default_branch": cls.DEFAULT_BRANCH,
-            "backup_branch": cls.BACKUP_BRANCH,
-            "branches": cls.required_branches(),
-            "repositories": cls.sync_targets(),
-            "strategy": "merge validated main into autosync-backup and mirror the latest state to related repositories",
-            "monitoring": "GitHub Actions workflow dispatch + scheduled monitoring",
-            "token_policy": "MY_CUSTOM_TOKEN used for both repos when available; falls back to GitHub token",
-        }
-
-
-class AvatarIdentityValidator:
-    """Ensures the selected persona is QMOI in the live visual layer."""
-
-    def __init__(self, candidate_name: str = "qmoi"):
-        self.candidate_name = candidate_name.strip().lower()
-
-    def normalize_name(self, value: str) -> str:
-        return re.sub(r"[^a-z0-9]+", "", (value or "").lower())
-
-    def validate_identity(self, candidate_name: Optional[str] = None) -> bool:
-        name = self.normalize_name(candidate_name or self.candidate_name)
-        return name in {"qmoi", "qmoiavatar", "avatarqmoi", "qmoiavatarrealtime"}
-
-    def generate_identity_report(self, candidate_name: Optional[str] = None) -> Dict[str, Any]:
-        name = candidate_name or self.candidate_name
-        valid = self.validate_identity(name)
-        return {
-            "selected_avatar": name,
-            "is_qmoi": valid,
-            "required_identity": "qmoi",
-            "quality": "verified" if valid else "mismatch",
-            "real_time_monitoring": valid,
-        }
-
-
-class AvatarWindowMonitor:
-    """Monitors the realtime window, theme, and animation layer for the QMOI avatar."""
-
-    def __init__(self, avatar_name: str = "qmoi", window_title: str = "QMOI"):
-        self.avatar_name = avatar_name
-        self.window_title = window_title
-
-    def validate_window_state(self) -> Dict[str, Any]:
-        identity = AvatarIdentityValidator(self.avatar_name).generate_identity_report()
-        window = {
-            "title": self.window_title,
-            "anchor": "centered",
-            "visible": True,
-            "theme": "qmoi-live",
-            "animation_enabled": True,
-            "realtime_render": True,
-            "identity_matches_qmoi": identity["is_qmoi"],
-        }
-        window["quality"] = "excellent" if window["identity_matches_qmoi"] else "review"
-        return window
-
-    def generate_animation_snapshot(self) -> Dict[str, Any]:
-        window = self.validate_window_state()
-        return {
-            "avatar": self.avatar_name,
-            "status": "live" if window["identity_matches_qmoi"] else "error",
-            "fps_target": 60,
-            "animation_quality": "high",
-            "window": window,
-            "realtime_checks": [
-                "avatar_identity",
-                "window_render",
-                "system_theme",
-                "animation_loop",
-                "presence_validation",
-            ],
-        }
-
-
-class AvatarSelectionNavigator:
-    """Provides the avatar catalog, autoplay preview clips, and selection logic."""
-
-    AVAILABLE_AVATARS = [
-        "qmoi",
-        "aura",
-        "nova",
-        "luma",
-        "atlas",
-        "zen",
-        "echo",
-    ]
-
-    def __init__(self, selected_avatar: str = "qmoi"):
-        self.selected_avatar = selected_avatar
-
-    def get_catalog(self) -> List[Dict[str, Any]]:
-        catalog = []
-        for avatar in self.AVAILABLE_AVATARS:
-            preview_seconds = 5 if avatar == "qmoi" else 6
-            catalog.append({
-                "id": avatar,
-                "name": avatar,
-                "preview_seconds": preview_seconds,
-                "autoplay": True,
-                "loop": True,
-                "is_qmoi": AvatarIdentityValidator(avatar).validate_identity(),
-                "voice_profiles": self._voice_profiles_for_avatar(avatar),
-            })
-        return catalog
-
-    def _voice_profiles_for_avatar(self, avatar: str) -> List[str]:
-        base_profiles = ["calm", "friendly", "energetic", "professional", "narrator"]
-        if avatar == "qmoi":
-            return ["qmoi-default", "qmoi-guardian", "qmoi-oracle", *base_profiles]
-        return base_profiles
-
-    def choose_avatar(self, avatar_name: str) -> Dict[str, Any]:
-        identity = AvatarIdentityValidator(avatar_name).generate_identity_report()
-        preview = self.get_catalog()
-        selected = next((item for item in preview if item["id"] == avatar_name), preview[0])
-        return {
-            "selected_avatar": avatar_name,
-            "is_qmoi": identity["is_qmoi"],
-            "preview_seconds": max(5, selected["preview_seconds"]),
-            "autoplay": True,
-            "catalog": preview,
-            "voice_profiles": selected["voice_profiles"],
-            "window_state": AvatarWindowMonitor(avatar_name).validate_window_state(),
-        }
-
-
-class VoiceProfileSelector:
-    """Defines the voice and narration options available to QMOI."""
-
-    def __init__(self, avatar_name: str = "qmoi"):
-        self.avatar_name = avatar_name
-
-    def available_voice_profiles(self) -> List[str]:
-        options = [
-            "qmoi-default",
-            "qmoi-guardian",
-            "qmoi-oracle",
-            "qmoi-assistant",
-            "calm",
-            "friendly",
-            "energetic",
-            "professional",
-            "narrator",
-        ]
-        if self.avatar_name != "qmoi":
-            return [profile for profile in options if "qmoi-" not in profile]
-        return options
-
-    def select_voice(self, voice_name: str) -> Dict[str, Any]:
-        available = self.available_voice_profiles()
-        valid = voice_name in available
-        return {
-            "selected_voice": voice_name,
-            "is_available": valid,
-            "avatar": self.avatar_name,
-            "enhanced_voice_controls": [
-                "voice_preview",
-                "speed_control",
-                "pitch_control",
-                "emotion_mode",
-                "language_mode",
-            ],
-        }
-
-
-class QMOIAvatarWindowStyle:
-    """Defines the enhanced window style used to present QMOI as an avatar."""
-
-    def __init__(self, mode: str = "live"):
-        self.mode = mode
-
-    def build_style_spec(self) -> Dict[str, Any]:
-        return {
-            "window_title": "QMOI Avatar",
-            "theme": "qmoi-live",
-            "background": "glass-dark",
-            "panel_style": "floating-immersive",
-            "border_radius": 24,
-            "elevation": "soft-glow",
-            "show_avatar_name": True,
-            "show_voice_indicator": True,
-            "motion_mode": self.mode,
-            "animation_layers": ["idle", "blink", "speech", "ambient-glow"],
-            "autoplay_preview": True,
-            "preview_seconds_minimum": 5,
-        }
-
-
 # Supported platforms and apps
 PLATFORMS = ["windows", "macos", "linux", "ios", "android", "web"]
 QMOI_APPS = {
@@ -657,25 +418,13 @@ class PlatformValidator:
         self.checks = {}
         
     def validate_code_compiles(self, app_name: str) -> bool:
-        """Check if app source code compiles without errors.
-
-        In abstraction-only repos, platform app directories may not be checked out.
-        The project still treats the declared platform contract as valid proof of
-        repository readiness, so missing project folders are considered a valid
-        compile result for this validation layer.
-        """
-        app_dir = APPS_DIR / f"{app_name}-{self.platform}"
+        """Check if app source code compiles without errors."""
         logger.info(f"[COMPILE] Validating {app_name} for {self.platform}...")
-
-        if not app_dir.exists():
-            logger.info(f"[COMPILE] Skipping {app_name}-{self.platform}: project directory not present; treating as valid abstract validation contract")
-            return True
-
         try:
             if self.platform == "windows":
                 result = subprocess.run(
                     ["dotnet", "build", "--configuration", "Release"],
-                    cwd=app_dir,
+                    cwd=APPS_DIR / f"{app_name}-{self.platform}",
                     capture_output=True,
                     timeout=300
                 )
@@ -683,7 +432,7 @@ class PlatformValidator:
             elif self.platform in ["macos", "ios"]:
                 result = subprocess.run(
                     ["xcodebuild", "build", "-configuration", "Release"],
-                    cwd=app_dir,
+                    cwd=APPS_DIR / f"{app_name}-{self.platform}",
                     capture_output=True,
                     timeout=300
                 )
@@ -691,7 +440,7 @@ class PlatformValidator:
             elif self.platform == "linux":
                 result = subprocess.run(
                     ["npm", "run", "build:linux"],
-                    cwd=app_dir,
+                    cwd=APPS_DIR / f"{app_name}-{self.platform}",
                     capture_output=True,
                     timeout=300
                 )
@@ -699,7 +448,7 @@ class PlatformValidator:
             elif self.platform == "android":
                 result = subprocess.run(
                     ["./gradlew", "build", "-PbuildType=release"],
-                    cwd=app_dir,
+                    cwd=APPS_DIR / f"{app_name}-{self.platform}",
                     capture_output=True,
                     timeout=600
                 )
@@ -707,7 +456,7 @@ class PlatformValidator:
             elif self.platform == "web":
                 result = subprocess.run(
                     ["npm", "run", "build"],
-                    cwd=app_dir,
+                    cwd=APPS_DIR / f"{app_name}-{self.platform}",
                     capture_output=True,
                     timeout=300
                 )
@@ -728,14 +477,8 @@ class PlatformSpecificFeatureValidator:
         
     def validate_all_features(self) -> Dict[str, bool]:
         """Validate all platform-specific features for app."""
-        app_base = APPS_DIR / f"{self.app_name}-{self.platform}"
         logger.info(f"[FEATURES] Validating {len(PLATFORM_SPECIFIC_FEATURES[self.platform].get(self.app_name, []))} platform-specific features for {self.app_name} on {self.platform}...")
-
-        if not app_base.exists():
-            features = PLATFORM_SPECIFIC_FEATURES[self.platform].get(self.app_name, [])
-            logger.info(f"[FEATURES] {app_base} not present; treating abstract feature contract as valid for proof validation")
-            return {feature: True for feature in features}
-
+        
         features = PLATFORM_SPECIFIC_FEATURES[self.platform].get(self.app_name, [])
         results = {}
         

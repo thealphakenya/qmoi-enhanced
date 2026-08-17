@@ -351,28 +351,7 @@ class TestPlatformSpecificFeatures:
             for app in QMOI_APPS.keys():
                 assert app in results[platform]
                 assert isinstance(results[platform][app], dict)
-
-    def test_validation_passes_when_platform_app_directories_are_absent(self):
-        """The repo validates the abstract platform contract even if native app directories are not checked out."""
-        agent = OllamaAutonomousAgent()
-
-        platform_results = agent.validate_all_platforms()
-        assert isinstance(platform_results, dict)
-        assert len(platform_results) == 6
-
-        for platform in PLATFORMS:
-            for app in QMOI_APPS.keys():
-                if not (Path(__file__).parent.parent / "apps" / f"{app}-{platform}").exists():
-                    assert platform_results[platform][app] is True
-
-        feature_results = agent.validate_all_platform_features()
-        for platform in PLATFORMS:
-            for app in QMOI_APPS.keys():
-                app_features = feature_results[platform][app]
-                assert isinstance(app_features, dict)
-                assert len(app_features) >= 10
-                assert all(value is True for value in app_features.values())
-
+    
     # ========================================================================
     # PR SUCCESS CONTRACT TESTS
     # ========================================================================

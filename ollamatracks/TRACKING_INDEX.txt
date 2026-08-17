@@ -3,63 +3,13 @@ OLLAMA AUTONOMOUS AGENT TRACKING INDEX
 
 Tracking schema: 4.0
 
-PURPOSE
+Purpose
 -------
-Durable GitHub-level observability for the Ollama autonomous-agent
-ecosystem.
+Durable live observability for the Ollama autonomous agent.
 
-HISTORICAL RECORD FORMAT
-------------------------
-NNNNNN_event-name.txt
+Last event: agent_startup
+Last status: initializing
+Last phase: startup
+Last update: 2026-08-17T23:51:09Z
 
-NNNNNN is a monotonically increasing six-digit sequence.
-
-MUTABLE STATE
--------------
-CURRENT_STATUS.txt
-LATEST_ACTIVITY.txt
-STATE.txt
-PR_STATUS.txt
-LAST_RECONCILIATION.txt
-
-STRUCTURED TELEMETRY
---------------------
-telemetry.jsonl
-
-EVENT CATEGORIES
-----------------
-TRACKER
-WORKFLOW
-RUN
-JOB
-PR
-CHECK
-STATUS
-VALIDATION
-AGENT
-ITERATION
-TASK
-TOOL
-COMMAND
-TEST
-BUILD
-REPAIR
-CHECKPOINT
-HEARTBEAT
-WARNING
-ERROR
-SUMMARY
-
-SECURITY
---------
-This tracker observes workflow and repository metadata.
-
-It must never execute untrusted pull-request code.
-
-HISTORICAL IMMUTABILITY
------------------------
-Historical records must never intentionally be overwritten.
-
-CURRENT STATE
--------------
 Mutable state files represent the latest observed projection.
