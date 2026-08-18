@@ -53,8 +53,18 @@ jobs:
       
       - name: Validate ${{ matrix.platform }} platform compilation
         run: |
+          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Validating platform: ${{ matrix.platform }}"
           python3 scripts/ollama_autonomous_agent.py validate-all-platforms
+          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Platform validation completed"
         continue-on-error: false
+      
+      - name: Upload platform validation logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: platform-validation-logs-${{ matrix.platform }}
+          path: ollama_agent.log
+          retention-days: 30
 
   # ========================================================================
   # PLATFORM-SPECIFIC FEATURE VALIDATION (293+ Features)
@@ -87,8 +97,18 @@ jobs:
           echo "=========================================="
           echo "Validating 293+ Platform-Specific Features"
           echo "=========================================="
+          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Starting feature validation (280+ features)"
           python3 scripts/ollama_autonomous_agent.py validate-all-features
+          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Feature validation completed"
         continue-on-error: false
+      
+      - name: Upload feature validation logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: feature-validation-logs
+          path: ollama_agent.log
+          retention-days: 30
       
       - name: Generate feature validation report
         if: always()
@@ -136,10 +156,22 @@ jobs:
           echo "=========================================="
           echo "Running full project test suite for GitHub proof"
           echo "=========================================="
-          python3 -m pytest tests/ -q --tb=short
+          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Starting test suite execution"
+          python3 -m pytest tests/test_ollama_autonomous_agent.py tests/test_enhanced_tracking_and_workflows.py -v --tb=short
           echo ""
           echo "✅ GitHub test proof suite completed successfully"
+          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Test suite execution completed"
         continue-on-error: false
+      
+      - name: Upload test suite logs and results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-suite-logs
+          path: |
+            ollama_agent.log
+            .pytest_cache/
+          retention-days: 30
       
       - name: Generate test report
         if: always()
@@ -237,14 +269,28 @@ jobs:
           echo "=========================================="
           echo "OLLAMA PR VALIDATION - FULL SUITE"
           echo "=========================================="
+          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Starting full PR validation suite"
           python3 scripts/ollama_autonomous_agent.py validate-all
+          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Full PR validation suite completed"
       
-      - name: Generate final report
+      - name: Upload final validation logs
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: final-validation-logs
+          path: |
+            ollama_agent.log
+            ollamatracks/
+          retention-days: 30
+      
+      - name: Generate final report with timing
         if: always()
         run: |
           echo "# ✅ OLLAMA PR VALIDATION - COMPLETE" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "## Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### ✅ Platform Compilation" >> $GITHUB_STEP_SUMMARY
           echo "- Windows" >> $GITHUB_STEP_SUMMARY

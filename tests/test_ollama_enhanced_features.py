@@ -14,7 +14,7 @@ from typing import Dict, List
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
-from ollama_autonomous_agent_enhanced import (
+from ollama_autonomous_agent import (
     PlatformValidator,
     PlatformSpecificFeatureValidator,
     OllamaAutonomousAgent,
@@ -442,8 +442,9 @@ class TestPerformance:
         agent = OllamaAutonomousAgent()
         
         # Quick sanity check on initialization and structure
-        assert len(agent.validators) == 0  # Not yet initialized
-        assert len(agent.results) == 0
+        # Validators are now pre-initialized (6 platforms)
+        assert len(agent.validators) == 6  # Windows, macOS, Linux, iOS, Android, Web
+        assert len(agent.results) == 0  # Results populated after validation
 
 
 # ============================================================================
