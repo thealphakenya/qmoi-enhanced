@@ -78,7 +78,7 @@ name: Ollama Autonomous Agent Trigger & Live Tracker
 on:
 
   # --------------------------------------------------------------------------
-  # Validation lifecycle
+  # Validation lifecycle - AUTO-TRIGGER on PR validation success
   # --------------------------------------------------------------------------
 
   workflow_run:
@@ -86,62 +86,67 @@ on:
       - "Ollama PR Validation - 293+ Platform Features"
 
     types:
-      - requested
-      - in_progress
       - completed
 
-  # --------------------------------------------------------------------------
-  # Manual execution
-  # --------------------------------------------------------------------------
-
+  # Manual dispatch with auto-healing enabled
   workflow_dispatch:
-
     inputs:
+      mode:
+        description: 'Agent execution mode'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - validate
+          - sync
+          - monitor
+          - heal
+      
+      auto_heal:
+        description: 'Enable auto-healing of errors'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+      
+      auto_fix:
+        description: 'Enable automatic error fixes'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
 
-      reason:
-        description: "Reason for this autonomous-agent execution or monitoring run"
-        required: false
-        type: string
-        default: "Manual autonomous-agent execution"
+  # Scheduled health monitoring and reconciliation
+  schedule:
+    # Every 6 hours: health check and state reconciliation
+    - cron: '0 */6 * * *'
 
-      force_agent:
-        description: "Actually execute the autonomous agent"
-        required: false
-        type: boolean
-        default: true
+env:
+  QMOI_AUTO_HEAL: ${{ github.event.inputs.auto_heal || 'true' }}
+  QMOI_AUTO_FIX: ${{ github.event.inputs.auto_fix || 'true' }}
+  QMOI_AGENT_MODE: ${{ github.event.inputs.mode || 'full' }}
+  QMOI_RETRY_ATTEMPTS: '3'
+  QMOI_RETRY_DELAY: '10'
+  QMOI_TIMEOUT_SECONDS: '300'
+  REASON: "Manual autonomous-agent execution"
+  FORCE_AGENT: "true"
+  MAX_ITERATIONS: '200'
+  MAX_PER_ITERATION: '200'
 
-      force_snapshot:
-        description: "Create a tracking snapshot even if state did not change"
-        required: false
-        type: boolean
-        default: true
-
-      max_iterations:
-        description: "Maximum autonomous-agent iterations"
-        required: false
-        type: string
-        default: "200"
-
-      max_per_iteration:
-        description: "Maximum tasks/actions allowed per iteration"
-        required: false
-        type: string
-        default: "200"
-
-  # --------------------------------------------------------------------------
-  # Recovery/reconciliation
-  # --------------------------------------------------------------------------
-
+  # Scheduled health monitoring and reconciliation
   schedule:
     - cron: "*/5 * * * *"
-
 
 # ============================================================================
 # PERMISSIONS
 # ============================================================================
 
 permissions:
-
   contents: write
   actions: read
   pull-requests: read

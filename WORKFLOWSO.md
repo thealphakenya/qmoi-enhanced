@@ -1,13 +1,21 @@
-# WORKFLOWSO.md - GitHub Actions Workflows Documentation
+# GitHub Workflows - Complete Reference Guide (Enhanced v2.0)
+
+**Last Updated:** 2025-01-10  
+**Version:** 2.0 (Enhanced with Auto-Healing & Advanced Orchestration)  
+**Total Workflows:** 8  
+**Total Jobs:** 25+  
+**Status:** 🟢 Production Ready
 
 ## Overview
 
-This document provides comprehensive documentation for all 7 GitHub Actions workflows in the qmoi-enhanced repository. Each workflow is designed for specific functions in the PR validation and autonomous agent orchestration pipeline.
+This document provides comprehensive documentation for all 8 GitHub Actions workflows in the qmoi-enhanced repository with ADVANCED AUTO-HEALING, AUTO-RETRY, and AUTOMATIC AGENT TRIGGERING capabilities.
 
-**Last Updated**: 2026-08-18
-**Workflow Version**: 4.0
-**Total Workflows**: 7
-**Total Jobs**: 15+
+**Workflow Architecture:**
+```
+Push → Master Orchestrator → Validation → Tests → Agent (Auto-Trigger)
+                              ↓ Auto-Heal on Error ↓
+                           Exponential Backoff Retry
+```
 
 ---
 

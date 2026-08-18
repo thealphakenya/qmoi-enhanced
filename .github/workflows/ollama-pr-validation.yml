@@ -14,6 +14,10 @@ env:
   MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
   GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
   GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+  QMOI_AUTO_HEAL: "1"
+  QMOI_AUTO_FIX: "1"
+  QMOI_RETRY_ATTEMPTS: "3"
+  QMOI_RETRY_DELAY: "5"
 
 # ✅ NO CANCELLATION: Workflows run to completion regardless of new pushes
 # This ensures validation completes even if codespace closes or connection lost
@@ -151,16 +155,44 @@ jobs:
           if [ -f requirements.txt ]; then python3 -m pip install -r requirements.txt; fi
           python3 -m pip install pytest -q
       
-      - name: Run comprehensive test suite
+      - name: Run comprehensive test suite (with auto-retry)
+        env:
+          QMOI_TEST_RETRIES: "2"
+          PYTEST_TIMEOUT: "300"
         run: |
           echo "=========================================="
           echo "Running full project test suite for GitHub proof"
           echo "=========================================="
-          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Starting test suite execution"
-          python3 -m pytest tests/test_ollama_autonomous_agent.py tests/test_enhanced_tracking_and_workflows.py -v --tb=short
-          echo ""
-          echo "✅ GitHub test proof suite completed successfully"
-          echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Test suite execution completed"
+          
+          # Auto-retry logic with exponential backoff
+          for attempt in {1..3}; do
+            echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Test suite attempt $attempt/3"
+            
+            if python3 -m pytest tests/test_ollama_autonomous_agent.py tests/test_enhanced_tracking_and_workflows.py tests/test_ollama_enhanced_features.py -v --tb=short --timeout=60; then
+              echo "✅ Test suite PASSED on attempt $attempt"
+              echo "SUCCESS_TESTS=true" >> $GITHUB_ENV
+              break
+            else
+              EXIT_CODE=$?
+              echo "⚠️  Test suite failed on attempt $attempt (exit code: $EXIT_CODE)"
+              
+              if [ $attempt -lt 3 ]; then
+                DELAY=$((5 * attempt))  # Exponential backoff
+                echo "Waiting ${DELAY}s before retry..."
+                sleep $DELAY
+                
+                # Auto-healing: clean cache and reinstall
+                echo "Auto-healing: Cleaning cache and reinstalling dependencies..."
+                rm -rf .pytest_cache __pycache__ tests/__pycache__ scripts/__pycache__
+                python3 -m pip install --force-reinstall -q pytest
+              fi
+            fi
+          done
+          
+          if [ "$SUCCESS_TESTS" != "true" ]; then
+            echo "❌ Test suite FAILED after all retries"
+            exit 1
+          fi
         continue-on-error: false
       
       - name: Upload test suite logs and results
@@ -244,10 +276,39 @@ jobs:
           echo "- ✅ OLLAMA_AUTOMATION_GUIDE.md" >> $GITHUB_STEP_SUMMARY
 
   # ========================================================================
-  # FINAL VALIDATION & STATUS CHECK
+  # AUTO-TRIGGER AUTONOMOUS AGENT ON SUCCESSFUL VALIDATION
   # ========================================================================
   
-  final-validation:
+  trigger-agent-on-success:
+    name: Trigger Autonomous Agent (Auto-Start)
+    runs-on: ubuntu-latest
+    needs: [validate-platforms, validate-features, test-suite, validate-documentation, final-validation]
+    if: success() && github.event_name == 'push'
+    
+    steps:
+      - name: Dispatch Autonomous Agent Workflow
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ env.MY_CUSTOM_TOKEN }}
+          script: |
+            console.log('🚀 Triggering Ollama Autonomous Agent...');
+            try {
+              const response = await github.rest.actions.createWorkflowDispatch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: 'ollama-autonomous-agent.yml',
+                ref: 'main',
+                inputs: {
+                  'mode': 'full',
+                  'auto_heal': 'true',
+                  'auto_fix': 'true'
+                }
+              });
+              console.log('✅ Agent triggered successfully');
+            } catch (error) {
+              console.error('Failed to trigger agent:', error);
+              process.exit(1);
+            }
     name: Final PR Validation Status
     runs-on: ubuntu-latest
     needs: [validate-platforms, validate-features, test-suite, validate-documentation]

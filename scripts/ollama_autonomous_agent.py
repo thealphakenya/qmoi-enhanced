@@ -1749,12 +1749,39 @@ def main():
         print(json.dumps(results, indent=2, default=str))
         sys.exit(0)
     
+    elif command == "auto-heal":
+        logger.info("🔧 Running auto-healing procedures...")
+        try:
+            from scripts.advanced_agent_healer import AgentAutoHealer
+            healer = AgentAutoHealer(agent.root_dir)
+            results = healer.run_full_recovery_cycle()
+            print(json.dumps(results, indent=2, default=str))
+            healer.save_recovery_report()
+            sys.exit(0)
+        except Exception as e:
+            logger.error(f"❌ Auto-healing failed: {e}")
+            sys.exit(1)
+    
+    elif command == "project-stats":
+        logger.info("📊 Analyzing project structure...")
+        try:
+            from scripts.advanced_agent_healer import LargeProjectOptimizer
+            optimizer = LargeProjectOptimizer(agent.root_dir)
+            stats = optimizer.get_project_stats()
+            print(json.dumps(stats, indent=2, default=str))
+            sys.exit(0)
+        except Exception as e:
+            logger.error(f"❌ Analysis failed: {e}")
+            sys.exit(1)
+    
     else:
         print(f"Unknown command: {command}")
         print("Available commands:")
         print("  validate-all              - Full validation suite (default)")
         print("  validate-all-platforms    - Platform compilation validation")
         print("  validate-all-features     - Platform-specific features (280+)")
+        print("  auto-heal                 - Run auto-healing procedures")
+        print("  project-stats             - Analyze project structure")
         sys.exit(1)
 
 
