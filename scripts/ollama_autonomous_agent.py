@@ -1,52 +1,82 @@
 #!/usr/bin/env python3
 """
-QMOI / Ollama Autonomous Agent
-================================
-Production-oriented autonomous validation, diagnosis, recovery and telemetry
-engine for the QMOI repository.
+QMOI Ollama Autonomous Agent - Production Enhanced
+===================================================
+
+Comprehensive repository validation, diagnostics, resilience, telemetry,
+platform-feature inspection, workflow validation and GitHub-proof generation
+for the QMOI application suite.
+
+Supported applications
+----------------------
+* qmoiaiui     - Conversational AI interface
+* qcity        - File manager
+* qmoi-space   - Media player
+* qalpha       - IDE
+
+Supported platforms
+-------------------
+* windows
+* macos
+* linux
+* ios
+* android
+* web
 
 Design goals
 ------------
-* Validate the six supported platforms without pretending that a feature exists.
-* Validate the complete platform/app feature matrix (293+ catalog entries).
-* Keep GitHub Actions runs deterministic and non-destructive by default.
-* Provide durable telemetry, resumable checkpoints and JSON proof artifacts.
-* Integrate resilience/auto-healing when the optional project modules exist.
-* Never print or persist GitHub tokens in clear text.
-* Work from the repository root even when invoked from another directory.
+1. Never claim that an unimplemented feature is implemented.
+2. Fail gracefully where an optional platform/toolchain is unavailable.
+3. Produce deterministic machine-readable reports.
+4. Maintain resumable checkpoints.
+5. Maintain durable telemetry under ollamatracks/.
+6. Validate GitHub Actions workflow health.
+7. Detect deprecated artifact actions.
+8. Detect common YAML structural errors.
+9. Integrate with the repository resilience/auto-healing layer when present.
+10. Remain usable both from GitHub Actions and direct local execution.
 
-The agent intentionally separates "catalogued" from "implemented": a feature is
-PASS only when its evidence exists in the repository. Missing platform-specific
-source is reported as NOT_IMPLEMENTED rather than silently returning True.
+Environment
+-----------
+Optional:
+    MY_CUSTOM_TOKEN
+    MY_CUTOM_TOKEN
+    GITHUB_TOKEN
+    GH_TOKEN
+
+No token is ever written in plaintext to reports or telemetry.
 """
 
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
 import json
 import logging
 import os
 import re
+import shutil
 import subprocess
 import sys
-import time
+import traceback
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Sequence, Tuple
+from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple
 
 try:
-    import yaml  # type: ignore
-except Exception:  # pragma: no cover
+    import yaml
+except ImportError:  # pragma: no cover
     yaml = None
 
 try:
     from scripts.resilience_auto_healing import ResilienceCoordinator
-except ModuleNotFoundError:  # pragma: no cover - direct script execution
+except ModuleNotFoundError:  # pragma: no cover
     try:
         from resilience_auto_healing import ResilienceCoordinator
-    except ModuleNotFoundError:  # pragma: no cover
-        ResilienceCoordinator = None  # type: ignore
+    except ModuleNotFoundError:
+        ResilienceCoordinator = None
 
 
 # ============================================================================
@@ -59,25 +89,89 @@ BUILD_DIR = ROOT_DIR / "build"
 DIST_DIR = ROOT_DIR / "dist"
 TESTS_DIR = ROOT_DIR / "tests"
 APPS_DIR = ROOT_DIR / "apps"
-
 TRACKER_DIR_NAME = "ollamatracks"
-CHECKPOINT_NAME = "resumefromhere.txt"
-AGENT_VERSION = "5.0.0"
 
-PLATFORMS = [
+PLATFORMS = (
     "windows",
     "macos",
     "linux",
     "ios",
     "android",
     "web",
-]
+)
 
-QMOI_APPS = {
+QMOI_APPS: Dict[str, str] = {
     "qmoiaiui": "Conversational AI Interface",
-    "qmoi-space": "Media Player",
     "qcity": "File Manager",
+    "qmoi-space": "Media Player",
     "qalpha": "IDE",
+}
+
+WORKFLOW_DIR = ROOT_DIR / ".github" / "workflows"
+
+DEPRECATED_ACTIONS = {
+    "actions/upload-artifact@v3",
+    "actions/download-artifact@v3",
+    "actions/upload-artifact@v2",
+    "actions/download-artifact@v2",
+    "actions/upload-artifact@v1",
+    "actions/download-artifact@v1",
+}
+
+TEXT_EXTENSIONS = {
+    ".py",
+    ".pyi",
+    ".js",
+    ".jsx",
+    ".ts",
+    ".tsx",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".toml",
+    ".ini",
+    ".cfg",
+    ".md",
+    ".txt",
+    ".xml",
+    ".html",
+    ".css",
+    ".scss",
+    ".java",
+    ".kt",
+    ".swift",
+    ".m",
+    ".mm",
+    ".dart",
+    ".rs",
+    ".go",
+    ".cs",
+    ".cpp",
+    ".c",
+    ".h",
+    ".hpp",
+    ".sh",
+    ".ps1",
+}
+
+IGNORED_DIRS = {
+    ".git",
+    ".hg",
+    ".svn",
+    "__pycache__",
+    ".pytest_cache",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".tox",
+    "node_modules",
+    ".venv",
+    "venv",
+    "env",
+    "dist",
+    "build",
+    ".gradle",
+    ".idea",
+    ".vscode",
 }
 
 
@@ -85,106 +179,69 @@ QMOI_APPS = {
 # LOGGING
 # ============================================================================
 
-logger = logging.getLogger("qmoi.ollama_agent")
+def configure_logging(root_dir: Path) -> logging.Logger:
+    """Configure console and repository log output safely."""
 
+    logger_obj = logging.getLogger("qmoi.ollama.agent")
 
-def _configure_logging(root: Path) -> None:
-    """Configure console + file logging without duplicating handlers."""
+    if logger_obj.handlers:
+        return logger_obj
 
-    logger.setLevel(logging.INFO)
-
-    if logger.handlers:
-        return
+    logger_obj.setLevel(logging.INFO)
 
     formatter = logging.Formatter(
         "%(asctime)s [%(levelname)s] %(message)s"
     )
 
-    stream = logging.StreamHandler()
-    stream.setFormatter(formatter)
-    logger.addHandler(stream)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(formatter)
+    logger_obj.addHandler(stream_handler)
 
     try:
-        file_handler = logging.FileHandler(
-            root / "ollama_agent.log",
-            encoding="utf-8",
-        )
+        log_path = root_dir / "ollama_agent.log"
+        file_handler = logging.FileHandler(log_path, encoding="utf-8")
         file_handler.setFormatter(formatter)
-        logger.addHandler(file_handler)
+        logger_obj.addHandler(file_handler)
     except OSError:
-        # Read-only CI runners still need console telemetry.
         pass
 
+    return logger_obj
 
-_configure_logging(ROOT_DIR)
+
+logger = configure_logging(ROOT_DIR)
 
 
 # ============================================================================
-# GENERAL UTILITIES
+# BASIC UTILITIES
 # ============================================================================
 
 def utc_now() -> str:
-    """Return current UTC time in ISO-8601 format."""
-
-    return datetime.now(timezone.utc).isoformat().replace(
-        "+00:00",
-        "Z",
-    )
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
-def safe_json(value: Any) -> Any:
-    """Convert common Path/datetime/set objects into JSON-safe values."""
-
-    if isinstance(value, Path):
-        return str(value)
-
-    if isinstance(value, dict):
-        return {
-            str(k): safe_json(v)
-            for k, v in value.items()
-        }
-
-    if isinstance(value, (list, tuple, set)):
-        return [
-            safe_json(v)
-            for v in value
-        ]
-
-    return value
-
-
-def write_json(path: Path, payload: Any) -> None:
-    """Write deterministic pretty JSON."""
-
-    path.parent.mkdir(
-        parents=True,
-        exist_ok=True,
-    )
-
-    path.write_text(
-        json.dumps(
-            safe_json(payload),
-            indent=2,
-            sort_keys=True,
-        )
-        + "\n",
+def safe_json_write(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(payload, indent=2, sort_keys=True, default=str) + "\n",
         encoding="utf-8",
     )
+    temporary.replace(path)
+
+
+def sha256_file(path: Path) -> Optional[str]:
+    try:
+        digest = hashlib.sha256()
+        with path.open("rb") as handle:
+            for block in iter(lambda: handle.read(1024 * 1024), b""):
+                digest.update(block)
+        return digest.hexdigest()
+    except OSError:
+        return None
 
 
 def resolve_github_token() -> Optional[str]:
-    """
-    Resolve a GitHub token without hardcoding or creating a new secret.
-
-    Supported environment variables:
-      MY_CUSTOM_TOKEN
-      MY_CUTOM_TOKEN
-      GITHUB_TOKEN
-      GH_TOKEN
-
-    Falls back to:
-      gh auth token
-    """
+    """Resolve a GitHub token without hardcoding or logging secrets."""
 
     for key in (
         "MY_CUSTOM_TOKEN",
@@ -192,43 +249,30 @@ def resolve_github_token() -> Optional[str]:
         "GITHUB_TOKEN",
         "GH_TOKEN",
     ):
-        value = os.environ.get(
-            key,
-            "",
-        ).strip()
-
+        value = os.environ.get(key, "").strip()
         if value:
             return value
 
-    try:
-        result = subprocess.run(
-            ["gh", "auth", "token"],
-            cwd=ROOT_DIR,
-            capture_output=True,
-            text=True,
-            timeout=15,
-            check=False,
-        )
-
-        if (
-            result.returncode == 0
-            and result.stdout.strip()
-        ):
-            return result.stdout.strip()
-
-    except (
-        OSError,
-        subprocess.SubprocessError,
-    ):
-        pass
+    gh = shutil.which("gh")
+    if gh:
+        try:
+            result = subprocess.run(
+                [gh, "auth", "token"],
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=15,
+            )
+            if result.returncode == 0 and result.stdout.strip():
+                return result.stdout.strip()
+        except (OSError, subprocess.SubprocessError):
+            pass
 
     return None
 
 
-def mask_github_token(
-    token: Optional[str],
-) -> Optional[str]:
-    """Mask a GitHub token for logs."""
+def mask_github_token(token: Optional[str]) -> Optional[str]:
+    """Return a safe token representation for diagnostics."""
 
     if not token:
         return None
@@ -245,16 +289,10 @@ def run_command(
     command: Sequence[str],
     cwd: Optional[Path] = None,
     timeout: int = 120,
-    env: Optional[Dict[str, str]] = None,
 ) -> Dict[str, Any]:
-    """
-    Run a command safely and return structured output.
+    """Run a subprocess without raising on ordinary command failure."""
 
-    The command is never raised as an exception solely because it returns
-    a non-zero exit code.
-    """
-
-    started = time.monotonic()
+    started = datetime.now(timezone.utc)
 
     try:
         result = subprocess.run(
@@ -262,64 +300,55 @@ def run_command(
             cwd=str(cwd or ROOT_DIR),
             capture_output=True,
             text=True,
-            timeout=timeout,
-            env=env,
             check=False,
+            timeout=timeout,
         )
 
         return {
             "command": list(command),
             "returncode": result.returncode,
-            "stdout": result.stdout[-12000:],
-            "stderr": result.stderr[-12000:],
-            "duration_seconds": round(
-                time.monotonic() - started,
-                3,
-            ),
+            "stdout": result.stdout[-20000:],
+            "stderr": result.stderr[-20000:],
+            "duration_seconds": (
+                datetime.now(timezone.utc) - started
+            ).total_seconds(),
             "timed_out": False,
         }
 
     except subprocess.TimeoutExpired as exc:
         return {
             "command": list(command),
-            "returncode": 124,
-            "stdout": str(
-                exc.stdout or ""
-            )[-12000:],
-            "stderr": str(
-                exc.stderr or ""
-            )[-12000:],
-            "duration_seconds": round(
-                time.monotonic() - started,
-                3,
-            ),
+            "returncode": None,
+            "stdout": str(exc.stdout or "")[-20000:],
+            "stderr": str(exc.stderr or "")[-20000:],
+            "duration_seconds": (
+                datetime.now(timezone.utc) - started
+            ).total_seconds(),
             "timed_out": True,
         }
 
     except OSError as exc:
         return {
             "command": list(command),
-            "returncode": 127,
+            "returncode": None,
             "stdout": "",
             "stderr": str(exc),
-            "duration_seconds": round(
-                time.monotonic() - started,
-                3,
-            ),
+            "duration_seconds": (
+                datetime.now(timezone.utc) - started
+            ).total_seconds(),
             "timed_out": False,
         }
 
 
 # ============================================================================
-# BRANCH / REPOSITORY CONTRACTS
+# BRANCH / REPOSITORY POLICY
 # ============================================================================
 
 class BranchSyncManager:
-    """Tracks the main/autosync-backup branch contract."""
+    """Repository synchronization policy."""
 
     DEFAULT_BRANCH = "main"
     BACKUP_BRANCH = "autosync-backup"
-
     OWNER = "thealphakenya"
 
     TARGET_REPOSITORIES = [
@@ -336,14 +365,10 @@ class BranchSyncManager:
 
     @classmethod
     def sync_targets(cls) -> List[str]:
-        return list(
-            cls.TARGET_REPOSITORIES
-        )
+        return list(cls.TARGET_REPOSITORIES)
 
     @classmethod
-    def build_sync_plan(
-        cls,
-    ) -> Dict[str, Any]:
+    def build_sync_plan(cls) -> Dict[str, Any]:
         return {
             "owner": cls.OWNER,
             "default_branch": cls.DEFAULT_BRANCH,
@@ -351,42 +376,33 @@ class BranchSyncManager:
             "branches": cls.required_branches(),
             "repositories": cls.sync_targets(),
             "strategy": (
-                "validate main, preserve a backup branch, "
-                "then mirror validated state"
+                "validate main, preserve validated state, synchronize "
+                "backup and related repositories through controlled workflows"
             ),
             "monitoring": (
-                "GitHub Actions workflow dispatch + "
-                "scheduled monitoring"
+                "GitHub Actions workflow dispatch and scheduled monitoring"
             ),
             "token_policy": (
-                "MY_CUSTOM_TOKEN/MY_CUTOM_TOKEN, then "
-                "GITHUB_TOKEN/GH_TOKEN, then gh auth token"
+                "MY_CUSTOM_TOKEN first, then GitHub Actions/GH CLI token"
             ),
-            "destructive_operations_default": False,
         }
 
 
 class CrossRepoAutonomyManager:
-    """Coordinates safe cross-repository productionization contracts."""
+    """Coordinates cross-repository productionization metadata."""
 
-    def __init__(
-        self,
-        owner: str = "thealphakenya",
-    ) -> None:
+    def __init__(self, owner: str = BranchSyncManager.OWNER):
         self.owner = owner
-
         self.repos = [
             f"{owner}/qmoi-enhanced",
             f"{owner}/Alpha-Q-ai",
         ]
 
-    def build_autonomy_plan(
-        self,
-    ) -> Dict[str, Any]:
+    def build_autonomy_plan(self) -> Dict[str, Any]:
         return {
             "owner": self.owner,
             "alpha_q_ai_included": True,
-            "repos": [
+            "repositories": [
                 {
                     "repo": self.repos[0],
                     "role": "primary",
@@ -398,8 +414,6 @@ class CrossRepoAutonomyManager:
                     "sync": True,
                 },
             ],
-            "safe_mode": True,
-            "push_requires_explicit_flag": True,
         }
 
     def productionize_repo(
@@ -408,56 +422,50 @@ class CrossRepoAutonomyManager:
         repo_path: Path,
     ) -> Dict[str, Any]:
         """
-        Create a non-destructive production marker.
+        Preserve compatibility with the previous API.
 
-        This method does not push Git commits or modify remote repositories.
+        Does not fabricate source code. Only creates a status marker when
+        explicitly requested by a caller.
         """
 
         repo_dir = Path(repo_path)
-
-        repo_dir.mkdir(
-            parents=True,
-            exist_ok=True,
-        )
+        repo_dir.mkdir(parents=True, exist_ok=True)
 
         marker = repo_dir / ".qmoi-production-status.json"
 
         payload = {
             "repo": repo_name,
-            "production_ready": True,
+            "production_ready": False,
+            "reason": (
+                "Production readiness must be established by actual "
+                "validation rather than by a placeholder."
+            ),
             "updated_at": utc_now(),
         }
 
-        write_json(
-            marker,
-            payload,
-        )
+        safe_json_write(marker, payload)
 
         return {
             "repo": repo_name,
             "path": str(repo_dir),
-            "production_ready": True,
+            "production_ready": False,
             "updated": True,
+            "marker": str(marker),
         }
 
 
 # ============================================================================
-# AVATAR / PRESENTATION COMPATIBILITY
+# AVATAR / VOICE
 # ============================================================================
 
 class AvatarIdentityValidator:
-    """Ensures the selected persona is QMOI."""
+    """Validates QMOI avatar identity."""
 
-    def __init__(
-        self,
-        candidate_name: str = "qmoi",
-    ) -> None:
+    def __init__(self, candidate_name: str = "qmoi"):
         self.candidate_name = candidate_name.strip().lower()
 
     @staticmethod
-    def normalize_name(
-        value: str,
-    ) -> str:
+    def normalize_name(value: str) -> str:
         return re.sub(
             r"[^a-z0-9]+",
             "",
@@ -490,53 +498,46 @@ class AvatarIdentityValidator:
             "selected_avatar": name,
             "is_qmoi": valid,
             "required_identity": "qmoi",
-            "quality": (
-                "verified"
-                if valid
-                else "mismatch"
-            ),
+            "quality": "verified" if valid else "mismatch",
             "real_time_monitoring": valid,
         }
 
 
 class AvatarWindowMonitor:
-    """Monitors the QMOI avatar window contract."""
+    """Describes expected QMOI realtime window state."""
 
     def __init__(
         self,
         avatar_name: str = "qmoi",
         window_title: str = "QMOI",
-    ) -> None:
+    ):
         self.avatar_name = avatar_name
         self.window_title = window_title
 
-    def validate_window_state(
-        self,
-    ) -> Dict[str, Any]:
+    def validate_window_state(self) -> Dict[str, Any]:
         identity = AvatarIdentityValidator(
             self.avatar_name
         ).generate_identity_report()
 
-        return {
+        state = {
             "title": self.window_title,
             "anchor": "centered",
             "visible": True,
             "theme": "qmoi-live",
             "animation_enabled": True,
             "realtime_render": True,
-            "identity_matches_qmoi": identity[
-                "is_qmoi"
-            ],
-            "quality": (
-                "excellent"
-                if identity["is_qmoi"]
-                else "review"
-            ),
+            "identity_matches_qmoi": identity["is_qmoi"],
         }
 
-    def generate_animation_snapshot(
-        self,
-    ) -> Dict[str, Any]:
+        state["quality"] = (
+            "excellent"
+            if state["identity_matches_qmoi"]
+            else "review"
+        )
+
+        return state
+
+    def generate_animation_snapshot(self) -> Dict[str, Any]:
         window = self.validate_window_state()
 
         return {
@@ -560,7 +561,7 @@ class AvatarWindowMonitor:
 
 
 class AvatarSelectionNavigator:
-    """Provides avatar catalog and selection compatibility."""
+    """Avatar catalog and selection logic."""
 
     AVAILABLE_AVATARS = [
         "qmoi",
@@ -572,10 +573,7 @@ class AvatarSelectionNavigator:
         "echo",
     ]
 
-    def __init__(
-        self,
-        selected_avatar: str = "qmoi",
-    ) -> None:
+    def __init__(self, selected_avatar: str = "qmoi"):
         self.selected_avatar = selected_avatar
 
     def _voice_profiles_for_avatar(
@@ -600,37 +598,37 @@ class AvatarSelectionNavigator:
 
         return base
 
-    def get_catalog(
-        self,
-    ) -> List[Dict[str, Any]]:
-        return [
-            {
-                "id": avatar,
-                "name": avatar,
-                "preview_seconds": (
-                    5
-                    if avatar == "qmoi"
-                    else 6
-                ),
-                "autoplay": True,
-                "loop": True,
-                "is_qmoi": AvatarIdentityValidator(
-                    avatar
-                ).validate_identity(),
-                "voice_profiles": (
-                    self._voice_profiles_for_avatar(
+    def get_catalog(self) -> List[Dict[str, Any]]:
+        catalog: List[Dict[str, Any]] = []
+
+        for avatar in self.AVAILABLE_AVATARS:
+            catalog.append(
+                {
+                    "id": avatar,
+                    "name": avatar,
+                    "preview_seconds": 5 if avatar == "qmoi" else 6,
+                    "autoplay": True,
+                    "loop": True,
+                    "is_qmoi": AvatarIdentityValidator(
                         avatar
-                    )
-                ),
-            }
-            for avatar in self.AVAILABLE_AVATARS
-        ]
+                    ).validate_identity(),
+                    "voice_profiles": self._voice_profiles_for_avatar(
+                        avatar
+                    ),
+                }
+            )
+
+        return catalog
 
     def choose_avatar(
         self,
         avatar_name: str,
     ) -> Dict[str, Any]:
         catalog = self.get_catalog()
+
+        identity = AvatarIdentityValidator(
+            avatar_name
+        ).generate_identity_report()
 
         selected = next(
             (
@@ -643,18 +641,14 @@ class AvatarSelectionNavigator:
 
         return {
             "selected_avatar": avatar_name,
-            "is_qmoi": AvatarIdentityValidator(
-                avatar_name
-            ).validate_identity(),
+            "is_qmoi": identity["is_qmoi"],
             "preview_seconds": max(
                 5,
                 selected["preview_seconds"],
             ),
             "autoplay": True,
             "catalog": catalog,
-            "voice_profiles": selected[
-                "voice_profiles"
-            ],
+            "voice_profiles": selected["voice_profiles"],
             "window_state": AvatarWindowMonitor(
                 avatar_name
             ).validate_window_state(),
@@ -662,17 +656,12 @@ class AvatarSelectionNavigator:
 
 
 class VoiceProfileSelector:
-    """Voice selection compatibility layer."""
+    """QMOI voice profile selector."""
 
-    def __init__(
-        self,
-        avatar_name: str = "qmoi",
-    ) -> None:
+    def __init__(self, avatar_name: str = "qmoi"):
         self.avatar_name = avatar_name
 
-    def available_voice_profiles(
-        self,
-    ) -> List[str]:
+    def available_voice_profiles(self) -> List[str]:
         profiles = [
             "qmoi-default",
             "qmoi-guardian",
@@ -685,25 +674,24 @@ class VoiceProfileSelector:
             "narrator",
         ]
 
-        if self.avatar_name == "qmoi":
-            return profiles
+        if self.avatar_name != "qmoi":
+            return [
+                profile
+                for profile in profiles
+                if not profile.startswith("qmoi-")
+            ]
 
-        return [
-            profile
-            for profile in profiles
-            if not profile.startswith("qmoi-")
-        ]
+        return profiles
 
     def select_voice(
         self,
         voice_name: str,
     ) -> Dict[str, Any]:
+        available = self.available_voice_profiles()
+
         return {
             "selected_voice": voice_name,
-            "is_available": (
-                voice_name
-                in self.available_voice_profiles()
-            ),
+            "is_available": voice_name in available,
             "avatar": self.avatar_name,
             "enhanced_voice_controls": [
                 "voice_preview",
@@ -716,17 +704,12 @@ class VoiceProfileSelector:
 
 
 class QMOIAvatarWindowStyle:
-    """Defines the QMOI avatar presentation style."""
+    """Expected QMOI avatar window styling."""
 
-    def __init__(
-        self,
-        mode: str = "live",
-    ) -> None:
+    def __init__(self, mode: str = "live"):
         self.mode = mode
 
-    def build_style_spec(
-        self,
-    ) -> Dict[str, Any]:
+    def build_style_spec(self) -> Dict[str, Any]:
         return {
             "window_title": "QMOI Avatar",
             "theme": "qmoi-live",
@@ -752,7 +735,7 @@ class QMOIAvatarWindowStyle:
 # FEATURE CATALOG
 # ============================================================================
 
-BASE_FEATURES: Dict[str, List[str]] = {
+COMMON_APP_FEATURES: Dict[str, List[str]] = {
     "qmoiaiui": [
         "conversation_creation",
         "message_history",
@@ -764,11 +747,6 @@ BASE_FEATURES: Dict[str, List[str]] = {
         "memory_persistence",
         "accessibility_features",
         "platform_specific_styling",
-        "streaming_responses",
-        "offline_queue",
-        "prompt_templates",
-        "attachments",
-        "search_history",
     ],
     "qcity": [
         "folder_tree_navigation",
@@ -782,10 +760,6 @@ BASE_FEATURES: Dict[str, List[str]] = {
         "voice_commands",
         "gesture_controls",
         "file_preview",
-        "trash_restore",
-        "archive_management",
-        "file_sharing",
-        "metadata_editor",
     ],
     "qmoi-space": [
         "playback_controls",
@@ -800,9 +774,6 @@ BASE_FEATURES: Dict[str, List[str]] = {
         "gesture_control",
         "keyboard_shortcuts",
         "eye_tracking",
-        "resume_playback",
-        "media_casting",
-        "equalizer",
     ],
     "qalpha": [
         "code_editing",
@@ -815,267 +786,1018 @@ BASE_FEATURES: Dict[str, List[str]] = {
         "theme_support",
         "keyboard_shortcuts",
         "extensions",
-        "linting",
-        "formatting",
-        "search_replace",
-        "workspace_profiles",
-        "task_runner",
     ],
 }
 
 
-PLATFORM_FEATURE_PREFIXES: Dict[str, List[str]] = {
-    "windows": [
-        "notifications_api",
-        "media_keys",
-        "taskbar_integration",
-        "biometric_auth",
-        "fluent_design",
-        "clipboard_history",
-        "virtual_desktop",
-        "shell_integration",
-        "ntfs_metadata",
-        "file_preview",
-        "windows_search",
-        "wasapi_audio",
-        "direct3d_video",
-        "winget_update",
-        "context_menu",
-    ],
-    "macos": [
-        "notification_center",
-        "spotlight",
-        "handoff",
-        "icloud",
-        "touch_id",
-        "menu_bar",
-        "dock_integration",
-        "avfoundation",
-        "metal_rendering",
-        "sandbox_entitlements",
-        "quick_look",
-        "file_provider",
-        "universal_links",
-        "shortcuts",
-        "accessibility_api",
-    ],
-    "linux": [
-        "dbus",
-        "desktop_entry",
-        "appstream",
-        "freedesktop_notifications",
-        "pipewire_audio",
-        "wayland",
-        "x11",
-        "portal_api",
-        "polkit",
-        "xdg_open",
-        "thumbnailer",
-        "mime_associations",
-        "system_tray",
-        "appimage",
-        "flatpak",
-    ],
-    "ios": [
-        "file_provider",
-        "handoff",
-        "siri_intents",
-        "face_id",
-        "touch_id",
-        "share_sheet",
-        "swift_ui",
-        "metal",
-        "background_tasks",
-        "push_notifications",
-        "universal_links",
-        "widgets",
-        "app_clips",
-        "icloud_drive",
-        "keychain",
-    ],
-    "android": [
-        "content_provider",
-        "documents_provider",
-        "material_you",
-        "biometric_prompt",
-        "work_manager",
-        "foreground_service",
-        "notification_channels",
-        "share_intent",
-        "deep_links",
-        "storage_access_framework",
-        "media_session",
-        "jetpack_compose",
-        "room_database",
-        "play_integrity",
-        "widgets",
-    ],
-    "web": [
-        "service_worker",
-        "indexeddb",
-        "web_worker",
-        "web_push",
-        "web_share",
-        "file_system_access",
-        "media_session",
-        "picture_in_picture",
-        "webassembly",
-        "webauthn",
-        "passkeys",
-        "responsive_ui",
-        "offline_cache",
-        "browser_notifications",
-        "accessibility",
-    ],
+PLATFORM_SPECIFIC_FEATURES: Dict[str, Dict[str, List[str]]] = {
+    "windows": {
+        "qmoiaiui": [
+            "windows_notifications_api",
+            "media_keys_integration",
+            "taskbar_integration",
+            "windows_hello_biometric",
+            "fluent_design_styling",
+            "cortana_integration",
+            "clipboard_history",
+            "virtual_desktop_support",
+            "registry_persistence",
+            "game_bar_integration",
+            "winget_auto_update",
+            "file_explorer_context_menu",
+        ],
+        "qcity": [
+            "windows_shell_integration",
+            "ntfs_attributes",
+            "alternate_data_streams",
+            "file_metadata_windows",
+            "quick_access",
+            "file_preview_pane",
+            "compressed_folder_support",
+            "unc_paths",
+            "onedrive_integration",
+            "windows_search",
+            "file_ownership_permissions",
+            "thumbnail_cache",
+        ],
+        "qmoi-space": [
+            "media_keys",
+            "taskbar_buttons",
+            "windows_codecs",
+            "wasapi_audio",
+            "direct3d_video",
+            "media_foundation",
+            "directshow_filters",
+            "hdr_video",
+            "spatial_audio",
+            "windows_volume_mixer",
+        ],
+        "qalpha": [
+            "windows_terminal",
+            "powershell_integration",
+            "windows_debugger",
+            "msvc_toolchain",
+            "winget_extensions",
+            "windows_path_integration",
+            "windows_file_watcher",
+            "windows_process_control",
+            "windows_registry_tools",
+            "windows_task_scheduler",
+        ],
+    },
+    "macos": {
+        "qmoiaiui": [
+            "notification_center",
+            "spotlight",
+            "handoff",
+            "icloud_sync",
+            "siri_integration",
+            "touch_bar_support",
+            "menu_bar_integration",
+            "keychain_integration",
+            "avfoundation_voice",
+            "accessibility_api",
+        ],
+        "qcity": [
+            "finder_integration",
+            "icloud_drive",
+            "quick_look",
+            "file_tags",
+            "spotlight_metadata",
+            "sandbox_file_access",
+            "nsfilecoordinator",
+            "fileprovider",
+            "macos_alias_support",
+            "macos_permissions",
+        ],
+        "qmoi-space": [
+            "avfoundation",
+            "videotoolbox",
+            "core_audio",
+            "airplay",
+            "picture_in_picture",
+            "media_remote",
+            "spatial_audio",
+            "metal_video",
+            "hdr_video",
+            "macos_media_controls",
+        ],
+        "qalpha": [
+            "xcode_integration",
+            "swift_toolchain",
+            "clang_toolchain",
+            "lldb_debugger",
+            "terminal_integration",
+            "homebrew_integration",
+            "codesign_support",
+            "keychain_tools",
+            "launchd_integration",
+            "macos_path_integration",
+        ],
+    },
+    "linux": {
+        "qmoiaiui": [
+            "dbus",
+            "desktop_entry",
+            "appstream",
+            "freedesktop_notifications",
+            "pipewire_audio",
+            "pulseaudio_audio",
+            "wayland_support",
+            "x11_support",
+            "portal_integration",
+            "linux_accessibility",
+        ],
+        "qcity": [
+            "gio_file_operations",
+            "gvfs",
+            "trash_spec",
+            "freedesktop_file_metadata",
+            "thumbnailer",
+            "udisks2",
+            "network_mounts",
+            "posix_permissions",
+            "acl_support",
+            "inotify_file_watching",
+        ],
+        "qmoi-space": [
+            "gstreamer",
+            "ffmpeg",
+            "pipewire",
+            "pulseaudio",
+            "v4l2",
+            "vaapi",
+            "vdpau",
+            "vulkan_video",
+            "mpris",
+            "linux_media_keys",
+        ],
+        "qalpha": [
+            "gcc_toolchain",
+            "clang_toolchain",
+            "gdb_debugger",
+            "lldb_debugger",
+            "bash_integration",
+            "zsh_integration",
+            "docker_integration",
+            "git_cli",
+            "ssh_integration",
+            "linux_process_control",
+        ],
+    },
+    "ios": {
+        "qmoiaiui": [
+            "fileprovider",
+            "handoff_ios",
+            "siri",
+            "speech_framework",
+            "core_ml",
+            "metal",
+            "ios_accessibility",
+            "background_tasks",
+            "push_notifications",
+            "keychain_services",
+        ],
+        "qcity": [
+            "documents_provider",
+            "fileprovider_extension",
+            "uidocumentpicker",
+            "icloud_documents",
+            "security_scoped_urls",
+            "quicklook",
+            "document_browser",
+            "ios_file_coordinator",
+            "share_extension",
+            "ios_document_import",
+        ],
+        "qmoi-space": [
+            "avplayer",
+            "avfoundation",
+            "airplay_ios",
+            "picture_in_picture_ios",
+            "media_player_framework",
+            "now_playing_info",
+            "remote_command_center",
+            "video_toolbox_ios",
+            "metal_video_ios",
+            "spatial_audio_ios",
+        ],
+        "qalpha": [
+            "swift_source_support",
+            "xcode_project_support",
+            "ios_signing",
+            "swift_package_manager",
+            "ios_debug_symbols",
+            "testflight_build_support",
+            "ios_simulator",
+            "ios_keychain",
+            "ios_app_groups",
+            "ios_entitlements",
+        ],
+    },
+    "android": {
+        "qmoiaiui": [
+            "content_provider",
+            "documents_provider",
+            "material_you",
+            "android_notifications",
+            "biometric_prompt",
+            "speech_recognition",
+            "android_tts",
+            "work_manager",
+            "foreground_service",
+            "android_accessibility",
+        ],
+        "qcity": [
+            "storage_access_framework",
+            "documentsui",
+            "mediastore",
+            "scoped_storage",
+            "content_resolver",
+            "documentfile",
+            "storage_permissions",
+            "android_file_picker",
+            "saf_tree_access",
+            "android_share_provider",
+        ],
+        "qmoi-space": [
+            "exoplayer",
+            "media3",
+            "media_session",
+            "picture_in_picture_android",
+            "cast_android",
+            "audio_focus",
+            "android_volume_controls",
+            "hardware_decoder",
+            "subtitle_renderer",
+            "android_media_notification",
+        ],
+        "qalpha": [
+            "android_studio_support",
+            "gradle_support",
+            "kotlin_support",
+            "adb_integration",
+            "logcat_integration",
+            "android_debugger",
+            "ndk_support",
+            "android_emulator",
+            "apk_build_support",
+            "aab_build_support",
+        ],
+    },
+    "web": {
+        "qmoiaiui": [
+            "service_worker",
+            "indexeddb",
+            "web_worker",
+            "web_notifications",
+            "web_speech_api",
+            "web_audio_api",
+            "web_gpu",
+            "web_accessibility",
+            "offline_mode",
+            "web_push",
+        ],
+        "qcity": [
+            "file_system_access_api",
+            "drag_drop_files",
+            "browser_downloads",
+            "indexeddb_storage",
+            "opfs",
+            "directory_picker",
+            "web_share",
+            "preview_api",
+            "clipboard_api",
+            "offline_file_cache",
+        ],
+        "qmoi-space": [
+            "media_source_extensions",
+            "web_audio",
+            "picture_in_picture_web",
+            "fullscreen_api",
+            "media_session_api",
+            "web_codecs",
+            "hls_playback",
+            "dash_playback",
+            "web_rtc",
+            "stream_capture",
+        ],
+        "qalpha": [
+            "monaco_editor",
+            "web_workers",
+            "language_server_protocol",
+            "web_terminal",
+            "wasm_toolchain",
+            "browser_git",
+            "indexeddb_workspace",
+            "file_system_access",
+            "websocket_terminal",
+            "web_debugger",
+        ],
+    },
 }
 
 
-# 6 platforms x 4 apps x 15 platform-specific entries = 360.
-PLATFORM_SPECIFIC_FEATURES: Dict[
-    str,
-    Dict[str, List[str]],
-] = {
-    platform: {
-        app: [
-            f"{platform}_{feature}"
-            for feature in PLATFORM_FEATURE_PREFIXES[
-                platform
-            ]
-        ]
-        for app in QMOI_APPS
-    }
-    for platform in PLATFORMS
-}
-
+# ============================================================================
+# FEATURE CATALOG COMPATIBILITY TYPES
+# ============================================================================
 
 class PlatformFeatureCatalog(dict):
-    """Dict-compatible catalog with aggregate feature length."""
+    """Dictionary with feature-count semantics."""
 
     def __len__(self) -> int:
-        return sum(
-            len(features)
-            for platform in self.values()
-            for features in platform.values()
-        )
+        total = 0
+
+        for platform_features in self.values():
+            if not isinstance(platform_features, dict):
+                continue
+
+            for features in platform_features.values():
+                if isinstance(features, (list, tuple, set, dict)):
+                    total += len(features)
+
+        return total
 
 
-PLATFORM_SPECIFIC_FEATURES = PlatformFeatureCatalog(
+class AppFeatureMatrix(dict):
+    """Dictionary representing app -> platform -> features."""
+
+    def __len__(self) -> int:
+        total = 0
+
+        for platform_features in self.values():
+            if isinstance(platform_features, dict):
+                for features in platform_features.values():
+                    if isinstance(features, dict):
+                        total += len(features)
+                    elif isinstance(features, (list, tuple, set)):
+                        total += len(features)
+
+        return total
+
+
+class PlatformFeatureBucket(dict):
+    """Platform-level feature bucket."""
+
+    def __len__(self) -> int:
+        total = 0
+
+        for features in self.values():
+            if isinstance(features, dict):
+                total += len(features)
+            elif isinstance(features, (list, tuple, set)):
+                total += len(features)
+
+        return total
+
+
+PLATFORM_FEATURE_CATALOG = PlatformFeatureCatalog(
     PLATFORM_SPECIFIC_FEATURES
 )
 
 
-class PlatformFeatureBucket(dict):
-    """Dict-compatible feature bucket."""
+# ============================================================================
+# FILE / SOURCE INSPECTION
+# ============================================================================
 
-    def __len__(self) -> int:
-        return sum(
-            len(value)
-            if hasattr(value, "__len__")
-            else 0
-            for value in self.values()
+class RepositoryInspector:
+    """Safe repository filesystem inspection."""
+
+    def __init__(self, root_dir: Path):
+        self.root_dir = Path(root_dir).resolve()
+
+    def iter_files(
+        self,
+        include_hidden: bool = False,
+    ) -> Iterable[Path]:
+        if not self.root_dir.exists():
+            return
+
+        for path in self.root_dir.rglob("*"):
+            if not path.is_file():
+                continue
+
+            relative_parts = path.relative_to(
+                self.root_dir
+            ).parts
+
+            if any(
+                part in IGNORED_DIRS
+                for part in relative_parts
+            ):
+                continue
+
+            if not include_hidden and any(
+                part.startswith(".")
+                for part in relative_parts
+                if part != ".github"
+            ):
+                continue
+
+            yield path
+
+    def find_matching_paths(
+        self,
+        patterns: Sequence[str],
+        platform: Optional[str] = None,
+        app: Optional[str] = None,
+    ) -> List[Path]:
+        candidates: List[Path] = []
+
+        for path in self.iter_files(include_hidden=True):
+            relative = str(
+                path.relative_to(self.root_dir)
+            ).replace("\\", "/").lower()
+
+            if app and app.lower() not in relative:
+                continue
+
+            if platform and platform.lower() not in relative:
+                continue
+
+            if any(
+                pattern.lower() in relative
+                for pattern in patterns
+            ):
+                candidates.append(path)
+
+        return candidates
+
+    def contains_text(
+        self,
+        path_patterns: Sequence[str],
+        search_terms: Sequence[str],
+        app: Optional[str] = None,
+        platform: Optional[str] = None,
+    ) -> bool:
+        candidates = self.find_matching_paths(
+            path_patterns,
+            platform=platform,
+            app=app,
         )
 
+        terms = [
+            term.lower()
+            for term in search_terms
+        ]
 
-class AppFeatureMatrix(dict):
-    """Dict-compatible application/platform feature matrix."""
+        for path in candidates:
+            try:
+                text = path.read_text(
+                    encoding="utf-8",
+                    errors="ignore",
+                ).lower()
 
-    def __len__(self) -> int:
-        return sum(
-            len(value)
-            if hasattr(value, "__len__")
-            else 0
-            for value in self.values()
+                if all(term in text for term in terms):
+                    return True
+
+            except OSError:
+                continue
+
+        return False
+
+    def contains_any_text(
+        self,
+        path_patterns: Sequence[str],
+        search_terms: Sequence[str],
+        app: Optional[str] = None,
+        platform: Optional[str] = None,
+    ) -> bool:
+        candidates = self.find_matching_paths(
+            path_patterns,
+            platform=platform,
+            app=app,
         )
 
+        terms = [
+            term.lower()
+            for term in search_terms
+        ]
 
-class FeatureTester:
-    """
-    Compatibility wrapper for legacy PR contract tests.
+        for path in candidates:
+            try:
+                text = path.read_text(
+                    encoding="utf-8",
+                    errors="ignore",
+                ).lower()
 
-    These are legacy semantic feature groups, not evidence checks.
-    Evidence-based validation is handled by PlatformSpecificFeatureValidator.
-    """
+                if any(term in text for term in terms):
+                    return True
 
-    APP_FEATURES = {
-        app: {
-            f"test_{app.replace('-', '_')}_features":
-                BASE_FEATURES[app]
+            except OSError:
+                continue
+
+        return False
+
+    def file_exists_by_patterns(
+        self,
+        patterns: Sequence[str],
+        app: Optional[str] = None,
+        platform: Optional[str] = None,
+    ) -> bool:
+        return bool(
+            self.find_matching_paths(
+                patterns,
+                app=app,
+                platform=platform,
+            )
+        )
+
+    def project_stats(self) -> Dict[str, Any]:
+        files = list(
+            self.iter_files(include_hidden=True)
+        )
+
+        total_size = 0
+        extension_counts: Dict[str, int] = {}
+
+        for path in files:
+            try:
+                total_size += path.stat().st_size
+            except OSError:
+                continue
+
+            extension = path.suffix.lower() or "<none>"
+            extension_counts[extension] = (
+                extension_counts.get(extension, 0) + 1
+            )
+
+        return {
+            "root": str(self.root_dir),
+            "file_count": len(files),
+            "total_size_bytes": total_size,
+            "extension_counts": dict(
+                sorted(
+                    extension_counts.items(),
+                    key=lambda item: (-item[1], item[0]),
+                )
+            ),
         }
-        for app in QMOI_APPS
-    }
+
+
+# ============================================================================
+# PLATFORM VALIDATION
+# ============================================================================
+
+@dataclass
+class ValidationResult:
+    feature: str
+    status: str
+    reason: str
+    evidence: List[str]
+
+    @property
+    def passed(self) -> bool:
+        return self.status == "implemented"
+
+
+class PlatformValidator:
+    """
+    Validates platform/app source presence and basic compilation.
+
+    This validator deliberately does not claim native compilation if the
+    required platform toolchain is unavailable.
+    """
+
+    def __init__(
+        self,
+        platform: str,
+        root_dir: Path = ROOT_DIR,
+    ):
+        self.platform = platform.lower()
+        self.root_dir = Path(root_dir)
+        self.inspector = RepositoryInspector(
+            self.root_dir
+        )
+
+    def _app_root_candidates(
+        self,
+        app: str,
+    ) -> List[Path]:
+        return [
+            APPS_DIR / f"{app}-{self.platform}",
+            APPS_DIR / self.platform / app,
+            APPS_DIR / app / self.platform,
+            self.root_dir / f"{app}-{self.platform}",
+            self.root_dir / app / self.platform,
+        ]
+
+    def find_app_root(
+        self,
+        app: str,
+    ) -> Optional[Path]:
+        for candidate in self._app_root_candidates(app):
+            if candidate.exists() and candidate.is_dir():
+                return candidate
+
+        return None
+
+    def validate_code_compiles(
+        self,
+        app: str,
+    ) -> bool:
+        """
+        Perform available static/compile checks.
+
+        Returns True only when:
+        * the app has a discoverable source root and
+        * all available Python source files compile, OR
+        * a reasonable non-Python project structure exists.
+
+        Platform-specific native compilation is reported separately when
+        the corresponding toolchain is actually available.
+        """
+
+        app_root = self.find_app_root(app)
+
+        if app_root is None:
+            logger.warning(
+                "No source root discovered for %s/%s",
+                self.platform,
+                app,
+            )
+            return False
+
+        python_files = list(
+            app_root.rglob("*.py")
+        )
+
+        for source in python_files:
+            try:
+                source_text = source.read_text(
+                    encoding="utf-8",
+                    errors="strict",
+                )
+                compile(
+                    source_text,
+                    str(source),
+                    "exec",
+                )
+            except (
+                OSError,
+                UnicodeError,
+                SyntaxError,
+            ):
+                return False
+
+        marker_files = {
+            "web": [
+                "package.json",
+                "vite.config.js",
+                "vite.config.ts",
+                "next.config.js",
+                "next.config.ts",
+                "index.html",
+            ],
+            "android": [
+                "build.gradle",
+                "build.gradle.kts",
+                "settings.gradle",
+                "settings.gradle.kts",
+                "AndroidManifest.xml",
+            ],
+            "ios": [
+                "Package.swift",
+                "project.pbxproj",
+                "Info.plist",
+            ],
+            "macos": [
+                "Package.swift",
+                "project.pbxproj",
+                "Info.plist",
+            ],
+            "windows": [
+                "package.json",
+                ".csproj",
+                ".sln",
+                "Cargo.toml",
+                "pyproject.toml",
+            ],
+            "linux": [
+                "package.json",
+                "pyproject.toml",
+                "Cargo.toml",
+                "Makefile",
+                "CMakeLists.txt",
+            ],
+        }
+
+        files = list(
+            app_root.rglob("*")
+        )
+
+        if not files:
+            return False
+
+        if python_files:
+            return True
+
+        expected = marker_files.get(
+            self.platform,
+            [],
+        )
+
+        if any(
+            any(
+                item.name.endswith(marker)
+                or item.name == marker
+                for marker in expected
+            )
+            for item in files
+            if item.is_file()
+        ):
+            return True
+
+        # Generic source fallback.
+        return any(
+            item.is_file()
+            and item.suffix.lower()
+            in {
+                ".js",
+                ".jsx",
+                ".ts",
+                ".tsx",
+                ".dart",
+                ".swift",
+                ".kt",
+                ".java",
+                ".rs",
+                ".go",
+                ".cs",
+                ".cpp",
+                ".c",
+            }
+            for item in files
+        )
+
+    def toolchain_status(self) -> Dict[str, Any]:
+        commands = {
+            "python": "python",
+            "node": "node",
+            "npm": "npm",
+            "java": "java",
+            "gradle": "gradle",
+            "swift": "swift",
+            "xcodebuild": "xcodebuild",
+            "dotnet": "dotnet",
+            "cargo": "cargo",
+            "rustc": "rustc",
+            "go": "go",
+            "clang": "clang",
+            "gcc": "gcc",
+        }
+
+        status: Dict[str, Any] = {}
+
+        for name, command in commands.items():
+            path = shutil.which(command)
+
+            status[name] = {
+                "available": path is not None,
+                "path": path,
+            }
+
+        return status
+
+
+# ============================================================================
+# FEATURE VALIDATION
+# ============================================================================
+
+FEATURE_EVIDENCE_RULES: Dict[str, Dict[str, Any]] = {
+    "windows_notifications_api": {
+        "paths": ["notification", "notifications", "windows"],
+        "terms": ["notification"],
+    },
+    "media_keys_integration": {
+        "paths": ["media_key", "media-keys", "media_keys", "mediakey"],
+        "terms": ["media"],
+    },
+    "taskbar_integration": {
+        "paths": ["taskbar", "windows"],
+        "terms": ["taskbar"],
+    },
+    "windows_hello_biometric": {
+        "paths": ["auth", "biometric", "windows"],
+        "terms": ["biometric"],
+    },
+    "fluent_design_styling": {
+        "paths": ["style", "theme", "windows"],
+        "terms": ["fluent"],
+    },
+    "cortana_integration": {
+        "paths": ["windows", "voice", "assistant"],
+        "terms": ["cortana"],
+    },
+    "notification_center": {
+        "paths": ["macos", "notification"],
+        "terms": ["notification"],
+    },
+    "spotlight": {
+        "paths": ["macos", "spotlight"],
+        "terms": ["spotlight"],
+    },
+    "handoff": {
+        "paths": ["handoff", "macos", "ios"],
+        "terms": ["handoff"],
+    },
+    "handoff_ios": {
+        "paths": ["handoff", "ios"],
+        "terms": ["nsuseractivity", "handoff"],
+    },
+    "icloud_sync": {
+        "paths": ["icloud", "macos"],
+        "terms": ["icloud"],
+    },
+    "icloud_drive": {
+        "paths": ["icloud", "files", "macos"],
+        "terms": ["icloud"],
+    },
+    "siri": {
+        "paths": ["siri", "ios"],
+        "terms": ["intent", "siri"],
+    },
+    "dbus": {
+        "paths": ["linux", "dbus"],
+        "terms": ["dbus"],
+    },
+    "desktop_entry": {
+        "paths": [".desktop", "linux"],
+        "terms": ["[desktop entry]", "desktop"],
+    },
+    "appstream": {
+        "paths": ["appdata", "appstream", "metainfo"],
+        "terms": ["appstream", "appdata", "metainfo"],
+    },
+    "freedesktop_notifications": {
+        "paths": ["linux", "notification"],
+        "terms": ["freedesktop"],
+    },
+    "fileprovider": {
+        "paths": ["fileprovider", "ios"],
+        "terms": ["fileprovider"],
+    },
+    "content_provider": {
+        "paths": ["android", "provider"],
+        "terms": ["contentprovider", "content provider"],
+    },
+    "documents_provider": {
+        "paths": ["documentsprovider", "documents_provider", "android"],
+        "terms": ["documentsprovider", "documents provider"],
+    },
+    "material_you": {
+        "paths": ["android", "theme", "ui"],
+        "terms": ["material3", "material you"],
+    },
+    "service_worker": {
+        "paths": ["service-worker", "service_worker"],
+        "terms": ["serviceworker", "service-worker"],
+    },
+    "indexeddb": {
+        "paths": ["indexeddb", "database", "storage"],
+        "terms": ["indexeddb"],
+    },
+    "web_worker": {
+        "paths": ["worker", "workers"],
+        "terms": ["worker"],
+    },
+}
+
+
+class PlatformSpecificFeatureValidator:
+    """
+    Real feature validator.
+
+    A feature is implemented only if source evidence is found. Unknown
+    features are never silently converted into True.
+    """
 
     def __init__(
         self,
         app_name: str,
-        platform: str = "web",
-    ) -> None:
-        self.app_name = app_name.strip().lower()
-        self.platform = platform.strip().lower()
+        platform: str,
+        root_dir: Path = ROOT_DIR,
+    ):
+        self.app_name = app_name.lower()
+        self.platform = platform.lower()
+        self.root_dir = Path(root_dir)
+        self.inspector = RepositoryInspector(
+            self.root_dir
+        )
 
-    def _result(self) -> Dict[str, bool]:
+    def _feature_rule(
+        self,
+        feature: str,
+    ) -> Dict[str, Any]:
+        if feature in FEATURE_EVIDENCE_RULES:
+            return FEATURE_EVIDENCE_RULES[feature]
+
+        normalized = feature.replace("_", " ")
+
+        aliases = [
+            feature,
+            normalized,
+            feature.replace("_", "-"),
+            feature.replace("_", ""),
+        ]
+
         return {
-            feature: True
-            for feature in BASE_FEATURES.get(
+            "paths": [
+                self.platform,
                 self.app_name,
-                [],
-            )
+                feature,
+            ],
+            "terms": aliases,
         }
 
-    def test_qmoiaiui_features(
+    def validate_feature(
         self,
-    ) -> Dict[str, bool]:
-        return (
-            self._result()
-            if self.app_name == "qmoiaiui"
-            else {
-                feature: True
-                for feature in BASE_FEATURES[
-                    "qmoiaiui"
-                ]
-            }
+        feature: str,
+    ) -> ValidationResult:
+        rule = self._feature_rule(feature)
+
+        candidates = self.inspector.find_matching_paths(
+            rule["paths"],
+            app=self.app_name,
+            platform=self.platform,
         )
 
-    def test_qcity_features(
-        self,
-    ) -> Dict[str, bool]:
-        return (
-            self._result()
-            if self.app_name == "qcity"
-            else {
-                feature: True
-                for feature in BASE_FEATURES[
-                    "qcity"
-                ]
-            }
+        evidence: List[str] = []
+
+        for path in candidates:
+            try:
+                text = path.read_text(
+                    encoding="utf-8",
+                    errors="ignore",
+                ).lower()
+
+                if any(
+                    term.lower() in text
+                    for term in rule["terms"]
+                ):
+                    evidence.append(
+                        str(
+                            path.relative_to(
+                                self.root_dir
+                            )
+                        )
+                    )
+
+            except OSError:
+                continue
+
+        if evidence:
+            return ValidationResult(
+                feature=feature,
+                status="implemented",
+                reason="Source evidence detected.",
+                evidence=evidence[:10],
+            )
+
+        app_root = PlatformValidator(
+            self.platform,
+            self.root_dir,
+        ).find_app_root(
+            self.app_name
         )
 
-    def test_qmoi_space_features(
-        self,
-    ) -> Dict[str, bool]:
-        return (
-            self._result()
-            if self.app_name == "qmoi-space"
-            else {
-                feature: True
-                for feature in BASE_FEATURES[
-                    "qmoi-space"
-                ]
-            }
+        if app_root is None:
+            return ValidationResult(
+                feature=feature,
+                status="unknown",
+                reason="Application source root was not discovered.",
+                evidence=[],
+            )
+
+        return ValidationResult(
+            feature=feature,
+            status="missing",
+            reason="No implementation evidence detected.",
+            evidence=[],
         )
 
-    def test_qalpha_features(
+    def validate_all_features(
         self,
-    ) -> Dict[str, bool]:
-        return (
-            self._result()
-            if self.app_name == "qalpha"
-            else {
-                feature: True
-                for feature in BASE_FEATURES[
-                    "qalpha"
-                ]
-            }
+    ) -> Dict[str, Dict[str, Any]]:
+        features = PLATFORM_SPECIFIC_FEATURES.get(
+            self.platform,
+            {},
+        ).get(
+            self.app_name,
+            [],
         )
+
+        results: Dict[str, Dict[str, Any]] = {}
+
+        for feature in features:
+            result = self.validate_feature(feature)
+
+            results[feature] = {
+                **asdict(result),
+                "passed": result.passed,
+            }
+
+        return results
 
 
 # ============================================================================
@@ -1083,7 +1805,7 @@ class FeatureTester:
 # ============================================================================
 
 class FileHandlerValidator:
-    """Maps core file extensions to responsible QMOI applications."""
+    """Validate file handler declarations."""
 
     FILE_TYPE_MAPPING = {
         ".pdf": "qcity",
@@ -1097,699 +1819,62 @@ class FileHandlerValidator:
         ".js": "qmoiaiui",
         ".ts": "qmoiaiui",
         ".md": "qmoiaiui",
-        ".json": "qmoiaiui",
-        ".csv": "qcity",
-        ".srt": "qmoi-space",
-        ".mkv": "qmoi-space",
     }
+
+    def __init__(
+        self,
+        root_dir: Path = ROOT_DIR,
+    ):
+        self.root_dir = Path(root_dir)
+        self.inspector = RepositoryInspector(
+            self.root_dir
+        )
 
     def validate_handler_registration(
         self,
         platform: str,
     ) -> Dict[str, Dict[str, Any]]:
-        return {
-            extension: {
+        results: Dict[str, Dict[str, Any]] = {}
+
+        for extension, handler in self.FILE_TYPE_MAPPING.items():
+            handler_exists = bool(
+                self.inspector.find_matching_paths(
+                    [
+                        extension,
+                        "file",
+                        "handler",
+                    ],
+                    app=handler,
+                    platform=platform,
+                )
+            )
+
+            results[extension] = {
                 "handler": handler,
                 "platform": platform,
-                "registered": True,
-                "supports_platform": (
-                    platform in PLATFORMS
-                ),
-            }
-            for extension, handler
-            in self.FILE_TYPE_MAPPING.items()
-        }
-
-
-# ============================================================================
-# PLATFORM VALIDATOR
-# ============================================================================
-
-class PlatformValidator:
-    """
-    Per-platform build/evidence validator.
-
-    It validates source/manifests that are actually present. For repositories
-    using shared source trees instead of six native trees, shared source evidence
-    is accepted rather than requiring invented platform directories.
-    """
-
-    SOURCE_EXTENSIONS = {
-        ".py",
-        ".js",
-        ".jsx",
-        ".ts",
-        ".tsx",
-        ".java",
-        ".kt",
-        ".swift",
-        ".m",
-        ".mm",
-        ".cs",
-        ".cpp",
-        ".h",
-    }
-
-    def __init__(
-        self,
-        platform: str,
-        root_dir: Path = ROOT_DIR,
-    ) -> None:
-        self.platform = platform.lower()
-        self.root_dir = Path(root_dir)
-
-    def _app_candidates(
-        self,
-        app: str,
-    ) -> List[Path]:
-        return [
-            APPS_DIR / f"{app}-{self.platform}",
-            APPS_DIR / app / self.platform,
-            APPS_DIR / app,
-            self.root_dir / app / self.platform,
-            self.root_dir / app,
-        ]
-
-    def _existing_app_roots(
-        self,
-        app: str,
-    ) -> List[Path]:
-        return [
-            path
-            for path in self._app_candidates(app)
-            if path.exists()
-            and path.is_dir()
-        ]
-
-    def _has_manifest(
-        self,
-        root: Path,
-    ) -> bool:
-        names = {
-            "package.json",
-            "pubspec.yaml",
-            "Cargo.toml",
-            "pyproject.toml",
-            "requirements.txt",
-            "build.gradle",
-            "build.gradle.kts",
-            "Podfile",
-            "CMakeLists.txt",
-            "index.html",
-        }
-
-        for pattern in names:
-            if (
-                "*" in pattern
-                and any(root.glob(pattern))
-            ):
-                return True
-
-            if (
-                "*" not in pattern
-                and (root / pattern).exists()
-            ):
-                return True
-
-        if any(root.glob("*.csproj")):
-            return True
-
-        return False
-
-    def _has_source(
-        self,
-        root: Path,
-    ) -> bool:
-        try:
-            for path in root.rglob("*"):
-                if (
-                    path.is_file()
-                    and path.suffix.lower()
-                    in self.SOURCE_EXTENSIONS
-                    and ".git" not in path.parts
-                    and "node_modules"
-                    not in path.parts
-                    and "__pycache__"
-                    not in path.parts
-                ):
-                    return True
-        except OSError:
-            return False
-
-        return False
-
-    def validate_code_compiles(
-        self,
-        app: str,
-    ) -> bool:
-        roots = self._existing_app_roots(app)
-
-        if not roots:
-            return self._has_repository_build_evidence(
-                app
-            )
-
-        for root in roots:
-            if (
-                not self._has_manifest(root)
-                and not self._has_source(root)
-            ):
-                return False
-
-            if not self._run_targeted_static_checks(
-                root
-            ):
-                return False
-
-        return True
-
-    def _has_repository_build_evidence(
-        self,
-        app: str,
-    ) -> bool:
-        candidates = [
-            self.root_dir / "package.json",
-            self.root_dir / "pyproject.toml",
-            self.root_dir / "requirements.txt",
-            self.root_dir / "Cargo.toml",
-            self.root_dir / "build.gradle",
-            self.root_dir / "index.html",
-            SCRIPTS_DIR
-            / "ollama_autonomous_agent.py",
-        ]
-
-        return any(
-            path.exists()
-            for path in candidates
-        )
-
-    def _run_targeted_static_checks(
-        self,
-        root: Path,
-    ) -> bool:
-        py_files = [
-            path
-            for path in root.rglob("*.py")
-            if (
-                ".git" not in path.parts
-                and "__pycache__"
-                not in path.parts
-            )
-        ]
-
-        for path in py_files[:500]:
-            result = run_command(
-                [
-                    sys.executable,
-                    "-m",
-                    "py_compile",
-                    str(path),
-                ],
-                cwd=self.root_dir,
-                timeout=30,
-            )
-
-            if result["returncode"] != 0:
-                logger.error(
-                    "Python compile failure: %s\n%s",
-                    path,
-                    result["stderr"],
-                )
-                return False
-
-        for path in root.rglob("package.json"):
-            try:
-                json.loads(
-                    path.read_text(
-                        encoding="utf-8"
-                    )
-                )
-            except Exception as exc:
-                logger.error(
-                    "Invalid package.json %s: %s",
-                    path,
-                    exc,
-                )
-                return False
-
-        return True
-
-
-# ============================================================================
-# PLATFORM-SPECIFIC FEATURE VALIDATOR
-# ============================================================================
-
-class PlatformSpecificFeatureValidator:
-    """Evidence-based validator for platform/app feature contracts."""
-
-    def __init__(
-        self,
-        app_name: str,
-        platform: str,
-        root_dir: Path = ROOT_DIR,
-    ) -> None:
-        self.app_name = app_name.lower()
-        self.platform = platform.lower()
-        self.root_dir = Path(root_dir)
-
-    def _roots(self) -> List[Path]:
-        return [
-            APPS_DIR
-            / f"{self.app_name}-{self.platform}",
-            APPS_DIR
-            / self.app_name
-            / self.platform,
-            APPS_DIR / self.app_name,
-            self.root_dir
-            / self.app_name
-            / self.platform,
-            self.root_dir / self.app_name,
-        ]
-
-    def _file_exists(
-        self,
-        path_pattern: str,
-    ) -> bool:
-        for base in self._roots():
-            if not base.exists():
-                continue
-
-            for file_path in base.rglob("*"):
-                if (
-                    file_path.is_file()
-                    and path_pattern.lower()
-                    in str(file_path).lower()
-                ):
-                    return True
-
-        return False
-
-    def _file_contains(
-        self,
-        path_pattern: str,
-        search_text: str,
-    ) -> bool:
-        for base in self._roots():
-            if not base.exists():
-                continue
-
-            for file_path in base.rglob("*"):
-                if (
-                    not file_path.is_file()
-                    or path_pattern.lower()
-                    not in str(file_path).lower()
-                ):
-                    continue
-
-                try:
-                    text = file_path.read_text(
-                        encoding="utf-8",
-                        errors="ignore",
-                    )
-
-                    if (
-                        search_text.lower()
-                        in text.lower()
-                    ):
-                        return True
-
-                except OSError:
-                    continue
-
-        return False
-
-    def _feature_evidence(
-        self,
-        feature: str,
-    ) -> bool:
-        """
-        Use explicit mappings first, then conservative keyword/file evidence.
-        """
-
-        normalized = feature.lower()
-
-        keyword = normalized.rsplit(
-            "_",
-            1,
-        )[-1]
-
-        aliases = {
-            "notifications_api": [
-                "notification",
-                "notifications",
-            ],
-            "notification_center": [
-                "notification",
-                "usernotification",
-            ],
-            "spotlight": [
-                "spotlight",
-                "mdquery",
-            ],
-            "handoff": [
-                "handoff",
-                "nsuseractivity",
-            ],
-            "icloud": [
-                "icloud",
-                "cloudkit",
-            ],
-            "dbus": [
-                "dbus",
-            ],
-            "desktop_entry": [
-                ".desktop",
-            ],
-            "appstream": [
-                "appdata.xml",
-                "appstream",
-            ],
-            "file_provider": [
-                "fileprovider",
-                "file provider",
-            ],
-            "handoff_ios": [
-                "nsuseractivity",
-            ],
-            "siri_intents": [
-                "inintent",
-                "appintents",
-            ],
-            "content_provider": [
-                "contentprovider",
-            ],
-            "documents_provider": [
-                "documentsprovider",
-            ],
-            "material_you": [
-                "material3",
-                "material design 3",
-            ],
-            "service_worker": [
-                "service-worker",
-                "serviceworker",
-            ],
-            "indexeddb": [
-                "indexeddb",
-            ],
-            "web_worker": [
-                "worker",
-            ],
-        }
-
-        terms = aliases.get(
-            keyword,
-            [
-                keyword.replace(
-                    "_",
-                    " ",
-                ),
-                keyword,
-            ],
-        )
-
-        for term in terms:
-            if (
-                self._file_contains(
-                    self.platform,
-                    term,
-                )
-                or self._file_contains(
-                    self.app_name,
-                    term,
-                )
-            ):
-                return True
-
-        return self._file_contains(
-            "",
-            normalized,
-        )
-
-    def validate_all_features(
-        self,
-    ) -> Dict[str, bool]:
-        names = (
-            PLATFORM_SPECIFIC_FEATURES
-            .get(self.platform, {})
-            .get(self.app_name, [])
-        )
-
-        return {
-            feature: self._feature_evidence(feature)
-            for feature in names
-        }
-
-    def validation_details(
-        self,
-    ) -> Dict[str, Dict[str, Any]]:
-        results = self.validate_all_features()
-
-        return {
-            feature: {
-                "passed": passed,
+                "registered": handler_exists,
+                "supports_platform": platform in PLATFORMS,
                 "status": (
                     "implemented"
-                    if passed
-                    else "not_implemented"
+                    if handler_exists
+                    else "missing"
                 ),
             }
-            for feature, passed in results.items()
-        }
 
-    # ------------------------------------------------------------------------
-    # Legacy feature-check methods retained for PR/unit contracts.
-    # ------------------------------------------------------------------------
-
-    def _check_windows_notifications(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "windows",
-            "notification",
-        )
-
-    def _check_media_keys(
-        self,
-    ) -> bool:
-        return (
-            self._file_contains(
-                "media_keys",
-                "media",
-            )
-            or self._file_contains(
-                "platform",
-                "media_keys",
-            )
-        )
-
-    def _check_taskbar(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "taskbar",
-            "taskbar",
-        )
-
-    def _check_biometric(
-        self,
-    ) -> bool:
-        return (
-            self._file_contains(
-                "auth",
-                "biometric",
-            )
-            or self._file_contains(
-                "biometric",
-                "biometric",
-            )
-        )
-
-    def _check_fluent_styling(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "styles",
-            "fluent",
-        )
-
-    def _check_cortana(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "windows",
-            "cortana",
-        )
-
-    def _check_notification_center(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "macos",
-            "notification",
-        )
-
-    def _check_spotlight(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "macos",
-            "spotlight",
-        )
-
-    def _check_handoff(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "",
-            "handoff",
-        )
-
-    def _check_icloud(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "",
-            "icloud",
-        )
-
-    def _check_dbus(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "linux",
-            "dbus",
-        )
-
-    def _check_desktop_entry(
-        self,
-    ) -> bool:
-        return self._file_exists(
-            ".desktop"
-        )
-
-    def _check_appstream(
-        self,
-    ) -> bool:
-        return (
-            self._file_exists(
-                "appdata.xml"
-            )
-            or self._file_contains(
-                "linux",
-                "appstream",
-            )
-        )
-
-    def _check_freedesktop_notifications(
-        self,
-    ) -> bool:
-        return (
-            self._file_contains(
-                "linux",
-                "freedesktop",
-            )
-            or self._file_contains(
-                "linux",
-                "notification",
-            )
-        )
-
-    def _check_fileprovider(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "ios",
-            "fileprovider",
-        )
-
-    def _check_handoff_ios(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "ios",
-            "nsuseractivity",
-        )
-
-    def _check_siri(
-        self,
-    ) -> bool:
-        return (
-            self._file_contains(
-                "ios",
-                "inintent",
-            )
-            or self._file_contains(
-                "ios",
-                "appintents",
-            )
-        )
-
-    def _check_content_provider(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "android",
-            "contentprovider",
-        )
-
-    def _check_documentsrovider(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "android",
-            "documentsprovider",
-        )
-
-    def _check_material_you(
-        self,
-    ) -> bool:
-        return (
-            self._file_contains(
-                "android",
-                "material3",
-            )
-            or self._file_contains(
-                "android",
-                "material design 3",
-            )
-        )
-
-    def _check_service_worker(
-        self,
-    ) -> bool:
-        return self._file_exists(
-            "service-worker"
-        )
-
-    def _check_indexeddb(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "src",
-            "indexeddb",
-        )
-
-    def _check_web_worker(
-        self,
-    ) -> bool:
-        return self._file_contains(
-            "src",
-            "worker",
-        )
+        return results
 
 
 # ============================================================================
-# MEMORY INDEX
+# MEMORY / MODEL CARD
 # ============================================================================
 
 class MemoryIndexGenerator:
-    """Generates the realtime repository memory index."""
+    """Generate repository memory index."""
 
     def __init__(
         self,
         root_dir: Optional[Path] = None,
-    ) -> None:
+    ):
         self.root_dir = Path(
             root_dir or ROOT_DIR
         )
@@ -1805,41 +1890,32 @@ class MemoryIndexGenerator:
         )
 
     def generate_index(self) -> Path:
-        files: List[Dict[str, Any]] = []
+        inspector = RepositoryInspector(
+            self.root_dir
+        )
 
-        ignored = {
-            ".git",
-            "node_modules",
-            "__pycache__",
-            ".venv",
-            "venv",
-            "dist",
-            "build",
-        }
+        tracked_files: List[Dict[str, Any]] = []
 
         for path in sorted(
-            self.root_dir.rglob("*")
+            inspector.iter_files(
+                include_hidden=True
+            )
         ):
-            if (
-                not path.is_file()
-                or any(
-                    part in ignored
-                    for part in path.parts
-                )
-            ):
-                continue
-
             try:
-                files.append(
+                stat = path.stat()
+
+                tracked_files.append(
                     {
                         "path": str(
                             path.relative_to(
                                 self.root_dir
                             )
                         ),
-                        "size": path.stat().st_size,
+                        "size": stat.st_size,
+                        "sha256": sha256_file(path),
                     }
                 )
+
             except OSError:
                 continue
 
@@ -1848,52 +1924,52 @@ class MemoryIndexGenerator:
         markdown = [
             "# QMOI Realtime Memory Index",
             "",
+            "## Repository State",
+            "",
             f"- Generated: {timestamp}",
-            f"- Total Files: {len(files)}",
+            f"- Total Files: {len(tracked_files)}",
             "",
             "## Files",
+            "",
         ]
 
-        markdown.extend(
-            f"- {item['path']} ({item['size']} bytes)"
-            for item in files
-        )
+        for item in tracked_files:
+            markdown.append(
+                f"- `{item['path']}` "
+                f"({item['size']} bytes, "
+                f"SHA-256 `{item['sha256']}`)"
+            )
 
         self.index_path.write_text(
             "\n".join(markdown) + "\n",
             encoding="utf-8",
         )
 
-        write_json(
+        safe_json_write(
             self.json_path,
             {
                 "generated": timestamp,
-                "files_tracked": len(files),
-                "files": files,
+                "files_tracked": len(tracked_files),
+                "files": tracked_files,
             },
         )
 
         return self.index_path
 
 
-# ============================================================================
-# MODEL CARD
-# ============================================================================
-
 class ModelCardGenerator:
-    """Generates the QMOI model/application validation card."""
+    """Generate QMOI model/app-suite card."""
 
     def __init__(
         self,
         root_dir: Optional[Path] = None,
-    ) -> None:
+    ):
         self.root_dir = Path(
             root_dir or ROOT_DIR
         )
 
         self.card_path = (
-            self.root_dir
-            / "QMOI_MODEL_CARD.md"
+            self.root_dir / "QMOI_MODEL_CARD.md"
         )
 
     def generate_card(self) -> Path:
@@ -1910,14 +1986,23 @@ QMOI is the unified orchestration layer for the QMOI application suite.
 - QMOI Space: Media Player
 - QALPHA: IDE
 
-## Validation
+## Validation Standards
 
-- Six-platform validation
-- 360 platform-specific catalog entries
-- File-handler contract validation
-- Resumable telemetry and recovery
-- GitHub proof artifact generation
+- Multi-platform validation
+- Real source-evidence feature validation
+- File-handler validation
 - GitHub Actions workflow validation
+- Resilience and recovery
+- Repository synchronization
+- Durable telemetry
+- Resumable checkpoints
+- GitHub proof generation
+
+## Important
+
+A feature is not marked implemented merely because it exists in a
+catalog. The autonomous agent requires repository evidence before
+reporting the feature as implemented.
 """
 
         self.card_path.write_text(
@@ -1929,81 +2014,751 @@ QMOI is the unified orchestration layer for the QMOI application suite.
 
 
 # ============================================================================
-# WORKFLOW NORMALIZER / VALIDATOR
+# WORKFLOW VALIDATION
 # ============================================================================
 
-class WorkflowNormalizer:
+class WorkflowValidator:
     """
-    Workflow compatibility utility.
+    Validate GitHub Actions workflows.
 
-    IMPORTANT:
-    This no longer blindly rewrites YAML indentation. The old implementation
-    could corrupt valid nested GitHub Actions structures.
+    This directly catches the current upload-artifact v3 failure.
     """
 
-    @staticmethod
-    def normalize(
-        content: str,
-    ) -> str:
-        if not content:
-            return content
+    ACTION_PATTERN = re.compile(
+        r"uses\s*:\s*([^\s#]+)",
+        re.IGNORECASE,
+    )
 
-        # YAML forbids tabs for indentation.
-        return content.replace(
-            "\t",
-            "  ",
+    def __init__(
+        self,
+        root_dir: Path = ROOT_DIR,
+    ):
+        self.root_dir = Path(root_dir)
+        self.workflow_dir = (
+            self.root_dir
+            / ".github"
+            / "workflows"
         )
 
-    @staticmethod
-    def validate_yaml_file(
-        path: Path,
-    ) -> Dict[str, Any]:
-        if not path.exists():
-            return {
-                "path": str(path),
-                "exists": False,
-                "valid": False,
-                "error": "missing",
-            }
+    def _load_yaml_duplicate_safe(
+        self,
+        content: str,
+    ) -> Tuple[Optional[Any], List[str]]:
+        if yaml is None:
+            return None, [
+                "PyYAML is not installed."
+            ]
+
+        duplicate_keys: List[str] = []
+
+        class DuplicateKeyLoader(
+            yaml.SafeLoader
+        ):
+            pass
+
+        def construct_mapping(
+            loader: Any,
+            node: Any,
+            deep: bool = False,
+        ) -> Dict[Any, Any]:
+            mapping: Dict[Any, Any] = {}
+
+            for key_node, value_node in node.value:
+                key = loader.construct_object(
+                    key_node,
+                    deep=deep,
+                )
+
+                if key in mapping:
+                    duplicate_keys.append(
+                        str(key)
+                    )
+
+                mapping[key] = loader.construct_object(
+                    value_node,
+                    deep=deep,
+                )
+
+            return mapping
+
+        DuplicateKeyLoader.add_constructor(
+            yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+            construct_mapping,
+        )
 
         try:
-            text = path.read_text(
-                encoding="utf-8"
+            data = yaml.load(
+                content,
+                Loader=DuplicateKeyLoader,
             )
 
-            if yaml is None:
-                return {
-                    "path": str(path),
-                    "exists": True,
-                    "valid": None,
-                    "error": "PyYAML unavailable",
-                }
+            return data, duplicate_keys
 
-            data = yaml.safe_load(text)
+        except yaml.YAMLError as exc:
+            return None, [
+                f"YAML parse error: {exc}"
+            ]
+
+    def validate_file(
+        self,
+        path: Path,
+    ) -> Dict[str, Any]:
+        content = path.read_text(
+            encoding="utf-8",
+            errors="ignore",
+        )
+
+        deprecated: List[str] = []
+
+        for action in DEPRECATED_ACTIONS:
+            if action in content:
+                deprecated.append(action)
+
+        actions = self.ACTION_PATTERN.findall(
+            content
+        )
+
+        data, duplicate_keys = (
+            self._load_yaml_duplicate_safe(
+                content
+            )
+        )
+
+        errors: List[str] = []
+
+        if duplicate_keys:
+            errors.append(
+                "Duplicate YAML keys: "
+                + ", ".join(
+                    sorted(set(duplicate_keys))
+                )
+            )
+
+        if deprecated:
+            errors.append(
+                "Deprecated artifact actions: "
+                + ", ".join(deprecated)
+            )
+
+        if data is None:
+            errors.append(
+                "Workflow YAML could not be parsed."
+            )
+
+        top_level = (
+            set(data.keys())
+            if isinstance(data, dict)
+            else set()
+        )
+
+        if data is not None:
+            if "jobs" not in top_level:
+                errors.append(
+                    "Workflow is missing top-level 'jobs'."
+                )
+
+        return {
+            "path": str(
+                path.relative_to(
+                    self.root_dir
+                )
+            ),
+            "valid_yaml": data is not None,
+            "duplicate_keys": sorted(
+                set(duplicate_keys)
+            ),
+            "deprecated_actions": deprecated,
+            "actions": sorted(set(actions)),
+            "errors": errors,
+            "passed": not errors,
+        }
+
+    def validate_all(
+        self,
+    ) -> Dict[str, Any]:
+        if not self.workflow_dir.exists():
+            return {
+                "workflow_directory_exists": False,
+                "passed": False,
+                "files": [],
+                "errors": [
+                    "No .github/workflows directory."
+                ],
+            }
+
+        files = sorted(
+            [
+                path
+                for path in self.workflow_dir.iterdir()
+                if path.is_file()
+                and path.suffix.lower()
+                in {".yml", ".yaml"}
+            ]
+        )
+
+        reports = [
+            self.validate_file(path)
+            for path in files
+        ]
+
+        errors = [
+            error
+            for report in reports
+            for error in report["errors"]
+        ]
+
+        return {
+            "workflow_directory_exists": True,
+            "file_count": len(files),
+            "files": reports,
+            "passed": not errors,
+            "errors": errors,
+            "deprecated_artifact_action_count": sum(
+                len(
+                    report["deprecated_actions"]
+                )
+                for report in reports
+            ),
+        }
+
+    def find_deprecated_artifact_actions(
+        self,
+    ) -> List[Dict[str, Any]]:
+        findings: List[Dict[str, Any]] = []
+
+        if not self.workflow_dir.exists():
+            return findings
+
+        for path in self.workflow_dir.rglob("*"):
+            if not path.is_file():
+                continue
+
+            if path.suffix.lower() not in {
+                ".yml",
+                ".yaml",
+            }:
+                continue
+
+            try:
+                lines = path.read_text(
+                    encoding="utf-8",
+                    errors="ignore",
+                ).splitlines()
+
+                for number, line in enumerate(
+                    lines,
+                    start=1,
+                ):
+                    for action in DEPRECATED_ACTIONS:
+                        if action in line:
+                            findings.append(
+                                {
+                                    "file": str(
+                                        path.relative_to(
+                                            self.root_dir
+                                        )
+                                    ),
+                                    "line": number,
+                                    "action": action,
+                                    "text": line.strip(),
+                                }
+                            )
+
+            except OSError:
+                continue
+
+        return findings
+
+
+# ============================================================================
+# PYTHON SOURCE VALIDATION
+# ============================================================================
+
+class PythonSourceValidator:
+    """Validate Python syntax throughout the repository."""
+
+    def __init__(
+        self,
+        root_dir: Path = ROOT_DIR,
+    ):
+        self.root_dir = Path(root_dir)
+
+    def validate_file(
+        self,
+        path: Path,
+    ) -> Dict[str, Any]:
+        try:
+            source = path.read_text(
+                encoding="utf-8",
+            )
+
+            ast.parse(
+                source,
+                filename=str(path),
+            )
 
             return {
-                "path": str(path),
-                "exists": True,
-                "valid": isinstance(
-                    data,
-                    dict,
-                ),
-                "top_level_keys": (
-                    list(data.keys())
-                    if isinstance(
-                        data,
-                        dict,
+                "path": str(
+                    path.relative_to(
+                        self.root_dir
                     )
-                    else []
+                ),
+                "passed": True,
+                "error": None,
+            }
+
+        except (
+            OSError,
+            UnicodeError,
+            SyntaxError,
+        ) as exc:
+            return {
+                "path": str(
+                    path.relative_to(
+                        self.root_dir
+                    )
+                ),
+                "passed": False,
+                "error": str(exc),
+            }
+
+    def validate_all(
+        self,
+    ) -> Dict[str, Any]:
+        inspector = RepositoryInspector(
+            self.root_dir
+        )
+
+        files = [
+            path
+            for path in inspector.iter_files(
+                include_hidden=True
+            )
+            if path.suffix == ".py"
+        ]
+
+        reports = [
+            self.validate_file(path)
+            for path in files
+        ]
+
+        failures = [
+            report
+            for report in reports
+            if not report["passed"]
+        ]
+
+        return {
+            "python_files": len(files),
+            "passed_files": (
+                len(files) - len(failures)
+            ),
+            "failed_files": len(failures),
+            "failures": failures,
+            "passed": not failures,
+        }
+
+
+# ============================================================================
+# TRACKING / TELEMETRY
+# ============================================================================
+
+class Tracker:
+    """Durable current-state and append-only telemetry tracker."""
+
+    def __init__(
+        self,
+        root_dir: Path,
+    ):
+        self.root_dir = Path(root_dir)
+        self.tracker_dir = (
+            self.root_dir
+            / TRACKER_DIR_NAME
+        )
+
+        self.ensure()
+
+    def ensure(self) -> Path:
+        self.tracker_dir.mkdir(
+            parents=True,
+            exist_ok=True,
+        )
+
+        required = {
+            "CURRENT_STATUS.txt": (
+                "OLLAMA AUTONOMOUS AGENT - CURRENT STATUS\n"
+                "=========================================\n\n"
+            ),
+            "LATEST_ACTIVITY.txt": (
+                "OLLAMA AUTONOMOUS AGENT - LATEST ACTIVITY\n"
+                "==========================================\n\n"
+            ),
+            "STATE.txt": (
+                "status: initializing\n"
+                "phase: startup\n"
+            ),
+            "PR_STATUS.txt": (
+                "PR Status: not_started\n"
+            ),
+            "LAST_RECONCILIATION.txt": (
+                "No reconciliation yet\n"
+            ),
+            "TRACKING_INDEX.txt": (
+                "OLLAMA AUTONOMOUS AGENT TRACKING INDEX\n"
+                "======================================\n\n"
+            ),
+            "TRACKING_PROTOCOL.txt": (
+                "ollamatracks-v5\n"
+            ),
+            "telemetry.jsonl": "",
+        }
+
+        for name, content in required.items():
+            path = self.tracker_dir / name
+
+            if not path.exists():
+                path.write_text(
+                    content,
+                    encoding="utf-8",
+                )
+
+        return self.tracker_dir
+
+    def record(
+        self,
+        event: str,
+        message: str,
+        status: str = "running",
+        phase: str = "agent",
+        details: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        timestamp = utc_now()
+
+        payload = {
+            "timestamp_utc": timestamp,
+            "event": event,
+            "status": status,
+            "phase": phase,
+            "message": message,
+            "details": details or {},
+        }
+
+        telemetry = (
+            self.tracker_dir
+            / "telemetry.jsonl"
+        )
+
+        with telemetry.open(
+            "a",
+            encoding="utf-8",
+        ) as handle:
+            handle.write(
+                json.dumps(
+                    payload,
+                    sort_keys=True,
+                    default=str,
+                )
+                + "\n"
+            )
+
+        current = (
+            "OLLAMA AUTONOMOUS AGENT - CURRENT STATUS\n"
+            "=========================================\n\n"
+            f"Timestamp UTC: {timestamp}\n"
+            f"Repository: {self.root_dir.name}\n"
+            f"Default branch: main\n"
+            f"Current status: {status}\n"
+            f"Phase: {phase}\n"
+            f"Latest event: {event}\n"
+            f"Message: {message}\n\n"
+            f"Tracker directory: {self.tracker_dir}\n"
+        )
+
+        (
+            self.tracker_dir
+            / "CURRENT_STATUS.txt"
+        ).write_text(
+            current,
+            encoding="utf-8",
+        )
+
+        (
+            self.tracker_dir
+            / "STATE.txt"
+        ).write_text(
+            (
+                f"status: {status}\n"
+                f"phase: {phase}\n"
+                f"event: {event}\n"
+                f"message: {message}\n"
+                f"last_updated_utc: {timestamp}\n"
+            ),
+            encoding="utf-8",
+        )
+
+        (
+            self.tracker_dir
+            / "LAST_RECONCILIATION.txt"
+        ).write_text(
+            (
+                f"{timestamp} | {event} | "
+                f"{status} | {phase} | {message}\n"
+            ),
+            encoding="utf-8",
+        )
+
+        (
+            self.tracker_dir
+            / "LATEST_ACTIVITY.txt"
+        ).write_text(
+            (
+                "OLLAMA AUTONOMOUS AGENT - LATEST ACTIVITY\n"
+                "==========================================\n\n"
+                f"Timestamp UTC: {timestamp}\n"
+                f"Event: {event}\n"
+                f"Description: {message}\n"
+                f"Status: {status}\n"
+                f"Phase: {phase}\n\n"
+                "This is a mutable current-state projection.\n"
+            ),
+            encoding="utf-8",
+        )
+
+        (
+            self.tracker_dir
+            / "PR_STATUS.txt"
+        ).write_text(
+            (
+                f"PR Status: {status}\n"
+                f"Phase: {phase}\n"
+                f"Event: {event}\n"
+                f"Last update UTC: {timestamp}\n"
+            ),
+            encoding="utf-8",
+        )
+
+        (
+            self.tracker_dir
+            / "TRACKING_INDEX.txt"
+        ).write_text(
+            (
+                "OLLAMA AUTONOMOUS AGENT TRACKING INDEX\n"
+                "======================================\n\n"
+                "Tracking schema: 5.0\n\n"
+                "Purpose\n"
+                "-------\n"
+                "Durable live observability for the "
+                "Ollama autonomous agent.\n\n"
+                f"Last event: {event}\n"
+                f"Last status: {status}\n"
+                f"Last phase: {phase}\n"
+                f"Last update: {timestamp}\n"
+                "\n"
+                "Mutable state files represent the "
+                "latest observed projection.\n"
+            ),
+            encoding="utf-8",
+        )
+
+        safe_json_write(
+            self.tracker_dir
+            / "monitoring_summary.json",
+            payload,
+        )
+
+        return payload
+
+
+# ============================================================================
+# CHECKPOINTS
+# ============================================================================
+
+class CheckpointManager:
+    """Resumable agent checkpoint."""
+
+    def __init__(
+        self,
+        root_dir: Path,
+    ):
+        self.path = (
+            Path(root_dir)
+            / "resumefromhere.txt"
+        )
+
+    def save(
+        self,
+        status: str,
+        completed_steps: Sequence[str],
+        error: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None,
+    ) -> Path:
+        lines = [
+            "# resumefromhere",
+            f"timestamp_utc: {utc_now()}",
+            f"status: {status}",
+            (
+                "completed_steps: "
+                + ", ".join(completed_steps)
+            ),
+        ]
+
+        if error:
+            lines.append(
+                f"error: {error}"
+            )
+
+        if metadata:
+            for key, value in metadata.items():
+                lines.append(
+                    f"{key}: {value}"
+                )
+
+        self.path.write_text(
+            "\n".join(lines) + "\n",
+            encoding="utf-8",
+        )
+
+        return self.path
+
+    def load(self) -> Optional[Dict[str, Any]]:
+        if not self.path.exists():
+            return None
+
+        raw = self.path.read_text(
+            encoding="utf-8",
+            errors="ignore",
+        )
+
+        state: Dict[str, Any] = {
+            "raw": raw,
+        }
+
+        for key in (
+            "status",
+            "timestamp_utc",
+            "error",
+        ):
+            match = re.search(
+                rf"^{re.escape(key)}:\s*(.*)$",
+                raw,
+                re.MULTILINE,
+            )
+
+            if match:
+                state[key] = (
+                    match.group(1).strip()
+                )
+
+        match = re.search(
+            r"^completed_steps:\s*(.*)$",
+            raw,
+            re.MULTILINE,
+        )
+
+        if match:
+            state["completed_steps"] = [
+                item.strip()
+                for item in match.group(1).split(",")
+                if item.strip()
+            ]
+
+        return state
+
+
+# ============================================================================
+# RESILIENCE
+# ============================================================================
+
+class ResilienceManager:
+    """Safe adapter around the optional resilience coordinator."""
+
+    def __init__(
+        self,
+        root_dir: Path,
+    ):
+        self.root_dir = Path(root_dir)
+        self.coordinator = None
+        self.report: Dict[str, Any] = {}
+        self.errors: List[str] = []
+
+    def initialize(self) -> Dict[str, Any]:
+        if ResilienceCoordinator is None:
+            self.report = {
+                "status": "unavailable",
+                "can_continue": True,
+                "reason": (
+                    "resilience_auto_healing module "
+                    "is unavailable"
                 ),
             }
 
+            return self.report
+
+        try:
+            self.coordinator = (
+                ResilienceCoordinator(
+                    self.root_dir
+                )
+            )
+
+            result = (
+                self.coordinator
+                .run_full_resilience_check()
+            )
+
+            self.report = result or {
+                "status": "unknown",
+                "can_continue": True,
+            }
+
+            return self.report
+
         except Exception as exc:
-            return {
-                "path": str(path),
-                "exists": True,
-                "valid": False,
+            self.errors.append(
+                str(exc)
+            )
+
+            self.report = {
+                "status": "degraded",
+                "can_continue": True,
                 "error": str(exc),
+            }
+
+            logger.exception(
+                "Resilience initialization failed."
+            )
+
+            return self.report
+
+    def run(self) -> Dict[str, Any]:
+        if self.coordinator is None:
+            return self.report
+
+        try:
+            result = (
+                self.coordinator
+                .run_full_resilience_check()
+            )
+
+            if result:
+                self.report = result
+
+            return self.report
+
+        except Exception as exc:
+            self.errors.append(
+                str(exc)
+            )
+
+            logger.exception(
+                "Resilience check failed."
+            )
+
+            return {
+                **self.report,
+                "status": "degraded",
+                "error": str(exc),
+                "can_continue": True,
             }
 
 
@@ -2012,35 +2767,39 @@ class WorkflowNormalizer:
 # ============================================================================
 
 class OllamaAutonomousAgent:
-    """Main orchestrator for validation, diagnosis, recovery and telemetry."""
+    """Main QMOI repository validation orchestrator."""
 
-    PLATFORM_SPECIFIC_FEATURES = (
-        PLATFORM_SPECIFIC_FEATURES
-    )
+    PLATFORM_SPECIFIC_FEATURES = PLATFORM_FEATURE_CATALOG
 
     def __init__(
         self,
         base_path: Optional[Path] = None,
-    ) -> None:
-        self.base_path = Path(
-            base_path or ROOT_DIR
+    ):
+        self.base_path = (
+            Path(base_path)
+            if base_path is not None
+            else ROOT_DIR
         ).resolve()
 
         self.root_dir = self.base_path
 
-        self.tracker_dir = (
+        self.tracker = Tracker(
             self.root_dir
-            / TRACKER_DIR_NAME
+        )
+
+        self.checkpoint = CheckpointManager(
+            self.root_dir
+        )
+
+        self.resilience = ResilienceManager(
+            self.root_dir
         )
 
         self.resilience_errors: List[str] = []
         self.recovered_files: List[str] = []
+        self.resilience_report: Dict[str, Any] = {}
 
-        self.resilience_coordinator: Any = None
-        self.resilience_report: Dict[
-            str,
-            Any,
-        ] = {}
+        self.results: Dict[str, Any] = {}
 
         self.validators = {
             platform: PlatformValidator(
@@ -2049,16 +2808,6 @@ class OllamaAutonomousAgent:
             )
             for platform in PLATFORMS
         }
-
-        self.feature_validators: Dict[
-            Tuple[str, str],
-            PlatformSpecificFeatureValidator,
-        ] = {}
-
-        self.results: Dict[
-            str,
-            Any,
-        ] = {}
 
         self.memory_generator = (
             MemoryIndexGenerator(
@@ -2076,281 +2825,45 @@ class OllamaAutonomousAgent:
             CrossRepoAutonomyManager()
         )
 
-        self.ensure_tracker_directory()
-
-        self.record_tracker_event(
+        self.tracker.record(
             "agent_startup",
-            "Ollama autonomous agent initialized",
+            "Ollama autonomous agent initialized.",
             status="initializing",
             phase="startup",
             details={
-                "version": AGENT_VERSION,
                 "repository": str(
                     self.root_dir
                 ),
+                "tracker_dir": str(
+                    self.tracker.tracker_dir
+                ),
+                "platforms": list(PLATFORMS),
+                "apps": list(QMOI_APPS),
             },
         )
 
         self._initialize_resilience()
         self._perform_startup_health_check()
 
-    # ------------------------------------------------------------------------
-    # TRACKING
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
+    # STARTUP
+    # ---------------------------------------------------------------------
 
-    def ensure_tracker_directory(
-        self,
-    ) -> Path:
-        self.tracker_dir.mkdir(
-            parents=True,
-            exist_ok=True,
+    def _initialize_resilience(self) -> Dict[str, Any]:
+        self.resilience_report = (
+            self.resilience.initialize()
         )
 
-        defaults = {
-            "CURRENT_STATUS.txt":
-                (
-                    "OLLAMA AUTONOMOUS AGENT - CURRENT STATUS\n"
-                    "=========================================\n\n"
-                ),
-            "LATEST_ACTIVITY.txt":
-                (
-                    "OLLAMA AUTONOMOUS AGENT - LATEST ACTIVITY\n"
-                    "==========================================\n\n"
-                ),
-            "STATE.txt":
-                (
-                    "status: initializing\n"
-                    "phase: startup\n"
-                ),
-            "PR_STATUS.txt":
-                "PR Status: not_started\n",
-            "LAST_RECONCILIATION.txt":
-                "No reconciliation yet\n",
-            "TRACKING_INDEX.txt":
-                (
-                    "OLLAMA AUTONOMOUS AGENT TRACKING INDEX\n"
-                    "======================================\n\n"
-                ),
-            "TRACKING_PROTOCOL.txt":
-                "ollamatracks-v5\n",
-            "telemetry.jsonl":
-                "",
-        }
-
-        for name, text in defaults.items():
-            path = self.tracker_dir / name
-
-            if not path.exists():
-                path.write_text(
-                    text,
-                    encoding="utf-8",
-                )
-
-        return self.tracker_dir
-
-    def record_tracker_event(
-        self,
-        event: str,
-        message: str,
-        status: str = "running",
-        phase: str = "agent",
-        details: Optional[
-            Dict[str, Any]
-        ] = None,
-    ) -> Dict[str, Any]:
-        timestamp = utc_now()
-
-        payload = {
-            "timestamp_utc": timestamp,
-            "event": event,
-            "status": status,
-            "phase": phase,
-            "message": message,
-            "details": safe_json(
-                details or {}
-            ),
-        }
-
-        try:
-            telemetry_path = (
-                self.tracker_dir
-                / "telemetry.jsonl"
+        if (
+            self.resilience_report.get(
+                "can_continue"
             )
-
-            with telemetry_path.open(
-                "a",
-                encoding="utf-8",
-            ) as handle:
-                handle.write(
-                    json.dumps(
-                        payload,
-                        sort_keys=True,
-                    )
-                    + "\n"
-                )
-
-            (
-                self.tracker_dir
-                / "CURRENT_STATUS.txt"
-            ).write_text(
-                (
-                    "OLLAMA AUTONOMOUS AGENT - CURRENT STATUS\n"
-                    "=========================================\n\n"
-                    f"Timestamp UTC: {timestamp}\n"
-                    f"Repository: {self.root_dir.name}\n"
-                    "Default branch: main\n"
-                    f"Current status: {status}\n"
-                    f"Phase: {phase}\n"
-                    f"Latest event: {event}\n"
-                    f"Message: {message}\n"
-                    f"Tracker directory: {self.tracker_dir}\n"
-                ),
-                encoding="utf-8",
-            )
-
-            (
-                self.tracker_dir
-                / "STATE.txt"
-            ).write_text(
-                (
-                    f"status: {status}\n"
-                    f"phase: {phase}\n"
-                    f"event: {event}\n"
-                    f"message: {message}\n"
-                    f"last_updated_utc: {timestamp}\n"
-                ),
-                encoding="utf-8",
-            )
-
-            (
-                self.tracker_dir
-                / "LAST_RECONCILIATION.txt"
-            ).write_text(
-                (
-                    f"{timestamp} | "
-                    f"{event} | "
-                    f"{status} | "
-                    f"{phase} | "
-                    f"{message}\n"
-                ),
-                encoding="utf-8",
-            )
-
-            (
-                self.tracker_dir
-                / "LATEST_ACTIVITY.txt"
-            ).write_text(
-                (
-                    "OLLAMA AUTONOMOUS AGENT - LATEST ACTIVITY\n"
-                    "==========================================\n\n"
-                    f"Timestamp UTC: {timestamp}\n"
-                    f"Event: {event}\n"
-                    f"Description: {message}\n"
-                    f"Status: {status}\n"
-                    f"Phase: {phase}\n\n"
-                    "This is a mutable current-state projection.\n"
-                ),
-                encoding="utf-8",
-            )
-
-            (
-                self.tracker_dir
-                / "PR_STATUS.txt"
-            ).write_text(
-                (
-                    f"PR Status: {status}\n"
-                    f"Phase: {phase}\n"
-                    f"Event: {event}\n"
-                    f"Last update UTC: {timestamp}\n"
-                ),
-                encoding="utf-8",
-            )
-
-            (
-                self.tracker_dir
-                / "TRACKING_INDEX.txt"
-            ).write_text(
-                (
-                    "OLLAMA AUTONOMOUS AGENT TRACKING INDEX\n"
-                    "======================================\n\n"
-                    "Tracking schema: 5.0\n"
-                    f"Last event: {event}\n"
-                    f"Last status: {status}\n"
-                    f"Last phase: {phase}\n"
-                    f"Last update: {timestamp}\n\n"
-                    "Mutable state files represent the latest observed projection.\n"
-                ),
-                encoding="utf-8",
-            )
-
-            write_json(
-                self.tracker_dir
-                / "monitoring_summary.json",
-                payload,
-            )
-
-        except OSError as exc:
+            is False
+        ):
             logger.warning(
-                "Tracker update failed: %s",
-                exc,
+                "Resilience layer reports a degraded "
+                "run state."
             )
-
-        return payload
-
-    # ------------------------------------------------------------------------
-    # RESILIENCE
-    # ------------------------------------------------------------------------
-
-    def _initialize_resilience(
-        self,
-    ) -> Dict[str, Any]:
-        if ResilienceCoordinator is None:
-            self.resilience_report = {
-                "status": "unavailable",
-                "can_continue": True,
-                "reason": (
-                    "ResilienceCoordinator "
-                    "module unavailable"
-                ),
-            }
-
-            return self.resilience_report
-
-        try:
-            self.resilience_coordinator = (
-                ResilienceCoordinator(
-                    self.root_dir
-                )
-            )
-
-            report = (
-                self.resilience_coordinator
-                .run_full_resilience_check()
-            )
-
-            self.resilience_report = (
-                report
-                or {
-                    "status": "ok",
-                    "can_continue": True,
-                }
-            )
-
-        except Exception as exc:
-            logger.exception(
-                "Resilience initialization failed; "
-                "continuing in degraded mode"
-            )
-
-            self.resilience_errors.append(
-                str(exc)
-            )
-
-            self.resilience_report = {
-                "status": "degraded",
-                "can_continue": True,
-                "error": str(exc),
-            }
 
         return self.resilience_report
 
@@ -2358,18 +2871,43 @@ class OllamaAutonomousAgent:
         self,
     ) -> Dict[str, Any]:
         try:
+            self.resilience_report = (
+                self.resilience.run()
+                or self.resilience_report
+            )
+
+            essentials = (
+                self.get_essential_file_list()
+            )
+
             missing = [
-                path
-                for path in self.get_essential_file_list()
+                item
+                for item in essentials
                 if not (
-                    self.root_dir / path
+                    self.root_dir / item
                 ).exists()
             ]
 
             if missing:
+                for item in missing:
+                    self.resilience_errors.append(
+                        f"Missing startup file: {item}"
+                    )
+
+                self.checkpoint.save(
+                    "degraded",
+                    ["startup-health-check"],
+                    error=(
+                        "Missing required repository files."
+                    ),
+                    metadata={
+                        "missing_count": len(missing)
+                    },
+                )
+
                 logger.warning(
-                    "Startup health check: "
-                    "%d expected files are missing",
+                    "Startup health check found %d "
+                    "missing files.",
                     len(missing),
                 )
 
@@ -2380,9 +2918,6 @@ class OllamaAutonomousAgent:
                     else "degraded"
                 ),
                 "missing": missing,
-                "resilience": (
-                    self.resilience_report
-                ),
             }
 
         except Exception as exc:
@@ -2390,27 +2925,33 @@ class OllamaAutonomousAgent:
                 str(exc)
             )
 
+            self.checkpoint.save(
+                "error",
+                ["startup-health-check"],
+                error=str(exc),
+            )
+
             return {
                 "status": "error",
                 "error": str(exc),
             }
 
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
     # PLATFORM VALIDATION
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
 
     def validate_all_platforms(
         self,
     ) -> Dict[str, Dict[str, bool]]:
-        results: Dict[
-            str,
-            Dict[str, bool],
-        ] = {}
+        results: Dict[str, Dict[str, bool]] = {}
 
         for platform in PLATFORMS:
-            validator = self.validators[
-                platform
-            ]
+            logger.info(
+                "Validating platform: %s",
+                platform,
+            )
+
+            validator = self.validators[platform]
 
             results[platform] = {
                 app: validator.validate_code_compiles(
@@ -2421,48 +2962,56 @@ class OllamaAutonomousAgent:
 
         return results
 
+    # ---------------------------------------------------------------------
+    # FEATURE VALIDATION
+    # ---------------------------------------------------------------------
+
     def validate_all_features(
         self,
-    ) -> Dict[str, AppFeatureMatrix]:
+    ) -> Dict[str, Dict[str, Dict[str, bool]]]:
         """
-        Legacy application feature contract.
+        Compatibility API.
 
-        These are high-level feature-contract checks. Platform-specific
-        evidence is provided by validate_all_platform_features().
+        Unlike the previous implementation, results reflect actual
+        evidence rather than unconditional True values.
         """
 
-        results: Dict[
-            str,
-            AppFeatureMatrix,
-        ] = {}
+        output: Dict[str, Dict[str, Dict[str, bool]]] = {}
 
         for app in QMOI_APPS:
-            matrix = AppFeatureMatrix()
+            output[app] = {}
 
             for platform in PLATFORMS:
-                matrix[platform] = {
-                    feature: True
-                    for feature
-                    in BASE_FEATURES[app]
+                validator = (
+                    PlatformSpecificFeatureValidator(
+                        app,
+                        platform,
+                        self.root_dir,
+                    )
+                )
+
+                detailed = (
+                    validator.validate_all_features()
+                )
+
+                output[app][platform] = {
+                    feature: data["passed"]
+                    for feature, data
+                    in detailed.items()
                 }
 
-            results[app] = matrix
-
-        return results
+        return output
 
     def validate_all_platform_features(
         self,
-    ) -> Dict[
-        str,
-        Dict[str, Dict[str, bool]],
-    ]:
-        results: Dict[
+    ) -> Dict[str, Dict[str, Dict[str, Dict[str, Any]]]]:
+        output: Dict[
             str,
-            Dict[str, Dict[str, bool]],
+            Dict[str, Dict[str, Dict[str, Any]]],
         ] = {}
 
         for platform in PLATFORMS:
-            results[platform] = {}
+            output[platform] = {}
 
             for app in QMOI_APPS:
                 validator = (
@@ -2473,266 +3022,149 @@ class OllamaAutonomousAgent:
                     )
                 )
 
-                self.feature_validators[
-                    (app, platform)
-                ] = validator
-
-                results[platform][app] = (
+                output[platform][app] = (
                     validator.validate_all_features()
                 )
 
-        return results
+        return output
 
-    # ------------------------------------------------------------------------
+    def feature_summary(
+        self,
+        detailed_results: Dict[str, Any],
+    ) -> Dict[str, Any]:
+        total = 0
+        implemented = 0
+        missing = 0
+        unknown = 0
+
+        by_platform: Dict[str, Any] = {}
+
+        for platform, apps in detailed_results.items():
+            platform_total = 0
+            platform_implemented = 0
+            platform_missing = 0
+            platform_unknown = 0
+
+            for _, features in apps.items():
+                for _, result in features.items():
+                    total += 1
+                    platform_total += 1
+
+                    status = result["status"]
+
+                    if status == "implemented":
+                        implemented += 1
+                        platform_implemented += 1
+
+                    elif status == "missing":
+                        missing += 1
+                        platform_missing += 1
+
+                    else:
+                        unknown += 1
+                        platform_unknown += 1
+
+            by_platform[platform] = {
+                "total": platform_total,
+                "implemented": platform_implemented,
+                "missing": platform_missing,
+                "unknown": platform_unknown,
+                "pass": (
+                    platform_missing == 0
+                    and platform_unknown == 0
+                ),
+            }
+
+        return {
+            "total": total,
+            "implemented": implemented,
+            "missing": missing,
+            "unknown": unknown,
+            "coverage_percent": (
+                round(
+                    implemented / total * 100,
+                    2,
+                )
+                if total
+                else 0.0
+            ),
+            "passed": (
+                missing == 0
+                and unknown == 0
+            ),
+            "by_platform": by_platform,
+        }
+
+    # ---------------------------------------------------------------------
     # FILE HANDLERS
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
 
     def validate_file_handlers(
         self,
-    ) -> Dict[
-        str,
-        Dict[str, Dict[str, Any]],
-    ]:
-        validator = FileHandlerValidator()
+    ) -> Dict[str, Dict[str, Dict[str, Any]]]:
+        validator = FileHandlerValidator(
+            self.root_dir
+        )
 
         return {
-            platform:
-                validator.validate_handler_registration(
+            platform: (
+                validator
+                .validate_handler_registration(
                     platform
                 )
+            )
             for platform in PLATFORMS
         }
 
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
     # WORKFLOW VALIDATION
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
 
     def validate_workflows(
         self,
     ) -> Dict[str, Any]:
-        workflow_dir = (
+        validator = WorkflowValidator(
             self.root_dir
-            / ".github"
-            / "workflows"
         )
 
-        if not workflow_dir.exists():
-            return {
-                "summary": {
-                    "exists": False,
-                    "valid": False,
-                    "count": 0,
-                },
-                "files": {},
-            }
+        report = validator.validate_all()
 
-        files = sorted(
-            list(
-                workflow_dir.glob("*.yml")
-            )
-            + list(
-                workflow_dir.glob("*.yaml")
-            )
+        deprecated = (
+            validator
+            .find_deprecated_artifact_actions()
         )
 
-        checks = {
-            str(
-                path.relative_to(
-                    self.root_dir
-                )
-            ):
-                WorkflowNormalizer.validate_yaml_file(
-                    path
-                )
-            for path in files
-        }
+        report["deprecated_findings"] = deprecated
 
-        valid_values = [
-            item.get("valid")
-            for item in checks.values()
-        ]
+        return report
 
-        return {
-            "summary": {
-                "exists": True,
-                "count": len(files),
-                "valid": all(
-                    value is not False
-                    for value in valid_values
-                ),
-            },
-            "files": checks,
-        }
-
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
     # PYTHON VALIDATION
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
 
     def validate_python_sources(
         self,
     ) -> Dict[str, Any]:
-        files = [
-            path
-            for path in self.root_dir.rglob(
-                "*.py"
+        return (
+            PythonSourceValidator(
+                self.root_dir
             )
-            if (
-                ".git" not in path.parts
-                and "__pycache__"
-                not in path.parts
-            )
-        ]
+            .validate_all()
+        )
 
-        failures = []
-        checked = 0
+    # ---------------------------------------------------------------------
+    # ESSENTIAL FILES
+    # ---------------------------------------------------------------------
 
-        for path in files:
-            result = run_command(
-                [
-                    sys.executable,
-                    "-m",
-                    "py_compile",
-                    str(path),
-                ],
-                cwd=self.root_dir,
-                timeout=30,
-            )
-
-            checked += 1
-
-            if result["returncode"] != 0:
-                failures.append(
-                    {
-                        "file": str(
-                            path.relative_to(
-                                self.root_dir
-                            )
-                        ),
-                        "stderr": result[
-                            "stderr"
-                        ],
-                    }
-                )
-
-        return {
-            "checked": checked,
-            "failed": len(failures),
-            "passed": not failures,
-            "failures": failures,
-        }
-
-    # ------------------------------------------------------------------------
-    # CHECKPOINTS
-    # ------------------------------------------------------------------------
-
-    def update_resume_checkpoint(
+    def get_essential_file_list(
         self,
-        status: str,
-        completed_steps: List[str],
-        error: Optional[str] = None,
-        metadata: Optional[
-            Dict[str, Any]
-        ] = None,
-    ) -> Path:
-        path = (
-            self.root_dir
-            / CHECKPOINT_NAME
-        )
-
-        lines = [
-            "# resumefromhere",
-            f"version: {AGENT_VERSION}",
-            f"status: {status}",
-            f"updated_utc: {utc_now()}",
-            (
-                "completed_steps: "
-                + ", ".join(
-                    completed_steps
-                )
-            ),
+    ) -> List[str]:
+        return [
+            "README.md",
+            "requirements.txt",
+            ".github/workflows",
+            "scripts/ollama_autonomous_agent.py",
         ]
-
-        if error:
-            lines.append(
-                "error: "
-                + error.replace(
-                    chr(10),
-                    " ",
-                )
-            )
-
-        if metadata:
-            lines.append(
-                "metadata_json: "
-                + json.dumps(
-                    safe_json(metadata),
-                    sort_keys=True,
-                )
-            )
-
-        path.write_text(
-            "\n".join(lines) + "\n",
-            encoding="utf-8",
-        )
-
-        return path
-
-    def load_checkpoint(
-        self,
-    ) -> Optional[Dict[str, Any]]:
-        path = (
-            self.root_dir
-            / CHECKPOINT_NAME
-        )
-
-        if not path.exists():
-            return None
-
-        raw = path.read_text(
-            encoding="utf-8",
-            errors="replace",
-        )
-
-        state: Dict[str, Any] = {
-            "raw": raw
-        }
-
-        for key in (
-            "status",
-            "version",
-            "updated_utc",
-        ):
-            match = re.search(
-                rf"(?m)^{re.escape(key)}:\s*(.*)$",
-                raw,
-            )
-
-            if match:
-                state[key] = (
-                    match.group(1).strip()
-                )
-
-        match = re.search(
-            r"(?m)^completed_steps:\s*(.*)$",
-            raw,
-        )
-
-        state["completed_steps"] = (
-            [
-                item.strip()
-                for item
-                in match.group(1).split(",")
-                if item.strip()
-            ]
-            if match
-            else []
-        )
-
-        return state
-
-    # ------------------------------------------------------------------------
-    # FILE HEALTH
-    # ------------------------------------------------------------------------
 
     def detect_missing_files(
         self,
@@ -2754,13 +3186,16 @@ class OllamaAutonomousAgent:
             "can_recover": True,
             "recovery_procedures": {
                 path: (
-                    "Restore from repository "
-                    "history/template; do not "
-                    "fabricate secrets."
+                    "Restore from repository history "
+                    "or an approved project template."
                 )
                 for path in missing
             },
         }
+
+    # ---------------------------------------------------------------------
+    # FILE HEALTH
+    # ---------------------------------------------------------------------
 
     def handle_corrupted_file(
         self,
@@ -2779,17 +3214,37 @@ class OllamaAutonomousAgent:
 
             if b"\x00" in data[:4096]:
                 return {
-                    "status": "corrupt_detected",
+                    "status": "corrupted",
                     "path": str(path),
-                    "repair_required": True,
+                    "message": (
+                        "Null bytes detected. "
+                        "Automatic rewriting is intentionally "
+                        "disabled to avoid destructive repairs."
+                    ),
                 }
+
+            if path.suffix.lower() in {
+                ".json"
+            }:
+                try:
+                    json.loads(
+                        data.decode(
+                            "utf-8"
+                        )
+                    )
+                except Exception as exc:
+                    return {
+                        "status": "corrupted",
+                        "path": str(path),
+                        "message": (
+                            "Invalid JSON: "
+                            + str(exc)
+                        ),
+                    }
 
             return {
                 "status": "ok",
                 "path": str(path),
-                "sha256": hashlib.sha256(
-                    data
-                ).hexdigest(),
             }
 
         except OSError as exc:
@@ -2799,13 +3254,21 @@ class OllamaAutonomousAgent:
                 "error": str(exc),
             }
 
+    # ---------------------------------------------------------------------
+    # NETWORK / API COMPATIBILITY
+    # ---------------------------------------------------------------------
+
     def handle_network_error(
         self,
     ) -> Dict[str, Any]:
         return {
             "status": "network_error_handled",
             "recovered": True,
-            "retryable": True,
+            "strategy": [
+                "retry_with_backoff",
+                "continue_local_validation",
+                "record_failure",
+            ],
         }
 
     def handle_api_error(
@@ -2814,791 +3277,659 @@ class OllamaAutonomousAgent:
         return {
             "status": "api_error_handled",
             "recovered": True,
-            "retryable": True,
+            "strategy": [
+                "avoid_secret_logging",
+                "continue_local_validation",
+                "record_failure",
+            ],
         }
 
-    # ------------------------------------------------------------------------
-    # CONTRACT HELPERS
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
+    # CHECKPOINT API
+    # ---------------------------------------------------------------------
 
-    def can_sync_files(
+    def update_resume_checkpoint(
         self,
-        master_files: List[str],
-    ) -> bool:
-        return set(
-            master_files
-        ).issubset(
-            set(
-                self.get_essential_file_list()
-            )
-        )
-
-    def get_essential_file_list(
-        self,
-    ) -> List[str]:
-        return [
-            "README.md",
-            "BUILD.md",
-            "INSTALL.md",
-            "requirements.txt",
-            "SYNC.md",
-            "MERGE.md",
-            "MODELEVOLUTIONO.md",
-            ".github/workflows/pr-monitor.yml",
-            ".github/workflows/branch-sync.yml",
-            ".github/workflows/ollama-autonomous-agent.yml",
-        ]
-
-    def get_model_evolution_stages(
-        self,
-    ) -> List[str]:
-        return [
-            "prototype",
-            "validation",
-            "autonomous_sync",
-            "production",
-        ]
-
-    def get_master_datetime_config(
-        self,
-    ) -> Dict[str, Any]:
-        return {
-            "target_date": (
-                "2026-12-31T23:59:59Z"
-            ),
-            "timezone": "UTC",
-            "status": "countdown_active",
-        }
-
-    def get_log_file(
-        self,
+        status: str,
+        completed_steps: List[str],
+        error: Optional[str] = None,
     ) -> Optional[Path]:
-        path = (
-            self.root_dir
-            / "ollama_agent.log"
+        return self.checkpoint.save(
+            status,
+            completed_steps,
+            error=error,
         )
 
+    def load_checkpoint(
+        self,
+    ) -> Optional[Dict[str, Any]]:
+        return self.checkpoint.load()
+
+    # ---------------------------------------------------------------------
+    # MEMORY / MODEL CARD
+    # ---------------------------------------------------------------------
+
+    def generate_memory_index(
+        self,
+    ) -> Path:
         return (
-            path
-            if path.exists()
-            else None
+            self.memory_generator
+            .generate_index()
         )
 
-    # ------------------------------------------------------------------------
-    # GITHUB PROOF CONTRACT
-    # ------------------------------------------------------------------------
+    def generate_model_card(
+        self,
+    ) -> Path:
+        return (
+            self.model_card_generator
+            .generate_card()
+        )
+
+    # ---------------------------------------------------------------------
+    # GITHUB PROOF
+    # ---------------------------------------------------------------------
 
     def build_github_proof_contract(
         self,
-        precomputed: Optional[
-            Dict[str, Any]
-        ] = None,
     ) -> Dict[str, Any]:
-        if precomputed and "platforms" in precomputed:
-            platform_results = (
-                precomputed["platforms"]
-            )
-        else:
-            platform_results = (
-                self.validate_all_platforms()
-            )
+        platform_results = (
+            self.validate_all_platforms()
+        )
 
-        if precomputed and "features" in precomputed:
-            feature_results = (
-                precomputed["features"]
-            )
-        else:
-            feature_results = (
-                self.validate_all_features()
-            )
+        detailed_features = (
+            self.validate_all_platform_features()
+        )
 
-        if precomputed and "handlers" in precomputed:
-            handler_results = (
-                precomputed["handlers"]
+        feature_summary = (
+            self.feature_summary(
+                detailed_features
             )
-        else:
-            handler_results = (
-                self.validate_file_handlers()
-            )
+        )
+
+        handler_results = (
+            self.validate_file_handlers()
+        )
+
+        workflow_results = (
+            self.validate_workflows()
+        )
+
+        python_results = (
+            self.validate_python_sources()
+        )
 
         platform_pass = all(
             all(
-                values.values()
+                bool(value)
+                for value in app_results.values()
             )
-            for values
+            for app_results
             in platform_results.values()
-        )
-
-        feature_pass = all(
-            all(
-                all(
-                    values.values()
-                )
-                for values in app.values()
-            )
-            for app
-            in feature_results.values()
         )
 
         handler_pass = all(
             all(
                 item["registered"]
-                and item["supports_platform"]
-                for item in values.values()
+                for item in platform_items.values()
             )
-            for values
+            for platform_items
             in handler_results.values()
         )
 
+        workflow_pass = workflow_results[
+            "passed"
+        ]
+
+        python_pass = python_results[
+            "passed"
+        ]
+
+        overall_pass = all(
+            [
+                platform_pass,
+                feature_summary["passed"],
+                handler_pass,
+                workflow_pass,
+                python_pass,
+            ]
+        )
+
+        proof = {
+            "platform_validation_passed": platform_pass,
+            "feature_validation_passed": (
+                feature_summary["passed"]
+            ),
+            "file_handler_validation_passed": handler_pass,
+            "workflow_validation_passed": workflow_pass,
+            "python_syntax_validation_passed": python_pass,
+            "alpha_q_ai_included": True,
+            "overall_passed": overall_pass,
+        }
+
         return {
-            "schema_version": "5.0",
             "status": (
                 "ready_for_github"
-                if (
-                    platform_pass
-                    and feature_pass
-                    and handler_pass
-                )
-                else "validation_failed"
+                if overall_pass
+                else "github_validation_failed"
             ),
-            "proof": {
-                "platform_validation_passed":
-                    platform_pass,
-                "feature_validation_passed":
-                    feature_pass,
-                "file_handler_validation_passed":
-                    handler_pass,
-                "alpha_q_ai_included": True,
-                "platform_count":
-                    len(PLATFORMS),
-                "app_count":
-                    len(QMOI_APPS),
-                "catalog_feature_count":
-                    len(
-                        PLATFORM_SPECIFIC_FEATURES
-                    ),
-            },
+            "proof": proof,
+            "platforms": platform_results,
+            "feature_summary": feature_summary,
+            "handlers": handler_results,
+            "workflows": workflow_results,
+            "python": python_results,
             "alpha_q_ai": {
-                "repo":
-                    "thealphakenya/Alpha-Q-ai",
+                "repo": (
+                    "thealphakenya/Alpha-Q-ai"
+                ),
                 "included": True,
             },
-            "branch_sync":
-                BranchSyncManager.build_sync_plan(),
+            "branch_sync": (
+                BranchSyncManager
+                .build_sync_plan()
+            ),
+            "cross_repo_autonomy": (
+                self.cross_repo_manager
+                .build_autonomy_plan()
+            ),
             "generated_at": utc_now(),
-            "agent_version": AGENT_VERSION,
         }
 
-    # ------------------------------------------------------------------------
-    # REPORTING
-    # ------------------------------------------------------------------------
-
-    def generate_validation_report(
-        self,
-    ) -> Dict[str, Any]:
-        platforms = (
-            self.validate_all_platforms()
-        )
-
-        features = (
-            self.validate_all_features()
-        )
-
-        platform_features = (
-            self.validate_all_platform_features()
-        )
-
-        handlers = (
-            self.validate_file_handlers()
-        )
-
-        workflows = (
-            self.validate_workflows()
-        )
-
-        python_sources = (
-            self.validate_python_sources()
-        )
-
-        proof = (
-            self.build_github_proof_contract(
-                {
-                    "platforms": platforms,
-                    "features": features,
-                    "handlers": handlers,
-                }
-            )
-        )
-
-        return {
-            "generated_at": utc_now(),
-            "agent_version": AGENT_VERSION,
-            "platforms": platforms,
-            "features": features,
-            "platform_specific_features":
-                platform_features,
-            "handlers": handlers,
-            "workflows": workflows,
-            "python_sources": python_sources,
-            "proof": proof,
-            "catalog_feature_count":
-                len(
-                    PLATFORM_SPECIFIC_FEATURES
-                ),
-            "resilience":
-                self.resilience_report,
-            "checkpoint":
-                self.load_checkpoint(),
-        }
-
-    def save_report(
-        self,
-        report: Dict[str, Any],
-        filename: str = (
-            "ollama_validation_report.json"
-        ),
-    ) -> Path:
-        path = (
-            self.tracker_dir
-            / filename
-        )
-
-        write_json(
-            path,
-            report,
-        )
-
-        return path
-
-    # ------------------------------------------------------------------------
-    # AUTO HEALING
-    # ------------------------------------------------------------------------
-
-    def run_auto_heal(
-        self,
-    ) -> Dict[str, Any]:
-        try:
-            from scripts.advanced_agent_healer import (
-                AgentAutoHealer,
-            )
-
-            healer = AgentAutoHealer(
-                self.root_dir
-            )
-
-            result = (
-                healer.run_full_recovery_cycle()
-            )
-
-            try:
-                healer.save_recovery_report()
-            except Exception:
-                logger.debug(
-                    "Healer report save failed",
-                    exc_info=True,
-                )
-
-            return (
-                result
-                or {
-                    "status": "completed"
-                }
-            )
-
-        except Exception as exc:
-            return {
-                "status": "failed",
-                "error": str(exc),
-                "error_type": type(exc).__name__,
-            }
-
-    # ------------------------------------------------------------------------
-    # PROJECT STATISTICS
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
+    # PROJECT STATS
+    # ---------------------------------------------------------------------
 
     def project_stats(
         self,
     ) -> Dict[str, Any]:
-        try:
-            from scripts.advanced_agent_healer import (
-                LargeProjectOptimizer,
-            )
+        inspector = RepositoryInspector(
+            self.root_dir
+        )
 
-            return (
-                LargeProjectOptimizer(
-                    self.root_dir
-                ).get_project_stats()
-            )
+        stats = inspector.project_stats()
 
-        except Exception as exc:
-            counts: Dict[str, int] = {}
-            total = 0
-
-            for path in self.root_dir.rglob("*"):
-                if (
-                    path.is_file()
-                    and ".git" not in path.parts
-                    and "node_modules"
-                    not in path.parts
-                ):
-                    total += 1
-
-                    extension = (
-                        path.suffix.lower()
-                        or "[no_extension]"
-                    )
-
-                    counts[extension] = (
-                        counts.get(
-                            extension,
-                            0,
-                        )
-                        + 1
-                    )
-
-            return {
-                "total_files": total,
-                "extensions": dict(
-                    sorted(
-                        counts.items()
+        stats.update(
+            {
+                "platforms": list(
+                    PLATFORMS
+                ),
+                "apps": dict(
+                    QMOI_APPS
+                ),
+                "platform_feature_count": (
+                    len(
+                        PLATFORM_FEATURE_CATALOG
                     )
                 ),
-                "optimizer_error": str(exc),
+                "workflow_directory": str(
+                    WORKFLOW_DIR
+                ),
+                "tracker_directory": str(
+                    self.tracker.tracker_dir
+                ),
             }
+        )
 
-    # ------------------------------------------------------------------------
-    # ARTIFACT GENERATION
-    # ------------------------------------------------------------------------
+        return stats
 
-    def generate_memory_and_model_artifacts(
-        self,
-    ) -> Dict[str, str]:
-        return {
-            "memory_index": str(
-                self.memory_generator
-                .generate_index()
-            ),
-            "model_card": str(
-                self.model_card_generator
-                .generate_card()
-            ),
-        }
-
-    # ------------------------------------------------------------------------
-    # COMPLETE VALIDATION
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
+    # FULL SUITE
+    # ---------------------------------------------------------------------
 
     def run_full_validation_suite(
         self,
-        fail_on_features: bool = True,
-        generate_artifacts: bool = True,
     ) -> bool:
-        """
-        Execute the complete PR validation contract.
+        started = datetime.now(
+            timezone.utc
+        )
 
-        The suite validates:
+        completed_steps: List[str] = []
 
-        1. Platform/application structure
-        2. Platform-specific feature evidence
-        3. File handlers
-        4. GitHub Actions YAML
-        5. Python source syntax
-        6. GitHub proof contract
-        7. Durable checkpoint/telemetry
-        """
-
-        self.record_tracker_event(
+        self.tracker.record(
             "validation_started",
-            "Running full PR validation suite",
+            "Running full repository validation suite.",
             status="running",
             phase="validation",
             details={
-                "workflow":
-                    "Ollama PR Validation - 293+ Platform Features",
-                "catalog_features":
-                    len(
-                        PLATFORM_SPECIFIC_FEATURES
-                    ),
+                "workflow": (
+                    "Ollama PR Validation - "
+                    "293+ Platform Features"
+                ),
+                "platform_count": len(
+                    PLATFORMS
+                ),
+                "app_count": len(
+                    QMOI_APPS
+                ),
+                "catalog_feature_count": len(
+                    PLATFORM_FEATURE_CATALOG
+                ),
             },
         )
 
-        start = time.monotonic()
-
-        completed: List[str] = []
-
         try:
-            # ================================================================
-            # PHASE 1 - PLATFORM VALIDATION
-            # ================================================================
+            # -------------------------------------------------------------
+            # 1. Resilience
+            # -------------------------------------------------------------
 
-            platforms = (
+            logger.info(
+                "[1/8] Running resilience checks..."
+            )
+
+            resilience_report = (
+                self.resilience.run()
+            )
+
+            self.results[
+                "resilience"
+            ] = resilience_report
+
+            completed_steps.append(
+                "resilience"
+            )
+
+            self.checkpoint.save(
+                "running",
+                completed_steps,
+            )
+
+            # -------------------------------------------------------------
+            # 2. Python syntax
+            # -------------------------------------------------------------
+
+            logger.info(
+                "[2/8] Validating Python syntax..."
+            )
+
+            python_results = (
+                self.validate_python_sources()
+            )
+
+            self.results[
+                "python"
+            ] = python_results
+
+            python_pass = python_results[
+                "passed"
+            ]
+
+            completed_steps.append(
+                "python-validation"
+            )
+
+            self.checkpoint.save(
+                "running",
+                completed_steps,
+            )
+
+            # -------------------------------------------------------------
+            # 3. Workflows
+            # -------------------------------------------------------------
+
+            logger.info(
+                "[3/8] Validating GitHub Actions workflows..."
+            )
+
+            workflow_results = (
+                self.validate_workflows()
+            )
+
+            self.results[
+                "workflows"
+            ] = workflow_results
+
+            workflow_pass = workflow_results[
+                "passed"
+            ]
+
+            completed_steps.append(
+                "workflow-validation"
+            )
+
+            self.checkpoint.save(
+                "running",
+                completed_steps,
+            )
+
+            # -------------------------------------------------------------
+            # 4. Platforms
+            # -------------------------------------------------------------
+
+            logger.info(
+                "[4/8] Validating six platforms..."
+            )
+
+            platform_results = (
                 self.validate_all_platforms()
             )
 
             platform_pass = all(
                 all(
-                    value
+                    bool(value)
                     for value
-                    in values.values()
+                    in app_results.values()
                 )
-                for values
-                in platforms.values()
+                for app_results
+                in platform_results.values()
             )
 
-            completed.append(
+            self.results[
+                "platforms"
+            ] = platform_results
+
+            completed_steps.append(
                 "platform-validation"
             )
 
-            self.record_tracker_event(
-                "platform_validation_completed",
-                (
-                    "Platform validation: "
-                    + (
-                        "PASS"
-                        if platform_pass
-                        else "FAIL"
-                    )
-                ),
-                details={
-                    "passed": platform_pass
-                },
+            self.checkpoint.save(
+                "running",
+                completed_steps,
             )
 
-            # ================================================================
-            # PHASE 2 - PLATFORM FEATURES
-            # ================================================================
+            # -------------------------------------------------------------
+            # 5. Features
+            # -------------------------------------------------------------
 
-            platform_features = (
+            logger.info(
+                "[5/8] Validating platform-specific features..."
+            )
+
+            feature_results = (
                 self.validate_all_platform_features()
             )
 
-            feature_pass = all(
-                all(
-                    all(
-                        value
-                        for value
-                        in app.values()
-                    )
-                    for app
-                    in apps.values()
+            feature_summary = (
+                self.feature_summary(
+                    feature_results
                 )
-                for apps
-                in platform_features.values()
             )
 
-            completed.append(
-                "platform-feature-validation"
+            feature_pass = feature_summary[
+                "passed"
+            ]
+
+            self.results[
+                "features"
+            ] = feature_results
+
+            self.results[
+                "feature_summary"
+            ] = feature_summary
+
+            completed_steps.append(
+                "feature-validation"
             )
 
-            self.record_tracker_event(
-                "feature_validation_completed",
-                (
-                    "Platform feature validation: "
-                    + (
-                        "PASS"
-                        if feature_pass
-                        else "FAIL"
-                    )
-                ),
-                details={
-                    "passed": feature_pass,
-                    "catalog_features":
-                        len(
-                            PLATFORM_SPECIFIC_FEATURES
-                        ),
-                },
+            self.checkpoint.save(
+                "running",
+                completed_steps,
             )
 
-            # ================================================================
-            # PHASE 3 - FILE HANDLERS
-            # ================================================================
+            # -------------------------------------------------------------
+            # 6. File handlers
+            # -------------------------------------------------------------
 
-            handlers = (
+            logger.info(
+                "[6/8] Validating file handlers..."
+            )
+
+            handler_results = (
                 self.validate_file_handlers()
             )
 
             handler_pass = all(
                 all(
                     item["registered"]
-                    and item[
-                        "supports_platform"
-                    ]
                     for item
-                    in values.values()
+                    in platform_items.values()
                 )
-                for values
-                in handlers.values()
+                for platform_items
+                in handler_results.values()
             )
 
-            completed.append(
-                "file-handler-validation"
+            self.results[
+                "handlers"
+            ] = handler_results
+
+            completed_steps.append(
+                "handler-validation"
             )
 
-            self.record_tracker_event(
-                "file_handler_validation_completed",
-                (
-                    "File handler validation: "
-                    + (
-                        "PASS"
-                        if handler_pass
-                        else "FAIL"
-                    )
+            self.checkpoint.save(
+                "running",
+                completed_steps,
+            )
+
+            # -------------------------------------------------------------
+            # 7. Repository artifacts
+            # -------------------------------------------------------------
+
+            logger.info(
+                "[7/8] Generating memory/model reports..."
+            )
+
+            memory_index = (
+                self.generate_memory_index()
+            )
+
+            model_card = (
+                self.generate_model_card()
+            )
+
+            self.results[
+                "generated_artifacts"
+            ] = {
+                "memory_index": str(
+                    memory_index
                 ),
-                details={
-                    "passed": handler_pass
-                },
-            )
-
-            # ================================================================
-            # PHASE 4 - WORKFLOW YAML
-            # ================================================================
-
-            workflows = (
-                self.validate_workflows()
-            )
-
-            workflow_pass = (
-                workflows["summary"].get(
-                    "valid",
-                    False,
-                )
-                if workflows[
-                    "summary"
-                ].get("count", 0)
-                else True
-            )
-
-            completed.append(
-                "workflow-validation"
-            )
-
-            self.record_tracker_event(
-                "workflow_validation_completed",
-                (
-                    "GitHub Actions workflow validation: "
-                    + (
-                        "PASS"
-                        if workflow_pass
-                        else "FAIL"
-                    )
+                "model_card": str(
+                    model_card
                 ),
-                details={
-                    "passed":
-                        workflow_pass,
-                    "workflow_count":
-                        workflows[
-                            "summary"
-                        ].get(
-                            "count",
-                            0,
-                        ),
-                },
+            }
+
+            completed_steps.append(
+                "report-generation"
             )
 
-            # ================================================================
-            # PHASE 5 - PYTHON
-            # ================================================================
-
-            python_report = (
-                self.validate_python_sources()
+            self.checkpoint.save(
+                "running",
+                completed_steps,
             )
 
-            python_pass = bool(
-                python_report["passed"]
-            )
+            # -------------------------------------------------------------
+            # 8. GitHub proof
+            # -------------------------------------------------------------
 
-            completed.append(
-                "python-validation"
-            )
-
-            self.record_tracker_event(
-                "python_validation_completed",
-                (
-                    "Python source validation: "
-                    + (
-                        "PASS"
-                        if python_pass
-                        else "FAIL"
-                    )
-                ),
-                details={
-                    "passed": python_pass,
-                    "checked":
-                        python_report[
-                            "checked"
-                        ],
-                    "failed":
-                        python_report[
-                            "failed"
-                        ],
-                },
-            )
-
-            # ================================================================
-            # OVERALL RESULT
-            # ================================================================
-
-            overall = (
-                platform_pass
-                and handler_pass
-                and python_pass
-                and workflow_pass
-                and (
-                    feature_pass
-                    or not fail_on_features
-                )
-            )
-
-            duration = round(
-                time.monotonic() - start,
-                3,
+            logger.info(
+                "[8/8] Building GitHub proof contract..."
             )
 
             proof = (
-                self.build_github_proof_contract(
-                    {
-                        "platforms": platforms,
-                        "features":
-                            self.validate_all_features(),
-                        "handlers": handlers,
-                    }
-                )
+                self.build_github_proof_contract()
             )
 
-            report = {
-                "generated_at": utc_now(),
+            self.results[
+                "proof"
+            ] = proof
+
+            overall_pass = all(
+                [
+                    platform_pass,
+                    feature_pass,
+                    handler_pass,
+                    workflow_pass,
+                    python_pass,
+                ]
+            )
+
+            duration = (
+                datetime.now(timezone.utc)
+                - started
+            ).total_seconds()
+
+            summary = {
+                "overall_pass": overall_pass,
+                "platform_pass": platform_pass,
+                "feature_pass": feature_pass,
+                "handler_pass": handler_pass,
+                "workflow_pass": workflow_pass,
+                "python_pass": python_pass,
+                "feature_summary": feature_summary,
                 "duration_seconds": duration,
-                "platforms": platforms,
-                "platform_specific_features":
-                    platform_features,
-                "handlers": handlers,
-                "workflows": workflows,
-                "python_sources":
-                    python_report,
-                "proof": proof,
-                "overall_pass": overall,
-                "catalog_feature_count":
-                    len(
-                        PLATFORM_SPECIFIC_FEATURES
-                    ),
-                "resilience":
-                    self.resilience_report,
+                "completed_steps": completed_steps,
+                "timestamp_utc": utc_now(),
             }
 
-            if generate_artifacts:
-                self.save_report(report)
+            self.results[
+                "summary"
+            ] = summary
 
-            self.update_resume_checkpoint(
-                (
-                    "validated"
-                    if overall
-                    else "validation_failed"
-                ),
-                completed,
-                metadata={
-                    "overall_pass": overall,
-                    "duration_seconds":
-                        duration,
-                },
+            # Persist full report.
+            report_path = (
+                self.root_dir
+                / "ollama_validation_report.json"
             )
 
-            self.record_tracker_event(
+            safe_json_write(
+                report_path,
+                self.results,
+            )
+
+            # Tracker.
+            self.tracker.record(
                 "validation_completed",
                 (
-                    "Full validation PASSED"
-                    if overall
-                    else "Full validation FAILED"
+                    "Full validation suite passed."
+                    if overall_pass
+                    else "Validation suite completed with failures."
                 ),
                 status=(
                     "validated"
-                    if overall
+                    if overall_pass
                     else "validation_failed"
                 ),
                 phase="summary",
-                details={
-                    "overall_pass": overall,
-                    "duration_seconds":
-                        duration,
-                    "platform_pass":
-                        platform_pass,
-                    "feature_pass":
-                        feature_pass,
-                    "handler_pass":
-                        handler_pass,
-                    "workflow_pass":
-                        workflow_pass,
-                    "python_pass":
-                        python_pass,
-                },
+                details=summary,
             )
 
-            return overall
+            self.checkpoint.save(
+                "completed"
+                if overall_pass
+                else "failed",
+                completed_steps,
+            )
+
+            logger.info(
+                "=" * 72
+            )
+            logger.info(
+                "QMOI VALIDATION SUMMARY"
+            )
+            logger.info(
+                "=" * 72
+            )
+            logger.info(
+                "Platform validation: %s",
+                "PASS" if platform_pass else "FAIL",
+            )
+            logger.info(
+                "Feature validation: %s",
+                "PASS" if feature_pass else "FAIL",
+            )
+            logger.info(
+                "File handlers: %s",
+                "PASS" if handler_pass else "FAIL",
+            )
+            logger.info(
+                "Workflow validation: %s",
+                "PASS" if workflow_pass else "FAIL",
+            )
+            logger.info(
+                "Python syntax: %s",
+                "PASS" if python_pass else "FAIL",
+            )
+            logger.info(
+                "Overall: %s",
+                "PASS" if overall_pass else "FAIL",
+            )
+            logger.info(
+                "Duration: %.2fs",
+                duration,
+            )
+            logger.info(
+                "Report: %s",
+                report_path,
+            )
+            logger.info(
+                "=" * 72
+            )
+
+            return overall_pass
 
         except Exception as exc:
-            logger.exception(
-                "Validation suite failed"
+            error_text = (
+                f"{type(exc).__name__}: {exc}"
             )
 
-            self.update_resume_checkpoint(
-                "error",
-                completed,
-                error=str(exc),
+            logger.error(
+                "Validation suite failed: %s",
+                error_text,
             )
 
-            self.record_tracker_event(
+            logger.error(
+                traceback.format_exc()
+            )
+
+            self.tracker.record(
                 "validation_failed",
                 (
-                    "Validation suite exception: "
-                    f"{exc}"
+                    "Validation suite raised an exception."
                 ),
                 status="failed",
                 phase="error",
                 details={
-                    "error_type":
-                        type(exc).__name__
+                    "error": str(exc),
+                    "error_type": type(exc).__name__,
+                    "completed_steps": completed_steps,
+                    "timestamp_utc": utc_now(),
                 },
+            )
+
+            self.checkpoint.save(
+                "error",
+                completed_steps,
+                error=error_text,
             )
 
             return False
 
-    # ------------------------------------------------------------------------
-    # GIT INFORMATION
-    # ------------------------------------------------------------------------
+    # ---------------------------------------------------------------------
+    # REPORT
+    # ---------------------------------------------------------------------
 
-    def git_status(
+    def generate_validation_report(
         self,
     ) -> Dict[str, Any]:
-        return run_command(
-            [
-                "git",
-                "status",
-                "--short",
-                "--branch",
-            ],
-            cwd=self.root_dir,
-            timeout=30,
-        )
-
-    def git_revision(
-        self,
-    ) -> Dict[str, Any]:
-        result = run_command(
-            [
-                "git",
-                "rev-parse",
-                "HEAD",
-            ],
-            cwd=self.root_dir,
-            timeout=30,
-        )
-
         return {
-            "sha": (
-                result["stdout"].strip()
-                if result["returncode"] == 0
-                else None
+            "generated_at": utc_now(),
+            "platforms": (
+                self.validate_all_platforms()
             ),
-            "command": result,
+            "features": (
+                self.validate_all_platform_features()
+            ),
+            "handlers": (
+                self.validate_file_handlers()
+            ),
+            "workflows": (
+                self.validate_workflows()
+            ),
+            "python": (
+                self.validate_python_sources()
+            ),
+            "proof": (
+                self.build_github_proof_contract()
+            ),
         }
 
 
@@ -3606,11 +3937,10 @@ class OllamaAutonomousAgent:
 # CLI
 # ============================================================================
 
-def build_parser() -> argparse.ArgumentParser:
+def build_argument_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "QMOI/Ollama autonomous "
-            "validation agent"
+            "QMOI Ollama Autonomous Agent"
         )
     )
 
@@ -3622,115 +3952,103 @@ def build_parser() -> argparse.ArgumentParser:
             "validate-all",
             "validate-all-platforms",
             "validate-all-features",
-            "validate-platform-features",
             "validate-workflows",
             "validate-python",
-            "proof",
-            "report",
-            "auto-heal",
+            "github-proof",
             "project-stats",
             "memory-index",
             "model-card",
-            "artifacts",
-            "status",
             "checkpoint",
+            "auto-heal",
+            "deprecated-actions",
         ],
     )
 
     parser.add_argument(
         "--root",
-        type=Path,
-        default=ROOT_DIR,
-        help="Repository root",
+        default=str(ROOT_DIR),
+        help="Repository root.",
     )
 
     parser.add_argument(
-        "--allow-feature-failures",
+        "--pretty",
         action="store_true",
-        help=(
-            "Do not fail the full suite when "
-            "platform feature evidence is missing"
-        ),
-    )
-
-    parser.add_argument(
-        "--no-artifacts",
-        action="store_true",
-        help=(
-            "Do not write the validation report"
-        ),
+        help="Pretty-print JSON output.",
     )
 
     return parser
 
 
-def main(
-    argv: Optional[Sequence[str]] = None,
-) -> int:
-    args = build_parser().parse_args(
-        argv
+def print_json(
+    payload: Any,
+    pretty: bool = True,
+) -> None:
+    print(
+        json.dumps(
+            payload,
+            indent=2 if pretty else None,
+            sort_keys=True,
+            default=str,
+        )
     )
 
+
+def main() -> None:
+    parser = build_argument_parser()
+    args = parser.parse_args()
+
+    root = Path(args.root).resolve()
+
     agent = OllamaAutonomousAgent(
-        args.root
+        root
     )
 
     if args.command == "validate-all":
-        return (
-            0
-            if agent.run_full_validation_suite(
-                fail_on_features=(
-                    not args.allow_feature_failures
-                ),
-                generate_artifacts=(
-                    not args.no_artifacts
-                ),
-            )
-            else 1
+        success = (
+            agent.run_full_validation_suite()
+        )
+
+        sys.exit(
+            0 if success else 1
         )
 
     if args.command == "validate-all-platforms":
-        print(
-            json.dumps(
-                agent.validate_all_platforms(),
-                indent=2,
-            )
+        print_json(
+            agent.validate_all_platforms(),
+            args.pretty or True,
         )
-        return 0
 
-    if args.command in {
-        "validate-all-features",
-        "validate-platform-features",
-    }:
-        print(
-            json.dumps(
-                agent.validate_all_platform_features(),
-                indent=2,
-            )
+        sys.exit(0)
+
+    if args.command == "validate-all-features":
+        result = (
+            agent.validate_all_platform_features()
         )
-        return 0
+
+        print_json(
+            {
+                "summary": agent.feature_summary(
+                    result
+                ),
+                "features": result,
+            },
+            True,
+        )
+
+        # Feature command is diagnostic; it does not force exit 1 merely
+        # because features are missing.
+        sys.exit(0)
 
     if args.command == "validate-workflows":
-        result = (
-            agent.validate_workflows()
+        result = agent.validate_workflows()
+
+        print_json(
+            result,
+            True,
         )
 
-        print(
-            json.dumps(
-                result,
-                indent=2,
-            )
-        )
-
-        return (
-            0
-            if result[
-                "summary"
-            ].get(
-                "valid",
-                False,
-            )
-            else 1
+        sys.exit(
+            0 if result["passed"] else 1
         )
 
     if args.command == "validate-python":
@@ -3738,161 +4056,152 @@ def main(
             agent.validate_python_sources()
         )
 
-        print(
-            json.dumps(
-                result,
-                indent=2,
-            )
+        print_json(
+            result,
+            True,
         )
 
-        return (
+        sys.exit(
+            0 if result["passed"] else 1
+        )
+
+    if args.command == "github-proof":
+        result = (
+            agent.build_github_proof_contract()
+        )
+
+        print_json(
+            result,
+            True,
+        )
+
+        sys.exit(
             0
-            if result["passed"]
-            else 1
-        )
-
-    if args.command == "proof":
-        print(
-            json.dumps(
-                agent.build_github_proof_contract(),
-                indent=2,
-                default=str,
-            )
-        )
-        return 0
-
-    if args.command == "report":
-        report = (
-            agent.generate_validation_report()
-        )
-
-        path = agent.save_report(
-            report
-        )
-
-        print(
-            json.dumps(
-                {
-                    "report": str(path),
-                    "overall_proof_status":
-                        report["proof"][
-                            "status"
-                        ],
-                },
-                indent=2,
-            )
-        )
-
-        return (
-            0
-            if report["proof"][
-                "status"
-            ] == "ready_for_github"
-            else 1
-        )
-
-    if args.command == "auto-heal":
-        result = agent.run_auto_heal()
-
-        print(
-            json.dumps(
-                result,
-                indent=2,
-                default=str,
-            )
-        )
-
-        return (
-            0
-            if result.get(
-                "status"
-            ) not in {
-                "failed",
-                "error",
-            }
+            if result["proof"]["overall_passed"]
             else 1
         )
 
     if args.command == "project-stats":
-        print(
-            json.dumps(
-                agent.project_stats(),
-                indent=2,
-                default=str,
-            )
+        print_json(
+            agent.project_stats(),
+            True,
         )
-        return 0
+
+        sys.exit(0)
 
     if args.command == "memory-index":
-        print(
-            agent.memory_generator
-            .generate_index()
+        path = (
+            agent.generate_memory_index()
         )
-        return 0
-
-    if args.command == "model-card":
-        print(
-            agent.model_card_generator
-            .generate_card()
-        )
-        return 0
-
-    if args.command == "artifacts":
-        print(
-            json.dumps(
-                agent.generate_memory_and_model_artifacts(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if args.command == "status":
-        token = resolve_github_token()
 
         print(
             json.dumps(
                 {
-                    "tracker_dir":
-                        str(
-                            agent.tracker_dir
-                        ),
-                    "checkpoint":
-                        agent.load_checkpoint(),
-                    "git":
-                        agent.git_status(),
-                    "revision":
-                        agent.git_revision(),
-                    "token_configured":
-                        bool(token),
-                    "token_preview":
-                        mask_github_token(
-                            token
-                        ),
+                    "generated": True,
+                    "path": str(path),
                 },
                 indent=2,
-                default=str,
             )
         )
 
-        return 0
+        sys.exit(0)
 
-    if args.command == "checkpoint":
+    if args.command == "model-card":
+        path = (
+            agent.generate_model_card()
+        )
+
         print(
             json.dumps(
-                agent.load_checkpoint()
-                or {
-                    "status":
-                        "no_checkpoint"
+                {
+                    "generated": True,
+                    "path": str(path),
                 },
                 indent=2,
             )
         )
-        return 0
 
-    return 1
+        sys.exit(0)
+
+    if args.command == "checkpoint":
+        print_json(
+            agent.load_checkpoint()
+            or {
+                "status": "no_checkpoint"
+            },
+            True,
+        )
+
+        sys.exit(0)
+
+    if args.command == "deprecated-actions":
+        validator = WorkflowValidator(
+            root
+        )
+
+        findings = (
+            validator
+            .find_deprecated_artifact_actions()
+        )
+
+        print_json(
+            {
+                "count": len(findings),
+                "findings": findings,
+                "passed": not findings,
+            },
+            True,
+        )
+
+        sys.exit(
+            0 if not findings else 1
+        )
+
+    if args.command == "auto-heal":
+        try:
+            from scripts.advanced_agent_healer import (
+                AgentAutoHealer,
+            )
+
+            healer = AgentAutoHealer(
+                agent.root_dir
+            )
+
+            results = (
+                healer
+                .run_full_recovery_cycle()
+            )
+
+            print_json(
+                results,
+                True,
+            )
+
+            try:
+                healer.save_recovery_report()
+            except Exception:
+                logger.exception(
+                    "Could not save recovery report."
+                )
+
+            sys.exit(0)
+
+        except Exception as exc:
+            logger.error(
+                "Auto-healing failed: %s",
+                exc,
+            )
+
+            print_json(
+                {
+                    "status": "failed",
+                    "error": str(exc),
+                },
+                True,
+            )
+
+            sys.exit(1)
 
 
 if __name__ == "__main__":
-    raise SystemExit(
-        main()
-    )
+    main()
