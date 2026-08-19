@@ -1,119 +1,439 @@
 name: Auto-merge automated proposals
 
+# ============================================================================
+# AUTO-MERGE AUTOMATED PROPOSALS
+# ============================================================================
+#
+# PURPOSE
+# -------
+# Automatically enable GitHub auto-merge for approved automated pull requests.
+#
+# Eligible source branches:
+#
+#   automated/*
+#   auto/*
+#
+# The workflow does NOT directly merge the PR immediately. It requests
+# GitHub's auto-merge mechanism, allowing required checks and branch
+# protection/rulesets to remain authoritative.
+#
+# SECURITY
+# --------
+# This workflow uses pull_request_target because it needs write permissions
+# against the repository's PR.
+#
+# IMPORTANT:
+#   - No PR code is checked out.
+#   - No code from the PR branch is executed.
+#   - Only GitHub CLI/API metadata is inspected.
+#   - Fork PRs are explicitly rejected.
+#
+# ============================================================================
+
 on:
+
+  # --------------------------------------------------------------------------
+  # Automatically evaluate automated PRs.
+  # --------------------------------------------------------------------------
+
   pull_request_target:
     types:
       - opened
       - edited
       - reopened
       - synchronize
+      - ready_for_review
+
+  # --------------------------------------------------------------------------
+  # Manual execution.
+  #
+  # Manual execution requires a PR number because workflow_dispatch does not
+  # provide pull_request event metadata.
+  # --------------------------------------------------------------------------
 
   workflow_dispatch:
+    inputs:
+
+      pr_number:
+        description: "Pull request number to evaluate"
+        required: true
+        type: string
+
+# ============================================================================
+# PERMISSIONS
+# ============================================================================
 
 permissions:
   contents: write
   pull-requests: write
 
+# ============================================================================
+# GLOBAL ENVIRONMENT
+# ============================================================================
+
+env:
+  # Prefer the custom token when configured, otherwise use the GitHub token
+  # supplied to the workflow.
+  GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
+
+# ============================================================================
+# JOBS
+# ============================================================================
+
 jobs:
+
+  # ==========================================================================
+  # ENABLE AUTO-MERGE
+  # ==========================================================================
+
   enable-auto-merge:
+
     name: Enable auto-merge for automated PRs
+
     runs-on: ubuntu-latest
 
+    # ------------------------------------------------------------------------
+    # Only execute automatically for pull_request_target events.
+    #
+    # For manual workflow_dispatch execution, the PR number is validated
+    # inside the job because pull_request metadata is unavailable.
+    # ------------------------------------------------------------------------
+
     if: >
-      startsWith(github.event.pull_request.head.ref, 'automated/') ||
-      startsWith(github.event.pull_request.head.ref, 'auto/')
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event_name == 'pull_request_target' &&
+        github.event.pull_request.number != null
+      )
 
     steps:
-      - name: Enable auto-merge
+
+      # ======================================================================
+      # DETERMINE PR NUMBER
+      # ======================================================================
+
+      - name: Determine pull request
+        id: pr
+        shell: bash
         env:
-          GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          EVENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          MANUAL_PR_NUMBER: ${{ inputs.pr_number }}
+        run: |
+          set -Eeuo pipefail
+
+          if [ "${GITHUB_EVENT_NAME}" = "pull_request_target" ]; then
+            PR_NUMBER="${EVENT_PR_NUMBER:-}"
+          else
+            PR_NUMBER="${MANUAL_PR_NUMBER:-}"
+          fi
+
+          if [ -z "${PR_NUMBER}" ]; then
+            echo "::error::No pull request number was supplied."
+            exit 1
+          fi
+
+          if ! [[ "${PR_NUMBER}" =~ ^[0-9]+$ ]]; then
+            echo "::error::Invalid pull request number: ${PR_NUMBER}"
+            exit 1
+          fi
+
+          if [ "${PR_NUMBER}" -le 0 ]; then
+            echo "::error::Pull request number must be greater than zero."
+            exit 1
+          fi
+
+          echo "pr_number=${PR_NUMBER}" >> "${GITHUB_OUTPUT}"
+
+          echo "Pull request selected: #${PR_NUMBER}"
+
+
+      # ======================================================================
+      # INSPECT PULL REQUEST
+      # ======================================================================
+
+      - name: Inspect pull request
+        id: inspect
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
           REPOSITORY: ${{ github.repository }}
         shell: bash
         run: |
-          set -euo pipefail
+          set -Eeuo pipefail
 
           echo "=========================================="
-          echo "Automatic PR Merge"
+          echo "Automatic PR Merge Evaluation"
           echo "=========================================="
           echo "Repository: ${REPOSITORY}"
           echo "PR:         #${PR_NUMBER}"
+          echo
 
           if [ -z "${GH_TOKEN:-}" ]; then
-            echo "ERROR: No GitHub token is available."
+            echo "::error::No GitHub token is available."
             exit 1
           fi
 
           echo "Checking pull request state..."
 
-          PR_JSON="$(gh pr view "${PR_NUMBER}" \
-            --repo "${REPOSITORY}" \
-            --json number,state,isDraft,headRefName,baseRefName,url)"
+          PR_JSON="$(
+            gh pr view "${PR_NUMBER}" \
+              --repo "${REPOSITORY}" \
+              --json \
+                number,\
+                state,\
+                isDraft,\
+                headRefName,\
+                headRefOid,\
+                baseRefName,\
+                baseRefOid,\
+                headRepository,\
+                headRepositoryOwner,\
+                isCrossRepository,\
+                mergeStateStatus,\
+                mergeable,\
+                autoMergeRequest,\
+                url
+          )"
 
+          echo
+          echo "Pull request metadata:"
           echo "${PR_JSON}" | jq .
 
-          PR_STATE="$(echo "${PR_JSON}" | jq -r '.state')"
-          IS_DRAFT="$(echo "${PR_JSON}" | jq -r '.isDraft')"
-          HEAD_REF="$(echo "${PR_JSON}" | jq -r '.headRefName')"
-          BASE_REF="$(echo "${PR_JSON}" | jq -r '.baseRefName')"
+          PR_STATE="$(
+            echo "${PR_JSON}" |
+              jq -r '.state // "UNKNOWN"'
+          )"
 
-          echo "State:      ${PR_STATE}"
-          echo "Draft:      ${IS_DRAFT}"
-          echo "Head:       ${HEAD_REF}"
-          echo "Base:       ${BASE_REF}"
+          IS_DRAFT="$(
+            echo "${PR_JSON}" |
+              jq -r '.isDraft // false'
+          )"
+
+          HEAD_REF="$(
+            echo "${PR_JSON}" |
+              jq -r '.headRefName // ""'
+          )"
+
+          HEAD_SHA="$(
+            echo "${PR_JSON}" |
+              jq -r '.headRefOid // ""'
+          )"
+
+          BASE_REF="$(
+            echo "${PR_JSON}" |
+              jq -r '.baseRefName // ""'
+          )"
+
+          MERGEABLE="$(
+            echo "${PR_JSON}" |
+              jq -r '.mergeable // "UNKNOWN"'
+          )"
+
+          MERGE_STATE="$(
+            echo "${PR_JSON}" |
+              jq -r '.mergeStateStatus // "UNKNOWN"'
+          )"
+
+          IS_CROSS_REPOSITORY="$(
+            echo "${PR_JSON}" |
+              jq -r '.isCrossRepository // false'
+          )"
+
+          PR_URL="$(
+            echo "${PR_JSON}" |
+              jq -r '.url // ""'
+          )"
+
+          echo
+          echo "State:              ${PR_STATE}"
+          echo "Draft:              ${IS_DRAFT}"
+          echo "Head:               ${HEAD_REF}"
+          echo "Head SHA:           ${HEAD_SHA}"
+          echo "Base:               ${BASE_REF}"
+          echo "Mergeable:          ${MERGEABLE}"
+          echo "Merge state:        ${MERGE_STATE}"
+          echo "Cross repository:   ${IS_CROSS_REPOSITORY}"
+          echo "URL:                ${PR_URL}"
+
+          # ------------------------------------------------------------------
+          # PR MUST BE OPEN
+          # ------------------------------------------------------------------
 
           if [ "${PR_STATE}" != "OPEN" ]; then
+            echo
             echo "PR is not open. Nothing to do."
             exit 0
           fi
 
+          # ------------------------------------------------------------------
+          # PR MUST NOT BE A DRAFT
+          # ------------------------------------------------------------------
+
           if [ "${IS_DRAFT}" = "true" ]; then
+            echo
             echo "PR is still a draft. Nothing to do."
             exit 0
           fi
 
-          case "${HEAD_REF}" in
-            automated/*|auto/*)
-              echo "Branch is eligible for automatic merging."
-              ;;
-            *)
-              echo "Branch is not an approved automated branch."
-              exit 0
-              ;;
-          esac
+          # ------------------------------------------------------------------
+          # REJECT CROSS-REPOSITORY / FORK PRs
+          #
+          # This is particularly important because this is a
+          # pull_request_target workflow with write permissions.
+          # ------------------------------------------------------------------
 
-          echo "Checking whether auto-merge is already enabled..."
-
-          AUTO_MERGE_STATE="$(gh pr view "${PR_NUMBER}" \
-            --repo "${REPOSITORY}" \
-            --json autoMergeRequest \
-            --jq '.autoMergeRequest != null')"
-
-          if [ "${AUTO_MERGE_STATE}" = "true" ]; then
-            echo "Auto-merge is already enabled."
+          if [ "${IS_CROSS_REPOSITORY}" = "true" ]; then
+            echo
+            echo "::warning::Cross-repository/fork PR detected."
+            echo "::warning::Automatic merge is intentionally disabled for fork PRs."
             exit 0
           fi
 
-          echo "Enabling auto-merge..."
+          # ------------------------------------------------------------------
+          # VERIFY APPROVED AUTOMATED BRANCH PREFIX
+          # ------------------------------------------------------------------
+
+          case "${HEAD_REF}" in
+
+            automated/*)
+              echo
+              echo "Branch prefix approved: automated/*"
+              ;;
+
+            auto/*)
+              echo
+              echo "Branch prefix approved: auto/*"
+              ;;
+
+            *)
+              echo
+              echo "Branch is not an approved automated branch."
+              echo "Nothing to do."
+              exit 0
+              ;;
+
+          esac
+
+          # ------------------------------------------------------------------
+          # EXPORT VALIDATED VALUES
+          # ------------------------------------------------------------------
+
+          {
+            echo "eligible=true"
+            echo "head_ref=${HEAD_REF}"
+            echo "head_sha=${HEAD_SHA}"
+            echo "base_ref=${BASE_REF}"
+            echo "mergeable=${MERGEABLE}"
+            echo "merge_state=${MERGE_STATE}"
+          } >> "${GITHUB_OUTPUT}"
+
+          echo
+          echo "Pull request passed automated-branch eligibility checks."
+
+
+      # ======================================================================
+      # CHECK CURRENT AUTO-MERGE STATE
+      # ======================================================================
+
+      - name: Check auto-merge state
+        if: steps.inspect.outputs.eligible == 'true'
+        id: auto-merge-state
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "Checking whether auto-merge is already enabled..."
+
+          AUTO_MERGE_STATE="$(
+            gh pr view "${PR_NUMBER}" \
+              --repo "${REPOSITORY}" \
+              --json autoMergeRequest \
+              --jq '.autoMergeRequest != null'
+          )"
+
+          echo "Auto-merge enabled: ${AUTO_MERGE_STATE}"
+
+          echo "enabled=${AUTO_MERGE_STATE}" >> "${GITHUB_OUTPUT}"
+
+
+      # ======================================================================
+      # ENABLE AUTO-MERGE
+      # ======================================================================
+
+      - name: Enable auto-merge
+        if: >
+          steps.inspect.outputs.eligible == 'true' &&
+          steps.auto-merge-state.outputs.enabled != 'true'
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "=========================================="
+          echo "ENABLING AUTOMATIC MERGE"
+          echo "=========================================="
+          echo "Repository: ${REPOSITORY}"
+          echo "PR:         #${PR_NUMBER}"
+          echo
+
+          echo "Requesting GitHub auto-merge..."
 
           if gh pr merge "${PR_NUMBER}" \
             --repo "${REPOSITORY}" \
             --auto \
             --merge; then
 
+            echo
             echo "=========================================="
             echo "SUCCESS"
+            echo "=========================================="
             echo "Auto-merge has been enabled."
             echo "PR: #${PR_NUMBER}"
-            echo "=========================================="
+            echo
+            echo "GitHub will merge the PR when all required"
+            echo "branch protection/ruleset requirements are satisfied."
+
           else
-            echo "ERROR: GitHub rejected the auto-merge request."
-            echo ""
+
+            echo
+            echo "::error::GitHub rejected the auto-merge request."
+            echo
             echo "Possible causes:"
             echo "  - Auto-merge is disabled in repository settings."
             echo "  - Branch protection/rulesets do not permit this merge."
             echo "  - Required status checks are not configured."
+            echo "  - Required reviews have not been completed."
             echo "  - The supplied token lacks required permissions."
             echo "  - The PR is not currently eligible for auto-merge."
+            echo "  - The repository does not permit the selected merge method."
+            echo
+            echo "The PR was NOT force-merged by this workflow."
             exit 1
+
           fi
+
+
+      # ======================================================================
+      # ALREADY ENABLED REPORT
+      # ======================================================================
+
+      - name: Report existing auto-merge
+        if: >
+          steps.inspect.outputs.eligible == 'true' &&
+          steps.auto-merge-state.outputs.enabled == 'true'
+        env:
+          PR_NUMBER: ${{ steps.pr.outputs.pr_number }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "=========================================="
+          echo "AUTO-MERGE ALREADY ENABLED"
+          echo "=========================================="
+          echo "PR: #${PR_NUMBER}"
+          echo
+          echo "No additional action is required."
