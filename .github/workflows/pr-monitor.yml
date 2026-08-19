@@ -1,30 +1,53 @@
 name: PR Status Monitor & Auto-Report
 
-# REAL-TIME MONITORING OF OLLAMA AUTONOMOUS AGENT
+# ============================================================================
+# PR STATUS MONITOR & AUTO-REPORT
+# ============================================================================
 #
-# Features:
+# PURPOSE
+# -------
+# Monitors the:
+#
+#   "Ollama PR Validation - 293+ Platform Features"
+#
+# workflow and provides:
+#
 #   - Workflow run monitoring
 #   - Job status tracking
-#   - Test result aggregation
-#   - Quality/reliability metrics
-#   - Performance analytics
-#   - Automatic status reporting
+#   - Test/validation result aggregation
+#   - Pass-rate metrics
+#   - Performance/elapsed-time metrics
+#   - Automatic PR failure reporting
+#   - Automatic success reporting
 #   - Manual monitoring through workflow_dispatch
+#   - Artifact discovery/download when available
+#
+# IMPORTANT
+# ---------
+# This workflow runs independently on GitHub-hosted infrastructure.
+# It does NOT depend on a Codespace remaining online.
+#
+# ============================================================================
 
 on:
   workflow_dispatch:
     inputs:
       run_id:
-        description: "Specific workflow run ID to monitor (optional)"
+        description: "Specific workflow run ID to monitor. Leave empty to monitor this workflow run."
         required: false
         type: string
+        default: ""
 
   workflow_run:
     workflows:
       - "Ollama PR Validation - 293+ Platform Features"
     types:
-      - completed
       - requested
+      - completed
+
+# ============================================================================
+# WORKFLOW PERMISSIONS
+# ============================================================================
 
 permissions:
   actions: read
@@ -33,65 +56,153 @@ permissions:
   pull-requests: write
   statuses: read
 
+# ============================================================================
+# GLOBAL ENVIRONMENT
+# ============================================================================
+
+env:
+  VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
+
+# ============================================================================
+# JOBS
+# ============================================================================
+
 jobs:
+
+  # ==========================================================================
+  # COLLECT WORKFLOW METRICS
+  # ==========================================================================
+
   collect-workflow-metrics:
     name: Collect & Analyze Workflow Metrics
     runs-on: ubuntu-latest
 
     outputs:
+      monitored_run_id: ${{ steps.metrics.outputs.monitored_run_id }}
+      workflow_name: ${{ steps.metrics.outputs.workflow_name }}
+      workflow_status: ${{ steps.metrics.outputs.workflow_status }}
+      workflow_conclusion: ${{ steps.metrics.outputs.workflow_conclusion }}
+      workflow_event: ${{ steps.metrics.outputs.workflow_event }}
+      head_branch: ${{ steps.metrics.outputs.head_branch }}
+      head_sha: ${{ steps.metrics.outputs.head_sha }}
+      workflow_url: ${{ steps.metrics.outputs.workflow_url }}
+
       jobs_total: ${{ steps.metrics.outputs.jobs_total }}
       jobs_passed: ${{ steps.metrics.outputs.jobs_passed }}
       jobs_failed: ${{ steps.metrics.outputs.jobs_failed }}
       jobs_in_progress: ${{ steps.metrics.outputs.jobs_in_progress }}
       jobs_skipped: ${{ steps.metrics.outputs.jobs_skipped }}
-      elapsed_time: ${{ steps.metrics.outputs.elapsed_time }}
+      jobs_cancelled: ${{ steps.metrics.outputs.jobs_cancelled }}
+      jobs_timed_out: ${{ steps.metrics.outputs.jobs_timed_out }}
+      jobs_neutral: ${{ steps.metrics.outputs.jobs_neutral }}
+
       pass_rate: ${{ steps.metrics.outputs.pass_rate }}
-      workflow_conclusion: ${{ steps.metrics.outputs.workflow_conclusion }}
+      elapsed_time: ${{ steps.metrics.outputs.elapsed_time }}
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
+
+      # ----------------------------------------------------------------------
+      # COLLECT METRICS
+      # ----------------------------------------------------------------------
 
       - name: Collect workflow metrics
         id: metrics
         uses: actions/github-script@v7
         env:
           MANUAL_RUN_ID: ${{ inputs.run_id }}
+          VALIDATION_WORKFLOW_NAME: ${{ env.VALIDATION_WORKFLOW_NAME }}
         with:
-          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+
           script: |
-            const manualRunId = process.env.MANUAL_RUN_ID || '';
+            const manualRunId = (process.env.MANUAL_RUN_ID || '').trim();
 
-            // Determine which workflow run should be monitored.
-            let runId;
+            let runId = null;
 
-            if (manualRunId.trim()) {
-              runId = Number(manualRunId.trim());
+            // =================================================================
+            // DETERMINE WHICH WORKFLOW RUN TO MONITOR
+            // =================================================================
+
+            if (manualRunId) {
+              runId = Number(manualRunId);
 
               if (!Number.isInteger(runId) || runId <= 0) {
-                core.setFailed(`Invalid run_id: ${manualRunId}`);
+                core.setFailed(
+                  `Invalid run_id "${manualRunId}". ` +
+                  `run_id must be a positive integer.`
+                );
                 return;
               }
+
             } else if (context.eventName === 'workflow_run') {
-              runId = context.payload.workflow_run?.id;
-            } else {
-              runId = context.runId;
+              runId = context.payload.workflow_run?.id || null;
+
+            } else if (context.eventName === 'workflow_dispatch') {
+              // If no explicit run_id was supplied, monitor the most
+              // recent validation workflow run instead of monitoring
+              // this monitor workflow recursively.
+              const validationWorkflowName =
+                process.env.VALIDATION_WORKFLOW_NAME ||
+                'Ollama PR Validation - 293+ Platform Features';
+
+              console.log(
+                `No manual run_id supplied. Searching for the latest ` +
+                `workflow named "${validationWorkflowName}".`
+              );
+
+              const workflowList =
+                await github.paginate(
+                  github.rest.actions.listWorkflowRunsForRepo,
+                  {
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    event: 'pull_request',
+                    per_page: 100
+                  }
+                );
+
+              const matchingRuns = workflowList
+                .filter(run => run.name === validationWorkflowName)
+                .sort(
+                  (a, b) =>
+                    new Date(b.created_at) -
+                    new Date(a.created_at)
+                );
+
+              if (matchingRuns.length > 0) {
+                runId = matchingRuns[0].id;
+              } else {
+                core.setFailed(
+                  `No previous "${validationWorkflowName}" workflow run ` +
+                  `could be located. Provide a run_id manually.`
+                );
+                return;
+              }
             }
 
             if (!runId) {
-              core.setFailed('Unable to determine workflow run ID.');
+              core.setFailed(
+                'Unable to determine the workflow run ID to monitor.'
+              );
               return;
             }
 
+            // =================================================================
+            // HEADER
+            // =================================================================
+
             console.log('='.repeat(80));
-            console.log('OLLAMA AUTONOMOUS AGENT - WORKFLOW METRICS');
+            console.log(
+              'OLLAMA AUTONOMOUS AGENT - WORKFLOW METRICS'
+            );
             console.log('='.repeat(80));
             console.log(`Monitoring run ID: ${runId}`);
             console.log('');
 
-            // Retrieve workflow run information.
+            // =================================================================
+            // RETRIEVE WORKFLOW RUN
+            // =================================================================
+
             const { data: run } =
               await github.rest.actions.getWorkflowRun({
                 owner: context.repo.owner,
@@ -104,77 +215,123 @@ jobs:
             console.log(`ID:          ${run.id}`);
             console.log(`Name:        ${run.name}`);
             console.log(`Status:      ${run.status}`);
-            console.log(`Conclusion:  ${run.conclusion || 'in progress'}`);
+            console.log(
+              `Conclusion:  ${run.conclusion || 'in progress'}`
+            );
             console.log(`Event:       ${run.event}`);
-            console.log(`Branch:      ${run.head_branch || 'N/A'}`);
-            console.log(`Commit:      ${(run.head_sha || '').substring(0, 7)}`);
+            console.log(
+              `Branch:      ${run.head_branch || 'N/A'}`
+            );
+            console.log(
+              `Commit:      ${(run.head_sha || '').substring(0, 7)}`
+            );
             console.log(`Created:     ${run.created_at}`);
             console.log(`Updated:     ${run.updated_at}`);
             console.log(`URL:         ${run.html_url}`);
             console.log('');
 
-            // Retrieve all jobs.
+            // =================================================================
+            // RETRIEVE ALL JOBS
+            // =================================================================
+
             const jobs = [];
 
-            for await (const response of github.paginate.iterator(
-              github.rest.actions.listJobsForWorkflowRun,
-              {
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                run_id: runId,
-                per_page: 100
-              }
-            )) {
+            for await (
+              const response of github.paginate.iterator(
+                github.rest.actions.listJobsForWorkflowRun,
+                {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  run_id: runId,
+                  per_page: 100
+                }
+              )
+            ) {
               jobs.push(...response.data);
             }
 
             console.log(`Jobs discovered: ${jobs.length}`);
             console.log('');
 
-            // Calculate job metrics.
+            // =================================================================
+            // CALCULATE JOB METRICS
+            // =================================================================
+
             const jobsPassed =
-              jobs.filter(job => job.conclusion === 'success').length;
+              jobs.filter(
+                job => job.conclusion === 'success'
+              ).length;
 
             const jobsFailed =
-              jobs.filter(job => job.conclusion === 'failure').length;
+              jobs.filter(
+                job => job.conclusion === 'failure'
+              ).length;
 
             const jobsInProgress =
-              jobs.filter(job =>
-                job.status === 'in_progress' ||
-                job.status === 'queued' ||
-                job.status === 'waiting'
+              jobs.filter(
+                job =>
+                  job.status === 'in_progress' ||
+                  job.status === 'queued' ||
+                  job.status === 'waiting' ||
+                  job.status === 'pending'
               ).length;
 
             const jobsSkipped =
-              jobs.filter(job => job.conclusion === 'skipped').length;
+              jobs.filter(
+                job => job.conclusion === 'skipped'
+              ).length;
 
             const jobsCancelled =
-              jobs.filter(job => job.conclusion === 'cancelled').length;
+              jobs.filter(
+                job => job.conclusion === 'cancelled'
+              ).length;
 
             const jobsNeutral =
-              jobs.filter(job => job.conclusion === 'neutral').length;
+              jobs.filter(
+                job => job.conclusion === 'neutral'
+              ).length;
 
             const jobsTimedOut =
-              jobs.filter(job => job.conclusion === 'timed_out').length;
+              jobs.filter(
+                job => job.conclusion === 'timed_out'
+              ).length;
 
             const passRate =
               jobs.length > 0
                 ? ((jobsPassed / jobs.length) * 100).toFixed(1)
                 : '0.0';
 
-            // Calculate workflow elapsed time.
+            // =================================================================
+            // CALCULATE ELAPSED TIME
+            // =================================================================
+
             const createdAt = new Date(run.created_at);
-            const updatedAt = new Date(run.updated_at || new Date());
 
-            let elapsedMs = updatedAt - createdAt;
+            let endTime;
 
-            if (!Number.isFinite(elapsedMs) || elapsedMs < 0) {
+            if (run.updated_at) {
+              endTime = new Date(run.updated_at);
+            } else {
+              endTime = new Date();
+            }
+
+            let elapsedMs = endTime - createdAt;
+
+            if (
+              !Number.isFinite(elapsedMs) ||
+              elapsedMs < 0
+            ) {
               elapsedMs = 0;
             }
 
-            const elapsedSec = Math.floor(elapsedMs / 1000);
-            const elapsedMin = Math.floor(elapsedSec / 60);
-            const elapsedHours = Math.floor(elapsedMin / 60);
+            const elapsedSec =
+              Math.floor(elapsedMs / 1000);
+
+            const elapsedMin =
+              Math.floor(elapsedSec / 60);
+
+            const elapsedHours =
+              Math.floor(elapsedMin / 60);
 
             let elapsedStr;
 
@@ -191,56 +348,121 @@ jobs:
               elapsedStr = `${elapsedSec}s`;
             }
 
-            console.log('Job Status Distribution');
-            console.log('-----------------------');
-            console.log(`Passed:       ${jobsPassed}`);
-            console.log(`Failed:       ${jobsFailed}`);
-            console.log(`In progress:  ${jobsInProgress}`);
-            console.log(`Skipped:      ${jobsSkipped}`);
-            console.log(`Cancelled:    ${jobsCancelled}`);
-            console.log(`Neutral:      ${jobsNeutral}`);
-            console.log(`Timed out:    ${jobsTimedOut}`);
-            console.log(`Total:        ${jobs.length}`);
-            console.log(`Pass rate:    ${passRate}%`);
-            console.log(`Elapsed time: ${elapsedStr}`);
+            // =================================================================
+            // LOG DISTRIBUTION
+            // =================================================================
+
+            console.log(
+              'Job Status Distribution'
+            );
+            console.log(
+              '-----------------------'
+            );
+
+            console.log(
+              `Passed:       ${jobsPassed}`
+            );
+
+            console.log(
+              `Failed:       ${jobsFailed}`
+            );
+
+            console.log(
+              `In progress:  ${jobsInProgress}`
+            );
+
+            console.log(
+              `Skipped:      ${jobsSkipped}`
+            );
+
+            console.log(
+              `Cancelled:    ${jobsCancelled}`
+            );
+
+            console.log(
+              `Neutral:      ${jobsNeutral}`
+            );
+
+            console.log(
+              `Timed out:    ${jobsTimedOut}`
+            );
+
+            console.log(
+              `Total:        ${jobs.length}`
+            );
+
+            console.log(
+              `Pass rate:    ${passRate}%`
+            );
+
+            console.log(
+              `Elapsed time: ${elapsedStr}`
+            );
+
             console.log('');
 
-            // Detailed job information.
+            // =================================================================
+            // DETAILED JOB INFORMATION
+            // =================================================================
+
             console.log('Job Details');
             console.log('-----------');
 
             if (jobs.length === 0) {
-              console.log('No jobs are currently available.');
+              console.log(
+                'No jobs are currently available.'
+              );
             } else {
               jobs.forEach((job, index) => {
                 let icon = '⏭️';
 
-                if (job.conclusion === 'success') {
+                if (
+                  job.conclusion === 'success'
+                ) {
                   icon = '✅';
-                } else if (job.conclusion === 'failure') {
+
+                } else if (
+                  job.conclusion === 'failure'
+                ) {
                   icon = '❌';
+
                 } else if (
                   job.status === 'in_progress' ||
                   job.status === 'queued' ||
-                  job.status === 'waiting'
+                  job.status === 'waiting' ||
+                  job.status === 'pending'
                 ) {
                   icon = '⏳';
-                } else if (job.conclusion === 'cancelled') {
+
+                } else if (
+                  job.conclusion === 'cancelled'
+                ) {
                   icon = '🚫';
+
+                } else if (
+                  job.conclusion === 'timed_out'
+                ) {
+                  icon = '⏱️';
                 }
 
                 let jobElapsed = 0;
 
                 if (job.started_at) {
-                  const start = new Date(job.started_at);
-                  const end = job.completed_at
-                    ? new Date(job.completed_at)
-                    : new Date();
+                  const start =
+                    new Date(job.started_at);
 
-                  jobElapsed = Math.max(
-                    0,
-                    Math.floor((end - start) / 1000)
-                  );
+                  const end =
+                    job.completed_at
+                      ? new Date(job.completed_at)
+                      : new Date();
+
+                  jobElapsed =
+                    Math.max(
+                      0,
+                      Math.floor(
+                        (end - start) / 1000
+                      )
+                    );
                 }
 
                 console.log(
@@ -258,39 +480,193 @@ jobs:
                 console.log(
                   `    Duration: ${jobElapsed}s`
                 );
+
+                if (job.html_url) {
+                  console.log(
+                    `    URL: ${job.html_url}`
+                  );
+                }
+
+                console.log('');
               });
             }
 
-            console.log('');
             console.log('='.repeat(80));
 
-            // Export GitHub Actions outputs.
-            core.setOutput('jobs_total', String(jobs.length));
-            core.setOutput('jobs_passed', String(jobsPassed));
-            core.setOutput('jobs_failed', String(jobsFailed));
-            core.setOutput('jobs_in_progress', String(jobsInProgress));
-            core.setOutput('jobs_skipped', String(jobsSkipped));
-            core.setOutput('elapsed_time', elapsedStr);
-            core.setOutput('pass_rate', String(passRate));
+            // =================================================================
+            // EXPORT GITHUB ACTIONS OUTPUTS
+            // =================================================================
+
+            core.setOutput(
+              'monitored_run_id',
+              String(run.id)
+            );
+
+            core.setOutput(
+              'workflow_name',
+              run.name || ''
+            );
+
+            core.setOutput(
+              'workflow_status',
+              run.status || ''
+            );
+
             core.setOutput(
               'workflow_conclusion',
               run.conclusion || 'in_progress'
             );
 
+            core.setOutput(
+              'workflow_event',
+              run.event || ''
+            );
+
+            core.setOutput(
+              'head_branch',
+              run.head_branch || ''
+            );
+
+            core.setOutput(
+              'head_sha',
+              run.head_sha || ''
+            );
+
+            core.setOutput(
+              'workflow_url',
+              run.html_url || ''
+            );
+
+            core.setOutput(
+              'jobs_total',
+              String(jobs.length)
+            );
+
+            core.setOutput(
+              'jobs_passed',
+              String(jobsPassed)
+            );
+
+            core.setOutput(
+              'jobs_failed',
+              String(jobsFailed)
+            );
+
+            core.setOutput(
+              'jobs_in_progress',
+              String(jobsInProgress)
+            );
+
+            core.setOutput(
+              'jobs_skipped',
+              String(jobsSkipped)
+            );
+
+            core.setOutput(
+              'jobs_cancelled',
+              String(jobsCancelled)
+            );
+
+            core.setOutput(
+              'jobs_timed_out',
+              String(jobsTimedOut)
+            );
+
+            core.setOutput(
+              'jobs_neutral',
+              String(jobsNeutral)
+            );
+
+            core.setOutput(
+              'pass_rate',
+              String(passRate)
+            );
+
+            core.setOutput(
+              'elapsed_time',
+              elapsedStr
+            );
+
+      # ----------------------------------------------------------------------
+      # DISPLAY METRICS
+      # ----------------------------------------------------------------------
+
       - name: Display metrics summary
+        env:
+          RUN_ID: ${{ steps.metrics.outputs.monitored_run_id }}
+          WORKFLOW_NAME: ${{ steps.metrics.outputs.workflow_name }}
+          WORKFLOW_STATUS: ${{ steps.metrics.outputs.workflow_status }}
+          WORKFLOW_CONCLUSION: ${{ steps.metrics.outputs.workflow_conclusion }}
+          JOBS_TOTAL: ${{ steps.metrics.outputs.jobs_total }}
+          JOBS_PASSED: ${{ steps.metrics.outputs.jobs_passed }}
+          JOBS_FAILED: ${{ steps.metrics.outputs.jobs_failed }}
+          JOBS_IN_PROGRESS: ${{ steps.metrics.outputs.jobs_in_progress }}
+          JOBS_SKIPPED: ${{ steps.metrics.outputs.jobs_skipped }}
+          PASS_RATE: ${{ steps.metrics.outputs.pass_rate }}
+          ELAPSED_TIME: ${{ steps.metrics.outputs.elapsed_time }}
         run: |
           echo "=========================================="
           echo "WORKFLOW METRICS SUMMARY"
           echo "=========================================="
-          echo "Total jobs:      ${{ steps.metrics.outputs.jobs_total }}"
-          echo "Passed:          ${{ steps.metrics.outputs.jobs_passed }}"
-          echo "Failed:          ${{ steps.metrics.outputs.jobs_failed }}"
-          echo "In progress:     ${{ steps.metrics.outputs.jobs_in_progress }}"
-          echo "Skipped:         ${{ steps.metrics.outputs.jobs_skipped }}"
-          echo "Pass rate:       ${{ steps.metrics.outputs.pass_rate }}%"
-          echo "Elapsed time:    ${{ steps.metrics.outputs.elapsed_time }}"
-          echo "Conclusion:      ${{ steps.metrics.outputs.workflow_conclusion }}"
+          echo "Run ID:          ${RUN_ID}"
+          echo "Workflow:        ${WORKFLOW_NAME}"
+          echo "Status:          ${WORKFLOW_STATUS}"
+          echo "Conclusion:      ${WORKFLOW_CONCLUSION}"
+          echo "Total jobs:      ${JOBS_TOTAL}"
+          echo "Passed:          ${JOBS_PASSED}"
+          echo "Failed:          ${JOBS_FAILED}"
+          echo "In progress:     ${JOBS_IN_PROGRESS}"
+          echo "Skipped:         ${JOBS_SKIPPED}"
+          echo "Pass rate:       ${PASS_RATE}%"
+          echo "Elapsed time:    ${ELAPSED_TIME}"
           echo "=========================================="
+
+      # ----------------------------------------------------------------------
+      # GITHUB STEP SUMMARY
+      # ----------------------------------------------------------------------
+
+      - name: Publish metrics summary
+        env:
+          RUN_ID: ${{ steps.metrics.outputs.monitored_run_id }}
+          WORKFLOW_NAME: ${{ steps.metrics.outputs.workflow_name }}
+          WORKFLOW_STATUS: ${{ steps.metrics.outputs.workflow_status }}
+          WORKFLOW_CONCLUSION: ${{ steps.metrics.outputs.workflow_conclusion }}
+          JOBS_TOTAL: ${{ steps.metrics.outputs.jobs_total }}
+          JOBS_PASSED: ${{ steps.metrics.outputs.jobs_passed }}
+          JOBS_FAILED: ${{ steps.metrics.outputs.jobs_failed }}
+          JOBS_IN_PROGRESS: ${{ steps.metrics.outputs.jobs_in_progress }}
+          JOBS_SKIPPED: ${{ steps.metrics.outputs.jobs_skipped }}
+          JOBS_CANCELLED: ${{ steps.metrics.outputs.jobs_cancelled }}
+          JOBS_TIMED_OUT: ${{ steps.metrics.outputs.jobs_timed_out }}
+          PASS_RATE: ${{ steps.metrics.outputs.pass_rate }}
+          ELAPSED_TIME: ${{ steps.metrics.outputs.elapsed_time }}
+          WORKFLOW_URL: ${{ steps.metrics.outputs.workflow_url }}
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          # 📊 Ollama Validation Workflow Metrics
+
+          | Metric | Value |
+          |---|---:|
+          | Workflow | ${WORKFLOW_NAME} |
+          | Run ID | ${RUN_ID} |
+          | Status | ${WORKFLOW_STATUS} |
+          | Conclusion | ${WORKFLOW_CONCLUSION} |
+          | Total Jobs | ${JOBS_TOTAL} |
+          | Passed | ${JOBS_PASSED} |
+          | Failed | ${JOBS_FAILED} |
+          | In Progress | ${JOBS_IN_PROGRESS} |
+          | Skipped | ${JOBS_SKIPPED} |
+          | Cancelled | ${JOBS_CANCELLED} |
+          | Timed Out | ${JOBS_TIMED_OUT} |
+          | Pass Rate | ${PASS_RATE}% |
+          | Elapsed Time | ${ELAPSED_TIME} |
+
+          **Workflow Run:** ${WORKFLOW_URL}
+          EOF
+
+  # ==========================================================================
+  # MONITOR AND REPORT
+  # ==========================================================================
 
   monitor-and-report:
     name: Monitor PR Validation & Report Status
@@ -299,79 +675,128 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    # Run reporting for:
+    #
+    #   - manual monitoring
+    #   - workflow completion
+    #
+    # Do not attempt PR completion reporting for a merely requested run.
     if: >
       github.event_name == 'workflow_dispatch' ||
       (
         github.event_name == 'workflow_run' &&
-        github.event.workflow_run.event == 'pull_request'
+        github.event.action == 'completed'
       )
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
+
+      # ----------------------------------------------------------------------
+      # DOWNLOAD ARTIFACTS
+      # ----------------------------------------------------------------------
 
       - name: Download validation artifacts
-        if: github.event_name == 'workflow_run'
+        if: >
+          github.event_name == 'workflow_run' &&
+          github.event.action == 'completed'
         uses: actions/download-artifact@v4
         continue-on-error: true
         with:
-          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
-          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
+          run-id: ${{ needs.collect-workflow-metrics.outputs.monitored_run_id }}
           merge-multiple: true
+          path: validation-artifacts
+
+      # ----------------------------------------------------------------------
+      # CHECK STATUS
+      # ----------------------------------------------------------------------
 
       - name: Check workflow status
         env:
-          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
-          WORKFLOW_STATUS: ${{ github.event.workflow_run.status }}
-          WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_ID: ${{ needs.collect-workflow-metrics.outputs.monitored_run_id }}
+          WORKFLOW_NAME: ${{ needs.collect-workflow-metrics.outputs.workflow_name }}
+          WORKFLOW_STATUS: ${{ needs.collect-workflow-metrics.outputs.workflow_status }}
+          WORKFLOW_CONCLUSION: ${{ needs.collect-workflow-metrics.outputs.workflow_conclusion }}
+          WORKFLOW_EVENT: ${{ needs.collect-workflow-metrics.outputs.workflow_event }}
+          HEAD_BRANCH: ${{ needs.collect-workflow-metrics.outputs.head_branch }}
+          HEAD_SHA: ${{ needs.collect-workflow-metrics.outputs.head_sha }}
+          WORKFLOW_URL: ${{ needs.collect-workflow-metrics.outputs.workflow_url }}
+          JOBS_TOTAL: ${{ needs.collect-workflow-metrics.outputs.jobs_total }}
+          JOBS_PASSED: ${{ needs.collect-workflow-metrics.outputs.jobs_passed }}
+          JOBS_FAILED: ${{ needs.collect-workflow-metrics.outputs.jobs_failed }}
+          JOBS_IN_PROGRESS: ${{ needs.collect-workflow-metrics.outputs.jobs_in_progress }}
+          PASS_RATE: ${{ needs.collect-workflow-metrics.outputs.pass_rate }}
+          ELAPSED_TIME: ${{ needs.collect-workflow-metrics.outputs.elapsed_time }}
         run: |
           echo "=========================================="
           echo "PR VALIDATION WORKFLOW STATUS MONITOR"
           echo "=========================================="
           echo ""
 
-          echo "Workflow:   ${WORKFLOW_NAME:-Manual Run}"
-          echo "Status:     ${WORKFLOW_STATUS:-N/A}"
-          echo "Conclusion: ${WORKFLOW_CONCLUSION:-N/A}"
-          echo "Run ID:     ${WORKFLOW_RUN_ID:-N/A}"
+          echo "Workflow:    ${WORKFLOW_NAME}"
+          echo "Run ID:      ${RUN_ID}"
+          echo "Event:       ${WORKFLOW_EVENT}"
+          echo "Status:      ${WORKFLOW_STATUS}"
+          echo "Conclusion:  ${WORKFLOW_CONCLUSION}"
+          echo "Branch:      ${HEAD_BRANCH:-N/A}"
+          echo "Commit:      ${HEAD_SHA:0:7}"
+          echo "URL:         ${WORKFLOW_URL}"
           echo ""
 
-          if [ "${WORKFLOW_CONCLUSION:-}" = "success" ]; then
-            echo "✅ All validation checks PASSED."
-          elif [ "${WORKFLOW_CONCLUSION:-}" = "failure" ]; then
-            echo "❌ Validation workflow FAILED."
-          elif [ "${WORKFLOW_CONCLUSION:-}" = "cancelled" ]; then
-            echo "🚫 Validation workflow was CANCELLED."
-          elif [ "${WORKFLOW_CONCLUSION:-}" = "timed_out" ]; then
-            echo "⏱️ Validation workflow TIMED OUT."
-          elif [ "${WORKFLOW_CONCLUSION:-}" = "skipped" ]; then
-            echo "⏭️ Validation workflow was SKIPPED."
-          else
-            echo "⏳ Validation workflow is still in progress or was manually requested."
-          fi
+          case "${WORKFLOW_CONCLUSION}" in
+            success)
+              echo "✅ All validation checks PASSED."
+              ;;
+
+            failure)
+              echo "❌ Validation workflow FAILED."
+              ;;
+
+            cancelled)
+              echo "🚫 Validation workflow was CANCELLED."
+              ;;
+
+            timed_out)
+              echo "⏱️ Validation workflow TIMED OUT."
+              ;;
+
+            skipped)
+              echo "⏭️ Validation workflow was SKIPPED."
+              ;;
+
+            neutral)
+              echo "ℹ️ Validation workflow completed with a NEUTRAL conclusion."
+              ;;
+
+            *)
+              echo "⏳ Validation workflow is still in progress or has no final conclusion."
+              ;;
+          esac
 
           echo ""
           echo "Metrics:"
-          echo "  Total jobs:  ${{ needs.collect-workflow-metrics.outputs.jobs_total }}"
-          echo "  Passed:      ${{ needs.collect-workflow-metrics.outputs.jobs_passed }}"
-          echo "  Failed:      ${{ needs.collect-workflow-metrics.outputs.jobs_failed }}"
-          echo "  In progress: ${{ needs.collect-workflow-metrics.outputs.jobs_in_progress }}"
-          echo "  Pass rate:   ${{ needs.collect-workflow-metrics.outputs.pass_rate }}%"
-          echo "  Elapsed:     ${{ needs.collect-workflow-metrics.outputs.elapsed_time }}"
+          echo "  Total jobs:  ${JOBS_TOTAL}"
+          echo "  Passed:      ${JOBS_PASSED}"
+          echo "  Failed:      ${JOBS_FAILED}"
+          echo "  In progress: ${JOBS_IN_PROGRESS}"
+          echo "  Pass rate:   ${PASS_RATE}%"
+          echo "  Elapsed:     ${ELAPSED_TIME}"
           echo ""
+
+      # ----------------------------------------------------------------------
+      # GENERATE REPORT AND PR COMMENT
+      # ----------------------------------------------------------------------
 
       - name: Generate validation report
         uses: actions/github-script@v7
         env:
-          WORKFLOW_RUN_ID: ${{ github.event.workflow_run.id }}
-          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
-          WORKFLOW_STATUS: ${{ github.event.workflow_run.status }}
-          WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
-          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          RUN_ID: ${{ needs.collect-workflow-metrics.outputs.monitored_run_id }}
+          WORKFLOW_NAME: ${{ needs.collect-workflow-metrics.outputs.workflow_name }}
+          WORKFLOW_STATUS: ${{ needs.collect-workflow-metrics.outputs.workflow_status }}
+          WORKFLOW_CONCLUSION: ${{ needs.collect-workflow-metrics.outputs.workflow_conclusion }}
+          WORKFLOW_EVENT: ${{ needs.collect-workflow-metrics.outputs.workflow_event }}
+          HEAD_BRANCH: ${{ needs.collect-workflow-metrics.outputs.head_branch }}
+          HEAD_SHA: ${{ needs.collect-workflow-metrics.outputs.head_sha }}
+          WORKFLOW_URL: ${{ needs.collect-workflow-metrics.outputs.workflow_url }}
           JOBS_TOTAL: ${{ needs.collect-workflow-metrics.outputs.jobs_total }}
           JOBS_PASSED: ${{ needs.collect-workflow-metrics.outputs.jobs_passed }}
           JOBS_FAILED: ${{ needs.collect-workflow-metrics.outputs.jobs_failed }}
@@ -379,114 +804,405 @@ jobs:
           PASS_RATE: ${{ needs.collect-workflow-metrics.outputs.pass_rate }}
           ELAPSED_TIME: ${{ needs.collect-workflow-metrics.outputs.elapsed_time }}
         with:
-          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
-          script: |
-            const runId = process.env.WORKFLOW_RUN_ID || 'N/A';
-            const workflowName = process.env.WORKFLOW_NAME || 'Manual monitoring run';
-            const status = process.env.WORKFLOW_STATUS || 'N/A';
-            const conclusion = process.env.WORKFLOW_CONCLUSION || 'N/A';
-            const branch = process.env.HEAD_BRANCH || 'N/A';
-            const sha = process.env.HEAD_SHA || 'N/A';
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
 
-            const jobsTotal = process.env.JOBS_TOTAL || '0';
-            const jobsPassed = process.env.JOBS_PASSED || '0';
-            const jobsFailed = process.env.JOBS_FAILED || '0';
+          script: |
+            const runId =
+              process.env.RUN_ID || 'N/A';
+
+            const workflowName =
+              process.env.WORKFLOW_NAME ||
+              'Ollama PR Validation';
+
+            const status =
+              process.env.WORKFLOW_STATUS || 'N/A';
+
+            const conclusion =
+              process.env.WORKFLOW_CONCLUSION || 'N/A';
+
+            const workflowEvent =
+              process.env.WORKFLOW_EVENT || 'N/A';
+
+            const branch =
+              process.env.HEAD_BRANCH || 'N/A';
+
+            const sha =
+              process.env.HEAD_SHA || 'N/A';
+
+            const workflowUrl =
+              process.env.WORKFLOW_URL || '';
+
+            const jobsTotal =
+              process.env.JOBS_TOTAL || '0';
+
+            const jobsPassed =
+              process.env.JOBS_PASSED || '0';
+
+            const jobsFailed =
+              process.env.JOBS_FAILED || '0';
+
             const jobsInProgress =
               process.env.JOBS_IN_PROGRESS || '0';
-            const passRate = process.env.PASS_RATE || '0.0';
-            const elapsed = process.env.ELAPSED_TIME || '0s';
+
+            const passRate =
+              process.env.PASS_RATE || '0.0';
+
+            const elapsed =
+              process.env.ELAPSED_TIME || '0s';
 
             console.log('');
             console.log('='.repeat(70));
-            console.log('OLLAMA PR VALIDATION STATUS REPORT');
+            console.log(
+              'OLLAMA PR VALIDATION STATUS REPORT'
+            );
             console.log('='.repeat(70));
             console.log('');
 
-            console.log(`Workflow:       ${workflowName}`);
-            console.log(`Run ID:         ${runId}`);
-            console.log(`Status:         ${status}`);
-            console.log(`Conclusion:     ${conclusion}`);
-            console.log(`Head Branch:    ${branch}`);
-            console.log(`Head Commit:    ${sha.substring(0, 7)}`);
+            console.log(
+              `Workflow:       ${workflowName}`
+            );
+
+            console.log(
+              `Run ID:         ${runId}`
+            );
+
+            console.log(
+              `Status:         ${status}`
+            );
+
+            console.log(
+              `Conclusion:     ${conclusion}`
+            );
+
+            console.log(
+              `Event:          ${workflowEvent}`
+            );
+
+            console.log(
+              `Head Branch:    ${branch}`
+            );
+
+            console.log(
+              `Head Commit:    ${sha.substring(0, 7)}`
+            );
+
+            console.log(
+              `Workflow URL:   ${workflowUrl}`
+            );
+
             console.log('');
 
             console.log('Metrics');
             console.log('-------');
-            console.log(`Jobs Total:     ${jobsTotal}`);
-            console.log(`Jobs Passed:    ${jobsPassed}`);
-            console.log(`Jobs Failed:    ${jobsFailed}`);
-            console.log(`In Progress:    ${jobsInProgress}`);
-            console.log(`Pass Rate:      ${passRate}%`);
-            console.log(`Elapsed Time:   ${elapsed}`);
+
+            console.log(
+              `Jobs Total:     ${jobsTotal}`
+            );
+
+            console.log(
+              `Jobs Passed:    ${jobsPassed}`
+            );
+
+            console.log(
+              `Jobs Failed:    ${jobsFailed}`
+            );
+
+            console.log(
+              `In Progress:    ${jobsInProgress}`
+            );
+
+            console.log(
+              `Pass Rate:      ${passRate}%`
+            );
+
+            console.log(
+              `Elapsed Time:   ${elapsed}`
+            );
+
             console.log('');
 
-            if (conclusion === 'success') {
-              console.log('STATUS: READY FOR MERGE');
-              console.log('');
-              console.log('Validation completed successfully.');
-            } else if (conclusion === 'failure') {
-              console.log('STATUS: VALIDATION FAILED');
-              console.log('');
-              console.log('One or more validation jobs failed.');
-            } else if (conclusion === 'cancelled') {
-              console.log('STATUS: VALIDATION CANCELLED');
-            } else if (conclusion === 'timed_out') {
-              console.log('STATUS: VALIDATION TIMED OUT');
-            } else {
-              console.log('STATUS: VALIDATION NOT YET COMPLETE');
+            // ================================================================
+            // DETERMINE STATUS
+            // ================================================================
+
+            let reportTitle;
+            let reportIcon;
+            let reportStatus;
+
+            switch (conclusion) {
+              case 'success':
+                reportIcon = '✅';
+                reportStatus = 'READY FOR MERGE';
+                reportTitle = 'PR Validation Complete';
+                break;
+
+              case 'failure':
+                reportIcon = '❌';
+                reportStatus = 'VALIDATION FAILED';
+                reportTitle = 'PR Validation Failed';
+                break;
+
+              case 'cancelled':
+                reportIcon = '🚫';
+                reportStatus = 'VALIDATION CANCELLED';
+                reportTitle = 'PR Validation Cancelled';
+                break;
+
+              case 'timed_out':
+                reportIcon = '⏱️';
+                reportStatus = 'VALIDATION TIMED OUT';
+                reportTitle = 'PR Validation Timed Out';
+                break;
+
+              case 'skipped':
+                reportIcon = '⏭️';
+                reportStatus = 'VALIDATION SKIPPED';
+                reportTitle = 'PR Validation Skipped';
+                break;
+
+              case 'neutral':
+                reportIcon = 'ℹ️';
+                reportStatus = 'VALIDATION COMPLETED WITH NEUTRAL RESULT';
+                reportTitle = 'PR Validation Neutral';
+                break;
+
+              default:
+                reportIcon = '⏳';
+                reportStatus = 'VALIDATION NOT YET COMPLETE';
+                reportTitle = 'PR Validation In Progress';
+                break;
             }
+
+            console.log(
+              `STATUS: ${reportStatus}`
+            );
+
+            console.log('');
+            console.log(
+              'Validation monitoring completed.'
+            );
 
             console.log('');
             console.log('='.repeat(70));
 
-            // If this is a completed PR validation failure,
-            // create a warning comment on the associated PR when possible.
+            // ================================================================
+            // FIND ASSOCIATED PRs
+            // ================================================================
+
+            let pullRequests = [];
+
+            if (context.eventName === 'workflow_run') {
+              pullRequests =
+                context.payload.workflow_run?.pull_requests || [];
+            }
+
+            // If GitHub did not attach pull requests to the workflow_run,
+            // perform an API lookup using the head branch.
             if (
-              context.eventName === 'workflow_run' &&
-              conclusion === 'failure'
+              pullRequests.length === 0 &&
+              branch &&
+              branch !== 'N/A'
             ) {
-              const workflowRun = context.payload.workflow_run;
+              try {
+                const { data } =
+                  await github.rest.pulls.list({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    state: 'open',
+                    head:
+                      `${context.repo.owner}:${branch}`,
+                    per_page: 20
+                  });
 
-              const pullRequests =
-                workflowRun?.pull_requests || [];
-
-              if (pullRequests.length > 0) {
-                for (const pr of pullRequests) {
-                  try {
-                    await github.rest.issues.createComment({
-                      owner: context.repo.owner,
-                      repo: context.repo.repo,
-                      issue_number: pr.number,
-                      body:
-                        `## ⚠️ PR Validation Failed\n\n` +
-                        `The workflow **${workflowName}** failed.\n\n` +
-                        `- **Run:** ${runId}\n` +
-                        `- **Branch:** ${branch}\n` +
-                        `- **Commit:** ${sha.substring(0, 7)}\n` +
-                        `- **Jobs:** ${jobsPassed}/${jobsTotal} passed\n` +
-                        `- **Pass rate:** ${passRate}%\n` +
-                        `- **Duration:** ${elapsed}\n\n` +
-                        `Please inspect the failed workflow jobs before merging.`
-                    });
-
-                    console.log(
-                      `Posted validation failure report to PR #${pr.number}.`
-                    );
-                  } catch (error) {
-                    console.log(
-                      `Unable to comment on PR #${pr.number}: ${error.message}`
-                    );
-                  }
-                }
-              } else {
+                pullRequests = data;
+              } catch (error) {
                 console.log(
-                  'No associated pull request was available for reporting.'
+                  `Unable to locate PR by branch: ${error.message}`
                 );
               }
             }
 
+            // ================================================================
+            // MANUAL RUN PR DISCOVERY
+            // ================================================================
+
+            if (
+              pullRequests.length === 0 &&
+              branch &&
+              branch !== 'N/A'
+            ) {
+              try {
+                const { data } =
+                  await github.rest.pulls.list({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    state: 'open',
+                    head:
+                      `${context.repo.owner}:${branch}`,
+                    per_page: 20
+                  });
+
+                pullRequests = data;
+              } catch (error) {
+                console.log(
+                  `Manual PR discovery failed: ${error.message}`
+                );
+              }
+            }
+
+            if (pullRequests.length === 0) {
+              console.log(
+                'No associated open pull request was found.'
+              );
+            }
+
+            // ================================================================
+            // CREATE COMMENT
+            // ================================================================
+
+            if (
+              pullRequests.length > 0 &&
+              (
+                conclusion === 'success' ||
+                conclusion === 'failure' ||
+                conclusion === 'cancelled' ||
+                conclusion === 'timed_out'
+              )
+            ) {
+              for (const pr of pullRequests) {
+                try {
+                  // ----------------------------------------------------------
+                  // Avoid duplicate comments for the same workflow run.
+                  // ----------------------------------------------------------
+
+                  const marker =
+                    `<!-- ollama-pr-monitor-run:${runId} -->`;
+
+                  const existingComments =
+                    await github.paginate(
+                      github.rest.issues.listComments,
+                      {
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: pr.number,
+                        per_page: 100
+                      }
+                    );
+
+                  const alreadyReported =
+                    existingComments.some(
+                      comment =>
+                        typeof comment.body === 'string' &&
+                        comment.body.includes(marker)
+                    );
+
+                  if (alreadyReported) {
+                    console.log(
+                      `PR #${pr.number} already has a report for run ${runId}.`
+                    );
+                    continue;
+                  }
+
+                  let body;
+
+                  if (conclusion === 'success') {
+                    body =
+                      `${marker}\n` +
+                      `## ${reportIcon} ${reportTitle}\n\n` +
+                      `**Status:** ${reportStatus}\n\n` +
+                      `### Workflow Metrics\n\n` +
+                      `| Metric | Result |\n` +
+                      `|---|---:|\n` +
+                      `| Workflow | ${workflowName} |\n` +
+                      `| Run ID | ${runId} |\n` +
+                      `| Branch | ${branch} |\n` +
+                      `| Commit | ${sha.substring(0, 7)} |\n` +
+                      `| Jobs | ${jobsPassed}/${jobsTotal} passed |\n` +
+                      `| Pass rate | ${passRate}% |\n` +
+                      `| Duration | ${elapsed} |\n\n` +
+                      `**Validation completed successfully.** ` +
+                      `This PR is eligible for the next merge/automation stage.\n\n` +
+                      `${workflowUrl ? `🔗 [View workflow run](${workflowUrl})\n\n` : ''}` +
+                      `---\n` +
+                      `*Automated report generated by GitHub Actions.*`;
+
+                  } else {
+                    body =
+                      `${marker}\n` +
+                      `## ${reportIcon} ${reportTitle}\n\n` +
+                      `**Status:** ${reportStatus}\n\n` +
+                      `### Workflow Metrics\n\n` +
+                      `| Metric | Result |\n` +
+                      `|---|---:|\n` +
+                      `| Workflow | ${workflowName} |\n` +
+                      `| Run ID | ${runId} |\n` +
+                      `| Branch | ${branch} |\n` +
+                      `| Commit | ${sha.substring(0, 7)} |\n` +
+                      `| Jobs | ${jobsPassed}/${jobsTotal} passed |\n` +
+                      `| Failed jobs | ${jobsFailed} |\n` +
+                      `| In progress | ${jobsInProgress} |\n` +
+                      `| Pass rate | ${passRate}% |\n` +
+                      `| Duration | ${elapsed} |\n\n` +
+                      `Please inspect the failed workflow jobs before merging or retrying the validation.\n\n` +
+                      `${workflowUrl ? `🔗 [View workflow run](${workflowUrl})\n\n` : ''}` +
+                      `---\n` +
+                      `*Automated report generated by GitHub Actions.*`;
+                  }
+
+                  await github.rest.issues.createComment({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    issue_number: pr.number,
+                    body
+                  });
+
+                  console.log(
+                    `Posted ${conclusion} report to PR #${pr.number}.`
+                  );
+
+                } catch (error) {
+                  console.log(
+                    `Unable to comment on PR #${pr.number}: ${error.message}`
+                  );
+                }
+              }
+            }
+
+      # ----------------------------------------------------------------------
+      # ARTIFACT SUMMARY
+      # ----------------------------------------------------------------------
+
+      - name: Summarize downloaded artifacts
+        if: always()
+        run: |
+          echo "=========================================="
+          echo "VALIDATION ARTIFACT SUMMARY"
+          echo "=========================================="
+
+          if [ -d validation-artifacts ]; then
+            echo "Artifact directory exists."
+
+            if find validation-artifacts -type f -print -quit | grep -q .; then
+              echo ""
+              echo "Downloaded artifact files:"
+              find validation-artifacts -type f -print | sort
+            else
+              echo "No files were downloaded."
+            fi
+          else
+            echo "No validation artifact directory was created."
+            echo "This is acceptable when the monitored run has no artifacts."
+          fi
+
+          echo "=========================================="
+
+  # ==========================================================================
+  # FINAL STATUS
+  # ==========================================================================
+
   final-status:
     name: Final Monitor Status
+
     needs:
       - collect-workflow-metrics
       - monitor-and-report
@@ -496,28 +1212,141 @@ jobs:
     if: always()
 
     steps:
+
       - name: Publish final status
         env:
           METRICS_RESULT: ${{ needs.collect-workflow-metrics.result }}
           REPORT_RESULT: ${{ needs.monitor-and-report.result }}
+
+          RUN_ID: ${{ needs.collect-workflow-metrics.outputs.monitored_run_id }}
+          WORKFLOW_NAME: ${{ needs.collect-workflow-metrics.outputs.workflow_name }}
+          WORKFLOW_STATUS: ${{ needs.collect-workflow-metrics.outputs.workflow_status }}
           CONCLUSION: ${{ needs.collect-workflow-metrics.outputs.workflow_conclusion }}
           PASS_RATE: ${{ needs.collect-workflow-metrics.outputs.pass_rate }}
+          JOBS_TOTAL: ${{ needs.collect-workflow-metrics.outputs.jobs_total }}
+          JOBS_PASSED: ${{ needs.collect-workflow-metrics.outputs.jobs_passed }}
+          JOBS_FAILED: ${{ needs.collect-workflow-metrics.outputs.jobs_failed }}
+          ELAPSED_TIME: ${{ needs.collect-workflow-metrics.outputs.elapsed_time }}
+          WORKFLOW_URL: ${{ needs.collect-workflow-metrics.outputs.workflow_url }}
         run: |
           echo "=========================================="
           echo "PR MONITOR FINAL STATUS"
           echo "=========================================="
           echo ""
-          echo "Metrics job: ${METRICS_RESULT}"
-          echo "Report job:  ${REPORT_RESULT}"
-          echo "Workflow:    ${CONCLUSION}"
-          echo "Pass rate:   ${PASS_RATE}%"
+
+          echo "Monitor Metrics Job: ${METRICS_RESULT}"
+          echo "Monitor Report Job:  ${REPORT_RESULT}"
           echo ""
 
-          if [ "${METRICS_RESULT}" = "success" ] && \
-             [ "${REPORT_RESULT}" = "success" ]; then
-            echo "✅ PR monitoring completed successfully."
-          else
-            echo "⚠️ PR monitoring completed with warnings or skipped work."
+          echo "Workflow:    ${WORKFLOW_NAME}"
+          echo "Run ID:      ${RUN_ID}"
+          echo "Status:      ${WORKFLOW_STATUS}"
+          echo "Conclusion:  ${CONCLUSION}"
+          echo ""
+
+          echo "Jobs:"
+          echo "  Total:      ${JOBS_TOTAL}"
+          echo "  Passed:     ${JOBS_PASSED}"
+          echo "  Failed:     ${JOBS_FAILED}"
+          echo "  Pass rate:  ${PASS_RATE}%"
+          echo ""
+
+          echo "Elapsed:      ${ELAPSED_TIME}"
+          echo ""
+
+          if [ "${METRICS_RESULT}" != "success" ]; then
+            echo "❌ Metrics collection failed."
+            exit 1
           fi
 
+          case "${CONCLUSION}" in
+            success)
+              echo "✅ Validation workflow completed successfully."
+              ;;
+
+            failure)
+              echo "❌ Validation workflow failed."
+              ;;
+
+            cancelled)
+              echo "🚫 Validation workflow was cancelled."
+              ;;
+
+            timed_out)
+              echo "⏱️ Validation workflow timed out."
+              ;;
+
+            skipped)
+              echo "⏭️ Validation workflow was skipped."
+              ;;
+
+            neutral)
+              echo "ℹ️ Validation workflow completed neutrally."
+              ;;
+
+            *)
+              echo "⏳ Validation workflow has not reached a final conclusion."
+              ;;
+          esac
+
+          if [ "${REPORT_RESULT}" = "success" ]; then
+            echo "✅ Reporting stage completed successfully."
+          elif [ "${REPORT_RESULT}" = "skipped" ]; then
+            echo "ℹ️ Reporting stage was skipped because the event did not require completion reporting."
+          else
+            echo "⚠️ Reporting stage completed with result: ${REPORT_RESULT}"
+          fi
+
+          echo ""
+
+          if [ -n "${WORKFLOW_URL}" ]; then
+            echo "Workflow URL:"
+            echo "${WORKFLOW_URL}"
+          fi
+
+          echo ""
           echo "=========================================="
+
+          # ------------------------------------------------------------------
+          # FINAL GITHUB SUMMARY
+          # ------------------------------------------------------------------
+
+          if [ "${CONCLUSION}" = "success" ]; then
+            FINAL_ICON="✅"
+            FINAL_MESSAGE="Validation completed successfully."
+          elif [ "${CONCLUSION}" = "failure" ]; then
+            FINAL_ICON="❌"
+            FINAL_MESSAGE="Validation failed. Inspect the workflow jobs."
+          elif [ "${CONCLUSION}" = "cancelled" ]; then
+            FINAL_ICON="🚫"
+            FINAL_MESSAGE="Validation was cancelled."
+          elif [ "${CONCLUSION}" = "timed_out" ]; then
+            FINAL_ICON="⏱️"
+            FINAL_MESSAGE="Validation timed out."
+          elif [ "${CONCLUSION}" = "skipped" ]; then
+            FINAL_ICON="⏭️"
+            FINAL_MESSAGE="Validation was skipped."
+          else
+            FINAL_ICON="⏳"
+            FINAL_MESSAGE="Validation has not reached a final conclusion."
+          fi
+
+          cat >> "$GITHUB_STEP_SUMMARY" <<EOF
+          # ${FINAL_ICON} PR Monitor Final Status
+
+          **${FINAL_MESSAGE}**
+
+          | Metric | Result |
+          |---|---:|
+          | Workflow | ${WORKFLOW_NAME} |
+          | Run ID | ${RUN_ID} |
+          | Status | ${WORKFLOW_STATUS} |
+          | Conclusion | ${CONCLUSION} |
+          | Total Jobs | ${JOBS_TOTAL} |
+          | Passed | ${JOBS_PASSED} |
+          | Failed | ${JOBS_FAILED} |
+          | Pass Rate | ${PASS_RATE}% |
+          | Duration | ${ELAPSED_TIME} |
+
+          ${WORKFLOW_URL:+**Workflow Run:** ${WORKFLOW_URL}}
+          EOF
