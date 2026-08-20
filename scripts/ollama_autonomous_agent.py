@@ -56,6 +56,9 @@ SUPPORTED_APPS = [
     "qalpha",
 ]
 
+# Alias commonly expected by test suites
+QMOI_APPS = SUPPORTED_APPS
+
 QMOI_REPOSITORY = "thealphakenya/qmoi-enhanced"
 ALPHA_Q_AI_REPOSITORY = "thealphakenya/Alpha-Q-ai"
 
