@@ -3207,4 +3207,415 @@ All timestamps use UTC ISO-8601 format.
                 "platforms": list(PLATFORMS),
                 "apps": list(QMOI_APPS.keys()),
                 "applications_per_platform": len(QMOI_APPS),
-               
+                "total_features": get_total_feature_count(),
+            },
+        }
+
+        safe_json_write(
+            self.root_dir / "validation_report.json",
+            report,
+        )
+
+        self.results["report"] = report
+
+        return report
+
+    def build_github_proof_contract(
+        self,
+    ) -> Dict[str, Any]:
+        platform_results = self.validate_all_platforms()
+
+        feature_results = self.validate_all_platform_features()
+
+        handler_results = self.validate_file_handlers()
+
+        platform_passed = all(
+            result.get("passed", False)
+            for result in platform_results.values()
+        )
+
+        feature_contract_valid = (
+            set(feature_results.keys())
+            == set(PLATFORMS)
+            and all(
+                set(feature_results[platform].keys())
+                == set(QMOI_APPS.keys())
+                for platform in PLATFORMS
+            )
+        )
+
+        feature_passed = feature_contract_valid
+
+        handler_passed = bool(handler_results)
+
+        autonomy_plan = (
+            self.cross_repo_manager
+            .build_autonomy_plan()
+        )
+
+        branch_plan = (
+            BranchSyncManager
+            .build_sync_plan()
+        )
+
+        feature_count = get_total_feature_count()
+
+        proof = {
+            "platform_validation_passed": platform_passed,
+            "feature_validation_passed": feature_passed,
+            "file_handler_validation_passed": handler_passed,
+            "alpha_q_ai_included": autonomy_plan[
+                "alpha_q_ai_included"
+            ],
+            "feature_count": feature_count,
+            "applications_per_platform": len(QMOI_APPS),
+            "feature_registry_valid": (
+                isinstance(QMOI_APPS, dict)
+                and isinstance(FEATURE_REGISTRY, dict)
+                and set(FEATURE_REGISTRY.keys())
+                == set(PLATFORMS)
+                and all(
+                    set(
+                        FEATURE_REGISTRY[
+                            platform
+                        ].keys()
+                    )
+                    == set(QMOI_APPS.keys())
+                    for platform in PLATFORMS
+                )
+            ),
+            "platform_feature_contract_valid": (
+                feature_contract_valid
+            ),
+        }
+
+        ready = (
+            platform_passed
+            and feature_passed
+            and handler_passed
+            and proof["alpha_q_ai_included"]
+            and proof["feature_registry_valid"]
+            and proof["platform_feature_contract_valid"]
+        )
+
+        return {
+            "status": (
+                "ready_for_github"
+                if ready
+                else "not_ready_for_github"
+            ),
+            "generated": utc_iso(),
+            "proof": proof,
+            "alpha_q_ai": {
+                "repo": ALPHA_Q_AI_REPOSITORY,
+                "included": True,
+            },
+            "branch_sync": branch_plan,
+            "autonomy_plan": autonomy_plan,
+        }
+
+    # ------------------------------------------------------------------------
+    # CLI PIPELINE
+    # ------------------------------------------------------------------------
+
+    def run_validation_pipeline(
+        self,
+    ) -> int:
+        self.update_resume_checkpoint(
+            status="validation_started",
+            completed_steps=[],
+        )
+
+        try:
+            platform_results = (
+                self.validate_all_platforms()
+            )
+
+            self.update_resume_checkpoint(
+                status="platform_validation_complete",
+                completed_steps=[
+                    "platform validation",
+                ],
+            )
+
+            feature_results = (
+                self.validate_all_platform_features()
+            )
+
+            self.update_resume_checkpoint(
+                status="feature_validation_complete",
+                completed_steps=[
+                    "platform validation",
+                    "feature validation",
+                ],
+            )
+
+            handler_results = (
+                self.validate_file_handlers()
+            )
+
+            self.update_resume_checkpoint(
+                status="file_handler_validation_complete",
+                completed_steps=[
+                    "platform validation",
+                    "feature validation",
+                    "file handler validation",
+                ],
+            )
+
+            self.memory_generator.generate_index()
+            self.model_card_generator.generate_card()
+
+            self.update_resume_checkpoint(
+                status="artifacts_generated",
+                completed_steps=[
+                    "platform validation",
+                    "feature validation",
+                    "file handler validation",
+                    "memory index generation",
+                    "model card generation",
+                ],
+            )
+
+            contract = (
+                self.build_github_proof_contract()
+            )
+
+            proof_path = (
+                self.root_dir
+                / "github_proof_contract.json"
+            )
+
+            safe_json_write(
+                proof_path,
+                contract,
+            )
+
+            report = {
+                "generated": utc_iso(),
+                "platforms": platform_results,
+                "features": feature_results,
+                "file_handlers": handler_results,
+                "proof": contract,
+                "total_feature_count": get_total_feature_count(),
+            }
+
+            safe_json_write(
+                self.root_dir
+                / "validation_report.json",
+                report,
+            )
+
+            self.results["report"] = report
+
+            success = (
+                contract.get("status")
+                == "ready_for_github"
+            )
+
+            self.update_resume_checkpoint(
+                status=(
+                    "ready"
+                    if success
+                    else "failed"
+                ),
+                completed_steps=[
+                    "platform validation",
+                    "feature validation",
+                    "file handler validation",
+                    "memory index generation",
+                    "model card generation",
+                    "github proof contract",
+                ],
+            )
+
+            self.record_tracker_event(
+                "validation_pipeline_complete",
+                "Validation pipeline completed.",
+                status=(
+                    "passed"
+                    if success
+                    else "failed"
+                ),
+                phase="validation",
+                details={
+                    "proof_path": str(proof_path),
+                    "feature_count": get_total_feature_count(),
+                },
+            )
+
+            print(
+                json.dumps(
+                    {
+                        "status": contract["status"],
+                        "platforms": len(platform_results),
+                        "apps": len(QMOI_APPS),
+                        "feature_count": get_total_feature_count(),
+                        "proof": str(proof_path),
+                    },
+                    indent=2,
+                )
+            )
+
+            return 0 if success else 1
+
+        except Exception as exc:
+            self.update_resume_checkpoint(
+                status="error",
+                completed_steps=[],
+                error=str(exc),
+            )
+
+            self.record_tracker_event(
+                "validation_pipeline_error",
+                f"Validation failed: {exc}",
+                status="failed",
+                phase="validation",
+                details={
+                    "error": str(exc),
+                },
+            )
+
+            print(
+                f"QMOI validation failed: {exc}",
+                file=sys.stderr,
+            )
+
+            return 1
+
+
+# ============================================================================
+# CLI
+# ============================================================================
+
+def main(
+    argv: Optional[Sequence[str]] = None,
+) -> int:
+    raw_argv = (
+        list(argv)
+        if argv is not None
+        else list(sys.argv[1:])
+    )
+
+    if (
+        raw_argv
+        and not raw_argv[0].startswith("-")
+    ):
+        raw_argv[0] = (
+            SelfHealingManager
+            .sanitize_command(
+                raw_argv[0]
+            )
+        )
+
+    parser = argparse.ArgumentParser(
+        description="QMOI Ollama Autonomous Agent",
+    )
+
+    parser.add_argument(
+        "command",
+        nargs="?",
+        default="validate-all",
+        choices=[
+            "validate-all",
+            "validate-platforms",
+            "validate-features",
+            "validate-all-features",
+            "validate-file-handlers",
+            "generate-memory-index",
+            "generate-model-card",
+            "proof",
+            "checkpoint",
+        ],
+    )
+
+    parser.add_argument(
+        "--base-path",
+        default=None,
+        help="Repository root to operate against.",
+    )
+
+    try:
+        args = parser.parse_args(raw_argv)
+
+    except SystemExit as exc:
+        return int(
+            exc.code
+            if isinstance(exc.code, int)
+            else 1
+        )
+
+    agent = OllamaAutonomousAgent(
+        args.base_path
+    )
+
+    if args.command == "validate-all":
+        return agent.run_validation_pipeline()
+
+    if args.command == "validate-platforms":
+        print(
+            json.dumps(
+                agent.validate_all_platforms(),
+                indent=2,
+            )
+        )
+        return 0
+
+    if args.command in {
+        "validate-features",
+        "validate-all-features",
+    }:
+        print(
+            json.dumps(
+                agent.validate_all_platform_features(),
+                indent=2,
+            )
+        )
+        return 0
+
+    if args.command == "validate-file-handlers":
+        print(
+            json.dumps(
+                agent.validate_file_handlers(),
+                indent=2,
+            )
+        )
+        return 0
+
+    if args.command == "generate-memory-index":
+        agent.memory_generator.generate_index()
+        return 0
+
+    if args.command == "generate-model-card":
+        agent.model_card_generator.generate_card()
+        return 0
+
+    if args.command == "proof":
+        print(
+            json.dumps(
+                agent.build_github_proof_contract(),
+                indent=2,
+            )
+        )
+        return 0
+
+    if args.command == "checkpoint":
+        agent.update_resume_checkpoint(
+            status="manual_checkpoint",
+            completed_steps=[
+                "manual checkpoint",
+            ],
+        )
+        return 0
+
+    return 1
+
+
+# ============================================================================
+# MODULE ENTRYPOINT
+# ============================================================================
+
+if __name__ == "__main__":
+    raise SystemExit(
+        main()
+    )
