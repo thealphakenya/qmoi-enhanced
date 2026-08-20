@@ -9,9 +9,9 @@ name: Ollama Autonomous Agent & Live Tracker
 # Trusted orchestration, validation, autonomous execution, recovery,
 # telemetry, repository integrity, and self-healing layer for QMOI/Ollama.
 #
-# IMPORTANT
-# ---------
-# The repository agent CLI currently supports ONLY:
+# IMPORTANT CLI COMPATIBILITY
+# ---------------------------
+# scripts/ollama_autonomous_agent.py currently supports:
 #
 #   validate-all
 #   validate-platforms
@@ -22,11 +22,28 @@ name: Ollama Autonomous Agent & Live Tracker
 #   proof
 #   checkpoint
 #
-# This workflow deliberately uses "validate-platforms", NOT the obsolete:
+# This workflow MUST NOT invoke:
 #
 #   validate-all-platforms
+#   validate-all-features
+#
+# The mechanical repair layer below also repairs stale workflow references
+# to those obsolete command names.
+#
+# SECURITY PRINCIPLES
+# -------------------
+# 1. Never execute untrusted PR-head code.
+# 2. Always validate repository/Git state before mutation.
+# 3. Repair only deterministic/mechanical failures automatically.
+# 4. Retry transient failures with bounded backoff.
+# 5. Validate after every major mutation.
+# 6. Preserve diagnostics even when the workflow fails.
+# 7. Never create an infinite autonomous recovery loop.
+# 8. Prefer evidence preservation over destructive guessing.
+# 9. Human intervention remains the boundary for ambiguous failures.
 #
 # ============================================================================
+
 
 # ============================================================================
 # EVENTS
@@ -107,6 +124,7 @@ on:
   schedule:
     - cron: "0 */6 * * *"
 
+
 # ============================================================================
 # PERMISSIONS
 # ============================================================================
@@ -118,6 +136,7 @@ permissions:
   checks: read
   statuses: read
 
+
 # ============================================================================
 # CONCURRENCY
 # ============================================================================
@@ -126,14 +145,15 @@ concurrency:
   group: ollama-autonomous-agent-${{ github.repository }}-${{ github.ref }}
   cancel-in-progress: false
 
+
 # ============================================================================
 # GLOBAL ENVIRONMENT
 # ============================================================================
 
 env:
   TRACK_DIR: ollamatracks
-  TRACK_SCHEMA_VERSION: "6.0"
-  TRACKING_PROTOCOL: "ollamatracks-v6"
+  TRACK_SCHEMA_VERSION: "7.0"
+  TRACKING_PROTOCOL: "ollamatracks-v7"
 
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
 
@@ -159,6 +179,7 @@ env:
 
   REASON: ${{ github.event.inputs.reason || 'Scheduled/workflow-triggered execution' }}
 
+
 # ============================================================================
 # JOBS
 # ============================================================================
@@ -170,7 +191,6 @@ jobs:
   # ==========================================================================
 
   ollama-agent:
-
     name: Ollama Autonomous Agent + Self-Healing Tracker
 
     runs-on: ubuntu-latest
@@ -180,7 +200,7 @@ jobs:
     steps:
 
       # ======================================================================
-      # 1. CHECKOUT TRUSTED DEFAULT BRANCH
+      # 1. TRUSTED CHECKOUT
       # ======================================================================
 
       - name: Checkout trusted default branch
@@ -192,112 +212,7 @@ jobs:
           ref: ${{ github.event.repository.default_branch }}
 
       # ======================================================================
-      # 2. DETERMINE EXECUTION MODE
-      #
-      # IMPORTANT:
-      # This must happen BEFORE Ollama preflight because the preflight depends
-      # on steps.execution_mode.outputs.run_agent.
-      # ======================================================================
-
-      - name: Determine agent execution mode
-        id: execution_mode
-        shell: bash
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          WORKFLOW_RUN_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
-          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
-          REQUESTED_MODE: ${{ github.event.inputs.mode || 'monitor' }}
-        run: |
-          set -Eeuo pipefail
-
-          run_agent="false"
-          command="monitor"
-          reason="Monitoring/reconciliation."
-
-          case "$EVENT_NAME" in
-
-            workflow_run)
-
-              if [ \
-                "$VALIDATION_CONCLUSION" = "success" ] &&
-                [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ]; then
-
-                run_agent="true"
-                command="validate-all"
-                reason="Trusted default-branch validation succeeded."
-
-              else
-
-                run_agent="false"
-                command="monitor"
-                reason="Validation was not a successful trusted-default-branch run."
-
-              fi
-              ;;
-
-            workflow_dispatch)
-
-              if [ "$FORCE_AGENT" = "true" ]; then
-
-                case "$REQUESTED_MODE" in
-
-                  full|validate)
-                    run_agent="true"
-                    command="validate-all"
-                    reason="Manual autonomous execution."
-                    ;;
-
-                  heal)
-                    run_agent="true"
-                    command="auto-heal"
-                    reason="Manual autonomous healing."
-                    ;;
-
-                  sync|monitor)
-                    run_agent="false"
-                    command="monitor"
-                    reason="Manual monitoring/synchronization."
-                    ;;
-
-                  *)
-                    run_agent="false"
-                    command="monitor"
-                    reason="Unknown mode; safe fallback."
-                    ;;
-
-                esac
-
-              fi
-              ;;
-
-            schedule)
-
-              run_agent="false"
-              command="monitor"
-              reason="Scheduled reconciliation."
-              ;;
-
-            *)
-
-              run_agent="false"
-              command="monitor"
-              reason="Unknown trigger; safe fallback."
-              ;;
-
-          esac
-
-          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
-          echo "command=$command" >> "$GITHUB_OUTPUT"
-          echo "reason=$reason" >> "$GITHUB_OUTPUT"
-
-          echo "run_agent=$run_agent"
-          echo "command=$command"
-          echo "reason=$reason"
-
-      # ======================================================================
-      # 3. RUNNER PREFLIGHT
+      # 2. RUNNER PREFLIGHT
       # ======================================================================
 
       - name: Runner and environment preflight
@@ -312,6 +227,10 @@ jobs:
 
           echo "Runner:"
           uname -a
+
+          echo
+          echo "Operating system:"
+          cat /etc/os-release || true
 
           echo
           echo "Disk:"
@@ -336,7 +255,7 @@ jobs:
           test -d "$GITHUB_WORKSPACE"
 
       # ======================================================================
-      # 4. PYTHON
+      # 3. PYTHON
       # ======================================================================
 
       - name: Setup Python
@@ -348,7 +267,7 @@ jobs:
             requirements.txt
 
       # ======================================================================
-      # 5. INITIALIZE TRACKING
+      # 4. INITIALIZE TRACKING
       # ======================================================================
 
       - name: Initialize durable tracking
@@ -405,6 +324,16 @@ jobs:
           Recovery:
           Bounded deterministic/mechanical recovery.
 
+          CLI:
+          validate-all
+          validate-platforms
+          validate-features
+          validate-file-handlers
+          generate-memory-index
+          generate-model-card
+          proof
+          checkpoint
+
           Final boundary:
           Human intervention for ambiguous or unsafe failures.
           EOF
@@ -424,6 +353,11 @@ jobs:
           REPAIR_LOG.txt
           telemetry.jsonl
           monitoring_summary.json
+          git_fsck.txt
+          final_git_fsck.txt
+          final_git_status.txt
+          final_diff_stat.txt
+          final_diff.patch
           EOF
 
           cat > "$TRACK_DIR/TRACKING_INDEX.txt" <<EOF
@@ -475,8 +409,8 @@ jobs:
           schema=$TRACK_SCHEMA_VERSION
           repository=$GITHUB_REPOSITORY
           workflow=$GITHUB_WORKFLOW
-          workflow_run_id=$GITHUB_RUN_ID
-          workflow_attempt=$GITHUB_RUN_ATTEMPT
+          run_id=$GITHUB_RUN_ID
+          attempt=$GITHUB_RUN_ATTEMPT
           event=$EVENT_NAME
           agent_run_id=$agent_run_id
           state=INITIALIZING
@@ -540,7 +474,7 @@ jobs:
           echo "timestamp_utc=$now" >> "$GITHUB_OUTPUT"
 
       # ======================================================================
-      # 6. GIT FORENSIC / SELF-HEALING
+      # 5. GIT FORENSIC / SELF-HEALING
       # ======================================================================
 
       - name: Repair and validate Git repository
@@ -548,6 +482,10 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
+
+          echo "============================================================"
+          echo "GIT INTEGRITY / SELF-HEALING"
+          echo "============================================================"
 
           mkdir -p "$TRACK_DIR"
 
@@ -575,7 +513,11 @@ jobs:
 
           find .git \
             -type f \
-            \( -name '*.lock' -o -name 'index.lock' \) \
+            \( \
+              -name '*.lock' \
+              -o \
+              -name 'index.lock' \
+            \) \
             -print 2>/dev/null |
           while IFS= read -r lock; do
             echo "::warning::Removing stale Git lock: $lock"
@@ -633,7 +575,7 @@ jobs:
           echo "Git integrity preflight passed."
 
       # ======================================================================
-      # 7. INSTALL RECOVERY TOOLING
+      # 6. INSTALL RECOVERY TOOLING
       # ======================================================================
 
       - name: Install validation and recovery tooling
@@ -685,10 +627,10 @@ jobs:
           python -m pip --version
 
       # ======================================================================
-      # 8. SAFE WORKFLOW REPAIRS
+      # 7. SAFE WORKFLOW / CLI REPAIRS
       # ======================================================================
 
-      - name: Scan and safely repair deprecated GitHub Actions
+      - name: Scan and safely repair deprecated actions and stale CLI commands
         id: action_repair
         if: env.QMOI_AUTO_FIX == 'true'
         shell: bash
@@ -720,12 +662,40 @@ jobs:
 
             before="$(sha256sum "$file" | awk '{print $1}')"
 
+            # ---------------------------------------------------------------
+            # Artifact actions.
+            # ---------------------------------------------------------------
+
             sed -i -E \
-              's#actions/upload-artifact@v(1|2|3)\b#actions/upload-artifact@v4#g' \
+              's#actions/upload-artifact@v(1|2|3|4|5)\b#actions/upload-artifact@v4#g' \
               "$file"
 
             sed -i -E \
-              's#actions/download-artifact@v(1|2|3)\b#actions/download-artifact@v4#g' \
+              's#actions/download-artifact@v(1|2|3|4|5|6)\b#actions/download-artifact@v4#g' \
+              "$file"
+
+            # ---------------------------------------------------------------
+            # IMPORTANT:
+            #
+            # Current Python CLI:
+            #
+            #   validate-platforms
+            #   validate-features
+            #
+            # Older workflows may still contain:
+            #
+            #   validate-all-platforms
+            #   validate-all-features
+            #
+            # Repair those deterministic command-name mismatches.
+            # ---------------------------------------------------------------
+
+            sed -i \
+              's/validate-all-platforms/validate-platforms/g' \
+              "$file"
+
+            sed -i \
+              's/validate-all-features/validate-features/g' \
               "$file"
 
             after="$(sha256sum "$file" | awk '{print $1}')"
@@ -737,10 +707,12 @@ jobs:
               {
                 echo
                 echo "REPAIRED: $file"
-                echo "Reason: deprecated artifact action."
-                echo "upload-artifact -> v4"
-                echo "download-artifact -> v4"
                 echo "Timestamp: $(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
+                echo "Repairs:"
+                echo "  actions/upload-artifact -> v4"
+                echo "  actions/download-artifact -> v4"
+                echo "  validate-all-platforms -> validate-platforms"
+                echo "  validate-all-features -> validate-features"
               } >> "$repair_log"
 
             fi
@@ -750,7 +722,133 @@ jobs:
           echo "changed=$changed" >> "$GITHUB_OUTPUT"
 
       # ======================================================================
-      # 9. STRICT WORKFLOW YAML VALIDATION
+      # 8. VERIFY AGENT SCRIPT EXISTS
+      # ======================================================================
+
+      - name: Verify autonomous agent source
+        id: verify_agent_source
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          test -f "$AGENT_SCRIPT"
+
+          echo "Agent source:"
+          echo "$AGENT_SCRIPT"
+
+          python "$AGENT_SCRIPT" --help
+
+      # ======================================================================
+      # 9. DETERMINE EXECUTION MODE
+      # ======================================================================
+
+      - name: Determine agent execution mode
+        id: execution_mode
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          WORKFLOW_RUN_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          WORKFLOW_RUN_HEAD_REPO: ${{ github.event.workflow_run.head_repository.full_name }}
+          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
+          REQUESTED_MODE: ${{ github.event.inputs.mode || 'monitor' }}
+        run: |
+          set -Eeuo pipefail
+
+          run_agent="false"
+          command="monitor"
+          reason="Monitoring/reconciliation."
+
+          case "$EVENT_NAME" in
+
+            workflow_run)
+
+              # Only act on successful validation of the trusted default
+              # branch and the same repository.
+              if [ \
+                "$VALIDATION_CONCLUSION" = "success" ] &&
+                [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ] &&
+                [ "$WORKFLOW_RUN_HEAD_REPO" = "$GITHUB_REPOSITORY" ]; then
+
+                run_agent="true"
+                command="validate-all"
+                reason="Trusted default-branch validation succeeded."
+
+              else
+
+                run_agent="false"
+                command="monitor"
+                reason="Validation was not a successful trusted-default-branch run."
+
+              fi
+
+              ;;
+
+            workflow_dispatch)
+
+              if [ "$FORCE_AGENT" = "true" ]; then
+
+                case "$REQUESTED_MODE" in
+
+                  full|validate)
+                    run_agent="true"
+                    command="validate-all"
+                    reason="Manual autonomous execution."
+                    ;;
+
+                  heal)
+                    run_agent="true"
+                    command="auto-heal"
+                    reason="Manual autonomous healing."
+                    ;;
+
+                  sync|monitor)
+                    run_agent="false"
+                    command="monitor"
+                    reason="Manual monitoring/synchronization."
+                    ;;
+
+                  *)
+                    run_agent="false"
+                    command="monitor"
+                    reason="Unknown mode; safe fallback."
+                    ;;
+
+                esac
+
+              fi
+
+              ;;
+
+            schedule)
+
+              run_agent="false"
+              command="monitor"
+              reason="Scheduled reconciliation."
+
+              ;;
+
+            *)
+
+              run_agent="false"
+              command="monitor"
+              reason="Unknown trigger; safe fallback."
+
+              ;;
+
+          esac
+
+          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
+          echo "command=$command" >> "$GITHUB_OUTPUT"
+          echo "reason=$reason" >> "$GITHUB_OUTPUT"
+
+          echo "run_agent=$run_agent"
+          echo "command=$command"
+          echo "reason=$reason"
+
+      # ======================================================================
+      # 10. STRICT WORKFLOW YAML VALIDATION
       # ======================================================================
 
       - name: Strictly validate all GitHub workflow YAML
@@ -763,13 +861,16 @@ jobs:
           from pathlib import Path
           import yaml
 
+
           class UniqueLoader(yaml.SafeLoader):
               pass
+
 
           def construct_mapping(loader, node, deep=False):
               mapping = {}
 
               for key_node, value_node in node.value:
+
                   key = loader.construct_object(
                       key_node,
                       deep=deep,
@@ -787,10 +888,12 @@ jobs:
 
               return mapping
 
+
           UniqueLoader.add_constructor(
               yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
               construct_mapping,
           )
+
 
           root = Path(".github/workflows")
 
@@ -799,21 +902,29 @@ jobs:
                   ".github/workflows does not exist."
               )
 
+
           files = sorted(
               list(root.glob("*.yml"))
               + list(root.glob("*.yaml"))
           )
+
 
           if not files:
               raise SystemExit(
                   "No workflow files found."
               )
 
+
           failures = []
 
+
           for path in files:
+
               try:
-                  text = path.read_text(encoding="utf-8")
+
+                  text = path.read_text(
+                      encoding="utf-8"
+                  )
 
                   data = yaml.load(
                       text,
@@ -825,9 +936,9 @@ jobs:
                           "Root must be a mapping."
                       )
 
-                  # PyYAML YAML 1.1 interprets unquoted "on" as boolean True.
                   on_value = data.get("on")
 
+                  # PyYAML 1.1 may parse "on" as boolean True.
                   if on_value is None:
                       on_value = data.get(True)
 
@@ -852,12 +963,16 @@ jobs:
                   print(f"VALID: {path}")
 
               except Exception as exc:
+
                   failures.append(
                       f"{path}: {exc}"
                   )
 
+
           if failures:
+
               print("\n".join(failures))
+
               raise SystemExit(
                   "Workflow YAML validation failed."
               )
@@ -868,10 +983,10 @@ jobs:
           PY
 
       # ======================================================================
-      # 10. VERIFY ARTIFACT ACTIONS
+      # 11. VERIFY ARTIFACT ACTIONS AND STALE CLI COMMANDS
       # ======================================================================
 
-      - name: Verify artifact actions
+      - name: Verify workflow action and CLI compatibility
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -894,10 +1009,30 @@ jobs:
 
           fi
 
-          echo "Artifact action validation passed."
+          if grep -RIn \
+            'validate-all-platforms' \
+            .github/workflows; then
+
+            echo "::error::Obsolete validate-all-platforms command remains."
+            echo "::error::Use validate-platforms."
+            exit 1
+
+          fi
+
+          if grep -RIn \
+            'validate-all-features' \
+            .github/workflows; then
+
+            echo "::error::Obsolete validate-all-features command remains."
+            echo "::error::Use validate-features."
+            exit 1
+
+          fi
+
+          echo "Workflow action and CLI compatibility validation passed."
 
       # ======================================================================
-      # 11. WORKFLOW STRUCTURAL HAZARD SCAN
+      # 12. WORKFLOW STRUCTURAL HAZARD SCAN
       # ======================================================================
 
       - name: Detect workflow structural hazards
@@ -908,6 +1043,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import re
+
 
           root = Path(".github/workflows")
 
@@ -922,11 +1058,17 @@ jobs:
               ),
               (
                   r"\bvalidate-all-platforms\b",
-                  "Obsolete autonomous-agent command validate-all-platforms",
+                  "Obsolete validate-all-platforms command",
+              ),
+              (
+                  r"\bvalidate-all-features\b",
+                  "Obsolete validate-all-features command",
               ),
           ]
 
+
           failures = []
+
 
           for path in sorted(
               list(root.glob("*.yml"))
@@ -938,23 +1080,31 @@ jobs:
               )
 
               for pattern, description in forbidden:
-                  if re.search(pattern, text):
+
+                  if re.search(
+                      pattern,
+                      text,
+                  ):
+
                       failures.append(
                           f"{path}: {description}"
                       )
 
+
           if failures:
+
               print("\n".join(failures))
 
               raise SystemExit(
                   "Workflow hazard scan failed."
               )
 
+
           print("Workflow hazard scan passed.")
           PY
 
       # ======================================================================
-      # 12. VALIDATE PYTHON SOURCE
+      # 13. VALIDATE PYTHON SOURCE
       # ======================================================================
 
       - name: Validate Python source syntax
@@ -974,7 +1124,7 @@ jobs:
           echo "Python syntax validation passed."
 
       # ======================================================================
-      # 13. VERIFY AGENT CLI
+      # 14. VERIFY AUTONOMOUS AGENT CLI
       # ======================================================================
 
       - name: Verify autonomous agent CLI
@@ -1000,34 +1150,32 @@ jobs:
             "checkpoint"
           )
 
-          missing=0
-
           for command in "${required_commands[@]}"; do
-            if echo "$help_output" | grep -Fq "$command"; then
-              echo "Supported command: $command"
-            else
+            if ! echo "$help_output" | grep -Fq "$command"; then
               echo "::error::Required CLI command missing: $command"
-              missing=1
+              exit 1
             fi
           done
 
           if echo "$help_output" | grep -Fq "validate-all-platforms"; then
-            echo "::warning::Legacy validate-all-platforms command is present."
-          fi
-
-          if [ "$missing" -ne 0 ]; then
+            echo "::error::Obsolete CLI command exposed: validate-all-platforms"
             exit 1
           fi
 
-          echo "Autonomous agent CLI validation passed."
+          if echo "$help_output" | grep -Fq "validate-all-features"; then
+            echo "::error::Obsolete CLI command exposed: validate-all-features"
+            exit 1
+          fi
+
+          echo "Autonomous-agent CLI compatibility passed."
 
       # ======================================================================
-      # 14. OLLAMA PREFLIGHT
+      # 15. OLLAMA PREFLIGHT
       # ======================================================================
 
       - name: Ollama preflight and recovery
         id: ollama_preflight
-        if: steps.execution_mode.outputs.run_agent == 'true' || env.QMOI_FORCE_AGENT == 'true'
+        if: steps.execution_mode.outputs.run_agent == 'true'
         continue-on-error: true
         shell: bash
         run: |
@@ -1069,6 +1217,8 @@ jobs:
               >"$RUNNER_TEMP/ollama.log" \
               2>&1 &
 
+            recovered="false"
+
             for attempt in $(seq 1 30); do
 
               if curl \
@@ -1079,11 +1229,18 @@ jobs:
                 >/tmp/ollama-tags.json; then
 
                 echo "Ollama service recovered."
+                recovered="true"
                 break
+
               fi
 
               sleep 2
+
             done
+
+            if [ "$recovered" != "true" ]; then
+              echo "::warning::Ollama service could not be started."
+            fi
 
           fi
 
@@ -1098,6 +1255,7 @@ jobs:
               echo "Configured Ollama model is available."
             else
               echo "::warning::Configured model '$OLLAMA_MODEL' is not installed."
+              echo "Agent-specific model management may handle it."
             fi
 
           else
@@ -1105,7 +1263,7 @@ jobs:
           fi
 
       # ======================================================================
-      # 15. TEST SUITE
+      # 16. TEST SUITE
       # ======================================================================
 
       - name: Execute repository test suite
@@ -1138,7 +1296,7 @@ jobs:
           fi
 
       # ======================================================================
-      # 16. TEST FAILURE DIAGNOSTICS
+      # 17. TEST FAILURE DIAGNOSTICS
       # ======================================================================
 
       - name: Diagnose test failure
@@ -1173,7 +1331,7 @@ jobs:
             2>&1 || true
 
       # ======================================================================
-      # 17. DEPENDENCY RECOVERY
+      # 18. DEPENDENCY RECOVERY
       # ======================================================================
 
       - name: Attempt bounded dependency recovery
@@ -1196,7 +1354,7 @@ jobs:
           fi
 
       # ======================================================================
-      # 18. TEST RETRY
+      # 19. TEST RETRY
       # ======================================================================
 
       - name: Retry repository tests after recovery
@@ -1230,7 +1388,7 @@ jobs:
           fi
 
       # ======================================================================
-      # 19. RECORD TEST STATUS
+      # 20. RECORD TEST STATUS
       # ======================================================================
 
       - name: Record test status
@@ -1290,17 +1448,11 @@ jobs:
           }
 
           with open(path, "a", encoding="utf-8") as f:
-              f.write(
-                  json.dumps(
-                      event,
-                      separators=(",", ":"),
-                  )
-                  + "\n"
-              )
+              f.write(json.dumps(event, separators=(",", ":")) + "\n")
           PY
 
       # ======================================================================
-      # 20. CREATE PRE-AGENT CHECKPOINT
+      # 21. CREATE PRE-AGENT CHECKPOINT
       # ======================================================================
 
       - name: Create pre-agent repository checkpoint
@@ -1327,7 +1479,7 @@ jobs:
           echo "Pre-agent checkpoint created."
 
       # ======================================================================
-      # 21. ACTIVE AUTONOMOUS AGENT
+      # 22. ACTIVE AUTONOMOUS AGENT
       # ======================================================================
 
       - name: Execute autonomous agent
@@ -1389,13 +1541,14 @@ jobs:
               ;;
 
             auto-heal)
-              if python "$AGENT_SCRIPT" auto-heal; then
-                exit 0
+              if python "$AGENT_SCRIPT" --help 2>&1 |
+                grep -Fq "auto-heal"; then
+                python "$AGENT_SCRIPT" auto-heal
+              else
+                echo "::warning::CLI has no auto-heal command."
+                echo "Running validate-all as safe healing fallback."
+                python "$AGENT_SCRIPT" validate-all
               fi
-
-              echo "::warning::CLI does not expose auto-heal; falling back to validate-all."
-
-              python "$AGENT_SCRIPT" validate-all
               ;;
 
             *)
@@ -1406,7 +1559,7 @@ jobs:
           esac
 
       # ======================================================================
-      # 22. POST-AGENT GIT REPAIR
+      # 23. POST-AGENT GIT REPAIR
       # ======================================================================
 
       - name: Repair Git repository after autonomous agent
@@ -1453,7 +1606,7 @@ jobs:
           echo "Post-agent Git recovery completed."
 
       # ======================================================================
-      # 23. BOUNDED AGENT RECOVERY
+      # 24. BOUNDED AGENT RECOVERY
       # ======================================================================
 
       - name: Attempt bounded autonomous agent recovery
@@ -1547,16 +1700,18 @@ jobs:
               ;;
 
             auto-heal)
-              if python "$AGENT_SCRIPT" auto-heal \
-                >> "$recovery_log" 2>&1; then
-                exit 0
+              if python "$AGENT_SCRIPT" --help 2>&1 |
+                grep -Fq "auto-heal"; then
+
+                python "$AGENT_SCRIPT" auto-heal \
+                  >> "$recovery_log" 2>&1
+
+              else
+
+                python "$AGENT_SCRIPT" validate-all \
+                  >> "$recovery_log" 2>&1
+
               fi
-
-              echo "CLI auto-heal unavailable; retrying validate-all." \
-                >> "$recovery_log"
-
-              python "$AGENT_SCRIPT" validate-all \
-                >> "$recovery_log" 2>&1
               ;;
 
             *)
@@ -1568,7 +1723,7 @@ jobs:
           esac
 
       # ======================================================================
-      # 24. POST-AGENT SOURCE VALIDATION
+      # 25. POST-AGENT SOURCE VALIDATION
       # ======================================================================
 
       - name: Validate repository after autonomous changes
@@ -1596,13 +1751,16 @@ jobs:
           from pathlib import Path
           import yaml
 
+
           class Loader(yaml.SafeLoader):
               pass
+
 
           def mapping(loader, node, deep=False):
               result = {}
 
               for key_node, value_node in node.value:
+
                   key = loader.construct_object(
                       key_node,
                       deep=deep,
@@ -1620,10 +1778,12 @@ jobs:
 
               return result
 
+
           Loader.add_constructor(
               yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
               mapping,
           )
+
 
           root = Path(".github/workflows")
 
@@ -1632,26 +1792,52 @@ jobs:
               + list(root.glob("*.yaml"))
           ):
 
-              yaml.load(
+              data = yaml.load(
                   path.read_text(encoding="utf-8"),
                   Loader=Loader,
               )
 
+              if not isinstance(data, dict):
+                  raise SystemExit(
+                      f"{path}: root is not a mapping"
+                  )
+
+              on_value = data.get("on")
+
+              if on_value is None:
+                  on_value = data.get(True)
+
+              if on_value is None:
+                  raise SystemExit(
+                      f"{path}: missing on"
+                  )
+
+              if "jobs" not in data:
+                  raise SystemExit(
+                      f"{path}: missing jobs"
+                  )
+
+              text = path.read_text(
+                  encoding="utf-8"
+              )
+
+              if "validate-all-platforms" in text:
+                  raise SystemExit(
+                      f"{path}: obsolete validate-all-platforms remains"
+                  )
+
+              if "validate-all-features" in text:
+                  raise SystemExit(
+                      f"{path}: obsolete validate-all-features remains"
+                  )
+
               print(f"POST-VALID: {path}")
-
           PY
-
-          if grep -RInE \
-            '\bvalidate-all-platforms\b' \
-            .github/workflows; then
-            echo "::error::Obsolete validate-all-platforms reference remains."
-            exit 1
-          fi
 
           echo "Post-agent validation passed."
 
       # ======================================================================
-      # 25. DETECT CHANGES
+      # 26. DETECT CHANGES
       # ======================================================================
 
       - name: Analyze autonomous repository changes
@@ -1683,7 +1869,7 @@ jobs:
           echo "Changed files: $changed_files"
 
       # ======================================================================
-      # 26. SAFE COMMIT OF MECHANICAL REPAIRS
+      # 27. SAFE COMMIT OF MECHANICAL REPAIRS
       # ======================================================================
 
       - name: Commit safe mechanical repairs
@@ -1708,7 +1894,10 @@ jobs:
 
           git diff --check
 
-          git add .github/workflows
+          # Only workflow files modified by the deterministic repair layer
+          # are eligible for this commit.
+          git add \
+            .github/workflows
 
           if git diff --cached --quiet; then
             echo "No repair changes remain."
@@ -1718,12 +1907,14 @@ jobs:
           git diff --cached --name-only
 
           git commit \
-            -m "ci: automatically repair GitHub Actions workflow dependencies"
+            -m "ci: repair workflow actions and agent CLI commands"
+
+          branch="${{ github.event.repository.default_branch }}"
 
           for attempt in 1 2 3 4 5; do
 
             if git push origin \
-              "HEAD:${{ github.event.repository.default_branch }}"; then
+              "HEAD:${branch}"; then
 
               echo "Repair commit pushed successfully."
               break
@@ -1738,16 +1929,14 @@ jobs:
             echo "::warning::Push failed; retrying."
             sleep $((attempt * 10))
 
-            git fetch origin \
-              "${{ github.event.repository.default_branch }}"
+            git fetch origin "$branch"
 
-            git rebase \
-              "origin/${{ github.event.repository.default_branch }}"
+            git rebase "origin/$branch"
 
           done
 
       # ======================================================================
-      # 27. FINAL GIT INTEGRITY
+      # 28. FINAL GIT INTEGRITY
       # ======================================================================
 
       - name: Final Git integrity verification
@@ -1782,7 +1971,7 @@ jobs:
           echo "Final Git integrity check completed."
 
       # ======================================================================
-      # 28. FINAL TEST AFTER ALL REPAIRS
+      # 29. FINAL TEST / VALIDATION
       # ======================================================================
 
       - name: Final lightweight validation
@@ -1797,6 +1986,91 @@ jobs:
 
           python -m compileall -q scripts
 
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+
+          class Loader(yaml.SafeLoader):
+              pass
+
+
+          def mapping(loader, node, deep=False):
+              result = {}
+
+              for key_node, value_node in node.value:
+
+                  key = loader.construct_object(
+                      key_node,
+                      deep=deep,
+                  )
+
+                  if key in result:
+                      raise ValueError(
+                          f"Duplicate YAML key: {key!r}"
+                      )
+
+                  result[key] = loader.construct_object(
+                      value_node,
+                      deep=deep,
+                  )
+
+              return result
+
+
+          Loader.add_constructor(
+              yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+              mapping,
+          )
+
+
+          for path in sorted(
+              list(Path(".github/workflows").glob("*.yml"))
+              + list(Path(".github/workflows").glob("*.yaml"))
+          ):
+
+              data = yaml.load(
+                  path.read_text(encoding="utf-8"),
+                  Loader=Loader,
+              )
+
+              if not isinstance(data, dict):
+                  raise SystemExit(
+                      f"{path}: invalid root"
+                  )
+
+              on_value = data.get("on")
+
+              if on_value is None:
+                  on_value = data.get(True)
+
+              if on_value is None:
+                  raise SystemExit(
+                      f"{path}: missing on"
+                  )
+
+              if "jobs" not in data:
+                  raise SystemExit(
+                      f"{path}: missing jobs"
+                  )
+
+              text = path.read_text(
+                  encoding="utf-8"
+              )
+
+              if "validate-all-platforms" in text:
+                  raise SystemExit(
+                      f"{path}: stale validate-all-platforms reference"
+                  )
+
+              if "validate-all-features" in text:
+                  raise SystemExit(
+                      f"{path}: stale validate-all-features reference"
+                  )
+
+              print(f"FINAL-VALID: {path}")
+          PY
+
           if [ -d tests ]; then
             python -m pytest \
               tests \
@@ -1805,7 +2079,7 @@ jobs:
           fi
 
       # ======================================================================
-      # 29. FINAL TELEMETRY
+      # 30. FINAL TELEMETRY
       # ======================================================================
 
       - name: Finalize durable telemetry
@@ -1831,6 +2105,7 @@ jobs:
           agent_status="failed"
 
           if [ "${{ steps.execution_mode.outputs.run_agent }}" != "true" ]; then
+
             agent_status="monitoring"
 
           elif [ "${FINAL_VALIDATION_OUTCOME:-failure}" = "success" ] &&
@@ -1838,8 +2113,10 @@ jobs:
 
             if [ "${AGENT_OUTCOME:-failure}" = "success" ]; then
               agent_status="success"
+
             elif [ "${RECOVERY_OUTCOME:-failure}" = "success" ]; then
               agent_status="recovered"
+
             else
               agent_status="validated"
             fi
@@ -1956,7 +2233,10 @@ jobs:
               "run_id": os.environ["GITHUB_RUN_ID"],
               "attempt": os.environ["GITHUB_RUN_ATTEMPT"],
               "event": os.environ["GITHUB_EVENT_NAME"],
-              "test": os.environ.get("TEST_OUTCOME", "unknown"),
+              "test": os.environ.get(
+                  "TEST_OUTCOME",
+                  "unknown",
+              ),
               "test_retry": os.environ.get(
                   "TEST_RETRY_OUTCOME",
                   "not-run",
@@ -1994,28 +2274,35 @@ jobs:
 
           if (
               summary["final_validation"] == "success"
-              and
-              summary["final_git"] == "success"
+              and summary["final_git"] == "success"
           ):
               summary["status"] = "healthy"
+
           elif summary["recovery"] == "success":
               summary["status"] = "recovered"
+
           elif summary["event"] == "schedule":
               summary["status"] = "monitoring"
+
           else:
               summary["status"] = "attention-required"
 
           with open(
-              os.path.join(track, "monitoring_summary.json"),
+              os.path.join(
+                  track,
+                  "monitoring_summary.json",
+              ),
               "w",
               encoding="utf-8",
           ) as f:
+
               json.dump(
                   summary,
                   f,
                   indent=2,
                   sort_keys=True,
               )
+
               f.write("\n")
 
           telemetry = {
@@ -2031,10 +2318,14 @@ jobs:
           }
 
           with open(
-              os.path.join(track, "telemetry.jsonl"),
+              os.path.join(
+                  track,
+                  "telemetry.jsonl",
+              ),
               "a",
               encoding="utf-8",
           ) as f:
+
               f.write(
                   json.dumps(
                       telemetry,
@@ -2045,7 +2336,7 @@ jobs:
           PY
 
       # ======================================================================
-      # 30. JOB SUMMARY
+      # 31. GITHUB ACTIONS SUMMARY
       # ======================================================================
 
       - name: Publish GitHub Actions summary
@@ -2070,6 +2361,24 @@ jobs:
             echo "| Final Git | ${{ steps.final_git.outcome || 'unknown' }} |"
             echo "| Final validation | ${{ steps.final_validation.outcome || 'unknown' }} |"
             echo
+            echo "## CLI compatibility"
+            echo
+            echo "- validate-all"
+            echo "- validate-platforms"
+            echo "- validate-features"
+            echo "- validate-file-handlers"
+            echo "- generate-memory-index"
+            echo "- generate-model-card"
+            echo "- proof"
+            echo "- checkpoint"
+            echo
+            echo "## Automatic repairs"
+            echo
+            echo "- upload-artifact v1-v3 -> v4"
+            echo "- download-artifact v1-v3 -> v4"
+            echo "- validate-all-platforms -> validate-platforms"
+            echo "- validate-all-features -> validate-features"
+            echo
             echo "## Recovery layers"
             echo
             echo "- Git index corruption recovery"
@@ -2078,7 +2387,7 @@ jobs:
             echo "- Dependency recovery"
             echo "- YAML duplicate-key detection"
             echo "- Deprecated action detection"
-            echo "- Obsolete CLI command detection"
+            echo "- Stale CLI command detection"
             echo "- Python syntax validation"
             echo "- Agent CLI validation"
             echo "- Ollama preflight"
@@ -2098,7 +2407,7 @@ jobs:
           fi
 
       # ======================================================================
-      # 31. ALWAYS PRESERVE DIAGNOSTICS
+      # 32. ALWAYS PRESERVE DIAGNOSTICS
       # ======================================================================
 
       - name: Upload autonomous-agent diagnostics
@@ -2113,7 +2422,7 @@ jobs:
           retention-days: 30
 
       # ======================================================================
-      # 32. FINAL FAILURE GATE
+      # 33. FINAL FAILURE GATE
       # ======================================================================
 
       - name: Enforce final health gate
