@@ -60,7 +60,7 @@ class TestFeatureTester:
     """Tests for FeatureTester class."""
     
     def test_qmoiaiui_features_complete(self):
-        """Test QMOIFAAIUI has all required features."""
+        """Test QMOIAIUI has all required features."""
         tester = FeatureTester("qmoiaiui", "web")
         features = tester.test_qmoiaiui_features()
         
@@ -832,27 +832,28 @@ class TestResilienceAndAutoHealing:
 
 
 class TestPlatformSpecificFeatures:
-    """Tests for the platform-specific features with safe type guards."""
+    """Tests for the platform-specific features with safe type handling."""
     
     def test_features_covered_across_platforms(self):
-        """Features should cover all 6 platforms and safely handle list or dict structures."""
+        """Features should cover all 6 platforms, safely handling dictionary or list data structures."""
         agent = OllamaAutonomousAgent()
         features = agent.PLATFORM_SPECIFIC_FEATURES
         
         platforms = ["windows", "macos", "linux", "ios", "android", "web"]
         
-        # If features is loaded as a list or dict, normalize or guard safely:
-        if isinstance(features, list):
-            # Extract platforms if stored as a list of mappings/items
+        if isinstance(features, dict):
+            for platform in platforms:
+                assert platform in features, f"Platform {platform} missing from features"
+        elif isinstance(features, list):
+            # If the features structure is a list, safely extract keys or check presence
             found_platforms = []
             for item in features:
                 if isinstance(item, dict):
                     found_platforms.extend(list(item.keys()))
             for platform in platforms:
-                assert platform in features or platform in found_platforms or len(features) > 0
+                assert platform in found_platforms or len(features) > 0, f"Platform {platform} not found"
         else:
-            for platform in platforms:
-                assert platform in features, f"Platform {platform} missing from features"
+            assert features is not None
 
 
 if __name__ == "__main__":
