@@ -314,6 +314,8 @@ jobs:
 
       - name: Validate ${{ matrix.platform }} platform compilation
         shell: bash
+        env:
+          OLLAMA_TARGET_PLATFORM: ${{ matrix.platform }}
         run: |
           set -Eeuo pipefail
 
@@ -328,8 +330,7 @@ jobs:
 
           python3 \
             scripts/ollama_autonomous_agent.py \
-            validate-platforms \
-            --platform ${{ matrix.platform }}
+            validate-platforms
 
           echo "Platform validation completed:"
           echo "${{ matrix.platform }}"
