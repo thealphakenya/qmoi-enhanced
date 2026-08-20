@@ -1,15 +1,15 @@
-OLLAMA AUTONOMOUS AGENT TRACKING INDEX
-======================================
+QMOI TRACKING INDEX
+===================
 
-Tracking schema: 4.0
+Tracking schema:
+- CURRENT_STATUS.txt
+- LATEST_ACTIVITY.txt
+- STATE.txt
+- PR_STATUS.txt
+- LAST_RECONCILIATION.txt
+- TRACKING_INDEX.txt
+- monitoring_summary.json
+- telemetry.jsonl
+- agent.log
 
-Purpose
--------
-Durable live observability for the Ollama autonomous agent.
-
-Last event: agent_startup
-Last status: initializing
-Last phase: startup
-Last update: 2026-08-18T00:49:22Z
-
-Mutable state files represent the latest observed projection.
+All timestamps use UTC ISO-8601 format.

@@ -756,16 +756,7 @@ class PlatformValidator:
             app_name
         ).strip()
 
-        if app_name not in QMOI_APPS:
-            self._record_diagnostic(
-                "code_compilation",
-                f"Unknown application '{app_name}'.",
-                app=app_name,
-                passed=False,
-            )
-            return False
-
-        cache_key = f"{self.platform}:{app_name}"
+        cache_key = f"{app_name}-{self.platform}"
 
         if cache_key in self.compile_cache:
             result = self.compile_cache[cache_key]
@@ -779,6 +770,16 @@ class PlatformValidator:
                 )
 
             return result
+
+        if app_name not in QMOI_APPS:
+            self._record_diagnostic(
+                "code_compilation",
+                f"Unknown application '{app_name}'.",
+                app=app_name,
+                passed=False,
+            )
+            self.compile_cache[cache_key] = False
+            return False
 
         app_path = self._resolve_app_path(
             app_name
@@ -1764,6 +1765,114 @@ class CrossRepositoryAutonomyManager:
             ],
         }
 
+    @staticmethod
+    def _git_output(
+        repo_path: Path,
+        *arguments: str,
+    ) -> List[str]:
+        """Run a read-only Git query and return non-empty output lines."""
+        result = subprocess.run(
+            ["git", "-C", str(repo_path), *arguments],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            return []
+        return [line for line in result.stdout.splitlines() if line]
+
+    def collect_repository_snapshot(
+        self,
+        repo_path: Path | str,
+        *,
+        recent_pushes: int = 4,
+    ) -> Dict[str, Any]:
+        """Capture auditable Git state without mutating the repository."""
+        repo = Path(repo_path).resolve()
+        commit_limit = max(1, int(recent_pushes))
+        commits = []
+
+        for line in self._git_output(
+            repo,
+            "log",
+            "--all",
+            f"-{commit_limit}",
+            "--format=%H%x1f%an%x1f%ae%x1f%aI%x1f%s",
+        ):
+            fields = line.split("\x1f", 4)
+            if len(fields) == 5:
+                commits.append(
+                    {
+                        "commit": fields[0],
+                        "author": fields[1],
+                        "email": fields[2],
+                        "timestamp": fields[3],
+                        "subject": fields[4],
+                    }
+                )
+
+        branches = self._git_output(
+            repo,
+            "for-each-ref",
+            "--format=%(refname:short)",
+            "refs/heads",
+            "refs/remotes",
+        )
+
+        return {
+            "repository": str(repo),
+            "captured_at": utc_iso(),
+            "head": (self._git_output(repo, "rev-parse", "HEAD") or [None])[0],
+            "branches": branches,
+            "files": self._git_output(repo, "ls-files"),
+            "commits": commits,
+            "contributors": sorted(
+                {
+                    commit["author"]
+                    for commit in commits
+                    if commit.get("author")
+                }
+            ),
+            "recent_pushes_requested": commit_limit,
+            "history_scope": "all reachable refs",
+        }
+
+    def build_merge_audit_plan(self) -> Dict[str, Any]:
+        """Describe the history and structure evidence required before merges."""
+        return {
+            "repositories": list(self.build_autonomy_plan()["repos"]),
+            "inspect_all_branches": True,
+            "include_file_structure": True,
+            "include_authors_and_timestamps": True,
+            "qmoi_enhanced_recent_pushes": "all contributors",
+            "alpha_q_ai_recent_pushes_minimum": 4,
+            "merge_log_file": "MERGE.md",
+            "mutations_allowed": False,
+        }
+
+    inspect_repository_history = collect_repository_snapshot
+
+    def update_merge_log(
+        self,
+        repo_path: Path | str,
+        activity: Mapping[str, Any],
+    ) -> Path:
+        """Append a timestamped, machine-readable merge activity record."""
+        merge_path = Path(repo_path).resolve() / "MERGE.md"
+        record = {"timestamp": utc_iso(), **dict(activity)}
+        existing = (
+            merge_path.read_text(encoding="utf-8")
+            if merge_path.exists()
+            else "# MERGE.md\n"
+        )
+        section = (
+            "\n\n## Autonomous Merge Activity\n```json\n"
+            + json.dumps(record, indent=2, sort_keys=True)
+            + "\n```\n"
+        )
+        safe_text_write(merge_path, existing.rstrip() + section)
+        return merge_path
+
     def productionize_repo(
         self,
         name: str,
@@ -2388,6 +2497,13 @@ All timestamps use UTC ISO-8601 format.
 
         self.results["platforms"] = results
 
+        # Keep the platform metadata contract while exposing the canonical
+        # application keys expected by older PR validation callers.
+        for platform, platform_result in results.items():
+            platform_result.update(
+                self._validate_platform_feature_apps(platform)
+            )
+
         passed = all(
             result.get("passed", False)
             for result in results.values()
@@ -2613,7 +2729,16 @@ All timestamps use UTC ISO-8601 format.
 
         Each platform therefore contains exactly four applications.
         """
-        results = self.validate_all_platform_features()
+        platform_results = self.validate_all_platform_features()
+
+        # The current contract is platform -> app -> feature -> bool. Add
+        # app-first aliases for clients that predate that contract.
+        results: Dict[str, Any] = dict(platform_results)
+        for app in QMOI_APPS:
+            results[app] = {
+                platform: platform_results[platform][app]
+                for platform in PLATFORMS
+            }
 
         self.results["features"] = results
 

@@ -1168,9 +1168,9 @@ class TestSourceSafety:
         )
 
         tree_markers = (
-            "├── ",
-            "└── ",
-            "│   ",
+            "\N{BOX DRAWINGS LIGHT VERTICAL AND RIGHT}" "── ",
+            "\N{BOX DRAWINGS LIGHT UP AND RIGHT}" "── ",
+            "\N{BOX DRAWINGS LIGHT VERTICAL}" "   ",
         )
 
         for line_number, line in enumerate(

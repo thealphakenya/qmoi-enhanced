@@ -11,6 +11,20 @@ This document provides comprehensive procedures for merging files and features b
 4. **Traceability**: Document all merge decisions and rationales
 5. **Accountability**: QMOI maintains full accountability for all merge decisions
 
+## Autonomous History Audit Contract
+
+Before any cross-repository merge, the agent must create a read-only audit for
+both `thealphakenya/qmoi-enhanced` and `thealphakenya/Alpha-Q-ai`. The audit
+records every reachable branch, the complete Git-tracked file structure, and
+commit author, email, timestamp, subject, and hash. It must inspect all
+contributors for QMOI Enhanced and at least the latest four reachable commits
+for Alpha-Q-ai. A merge is not considered traceable until the activity and its
+audit evidence are appended to this file through the agent's merge-log API.
+
+The audit is evidence collection only: it must not fetch, merge, reset, or push
+implicitly. Network synchronization and publication remain explicit workflow
+steps, followed by validation and a recorded result.
+
 ## File Type Specific Procedures
 
 ### Markdown Files (.md)
