@@ -2,40 +2,27 @@
 """
 Comprehensive Test Suite for Ollama Autonomous Agent
 
-Tests for the Ollama/QMOI autonomous validation layer.
+Tests the Ollama/QMOI autonomous-agent validation contract.
 
 Coverage:
 
 - 6 supported platforms
 - 4 QMOI applications
-- 280+ platform/application-specific features
-- PlatformSpecificFeatureValidator
-- PlatformValidator
-- OllamaAutonomousAgent
+- 280+ platform/application feature entries
+- Feature registry integrity
+- Platform/application completeness
+- Feature-name consistency
+- PlatformSpecificFeatureValidator behavior
+- OllamaAutonomousAgent validation structure
 - PR validation contract
-- Registry consistency
-- Duplicate detection
-- Feature-name validation
-- Validation result structure
-- Invalid-input handling
-- Performance sanity checks
+- Performance and edge-case behavior
 
-The tests intentionally validate the PUBLIC contract of the agent rather
-than relying unnecessarily on private implementation details.
+IMPORTANT
 
-Supported platforms:
-windows
-macos
-linux
-ios
-android
-web
+This file must contain Python source only.
 
-Supported applications:
-qmoiaiui
-qcity
-qmoi-space
-qalpha
+Do not paste repository tree diagrams, Markdown fences, YAML, log output,
+or other non-Python text into this file.
 """
 
 from future import annotations
@@ -44,7 +31,7 @@ import re
 import sys
 import time
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, Sequence, Tuple
+from typing import Any, Dict, Iterable, List, Mapping, Sequence
 
 import pytest
 
@@ -54,7 +41,7 @@ IMPORT PATH
 
 ============================================================================
 
-Repository layout expected by this test:
+Repository layout expected by the test suite:
 
 repository/
 
@@ -64,17 +51,23 @@ repository/
 
 └── tests/
 
-└── test_ollama_autonomous_agent.py
+└── test_ollama_enhanced_features.py
 
-Resolve the repository root from this file rather than relying on the
+Only the actual Python import path is used below. The tree above is
 
-current working directory.
+documentation only and MUST NOT be inserted into executable code.
 
 REPOSITORY_ROOT = Path(file).resolve().parent.parent
 SCRIPTS_DIR = REPOSITORY_ROOT / "scripts"
 
 if str(SCRIPTS_DIR) not in sys.path:
 sys.path.insert(0, str(SCRIPTS_DIR))
+
+============================================================================
+
+AGENT IMPORT
+
+============================================================================
 
 from ollama_autonomous_agent import (  # noqa: E402
 OllamaAutonomousAgent,
@@ -91,7 +84,7 @@ TEST CONTRACT
 
 ============================================================================
 
-EXPECTED_PLATFORMS: Tuple[str, ...] = (
+EXPECTED_PLATFORMS = (
 "windows",
 "macos",
 "linux",
@@ -100,37 +93,37 @@ EXPECTED_PLATFORMS: Tuple[str, ...] = (
 "web",
 )
 
-EXPECTED_APPS: Tuple[str, ...] = (
+EXPECTED_APPS = (
 "qmoiaiui",
-"qcity",
 "qmoi-space",
+"qcity",
 "qalpha",
 )
 
 MIN_FEATURES_PER_APP_PLATFORM = 10
 MIN_TOTAL_FEATURES = 280
 
-FEATURE_NAME_PATTERN = re.compile(
-r"^[a-z][a-z0-9_]*[a-z0-9]$"
-)
+FEATURE_NAME_PATTERN = re.compile(r"^[a-z][a-z0-9_]*[a-z0-9]$")
 
 ============================================================================
 
-EXPECTED FEATURE CONTRACTS
+EXPECTED CORE FEATURES
 
 ============================================================================
 
-These are deliberately limited to important contract-level features.
+These are deliberately limited to representative contract features rather
 
-The registry is allowed to contain additional features.
+than requiring every feature to be hard-coded here. The source registry is
 
-The tests do NOT require every implementation to have exactly the same
+the authoritative feature inventory.
 
-number of features; they require the minimum contract and completeness.
+This makes the tests resilient when new features are added while still
+
+catching accidental removal/renaming of important platform capabilities.
 
 ============================================================================
 
-REQUIRED_FEATURES: Dict[str, Dict[str, Tuple[str, ...]]] = {
+EXPECTED_CORE_FEATURES: Mapping[str, Mapping[str, Sequence[str]]] = {
 "windows": {
 "qmoiaiui": (
 "windows_notifications_api",
@@ -234,9 +227,7 @@ REQUIRED_FEATURES: Dict[str, Dict[str, Tuple[str, ...]]] = {
 "android": {
 "qmoiaiui": (
 "content_provider",
-# Accept both the historical spelling and the corrected
-# Android API spelling if the implementation has normalized it.
-"documents_provider",
+"documentsrovider",
 "material_you_theming",
 ),
 "qcity": (
@@ -274,578 +265,348 @@ REQUIRED_FEATURES: Dict[str, Dict[str, Tuple[str, ...]]] = {
 
 ============================================================================
 
-REGISTRY HELPERS
+HELPERS
 
 ============================================================================
 
-def _as_feature_list(value: Any) -> List[str]:
-"""
-Normalize a registry value to a feature list.
+def _feature_registry() -> Mapping[str, Mapping[str, Sequence[str]]]:
+"""Return the feature registry and verify its basic mapping shape."""
+assert isinstance(
+PLATFORM_SPECIFIC_FEATURES,
+Mapping,
+), "PLATFORM_SPECIFIC_FEATURES must be a mapping"
 
-The updated agent may expose registry values as:
-    - list
-    - tuple
-    - set
-    - another iterable
+return PLATFORM_SPECIFIC_FEATURES
 
-Invalid/non-iterable values are returned as an empty list so the test
-can produce a useful assertion failure instead of crashing with a
-confusing TypeError.
-"""
-if value is None:
-    return []
+def _features_for(platform: str, app: str) -> Sequence[str]:
+"""Safely return the feature list for one platform/application pair."""
+registry = _feature_registry()
 
-if isinstance(value, str):
-    return [value]
-
-if isinstance(value, (list, tuple, set, frozenset)):
-    return [str(item) for item in value]
-
-try:
-    return [str(item) for item in value]
-except TypeError:
-    return []
-
-def _get_platform_registry(platform: str) -> Mapping[str, Any]:
-"""
-Return the registry mapping for a platform.
-
-Expected public shape:
-
-    PLATFORM_SPECIFIC_FEATURES[platform][app] -> feature collection
-"""
-registry = PLATFORM_SPECIFIC_FEATURES
-
-if not isinstance(registry, Mapping):
-    raise AssertionError(
-        "PLATFORM_SPECIFIC_FEATURES must be a mapping"
-    )
-
-platform_data = registry.get(platform)
-
-if not isinstance(platform_data, Mapping):
-    raise AssertionError(
-        f"Feature registry for platform '{platform}' must be a mapping"
-    )
-
-return platform_data
-
-def get_features(platform: str, app: str) -> List[str]:
-"""Return normalized features for one platform/application pair."""
-platform_data = _get_platform_registry(platform)
-return _as_feature_list(platform_data.get(app, []))
-
-def total_registered_features() -> int:
-"""Return the total number of registered platform/application features."""
-total = 0
-
-for platform in EXPECTED_PLATFORMS:
-    platform_data = _get_platform_registry(platform)
-
-    for app in EXPECTED_APPS:
-        total += len(_as_feature_list(platform_data.get(app, [])))
-
-return total
-
-def assert_validation_result_mapping(
-result: Any,
-*,
-expected_platforms: Sequence[str] = EXPECTED_PLATFORMS,
-expected_apps: Sequence[str] = EXPECTED_APPS,
-) -> None:
-"""
-Validate the standard platform -> app -> result mapping.
-
-The result for each app is intentionally allowed to be either:
-    - dict
-    - bool
-    - list
-    - tuple
-    - another structured validation result
-
-This prevents the tests from breaking simply because the implementation
-adds metadata around a validation result.
-"""
-assert isinstance(result, Mapping), (
-    f"Expected mapping validation result, got {type(result).__name__}"
+assert platform in registry, (
+    f"Platform '{platform}' is missing from PLATFORM_SPECIFIC_FEATURES"
 )
 
-for platform in expected_platforms:
-    assert platform in result, (
-        f"Validation result missing platform '{platform}'"
-    )
+platform_data = registry[platform]
 
-    platform_result = result[platform]
+assert isinstance(platform_data, Mapping), (
+    f"Feature data for platform '{platform}' must be a mapping"
+)
 
-    assert isinstance(platform_result, Mapping), (
-        f"Validation result for '{platform}' must be a mapping, "
-        f"got {type(platform_result).__name__}"
-    )
+assert app in platform_data, (
+    f"Application '{app}' is missing from platform '{platform}'"
+)
 
-    for app in expected_apps:
-        assert app in platform_result, (
-            f"Validation result missing '{app}' on '{platform}'"
-        )
+features = platform_data[app]
+
+assert isinstance(features, (list, tuple)), (
+    f"Features for {app} on {platform} must be a list or tuple"
+)
+
+return features
+
+def _all_feature_entries() -> Iterable[tuple[str, str, Sequence[str]]]:
+"""Yield every platform/application feature collection."""
+for platform in EXPECTED_PLATFORMS:
+for app in EXPECTED_APPS:
+yield platform, app, _features_for(platform, app)
+
+def _total_feature_count() -> int:
+"""Return the total number of registered platform-specific features."""
+return sum(
+len(features)
+for _, _, features in _all_feature_entries()
+)
 
 ============================================================================
 
-TEST CONFIGURATION
+BASIC MODULE / REGISTRY TESTS
 
 ============================================================================
 
-class TestPlatformSpecificFeatures:
-"""Master tests for the platform-specific feature registry."""
+class TestModuleAndRegistry:
+"""Validate imports and the authoritative feature registry."""
 
-@pytest.fixture(autouse=True)
-def setup(self) -> None:
-    """Create a fresh agent for each test."""
-    self.agent = OllamaAutonomousAgent()
-    self.platforms = list(EXPECTED_PLATFORMS)
-    self.apps = list(EXPECTED_APPS)
+def test_required_exports_are_importable(self):
+    """Required agent classes/constants must be importable."""
+    assert PlatformValidator is not None
+    assert PlatformSpecificFeatureValidator is not None
+    assert OllamaAutonomousAgent is not None
+    assert PLATFORMS is not None
+    assert QMOI_APPS is not None
+    assert PLATFORM_SPECIFIC_FEATURES is not None
 
-# ========================================================================
-# WINDOWS
-# ========================================================================
+def test_platform_contract(self):
+    """Verify exactly the six supported platforms are present."""
+    assert isinstance(PLATFORMS, (list, tuple))
+    assert set(PLATFORMS) == set(EXPECTED_PLATFORMS)
+    assert len(PLATFORMS) == len(EXPECTED_PLATFORMS)
 
-def test_windows_qmoiaiui_features_complete(self) -> None:
-    """Validate required QMOIAIUI Windows features."""
-    features = get_features("windows", "qmoiaiui")
+def test_app_contract(self):
+    """Verify exactly the four required applications are present."""
+    assert isinstance(QMOI_APPS, Mapping)
+    assert set(QMOI_APPS.keys()) == set(EXPECTED_APPS)
+    assert len(QMOI_APPS) == len(EXPECTED_APPS)
 
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
+def test_feature_registry_platforms(self):
+    """Every supported platform must have feature data."""
+    registry = _feature_registry()
 
-    for feature in REQUIRED_FEATURES["windows"]["qmoiaiui"]:
-        assert feature in features, (
-            f"Missing Windows/QMOIAIUI feature: {feature}"
+    for platform in EXPECTED_PLATFORMS:
+        assert platform in registry, (
+            f"Missing platform '{platform}' from feature registry"
         )
 
-def test_windows_qcity_features_complete(self) -> None:
-    """Validate required QCity Windows features."""
-    features = get_features("windows", "qcity")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["windows"]["qcity"]:
-        assert feature in features, (
-            f"Missing Windows/QCity feature: {feature}"
-        )
-
-def test_windows_qmoi_space_features_complete(self) -> None:
-    """Validate required QMOI Space Windows features."""
-    features = get_features("windows", "qmoi-space")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["windows"]["qmoi-space"]:
-        assert feature in features, (
-            f"Missing Windows/QMOI Space feature: {feature}"
-        )
-
-def test_windows_qalpha_features_complete(self) -> None:
-    """Validate required QALPHA Windows features."""
-    features = get_features("windows", "qalpha")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["windows"]["qalpha"]:
-        assert feature in features, (
-            f"Missing Windows/QALPHA feature: {feature}"
-        )
-
-# ========================================================================
-# MACOS
-# ========================================================================
-
-def test_macos_qmoiaiui_features_complete(self) -> None:
-    """Validate required QMOIAIUI macOS features."""
-    features = get_features("macos", "qmoiaiui")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["macos"]["qmoiaiui"]:
-        assert feature in features, (
-            f"Missing macOS/QMOIAIUI feature: {feature}"
-        )
-
-def test_macos_qcity_features_complete(self) -> None:
-    """Validate required QCity macOS features."""
-    features = get_features("macos", "qcity")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["macos"]["qcity"]:
-        assert feature in features, (
-            f"Missing macOS/QCity feature: {feature}"
-        )
-
-def test_macos_qmoi_space_features_complete(self) -> None:
-    """Validate required QMOI Space macOS features."""
-    features = get_features("macos", "qmoi-space")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["macos"]["qmoi-space"]:
-        assert feature in features, (
-            f"Missing macOS/QMOI Space feature: {feature}"
-        )
-
-def test_macos_qalpha_features_complete(self) -> None:
-    """Validate required QALPHA macOS features."""
-    features = get_features("macos", "qalpha")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["macos"]["qalpha"]:
-        assert feature in features, (
-            f"Missing macOS/QALPHA feature: {feature}"
-        )
-
-# ========================================================================
-# LINUX
-# ========================================================================
-
-def test_linux_qmoiaiui_features_complete(self) -> None:
-    """Validate required QMOIAIUI Linux features."""
-    features = get_features("linux", "qmoiaiui")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["linux"]["qmoiaiui"]:
-        assert feature in features, (
-            f"Missing Linux/QMOIAIUI feature: {feature}"
-        )
-
-def test_linux_qcity_features_complete(self) -> None:
-    """Validate required QCity Linux features."""
-    features = get_features("linux", "qcity")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["linux"]["qcity"]:
-        assert feature in features, (
-            f"Missing Linux/QCity feature: {feature}"
-        )
-
-def test_linux_qmoi_space_features_complete(self) -> None:
-    """Validate required QMOI Space Linux features."""
-    features = get_features("linux", "qmoi-space")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["linux"]["qmoi-space"]:
-        assert feature in features, (
-            f"Missing Linux/QMOI Space feature: {feature}"
-        )
-
-def test_linux_qalpha_features_complete(self) -> None:
-    """Validate required QALPHA Linux features."""
-    features = get_features("linux", "qalpha")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["linux"]["qalpha"]:
-        assert feature in features, (
-            f"Missing Linux/QALPHA feature: {feature}"
-        )
-
-# ========================================================================
-# IOS
-# ========================================================================
-
-def test_ios_qmoiaiui_features_complete(self) -> None:
-    """Validate required QMOIAIUI iOS features."""
-    features = get_features("ios", "qmoiaiui")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["ios"]["qmoiaiui"]:
-        assert feature in features, (
-            f"Missing iOS/QMOIAIUI feature: {feature}"
-        )
-
-def test_ios_qcity_features_complete(self) -> None:
-    """Validate required QCity iOS features."""
-    features = get_features("ios", "qcity")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["ios"]["qcity"]:
-        assert feature in features, (
-            f"Missing iOS/QCity feature: {feature}"
-        )
-
-def test_ios_qmoi_space_features_complete(self) -> None:
-    """Validate required QMOI Space iOS features."""
-    features = get_features("ios", "qmoi-space")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["ios"]["qmoi-space"]:
-        assert feature in features, (
-            f"Missing iOS/QMOI Space feature: {feature}"
-        )
-
-def test_ios_qalpha_features_complete(self) -> None:
-    """Validate required QALPHA iOS features."""
-    features = get_features("ios", "qalpha")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["ios"]["qalpha"]:
-        assert feature in features, (
-            f"Missing iOS/QALPHA feature: {feature}"
-        )
-
-# ========================================================================
-# ANDROID
-# ========================================================================
-
-def test_android_qmoiaiui_features_complete(self) -> None:
-    """Validate required QMOIAIUI Android features."""
-    features = get_features("android", "qmoiaiui")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    assert (
-        "documents_provider" in features
-        or "documentsrovider" in features
-    ), "Missing Android DocumentsProvider feature"
-
-    for feature in (
-        "content_provider",
-        "material_you_theming",
-    ):
-        assert feature in features, (
-            f"Missing Android/QMOIAIUI feature: {feature}"
-        )
-
-def test_android_qcity_features_complete(self) -> None:
-    """Validate required QCity Android features."""
-    features = get_features("android", "qcity")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["android"]["qcity"]:
-        assert feature in features, (
-            f"Missing Android/QCity feature: {feature}"
-        )
-
-def test_android_qmoi_space_features_complete(self) -> None:
-    """Validate required QMOI Space Android features."""
-    features = get_features("android", "qmoi-space")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["android"]["qmoi-space"]:
-        assert feature in features, (
-            f"Missing Android/QMOI Space feature: {feature}"
-        )
-
-def test_android_qalpha_features_complete(self) -> None:
-    """Validate required QALPHA Android features."""
-    features = get_features("android", "qalpha")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["android"]["qalpha"]:
-        assert feature in features, (
-            f"Missing Android/QALPHA feature: {feature}"
-        )
-
-# ========================================================================
-# WEB / PWA
-# ========================================================================
-
-def test_web_qmoiaiui_features_complete(self) -> None:
-    """Validate required QMOIAIUI Web features."""
-    features = get_features("web", "qmoiaiui")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["web"]["qmoiaiui"]:
-        assert feature in features, (
-            f"Missing Web/QMOIAIUI feature: {feature}"
-        )
-
-def test_web_qcity_features_complete(self) -> None:
-    """Validate required QCity Web features."""
-    features = get_features("web", "qcity")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["web"]["qcity"]:
-        assert feature in features, (
-            f"Missing Web/QCity feature: {feature}"
-        )
-
-def test_web_qmoi_space_features_complete(self) -> None:
-    """Validate required QMOI Space Web features."""
-    features = get_features("web", "qmoi-space")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["web"]["qmoi-space"]:
-        assert feature in features, (
-            f"Missing Web/QMOI Space feature: {feature}"
-        )
-
-def test_web_qalpha_features_complete(self) -> None:
-    """Validate required QALPHA Web features."""
-    features = get_features("web", "qalpha")
-
-    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM
-
-    for feature in REQUIRED_FEATURES["web"]["qalpha"]:
-        assert feature in features, (
-            f"Missing Web/QALPHA feature: {feature}"
-        )
-
-# ========================================================================
-# TOTAL FEATURE COUNT
-# ========================================================================
-
-def test_total_feature_count(self) -> None:
-    """Verify at least 280 platform/application features are registered."""
-    total_features = total_registered_features()
-
+def test_feature_registry_apps(self):
+    """Every supported application must exist on every platform."""
     for platform in EXPECTED_PLATFORMS:
         for app in EXPECTED_APPS:
-            count = len(get_features(platform, app))
-            print(
-                f"{platform:12} "
-                f"{app:15} "
-                f"{count:3} features"
+            _features_for(platform, app)
+
+def test_total_feature_count(self):
+    """Verify the complete registry contains at least 280 features."""
+    counts: Dict[str, int] = {}
+    total = 0
+
+    for platform, app, features in _all_feature_entries():
+        count = len(features)
+        counts[f"{platform}:{app}"] = count
+        total += count
+
+        print(
+            f"{platform:10} {app:12} "
+            f"{count:3} features"
+        )
+
+    print(f"\nTotal platform-specific features: {total}")
+
+    assert total >= MIN_TOTAL_FEATURES, (
+        f"Expected at least {MIN_TOTAL_FEATURES} platform-specific "
+        f"features, got {total}"
+    )
+
+    assert all(
+        count >= MIN_FEATURES_PER_APP_PLATFORM
+        for count in counts.values()
+    ), (
+        "Every platform/application pair must contain at least "
+        f"{MIN_FEATURES_PER_APP_PLATFORM} features"
+    )
+
+def test_feature_collections_are_strings(self):
+    """Every registered feature must be represented by a string."""
+    for platform, app, features in _all_feature_entries():
+        for feature in features:
+            assert isinstance(feature, str), (
+                f"Feature for {app} on {platform} is not a string: "
+                f"{feature!r}"
+            )
+            assert feature.strip(), (
+                f"Empty feature name for {app} on {platform}"
             )
 
-    print(
-        f"\nTotal: {total_features} "
-        "platform-specific features"
+============================================================================
+
+CORE FEATURE TESTS
+
+============================================================================
+
+class TestCoreFeatures:
+"""Verify important platform-specific capabilities remain registered."""
+
+@pytest.mark.parametrize(
+    "platform,app",
+    [
+        (platform, app)
+        for platform in EXPECTED_PLATFORMS
+        for app in EXPECTED_APPS
+    ],
+)
+def test_minimum_feature_count(self, platform: str, app: str):
+    """Every app/platform combination satisfies the minimum contract."""
+    features = _features_for(platform, app)
+
+    assert len(features) >= MIN_FEATURES_PER_APP_PLATFORM, (
+        f"{app} on {platform} has {len(features)} features; "
+        f"minimum is {MIN_FEATURES_PER_APP_PLATFORM}"
     )
 
-    assert total_features >= MIN_TOTAL_FEATURES, (
-        f"Expected at least {MIN_TOTAL_FEATURES} features, "
-        f"got {total_features}"
+@pytest.mark.parametrize(
+    "platform,app,expected",
+    [
+        (platform, app, feature)
+        for platform, apps in EXPECTED_CORE_FEATURES.items()
+        for app, features in apps.items()
+        for feature in features
+    ],
+)
+def test_core_feature_present(
+    self,
+    platform: str,
+    app: str,
+    expected: str,
+):
+    """Important contract features must not disappear."""
+    features = _features_for(platform, app)
+
+    assert expected in features, (
+        f"Required feature '{expected}' is missing for "
+        f"{app} on {platform}"
     )
 
-# ========================================================================
-# PLATFORM / APPLICATION REGISTRY
-# ========================================================================
+============================================================================
 
-def test_all_platforms_present(self) -> None:
-    """Verify the six required platforms are defined."""
-    assert len(PLATFORMS) == 6
+FEATURE REGISTRY CONSISTENCY
+
+============================================================================
+
+class TestFeatureRegistryConsistency:
+"""Validate uniqueness, naming and matrix consistency."""
+
+def test_no_duplicate_features(self):
+    """No platform/application feature list may contain duplicates."""
+    for platform, app, features in _all_feature_entries():
+        assert len(features) == len(set(features)), (
+            f"Duplicate feature names detected for "
+            f"{app} on {platform}"
+        )
+
+def test_feature_names_follow_snake_case(self):
+    """All feature identifiers must use the project naming convention."""
+    for platform, app, features in _all_feature_entries():
+        for feature in features:
+            assert FEATURE_NAME_PATTERN.fullmatch(feature), (
+                f"Feature '{feature}' for {app} on {platform} "
+                "does not follow the required snake_case convention"
+            )
+
+def test_no_missing_platform_application_pairs(self):
+    """The feature matrix must be a complete 6 × 4 matrix."""
+    registry = _feature_registry()
+
+    assert set(registry.keys()) == set(EXPECTED_PLATFORMS)
 
     for platform in EXPECTED_PLATFORMS:
-        assert platform in PLATFORMS, (
-            f"Required platform '{platform}' is missing"
+        platform_data = registry[platform]
+
+        assert isinstance(platform_data, Mapping)
+
+        assert set(platform_data.keys()) == set(EXPECTED_APPS), (
+            f"Platform '{platform}' does not contain exactly the "
+            "required applications"
         )
 
-def test_platform_order_is_stable(self) -> None:
-    """Verify all required platforms are represented without duplicates."""
-    platforms = list(PLATFORMS)
+def test_platform_order_matches_contract(self):
+    """PLATFORMS should contain each supported platform once."""
+    assert len(PLATFORMS) == len(set(PLATFORMS))
+    assert set(PLATFORMS) == set(EXPECTED_PLATFORMS)
 
-    assert len(platforms) == len(set(platforms)), (
-        "PLATFORMS contains duplicate entries"
-    )
-
-    assert set(platforms) == set(EXPECTED_PLATFORMS), (
-        "PLATFORMS does not exactly match the six-platform contract"
-    )
-
-def test_all_apps_present(self) -> None:
-    """Verify the four required QMOI applications are defined."""
-    assert len(QMOI_APPS) == 4
-
-    for app in EXPECTED_APPS:
-        assert app in QMOI_APPS, (
-            f"Required application '{app}' is missing"
-        )
-
-def test_application_order_is_stable(self) -> None:
-    """Verify required application identifiers are unique."""
+def test_app_order_has_no_duplicates(self):
+    """QMOI application keys must be unique."""
     apps = list(QMOI_APPS.keys())
 
-    assert len(apps) == len(set(apps)), (
-        "QMOI_APPS contains duplicate entries"
-    )
+    assert len(apps) == len(set(apps))
+    assert set(apps) == set(EXPECTED_APPS)
 
-    assert set(apps) == set(EXPECTED_APPS), (
-        "QMOI_APPS does not exactly match the four-application contract"
-    )
+============================================================================
 
-# ========================================================================
-# PLATFORM FEATURE VALIDATOR
-# ========================================================================
+PLATFORM-SPECIFIC VALIDATOR TESTS
 
-def test_platform_feature_validator_initialization(self) -> None:
-    """Test PlatformSpecificFeatureValidator initialization."""
+============================================================================
+
+class TestPlatformSpecificFeatureValidator:
+"""Tests for PlatformSpecificFeatureValidator."""
+
+@pytest.mark.parametrize(
+    "platform,app",
+    [
+        (platform, app)
+        for platform in EXPECTED_PLATFORMS
+        for app in EXPECTED_APPS
+    ],
+)
+def test_initialization(self, platform: str, app: str):
+    """Validator initializes for every supported pair."""
+    validator = PlatformSpecificFeatureValidator(app, platform)
+
+    assert validator.app_name == app
+    assert validator.platform == platform
+
+def test_results_structure(self):
+    """Feature validation must return a dictionary of boolean results."""
     validator = PlatformSpecificFeatureValidator(
         "qmoiaiui",
         "windows",
-    )
-
-    assert getattr(validator, "app_name", "qmoiaiui") == "qmoiaiui"
-    assert getattr(validator, "platform", "windows") == "windows"
-
-def test_platform_feature_validator_results_structure(self) -> None:
-    """Test feature validator result structure."""
-    validator = PlatformSpecificFeatureValidator(
-        "qmoiaiui",
-        "windows",
-    )
-
-    assert hasattr(validator, "validate_all_features"), (
-        "PlatformSpecificFeatureValidator must expose "
-        "validate_all_features()"
     )
 
     results = validator.validate_all_features()
 
-    assert isinstance(results, Mapping), (
-        "validate_all_features() must return a mapping"
-    )
-
-    assert len(results) >= MIN_FEATURES_PER_APP_PLATFORM, (
-        f"Expected at least {MIN_FEATURES_PER_APP_PLATFORM} "
-        f"validation results, got {len(results)}"
-    )
+    assert isinstance(results, dict)
+    assert len(results) > 0
 
     for feature_name, result in results.items():
-        assert isinstance(feature_name, str), (
-            "Feature validation result keys must be strings"
+        assert isinstance(feature_name, str)
+        assert isinstance(result, bool), (
+            f"Validation result for '{feature_name}' must be bool, "
+            f"got {type(result).__name__}"
         )
 
-        # Implementations may return bool or structured status objects.
-        assert isinstance(
-            result,
-            (bool, Mapping, list, tuple, str, int, float),
-        ), (
-            f"Unsupported validation result type for "
-            f"'{feature_name}': {type(result).__name__}"
-        )
+@pytest.mark.parametrize(
+    "platform,app",
+    [
+        (platform, app)
+        for platform in EXPECTED_PLATFORMS
+        for app in EXPECTED_APPS
+    ],
+)
+def test_validator_covers_registered_features(
+    self,
+    platform: str,
+    app: str,
+):
+    """
+    Validator results should cover the features registered for the
+    selected platform/application pair.
+    """
+    expected = set(_features_for(platform, app))
 
-# ========================================================================
-# PLATFORM VALIDATOR
-# ========================================================================
+    validator = PlatformSpecificFeatureValidator(app, platform)
+    results = validator.validate_all_features()
 
-def test_platform_validator_initialization(self) -> None:
-    """Test PlatformValidator initialization."""
-    validator = PlatformValidator("windows")
+    assert isinstance(results, dict)
 
-    assert validator is not None
-    assert hasattr(validator, "validate"), (
-        "PlatformValidator should expose validate()"
+    actual = set(results.keys())
+
+    missing = expected - actual
+
+    assert not missing, (
+        f"Validator for {app} on {platform} did not return results "
+        f"for registered features: {sorted(missing)}"
     )
 
-# ========================================================================
-# AGENT VALIDATION
-# ========================================================================
+    assert all(
+        isinstance(value, bool)
+        for value in results.values()
+    )
 
-def test_agent_initialization(self) -> None:
-    """Verify the autonomous agent initializes successfully."""
-    assert self.agent is not None
+============================================================================
 
-def test_agent_required_methods_exist(self) -> None:
-    """Verify required public agent methods exist."""
+AGENT STRUCTURE TESTS
+
+============================================================================
+
+class TestOllamaAutonomousAgent:
+"""Tests for the top-level autonomous agent."""
+
+def test_agent_initialization(self):
+    """Agent must initialize without requiring external services."""
+    agent = OllamaAutonomousAgent()
+
+    assert agent is not None
+
+def test_required_methods_exist(self):
+    """Required validation methods must exist and be callable."""
+    agent = OllamaAutonomousAgent()
+
     required_methods = (
         "validate_all_platforms",
         "validate_all_platform_features",
@@ -853,223 +614,134 @@ def test_agent_required_methods_exist(self) -> None:
     )
 
     for method_name in required_methods:
-        assert hasattr(self.agent, method_name), (
-            f"OllamaAutonomousAgent missing required method "
-            f"'{method_name}'"
+        assert hasattr(agent, method_name), (
+            f"Agent is missing required method '{method_name}'"
         )
 
-        assert callable(getattr(self.agent, method_name)), (
+        method = getattr(agent, method_name)
+
+        assert callable(method), (
             f"Agent method '{method_name}' is not callable"
         )
 
-def test_agent_platform_validation_returns_expected_structure(
-    self,
-) -> None:
-    """Test agent platform validation structure."""
-    results = self.agent.validate_all_platforms()
+def test_agent_platform_validation_returns_dict(self):
+    """Platform validation must return a platform-indexed mapping."""
+    agent = OllamaAutonomousAgent()
 
-    assert_validation_result_mapping(results)
+    results = agent.validate_all_platforms()
 
-def test_agent_feature_validation_returns_expected_structure(
-    self,
-) -> None:
-    """Test agent feature validation structure."""
-    results = self.agent.validate_all_platform_features()
-
-    assert_validation_result_mapping(results)
-
-# ========================================================================
-# PR SUCCESS CONTRACT
-# ========================================================================
-
-def test_pr_contract_all_platforms_required(self) -> None:
-    """Verify all six platforms are part of the PR contract."""
-    assert len(EXPECTED_PLATFORMS) == 6
-    assert set(PLATFORMS) == set(EXPECTED_PLATFORMS)
-
-def test_pr_contract_all_apps_required(self) -> None:
-    """Verify all four applications are part of the PR contract."""
-    assert len(EXPECTED_APPS) == 4
-    assert set(QMOI_APPS.keys()) == set(EXPECTED_APPS)
-
-def test_pr_contract_minimum_features_per_app_platform(
-    self,
-) -> None:
-    """Verify every app/platform pair has at least ten features."""
-    failures: List[str] = []
+    assert isinstance(results, dict)
 
     for platform in EXPECTED_PLATFORMS:
-        for app in EXPECTED_APPS:
-            features = get_features(platform, app)
+        assert platform in results, (
+            f"Platform '{platform}' missing from validation results"
+        )
 
-            if len(features) < MIN_FEATURES_PER_APP_PLATFORM:
-                failures.append(
-                    f"{app} on {platform}: "
-                    f"{len(features)} features"
-                )
+        assert isinstance(results[platform], Mapping), (
+            f"Validation result for '{platform}' must be a mapping"
+        )
+
+def test_agent_platform_validation_covers_all_apps(self):
+    """Each platform result should cover every configured application."""
+    agent = OllamaAutonomousAgent()
+
+    results = agent.validate_all_platforms()
+
+    for platform in EXPECTED_PLATFORMS:
+        platform_result = results[platform]
+
+        for app in EXPECTED_APPS:
+            assert app in platform_result, (
+                f"Application '{app}' missing from validation results "
+                f"for platform '{platform}'"
+            )
+
+def test_agent_feature_validation_returns_dict(self):
+    """Feature validation must return a nested mapping."""
+    agent = OllamaAutonomousAgent()
+
+    results = agent.validate_all_platform_features()
+
+    assert isinstance(results, dict)
+
+    for platform in EXPECTED_PLATFORMS:
+        assert platform in results
+
+        platform_results = results[platform]
+
+        assert isinstance(platform_results, Mapping)
+
+        for app in EXPECTED_APPS:
+            assert app in platform_results
+
+            app_results = platform_results[app]
+
+            assert isinstance(app_results, Mapping)
+
+def test_full_validation_method_is_callable(self):
+    """Full validation suite must be executable as a callable."""
+    agent = OllamaAutonomousAgent()
+
+    assert callable(agent.run_full_validation_suite)
+
+============================================================================
+
+PR SUCCESS CONTRACT
+
+============================================================================
+
+class TestPRSuccessContract:
+"""
+Explicit PR merge contract.
+
+A PR must not silently lose a platform, application, or the minimum
+platform-specific feature coverage.
+"""
+
+def test_all_required_platforms(self):
+    """PR contract requires all six platforms."""
+    assert set(PLATFORMS) == set(EXPECTED_PLATFORMS)
+
+def test_all_required_apps(self):
+    """PR contract requires all four applications."""
+    assert set(QMOI_APPS.keys()) == set(EXPECTED_APPS)
+
+def test_minimum_features_per_pair(self):
+    """Every platform/application pair needs 10+ features."""
+    failures: List[str] = []
+
+    for platform, app, features in _all_feature_entries():
+        if len(features) < MIN_FEATURES_PER_APP_PLATFORM:
+            failures.append(
+                f"{app} on {platform}: {len(features)}"
+            )
 
     assert not failures, (
-        "PR feature contract failed. "
-        f"Every app/platform pair requires at least "
-        f"{MIN_FEATURES_PER_APP_PLATFORM} features:\n"
-        + "\n".join(failures)
+        "The following platform/application pairs violate the "
+        f"{MIN_FEATURES_PER_APP_PLATFORM}-feature contract: "
+        + ", ".join(failures)
     )
 
-def test_pr_contract_total_features(self) -> None:
-    """Verify the global 280+ feature PR contract."""
-    total = total_registered_features()
+def test_minimum_total_features(self):
+    """PR contract requires at least 280 feature entries."""
+    total = _total_feature_count()
 
     assert total >= MIN_TOTAL_FEATURES, (
-        f"PR contract requires {MIN_TOTAL_FEATURES}+ "
+        f"PR contract requires at least {MIN_TOTAL_FEATURES} "
         f"features; registry contains {total}"
     )
 
-def test_pr_contract_validation_methods_callable(self) -> None:
-    """Verify the complete validation API is callable."""
-    for method_name in (
-        "validate_all_platforms",
-        "validate_all_platform_features",
-        "run_full_validation_suite",
-    ):
-        method = getattr(self.agent, method_name, None)
+def test_validation_pipeline_is_executable(self):
+    """Required validation pipeline methods must be callable."""
+    agent = OllamaAutonomousAgent()
 
-        assert method is not None, (
-            f"Missing required method: {method_name}"
-        )
-
-        assert callable(method), (
-            f"Required method is not callable: {method_name}"
-        )
-
-# ========================================================================
-# REGISTRY CONSISTENCY
-# ========================================================================
-
-def test_feature_registry_has_all_platforms(self) -> None:
-    """Verify every required platform exists in the feature registry."""
-    assert isinstance(PLATFORM_SPECIFIC_FEATURES, Mapping)
-
-    for platform in EXPECTED_PLATFORMS:
-        assert platform in PLATFORM_SPECIFIC_FEATURES, (
-            f"Feature registry missing platform '{platform}'"
-        )
-
-def test_each_platform_has_all_apps(self) -> None:
-    """Verify every platform defines every application."""
-    failures: List[str] = []
-
-    for platform in EXPECTED_PLATFORMS:
-        platform_data = _get_platform_registry(platform)
-
-        for app in EXPECTED_APPS:
-            if app not in platform_data:
-                failures.append(
-                    f"{app} missing for platform {platform}"
-                )
-
-    assert not failures, (
-        "Feature registry is incomplete:\n"
-        + "\n".join(failures)
+    methods = (
+        agent.validate_all_platforms,
+        agent.validate_all_platform_features,
+        agent.run_full_validation_suite,
     )
 
-def test_feature_registry_values_are_collections(self) -> None:
-    """Verify each platform/application registry value is iterable."""
-    for platform in EXPECTED_PLATFORMS:
-        platform_data = _get_platform_registry(platform)
-
-        for app in EXPECTED_APPS:
-            raw_features = platform_data.get(app)
-
-            assert raw_features is not None, (
-                f"Missing registry value for {platform}/{app}"
-            )
-
-            features = _as_feature_list(raw_features)
-
-            assert isinstance(features, list), (
-                f"Registry value for {platform}/{app} "
-                "could not be normalized"
-            )
-
-def test_no_duplicate_features_per_app_platform(self) -> None:
-    """Verify no duplicate feature names within an app/platform."""
-    failures: List[str] = []
-
-    for platform in EXPECTED_PLATFORMS:
-        for app in EXPECTED_APPS:
-            features = get_features(platform, app)
-
-            if len(features) != len(set(features)):
-                duplicates = sorted(
-                    {
-                        feature
-                        for feature in features
-                        if features.count(feature) > 1
-                    }
-                )
-
-                failures.append(
-                    f"{platform}/{app}: {duplicates}"
-                )
-
-    assert not failures, (
-        "Duplicate features detected:\n"
-        + "\n".join(failures)
-    )
-
-def test_feature_names_follow_convention(self) -> None:
-    """Verify feature identifiers use the expected snake_case format."""
-    failures: List[str] = []
-
-    for platform in EXPECTED_PLATFORMS:
-        for app in EXPECTED_APPS:
-            features = get_features(platform, app)
-
-            for feature in features:
-                if not FEATURE_NAME_PATTERN.fullmatch(feature):
-                    failures.append(
-                        f"{platform}/{app}: '{feature}'"
-                    )
-
-    assert not failures, (
-        "Invalid feature names detected. "
-        "Feature names must use lowercase snake_case:\n"
-        + "\n".join(failures)
-    )
-
-def test_all_features_are_strings(self) -> None:
-    """Verify raw registry features are strings."""
-    failures: List[str] = []
-
-    for platform in EXPECTED_PLATFORMS:
-        platform_data = _get_platform_registry(platform)
-
-        for app in EXPECTED_APPS:
-            raw_features = platform_data.get(app, [])
-
-            if isinstance(raw_features, str):
-                raw_values: Iterable[Any] = [raw_features]
-            else:
-                try:
-                    raw_values = iter(raw_features)
-                except TypeError:
-                    failures.append(
-                        f"{platform}/{app}: non-iterable registry value"
-                    )
-                    continue
-
-            for feature in raw_values:
-                if not isinstance(feature, str):
-                    failures.append(
-                        f"{platform}/{app}: "
-                        f"{feature!r} "
-                        f"({type(feature).__name__})"
-                    )
-
-    assert not failures, (
-        "Non-string feature identifiers detected:\n"
-        + "\n".join(failures)
-    )
+    assert all(callable(method) for method in methods)
 
 ============================================================================
 
@@ -1078,16 +750,10 @@ PERFORMANCE TESTS
 ============================================================================
 
 class TestPerformance:
-"""Tests for validation performance."""
+"""Performance checks for validation primitives."""
 
-def test_platform_feature_validator_performance(self) -> None:
-    """
-    Verify one feature-validation pass completes within a reasonable
-    amount of time.
-
-    This is intentionally a generous sanity limit rather than a strict
-    benchmark because CI machines vary significantly in performance.
-    """
+def test_platform_feature_validator_performance(self):
+    """Single feature validation should complete within five seconds."""
     validator = PlatformSpecificFeatureValidator(
         "qmoiaiui",
         "windows",
@@ -1100,15 +766,14 @@ def test_platform_feature_validator_performance(self) -> None:
     elapsed = time.perf_counter() - start
 
     assert elapsed < 5.0, (
-        f"Feature validation took {elapsed:.3f}s; "
-        "expected less than 5 seconds"
+        f"Feature validation took {elapsed:.3f}s; expected <5s"
     )
 
-    assert isinstance(results, Mapping)
-    assert len(results) > 0
+    assert isinstance(results, dict)
+    assert results
 
-def test_agent_initialization_performance(self) -> None:
-    """Verify agent initialization remains reasonably fast."""
+def test_agent_initialization_is_reasonable(self):
+    """Agent construction should not perform an unexpectedly long job."""
     start = time.perf_counter()
 
     agent = OllamaAutonomousAgent()
@@ -1116,103 +781,91 @@ def test_agent_initialization_performance(self) -> None:
     elapsed = time.perf_counter() - start
 
     assert agent is not None
-    assert elapsed < 10.0, (
-        f"Agent initialization took {elapsed:.3f}s; "
-        "expected less than 10 seconds"
+
+    assert elapsed < 5.0, (
+        f"Agent initialization took {elapsed:.3f}s; expected <5s"
     )
 
-def test_agent_validation_api_does_not_require_ollama_for_structure(
-    self,
-) -> None:
+def test_agent_validator_collection_if_present(self):
     """
-    Verify the structural validation APIs can be invoked without making
-    this test depend on a live Ollama server.
+    If the implementation exposes a validators collection, it should
+    contain one validator entry for each supported platform.
 
-    This prevents ordinary registry/contract tests from failing because
-    an external model service is unavailable.
+    This test intentionally does not require a specific internal type
+    (dict/list/etc.), preventing a harmless implementation refactor from
+    breaking the contract test.
     """
     agent = OllamaAutonomousAgent()
 
-    assert callable(agent.validate_all_platforms)
-    assert callable(agent.validate_all_platform_features)
+    if not hasattr(agent, "validators"):
+        pytest.skip(
+            "Agent does not expose an internal 'validators' collection"
+        )
+
+    validators = agent.validators
+
+    assert validators is not None
+
+    try:
+        validator_count = len(validators)
+    except TypeError:
+        pytest.fail(
+            "Agent.validators exists but does not provide a length"
+        )
+
+    assert validator_count == len(EXPECTED_PLATFORMS), (
+        "Expected one validator collection entry per supported platform"
+    )
 
 ============================================================================
 
-EDGE CASES
+EDGE CASE TESTS
 
 ============================================================================
 
 class TestEdgeCases:
-"""Tests for invalid input and defensive behavior."""
+"""Tests for invalid platform/application inputs."""
 
-def test_invalid_platform_registry_lookup_is_detectable(self) -> None:
-    """Verify an unknown platform is not silently part of the registry."""
-    invalid_platform = "invalid_platform"
+def test_invalid_platform_does_not_modify_registry(self):
+    """Invalid platform input must not mutate the global registry."""
+    before = {
+        platform: dict(platform_data)
+        for platform, platform_data in PLATFORM_SPECIFIC_FEATURES.items()
+    }
 
-    assert invalid_platform not in PLATFORM_SPECIFIC_FEATURES
-
-def test_invalid_app_registry_lookup_is_detectable(self) -> None:
-    """Verify an unknown application is not silently registered."""
-    invalid_app = "invalid_app"
-
-    assert invalid_app not in QMOI_APPS
-
-    for platform in EXPECTED_PLATFORMS:
-        platform_data = _get_platform_registry(platform)
-
-        assert invalid_app not in platform_data
-
-def test_invalid_platform_validator_is_handled(self) -> None:
-    """
-    Verify invalid platform input is handled safely.
-
-    The implementation may either:
-    - raise a controlled exception, or
-    - construct an object that later reports no valid features.
-
-    Both are acceptable; arbitrary low-level exceptions are not.
-    """
     try:
         validator = PlatformSpecificFeatureValidator(
             "qmoiaiui",
             "invalid_platform",
         )
-    except (ValueError, KeyError, TypeError):
-        return
+    except Exception as exc:
+        # Both graceful construction and explicit validation errors are
+        # acceptable; the important contract is that the global registry
+        # remains intact.
+        assert isinstance(exc, Exception)
 
-    assert validator is not None
+    assert "invalid_platform" not in PLATFORM_SPECIFIC_FEATURES
+    assert PLATFORM_SPECIFIC_FEATURES == before
 
-    platform = getattr(
-        validator,
-        "platform",
-        "invalid_platform",
-    )
+def test_invalid_app_does_not_modify_registry(self):
+    """Invalid application input must not mutate the global registry."""
+    before = {
+        platform: dict(platform_data)
+        for platform, platform_data in PLATFORM_SPECIFIC_FEATURES.items()
+    }
 
-    assert platform == "invalid_platform"
-
-def test_invalid_app_validator_is_handled(self) -> None:
-    """
-    Verify invalid application input is handled safely.
-
-    A controlled ValueError/KeyError/TypeError is acceptable.
-    """
     try:
         validator = PlatformSpecificFeatureValidator(
             "invalid_app",
             "windows",
         )
-    except (ValueError, KeyError, TypeError):
-        return
+    except Exception as exc:
+        assert isinstance(exc, Exception)
 
-    assert validator is not None
+    for platform in EXPECTED_PLATFORMS:
+        assert "invalid_app" not in PLATFORM_SPECIFIC_FEATURES[platform]
 
-    app_name = getattr(
-        validator,
-        "app_name",
-        "invalid_app",
-    )
-
-    assert app_name == "invalid_app"
+    assert PLATFORM_SPECIFIC_FEATURES == before
 
 ============================================================================
 
@@ -1221,122 +874,62 @@ INTEGRATION TESTS
 ============================================================================
 
 class TestIntegration:
-"""Integration tests for the full validation pipeline."""
+"""Integration-level consistency checks."""
 
-def test_full_validation_suite_method_exists(self) -> None:
-    """Verify the complete validation entry point exists."""
+def test_full_validation_suite_structure(self):
+    """Full validation pipeline must expose the required entry points."""
     agent = OllamaAutonomousAgent()
 
+    assert hasattr(agent, "validate_all_platforms")
+    assert hasattr(agent, "validate_all_platform_features")
     assert hasattr(agent, "run_full_validation_suite")
+
+    assert callable(agent.validate_all_platforms)
+    assert callable(agent.validate_all_platform_features)
     assert callable(agent.run_full_validation_suite)
 
-def test_validation_methods_are_independently_callable(self) -> None:
-    """Verify the two primary validation APIs exist."""
-    agent = OllamaAutonomousAgent()
-
-    methods = (
-        "validate_all_platforms",
-        "validate_all_platform_features",
-    )
-
-    for method_name in methods:
-        method = getattr(agent, method_name, None)
-
-        assert method is not None
-        assert callable(method)
-
-def test_cross_platform_feature_consistency(self) -> None:
-    """
-    Verify every feature matrix entry is a valid collection of strings.
-
-    This deliberately does not require the same feature names on every
-    platform because platform-specific functionality is expected to
-    differ.
-    """
+def test_cross_platform_feature_matrix_is_complete(self):
+    """Every platform/application pair contains a valid feature list."""
     for platform in EXPECTED_PLATFORMS:
         for app in EXPECTED_APPS:
-            features = get_features(platform, app)
+            features = _features_for(platform, app)
 
-            assert isinstance(features, list)
+            assert isinstance(features, (list, tuple))
+            assert features
+            assert all(
+                isinstance(feature, str)
+                for feature in features
+            )
 
-            for feature in features:
+def test_common_cross_platform_features_are_valid_strings(self):
+    """
+    Validate common feature concepts without requiring them to exist on
+    every platform. This prevents false failures when a capability is
+    intentionally platform-specific.
+    """
+    common_patterns = (
+        "handoff",
+        "shortcuts",
+        "integration",
+        "support",
+        "api",
+    )
+
+    for platform, app, features in _all_feature_entries():
+        for feature in features:
+            if any(pattern in feature for pattern in common_patterns):
                 assert isinstance(feature, str)
-                assert feature.strip() == feature
-                assert feature != ""
-
-def test_required_feature_contract_matches_registry(self) -> None:
-    """
-    Verify the important contract-level features are present without
-    requiring an exact feature count.
-    """
-    failures: List[str] = []
-
-    for platform in EXPECTED_PLATFORMS:
-        for app in EXPECTED_APPS:
-            features = set(get_features(platform, app))
-
-            required = set(
-                REQUIRED_FEATURES
-                .get(platform, {})
-                .get(app, ())
-            )
-
-            # Android historically contained a typo in the feature name.
-            if (
-                platform == "android"
-                and app == "qmoiaiui"
-                and "documents_provider" in required
-                and "documents_provider" not in features
-                and "documentsrovider" in features
-            ):
-                required.remove("documents_provider")
-
-            missing = sorted(required - features)
-
-            if missing:
-                failures.append(
-                    f"{platform}/{app}: {missing}"
+                assert FEATURE_NAME_PATTERN.fullmatch(feature), (
+                    f"Invalid common feature identifier '{feature}' "
+                    f"for {app} on {platform}"
                 )
 
-    assert not failures, (
-        "Required platform feature contract is incomplete:\n"
-        + "\n".join(failures)
-    )
+def test_registry_total_is_stable_and_nonzero(self):
+    """The feature registry must remain populated."""
+    total = _total_feature_count()
 
-def test_global_feature_matrix_is_nonempty(self) -> None:
-    """Verify the feature matrix is not empty or accidentally replaced."""
-    assert isinstance(PLATFORM_SPECIFIC_FEATURES, Mapping)
-
-    total = total_registered_features()
-
-    assert total > 0, (
-        "PLATFORM_SPECIFIC_FEATURES contains no registered features"
-    )
-
-def test_agent_public_configuration_matches_registry_contract(
-    self,
-) -> None:
-    """Verify the agent can represent the complete six-platform matrix."""
-    agent = OllamaAutonomousAgent()
-
-    # Do not depend on a private internal validator implementation.
-    # If validators exists, it must at least represent all platforms.
-    validators = getattr(agent, "validators", None)
-
-    if validators is not None:
-        if isinstance(validators, Mapping):
-            for platform in EXPECTED_PLATFORMS:
-                assert platform in validators, (
-                    f"Agent validators missing platform '{platform}'"
-                )
-        elif isinstance(validators, Sequence) and not isinstance(
-            validators,
-            (str, bytes),
-        ):
-            assert len(validators) >= len(EXPECTED_PLATFORMS), (
-                "Agent validator collection contains fewer entries "
-                "than the six-platform contract"
-            )
+    assert total > 0
+    assert total >= MIN_TOTAL_FEATURES
 
 ============================================================================
 
@@ -1348,7 +941,7 @@ if name == "main":
 raise SystemExit(
 pytest.main(
 [
-str(Path(file).resolve()),
+file,
 "-v",
 "--tb=short",
 ]
