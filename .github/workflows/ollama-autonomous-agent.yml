@@ -9,26 +9,35 @@ name: Ollama Autonomous Agent & Live Tracker
 # Trusted orchestration, validation, autonomous execution, recovery,
 # telemetry, repository integrity, and self-healing layer for QMOI/Ollama.
 #
-# DESIGN PRINCIPLES
-# -----------------
-# 1. Never execute untrusted PR-head code.
-# 2. Always validate repository/Git state before mutation.
-# 3. Repair only deterministic/mechanical failures automatically.
-# 4. Retry transient failures with bounded exponential backoff.
-# 5. Validate after every major mutation.
-# 6. Preserve diagnostics even when the workflow fails.
-# 7. Never allow autonomous recovery to become an infinite loop.
-# 8. Prefer rollback/evidence preservation over destructive guessing.
-# 9. Keep human intervention as the final boundary for ambiguous failures.
+# IMPORTANT CLI COMPATIBILITY
+# ---------------------------
+# ollama_autonomous_agent.py currently exposes:
+#
+#   validate-all
+#   validate-platforms
+#   validate-features
+#   validate-file-handlers
+#   generate-memory-index
+#   generate-model-card
+#   proof
+#   checkpoint
+#
+# This workflow MUST NOT call:
+#
+#   validate-all-platforms
+#   validate-all-features
+#   auto-heal
+#
+# because those commands are not part of the current CLI.
 #
 # ============================================================================
-
 
 # ============================================================================
 # EVENTS
 # ============================================================================
 
 on:
+
   workflow_run:
     workflows:
       - "Ollama PR Validation - 293+ Platform Features"
@@ -37,6 +46,7 @@ on:
 
   workflow_dispatch:
     inputs:
+
       mode:
         description: "Agent execution mode"
         required: true
@@ -103,7 +113,6 @@ on:
   schedule:
     - cron: "0 */6 * * *"
 
-
 # ============================================================================
 # PERMISSIONS
 # ============================================================================
@@ -115,27 +124,23 @@ permissions:
   checks: read
   statuses: read
 
-
 # ============================================================================
 # CONCURRENCY
 # ============================================================================
-#
-# GitHub Actions concurrency supports a single group lock. There is no
-# supported "queue: max" key, so it is intentionally omitted.
-# ============================================================================
 
 concurrency:
-  group: ollama-autonomous-agent-${{ github.repository }}-${{ github.workflow }}
+  group: ollama-autonomous-agent-${{ github.repository }}-${{ github.ref }}
   cancel-in-progress: false
-
+  queue: max
 
 # ============================================================================
 # GLOBAL ENVIRONMENT
 # ============================================================================
 
 env:
+
   TRACK_DIR: ollamatracks
-  TRACK_SCHEMA_VERSION: "6.0"
+  TRACK_SCHEMA_VERSION: "6.1"
   TRACKING_PROTOCOL: "ollamatracks-v6"
 
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
@@ -162,7 +167,6 @@ env:
 
   REASON: ${{ github.event.inputs.reason || 'Scheduled/workflow-triggered execution' }}
 
-
 # ============================================================================
 # JOBS
 # ============================================================================
@@ -174,6 +178,7 @@ jobs:
   # ==========================================================================
 
   ollama-agent:
+
     name: Ollama Autonomous Agent + Self-Healing Tracker
 
     runs-on: ubuntu-latest
@@ -241,6 +246,9 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: |
+            requirements.txt
 
       # ======================================================================
       # 4. INITIALIZE TRACKING
@@ -435,101 +443,7 @@ jobs:
           echo "timestamp_utc=$now" >> "$GITHUB_OUTPUT"
 
       # ======================================================================
-      # 5. DETERMINE EXECUTION MODE EARLY
-      # ======================================================================
-
-      - name: Determine agent execution mode
-        id: execution_mode
-        shell: bash
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          WORKFLOW_RUN_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
-          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
-          REQUESTED_MODE: ${{ github.event.inputs.mode || 'monitor' }}
-        run: |
-          set -Eeuo pipefail
-
-          run_agent="false"
-          command="monitor"
-          reason="Monitoring/reconciliation."
-
-          case "$EVENT_NAME" in
-
-            workflow_run)
-              if [ \
-                "$VALIDATION_CONCLUSION" = "success" ] &&
-                [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ]; then
-
-                run_agent="true"
-                command="validate-all"
-                reason="Trusted default-branch validation succeeded."
-
-              else
-                run_agent="false"
-                command="monitor"
-                reason="Validation was not a successful trusted-default-branch run."
-              fi
-              ;;
-
-            workflow_dispatch)
-              if [ "$FORCE_AGENT" = "true" ]; then
-
-                case "$REQUESTED_MODE" in
-
-                  full|validate)
-                    run_agent="true"
-                    command="validate-all"
-                    reason="Manual autonomous execution."
-                    ;;
-
-                  heal)
-                    run_agent="true"
-                    command="auto-heal"
-                    reason="Manual autonomous healing."
-                    ;;
-
-                  sync|monitor)
-                    run_agent="false"
-                    command="monitor"
-                    reason="Manual monitoring/synchronization."
-                    ;;
-
-                  *)
-                    run_agent="false"
-                    command="monitor"
-                    reason="Unknown mode; safe fallback."
-                    ;;
-
-                esac
-              fi
-              ;;
-
-            schedule)
-              run_agent="false"
-              command="monitor"
-              reason="Scheduled reconciliation."
-              ;;
-
-            *)
-              run_agent="false"
-              command="monitor"
-              reason="Unknown trigger; safe fallback."
-              ;;
-
-          esac
-
-          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
-          echo "command=$command" >> "$GITHUB_OUTPUT"
-          echo "reason=$reason" >> "$GITHUB_OUTPUT"
-
-          echo "run_agent=$run_agent"
-          echo "command=$command"
-          echo "reason=$reason"
-
-      # ======================================================================
-      # 6. GIT FORENSIC / SELF-HEALING
+      # 5. INITIAL GIT INTEGRITY / SELF-HEALING
       # ======================================================================
 
       - name: Repair and validate Git repository
@@ -537,10 +451,6 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
-
-          echo "============================================================"
-          echo "GIT INTEGRITY / SELF-HEALING"
-          echo "============================================================"
 
           mkdir -p "$TRACK_DIR"
 
@@ -568,11 +478,7 @@ jobs:
 
           find .git \
             -type f \
-            \( \
-              -name '*.lock' \
-              -o \
-              -name 'index.lock' \
-            \) \
+            \( -name '*.lock' -o -name 'index.lock' \) \
             -print 2>/dev/null |
           while IFS= read -r lock; do
             echo "::warning::Removing stale Git lock: $lock"
@@ -589,7 +495,6 @@ jobs:
             } >> "$repair_log"
 
             rm -f .git/index
-
             git reset --mixed HEAD
 
             if ! git status --porcelain=v1 >/dev/null 2>&1; then
@@ -606,9 +511,6 @@ jobs:
           git rev-parse --verify HEAD
           git rev-parse --verify HEAD^{commit}
           git rev-parse --show-toplevel
-
-          git diff --quiet --ignore-submodules -- || true
-          git diff --cached --quiet --ignore-submodules -- || true
 
           fsck_log="$TRACK_DIR/git_fsck.txt"
 
@@ -634,7 +536,7 @@ jobs:
           echo "Git integrity preflight passed."
 
       # ======================================================================
-      # 7. INSTALL RECOVERY TOOLING
+      # 6. INSTALL RECOVERY TOOLING
       # ======================================================================
 
       - name: Install validation and recovery tooling
@@ -686,7 +588,7 @@ jobs:
           python -m pip --version
 
       # ======================================================================
-      # 8. SAFE WORKFLOW REPAIRS
+      # 7. SAFE WORKFLOW REPAIRS
       # ======================================================================
 
       - name: Scan and safely repair deprecated GitHub Actions
@@ -699,7 +601,6 @@ jobs:
           mkdir -p "$TRACK_DIR"
 
           repair_log="$TRACK_DIR/REPAIR_LOG.txt"
-
           changed=0
 
           if [ ! -d .github/workflows ]; then
@@ -721,12 +622,14 @@ jobs:
 
             before="$(sha256sum "$file" | awk '{print $1}')"
 
+            # Only upgrade known deprecated artifact action versions.
+            # Never downgrade already-current versions.
             sed -i -E \
               's#actions/upload-artifact@v(1|2|3)\b#actions/upload-artifact@v4#g' \
               "$file"
 
             sed -i -E \
-              's#actions/download-artifact@v(1|2|3|4)\b#actions/download-artifact@v5#g' \
+              's#actions/download-artifact@v(1|2|3)\b#actions/download-artifact@v4#g' \
               "$file"
 
             after="$(sha256sum "$file" | awk '{print $1}')"
@@ -739,8 +642,7 @@ jobs:
                 echo
                 echo "REPAIRED: $file"
                 echo "Reason: deprecated artifact action."
-                echo "upload-artifact -> v4"
-                echo "download-artifact -> v5"
+                echo "Deprecated upload/download artifact versions upgraded to v4."
                 echo "Timestamp: $(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
               } >> "$repair_log"
 
@@ -751,7 +653,7 @@ jobs:
           echo "changed=$changed" >> "$GITHUB_OUTPUT"
 
       # ======================================================================
-      # 9. STRICT WORKFLOW YAML VALIDATION
+      # 8. STRICT WORKFLOW YAML VALIDATION
       # ======================================================================
 
       - name: Strictly validate all GitHub workflow YAML
@@ -773,6 +675,7 @@ jobs:
               mapping = {}
 
               for key_node, value_node in node.value:
+
                   key = loader.construct_object(
                       key_node,
                       deep=deep,
@@ -823,6 +726,7 @@ jobs:
           for path in files:
 
               try:
+
                   text = path.read_text(
                       encoding="utf-8"
                   )
@@ -837,6 +741,7 @@ jobs:
                           "Root must be a mapping."
                       )
 
+                  # PyYAML 1.1 parses "on" as boolean True.
                   on_value = data.get("on")
 
                   if on_value is None:
@@ -863,12 +768,14 @@ jobs:
                   print(f"VALID: {path}")
 
               except Exception as exc:
+
                   failures.append(
                       f"{path}: {exc}"
                   )
 
 
           if failures:
+
               print("\n".join(failures))
 
               raise SystemExit(
@@ -881,7 +788,7 @@ jobs:
           PY
 
       # ======================================================================
-      # 10. VERIFY ARTIFACT ACTIONS
+      # 9. VERIFY ARTIFACT ACTIONS
       # ======================================================================
 
       - name: Verify artifact actions
@@ -899,7 +806,7 @@ jobs:
           fi
 
           if grep -RInE \
-            'actions/download-artifact@v([1-4])\b' \
+            'actions/download-artifact@v([1-3])\b' \
             .github/workflows; then
 
             echo "::error::Deprecated download-artifact reference remains."
@@ -910,7 +817,7 @@ jobs:
           echo "Artifact action validation passed."
 
       # ======================================================================
-      # 11. WORKFLOW STRUCTURAL HAZARD SCAN
+      # 10. WORKFLOW STRUCTURAL HAZARD SCAN
       # ======================================================================
 
       - name: Detect workflow structural hazards
@@ -931,7 +838,7 @@ jobs:
                   "Deprecated upload-artifact",
               ),
               (
-                  r"actions/download-artifact@v[1-4]\b",
+                  r"actions/download-artifact@v[1-3]\b",
                   "Deprecated download-artifact",
               ),
           ]
@@ -955,12 +862,14 @@ jobs:
                       pattern,
                       text,
                   ):
+
                       failures.append(
                           f"{path}: {description}"
                       )
 
 
           if failures:
+
               print("\n".join(failures))
 
               raise SystemExit(
@@ -972,7 +881,7 @@ jobs:
           PY
 
       # ======================================================================
-      # 12. VALIDATE PYTHON SOURCE
+      # 11. VALIDATE PYTHON SOURCE
       # ======================================================================
 
       - name: Validate Python source syntax
@@ -992,7 +901,7 @@ jobs:
           echo "Python syntax validation passed."
 
       # ======================================================================
-      # 13. VERIFY AGENT CLI
+      # 12. VERIFY AGENT CLI
       # ======================================================================
 
       - name: Verify autonomous agent CLI
@@ -1011,25 +920,138 @@ jobs:
             "validate-all"
             "validate-platforms"
             "validate-features"
+            "validate-file-handlers"
           )
 
-          supported=0
-
           for command in "${required_commands[@]}"; do
-            if echo "$help_output" | grep -Fq "$command"; then
-              echo "Supported command: $command"
-              supported=$((supported + 1))
-            else
-              echo "::warning::Expected command not advertised: $command"
+
+            if ! echo "$help_output" | grep -Fq "$command"; then
+              echo "::error::Required CLI command '$command' is not available."
+              exit 1
             fi
+
+            echo "Supported command: $command"
+
           done
 
-          if [ "$supported" -eq 0 ]; then
-            echo "::error::No supported autonomous-agent command found."
-            exit 1
-          fi
+          echo
+          echo "Agent CLI compatibility validation passed."
 
-          echo "Detected $supported supported agent command(s)."
+      # ======================================================================
+      # 13. DETERMINE EXECUTION MODE
+      # ======================================================================
+
+      - name: Determine agent execution mode
+        id: execution_mode
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          WORKFLOW_RUN_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
+          REQUESTED_MODE: ${{ github.event.inputs.mode || 'monitor' }}
+        run: |
+          set -Eeuo pipefail
+
+          run_agent="false"
+          command="monitor"
+          reason="Monitoring/reconciliation."
+
+          case "$EVENT_NAME" in
+
+            workflow_run)
+
+              # Only a successful validation run belonging to the trusted
+              # default branch can activate the autonomous agent.
+              if [ \
+                "$VALIDATION_CONCLUSION" = "success" ] &&
+                [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ]; then
+
+                run_agent="true"
+                command="validate-all"
+                reason="Trusted default-branch validation succeeded."
+
+              else
+
+                run_agent="false"
+                command="monitor"
+                reason="Validation was not a successful trusted-default-branch run."
+
+              fi
+
+              ;;
+
+            workflow_dispatch)
+
+              if [ "$FORCE_AGENT" = "true" ]; then
+
+                case "$REQUESTED_MODE" in
+
+                  full)
+                    run_agent="true"
+                    command="validate-all"
+                    reason="Manual full autonomous validation."
+                    ;;
+
+                  validate)
+                    run_agent="true"
+                    command="validate-all"
+                    reason="Manual validation execution."
+                    ;;
+
+                  heal)
+                    # The Python CLI has no auto-heal command.
+                    # Bounded healing is performed by the workflow's
+                    # dependency, Git, YAML, and retry recovery layers.
+                    run_agent="true"
+                    command="validate-all"
+                    reason="Manual healing request mapped to safe validate-all execution."
+                    ;;
+
+                  sync|monitor)
+                    run_agent="false"
+                    command="monitor"
+                    reason="Manual monitoring/synchronization."
+                    ;;
+
+                  *)
+                    run_agent="false"
+                    command="monitor"
+                    reason="Unknown mode; safe fallback."
+                    ;;
+
+                esac
+
+              fi
+
+              ;;
+
+            schedule)
+
+              run_agent="false"
+              command="monitor"
+              reason="Scheduled reconciliation."
+
+              ;;
+
+            *)
+
+              run_agent="false"
+              command="monitor"
+              reason="Unknown trigger; safe fallback."
+
+              ;;
+
+          esac
+
+          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
+          echo "command=$command" >> "$GITHUB_OUTPUT"
+          echo "reason=$reason" >> "$GITHUB_OUTPUT"
+
+          echo "run_agent=$run_agent"
+          echo "command=$command"
+          echo "reason=$reason"
 
       # ======================================================================
       # 14. OLLAMA PREFLIGHT
@@ -1037,7 +1059,7 @@ jobs:
 
       - name: Ollama preflight and recovery
         id: ollama_preflight
-        if: steps.execution_mode.outputs.run_agent == 'true' || env.QMOI_FORCE_AGENT == 'true'
+        if: steps.execution_mode.outputs.run_agent == 'true'
         continue-on-error: true
         shell: bash
         run: |
@@ -1055,7 +1077,7 @@ jobs:
 
           if [ "$ollama_available" != "true" ]; then
             echo "::warning::Ollama binary is not installed."
-            echo "The agent may provide its own Ollama startup/install logic."
+            echo "The Python agent may provide its own model-management logic."
             exit 0
           fi
 
@@ -1093,13 +1115,15 @@ jobs:
                 recovered="true"
                 echo "Ollama service recovered."
                 break
+
               fi
 
               sleep 2
+
             done
 
             if [ "$recovered" != "true" ]; then
-              echo "::warning::Ollama service did not become reachable."
+              echo "::warning::Ollama service could not be started."
             fi
 
           fi
@@ -1115,7 +1139,7 @@ jobs:
               echo "Configured Ollama model is available."
             else
               echo "::warning::Configured model '$OLLAMA_MODEL' is not installed."
-              echo "Agent-specific model management will be allowed to handle it."
+              echo "Agent-specific model management may handle it."
             fi
 
           else
@@ -1209,7 +1233,8 @@ jobs:
             PyYAML
 
           if [ -f requirements.txt ]; then
-            python -m pip install --upgrade -r requirements.txt
+            python -m pip install --upgrade \
+              -r requirements.txt
           fi
 
       # ======================================================================
@@ -1379,18 +1404,24 @@ jobs:
               python "$AGENT_SCRIPT" validate-features
               ;;
 
-            auto-heal)
-              python "$AGENT_SCRIPT" auto-heal
+            validate-file-handlers)
+              python "$AGENT_SCRIPT" validate-file-handlers
               ;;
 
-            project-stats)
-              if python "$AGENT_SCRIPT" --help 2>&1 | grep -Fq "project-stats"; then
-                python "$AGENT_SCRIPT" project-stats
-              else
-                echo "::warning::project-stats is not supported by this agent CLI."
-                echo "Falling back to validate-all."
-                python "$AGENT_SCRIPT" validate-all
-              fi
+            generate-memory-index)
+              python "$AGENT_SCRIPT" generate-memory-index
+              ;;
+
+            generate-model-card)
+              python "$AGENT_SCRIPT" generate-model-card
+              ;;
+
+            proof)
+              python "$AGENT_SCRIPT" proof
+              ;;
+
+            checkpoint)
+              python "$AGENT_SCRIPT" checkpoint
               ;;
 
             *)
@@ -1516,19 +1547,29 @@ jobs:
                 >> "$recovery_log" 2>&1
               ;;
 
-            auto-heal)
-              python "$AGENT_SCRIPT" auto-heal \
+            validate-file-handlers)
+              python "$AGENT_SCRIPT" validate-file-handlers \
                 >> "$recovery_log" 2>&1
               ;;
 
-            project-stats)
-              if python "$AGENT_SCRIPT" --help 2>&1 | grep -Fq "project-stats"; then
-                python "$AGENT_SCRIPT" project-stats \
-                  >> "$recovery_log" 2>&1
-              else
-                python "$AGENT_SCRIPT" validate-all \
-                  >> "$recovery_log" 2>&1
-              fi
+            generate-memory-index)
+              python "$AGENT_SCRIPT" generate-memory-index \
+                >> "$recovery_log" 2>&1
+              ;;
+
+            generate-model-card)
+              python "$AGENT_SCRIPT" generate-model-card \
+                >> "$recovery_log" 2>&1
+              ;;
+
+            proof)
+              python "$AGENT_SCRIPT" proof \
+                >> "$recovery_log" 2>&1
+              ;;
+
+            checkpoint)
+              python "$AGENT_SCRIPT" checkpoint \
+                >> "$recovery_log" 2>&1
               ;;
 
             *)
@@ -1604,10 +1645,15 @@ jobs:
 
           root = Path(".github/workflows")
 
-          for path in sorted(
+          files = sorted(
               list(root.glob("*.yml"))
               + list(root.glob("*.yaml"))
-          ):
+          )
+
+          if not files:
+              raise SystemExit("No workflow files found.")
+
+          for path in files:
 
               data = yaml.load(
                   path.read_text(encoding="utf-8"),
@@ -1616,25 +1662,22 @@ jobs:
 
               if not isinstance(data, dict):
                   raise ValueError(
-                      f"{path}: workflow root is not a mapping"
+                      f"{path}: root is not a mapping"
                   )
 
-              on_value = data.get("on")
-
-              if on_value is None:
-                  on_value = data.get(True)
-
-              if on_value is None:
+              if data.get("on") is None and data.get(True) is None:
                   raise ValueError(
-                      f"{path}: missing top-level 'on'"
+                      f"{path}: missing top-level on"
                   )
 
               if "jobs" not in data:
                   raise ValueError(
-                      f"{path}: missing top-level 'jobs'"
+                      f"{path}: missing jobs"
                   )
 
               print(f"POST-VALID: {path}")
+
+          print("Post-agent workflow validation passed.")
           PY
 
           echo "Post-agent validation passed."
@@ -1708,7 +1751,7 @@ jobs:
           git diff --cached --name-only
 
           git commit \
-            -m "ci: automatically repair GitHub Actions workflow dependencies"
+            -m "ci: automatically repair GitHub Actions dependencies"
 
           default_branch="${{ github.event.repository.default_branch }}"
 
@@ -1731,10 +1774,14 @@ jobs:
             sleep $((attempt * 10))
 
             git fetch origin \
-              "${default_branch}"
+              "$default_branch"
 
-            git rebase \
-              "origin/${default_branch}"
+            if ! git rebase \
+              "origin/${default_branch}"; then
+
+              echo "::warning::Rebase failed; aborting rebase."
+              git rebase --abort 2>/dev/null || true
+            fi
 
           done
 
@@ -1755,15 +1802,17 @@ jobs:
           echo "============================================================"
 
           if ! git status --porcelain=v1 >/dev/null 2>&1; then
+
             echo "::warning::Final Git index is corrupt; rebuilding."
 
             rm -f .git/index
-
             git reset --mixed HEAD
+
           fi
 
           git rev-parse --verify HEAD
           git rev-parse --verify HEAD^{commit}
+
           git status --short
           git diff --check
 
@@ -1775,7 +1824,7 @@ jobs:
           echo "Final Git integrity check completed."
 
       # ======================================================================
-      # 28. FINAL TEST AFTER ALL REPAIRS
+      # 28. FINAL TEST / SOURCE VALIDATION
       # ======================================================================
 
       - name: Final lightweight validation
@@ -2007,12 +2056,14 @@ jobs:
               "w",
               encoding="utf-8",
           ) as f:
+
               json.dump(
                   summary,
                   f,
                   indent=2,
                   sort_keys=True,
               )
+
               f.write("\n")
 
           telemetry = {
@@ -2032,6 +2083,7 @@ jobs:
               "a",
               encoding="utf-8",
           ) as f:
+
               f.write(
                   json.dumps(
                       telemetry,
@@ -2067,6 +2119,17 @@ jobs:
             echo "| Final Git | ${{ steps.final_git.outcome || 'unknown' }} |"
             echo "| Final validation | ${{ steps.final_validation.outcome || 'unknown' }} |"
             echo
+            echo "## Supported agent CLI"
+            echo
+            echo "- validate-all"
+            echo "- validate-platforms"
+            echo "- validate-features"
+            echo "- validate-file-handlers"
+            echo "- generate-memory-index"
+            echo "- generate-model-card"
+            echo "- proof"
+            echo "- checkpoint"
+            echo
             echo "## Recovery layers"
             echo
             echo "- Git index corruption recovery"
@@ -2074,7 +2137,7 @@ jobs:
             echo "- Interrupted Git operation recovery"
             echo "- Dependency recovery"
             echo "- YAML duplicate-key detection"
-            echo "- Deprecated action detection"
+            echo "- Deprecated artifact-action detection"
             echo "- Python syntax validation"
             echo "- Agent CLI validation"
             echo "- Ollama preflight"
@@ -2131,6 +2194,7 @@ jobs:
           echo "  final_git=$final_git"
           echo "  final_validation=$final_validation"
 
+          # Monitoring/reconciliation runs do not require active-agent success.
           if [ "$execution" != "true" ]; then
             echo "Monitoring/reconciliation run completed."
             exit 0
