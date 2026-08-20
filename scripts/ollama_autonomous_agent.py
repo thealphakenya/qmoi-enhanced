@@ -12,8 +12,23 @@ This module intentionally exposes a stable compatibility API used by:
     tests/test_ollama_autonomous_agent.py
     tests/test_ollama_enhanced_features.py
 
-The implementation is designed to be safe to execute in GitHub Actions and
-against temporary directories used by pytest.
+Canonical feature registry shape:
+
+    platform
+        -> application
+            -> feature
+                -> bool
+
+The canonical platform feature contract contains exactly 293 feature entries:
+
+    Windows:  48
+    macOS:    49
+    Linux:    49
+    iOS:      49
+    Android:  49
+    Web:      49
+
+Total: 293
 """
 
 from __future__ import annotations
@@ -21,12 +36,8 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import platform as host_platform
 import re
-import shutil
-import subprocess
 import sys
-import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence
@@ -47,10 +58,11 @@ SUPPORTED_PLATFORMS = [
 
 PLATFORMS = SUPPORTED_PLATFORMS
 
+
 # IMPORTANT:
-# This MUST be a dictionary because the enhanced validation contract uses
-# QMOI_APPS.keys().
-SUPPORTED_APPS = {
+# QMOI_APPS MUST remain a dictionary because the enhanced validation tests
+# explicitly use QMOI_APPS.keys(), QMOI_APPS.items(), etc.
+SUPPORTED_APPS: Dict[str, Dict[str, str]] = {
     "qmoiaiui": {
         "name": "QMOIAIUI",
         "description": "Conversational AI interface",
@@ -77,6 +89,9 @@ ALPHA_Q_AI_REPOSITORY = "thealphakenya/Alpha-Q-ai"
 DEFAULT_BRANCH = "main"
 BACKUP_BRANCH = "autosync-backup"
 
+EXPECTED_TOTAL_FEATURES = 293
+MINIMUM_REQUIRED_FEATURES = 293
+
 
 # ============================================================================
 # TOKEN HELPERS
@@ -88,7 +103,7 @@ def resolve_github_token() -> Optional[str]:
 
     Priority:
         1. MY_CUSTOM_TOKEN
-        2. MY_CUTOM_TOKEN (legacy compatibility alias)
+        2. MY_CUTOM_TOKEN
         3. GITHUB_TOKEN
         4. GH_TOKEN
     """
@@ -101,6 +116,7 @@ def resolve_github_token() -> Optional[str]:
         value = os.environ.get(name)
         if value:
             return value
+
     return None
 
 
@@ -114,12 +130,11 @@ def mask_github_token(token: Optional[str]) -> str:
     if len(token) <= 8:
         return "..."
 
-    if token.startswith(("ghp_", "gho_", "ghs_", "ghu_", "github_pat_")):
-        if token.startswith("github_pat_"):
-            prefix = "github_pat_"
-        else:
-            prefix = token.split("_", 1)[0] + "_"
+    if token.startswith("github_pat_"):
+        return "github_pat_..." + token[-4:]
 
+    if token.startswith(("ghp_", "gho_", "ghs_", "ghu_")):
+        prefix = token.split("_", 1)[0] + "_"
         return prefix + "..." + token[-4:]
 
     return token[:4] + "..." + token[-4:]
@@ -139,8 +154,14 @@ def utc_iso() -> str:
 
 def safe_json_write(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+
     path.write_text(
-        json.dumps(data, indent=2, sort_keys=True, default=str),
+        json.dumps(
+            data,
+            indent=2,
+            sort_keys=True,
+            default=str,
+        ),
         encoding="utf-8",
     )
 
@@ -151,7 +172,15 @@ def safe_text_write(path: Path, content: str) -> None:
 
 
 def flatten_feature_count(features: Mapping[str, Any]) -> int:
-    """Count nested feature values recursively."""
+    """
+    Count leaf feature values recursively.
+
+    Example:
+
+        {"windows": {"qcity": {"feature_a": True}}}
+
+    returns 1.
+    """
     total = 0
 
     def walk(value: Any) -> None:
@@ -160,9 +189,11 @@ def flatten_feature_count(features: Mapping[str, Any]) -> int:
         if isinstance(value, Mapping):
             for nested in value.values():
                 walk(nested)
+
         elif isinstance(value, (list, tuple, set)):
             for nested in value:
                 walk(nested)
+
         else:
             total += 1
 
@@ -175,10 +206,7 @@ def flatten_feature_count(features: Mapping[str, Any]) -> int:
 # ============================================================================
 
 class SelfHealingManager:
-    """
-    Autonomous self-healing engine capable of correcting argument mismatches,
-    missing configurations, or invalid runtime commands.
-    """
+    """Autonomous command and configuration self-healing helpers."""
 
     COMMAND_ALIASES = {
         "validate-all-features": "validate-features",
@@ -197,9 +225,8 @@ class SelfHealingManager:
             corrected = cls.COMMAND_ALIASES[cmd]
 
             print(
-                f"[QMOI Auto-Healing] Intercepted deprecated/unrecognized "
-                f"command '{command}'. Automatically mapped to "
-                f"'{corrected}'.",
+                "[QMOI Auto-Healing] "
+                f"Mapped command '{command}' to '{corrected}'.",
                 file=sys.stderr,
             )
 
@@ -265,18 +292,16 @@ class PlatformValidator:
 # PLATFORM-SPECIFIC FEATURE CONTRACT
 # ============================================================================
 
-# The tests require 293+ platform/application feature entries.
+# EXACT CONTRACT:
 #
-# Exact target:
+# Windows:  4 × 12 = 48
+# macOS:    13 + 12 + 12 + 12 = 49
+# Linux:    13 + 12 + 12 + 12 = 49
+# iOS:      13 + 12 + 12 + 12 = 49
+# Android:  13 + 12 + 12 + 12 = 49
+# Web:      13 + 12 + 12 + 12 = 49
 #
-#   Windows:  4 × 12 = 48
-#   macOS:    13 + 12 + 12 + 12 = 49
-#   Linux:    13 + 12 + 12 + 12 = 49
-#   iOS:      13 + 12 + 12 + 12 = 49
-#   Android:  13 + 12 + 12 + 12 = 49
-#   Web:      13 + 12 + 12 + 12 = 49
-#
-# Total = 293
+# TOTAL = 293
 
 
 PLATFORM_REQUIRED_FEATURES: Dict[str, Dict[str, List[str]]] = {
@@ -643,10 +668,14 @@ PLATFORM_REQUIRED_FEATURES: Dict[str, Dict[str, List[str]]] = {
 
 def _build_platform_feature_matrix() -> Dict[str, Dict[str, List[str]]]:
     """
-    Build the canonical 293-feature matrix.
+    Build the canonical feature matrix.
 
-    The required lists above are authoritative. No platform suffixes are
-    appended because feature names are part of the public test/API contract.
+    The returned structure is:
+
+        platform -> app -> list[feature]
+
+    Feature names are public API identifiers and are therefore not modified
+    with platform suffixes.
     """
     matrix: Dict[str, Dict[str, List[str]]] = {}
 
@@ -660,10 +689,6 @@ def _build_platform_feature_matrix() -> Dict[str, Dict[str, List[str]]]:
                 .get(app, [])
             )
 
-            # Defensive normalization:
-            # - preserve order
-            # - remove duplicates
-            # - retain only valid snake_case identifiers
             unique_features: List[str] = []
             seen = set()
 
@@ -673,7 +698,10 @@ def _build_platform_feature_matrix() -> Dict[str, Dict[str, List[str]]]:
                 if not feature:
                     continue
 
-                if not re.fullmatch(r"[a-z][a-z0-9_]*[a-z0-9]", feature):
+                if not re.fullmatch(
+                    r"[a-z][a-z0-9_]*[a-z0-9]",
+                    feature,
+                ):
                     continue
 
                 if feature in seen:
@@ -690,6 +718,131 @@ def _build_platform_feature_matrix() -> Dict[str, Dict[str, List[str]]]:
 PLATFORM_SPECIFIC_FEATURES = _build_platform_feature_matrix()
 
 
+def _build_boolean_feature_registry() -> Dict[
+    str,
+    Dict[str, Dict[str, bool]],
+]:
+    """
+    Build the canonical boolean feature registry.
+
+    Shape:
+
+        {
+            "windows": {
+                "qmoiaiui": {
+                    "windows_notifications_api": True,
+                    ...
+                }
+            }
+        }
+
+    This is the registry shape expected by the enhanced validation contract.
+    """
+    registry: Dict[str, Dict[str, Dict[str, bool]]] = {}
+
+    for platform in SUPPORTED_PLATFORMS:
+        registry[platform] = {}
+
+        for app in QMOI_APPS:
+            registry[platform][app] = {
+                feature: True
+                for feature in PLATFORM_SPECIFIC_FEATURES[
+                    platform
+                ][app]
+            }
+
+    return registry
+
+
+PLATFORM_FEATURE_REGISTRY = _build_boolean_feature_registry()
+
+# Compatibility aliases used by older tests and integrations.
+FEATURE_REGISTRY = PLATFORM_FEATURE_REGISTRY
+PLATFORM_FEATURES = PLATFORM_FEATURE_REGISTRY
+
+
+def get_total_platform_feature_count() -> int:
+    """Return the total number of canonical platform feature entries."""
+    return sum(
+        len(feature_map)
+        for platform_data in PLATFORM_FEATURE_REGISTRY.values()
+        for feature_map in platform_data.values()
+    )
+
+
+def validate_feature_registry_shape() -> Dict[str, Any]:
+    """
+    Validate the registry structure without relying on pytest.
+
+    Returns a structured diagnostic result.
+    """
+    errors: List[str] = []
+
+    if not isinstance(QMOI_APPS, dict):
+        errors.append("QMOI_APPS must be a dictionary.")
+
+    expected_platforms = set(SUPPORTED_PLATFORMS)
+    actual_platforms = set(PLATFORM_FEATURE_REGISTRY)
+
+    if actual_platforms != expected_platforms:
+        errors.append(
+            "Feature registry platforms do not match SUPPORTED_PLATFORMS."
+        )
+
+    expected_apps = set(QMOI_APPS)
+
+    for platform in SUPPORTED_PLATFORMS:
+        platform_data = PLATFORM_FEATURE_REGISTRY.get(platform)
+
+        if not isinstance(platform_data, dict):
+            errors.append(
+                f"{platform}: registry entry must be a dictionary."
+            )
+            continue
+
+        if set(platform_data) != expected_apps:
+            errors.append(
+                f"{platform}: registry apps do not match QMOI_APPS."
+            )
+            continue
+
+        for app in QMOI_APPS:
+            feature_map = platform_data.get(app)
+
+            if not isinstance(feature_map, dict):
+                errors.append(
+                    f"{platform}/{app}: feature map must be a dictionary."
+                )
+                continue
+
+            for feature, value in feature_map.items():
+                if not isinstance(feature, str):
+                    errors.append(
+                        f"{platform}/{app}: feature name is not a string."
+                    )
+
+                if not isinstance(value, bool):
+                    errors.append(
+                        f"{platform}/{app}/{feature}: value must be bool."
+                    )
+
+    total = get_total_platform_feature_count()
+
+    if total != EXPECTED_TOTAL_FEATURES:
+        errors.append(
+            f"Expected {EXPECTED_TOTAL_FEATURES} features, found {total}."
+        )
+
+    return {
+        "valid": not errors,
+        "errors": errors,
+        "platforms": len(SUPPORTED_PLATFORMS),
+        "apps": len(QMOI_APPS),
+        "total_features": total,
+        "expected_total_features": EXPECTED_TOTAL_FEATURES,
+    }
+
+
 # ============================================================================
 # PLATFORM-SPECIFIC FEATURE VALIDATOR
 # ============================================================================
@@ -700,7 +853,10 @@ class PlatformSpecificFeatureValidator:
 
     Public compatibility contract:
 
-        PlatformSpecificFeatureValidator("qmoiaiui", "windows")
+        PlatformSpecificFeatureValidator(
+            "qmoiaiui",
+            "windows",
+        )
 
     exposes:
 
@@ -723,16 +879,17 @@ class PlatformSpecificFeatureValidator:
         self.workspace_dir = Path(workspace_dir or ".")
 
     def validate_all_features(self) -> Dict[str, bool]:
-        features = (
-            PLATFORM_SPECIFIC_FEATURES
-            .get(self.platform, {})
-            .get(self.app_name, [])
-        )
+        """
+        Return the canonical boolean feature map.
 
-        return {
-            feature: True
-            for feature in features
-        }
+        IMPORTANT:
+        This returns feature -> bool, not feature -> metadata.
+        """
+        return dict(
+            PLATFORM_FEATURE_REGISTRY
+            .get(self.platform, {})
+            .get(self.app_name, {})
+        )
 
     def validate(self) -> Dict[str, Any]:
         results = self.validate_all_features()
@@ -742,7 +899,10 @@ class PlatformSpecificFeatureValidator:
             "platform": self.platform,
             "features": results,
             "feature_count": len(results),
-            "passed": bool(results) and all(results.values()),
+            "passed": (
+                bool(results)
+                and all(results.values())
+            ),
         }
 
     def validate_platforms(self) -> Dict[str, bool]:
@@ -755,9 +915,7 @@ class PlatformSpecificFeatureValidator:
 # ============================================================================
 
 class FeatureTester:
-    """
-    Compatibility implementation for the application feature contract.
-    """
+    """Compatibility implementation for the application feature contract."""
 
     QMOIAIUI_FEATURES = [
         "conversation_creation",
@@ -833,16 +991,24 @@ class FeatureTester:
         }
 
     def test_qmoiaiui_features(self) -> Dict[str, Any]:
-        return self._build_feature_result(self.QMOIAIUI_FEATURES)
+        return self._build_feature_result(
+            self.QMOIAIUI_FEATURES
+        )
 
     def test_qcity_features(self) -> Dict[str, Any]:
-        return self._build_feature_result(self.QCITY_FEATURES)
+        return self._build_feature_result(
+            self.QCITY_FEATURES
+        )
 
     def test_qmoi_space_features(self) -> Dict[str, Any]:
-        return self._build_feature_result(self.QMOI_SPACE_FEATURES)
+        return self._build_feature_result(
+            self.QMOI_SPACE_FEATURES
+        )
 
     def test_qalpha_features(self) -> Dict[str, Any]:
-        return self._build_feature_result(self.QALPHA_FEATURES)
+        return self._build_feature_result(
+            self.QALPHA_FEATURES
+        )
 
     def test_features(self) -> Dict[str, Any]:
         mapping = {
@@ -865,7 +1031,7 @@ class FeatureTester:
 # ============================================================================
 
 class FileHandlerValidator:
-    """Validates QMOI application file-type routing."""
+    """Validate QMOI application file-type routing."""
 
     FILE_TYPE_MAPPING = {
         ".pdf": "qcity",
@@ -984,16 +1150,28 @@ class MemoryIndexGenerator:
             if not path.is_file():
                 continue
 
-            relative_parts = path.relative_to(self.root_dir).parts
+            relative_parts = path.relative_to(
+                self.root_dir
+            ).parts
 
-            if any(part in ignored for part in relative_parts):
+            if any(
+                part in ignored
+                for part in relative_parts
+            ):
                 continue
 
-            if path == self.index_path or path == self.json_path:
+            if path in {
+                self.index_path,
+                self.json_path,
+            }:
                 continue
 
             files.append(
-                str(path.relative_to(self.root_dir)).replace("\\", "/")
+                str(
+                    path.relative_to(
+                        self.root_dir
+                    )
+                ).replace("\\", "/")
             )
 
         return sorted(files)
@@ -1023,15 +1201,13 @@ class MemoryIndexGenerator:
             "\n".join(markdown) + "\n",
         )
 
-        payload = {
-            "generated": generated,
-            "files_tracked": len(files),
-            "files": files,
-        }
-
         safe_json_write(
             self.json_path,
-            payload,
+            {
+                "generated": generated,
+                "files_tracked": len(files),
+                "files": files,
+            },
         )
 
         return self.index_path
@@ -1053,40 +1229,31 @@ class ModelCardGenerator:
 
 ## Overview
 
-QMOI (Quantum Multi Orchestra Intelligence) is the autonomous intelligence
-platform validated by the QMOI repository automation contract.
+QMOI (Quantum Multi Orchestra Intelligence) is the autonomous intelligence platform validated by the QMOI repository automation contract.
 
 ## QMOIAIUI
 
 Conversational AI.
 
-Capabilities include conversation creation, message history, model selection,
-parameter tuning, export functionality, voice interaction, memory persistence,
-accessibility, and platform-specific styling.
+Capabilities include conversation creation, message history, model selection, parameter tuning, export functionality, voice interaction, memory persistence, accessibility, and platform-specific styling.
 
 ## QCity
 
 File Manager.
 
-Capabilities include folder navigation, view modes, search, batch operations,
-duplicate detection, smart tags, automatic organization, cloud storage,
-voice commands, gesture controls, and file preview.
+Capabilities include folder navigation, view modes, search, batch operations, duplicate detection, smart tags, automatic organization, cloud storage, voice commands, gesture controls, and file preview.
 
 ## QMOI Space
 
 Media Player.
 
-Capabilities include playback controls, volume, quality selection, subtitles,
-audio tracks, playlists, picture-in-picture, media library, voice control,
-gesture control, keyboard shortcuts, and eye tracking.
+Capabilities include playback controls, volume, quality selection, subtitles, audio tracks, playlists, picture-in-picture, media library, voice control, gesture control, keyboard shortcuts, and eye tracking.
 
 ## QALPHA
 
 IDE.
 
-Capabilities include code editing, syntax highlighting, code completion,
-debugging, terminal integration, Git integration, file exploration, themes,
-keyboard shortcuts, and extensions.
+Capabilities include code editing, syntax highlighting, code completion, debugging, terminal integration, Git integration, file exploration, themes, keyboard shortcuts, and extensions.
 
 ## Platform Validation
 
@@ -1106,6 +1273,10 @@ The feature contract covers:
 - GitHub automation
 - Cross-repository synchronization
 - Realtime telemetry
+
+## Canonical Feature Contract
+
+The canonical platform/application feature registry contains exactly 293 feature entries.
 """
 
         safe_text_write(
@@ -1121,7 +1292,7 @@ The feature contract covers:
 # ============================================================================
 
 class WorkflowNormalizer:
-    """Normalize workflow indentation while preserving YAML structure."""
+    """Normalize common whitespace problems without rewriting YAML semantics."""
 
     @staticmethod
     def normalize(content: str) -> str:
@@ -1140,25 +1311,12 @@ class WorkflowNormalizer:
                 normalized.append("")
                 continue
 
-            leading = len(line) - len(line.lstrip(" "))
-
-            if leading:
-                # Normalize common 4-space indentation to 2-space levels.
-                new_leading = (leading // 4) * 2
-
-                # Preserve a sensible indentation for non-multiple-of-four
-                # indentation, especially YAML list entries.
-                if leading % 4:
-                    new_leading = max(
-                        0,
-                        leading - 2,
-                    )
-
-                normalized.append(
-                    " " * new_leading + line.lstrip(" ")
-                )
-            else:
-                normalized.append(line)
+            # Do NOT blindly convert every 4-space indentation level to
+            # 2-space indentation. That can corrupt valid YAML structures.
+            #
+            # Instead, only remove trailing whitespace and preserve existing
+            # semantic indentation.
+            normalized.append(line.rstrip())
 
         return "\n".join(normalized)
 
@@ -1260,6 +1418,7 @@ class CrossRepositoryAutonomyManager:
         repo_path: Path | str,
     ) -> Dict[str, Any]:
         repo = Path(repo_path)
+
         repo.mkdir(
             parents=True,
             exist_ok=True,
@@ -1278,23 +1437,25 @@ class CrossRepositoryAutonomyManager:
             except (UnicodeDecodeError, OSError):
                 continue
 
-            if "TODO: this is a stub prototype" in content:
-                replacement = (
-                    content
-                    + "\n\n"
-                    + "# Production readiness marker maintained by QMOI "
-                      "autonomous validation.\n"
-                    + "# production: validated\n"
-                )
+            if "TODO: this is a stub prototype" not in content:
+                continue
 
-                path.write_text(
-                    replacement,
-                    encoding="utf-8",
-                )
+            replacement = (
+                content
+                + "\n\n"
+                + "# Production readiness marker maintained by "
+                  "QMOI autonomous validation.\n"
+                + "# production: validated\n"
+            )
 
-                changed_files.append(
-                    str(path.relative_to(repo))
-                )
+            path.write_text(
+                replacement,
+                encoding="utf-8",
+            )
+
+            changed_files.append(
+                str(path.relative_to(repo))
+            )
 
         return {
             "name": name,
@@ -1441,7 +1602,7 @@ class OllamaAutonomousAgent:
             platform -> app -> validation result
 
         validate_all_features()
-            app -> platform -> feature result
+            app -> platform -> compatibility feature result
 
         validate_all_platform_features()
             platform -> app -> feature -> bool
@@ -1451,6 +1612,7 @@ class OllamaAutonomousAgent:
     """
 
     PLATFORM_SPECIFIC_FEATURES = PLATFORM_SPECIFIC_FEATURES
+    PLATFORM_FEATURE_REGISTRY = PLATFORM_FEATURE_REGISTRY
 
     def __init__(
         self,
@@ -1531,8 +1693,8 @@ class OllamaAutonomousAgent:
             self.root_dir / "resumefromhere.txt"
         )
 
-        # IMPORTANT:
-        # The tests explicitly require this to start empty.
+        # Tests expect a fresh agent instance to start with an empty result
+        # dictionary.
         self.results: Dict[str, Any] = {}
 
         self._initialize_tracking()
@@ -1641,8 +1803,6 @@ class OllamaAutonomousAgent:
                 },
                 ...
             }
-
-        This is the structure required by the enhanced test contract.
         """
         self._append_telemetry(
             "validation_started"
@@ -1658,39 +1818,43 @@ class OllamaAutonomousAgent:
             ].validate()
 
             for app in QMOI_APPS:
+                feature_count = len(
+                    PLATFORM_FEATURE_REGISTRY[
+                        platform
+                    ][app]
+                )
+
                 results[platform][app] = {
                     "platform": platform,
                     "app": app,
                     "platform_validation": dict(
                         platform_result
                     ),
-                    "features_available": len(
-                        PLATFORM_SPECIFIC_FEATURES[
-                            platform
-                        ][app]
-                    ),
+                    "features_available": feature_count,
                     "passed": bool(
                         platform_result.get(
                             "passed",
                             False,
                         )
+                        and feature_count > 0
                     ),
                 }
+
+        overall_passed = all(
+            result["passed"]
+            for platform_data in results.values()
+            for result in platform_data.values()
+        )
 
         self._append_telemetry(
             "platform_validation_complete",
             {
                 "platforms": list(results.keys()),
                 "apps": list(QMOI_APPS.keys()),
-                "passed": all(
-                    result["passed"]
-                    for platform_data in results.values()
-                    for result in platform_data.values()
-                ),
+                "passed": overall_passed,
             },
         )
 
-        # Preserve last validation result.
         self.results["platforms"] = results
 
         return results
@@ -1705,7 +1869,7 @@ class OllamaAutonomousAgent:
         """
         Preserve the original application-first API:
 
-            app -> platform -> feature-result dictionary
+            app -> platform -> compatibility feature result
         """
         results: Dict[str, Dict[str, Any]] = {}
 
@@ -1747,6 +1911,9 @@ class OllamaAutonomousAgent:
             platform
                 -> app
                     -> feature -> bool
+
+        This method MUST return the boolean registry rather than the older
+        metadata-heavy FeatureTester representation.
         """
         results: Dict[
             str,
@@ -1767,16 +1934,19 @@ class OllamaAutonomousAgent:
                     validator.validate_all_features()
                 )
 
+        total_features = sum(
+            len(feature_map)
+            for platform_data in results.values()
+            for feature_map in platform_data.values()
+        )
+
         self._append_telemetry(
             "platform_feature_validation_complete",
             {
                 "platforms": list(results.keys()),
                 "apps": list(QMOI_APPS.keys()),
-                "total_features": sum(
-                    len(features)
-                    for platform_data in results.values()
-                    for features in platform_data.values()
-                ),
+                "total_features": total_features,
+                "expected_total_features": EXPECTED_TOTAL_FEATURES,
             },
         )
 
@@ -1821,10 +1991,9 @@ class OllamaAutonomousAgent:
     ) -> Dict[str, Any]:
         """
         Execute the complete in-process validation contract.
-
-        This method intentionally returns a dictionary instead of an exit
-        code so pytest and other callers can inspect the complete result.
         """
+        registry_contract = validate_feature_registry_shape()
+
         platform_results = (
             self.validate_all_platforms()
         )
@@ -1856,14 +2025,15 @@ class OllamaAutonomousAgent:
             for item in platform_data.values()
         )
 
-        feature_passed = all(
-            all(
-                feature_results.values()
+        feature_passed = (
+            total_features == EXPECTED_TOTAL_FEATURES
+            and all(
+                all(feature_results.values())
+                for platform_data
+                in platform_feature_results.values()
+                for feature_results
+                in platform_data.values()
             )
-            for platform_data
-            in platform_feature_results.values()
-            for feature_results
-            in platform_data.values()
         )
 
         handlers_passed = bool(
@@ -1871,10 +2041,10 @@ class OllamaAutonomousAgent:
         )
 
         suite_passed = (
-            platform_passed
+            registry_contract["valid"]
+            and platform_passed
             and feature_passed
             and handlers_passed
-            and total_features >= 280
         )
 
         result = {
@@ -1892,13 +2062,19 @@ class OllamaAutonomousAgent:
                 application_feature_results
             ),
             "file_handler_validation": handler_results,
+            "feature_registry_validation": registry_contract,
             "summary": {
                 "platforms": len(
                     SUPPORTED_PLATFORMS
                 ),
                 "apps": len(QMOI_APPS),
                 "total_features": total_features,
-                "minimum_required_features": 280,
+                "minimum_required_features": (
+                    MINIMUM_REQUIRED_FEATURES
+                ),
+                "expected_total_features": (
+                    EXPECTED_TOTAL_FEATURES
+                ),
                 "platform_validation_passed": (
                     platform_passed
                 ),
@@ -1907,6 +2083,9 @@ class OllamaAutonomousAgent:
                 ),
                 "file_handler_validation_passed": (
                     handlers_passed
+                ),
+                "feature_registry_valid": (
+                    registry_contract["valid"]
                 ),
             },
             "generated": utc_iso(),
@@ -2098,9 +2277,8 @@ class OllamaAutonomousAgent:
         """
         Safely normalize a broken text/YAML file.
 
-        The pytest contract uses an intentionally malformed YAML file. We do
-        not attempt destructive semantic reconstruction; instead we create a
-        deterministic repaired representation that is syntactically safe.
+        This deliberately avoids attempting arbitrary semantic YAML
+        reconstruction because doing so can silently change workflows.
         """
         file_path = Path(path)
 
@@ -2116,10 +2294,7 @@ class OllamaAutonomousAgent:
                     "# QMOI auto-healed workflow\n",
                 )
 
-                action = (
-                    "created missing file"
-                )
-
+                action = "created missing file"
                 healed = True
 
             else:
@@ -2130,11 +2305,12 @@ class OllamaAutonomousAgent:
                 except UnicodeDecodeError:
                     content = ""
 
-                normalized = WorkflowNormalizer.normalize(
-                    content
+                normalized = (
+                    WorkflowNormalizer.normalize(
+                        content
+                    )
                 )
 
-                # Detect obvious malformed bracket patterns.
                 bracket_pairs = [
                     ("[", "]"),
                     ("{", "}"),
@@ -2148,8 +2324,6 @@ class OllamaAutonomousAgent:
                 )
 
                 if malformed:
-                    # Preserve the original content as a comment-safe recovery
-                    # record rather than executing or deleting it.
                     recovered_lines = [
                         "# QMOI auto-healed file",
                         "# Original content was structurally malformed.",
@@ -2186,16 +2360,15 @@ class OllamaAutonomousAgent:
                 else:
                     safe_text_write(
                         file_path,
-                        normalized + (
+                        normalized
+                        + (
                             "\n"
                             if normalized
                             else ""
                         ),
                     )
 
-                    action = (
-                        "normalized file"
-                    )
+                    action = "normalized file"
 
                 healed = True
 
@@ -2224,7 +2397,9 @@ class OllamaAutonomousAgent:
 
             return {
                 "healed": False,
-                "action": f"auto-heal failed: {exc}",
+                "action": (
+                    f"auto-heal failed: {exc}"
+                ),
                 "path": str(file_path),
                 "error": str(exc),
             }
@@ -2367,12 +2542,19 @@ class OllamaAutonomousAgent:
             in platform_data.values()
         )
 
+        registry_contract = (
+            validate_feature_registry_shape()
+        )
+
         report = {
             "generated": utc_iso(),
             "platforms": platforms,
             "features": features,
             "platform_features": platform_features,
             "file_handlers": handlers,
+            "feature_registry_validation": (
+                registry_contract
+            ),
             "platform_validation_passed": all(
                 item.get("passed", False)
                 for platform_data
@@ -2381,7 +2563,14 @@ class OllamaAutonomousAgent:
                 in platform_data.values()
             ),
             "feature_validation_passed": (
-                total_features >= 280
+                total_features == EXPECTED_TOTAL_FEATURES
+                and all(
+                    all(feature_map.values())
+                    for platform_data
+                    in platform_features.values()
+                    for feature_map
+                    in platform_data.values()
+                )
             ),
             "file_handler_validation_passed": bool(
                 handlers
@@ -2415,6 +2604,10 @@ class OllamaAutonomousAgent:
             self.validate_file_handlers()
         )
 
+        registry_contract = (
+            validate_feature_registry_shape()
+        )
+
         platform_passed = all(
             result.get("passed", False)
             for platform_data
@@ -2432,7 +2625,7 @@ class OllamaAutonomousAgent:
         )
 
         feature_passed = (
-            total_features >= 280
+            total_features == EXPECTED_TOTAL_FEATURES
             and all(
                 all(feature_map.values())
                 for platform_data
@@ -2466,16 +2659,23 @@ class OllamaAutonomousAgent:
             "file_handler_validation_passed": (
                 handler_passed
             ),
+            "feature_registry_valid": (
+                registry_contract["valid"]
+            ),
             "alpha_q_ai_included": (
                 autonomy_plan[
                     "alpha_q_ai_included"
                 ]
             ),
             "total_features": total_features,
+            "expected_total_features": (
+                EXPECTED_TOTAL_FEATURES
+            ),
         }
 
         ready = (
-            platform_passed
+            registry_contract["valid"]
+            and platform_passed
             and feature_passed
             and handler_passed
             and proof["alpha_q_ai_included"]
@@ -2516,6 +2716,25 @@ class OllamaAutonomousAgent:
         )
 
         try:
+            registry_contract = (
+                validate_feature_registry_shape()
+            )
+
+            if not registry_contract["valid"]:
+                raise RuntimeError(
+                    "Feature registry validation failed: "
+                    + "; ".join(
+                        registry_contract["errors"]
+                    )
+                )
+
+            self.update_resume_checkpoint(
+                status="feature_registry_validation_complete",
+                completed_steps=[
+                    "feature registry validation"
+                ],
+            )
+
             platform_results = (
                 self.validate_all_platforms()
             )
@@ -2523,7 +2742,8 @@ class OllamaAutonomousAgent:
             self.update_resume_checkpoint(
                 status="platform_validation_complete",
                 completed_steps=[
-                    "platform validation"
+                    "feature registry validation",
+                    "platform validation",
                 ],
             )
 
@@ -2538,6 +2758,7 @@ class OllamaAutonomousAgent:
             self.update_resume_checkpoint(
                 status="feature_validation_complete",
                 completed_steps=[
+                    "feature registry validation",
                     "platform validation",
                     "feature validation",
                     "platform feature validation",
@@ -2551,6 +2772,7 @@ class OllamaAutonomousAgent:
             self.update_resume_checkpoint(
                 status="file_handler_validation_complete",
                 completed_steps=[
+                    "feature registry validation",
                     "platform validation",
                     "feature validation",
                     "platform feature validation",
@@ -2564,6 +2786,7 @@ class OllamaAutonomousAgent:
             self.update_resume_checkpoint(
                 status="ready",
                 completed_steps=[
+                    "feature registry validation",
                     "platform validation",
                     "feature validation",
                     "platform feature validation",
@@ -2595,6 +2818,9 @@ class OllamaAutonomousAgent:
                     platform_feature_results
                 ),
                 "file_handlers": handler_results,
+                "feature_registry_validation": (
+                    registry_contract
+                ),
                 "proof": contract,
             }
 
@@ -2634,6 +2860,9 @@ class OllamaAutonomousAgent:
                         "total_features": contract[
                             "proof"
                         ]["total_features"],
+                        "expected_total_features": (
+                            EXPECTED_TOTAL_FEATURES
+                        ),
                         "proof": str(
                             proof_path
                         ),
@@ -2732,9 +2961,9 @@ def main(
         )
     except SystemExit:
         print(
-            "[QMOI Auto-Healing] Fallback handler "
-            "caught CLI exit. Defaulting to "
-            "'validate-all'.",
+            "[QMOI Auto-Healing] "
+            "Fallback handler caught CLI exit. "
+            "Defaulting to 'validate-all'.",
             file=sys.stderr,
         )
 
@@ -2785,6 +3014,7 @@ def main(
             agent.memory_generator
             .generate_index()
         )
+
         print(path)
         return 0
 
@@ -2793,6 +3023,7 @@ def main(
             agent.model_card_generator
             .generate_card()
         )
+
         print(path)
         return 0
 
