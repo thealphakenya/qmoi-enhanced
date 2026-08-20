@@ -318,6 +318,17 @@ class TestWorkflowIntegration:
             document = yaml.safe_load(workflow.read_text())
             assert document["env"]["QSTEPS_MANAGER"] == "qsteps-v1", workflow
 
+    def test_hosted_ollama_validation_runs_on_published_manager_branches(self):
+        """The hosted autonomous-agent gate must run after branch publication."""
+        import yaml
+
+        workflow = Path(__file__).parent.parent / ".github" / "workflows" / "ollama-pr-validation.yml"
+        document = yaml.safe_load(workflow.read_text())
+        events = document.get("on", document.get(True, {}))
+        assert "pull_request" in events
+        assert "push" in events
+        assert "copilot/**" in events["push"]["branches"]
+
     def test_master_orchestrator_covers_each_executable_job(self):
         """The master workflow must initialize lifecycle evidence for every job."""
         import yaml

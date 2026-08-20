@@ -230,6 +230,11 @@ Final continuation validation:
 - Autonomous-agent proof: PASS (`ready_for_github`, 6 platforms, 4 apps, 374 features).
 - Compact manager API is complete for centralized command-driven updates across one or many files.
 
+Hosted trigger correction:
+- PR creation did not start the Ollama validation workflow; unrelated checks ran instead.
+- Added a `copilot/**` push trigger to the Ollama PR-validation workflow and a regression test, so published manager branches execute the GitHub-hosted autonomous-agent test gate.
+- Adjusted the regression test for PyYAML 1.1 boolean parsing of the YAML `on` key.
+
 Continuation publication audit (2026-08-20):
 - Rechecked all local completion gates: workflow inventory 8, jobs 21, readiness true.
 - Confirmed no unresolved index paths and clean diff-check status.
