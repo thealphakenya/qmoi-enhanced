@@ -498,11 +498,13 @@ jobs:
 
           branch="${{ github.event.repository.default_branch }}"
           for i in 1 2 3; do
+            # Safely pull and rebase first to integrate incoming remote updates before pushing
+            git pull origin "${branch}" --rebase --autostash || true
+            
             if git push origin "HEAD:${branch}"; then
               break
             fi
             sleep 5
-            git pull --rebase origin "$branch" || true
           done
 
       - name: Final lightweight validation
