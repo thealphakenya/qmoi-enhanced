@@ -1,4 +1,4 @@
-Name: Ollama Autonomous Agent & Live Tracker
+name: Ollama Autonomous Agent & Live Tracker
 
 # ============================================================================
 # QMOI / OLLAMA AUTONOMOUS AGENT
@@ -29,7 +29,6 @@ Name: Ollama Autonomous Agent & Live Tracker
 # ============================================================================
 
 on:
-
   workflow_run:
     workflows:
       - "Ollama PR Validation - 293+ Platform Features"
@@ -37,9 +36,7 @@ on:
       - completed
 
   workflow_dispatch:
-
     inputs:
-
       mode:
         description: "Agent execution mode"
         required: true
@@ -123,14 +120,18 @@ permissions:
 # CONCURRENCY
 # ============================================================================
 #
-# One active repository writer.
-# Up to 100 pending executions are allowed by GitHub's queue:max behavior.
+# One active repository writer per repository/ref.
+#
+# GitHub Actions concurrency supports:
+#   - group
+#   - cancel-in-progress
+#
+# There is NO "queue: max" property.
 # ============================================================================
 
 concurrency:
   group: ollama-autonomous-agent-${{ github.repository }}-${{ github.ref }}
   cancel-in-progress: false
-  queue: max
 
 
 # ============================================================================
@@ -138,11 +139,8 @@ concurrency:
 # ============================================================================
 
 env:
-
   TRACK_DIR: ollamatracks
-
   TRACK_SCHEMA_VERSION: "6.0"
-
   TRACKING_PROTOCOL: "ollamatracks-v6"
 
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
@@ -152,27 +150,19 @@ env:
   PYTHON_VERSION: "3.12"
 
   DEFAULT_MAX_ITERATIONS: "200"
-
   DEFAULT_MAX_PER_ITERATION: "200"
-
   DEFAULT_MAX_RECOVERY_ATTEMPTS: "3"
 
   QMOI_AUTO_HEAL: ${{ github.event.inputs.auto_heal || 'true' }}
-
   QMOI_AUTO_FIX: ${{ github.event.inputs.auto_fix || 'true' }}
-
   QMOI_AGENT_MODE: ${{ github.event.inputs.mode || 'full' }}
-
   QMOI_FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
 
   QMOI_RETRY_ATTEMPTS: "5"
-
   QMOI_RETRY_DELAY: "10"
-
   QMOI_TIMEOUT_SECONDS: "300"
 
   OLLAMA_HOST: "http://127.0.0.1:11434"
-
   OLLAMA_MODEL: "qwen2.5-coder:3b"
 
   REASON: ${{ github.event.inputs.reason || 'Scheduled/workflow-triggered execution' }}
@@ -189,7 +179,6 @@ jobs:
   # ==========================================================================
 
   ollama-agent:
-
     name: Ollama Autonomous Agent + Self-Healing Tracker
 
     runs-on: ubuntu-latest
@@ -476,52 +465,66 @@ jobs:
 
           echo "Git root: $git_root"
 
-          # ---------------------------------------------------------------
-          # Recover interrupted merge/rebase/cherry-pick states.
-          # Only remove these states when no active operation is expected
-          # from this workflow.
-          # ---------------------------------------------------------------
+          # ----------------------------------------------------------------
+          # Recover interrupted Git operations.
+          # ----------------------------------------------------------------
 
           if [ -d .git/rebase-merge ] || [ -d .git/rebase-apply ]; then
             echo "::warning::Stale Git rebase state detected."
-            git rebase --abort 2>/dev/null || true
+
+            if git rebase --abort 2>/dev/null; then
+              echo "Rebase state successfully aborted."
+            else
+              echo "::warning::Unable to abort stale rebase state."
+            fi
           fi
 
           if [ -f .git/MERGE_HEAD ]; then
             echo "::warning::Stale Git merge state detected."
-            git merge --abort 2>/dev/null || true
+
+            if git merge --abort 2>/dev/null; then
+              echo "Merge state successfully aborted."
+            else
+              echo "::warning::Unable to abort stale merge state."
+            fi
           fi
 
           if [ -f .git/CHERRY_PICK_HEAD ]; then
             echo "::warning::Stale cherry-pick state detected."
-            git cherry-pick --abort 2>/dev/null || true
+
+            if git cherry-pick --abort 2>/dev/null; then
+              echo "Cherry-pick state successfully aborted."
+            else
+              echo "::warning::Unable to abort stale cherry-pick state."
+            fi
           fi
 
-          # ---------------------------------------------------------------
-          # Remove only stale Git lock files.
-          # ---------------------------------------------------------------
+          # ----------------------------------------------------------------
+          # Only remove Git lock files when Git is not currently reporting
+          # an active operation.
+          # ----------------------------------------------------------------
 
-          find .git \
-            -type f \
-            \( \
-              -name '*.lock' \
-              -o \
-              -name 'index.lock' \
-            \) \
-            -print 2>/dev/null |
-          while IFS= read -r lock; do
-            echo "::warning::Removing stale Git lock: $lock"
-            rm -f "$lock"
-          done
+          if ! git rev-parse --verify HEAD >/dev/null 2>&1; then
+            echo "::error::HEAD cannot be verified."
+            exit 1
+          fi
 
-          # ---------------------------------------------------------------
-          # The critical recovery for:
-          #
-          # error: bad signature ...
-          # fatal: index file corrupt
-          #
-          # The index is disposable; HEAD/tree objects are authoritative.
-          # ---------------------------------------------------------------
+          if ! git status --porcelain=v1 >/dev/null 2>&1; then
+            echo "::warning::Git status is unavailable; inspecting locks."
+
+            find .git \
+              -type f \
+              \( -name '*.lock' -o -name 'index.lock' \) \
+              -print 2>/dev/null |
+            while IFS= read -r lock; do
+              echo "::warning::Removing Git lock after failed status check: $lock"
+              rm -f "$lock"
+            done
+          fi
+
+          # ----------------------------------------------------------------
+          # Recover corrupt index.
+          # ----------------------------------------------------------------
 
           if ! git status --porcelain=v1 >/dev/null 2>&1; then
 
@@ -547,9 +550,9 @@ jobs:
             echo "Git index is readable."
           fi
 
-          # ---------------------------------------------------------------
+          # ----------------------------------------------------------------
           # Core Git validation.
-          # ---------------------------------------------------------------
+          # ----------------------------------------------------------------
 
           git rev-parse --verify HEAD
           git rev-parse --verify HEAD^{commit}
@@ -558,12 +561,14 @@ jobs:
           git diff --quiet --ignore-submodules -- || true
           git diff --cached --quiet --ignore-submodules -- || true
 
-          # fsck can report dangling/unreachable historical objects without
-          # meaning the repository is unusable. Fatal object corruption is
-          # treated as failure.
+          # ----------------------------------------------------------------
+          # Git object database validation.
+          # ----------------------------------------------------------------
+
           fsck_log="$TRACK_DIR/git_fsck.txt"
 
           if ! git fsck --no-progress >"$fsck_log" 2>&1; then
+
             if grep -Eiq \
               'corrupt|fatal|bad object|missing blob|missing tree|missing commit' \
               "$fsck_log"; then
@@ -572,6 +577,8 @@ jobs:
               cat "$fsck_log"
               exit 1
             fi
+
+            echo "::warning::git fsck reported non-fatal issues."
           fi
 
           git status --short
@@ -611,7 +618,9 @@ jobs:
               fi
 
               echo "::warning::Command failed; retry $((n + 1))/$attempts in ${delay}s."
+
               sleep "$delay"
+
               n=$((n + 1))
               delay=$((delay * 2))
             done
@@ -637,7 +646,142 @@ jobs:
           python -m pip --version
 
       # ======================================================================
-      # 7. SAFE WORKFLOW REPAIRS
+      # 7. DETERMINE EXECUTION MODE
+      # ======================================================================
+      #
+      # IMPORTANT:
+      # This step intentionally occurs BEFORE the Ollama preflight because
+      # the Ollama preflight references this step's output.
+      # ======================================================================
+
+      - name: Determine agent execution mode
+        id: execution_mode
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+
+          WORKFLOW_RUN_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          WORKFLOW_RUN_HEAD_REPOSITORY: ${{ github.event.workflow_run.head_repository.full_name }}
+          WORKFLOW_RUN_REPOSITORY: ${{ github.event.workflow_run.repository.full_name }}
+
+          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+
+          FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
+          REQUESTED_MODE: ${{ github.event.inputs.mode || 'monitor' }}
+
+          CURRENT_REPOSITORY: ${{ github.repository }}
+        run: |
+          set -Eeuo pipefail
+
+          run_agent="false"
+          command="monitor"
+          reason="Monitoring/reconciliation."
+
+          case "$EVENT_NAME" in
+
+            workflow_run)
+
+              # -------------------------------------------------------------
+              # Security boundary:
+              #
+              # Only run the autonomous agent after successful validation
+              # of the trusted repository's default branch.
+              #
+              # PR-head code is never checked out or executed by this job.
+              # -------------------------------------------------------------
+
+              if [ \
+                "$VALIDATION_CONCLUSION" = "success" ] &&
+                [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ] &&
+                [ "$WORKFLOW_RUN_HEAD_REPOSITORY" = "$CURRENT_REPOSITORY" ] &&
+                [ "$WORKFLOW_RUN_REPOSITORY" = "$CURRENT_REPOSITORY" ]; then
+
+                run_agent="true"
+                command="validate-all"
+                reason="Trusted default-branch validation succeeded."
+
+              else
+
+                run_agent="false"
+                command="monitor"
+
+                reason="Validation was not a successful trusted-default-branch run."
+
+              fi
+
+              ;;
+
+            workflow_dispatch)
+
+              if [ "$FORCE_AGENT" = "true" ]; then
+
+                case "$REQUESTED_MODE" in
+
+                  full|validate)
+                    run_agent="true"
+                    command="validate-all"
+                    reason="Manual autonomous execution."
+                    ;;
+
+                  heal)
+                    run_agent="true"
+                    command="auto-heal"
+                    reason="Manual autonomous healing."
+                    ;;
+
+                  sync|monitor)
+                    run_agent="false"
+                    command="monitor"
+                    reason="Manual monitoring/synchronization."
+                    ;;
+
+                  *)
+                    run_agent="false"
+                    command="monitor"
+                    reason="Unknown mode; safe fallback."
+                    ;;
+
+                esac
+
+              else
+
+                run_agent="false"
+                command="monitor"
+                reason="Manual execution requested without force_agent authorization."
+
+              fi
+
+              ;;
+
+            schedule)
+
+              run_agent="false"
+              command="monitor"
+              reason="Scheduled reconciliation."
+
+              ;;
+
+            *)
+
+              run_agent="false"
+              command="monitor"
+              reason="Unknown trigger; safe fallback."
+
+              ;;
+
+          esac
+
+          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
+          echo "command=$command" >> "$GITHUB_OUTPUT"
+          echo "reason=$reason" >> "$GITHUB_OUTPUT"
+
+          echo "run_agent=$run_agent"
+          echo "command=$command"
+          echo "reason=$reason"
+
+      # ======================================================================
+      # 8. SAFE WORKFLOW REPAIRS
       # ======================================================================
 
       - name: Scan and safely repair deprecated GitHub Actions
@@ -672,12 +816,13 @@ jobs:
 
             before="$(sha256sum "$file" | awk '{print $1}')"
 
+            # Artifact v4 is the supported artifact action generation.
             sed -i -E \
-              's#actions/upload-artifact@v(1|2|3|4|5)\b#actions/upload-artifact@v4#g' \
+              's#actions/upload-artifact@v(1|2|3)\b#actions/upload-artifact@v4#g' \
               "$file"
 
             sed -i -E \
-              's#actions/download-artifact@v(1|2|3|4|5|6)\b#actions/download-artifact@v4#g' \
+              's#actions/download-artifact@v(1|2|3)\b#actions/download-artifact@v4#g' \
               "$file"
 
             after="$(sha256sum "$file" | awk '{print $1}')"
@@ -702,7 +847,7 @@ jobs:
           echo "changed=$changed" >> "$GITHUB_OUTPUT"
 
       # ======================================================================
-      # 8. STRICT WORKFLOW YAML VALIDATION
+      # 9. STRICT WORKFLOW YAML VALIDATION
       # ======================================================================
 
       - name: Strictly validate all GitHub workflow YAML
@@ -790,6 +935,7 @@ jobs:
                           "Root must be a mapping."
                       )
 
+                  # PyYAML YAML 1.1 interprets "on" as True.
                   on_value = data.get("on")
 
                   if on_value is None:
@@ -836,7 +982,7 @@ jobs:
           PY
 
       # ======================================================================
-      # 9. VERIFY ARTIFACT ACTIONS
+      # 10. VERIFY ARTIFACT ACTIONS
       # ======================================================================
 
       - name: Verify artifact actions
@@ -865,7 +1011,7 @@ jobs:
           echo "Artifact action validation passed."
 
       # ======================================================================
-      # 10. WORKFLOW STRUCTURAL HAZARD SCAN
+      # 11. WORKFLOW STRUCTURAL HAZARD SCAN
       # ======================================================================
 
       - name: Detect workflow structural hazards
@@ -929,7 +1075,7 @@ jobs:
           PY
 
       # ======================================================================
-      # 11. VALIDATE PYTHON SOURCE
+      # 12. VALIDATE PYTHON SOURCE
       # ======================================================================
 
       - name: Validate Python source syntax
@@ -949,7 +1095,7 @@ jobs:
           echo "Python syntax validation passed."
 
       # ======================================================================
-      # 12. VERIFY AGENT CLI
+      # 13. VERIFY AGENT CLI
       # ======================================================================
 
       - name: Verify autonomous agent CLI
@@ -986,7 +1132,7 @@ jobs:
           fi
 
       # ======================================================================
-      # 13. OLLAMA PREFLIGHT
+      # 14. OLLAMA PREFLIGHT
       # ======================================================================
 
       - name: Ollama preflight and recovery
@@ -1009,7 +1155,7 @@ jobs:
 
           if [ "$ollama_available" != "true" ]; then
             echo "::warning::Ollama binary is not installed."
-            echo "The agent may provide its own Ollama startup/install logic."
+            echo "Agent-specific Ollama startup/install logic may handle it."
             exit 0
           fi
 
@@ -1029,29 +1175,38 @@ jobs:
 
             echo "::warning::Ollama service is not reachable."
 
-            if command -v ollama >/dev/null 2>&1; then
+            nohup ollama serve \
+              >"$RUNNER_TEMP/ollama.log" \
+              2>&1 &
 
-              nohup ollama serve \
-                >"$RUNNER_TEMP/ollama.log" \
-                2>&1 &
+            ollama_pid=$!
 
-              for attempt in $(seq 1 30); do
+            echo "Started Ollama server with PID $ollama_pid."
 
-                if curl \
-                  --fail \
-                  --silent \
-                  --max-time 5 \
-                  "$OLLAMA_HOST/api/tags" \
-                  >/tmp/ollama-tags.json; then
+            service_ready="false"
 
-                  echo "Ollama service recovered."
-                  break
-                fi
+            for attempt in $(seq 1 30); do
 
-                sleep 2
+              if curl \
+                --fail \
+                --silent \
+                --show-error \
+                --max-time 5 \
+                "$OLLAMA_HOST/api/tags" \
+                >/tmp/ollama-tags.json; then
 
-              done
+                service_ready="true"
+                echo "Ollama service recovered."
+                break
 
+              fi
+
+              sleep 2
+
+            done
+
+            if [ "$service_ready" != "true" ]; then
+              echo "::warning::Ollama service did not become ready."
             fi
 
           fi
@@ -1067,7 +1222,7 @@ jobs:
               echo "Configured Ollama model is available."
             else
               echo "::warning::Configured model '$OLLAMA_MODEL' is not installed."
-              echo "Agent-specific model management will be allowed to handle it."
+              echo "Agent-specific model management may handle it."
             fi
 
           else
@@ -1075,7 +1230,7 @@ jobs:
           fi
 
       # ======================================================================
-      # 14. TEST SUITE
+      # 15. TEST SUITE
       # ======================================================================
 
       - name: Execute repository test suite
@@ -1104,10 +1259,11 @@ jobs:
           else
 
             echo "No tests directory found."
+
           fi
 
       # ======================================================================
-      # 15. TEST FAILURE DIAGNOSTICS
+      # 16. TEST FAILURE DIAGNOSTICS
       # ======================================================================
 
       - name: Diagnose test failure
@@ -1142,7 +1298,7 @@ jobs:
             2>&1 || true
 
       # ======================================================================
-      # 16. DEPENDENCY RECOVERY
+      # 17. DEPENDENCY RECOVERY
       # ======================================================================
 
       - name: Attempt bounded dependency recovery
@@ -1160,11 +1316,12 @@ jobs:
             PyYAML
 
           if [ -f requirements.txt ]; then
-            python -m pip install --upgrade -r requirements.txt
+            python -m pip install --upgrade \
+              -r requirements.txt
           fi
 
       # ======================================================================
-      # 17. TEST RETRY
+      # 18. TEST RETRY
       # ======================================================================
 
       - name: Retry repository tests after recovery
@@ -1194,123 +1351,8 @@ jobs:
           else
 
             echo "No tests found."
+
           fi
-
-      # ======================================================================
-      # 18. DETERMINE EXECUTION MODE
-      # ======================================================================
-
-      - name: Determine agent execution mode
-        id: execution_mode
-        shell: bash
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          WORKFLOW_RUN_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
-          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-          FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
-          REQUESTED_MODE: ${{ github.event.inputs.mode || 'monitor' }}
-        run: |
-          set -Eeuo pipefail
-
-          run_agent="false"
-          command="monitor"
-          reason="Monitoring/reconciliation."
-
-          case "$EVENT_NAME" in
-
-            workflow_run)
-
-              # -------------------------------------------------------------
-              # Critical safety condition:
-              #
-              # Only execute the autonomous agent after a successful
-              # validation of the trusted default branch.
-              #
-              # A PR validation completion must not cause this workflow to
-              # execute arbitrary PR-head changes.
-              # -------------------------------------------------------------
-
-              if [ \
-                "$VALIDATION_CONCLUSION" = "success" ] &&
-                [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ]; then
-
-                run_agent="true"
-                command="validate-all"
-                reason="Trusted default-branch validation succeeded."
-
-              else
-
-                run_agent="false"
-                command="monitor"
-
-                reason="Validation was not a successful trusted-default-branch run."
-
-              fi
-
-              ;;
-
-            workflow_dispatch)
-
-              if [ "$FORCE_AGENT" = "true" ]; then
-
-                case "$REQUESTED_MODE" in
-
-                  full|validate)
-                    run_agent="true"
-                    command="validate-all"
-                    reason="Manual autonomous execution."
-                    ;;
-
-                  heal)
-                    run_agent="true"
-                    command="auto-heal"
-                    reason="Manual autonomous healing."
-                    ;;
-
-                  sync|monitor)
-                    run_agent="false"
-                    command="monitor"
-                    reason="Manual monitoring/synchronization."
-                    ;;
-
-                  *)
-                    run_agent="false"
-                    command="monitor"
-                    reason="Unknown mode; safe fallback."
-                    ;;
-
-                esac
-
-              fi
-
-              ;;
-
-            schedule)
-
-              run_agent="false"
-              command="monitor"
-              reason="Scheduled reconciliation."
-
-              ;;
-
-            *)
-
-              run_agent="false"
-              command="monitor"
-              reason="Unknown trigger; safe fallback."
-
-              ;;
-
-          esac
-
-          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
-          echo "command=$command" >> "$GITHUB_OUTPUT"
-          echo "reason=$reason" >> "$GITHUB_OUTPUT"
-
-          echo "run_agent=$run_agent"
-          echo "command=$command"
-          echo "reason=$reason"
 
       # ======================================================================
       # 19. RECORD TEST STATUS
@@ -1478,17 +1520,30 @@ jobs:
 
           repair_log="$TRACK_DIR/REPAIR_LOG.txt"
 
-          # Remove stale locks created by interrupted Git operations.
-          find .git \
-            -type f \
-            \( -name '*.lock' -o -name 'index.lock' \) \
-            -print 2>/dev/null |
-          while IFS= read -r lock; do
-            echo "::warning::Removing stale lock: $lock"
-            rm -f "$lock"
-          done
+          # ---------------------------------------------------------------
+          # First check whether Git is actually usable.
+          # ---------------------------------------------------------------
 
+          if ! git status --porcelain=v1 >/dev/null 2>&1; then
+
+            echo "::warning::Post-agent Git status failed."
+
+            # Remove lock files only after a failed Git operation.
+            find .git \
+              -type f \
+              \( -name '*.lock' -o -name 'index.lock' \) \
+              -print 2>/dev/null |
+            while IFS= read -r lock; do
+              echo "::warning::Removing stale lock: $lock"
+              rm -f "$lock"
+            done
+
+          fi
+
+          # ---------------------------------------------------------------
           # Recover corrupted index.
+          # ---------------------------------------------------------------
+
           if ! git status --porcelain=v1 >/dev/null 2>&1; then
 
             echo "::warning::Post-agent Git index is corrupted."
@@ -1499,6 +1554,7 @@ jobs:
             } >> "$repair_log"
 
             rm -f .git/index
+
             git reset --mixed HEAD
 
           fi
@@ -1532,17 +1588,20 @@ jobs:
           } > "$recovery_log"
 
           # ---------------------------------------------------------------
-          # First repair Git state.
+          # Repair Git state.
           # ---------------------------------------------------------------
 
-          find .git \
-            -type f \
-            \( -name '*.lock' -o -name 'index.lock' \) \
-            -delete 2>/dev/null || true
-
           if ! git status --porcelain=v1 >/dev/null 2>&1; then
+
+            find .git \
+              -type f \
+              \( -name '*.lock' -o -name 'index.lock' \) \
+              -delete 2>/dev/null || true
+
             rm -f .git/index
+
             git reset --mixed HEAD
+
           fi
 
           # ---------------------------------------------------------------
@@ -1631,6 +1690,7 @@ jobs:
 
           # Git index must work.
           git status --short
+
           git diff --check
 
           # Python source must compile.
@@ -1686,12 +1746,40 @@ jobs:
               + list(root.glob("*.yaml"))
           ):
 
-              yaml.load(
-                  path.read_text(encoding="utf-8"),
+              data = yaml.load(
+                  path.read_text(
+                      encoding="utf-8"
+                  ),
                   Loader=Loader,
               )
 
+              if not isinstance(data, dict):
+                  raise ValueError(
+                      f"{path}: workflow root must be a mapping"
+                  )
+
+              on_value = data.get("on")
+
+              if on_value is None:
+                  on_value = data.get(True)
+
+              if on_value is None:
+                  raise ValueError(
+                      f"{path}: missing top-level on"
+                  )
+
+              if "jobs" not in data:
+                  raise ValueError(
+                      f"{path}: missing top-level jobs"
+                  )
+
+              if not isinstance(data["jobs"], dict):
+                  raise ValueError(
+                      f"{path}: jobs must be a mapping"
+                  )
+
               print(f"POST-VALID: {path}")
+
           PY
 
           echo "Post-agent validation passed."
@@ -1749,8 +1837,12 @@ jobs:
 
           # Revalidate before touching Git.
           if ! git status --porcelain=v1 >/dev/null 2>&1; then
+
+            echo "::warning::Git index is unavailable; rebuilding."
+
             rm -f .git/index
             git reset --mixed HEAD
+
           fi
 
           git diff --check
@@ -1769,11 +1861,16 @@ jobs:
           git commit \
             -m "ci: automatically repair GitHub Actions workflow dependencies"
 
+          # ---------------------------------------------------------------
           # Push with bounded retry.
+          # ---------------------------------------------------------------
+
+          default_branch="${{ github.event.repository.default_branch }}"
+
           for attempt in 1 2 3 4 5; do
 
             if git push origin \
-              "HEAD:${{ github.event.repository.default_branch }}"; then
+              "HEAD:${default_branch}"; then
 
               echo "Repair commit pushed successfully."
               break
@@ -1789,10 +1886,19 @@ jobs:
             sleep $((attempt * 10))
 
             git fetch origin \
-              "${{ github.event.repository.default_branch }}"
+              "$default_branch"
 
-            git rebase \
-              "origin/${{ github.event.repository.default_branch }}"
+            # Rebase only if there are fetched changes.
+            if ! git rebase \
+              "origin/${default_branch}"; then
+
+              echo "::warning::Rebase failed; attempting rebase abort."
+
+              git rebase --abort 2>/dev/null || true
+
+              exit 1
+
+            fi
 
           done
 
@@ -1813,16 +1919,20 @@ jobs:
           echo "============================================================"
 
           if ! git status --porcelain=v1 >/dev/null 2>&1; then
+
             echo "::warning::Final Git index is corrupt; rebuilding."
 
             rm -f .git/index
 
             git reset --mixed HEAD
+
           fi
 
           git rev-parse --verify HEAD
           git rev-parse --verify HEAD^{commit}
+
           git status --short
+
           git diff --check
 
           git fsck \
@@ -1849,10 +1959,12 @@ jobs:
           python -m compileall -q scripts
 
           if [ -d tests ]; then
+
             python -m pytest \
               tests \
               -q \
               --tb=short
+
           fi
 
       # ======================================================================
@@ -1866,11 +1978,15 @@ jobs:
         env:
           TEST_OUTCOME: ${{ steps.tests.outcome }}
           TEST_RETRY_OUTCOME: ${{ steps.tests_retry.outcome }}
+
           AGENT_OUTCOME: ${{ steps.agent_execution.outcome }}
           RECOVERY_OUTCOME: ${{ steps.agent_recovery.outcome }}
+
           POST_AGENT_OUTCOME: ${{ steps.post_agent_validation.outcome }}
+
           FINAL_GIT_OUTCOME: ${{ steps.final_git.outcome }}
           FINAL_VALIDATION_OUTCOME: ${{ steps.final_validation.outcome }}
+
           REPAIR_COMMIT_OUTCOME: ${{ steps.safe_repair_commit.outcome }}
         run: |
           set -Eeuo pipefail
@@ -1882,6 +1998,7 @@ jobs:
           agent_status="failed"
 
           if [ "${{ steps.execution_mode.outputs.run_agent }}" != "true" ]; then
+
             agent_status="monitoring"
 
           elif [ "${FINAL_VALIDATION_OUTCOME:-failure}" = "success" ] &&
@@ -1889,8 +2006,10 @@ jobs:
 
             if [ "${AGENT_OUTCOME:-failure}" = "success" ]; then
               agent_status="success"
+
             elif [ "${RECOVERY_OUTCOME:-failure}" = "success" ]; then
               agent_status="recovered"
+
             else
               agent_status="validated"
             fi
@@ -2007,35 +2126,47 @@ jobs:
               "run_id": os.environ["GITHUB_RUN_ID"],
               "attempt": os.environ["GITHUB_RUN_ATTEMPT"],
               "event": os.environ["GITHUB_EVENT_NAME"],
-              "test": os.environ.get("TEST_OUTCOME", "unknown"),
+
+              "test": os.environ.get(
+                  "TEST_OUTCOME",
+                  "unknown",
+              ),
+
               "test_retry": os.environ.get(
                   "TEST_RETRY_OUTCOME",
                   "not-run",
               ),
+
               "agent": os.environ.get(
                   "AGENT_OUTCOME",
                   "not-run",
               ),
+
               "recovery": os.environ.get(
                   "RECOVERY_OUTCOME",
                   "not-run",
               ),
+
               "post_agent": os.environ.get(
                   "POST_AGENT_OUTCOME",
                   "not-run",
               ),
+
               "final_git": os.environ.get(
                   "FINAL_GIT_OUTCOME",
                   "unknown",
               ),
+
               "final_validation": os.environ.get(
                   "FINAL_VALIDATION_OUTCOME",
                   "unknown",
               ),
+
               "repair_commit": os.environ.get(
                   "REPAIR_COMMIT_OUTCOME",
                   "not-run",
               ),
+
               "timestamp_utc": (
                   datetime.now(timezone.utc)
                   .isoformat(timespec="milliseconds")
@@ -2048,25 +2179,37 @@ jobs:
               and
               summary["final_git"] == "success"
           ):
+
               summary["status"] = "healthy"
+
           elif summary["recovery"] == "success":
+
               summary["status"] = "recovered"
+
           elif summary["event"] == "schedule":
+
               summary["status"] = "monitoring"
+
           else:
+
               summary["status"] = "attention-required"
 
           with open(
-              os.path.join(track, "monitoring_summary.json"),
+              os.path.join(
+                  track,
+                  "monitoring_summary.json",
+              ),
               "w",
               encoding="utf-8",
           ) as f:
+
               json.dump(
                   summary,
                   f,
                   indent=2,
                   sort_keys=True,
               )
+
               f.write("\n")
 
           telemetry = {
@@ -2082,10 +2225,14 @@ jobs:
           }
 
           with open(
-              os.path.join(track, "telemetry.jsonl"),
+              os.path.join(
+                  track,
+                  "telemetry.jsonl",
+              ),
               "a",
               encoding="utf-8",
           ) as f:
+
               f.write(
                   json.dumps(
                       telemetry,
@@ -2093,6 +2240,7 @@ jobs:
                   )
                   + "\n"
               )
+
           PY
 
       # ======================================================================
@@ -2141,10 +2289,15 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
           if [ -f "$TRACK_DIR/CURRENT_STATUS.txt" ]; then
+
             echo "## Final status" >> "$GITHUB_STEP_SUMMARY"
             echo '```text' >> "$GITHUB_STEP_SUMMARY"
-            cat "$TRACK_DIR/CURRENT_STATUS.txt" >> "$GITHUB_STEP_SUMMARY"
+
+            cat "$TRACK_DIR/CURRENT_STATUS.txt" \
+              >> "$GITHUB_STEP_SUMMARY"
+
             echo '```' >> "$GITHUB_STEP_SUMMARY"
+
           fi
 
       # ======================================================================
@@ -2164,11 +2317,6 @@ jobs:
 
       # ======================================================================
       # 32. FINAL FAILURE GATE
-      # ======================================================================
-      #
-      # Recovery steps above use continue-on-error so finalization can always
-      # execute. This final step converts an unrecovered critical state into
-      # a failed workflow instead of falsely reporting success.
       # ======================================================================
 
       - name: Enforce final health gate
@@ -2190,22 +2338,36 @@ jobs:
           echo "  final_git=$final_git"
           echo "  final_validation=$final_validation"
 
+          # ----------------------------------------------------------------
           # Monitoring runs have no active-agent success requirement.
+          # ----------------------------------------------------------------
+
           if [ "$execution" != "true" ]; then
             echo "Monitoring/reconciliation run completed."
             exit 0
           fi
 
-          # Active agent runs must finish with valid repository state.
+          # ----------------------------------------------------------------
+          # Active agent runs require valid final Git state.
+          # ----------------------------------------------------------------
+
           if [ "$final_git" != "success" ]; then
             echo "::error::Final Git integrity validation failed."
             exit 1
           fi
 
+          # ----------------------------------------------------------------
+          # Active agent runs require valid final repository state.
+          # ----------------------------------------------------------------
+
           if [ "$final_validation" != "success" ]; then
             echo "::error::Final repository validation failed."
             exit 1
           fi
+
+          # ----------------------------------------------------------------
+          # Agent must either succeed directly or recover successfully.
+          # ----------------------------------------------------------------
 
           if [ "$agent" = "success" ] ||
              [ "$recovery" = "success" ]; then
