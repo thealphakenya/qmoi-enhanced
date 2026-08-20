@@ -10,6 +10,7 @@ memory/index generation, model-card generation, and resilience helpers.
 This module intentionally exposes a stable compatibility API used by:
 
     tests/test_ollama_autonomous_agent.py
+    tests/test_ollama_enhanced_features.py
 
 The implementation is designed to be safe to execute in GitHub Actions and
 against temporary directories used by pytest.
@@ -44,6 +45,9 @@ SUPPORTED_PLATFORMS = [
     "android",
     "web",
 ]
+
+# Alias commonly expected by test suites
+PLATFORMS = SUPPORTED_PLATFORMS
 
 SUPPORTED_APPS = [
     "qmoiaiui",
@@ -88,12 +92,12 @@ def resolve_github_token() -> Optional[str]:
 def mask_github_token(token: Optional[str]) -> str:
     """Return a safe representation of a GitHub token."""
     if not token:
-        return ""
+        return "empty"
 
     token = str(token)
 
     if len(token) <= 8:
-        return "..." if token else ""
+        return "..." if token else "empty"
 
     # Preserve common GitHub prefixes without exposing the secret body.
     if token.startswith(("ghp_", "gho_", "ghs_", "ghu_", "github_pat_")):
