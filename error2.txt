@@ -95,4 +95,9 @@ Final validation result:
 - GitHub workflow YAML validation: PASS (8 files).
 - Source-safety regression: PASS (2 tests).
 - Ready for explicit commit and push after final diff review.
+
+Publication result:
+- Commit: `d113b43812` (`fix: harden Ollama validation and merge audits`).
+- Push: PASS to `origin/main`.
+- Final audit-log update is being published with this commit.
 0s
