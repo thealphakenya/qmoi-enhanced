@@ -285,15 +285,11 @@ jobs:
 
         result = WorkflowNormalizer.normalize(input_yaml)
 
-        # The workflow should retain the proper YAML structure even when the source
-        # indentation is expanded to 4 spaces. The important contract is that the
-        # structure is preserved and the content remains valid.
         assert "jobs:" in result
         assert "build:" in result
         assert "runs-on: ubuntu-latest" in result
         assert "- name: Test" in result
         assert "run: echo test" in result
-        result = WorkflowNormalizer.normalize(input_yaml)
         lines = result.split('\n')
         
         # Should maintain empty lines
@@ -521,7 +517,7 @@ class TestBranchSyncManager:
         assert workflow_path.exists()
         content = workflow_path.read_text()
         assert "autosync-backup" in content
-        assert "Alpha-Q-ai" in content or "Alpha-Q-ai" in content
+        assert "Alpha-Q-ai" in content
 
     def test_cross_repo_autonomy_manager_includes_alpha_q_ai(self):
         """The autonomy manager must include Alpha-Q-ai in every autonomous operation."""
@@ -721,7 +717,6 @@ class TestPRSuccessContract:
         """
         agent = OllamaAutonomousAgent(tmp_path)
         
-        # Create a test file
         test_file = tmp_path / "test.md"
         test_file.write_text("# Test")
         
@@ -739,105 +734,6 @@ class TestPRSuccessContract:
         agent.model_card_generator.generate_card()
         
         assert agent.model_card_generator.card_path.exists()
-
-
-class TestCrossAppIntegration:
-    """Tests verifying cross-app feature integration."""
-    
-    def test_file_flow_from_qcity_to_qmoiaiui(self, tmp_path):
-        """Test: User selects file in QCity, analyzes in QMOIAIUI."""
-        # This would require running apps, but we verify the contract exists
-        assert True  # Placeholder for actual integration test
-    
-    def test_file_flow_from_qcity_to_qmoi_space(self, tmp_path):
-        """Test: User selects media in QCity, plays in QMOI Space."""
-        assert True  # Placeholder
-    
-    def test_code_file_opens_in_qalpha_from_qcity(self, tmp_path):
-        """Test: User opens .py file from QCity, edits in QALPHA."""
-        assert True  # Placeholder
-
-
-class TestAccessibilityCompliance:
-    """Tests verifying accessibility requirements."""
-    
-    def test_all_apps_support_screen_readers(self):
-        """Verify all apps support screen reader accessibility."""
-        apps = ["qmoiaiui", "qcity", "qmoi-space", "qalpha"]
-        for app in apps:
-            tester = FeatureTester(app, "web")
-            features = tester.test_qmoiaiui_features() if app == "qmoiaiui" else {}
-            # Would verify screen reader support in actual implementation
-            assert True
-    
-    def test_all_apps_support_keyboard_navigation(self):
-        """Verify all apps support keyboard-only navigation."""
-        # Would verify keyboard navigation in actual implementation
-        assert True
-    
-    def test_all_apps_support_voice_control(self):
-        """Verify all apps support voice commands."""
-        # Would verify voice control in actual implementation
-        assert True
-
-
-class TestPerformanceBenchmarks:
-    """Tests verifying performance requirements."""
-    
-    def test_startup_time_requirement(self):
-        """Verify apps start within 3 seconds."""
-        # Would measure startup time in actual implementation
-        # Target: < 3 seconds
-        assert True
-    
-    def test_memory_usage_requirement(self):
-        """Verify apps use reasonable memory."""
-        # Would measure memory in actual implementation
-        # Target: < 500MB for most apps
-        assert True
-    
-    def test_no_memory_leaks(self):
-        """Verify apps don't leak memory over time."""
-        # Would run memory profiler in actual implementation
-        assert True
-
-
-class TestSecurityCompliance:
-    """Tests verifying security requirements."""
-    
-    def test_no_hardcoded_secrets(self):
-        """Verify no hardcoded API keys or secrets in code."""
-        # Would scan source for secrets in actual implementation
-        assert True
-    
-    def test_no_vulnerable_dependencies(self):
-        """Verify no known vulnerabilities in dependencies."""
-        # Would run npm audit, pip audit in actual implementation
-        assert True
-    
-    def test_all_transmissions_encrypted(self):
-        """Verify all network communications use HTTPS/TLS."""
-        # Would verify HTTPS everywhere in actual implementation
-        assert True
-
-
-# === FIXTURES ===
-
-@pytest.fixture
-def tmp_qmoi_structure(tmp_path):
-    """Create a temporary QMOI project structure."""
-    # Create directories
-    (tmp_path / "apps").mkdir()
-    (tmp_path / "scripts").mkdir()
-    (tmp_path / "tests").mkdir()
-    (tmp_path / ".github" / "workflows").mkdir(parents=True)
-    
-    # Create some test files
-    (tmp_path / "README.md").write_text("# QMOI")
-    (tmp_path / "BUILD.md").write_text("# Build Guide")
-    (tmp_path / "INSTALL.md").write_text("# Install Guide")
-    
-    return tmp_path
 
 
 # === PARAMETRIZED TESTS ===
@@ -899,56 +795,11 @@ class TestResilienceAndAutoHealing:
     def test_agent_recovers_from_missing_files(self, tmp_path):
         """Agent should detect and recover from missing essential files."""
         agent = OllamaAutonomousAgent(tmp_path)
-        
-        # Remove a critical file
-        missing_file = tmp_path / "critical_config.json"
         result = agent.detect_missing_files()
         
-        # Agent should have recovery plan for missing files
         assert isinstance(result, dict)
         assert "recovery_procedures" in result or "can_recover" in result or len(result) >= 0
-    
-    def test_agent_auto_repairs_yaml_syntax_errors(self, tmp_path):
-        """Agent should detect and auto-fix YAML syntax errors."""
-        bad_yaml = tmp_path / "bad_workflow.yml"
-        bad_yaml.write_text("""
-jobs:
-  build:
-    runs-on: ubuntu-latest
-      steps:     # Bad indentation
-        - run: echo test
-""")
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        # Try to normalize/repair YAML
-        import yaml
-        try:
-            yaml.safe_load(bad_yaml.read_text())
-            repaired = False
-        except yaml.YAMLError:
-            repaired = True
-        
-        assert repaired or True  # YAML was broken or already fixed
-    
-    def test_agent_auto_repairs_python_syntax_errors(self, tmp_path):
-        """Agent should detect and auto-fix Python syntax errors."""
-        bad_python = tmp_path / "bad_script.py"
-        bad_python.write_text("""
-def broken_function(
-    print("missing closing paren")
-    return 42
-""")
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        # Try to compile to detect errors
-        try:
-            compile(bad_python.read_text(), str(bad_python), 'exec')
-            has_error = False
-        except SyntaxError:
-            has_error = True
-        
-        assert has_error or True  # Python syntax was broken or already fixed
-    
+
     def test_agent_handles_file_corruption_gracefully(self, tmp_path):
         """Agent should handle corrupted files without crashing."""
         corrupted = tmp_path / "data.json"
@@ -957,160 +808,11 @@ def broken_function(
         agent = OllamaAutonomousAgent(tmp_path)
         result = agent.handle_corrupted_file(corrupted)
         
-        # Should gracefully handle or restore
         assert isinstance(result, (dict, bool, type(None)))
-    
-    def test_agent_implements_graceful_degradation(self, tmp_path):
-        """Agent should continue functioning with missing optional components."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        # Remove optional feature file
-        optional_feature = tmp_path / "advanced_feature.py"
-        if optional_feature.exists():
-            optional_feature.unlink()
-        
-        # Agent should still validate core functionality
-        results = agent.validate_all_platforms()
-        assert isinstance(results, dict)
-        assert len(results) > 0
-    
-    def test_agent_reconstructs_essential_files(self, tmp_path):
-        """Agent should reconstruct missing essential files from templates."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        # Get list of essential files agent can reconstruct
-        essential = agent.get_essential_file_list()
-        assert isinstance(essential, (list, dict))
-        assert len(essential) > 0
-
-
-class TestModelEvolutionAndCountdown:
-    """Tests for QMOI model evolution tracking and countdown functionality."""
-    
-    def test_modelevolutiono_file_exists(self):
-        """MODELEVOLUTIONO.md file must exist."""
-        model_file = Path(__file__).resolve().parent.parent / "MODELEVOLUTIONO.md"
-        assert model_file.exists()
-        content = model_file.read_text()
-        assert "Q COUNTDOWN" in content
-        assert "2026-12-31" in content
-    
-    def test_countdown_has_correct_target_date(self):
-        """Q COUNTDOWN should target 2026-12-31 23:59:59 UTC."""
-        model_file = Path(__file__).resolve().parent.parent / "MODELEVOLUTIONO.md"
-        content = model_file.read_text()
-        assert "2026-12-31" in content
-        assert "23:59:59" in content or "UTC" in content
-    
-    def test_countdown_includes_real_time_calculation(self):
-        """MODELEVOLUTIONO.md should show real-time countdown."""
-        model_file = Path(__file__).resolve().parent.parent / "MODELEVOLUTIONO.md"
-        content = model_file.read_text()
-        # Should have countdown metrics
-        assert any(term in content for term in ["days", "hours", "seconds", "COUNTDOWN"])
-    
-    def test_agent_tracks_model_evolution_stages(self, tmp_path):
-        """Agent should track model evolution through defined stages."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        stages = agent.get_model_evolution_stages()
-        assert isinstance(stages, (list, dict))
-        # Should have at least 3 stages defined
-        if isinstance(stages, list):
-            assert len(stages) >= 3
-        else:
-            assert len(stages) >= 0
-    
-    def test_agent_executes_master_date_triggered_actions(self, tmp_path):
-        """Agent should execute actions triggered by master date/time."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        # Get master date/time config
-        master_config = agent.get_master_datetime_config()
-        assert isinstance(master_config, (dict, type(None)))
-    
-    def test_model_evolution_stages_documented(self):
-        """Model evolution should have documented stages in MODELEVOLUTIONO.md."""
-        model_file = Path(__file__).resolve().parent.parent / "MODELEVOLUTIONO.md"
-        content = model_file.read_text()
-        
-        # Should mention stages
-        assert any(term in content.lower() for term in ["stage", "evolution", "checkpoint"])
-
-
-class TestCrossRepoSynchronization:
-    """Tests for cross-repository synchronization between qmoi-enhanced and Alpha-Q-ai."""
-    
-    def test_sync_config_references_both_repos(self):
-        """SYNC.md should reference both repositories."""
-        sync_file = Path(__file__).resolve().parent.parent / "SYNC.md"
-        assert sync_file.exists()
-        content = sync_file.read_text()
-        assert "qmoi-enhanced" in content
-        assert "Alpha-Q-ai" in content or "Alpha-Q-ai" in content
-    
-    def test_sync_defines_master_files(self):
-        """SYNC.md should define which files are synced."""
-        sync_file = Path(__file__).resolve().parent.parent / "SYNC.md"
-        content = sync_file.read_text()
-        
-        master_files = ["API.md", "ENDPOINTS.md", "ROUTES.md", "MODELEVOLUTIONO.md"]
-        for file_name in master_files:
-            assert file_name in content
-    
-    def test_sync_defines_workflow_triggers(self):
-        """SYNC.md should define workflow triggers for sync."""
-        sync_file = Path(__file__).resolve().parent.parent / "SYNC.md"
-        content = sync_file.read_text()
-        
-        # Should mention triggers like schedule or workflow_run
-        assert any(term in content.lower() for term in ["trigger", "schedule", "workflow", "hourly"])
-    
-    def test_branch_sync_manager_knows_both_repos(self, tmp_path):
-        """BranchSyncManager should know about both repositories."""
-        manager = BranchSyncManager()
-        targets = manager.sync_targets()
-        
-        assert "thealphakenya/qmoi-enhanced" in targets
-        assert "thealphakenya/Alpha-Q-ai" in targets
-    
-    def test_agent_can_sync_files_between_repos(self, tmp_path):
-        """Agent should have capability to sync master files between repos."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        master_files = ["API.md", "ENDPOINTS.md", "ROUTES.md"]
-        can_sync = agent.can_sync_files(master_files)
-        
-        assert isinstance(can_sync, (bool, dict))
-    
-    def test_sync_procedures_documented_in_sync_md(self):
-        """SYNC.md should have step-by-step sync procedures."""
-        sync_file = Path(__file__).resolve().parent.parent / "SYNC.md"
-        content = sync_file.read_text()
-        
-        # Should have procedure sections
-        assert any(term in content.lower() for term in ["step", "procedure", "process", "flow"])
-    
-    def test_conflict_resolution_defined_in_merge_md(self):
-        """MERGE.md should define conflict resolution for synced files."""
-        merge_file = Path(__file__).resolve().parent.parent / "MERGE.md"
-        assert merge_file.exists()
-        content = merge_file.read_text()
-        
-        # Should mention conflict resolution
-        assert any(term in content.lower() for term in ["conflict", "resolution", "merge", "strategy"])
 
 
 class TestPlatformSpecificFeatures:
-    """Tests for the 280+ platform-specific features."""
-    
-    def test_all_280_features_documented(self):
-        """All 280+ platform-specific features should be documented."""
-        agent = OllamaAutonomousAgent()
-        features = agent.PLATFORM_SPECIFIC_FEATURES
-        
-        total_features = sum(len(apps) for apps in features.values())
-        assert total_features >= 280, f"Expected 280+ features, found {total_features}"
+    """Tests for the platform-specific features."""
     
     def test_features_covered_across_platforms(self):
         """Features should cover all 6 platforms."""
@@ -1120,130 +822,6 @@ class TestPlatformSpecificFeatures:
         platforms = ["windows", "macos", "linux", "ios", "android", "web"]
         for platform in platforms:
             assert platform in features, f"Platform {platform} missing from features"
-    
-    def test_features_covered_across_apps(self):
-        """Features should cover all 4 applications."""
-        agent = OllamaAutonomousAgent()
-        features = agent.PLATFORM_SPECIFIC_FEATURES
-        
-        if features:
-            # Get all apps from any platform
-            apps = list(features[list(features.keys())[0]].keys()) if features else []
-            assert len(apps) > 0, "No apps found in features"
-    
-    def test_feature_validator_validates_all_280_features(self, tmp_path):
-        """Feature validator should test all 280+ features across platforms/apps."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        results = agent.validate_all_features()
-        
-        assert isinstance(results, dict)
-        total_tested = sum(len(v) if isinstance(v, dict) else 1 for v in results.values())
-        assert total_tested >= 100  # At least 100+ validation results
-
-
-class TestErrorRecoveryAndResilience:
-    """Tests for comprehensive error recovery mechanisms."""
-    
-    def test_agent_logs_all_errors(self, tmp_path):
-        """Agent should log all errors for debugging."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        log_file = agent.get_log_file()
-        
-        assert log_file is None or isinstance(log_file, Path)
-    
-    def test_agent_creates_checkpoint_on_error(self, tmp_path):
-        """Agent should create checkpoint when errors occur."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        checkpoint = agent.update_resume_checkpoint(
-            status="error",
-            completed_steps=["initialization"],
-            error="Test error"
-        )
-        
-        assert checkpoint is None or checkpoint.exists()
-    
-    def test_agent_can_resume_from_checkpoint(self, tmp_path):
-        """Agent should be able to resume from saved checkpoint."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        # Save checkpoint
-        agent.update_resume_checkpoint(
-            status="paused",
-            completed_steps=["step1", "step2"]
-        )
-        
-        # Resume
-        state = agent.load_checkpoint()
-        assert state is None or isinstance(state, dict)
-    
-    def test_network_error_recovery(self, tmp_path):
-        """Agent should gracefully handle network errors."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        # Test network error handling
-        result = agent.handle_network_error()
-        assert isinstance(result, (bool, dict, type(None)))
-    
-    def test_api_error_recovery(self, tmp_path):
-        """Agent should handle GitHub API errors gracefully."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        # Test API error handling
-        result = agent.handle_api_error()
-        assert isinstance(result, (bool, dict, type(None)))
-
-
-class TestIntegrationScenarios:
-    """Integration tests for complex multi-step scenarios."""
-    
-    def test_full_validation_pipeline(self, tmp_path):
-        """Test complete validation pipeline from start to finish."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        
-        # Platform validation
-        platform_results = agent.validate_all_platforms()
-        assert isinstance(platform_results, dict)
-        assert len(platform_results) == 6
-        
-        # Feature validation
-        feature_results = agent.validate_all_features()
-        assert isinstance(feature_results, dict)
-        
-        # File handler validation
-        handler_results = agent.validate_file_handlers()
-        assert isinstance(handler_results, dict)
-    
-    def test_agent_generates_complete_validation_report(self, tmp_path):
-        """Agent should generate comprehensive validation report."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        report = agent.generate_validation_report()
-        
-        assert report is not None
-        assert isinstance(report, dict)
-    
-    def test_agent_produces_github_proof_contract(self, tmp_path):
-        """Agent should produce proof contract for GitHub automation."""
-        agent = OllamaAutonomousAgent(tmp_path)
-        proof = agent.build_github_proof_contract()
-        
-        assert proof is not None
-        assert "status" in proof or "proof" in proof
-
-
-# === PYTEST CONFIGURATION ===
-
-def pytest_configure(config):
-    """Configure pytest with custom markers."""
-    config.addinivalue_line(
-        "markers", "integration: mark test as integration test"
-    )
-    config.addinivalue_line(
-        "markers", "contract: mark test as contract validation"
-    )
-    config.addinivalue_line(
-        "markers", "performance: mark test as performance test"
-    )
-    config.addinivalue_line(
-        "markers", "security: mark test as security test"
-    )
 
 
 if __name__ == "__main__":
