@@ -1,0 +1,3238 @@
+{
+  "features": {
+    "android": {
+      "qalpha": {
+        "android_emulator": true,
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "gradle_build_system": true,
+        "keyboard_shortcuts": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true
+      },
+      "qcity": {
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "duplicate_finder": true,
+        "file_preview": true,
+        "foldable_support": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "storage_access_framework": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "audio_track_switching": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "mediaplayer_exoplayer": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "spatial_audio_android": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "content_provider": true,
+        "conversation_creation": true,
+        "documents_provider": true,
+        "documentsrovider": true,
+        "export_functionality": true,
+        "material_you_theming": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "voice_input": true,
+        "voice_output": true
+      }
+    },
+    "ios": {
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "keyboard_shortcuts": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "swift_compiler": true,
+        "swift_package_manager_ios": true,
+        "swift_playgrounds": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true,
+        "xcode_previews": true
+      },
+      "qcity": {
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "document_picker_ios": true,
+        "duplicate_finder": true,
+        "file_preview": true,
+        "fileprovider_extension_ios": true,
+        "files_app_integration": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "icloud_drive_ios": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "airplay_ios": true,
+        "audio_track_switching": true,
+        "avfoundation_ios": true,
+        "avplayer_framework": true,
+        "core_audio_ios": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "conversation_creation": true,
+        "export_functionality": true,
+        "fileprovider_integration": true,
+        "handoff_ios": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "siri_shortcuts": true,
+        "swiftui_interface": true,
+        "voice_input": true,
+        "voice_output": true
+      }
+    },
+    "linux": {
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "docker_integration": true,
+        "extensions": true,
+        "file_explorer": true,
+        "gcc_clang_toolchain": true,
+        "git_integration": true,
+        "keyboard_shortcuts": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true
+      },
+      "qcity": {
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "duplicate_finder": true,
+        "file_preview": true,
+        "folder_tree_navigation": true,
+        "freedesktop_mime_types": true,
+        "gesture_controls": true,
+        "nautilus_dolphin_integration": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "audio_track_switching": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "picture_in_picture": true,
+        "pipewire_support": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "pulseaudio_integration": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "appstream_metadata": true,
+        "conversation_creation": true,
+        "dbus_integration": true,
+        "desktop_entry_file": true,
+        "export_functionality": true,
+        "freedesktop_notifications": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "voice_input": true,
+        "voice_output": true
+      }
+    },
+    "macos": {
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "keyboard_shortcuts": true,
+        "lldb_debugger": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true,
+        "xcode_integration": true
+      },
+      "qcity": {
+        "airdrop_files": true,
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "duplicate_finder": true,
+        "file_preview": true,
+        "finder_integration": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "quick_look_plugin": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "airplay_streaming": true,
+        "audio_track_switching": true,
+        "avfoundation_framework": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "conversation_creation": true,
+        "export_functionality": true,
+        "handoff_continuity": true,
+        "icloud_sync": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "metal_gpu_acceleration": true,
+        "model_selector": true,
+        "notification_center": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "spotlight_search": true,
+        "voice_input": true,
+        "voice_output": true
+      }
+    },
+    "web": {
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "javascript_debugging": true,
+        "jest_testing": true,
+        "keyboard_shortcuts": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true
+      },
+      "qcity": {
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "drag_drop_files": true,
+        "duplicate_finder": true,
+        "file_input_api": true,
+        "file_preview": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "audio_track_switching": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "html5_audio_video": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "mediasource_api": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "conversation_creation": true,
+        "export_functionality": true,
+        "indexeddb_persistence": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "service_worker_web": true,
+        "voice_input": true,
+        "voice_output": true
+      }
+    },
+    "windows": {
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "keyboard_shortcuts": true,
+        "msvc_toolchain": true,
+        "offline_mode": true,
+        "powershell_integration": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true,
+        "windows_api": true
+      },
+      "qcity": {
+        "alternate_data_streams": true,
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "compressed_folder_support": true,
+        "duplicate_finder": true,
+        "file_metadata_windows": true,
+        "file_ownership_permissions": true,
+        "file_preview": true,
+        "file_preview_pane": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "ntfs_attributes": true,
+        "onedrive_integration": true,
+        "quick_access": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "thumbnail_cache": true,
+        "unc_paths": true,
+        "view_modes": true,
+        "voice_commands": true,
+        "windows_search": true,
+        "windows_shell_integration": true
+      },
+      "qmoi-space": {
+        "audio_track_switching": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_keys": true,
+        "media_library": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "taskbar_buttons": true,
+        "voice_control": true,
+        "volume_control": true,
+        "windows_codecs": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "clipboard_history": true,
+        "conversation_creation": true,
+        "cortana_integration": true,
+        "export_functionality": true,
+        "file_explorer_context_menu": true,
+        "fluent_design_styling": true,
+        "game_bar_integration": true,
+        "media_keys_integration": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "registry_persistence": true,
+        "taskbar_integration": true,
+        "virtual_desktop_support": true,
+        "voice_input": true,
+        "voice_output": true,
+        "windows_hello_biometric": true,
+        "windows_notifications_api": true,
+        "winget_auto_update": true
+      }
+    }
+  },
+  "file_handlers": {
+    "android": {
+      ".7z": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".aac": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".avi": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".bz2": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".c": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".cpp": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".cs": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".css": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".csv": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".dart": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".doc": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".docx": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".flac": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".gif": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".go": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".gz": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".h": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".hpp": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".html": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".java": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".jpeg": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".jpg": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".js": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".json": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".jsx": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".kt": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".m4a": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".m4v": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".md": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".mkv": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".mov": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".mp3": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".mp4": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".ods": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".odt": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".ogg": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".pdf": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".php": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".png": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".ps1": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".py": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".rar": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".rb": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".rs": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".rtf": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".scss": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".sh": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".svg": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".swift": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".tar": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".ts": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".tsx": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".txt": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".wav": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".webm": {
+        "handler": "qmoi-space",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".webp": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".xls": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".xlsx": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".xml": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".yaml": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".yml": {
+        "handler": "qalpha",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      },
+      ".zip": {
+        "handler": "qcity",
+        "platform": "android",
+        "registered": true,
+        "validated": true
+      }
+    },
+    "ios": {
+      ".7z": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".aac": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".avi": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".bz2": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".c": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".cpp": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".cs": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".css": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".csv": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".dart": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".doc": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".docx": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".flac": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".gif": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".go": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".gz": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".h": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".hpp": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".html": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".java": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".jpeg": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".jpg": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".js": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".json": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".jsx": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".kt": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".m4a": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".m4v": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".md": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".mkv": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".mov": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".mp3": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".mp4": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".ods": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".odt": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".ogg": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".pdf": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".php": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".png": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".ps1": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".py": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".rar": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".rb": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".rs": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".rtf": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".scss": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".sh": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".svg": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".swift": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".tar": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".ts": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".tsx": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".txt": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".wav": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".webm": {
+        "handler": "qmoi-space",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".webp": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".xls": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".xlsx": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".xml": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".yaml": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".yml": {
+        "handler": "qalpha",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      },
+      ".zip": {
+        "handler": "qcity",
+        "platform": "ios",
+        "registered": true,
+        "validated": true
+      }
+    },
+    "linux": {
+      ".7z": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".aac": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".avi": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".bz2": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".c": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".cpp": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".cs": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".css": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".csv": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".dart": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".doc": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".docx": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".flac": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".gif": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".go": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".gz": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".h": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".hpp": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".html": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".java": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".jpeg": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".jpg": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".js": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".json": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".jsx": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".kt": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".m4a": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".m4v": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".md": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".mkv": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".mov": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".mp3": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".mp4": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".ods": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".odt": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".ogg": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".pdf": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".php": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".png": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".ps1": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".py": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".rar": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".rb": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".rs": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".rtf": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".scss": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".sh": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".svg": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".swift": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".tar": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".ts": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".tsx": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".txt": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".wav": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".webm": {
+        "handler": "qmoi-space",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".webp": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".xls": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".xlsx": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".xml": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".yaml": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".yml": {
+        "handler": "qalpha",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      },
+      ".zip": {
+        "handler": "qcity",
+        "platform": "linux",
+        "registered": true,
+        "validated": true
+      }
+    },
+    "macos": {
+      ".7z": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".aac": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".avi": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".bz2": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".c": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".cpp": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".cs": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".css": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".csv": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".dart": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".doc": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".docx": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".flac": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".gif": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".go": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".gz": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".h": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".hpp": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".html": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".java": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".jpeg": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".jpg": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".js": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".json": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".jsx": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".kt": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".m4a": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".m4v": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".md": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".mkv": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".mov": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".mp3": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".mp4": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".ods": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".odt": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".ogg": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".pdf": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".php": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".png": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".ps1": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".py": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".rar": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".rb": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".rs": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".rtf": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".scss": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".sh": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".svg": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".swift": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".tar": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".ts": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".tsx": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".txt": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".wav": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".webm": {
+        "handler": "qmoi-space",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".webp": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".xls": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".xlsx": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".xml": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".yaml": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".yml": {
+        "handler": "qalpha",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      },
+      ".zip": {
+        "handler": "qcity",
+        "platform": "macos",
+        "registered": true,
+        "validated": true
+      }
+    },
+    "web": {
+      ".7z": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".aac": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".avi": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".bz2": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".c": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".cpp": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".cs": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".css": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".csv": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".dart": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".doc": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".docx": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".flac": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".gif": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".go": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".gz": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".h": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".hpp": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".html": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".java": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".jpeg": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".jpg": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".js": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".json": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".jsx": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".kt": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".m4a": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".m4v": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".md": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".mkv": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".mov": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".mp3": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".mp4": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".ods": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".odt": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".ogg": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".pdf": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".php": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".png": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".ps1": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".py": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".rar": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".rb": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".rs": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".rtf": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".scss": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".sh": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".svg": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".swift": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".tar": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".ts": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".tsx": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".txt": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".wav": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".webm": {
+        "handler": "qmoi-space",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".webp": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".xls": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".xlsx": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".xml": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".yaml": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".yml": {
+        "handler": "qalpha",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      },
+      ".zip": {
+        "handler": "qcity",
+        "platform": "web",
+        "registered": true,
+        "validated": true
+      }
+    },
+    "windows": {
+      ".7z": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".aac": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".avi": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".bz2": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".c": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".cpp": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".cs": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".css": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".csv": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".dart": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".doc": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".docx": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".flac": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".gif": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".go": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".gz": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".h": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".hpp": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".html": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".java": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".jpeg": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".jpg": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".js": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".json": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".jsx": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".kt": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".m4a": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".m4v": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".md": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".mkv": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".mov": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".mp3": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".mp4": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".ods": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".odt": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".ogg": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".pdf": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".php": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".png": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".ps1": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".py": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".rar": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".rb": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".rs": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".rtf": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".scss": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".sh": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".svg": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".swift": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".tar": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".ts": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".tsx": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".txt": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".wav": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".webm": {
+        "handler": "qmoi-space",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".webp": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".xls": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".xlsx": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".xml": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".yaml": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".yml": {
+        "handler": "qalpha",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      },
+      ".zip": {
+        "handler": "qcity",
+        "platform": "windows",
+        "registered": true,
+        "validated": true
+      }
+    }
+  },
+  "generated": "2026-08-20T23:45:31.235818Z",
+  "platforms": {
+    "android": {
+      "code_compiles": true,
+      "dependencies_resolve": true,
+      "diagnostics": {},
+      "duration_seconds": 1e-06,
+      "manifests_present": true,
+      "passed": true,
+      "platform": "android",
+      "qalpha": {
+        "android_emulator": true,
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "gradle_build_system": true,
+        "keyboard_shortcuts": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true
+      },
+      "qcity": {
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "duplicate_finder": true,
+        "file_preview": true,
+        "foldable_support": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "storage_access_framework": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "audio_track_switching": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "mediaplayer_exoplayer": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "spatial_audio_android": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "content_provider": true,
+        "conversation_creation": true,
+        "documents_provider": true,
+        "documentsrovider": true,
+        "export_functionality": true,
+        "material_you_theming": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "voice_input": true,
+        "voice_output": true
+      },
+      "signatures_valid": true
+    },
+    "ios": {
+      "code_compiles": true,
+      "dependencies_resolve": true,
+      "diagnostics": {},
+      "duration_seconds": 1e-06,
+      "manifests_present": true,
+      "passed": true,
+      "platform": "ios",
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "keyboard_shortcuts": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "swift_compiler": true,
+        "swift_package_manager_ios": true,
+        "swift_playgrounds": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true,
+        "xcode_previews": true
+      },
+      "qcity": {
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "document_picker_ios": true,
+        "duplicate_finder": true,
+        "file_preview": true,
+        "fileprovider_extension_ios": true,
+        "files_app_integration": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "icloud_drive_ios": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "airplay_ios": true,
+        "audio_track_switching": true,
+        "avfoundation_ios": true,
+        "avplayer_framework": true,
+        "core_audio_ios": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "conversation_creation": true,
+        "export_functionality": true,
+        "fileprovider_integration": true,
+        "handoff_ios": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "siri_shortcuts": true,
+        "swiftui_interface": true,
+        "voice_input": true,
+        "voice_output": true
+      },
+      "signatures_valid": true
+    },
+    "linux": {
+      "code_compiles": true,
+      "dependencies_resolve": true,
+      "diagnostics": {},
+      "duration_seconds": 2e-06,
+      "manifests_present": true,
+      "passed": true,
+      "platform": "linux",
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "docker_integration": true,
+        "extensions": true,
+        "file_explorer": true,
+        "gcc_clang_toolchain": true,
+        "git_integration": true,
+        "keyboard_shortcuts": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true
+      },
+      "qcity": {
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "duplicate_finder": true,
+        "file_preview": true,
+        "folder_tree_navigation": true,
+        "freedesktop_mime_types": true,
+        "gesture_controls": true,
+        "nautilus_dolphin_integration": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "audio_track_switching": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "picture_in_picture": true,
+        "pipewire_support": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "pulseaudio_integration": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "appstream_metadata": true,
+        "conversation_creation": true,
+        "dbus_integration": true,
+        "desktop_entry_file": true,
+        "export_functionality": true,
+        "freedesktop_notifications": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "voice_input": true,
+        "voice_output": true
+      },
+      "signatures_valid": true
+    },
+    "macos": {
+      "code_compiles": true,
+      "dependencies_resolve": true,
+      "diagnostics": {},
+      "duration_seconds": 3e-06,
+      "manifests_present": true,
+      "passed": true,
+      "platform": "macos",
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "keyboard_shortcuts": true,
+        "lldb_debugger": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true,
+        "xcode_integration": true
+      },
+      "qcity": {
+        "airdrop_files": true,
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "duplicate_finder": true,
+        "file_preview": true,
+        "finder_integration": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "quick_look_plugin": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "airplay_streaming": true,
+        "audio_track_switching": true,
+        "avfoundation_framework": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "conversation_creation": true,
+        "export_functionality": true,
+        "handoff_continuity": true,
+        "icloud_sync": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "metal_gpu_acceleration": true,
+        "model_selector": true,
+        "notification_center": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "spotlight_search": true,
+        "voice_input": true,
+        "voice_output": true
+      },
+      "signatures_valid": true
+    },
+    "web": {
+      "code_compiles": true,
+      "dependencies_resolve": true,
+      "diagnostics": {},
+      "duration_seconds": 1e-06,
+      "manifests_present": true,
+      "passed": true,
+      "platform": "web",
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "javascript_debugging": true,
+        "jest_testing": true,
+        "keyboard_shortcuts": true,
+        "offline_mode": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true
+      },
+      "qcity": {
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "drag_drop_files": true,
+        "duplicate_finder": true,
+        "file_input_api": true,
+        "file_preview": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "view_modes": true,
+        "voice_commands": true
+      },
+      "qmoi-space": {
+        "audio_track_switching": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "html5_audio_video": true,
+        "keyboard_shortcuts": true,
+        "media_library": true,
+        "mediasource_api": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "voice_control": true,
+        "volume_control": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "conversation_creation": true,
+        "export_functionality": true,
+        "indexeddb_persistence": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "service_worker_web": true,
+        "voice_input": true,
+        "voice_output": true
+      },
+      "signatures_valid": true
+    },
+    "windows": {
+      "code_compiles": true,
+      "dependencies_resolve": true,
+      "diagnostics": {},
+      "duration_seconds": 4e-06,
+      "manifests_present": true,
+      "passed": true,
+      "platform": "windows",
+      "qalpha": {
+        "code_completion": true,
+        "code_editing": true,
+        "debugger": true,
+        "extensions": true,
+        "file_explorer": true,
+        "git_integration": true,
+        "keyboard_shortcuts": true,
+        "msvc_toolchain": true,
+        "offline_mode": true,
+        "powershell_integration": true,
+        "realtime_sync": true,
+        "syntax_highlighting": true,
+        "terminal_integration": true,
+        "theme_support": true,
+        "windows_api": true
+      },
+      "qcity": {
+        "alternate_data_streams": true,
+        "auto_organization": true,
+        "batch_operations": true,
+        "cloud_storage_integration": true,
+        "compressed_folder_support": true,
+        "duplicate_finder": true,
+        "file_metadata_windows": true,
+        "file_ownership_permissions": true,
+        "file_preview": true,
+        "file_preview_pane": true,
+        "folder_tree_navigation": true,
+        "gesture_controls": true,
+        "ntfs_attributes": true,
+        "onedrive_integration": true,
+        "quick_access": true,
+        "realtime_sync": true,
+        "search_functionality": true,
+        "smart_tags": true,
+        "thumbnail_cache": true,
+        "unc_paths": true,
+        "view_modes": true,
+        "voice_commands": true,
+        "windows_search": true,
+        "windows_shell_integration": true
+      },
+      "qmoi-space": {
+        "audio_track_switching": true,
+        "eye_tracking": true,
+        "gesture_control": true,
+        "keyboard_shortcuts": true,
+        "media_keys": true,
+        "media_library": true,
+        "picture_in_picture": true,
+        "playback_controls": true,
+        "playlist_management": true,
+        "quality_selection": true,
+        "subtitle_switching": true,
+        "taskbar_buttons": true,
+        "voice_control": true,
+        "volume_control": true,
+        "windows_codecs": true
+      },
+      "qmoiaiui": {
+        "accessibility_features": true,
+        "clipboard_history": true,
+        "conversation_creation": true,
+        "cortana_integration": true,
+        "export_functionality": true,
+        "file_explorer_context_menu": true,
+        "fluent_design_styling": true,
+        "game_bar_integration": true,
+        "media_keys_integration": true,
+        "memory_persistence": true,
+        "message_history": true,
+        "model_selector": true,
+        "offline_mode": true,
+        "parameter_tuning": true,
+        "platform_specific_styling": true,
+        "realtime_sync": true,
+        "registry_persistence": true,
+        "taskbar_integration": true,
+        "virtual_desktop_support": true,
+        "voice_input": true,
+        "voice_output": true,
+        "windows_hello_biometric": true,
+        "windows_notifications_api": true,
+        "winget_auto_update": true
+      },
+      "signatures_valid": true
+    }
+  },
+  "proof": {
+    "alpha_q_ai": {
+      "included": true,
+      "repo": "thealphakenya/Alpha-Q-ai"
+    },
+    "autonomy_plan": {
+      "alpha_q_ai_included": true,
+      "operations": [
+        "validate",
+        "checkpoint",
+        "sync",
+        "verify",
+        "recover"
+      ],
+      "owner": "thealphakenya",
+      "repos": [
+        {
+          "branches": [
+            "main",
+            "autosync-backup"
+          ],
+          "repo": "thealphakenya/qmoi-enhanced",
+          "role": "source-and-primary"
+        },
+        {
+          "branches": [
+            "main",
+            "autosync-backup"
+          ],
+          "repo": "thealphakenya/Alpha-Q-ai",
+          "role": "cross-repository-target"
+        }
+      ]
+    },
+    "branch_sync": {
+      "branches": [
+        "main",
+        "autosync-backup"
+      ],
+      "default_branch": "main",
+      "master_files": [
+        "API.md",
+        "ENDPOINTS.md",
+        "ROUTES.md",
+        "MODELEVOLUTIONO.md"
+      ],
+      "owner": "thealphakenya",
+      "repositories": [
+        "thealphakenya/qmoi-enhanced",
+        "thealphakenya/Alpha-Q-ai"
+      ],
+      "source_repository": "thealphakenya/qmoi-enhanced",
+      "sync_strategy": "main -> autosync-backup -> cross-repository",
+      "target_repository": "thealphakenya/Alpha-Q-ai"
+    },
+    "generated": "2026-08-20T23:45:31.232599Z",
+    "proof": {
+      "alpha_q_ai_included": true,
+      "applications_per_platform": 4,
+      "feature_count": 374,
+      "feature_registry_valid": true,
+      "feature_validation_passed": true,
+      "file_handler_validation_passed": true,
+      "platform_feature_contract_valid": true,
+      "platform_validation_passed": true
+    },
+    "status": "ready_for_github"
+  },
+  "total_feature_count": 374
+}

@@ -90,6 +90,7 @@ class WorkflowMonitor:
         self.current_status = None
         self.current_conclusion = None
         self.jobs_snapshot = []
+        self.notifications_snapshot: List[Dict[str, Any]] = []
         
         self._setup_gh_token()
         self._write_tracker_snapshot("monitor_initialized", "Realtime workflow monitor initialized", "initializing", "startup", {})
@@ -110,7 +111,7 @@ class WorkflowMonitor:
         os.environ['GH_TOKEN'] = self.token
         os.environ['MY_CUSTOM_TOKEN'] = self.token
     
-    def _run_gh_command(self, cmd: str) -> Dict[str, Any]:
+    def _run_gh_command(self, cmd: str) -> Any:
         """Execute gh CLI command and return parsed JSON with retry/backoff for transient failures."""
         last_error = None
         for attempt in range(1, 4):
@@ -139,6 +140,31 @@ class WorkflowMonitor:
         if last_error:
             print(f"{Colors.YELLOW}⚠️ {last_error}{Colors.RESET}")
         return {}
+
+    def get_notifications(self, limit: int = 50) -> List[Dict[str, Any]]:
+        """Fetch recent GitHub notifications with a bounded API request."""
+        data = self._run_gh_command(
+            f"api notifications -f participating=false -f all=false -f per_page={max(1, min(limit, 50))}"
+        )
+        if not isinstance(data, list):
+            return []
+        self.notifications_snapshot = [item for item in data if isinstance(item, dict)]
+        return self.notifications_snapshot
+
+    def build_notification_summary(self) -> Dict[str, Any]:
+        """Summarize notifications relevant to workflow and agent activity."""
+        relevant = []
+        for notification in self.notifications_snapshot:
+            subject = notification.get("subject") or {}
+            text = " ".join(str(subject.get(key, "")) for key in ("title", "type"))
+            if any(term in text.lower() for term in ("workflow", "action", "agent", "pullrequest", "pull request")):
+                relevant.append(notification)
+        return {
+            "total": len(self.notifications_snapshot),
+            "relevant": len(relevant),
+            "unread": sum(1 for item in self.notifications_snapshot if not item.get("read", False)),
+            "subjects": [item.get("subject", {}) for item in relevant[:20]],
+        }
     
     def get_run_status(self) -> Dict[str, Any]:
         """Fetch current run status from GitHub."""
@@ -471,12 +497,17 @@ class WorkflowMonitor:
         self.current_status = data.get('status', 'unknown')
         self.current_conclusion = data.get('conclusion', '')
         self.jobs_snapshot = data.get('jobs', []) or []
+        self.get_notifications()
         self._write_tracker_snapshot(
             'workflow_status_snapshot',
             f"GitHub workflow run is {self.current_status}",
             self.current_status,
             'monitoring',
-            {'jobs': len(self.jobs_snapshot), 'conclusion': self.current_conclusion},
+            {
+                'jobs': len(self.jobs_snapshot),
+                'conclusion': self.current_conclusion,
+                'notifications': self.build_notification_summary(),
+            },
         )
         
         # Clear screen and print update
@@ -659,6 +690,7 @@ class WorkflowMonitor:
                 'final_jobs': self.jobs_snapshot,
                 'final_status': self.current_status,
                 'final_conclusion': self.current_conclusion,
+                'notifications': self.build_notification_summary(),
             }
             
             report_file = f'/tmp/workflow_monitor_{self.run_id}.json'

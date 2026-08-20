@@ -69,6 +69,8 @@ on:
 
 env:
 
+  QSTEPS_MANAGER: "qsteps-v1"
+
   QMOI_AUTO_HEAL: ${{ github.event.inputs.auto_heal || 'true' }}
 
   QMOI_DEBUG: ${{ github.event.inputs.debug_mode || 'false' }}
@@ -78,6 +80,8 @@ env:
   QMOI_RETRY_DELAY_BASE: "5"
 
   QMOI_TIMEOUT: "300"
+
+  QSTEPS_MAX_ATTEMPTS: "3"
 
   AUTO_HEAL_ON_ERROR: "true"
 
@@ -160,6 +164,9 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
+      - name: Q Steps Manager start pre-flight
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:pre-flight-checks"
+
 
       # ========================================================================
       # PYTHON
@@ -172,6 +179,26 @@ jobs:
           cache: pip
           cache-dependency-path: |
             requirements.txt
+
+      - name: Validate workflow and agent sources
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python3 -m pip install --disable-pip-version-check -q pyyaml
+          python3 -m py_compile scripts/*.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          workflows = sorted(Path('.github/workflows').glob('*.y*ml'))
+          if not workflows:
+              raise SystemExit('No workflow files found')
+          for workflow in workflows:
+              document = yaml.safe_load(workflow.read_text(encoding='utf-8'))
+              if document.get('env', {}).get('QSTEPS_MANAGER') != 'qsteps-v1':
+                  raise SystemExit(f'Missing QSTEPS_MANAGER in {workflow}')
+          print(f'Validated {len(workflows)} workflow contracts and all Python scripts')
+          PY
 
 
       # ========================================================================
@@ -295,6 +322,11 @@ jobs:
             echo "::warning::Git index appears unhealthy."
             echo "Rebuilding Git index..."
 
+            INDEX_BACKUP="${RUNNER_TEMP}/qmoi-git-index-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.bak"
+            if [ -f .git/index ]; then
+              cp .git/index "${INDEX_BACKUP}"
+            fi
+
             rm -f .git/index
 
             git reset --quiet HEAD
@@ -303,6 +335,9 @@ jobs:
               echo "Git index successfully rebuilt."
               HEALING_PERFORMED=true
             else
+              if [ -f "${INDEX_BACKUP:-}" ]; then
+                cp "${INDEX_BACKUP}" .git/index
+              fi
               echo "::error::Unable to recover Git index."
               exit 1
             fi
@@ -406,6 +441,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Q Steps Manager start comprehensive validation
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:comprehensive-validation"
 
 
       # ========================================================================
@@ -677,6 +715,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Q Steps Manager start enhanced tests
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:enhanced-test-execution"
 
 
       # ========================================================================
@@ -975,6 +1016,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Q Steps Manager start agent dispatch
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:trigger-agent-on-success"
+
 
       # ========================================================================
       # SETUP PYTHON
@@ -1214,6 +1258,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Q Steps Manager start final report
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:final-status-report"
 
 
       # ========================================================================

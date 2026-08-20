@@ -1,7 +1,7 @@
 # GitHub Workflows - Complete Reference Guide (Enhanced v2.0)
 
-**Last Updated:** 2025-01-10  
-**Version:** 2.0 (Enhanced with Auto-Healing & Advanced Orchestration)  
+**Last Updated:** 2026-08-20
+**Version:** 3.0 (Q Steps Manager lifecycle contract)
 **Total Workflows:** 8  
 **Total Jobs:** 25+  
 **Status:** 🟢 Production Ready
@@ -374,6 +374,56 @@ Meta-workflow that tracks all workflow executions and maintains workflow health 
 - Alert maintainers
 - Suggest improvements
 
+## 8. Master Orchestrator
+**File**: `.github/workflows/ollama-master-orchestrator.yml`
+**Triggers**: `workflow_dispatch`, schedule every 12 hours
+
+### Jobs and Steps
+
+| Job | Steps and evidence |
+|---|---|
+| `pre-flight-checks` | Checkout full history; Q Steps Manager start; setup Python; health check; Git/index recovery; dependency and required-file checks; upload diagnostics. |
+| `comprehensive-validation` | Run platform validation; feature validation; file-handler validation; generate proof and reports; publish artifacts. |
+| `enhanced-test-execution` | Run the complete pytest suite; capture failures and test artifacts. |
+| `trigger-agent-on-success` | Confirm upstream outputs; dispatch the autonomous agent only after successful validation. |
+| `final-status-report` | Aggregate job conclusions; write the final summary and preserve evidence with `always()`. |
+
+The orchestrator is finite. Its Q Steps Manager contract bounds retries, records checkpoints, and leaves fetch, merge, commit, and push operations explicit. The master orchestrator also validates every workflow YAML contract and compiles every Python script during pre-flight. Its auto-healing path backs up a broken Git index before reconstruction and restores that backup if recovery validation fails. Each executable orchestrator job emits a stable Q Steps Manager start event, while `if: always()` report and artifact steps preserve evidence on failure.
+
+## Q Steps Manager Contract (All Workflows)
+
+All eight workflow files declare `QSTEPS_MANAGER: qsteps-v1`. Repository-executing jobs invoke `scripts/qsteps_manager.py` after trusted checkout; observer-only jobs retain their no-checkout security boundary and must record the same lifecycle fields through their API/job-summary step. The manager evidence is append-only in `ollamatracks/qsteps.jsonl`, with the latest state in `ollamatracks/QSTEPS_STATUS.json`.
+
+### Required lifecycle for every job step
+
+1. Identify stable name, owner, inputs, dependencies, timeout, and expected output.
+2. Record `start` before execution and `complete` or `fail` after execution.
+3. Checkpoint progress and preserve logs/artifacts with `if: always()`.
+4. Classify failures and retry only after a productive, bounded repair.
+5. Circuit-break repeated fingerprints and escalate ambiguous Git or merge decisions.
+6. Verify outputs and publish timestamp, run, attempt, duration, status, and evidence path.
+
+### Current workflow inventory
+
+| Workflow | Jobs | Manager purpose |
+|---|---|---|
+| `ollama-pr-validation.yml` | `workflow-integrity`, `validate-platforms`, `validate-features`, `test-suite`, `validate-documentation`, `final-validation`, `trigger-agent-on-success` | Validate source, platforms, features, tests, docs, and proof before merge. |
+| `ollama-autonomous-agent.yml` | `ollama-agent` | Run the bounded Python step manager and durable autonomous tracking. |
+| `ollama-autonomous-agent-realtime-monitor.yml` | `reconcile` | Reconcile GitHub run/job/check state without executing PR code. |
+| `pr-monitor.yml` | `collect-workflow-metrics`, `monitor-and-report`, `final-status` | Measure run status, elapsed time, pass rate, and PR reporting. |
+| `branch-sync.yml` | `sync-branches` | Inspect and synchronize both repositories under explicit Git boundaries. |
+| `auto-merge-automated-pr.yml` | `enable-auto-merge` | Inspect eligible PR metadata and request GitHub auto-merge only after checks. |
+| `workflow-tracker.yml` | `track-status`, `post-status-comment` | Track validation lifecycle and publish status comments. |
+| `ollama-master-orchestrator.yml` | `pre-flight-checks`, `comprehensive-validation`, `enhanced-test-execution`, `trigger-agent-on-success`, `final-status-report` | Coordinate the complete finite validation pipeline. |
+
+### Operational metrics
+
+Track pass rate, retry rate, repeated-failure count, step duration, stale checkpoint age, artifact availability, API pagination limits, and unresolved manual-review count. Workflow run timestamps and conclusions remain GitHub API truth; this document is the contract and inventory, while generated run evidence belongs in `ollamatracks/`.
+
+## Cross-Repository Merge Audit
+
+`qmoi-enhanced` and `Alpha-Q-ai` are both in scope. Before an explicit merge, the agent must collect read-only snapshots of all reachable branches and tracked files, attribute commits to author/email/time/subject/hash, inspect all reachable QMOI history and at least four recent Alpha-Q-ai commits, compare paths and feature inventories, and append the plan/result to `MERGE.md`. A missing remote or unperformed network operation is reported as pending, never as completed.
+
 ---
 
 ## Workflow Orchestration Flow
@@ -499,6 +549,8 @@ Via `scripts/resilience_auto_healing.py`:
 
 ## Monitoring & Observability
 
+The realtime monitor (`scripts/realtime_workflow_monitor.py`) polls workflow runs and jobs, records the autonomous-agent phase, and performs a bounded GitHub notifications API read on every refresh. Workflow or agent notifications are summarized as unread/relevant subjects in tracker snapshots and final reports. Missing notification scope degrades to an empty notification list while workflow monitoring continues.
+
 ### Tracking Files (Real-Time)
 Located in `ollamatracks/`:
 1. **STATE.txt** - Current state snapshot
@@ -508,6 +560,8 @@ Located in `ollamatracks/`:
 5. **telemetry.jsonl** - Append-only event log (41+ events)
 6. **monitoring_summary.json** - Aggregated statistics
 7. **TRACKING_INDEX.txt** - Schema documentation
+
+The Q Steps Manager additionally writes `qsteps.jsonl`, `QSTEPS_STATUS.json`, `QSTEPS_CHECKPOINT.json`, and `QSTEPS_SUMMARY.json` for step identity, current status, resumable state, failure category, attempt budget, duration, and evidence references.
 8. **LAST_RECONCILIATION.txt** - Last reconciliation timestamp
 
 ### Artifacts (30-Day Retention)
@@ -648,6 +702,11 @@ Located in `ollamatracks/`:
 
 - `scripts/ollama_autonomous_agent.py` - Main agent orchestrator
 - `scripts/resilience_auto_healing.py` - Error recovery module
+- `scripts/qsteps_manager.py` - Bounded lifecycle, checkpoint, classification, deduplication, and evidence adapter
+- `scripts/realtime_workflow_monitor.py` - GitHub run/job/check and notification monitor with durable snapshots
+- `scripts/autonomous_runner.py` - Autonomous execution entrypoint
+- `scripts/advanced_agent_healer.py` - Advanced recovery and remediation helpers
+- `scripts/github_auto_setup.py` - GitHub repository/workflow setup helpers
 - `tests/test_ollama_autonomous_agent.py` - Agent tests (106 tests)
 - `tests/test_enhanced_tracking_and_workflows.py` - Workflow tests (31 tests)
 - `tests/test_ollama_enhanced_features.py` - Feature tests (44 tests)

@@ -21,6 +21,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  QSTEPS_MANAGER: "qsteps-v1"
   SOURCE_REPOSITORY: thealphakenya/qmoi-enhanced
   TARGET_REPOSITORY: thealphakenya/Alpha-Q-ai
 
@@ -55,6 +56,9 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+
+      - name: Q Steps Manager start branch synchronization
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:sync-branches"
 
       # ======================================================================
       # 2. Configure Git

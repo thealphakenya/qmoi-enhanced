@@ -6,6 +6,7 @@ Tests tracking system, telemetry, workflow integration, and PR validation eviden
 
 import json
 import pytest
+import subprocess
 from pathlib import Path
 import sys
 from datetime import datetime, timezone
@@ -209,6 +210,138 @@ class TestWorkflowIntegration:
         content = pr_status.read_text()
         # PR status should have been updated
         assert len(content) > 0
+
+    def test_q_steps_manager_records_lifecycle(self, tmp_path):
+        """The runner adapter must persist lifecycle evidence."""
+        script = Path(__file__).parent.parent / "scripts" / "qsteps_manager.py"
+        environment = {**__import__("os").environ, "QSTEPS_TRACK_DIR": str(tmp_path)}
+        for action in ("start", "complete", "fail"):
+            result = subprocess.run(
+                [sys.executable, str(script), action, "--step", "test-step"],
+                env=environment,
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            assert result.returncode == 0
+        records = (tmp_path / "qsteps.jsonl").read_text().splitlines()
+        assert [json.loads(line)["status"] for line in records] == [
+            "running", "completed", "failed"
+        ]
+
+    def test_q_steps_manager_writes_bounded_evidence(self, tmp_path):
+        """Lifecycle records expose recovery metadata and durable projections."""
+        script = Path(__file__).parent.parent / "scripts" / "qsteps_manager.py"
+        environment = {**__import__("os").environ, "QSTEPS_TRACK_DIR": str(tmp_path)}
+        result = subprocess.run(
+            [sys.executable, str(script), "fail", "--step", "contract-check",
+             "--error", "validation contract failed", "--evidence", "report.json",
+             "--duration-seconds", "1.5", "--attempt", "2"],
+            env=environment, check=False, capture_output=True, text=True,
+        )
+        assert result.returncode == 0
+        record = json.loads((tmp_path / "qsteps.jsonl").read_text().strip())
+        assert record["error_category"] == "validation-contract"
+        assert record["duration_seconds"] == 1.5
+        assert record["evidence"] == "report.json"
+        assert record["attempt"] == 2
+        assert (tmp_path / "QSTEPS_CHECKPOINT.json").exists()
+        assert (tmp_path / "QSTEPS_SUMMARY.json").exists()
+
+    def test_q_steps_manager_records_metadata_and_summary_counts(self, tmp_path):
+        """Manager records run identity and aggregate evidence for operators."""
+        script = Path(__file__).parent.parent / "scripts" / "qsteps_manager.py"
+        environment = {
+            **__import__("os").environ,
+            "QSTEPS_TRACK_DIR": str(tmp_path),
+            "GITHUB_REPOSITORY": "owner/repo",
+            "GITHUB_SHA": "abc123",
+            "GITHUB_STEP_SUMMARY": str(tmp_path / "step-summary.md"),
+        }
+        result = subprocess.run(
+            [sys.executable, str(script), "heartbeat", "--step", "monitor"],
+            env=environment, check=False, capture_output=True, text=True,
+        )
+        assert result.returncode == 0
+        record = json.loads((tmp_path / "qsteps.jsonl").read_text().strip())
+        assert record["run_metadata"]["repository"] == "owner/repo"
+        summary = json.loads((tmp_path / "QSTEPS_SUMMARY.json").read_text())
+        assert summary["events_total"] == 1
+        assert "monitor" in (tmp_path / "step-summary.md").read_text()
+
+    def test_q_steps_manager_rejects_attempts_over_budget(self, tmp_path):
+        """A retry beyond the declared budget fails closed."""
+        script = Path(__file__).parent.parent / "scripts" / "qsteps_manager.py"
+        environment = {**__import__("os").environ, "QSTEPS_TRACK_DIR": str(tmp_path), "QSTEPS_MAX_ATTEMPTS": "2"}
+        result = subprocess.run(
+            [sys.executable, str(script), "fail", "--step", "retry", "--attempt", "3"],
+            env=environment, check=False, capture_output=True, text=True,
+        )
+        assert result.returncode != 0
+
+    def test_q_steps_manager_run_wraps_command_lifecycle(self, tmp_path):
+        """The run adapter owns command execution and records its outcome."""
+        script = Path(__file__).parent.parent / "scripts" / "qsteps_manager.py"
+        environment = {**__import__("os").environ, "QSTEPS_TRACK_DIR": str(tmp_path)}
+        result = subprocess.run(
+            [sys.executable, str(script), "run", "--step", "wrapped", "--",
+             sys.executable, "-c", "pass"],
+            env=environment, check=False, capture_output=True, text=True,
+        )
+        assert result.returncode == 0
+        records = [json.loads(line) for line in (tmp_path / "qsteps.jsonl").read_text().splitlines()]
+        assert [record["status"] for record in records] == ["running", "completed"]
+        assert records[-1]["duration_seconds"] >= 0
+
+    def test_q_steps_manager_run_preserves_command_failure(self, tmp_path):
+        """The wrapper records failures without hiding the command exit code."""
+        script = Path(__file__).parent.parent / "scripts" / "qsteps_manager.py"
+        environment = {**__import__("os").environ, "QSTEPS_TRACK_DIR": str(tmp_path)}
+        result = subprocess.run(
+            [sys.executable, str(script), "run", "--step", "failed-command", "--",
+             sys.executable, "-c", "raise SystemExit(7)"],
+            env=environment, check=False, capture_output=True, text=True,
+        )
+        assert result.returncode == 7
+        records = [json.loads(line) for line in (tmp_path / "qsteps.jsonl").read_text().splitlines()]
+        assert records[-1]["status"] == "failed"
+        assert records[-1]["error"] == "command exited 7"
+
+    def test_every_workflow_declares_q_steps_manager(self):
+        """All GitHub workflows must opt into the shared step contract."""
+        import yaml
+
+        workflow_dir = Path(__file__).parent.parent / ".github" / "workflows"
+        workflows = sorted(workflow_dir.glob("*.y*ml"))
+        assert workflows
+        for workflow in workflows:
+            document = yaml.safe_load(workflow.read_text())
+            assert document["env"]["QSTEPS_MANAGER"] == "qsteps-v1", workflow
+
+    def test_master_orchestrator_covers_each_executable_job(self):
+        """The master workflow must initialize lifecycle evidence for every job."""
+        import yaml
+
+        workflow = Path(__file__).parent.parent / ".github" / "workflows" / "ollama-master-orchestrator.yml"
+        document = yaml.safe_load(workflow.read_text())
+        expected = {"pre-flight-checks", "comprehensive-validation", "enhanced-test-execution", "trigger-agent-on-success", "final-status-report"}
+        assert expected.issubset(document["jobs"])
+        text = workflow.read_text()
+        for job in expected:
+            assert job in text
+        assert text.count("Q Steps Manager start") >= len(expected)
+
+    def test_hosted_workflow_contract_validator_passes(self, tmp_path):
+        """The contract validator used by GitHub must pass locally."""
+        from validate_workflow_contracts import validate
+
+        report = validate(Path(__file__).parent.parent / ".github" / "workflows")
+        assert report["ready_for_github"] is True
+        assert report["workflow_count"] == 8
+        assert report["job_count"] >= 20
+        output = tmp_path / "workflow_contract.json"
+        output.write_text(json.dumps(report), encoding="utf-8")
+        assert json.loads(output.read_text())["errors"] == []
 
 
 class TestPlatformDiagnostics:

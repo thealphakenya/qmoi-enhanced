@@ -54,6 +54,7 @@ on:
 # ============================================================================
 
 env:
+  QSTEPS_MANAGER: "qsteps-v1"
   MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
   GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
   GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
@@ -122,6 +123,9 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Q Steps Manager start integrity validation
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:workflow-integrity"
+
 
       # ----------------------------------------------------------------------
       # VERIFY ARTIFACT ACTION VERSIONS
@@ -165,6 +169,24 @@ jobs:
             'actions/(upload|download)-artifact@v[0-9]+' \
             .github/workflows \
             || true
+
+      - name: Validate all hosted workflow contracts
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python3 -m pip install --disable-pip-version-check -q pyyaml
+          mkdir -p ollamatracks
+          python3 scripts/validate_workflow_contracts.py \
+            --output ollamatracks/workflow_contract.json
+
+      - name: Upload hosted workflow contract
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hosted-workflow-contract
+          path: ollamatracks/workflow_contract.json
+          if-no-files-found: warn
+          retention-days: 30
 
 
       # ----------------------------------------------------------------------
@@ -257,6 +279,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Q Steps Manager start integrity validation
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:workflow-integrity"
 
 
       # ----------------------------------------------------------------------
@@ -395,6 +420,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Q Steps Manager start platform validation
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:validate-platforms"
 
 
       # ----------------------------------------------------------------------
@@ -538,6 +566,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Q Steps Manager start test suite
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:test-suite"
 
 
       # ----------------------------------------------------------------------
@@ -744,6 +775,9 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Q Steps Manager start documentation validation
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:validate-documentation"
+
 
       # ----------------------------------------------------------------------
       # DOCUMENTATION FILES
@@ -864,6 +898,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Q Steps Manager start final validation
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:final-validation"
 
 
       # ----------------------------------------------------------------------

@@ -61,6 +61,7 @@ permissions:
 # ============================================================================
 
 env:
+  QSTEPS_MANAGER: "qsteps-v1"
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
 
 # ============================================================================

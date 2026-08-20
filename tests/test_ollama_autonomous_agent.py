@@ -415,6 +415,27 @@ class TestWorkflowMonitor:
         assert "runNumber" not in issued
         assert "number" in issued
 
+    def test_workflow_monitor_tracks_github_notifications(self, monkeypatch):
+        """Workflow and agent notifications are included in live monitoring state."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+
+        def fake_gh_command(command):
+            if command.startswith("api notifications"):
+                return [
+                    {"id": "1", "read": False, "subject": {"title": "Ollama workflow failed", "type": "CheckSuite"}},
+                    {"id": "2", "read": True, "subject": {"title": "Issue discussion", "type": "Issue"}},
+                ]
+            return {"status": "in_progress", "conclusion": None, "jobs": []}
+
+        monkeypatch.setattr(monitor, "_run_gh_command", fake_gh_command)
+        notifications = monitor.get_notifications()
+        summary = monitor.build_notification_summary()
+
+        assert len(notifications) == 2
+        assert summary["total"] == 2
+        assert summary["unread"] == 1
+        assert summary["relevant"] == 1
+
 
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""
@@ -879,6 +900,30 @@ class TestResilienceAndAutoHealing:
         
         assert healing_result["healed"] is True
         assert "fixed" in healing_result["action"].lower() or "normalized" in healing_result["action"].lower()
+
+    def test_safe_repair_is_validated_reversible_and_scoped(self, tmp_path):
+        """Repairs must validate, create a backup, and reject outside paths."""
+        agent = OllamaAutonomousAgent(tmp_path)
+        target = tmp_path / "config.txt"
+        target.write_text("old", encoding="utf-8")
+        result = agent.repair_file_safely(target, "new", validator=lambda text: (_ for _ in ()).throw(ValueError("bad")) if text == "bad" else None)
+        assert result["repaired"] is True
+        assert target.read_text(encoding="utf-8") == "new"
+        assert Path(result["backup"]).exists()
+        outside = agent.repair_file_safely(tmp_path.parent / "outside.txt", "x")
+        assert outside["reason"] == "path-outside-repository"
+
+    def test_safe_rename_requires_available_destination(self, tmp_path):
+        """Renames are bounded, auditable, and never overwrite an existing file."""
+        agent = OllamaAutonomousAgent(tmp_path)
+        source = tmp_path / "old.txt"
+        destination = tmp_path / "new.txt"
+        source.write_text("content", encoding="utf-8")
+        assert agent.safe_rename_file(source, destination)["renamed"] is True
+        occupied = tmp_path / "occupied.txt"
+        occupied.write_text("keep", encoding="utf-8")
+        blocked = agent.safe_rename_file(destination, occupied)
+        assert blocked["reason"] == "destination-exists"
 
 
 class TestPlatformSpecificFeatures:

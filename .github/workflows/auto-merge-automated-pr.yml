@@ -72,6 +72,7 @@ permissions:
 # ============================================================================
 
 env:
+  QSTEPS_MANAGER: "qsteps-v1"
   # Prefer the custom token when configured, otherwise use the GitHub token
   # supplied to the workflow.
   GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}

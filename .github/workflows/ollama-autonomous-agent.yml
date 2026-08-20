@@ -125,6 +125,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
+  QSTEPS_MANAGER: "qsteps-v1"
   TRACK_DIR: ollamatracks
   TRACK_SCHEMA_VERSION: "7.4"
   TRACKING_PROTOCOL: "ollamatracks-v7-self-healing"
@@ -159,6 +160,9 @@ jobs:
           persist-credentials: true
           clean: true
           ref: ${{ github.event.repository.default_branch }}
+
+      - name: Q Steps Manager start autonomous agent
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:ollama-agent"
 
       - name: Runner and environment preflight
         id: runner_preflight

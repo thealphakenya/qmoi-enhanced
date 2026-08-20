@@ -183,6 +183,8 @@ concurrency:
 
 env:
 
+  QSTEPS_MANAGER: "qsteps-v1"
+
   TRACK_DIR: ollamatracks
 
   TRACK_SCHEMA_VERSION: "4.0"
@@ -235,6 +237,9 @@ jobs:
           persist-credentials: true
           ref: ${{ github.event.repository.default_branch }}
 
+      - name: Q Steps Manager start realtime reconciliation
+        run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:reconcile"
+
 
       # ======================================================================
       # INITIALIZE TRACKING SYSTEM
@@ -254,6 +259,10 @@ jobs:
           touch "$TRACK_DIR/PR_STATUS.txt"
           touch "$TRACK_DIR/LAST_RECONCILIATION.txt"
           touch "$TRACK_DIR/telemetry.jsonl"
+
+          python3 -m pip install --disable-pip-version-check -q pyyaml
+          python3 scripts/validate_workflow_contracts.py \
+            --output "$TRACK_DIR/workflow_contract.json"
 
           if [ ! -s "$TRACK_DIR/TRACKING_INDEX.txt" ]; then
             cat > "$TRACK_DIR/TRACKING_INDEX.txt" <<'EOF'

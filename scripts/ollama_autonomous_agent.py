@@ -78,8 +78,10 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import (
@@ -3295,6 +3297,73 @@ All timestamps use UTC ISO-8601 format.
             ),
             "path": str(file_path),
         }
+
+    def repair_file_safely(
+        self,
+        path: Path | str,
+        content: str,
+        *,
+        validator: Optional[Callable[[str], None]] = None,
+        dry_run: bool = False,
+    ) -> Dict[str, Any]:
+        """Apply a validated, auditable, reversible text repair."""
+        file_path = Path(path).resolve()
+        if not file_path.is_relative_to(self.root_dir):
+            return {"repaired": False, "reason": "path-outside-repository", "path": str(file_path)}
+        if validator is not None:
+            try:
+                validator(content)
+            except Exception as exc:
+                return {"repaired": False, "reason": "post-edit-validation-failed", "error": str(exc)}
+        original = file_path.read_text(encoding="utf-8") if file_path.exists() else None
+        if original == content:
+            return {"repaired": True, "changed": False, "path": str(file_path)}
+        backup = self.tracker_dir / "recovery_backups" / f"{file_path.name}.{utc_now().strftime('%Y%m%dT%H%M%SZ')}"
+        if original is not None:
+            backup.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(file_path, backup)
+        if not dry_run:
+            file_path.parent.mkdir(parents=True, exist_ok=True)
+            with tempfile.NamedTemporaryFile("w", encoding="utf-8", dir=file_path.parent, delete=False) as stream:
+                stream.write(content)
+                temporary = Path(stream.name)
+            temporary.replace(file_path)
+        self.record_tracker_event(
+            "file_repair_planned" if dry_run else "file_repaired",
+            f"{'Planned' if dry_run else 'Applied'} safe repair for {file_path}",
+            status="planned" if dry_run else "recovered",
+            phase="recovery",
+            details={"path": str(file_path), "backup": str(backup) if original is not None else None},
+        )
+        return {"repaired": True, "changed": True, "dry_run": dry_run, "path": str(file_path), "backup": str(backup) if original is not None else None}
+
+    def safe_rename_file(
+        self,
+        source: Path | str,
+        destination: Path | str,
+        *,
+        dry_run: bool = False,
+    ) -> Dict[str, Any]:
+        """Rename a repository file only when both paths pass safety checks."""
+        source_path = Path(source).resolve()
+        destination_path = Path(destination).resolve()
+        if not source_path.is_relative_to(self.root_dir) or not destination_path.is_relative_to(self.root_dir):
+            return {"renamed": False, "reason": "path-outside-repository"}
+        if not source_path.exists():
+            return {"renamed": False, "reason": "source-missing", "source": str(source_path)}
+        if destination_path.exists():
+            return {"renamed": False, "reason": "destination-exists", "destination": str(destination_path)}
+        if not dry_run:
+            destination_path.parent.mkdir(parents=True, exist_ok=True)
+            source_path.rename(destination_path)
+        self.record_tracker_event(
+            "file_rename_planned" if dry_run else "file_renamed",
+            f"{'Planned' if dry_run else 'Applied'} safe rename {source_path} -> {destination_path}",
+            status="planned" if dry_run else "recovered",
+            phase="recovery",
+            details={"source": str(source_path), "destination": str(destination_path)},
+        )
+        return {"renamed": True, "dry_run": dry_run, "source": str(source_path), "destination": str(destination_path)}
 
     def handle_network_error(
         self,
