@@ -125,7 +125,7 @@ concurrency:
 
 env:
   TRACK_DIR: ollamatracks
-  TRACK_SCHEMA_VERSION: "7.2"
+  TRACK_SCHEMA_VERSION: "7.3"
   TRACKING_PROTOCOL: "ollamatracks-v7-self-healing"
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
   AGENT_SCRIPT: "scripts/ollama_autonomous_agent.py"
@@ -277,6 +277,9 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
+          echo "============================================================"
+          echo "UNIVERSAL AUTONOMOUS FILE & WORKFLOW AUTO-FIX ENGINE"
+          echo "============================================================"
           mkdir -p "$TRACK_DIR"
           repair_log="$TRACK_DIR/REPAIR_LOG.txt"
           changed=0
@@ -285,15 +288,19 @@ jobs:
             find .github/workflows -type f \( -name '*.yml' -o -name '*.yaml' \) | while read -r wf; do
               before=$(sha256sum "$wf" | awk '{print $1}')
               
-              sed -i -E 's#actions/upload-artifact@v[1-3]#actions/upload-artifact@v4#g' "$wf"
-              sed -i -E 's#actions/download-artifact@v[1-3]#actions/download-artifact@v4#g' "$wf"
+              # Fix deprecated or invalid CLI command usage across all workflows
               sed -i 's/validate-all-platforms/validate-platforms/g' "$wf"
               sed -i 's/validate-all-features/validate-features/g' "$wf"
+
+              # Upgrade older actions to v4
+              sed -i -E 's#actions/upload-artifact@v[1-3]#actions/upload-artifact@v4#g' "$wf"
+              sed -i -E 's#actions/download-artifact@v[1-3]#actions/download-artifact@v4#g' "$wf"
 
               after=$(sha256sum "$wf" | awk '{print $1}')
               if [ "$before" != "$after" ]; then
                 changed=1
                 echo "$(date -u +%FT%TZ) | FIXED_WORKFLOW | $wf" >> "$repair_log"
+                echo "Automatically fixed workflow file: $wf"
               fi
             done
           fi
@@ -473,7 +480,7 @@ jobs:
             git reset --mixed HEAD
           fi
 
-      - name: Commit safe mechanical repairs
+      - name: Commit safe mechanical repairs and workflow updates
         id: safe_repair_commit
         if: |
           env.QMOI_AUTO_FIX == 'true' &&
@@ -486,7 +493,7 @@ jobs:
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "ci: autonomous self-healing and file error remediation [skip ci]" || true
+          git commit -m "ci: autonomous self-healing and automatic workflow remediation [skip ci]" || true
 
           branch="${{ github.event.repository.default_branch }}"
           for i in 1 2 3; do
