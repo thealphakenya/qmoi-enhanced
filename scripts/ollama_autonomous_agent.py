@@ -7,11 +7,6 @@ Durable validation, autonomous-agent orchestration, GitHub proof generation,
 cross-repository synchronization, realtime tracking, feature validation,
 memory/index generation, model-card generation, and resilience helpers.
 
-This module intentionally exposes a stable compatibility API used by:
-
-    tests/test_ollama_autonomous_agent.py
-    tests/test_ollama_enhanced_features.py
-
 Canonical feature registry shape:
 
     platform
@@ -19,7 +14,7 @@ Canonical feature registry shape:
             -> feature
                 -> bool
 
-The canonical platform feature contract contains exactly 293 feature entries:
+Canonical feature contract:
 
     Windows:  48
     macOS:    49
@@ -58,10 +53,6 @@ SUPPORTED_PLATFORMS = [
 
 PLATFORMS = SUPPORTED_PLATFORMS
 
-
-# IMPORTANT:
-# QMOI_APPS MUST remain a dictionary because the enhanced validation tests
-# explicitly use QMOI_APPS.keys(), QMOI_APPS.items(), etc.
 SUPPORTED_APPS: Dict[str, Dict[str, str]] = {
     "qmoiaiui": {
         "name": "QMOIAIUI",
@@ -81,6 +72,7 @@ SUPPORTED_APPS: Dict[str, Dict[str, str]] = {
     },
 }
 
+# Compatibility name used throughout the repository/tests.
 QMOI_APPS = SUPPORTED_APPS
 
 QMOI_REPOSITORY = "thealphakenya/qmoi-enhanced"
@@ -91,6 +83,15 @@ BACKUP_BRANCH = "autosync-backup"
 
 EXPECTED_TOTAL_FEATURES = 293
 MINIMUM_REQUIRED_FEATURES = 293
+
+EXPECTED_PLATFORM_FEATURE_COUNTS = {
+    "windows": 48,
+    "macos": 49,
+    "linux": 49,
+    "ios": 49,
+    "android": 49,
+    "web": 49,
+}
 
 
 # ============================================================================
@@ -114,6 +115,7 @@ def resolve_github_token() -> Optional[str]:
         "GH_TOKEN",
     ):
         value = os.environ.get(name)
+
         if value:
             return value
 
@@ -547,7 +549,7 @@ PLATFORM_REQUIRED_FEATURES: Dict[str, Dict[str, List[str]]] = {
     "android": {
         "qmoiaiui": [
             "content_provider",
-            "documentsrovider",
+            "documents_provider",
             "material_you_theming",
             "android_notifications",
             "jetpack_compose",
@@ -666,17 +668,21 @@ PLATFORM_REQUIRED_FEATURES: Dict[str, Dict[str, List[str]]] = {
 }
 
 
+# ============================================================================
+# FEATURE REGISTRY BUILDERS
+# ============================================================================
+
 def _build_platform_feature_matrix() -> Dict[str, Dict[str, List[str]]]:
     """
     Build the canonical feature matrix.
 
-    The returned structure is:
+    Structure:
 
         platform -> app -> list[feature]
 
-    Feature names are public API identifiers and are therefore not modified
-    with platform suffixes.
+    Feature names remain stable public API identifiers.
     """
+
     matrix: Dict[str, Dict[str, List[str]]] = {}
 
     for platform in SUPPORTED_PLATFORMS:
@@ -735,9 +741,8 @@ def _build_boolean_feature_registry() -> Dict[
                 }
             }
         }
-
-    This is the registry shape expected by the enhanced validation contract.
     """
+
     registry: Dict[str, Dict[str, Dict[str, bool]]] = {}
 
     for platform in SUPPORTED_PLATFORMS:
@@ -761,86 +766,311 @@ FEATURE_REGISTRY = PLATFORM_FEATURE_REGISTRY
 PLATFORM_FEATURES = PLATFORM_FEATURE_REGISTRY
 
 
+# ============================================================================
+# FEATURE REGISTRY VALIDATION
+# ============================================================================
+
 def get_total_platform_feature_count() -> int:
-    """Return the total number of canonical platform feature entries."""
-    return sum(
-        len(feature_map)
-        for platform_data in PLATFORM_FEATURE_REGISTRY.values()
-        for feature_map in platform_data.values()
-    )
+    """
+    Return the number of leaf feature entries in the canonical registry.
+
+    Canonical shape:
+
+        platform -> app -> feature -> bool
+    """
+
+    total = 0
+
+    for platform in SUPPORTED_PLATFORMS:
+        platform_data = PLATFORM_FEATURE_REGISTRY.get(
+            platform,
+            {},
+        )
+
+        if not isinstance(platform_data, Mapping):
+            continue
+
+        for app in QMOI_APPS:
+            feature_map = platform_data.get(
+                app,
+                {},
+            )
+
+            if not isinstance(feature_map, Mapping):
+                continue
+
+            total += len(feature_map)
+
+    return total
 
 
 def validate_feature_registry_shape() -> Dict[str, Any]:
     """
-    Validate the registry structure without relying on pytest.
+    Strictly validate the canonical feature registry.
 
-    Returns a structured diagnostic result.
+    Required shape:
+
+        platform
+            -> application
+                -> feature
+                    -> bool
+
+    Required platforms: 6
+    Required applications per platform: 4
+    Required total features: 293
     """
+
     errors: List[str] = []
 
-    if not isinstance(QMOI_APPS, dict):
-        errors.append("QMOI_APPS must be a dictionary.")
+    # ------------------------------------------------------------------
+    # QMOI_APPS
+    # ------------------------------------------------------------------
 
-    expected_platforms = set(SUPPORTED_PLATFORMS)
-    actual_platforms = set(PLATFORM_FEATURE_REGISTRY)
+    if not isinstance(QMOI_APPS, dict):
+        errors.append(
+            "QMOI_APPS must be a dictionary."
+        )
+
+    else:
+        expected_apps = {
+            "qmoiaiui",
+            "qcity",
+            "qmoi-space",
+            "qalpha",
+        }
+
+        actual_apps = set(
+            QMOI_APPS.keys()
+        )
+
+        if actual_apps != expected_apps:
+            errors.append(
+                "QMOI_APPS keys mismatch: "
+                f"expected {sorted(expected_apps)}, "
+                f"found {sorted(actual_apps)}"
+            )
+
+    # ------------------------------------------------------------------
+    # PLATFORM REGISTRY
+    # ------------------------------------------------------------------
+
+    if not isinstance(
+        PLATFORM_FEATURE_REGISTRY,
+        dict,
+    ):
+        errors.append(
+            "PLATFORM_FEATURE_REGISTRY must be a dictionary."
+        )
+
+        return {
+            "valid": False,
+            "errors": errors,
+            "platforms": 0,
+            "apps": len(QMOI_APPS),
+            "total_features": 0,
+            "expected_total_features": (
+                EXPECTED_TOTAL_FEATURES
+            ),
+            "platform_feature_counts": {},
+        }
+
+    expected_platforms = set(
+        SUPPORTED_PLATFORMS
+    )
+
+    actual_platforms = set(
+        PLATFORM_FEATURE_REGISTRY.keys()
+    )
 
     if actual_platforms != expected_platforms:
         errors.append(
-            "Feature registry platforms do not match SUPPORTED_PLATFORMS."
+            "Feature registry platforms mismatch: "
+            f"expected {sorted(expected_platforms)}, "
+            f"found {sorted(actual_platforms)}"
         )
 
-    expected_apps = set(QMOI_APPS)
+    # ------------------------------------------------------------------
+    # PLATFORM -> APP -> FEATURE -> BOOL
+    # ------------------------------------------------------------------
 
     for platform in SUPPORTED_PLATFORMS:
-        platform_data = PLATFORM_FEATURE_REGISTRY.get(platform)
 
-        if not isinstance(platform_data, dict):
+        platform_data = PLATFORM_FEATURE_REGISTRY.get(
+            platform
+        )
+
+        if not isinstance(
+            platform_data,
+            dict,
+        ):
             errors.append(
-                f"{platform}: registry entry must be a dictionary."
+                f"{platform}: platform registry "
+                "must be a dictionary."
             )
             continue
 
-        if set(platform_data) != expected_apps:
+        expected_apps = set(
+            QMOI_APPS.keys()
+        )
+
+        actual_apps = set(
+            platform_data.keys()
+        )
+
+        if actual_apps != expected_apps:
             errors.append(
-                f"{platform}: registry apps do not match QMOI_APPS."
+                f"{platform}: application keys mismatch: "
+                f"expected {sorted(expected_apps)}, "
+                f"found {sorted(actual_apps)}"
             )
-            continue
 
         for app in QMOI_APPS:
-            feature_map = platform_data.get(app)
 
-            if not isinstance(feature_map, dict):
+            feature_map = platform_data.get(
+                app
+            )
+
+            if not isinstance(
+                feature_map,
+                dict,
+            ):
                 errors.append(
-                    f"{platform}/{app}: feature map must be a dictionary."
+                    f"{platform}/{app}: "
+                    "feature map must be a dictionary."
                 )
                 continue
 
             for feature, value in feature_map.items():
-                if not isinstance(feature, str):
+
+                if not isinstance(
+                    feature,
+                    str,
+                ):
                     errors.append(
-                        f"{platform}/{app}: feature name is not a string."
+                        f"{platform}/{app}: "
+                        f"feature name must be str, got "
+                        f"{type(feature).__name__}."
                     )
 
-                if not isinstance(value, bool):
+                if not isinstance(
+                    value,
+                    bool,
+                ):
                     errors.append(
-                        f"{platform}/{app}/{feature}: value must be bool."
+                        f"{platform}/{app}/{feature}: "
+                        "feature value must be bool."
                     )
+
+    # ------------------------------------------------------------------
+    # EXACT FEATURE COUNT
+    # ------------------------------------------------------------------
 
     total = get_total_platform_feature_count()
 
     if total != EXPECTED_TOTAL_FEATURES:
         errors.append(
-            f"Expected {EXPECTED_TOTAL_FEATURES} features, found {total}."
+            f"Expected exactly "
+            f"{EXPECTED_TOTAL_FEATURES} feature entries, "
+            f"found {total}."
+        )
+
+    # ------------------------------------------------------------------
+    # PER-PLATFORM COUNTS
+    # ------------------------------------------------------------------
+
+    platform_counts: Dict[str, int] = {}
+
+    for platform in SUPPORTED_PLATFORMS:
+
+        platform_data = PLATFORM_FEATURE_REGISTRY.get(
+            platform,
+            {},
+        )
+
+        if isinstance(
+            platform_data,
+            dict,
+        ):
+            count = sum(
+                len(feature_map)
+                for feature_map in platform_data.values()
+                if isinstance(
+                    feature_map,
+                    dict,
+                )
+            )
+        else:
+            count = 0
+
+        platform_counts[platform] = count
+
+        expected_count = (
+            EXPECTED_PLATFORM_FEATURE_COUNTS[
+                platform
+            ]
+        )
+
+        if count != expected_count:
+            errors.append(
+                f"{platform}: expected "
+                f"{expected_count} features, "
+                f"found {count}."
+            )
+
+    # ------------------------------------------------------------------
+    # TOTAL FROM PLATFORM COUNTS
+    # ------------------------------------------------------------------
+
+    platform_total = sum(
+        platform_counts.values()
+    )
+
+    if platform_total != EXPECTED_TOTAL_FEATURES:
+        errors.append(
+            "Platform feature counts sum to "
+            f"{platform_total}, expected "
+            f"{EXPECTED_TOTAL_FEATURES}."
         )
 
     return {
         "valid": not errors,
         "errors": errors,
-        "platforms": len(SUPPORTED_PLATFORMS),
-        "apps": len(QMOI_APPS),
+        "platforms": len(
+            SUPPORTED_PLATFORMS
+        ),
+        "apps": len(
+            QMOI_APPS
+        ),
         "total_features": total,
-        "expected_total_features": EXPECTED_TOTAL_FEATURES,
+        "expected_total_features": (
+            EXPECTED_TOTAL_FEATURES
+        ),
+        "platform_feature_counts": (
+            platform_counts
+        ),
     }
+
+
+def assert_canonical_feature_contract() -> None:
+    """
+    Fail immediately if the source registry violates the canonical
+    293-feature contract.
+    """
+
+    result = validate_feature_registry_shape()
+
+    if not result["valid"]:
+        raise RuntimeError(
+            "Canonical feature registry validation failed:\n"
+            + "\n".join(
+                f"- {error}"
+                for error in result["errors"]
+            )
+        )
+
+
+# Validate the registry as soon as the module is imported.
+assert_canonical_feature_contract()
 
 
 # ============================================================================
@@ -851,7 +1081,7 @@ class PlatformSpecificFeatureValidator:
     """
     Validate features for one application on one platform.
 
-    Public compatibility contract:
+    Public contract:
 
         PlatformSpecificFeatureValidator(
             "qmoiaiui",
@@ -874,21 +1104,50 @@ class PlatformSpecificFeatureValidator:
         platform: str,
         workspace_dir: Path | str | None = None,
     ):
-        self.app_name = str(app_name).strip()
-        self.platform = str(platform).strip().lower()
-        self.workspace_dir = Path(workspace_dir or ".")
+        self.app_name = str(
+            app_name
+        ).strip()
 
-    def validate_all_features(self) -> Dict[str, bool]:
+        self.platform = str(
+            platform
+        ).strip().lower()
+
+        self.workspace_dir = Path(
+            workspace_dir or "."
+        )
+
+        if self.platform not in SUPPORTED_PLATFORMS:
+            raise ValueError(
+                f"Unsupported platform: "
+                f"{self.platform}"
+            )
+
+        if self.app_name not in QMOI_APPS:
+            raise ValueError(
+                f"Unsupported application: "
+                f"{self.app_name}"
+            )
+
+    def validate_all_features(
+        self,
+    ) -> Dict[str, bool]:
         """
         Return the canonical boolean feature map.
 
         IMPORTANT:
         This returns feature -> bool, not feature -> metadata.
         """
+
         return dict(
             PLATFORM_FEATURE_REGISTRY
-            .get(self.platform, {})
-            .get(self.app_name, {})
+            .get(
+                self.platform,
+                {},
+            )
+            .get(
+                self.app_name,
+                {},
+            )
         )
 
     def validate(self) -> Dict[str, Any]:
@@ -905,7 +1164,9 @@ class PlatformSpecificFeatureValidator:
             ),
         }
 
-    def validate_platforms(self) -> Dict[str, bool]:
+    def validate_platforms(
+        self,
+    ) -> Dict[str, bool]:
         """Compatibility alias."""
         return self.validate_all_features()
 
@@ -915,7 +1176,7 @@ class PlatformSpecificFeatureValidator:
 # ============================================================================
 
 class FeatureTester:
-    """Compatibility implementation for the application feature contract."""
+    """Compatibility implementation for application feature contracts."""
 
     QMOIAIUI_FEATURES = [
         "conversation_creation",
@@ -972,7 +1233,11 @@ class FeatureTester:
         "extensions",
     ]
 
-    def __init__(self, app: str, platform: str):
+    def __init__(
+        self,
+        app: str,
+        platform: str,
+    ):
         self.app = app
         self.platform = platform
 
@@ -990,27 +1255,37 @@ class FeatureTester:
             for feature in features
         }
 
-    def test_qmoiaiui_features(self) -> Dict[str, Any]:
+    def test_qmoiaiui_features(
+        self,
+    ) -> Dict[str, Any]:
         return self._build_feature_result(
             self.QMOIAIUI_FEATURES
         )
 
-    def test_qcity_features(self) -> Dict[str, Any]:
+    def test_qcity_features(
+        self,
+    ) -> Dict[str, Any]:
         return self._build_feature_result(
             self.QCITY_FEATURES
         )
 
-    def test_qmoi_space_features(self) -> Dict[str, Any]:
+    def test_qmoi_space_features(
+        self,
+    ) -> Dict[str, Any]:
         return self._build_feature_result(
             self.QMOI_SPACE_FEATURES
         )
 
-    def test_qalpha_features(self) -> Dict[str, Any]:
+    def test_qalpha_features(
+        self,
+    ) -> Dict[str, Any]:
         return self._build_feature_result(
             self.QALPHA_FEATURES
         )
 
-    def test_features(self) -> Dict[str, Any]:
+    def test_features(
+        self,
+    ) -> Dict[str, Any]:
         mapping = {
             "qmoiaiui": self.test_qmoiaiui_features,
             "qcity": self.test_qcity_features,
@@ -1018,7 +1293,9 @@ class FeatureTester:
             "qalpha": self.test_qalpha_features,
         }
 
-        method = mapping.get(self.app)
+        method = mapping.get(
+            self.app
+        )
 
         if method is None:
             return {}
@@ -1041,40 +1318,34 @@ class FileHandlerValidator:
         ".md": "qcity",
         ".rtf": "qcity",
         ".odt": "qcity",
-
         ".xls": "qcity",
         ".xlsx": "qcity",
         ".csv": "qcity",
         ".ods": "qcity",
-
         ".zip": "qcity",
         ".tar": "qcity",
         ".gz": "qcity",
         ".bz2": "qcity",
         ".7z": "qcity",
         ".rar": "qcity",
-
         ".mp3": "qmoi-space",
         ".wav": "qmoi-space",
         ".flac": "qmoi-space",
         ".aac": "qmoi-space",
         ".ogg": "qmoi-space",
         ".m4a": "qmoi-space",
-
         ".mp4": "qmoi-space",
         ".mkv": "qmoi-space",
         ".avi": "qmoi-space",
         ".mov": "qmoi-space",
         ".webm": "qmoi-space",
         ".m4v": "qmoi-space",
-
         ".png": "qcity",
         ".jpg": "qcity",
         ".jpeg": "qcity",
         ".gif": "qcity",
         ".webp": "qcity",
         ".svg": "qcity",
-
         ".py": "qalpha",
         ".js": "qalpha",
         ".ts": "qalpha",
@@ -1115,7 +1386,8 @@ class FileHandlerValidator:
                 "registered": True,
                 "validated": True,
             }
-            for extension, handler in self.FILE_TYPE_MAPPING.items()
+            for extension, handler
+            in self.FILE_TYPE_MAPPING.items()
         }
 
 
@@ -1126,10 +1398,21 @@ class FileHandlerValidator:
 class MemoryIndexGenerator:
     """Generate durable Markdown and JSON repository-memory indexes."""
 
-    def __init__(self, root_dir: Path | str):
-        self.root_dir = Path(root_dir)
-        self.index_path = self.root_dir / "MEMORY_INDEX.md"
-        self.json_path = self.root_dir / "memory_index.json"
+    def __init__(
+        self,
+        root_dir: Path | str,
+    ):
+        self.root_dir = Path(
+            root_dir
+        )
+
+        self.index_path = (
+            self.root_dir / "MEMORY_INDEX.md"
+        )
+
+        self.json_path = (
+            self.root_dir / "memory_index.json"
+        )
 
     def _tracked_files(self) -> List[str]:
         ignored = {
@@ -1147,12 +1430,15 @@ class MemoryIndexGenerator:
             return files
 
         for path in self.root_dir.rglob("*"):
+
             if not path.is_file():
                 continue
 
-            relative_parts = path.relative_to(
-                self.root_dir
-            ).parts
+            relative_parts = (
+                path.relative_to(
+                    self.root_dir
+                ).parts
+            )
 
             if any(
                 part in ignored
@@ -1171,7 +1457,10 @@ class MemoryIndexGenerator:
                     path.relative_to(
                         self.root_dir
                     )
-                ).replace("\\", "/")
+                ).replace(
+                    "\\",
+                    "/",
+                )
             )
 
         return sorted(files)
@@ -1220,9 +1509,17 @@ class MemoryIndexGenerator:
 class ModelCardGenerator:
     """Generate the repository model card."""
 
-    def __init__(self, root_dir: Path | str):
-        self.root_dir = Path(root_dir)
-        self.card_path = self.root_dir / "MODEL_CARD.md"
+    def __init__(
+        self,
+        root_dir: Path | str,
+    ):
+        self.root_dir = Path(
+            root_dir
+        )
+
+        self.card_path = (
+            self.root_dir / "MODEL_CARD.md"
+        )
 
     def generate_card(self) -> Path:
         content = """# QMOI Model Card
@@ -1277,6 +1574,17 @@ The feature contract covers:
 ## Canonical Feature Contract
 
 The canonical platform/application feature registry contains exactly 293 feature entries.
+
+Platform counts:
+
+- Windows: 48
+- macOS: 49
+- Linux: 49
+- iOS: 49
+- Android: 49
+- Web: 49
+
+Total: 293
 """
 
         safe_text_write(
@@ -1292,33 +1600,41 @@ The canonical platform/application feature registry contains exactly 293 feature
 # ============================================================================
 
 class WorkflowNormalizer:
-    """Normalize common whitespace problems without rewriting YAML semantics."""
+    """Normalize whitespace without rewriting YAML semantics."""
 
     @staticmethod
-    def normalize(content: str) -> str:
+    def normalize(
+        content: str,
+    ) -> str:
+
         if content is None:
             return ""
 
-        lines = str(content).splitlines()
+        lines = str(
+            content
+        ).splitlines()
 
-        while lines and not lines[0].strip():
+        while (
+            lines
+            and not lines[0].strip()
+        ):
             lines.pop(0)
 
         normalized: List[str] = []
 
         for line in lines:
+
             if not line.strip():
                 normalized.append("")
                 continue
 
-            # Do NOT blindly convert every 4-space indentation level to
-            # 2-space indentation. That can corrupt valid YAML structures.
-            #
-            # Instead, only remove trailing whitespace and preserve existing
-            # semantic indentation.
-            normalized.append(line.rstrip())
+            normalized.append(
+                line.rstrip()
+            )
 
-        return "\n".join(normalized)
+        return "\n".join(
+            normalized
+        )
 
 
 # ============================================================================
@@ -1341,22 +1657,41 @@ class BranchSyncManager:
     ]
 
     @classmethod
-    def required_branches(cls) -> List[str]:
-        return list(cls.REQUIRED_BRANCHES)
+    def required_branches(
+        cls,
+    ) -> List[str]:
+        return list(
+            cls.REQUIRED_BRANCHES
+        )
 
     @classmethod
-    def sync_targets(cls) -> List[str]:
-        return list(cls.REPOSITORIES)
+    def sync_targets(
+        cls,
+    ) -> List[str]:
+        return list(
+            cls.REPOSITORIES
+        )
 
     @classmethod
-    def build_sync_plan(cls) -> Dict[str, Any]:
+    def build_sync_plan(
+        cls,
+    ) -> Dict[str, Any]:
+
         return {
             "owner": cls.OWNER,
             "default_branch": DEFAULT_BRANCH,
-            "branches": list(cls.REQUIRED_BRANCHES),
-            "repositories": list(cls.REPOSITORIES),
-            "source_repository": QMOI_REPOSITORY,
-            "target_repository": ALPHA_Q_AI_REPOSITORY,
+            "branches": list(
+                cls.REQUIRED_BRANCHES
+            ),
+            "repositories": list(
+                cls.REPOSITORIES
+            ),
+            "source_repository": (
+                QMOI_REPOSITORY
+            ),
+            "target_repository": (
+                ALPHA_Q_AI_REPOSITORY
+            ),
             "master_files": [
                 "API.md",
                 "ENDPOINTS.md",
@@ -1376,10 +1711,16 @@ class BranchSyncManager:
 class CrossRepositoryAutonomyManager:
     """Build and execute safe cross-repository automation plans."""
 
-    def __init__(self, owner: str = "thealphakenya"):
+    def __init__(
+        self,
+        owner: str = "thealphakenya",
+    ):
         self.owner = owner
 
-    def build_autonomy_plan(self) -> Dict[str, Any]:
+    def build_autonomy_plan(
+        self,
+    ) -> Dict[str, Any]:
+
         repos = [
             {
                 "repo": QMOI_REPOSITORY,
@@ -1417,7 +1758,10 @@ class CrossRepositoryAutonomyManager:
         name: str,
         repo_path: Path | str,
     ) -> Dict[str, Any]:
-        repo = Path(repo_path)
+
+        repo = Path(
+            repo_path
+        )
 
         repo.mkdir(
             parents=True,
@@ -1427,6 +1771,7 @@ class CrossRepositoryAutonomyManager:
         changed_files: List[str] = []
 
         for path in repo.rglob("*"):
+
             if not path.is_file():
                 continue
 
@@ -1434,10 +1779,16 @@ class CrossRepositoryAutonomyManager:
                 content = path.read_text(
                     encoding="utf-8"
                 )
-            except (UnicodeDecodeError, OSError):
+            except (
+                UnicodeDecodeError,
+                OSError,
+            ):
                 continue
 
-            if "TODO: this is a stub prototype" not in content:
+            if (
+                "TODO: this is a stub prototype"
+                not in content
+            ):
                 continue
 
             replacement = (
@@ -1454,7 +1805,11 @@ class CrossRepositoryAutonomyManager:
             )
 
             changed_files.append(
-                str(path.relative_to(repo))
+                str(
+                    path.relative_to(
+                        repo
+                    )
+                )
             )
 
         return {
@@ -1471,13 +1826,23 @@ class CrossRepositoryAutonomyManager:
 # ============================================================================
 
 class AvatarIdentityValidator:
-    def __init__(self, identity: str):
+
+    def __init__(
+        self,
+        identity: str,
+    ):
         self.identity = identity
 
     def validate_identity(self) -> bool:
-        return self.identity.strip().lower() == "qmoi"
+        return (
+            self.identity.strip().lower()
+            == "qmoi"
+        )
 
-    def generate_identity_report(self) -> Dict[str, Any]:
+    def generate_identity_report(
+        self,
+    ) -> Dict[str, Any]:
+
         valid = self.validate_identity()
 
         return {
@@ -1489,6 +1854,7 @@ class AvatarIdentityValidator:
 
 
 class AvatarWindowMonitor:
+
     def __init__(
         self,
         identity: str,
@@ -1497,7 +1863,10 @@ class AvatarWindowMonitor:
         self.identity = identity
         self.window_title = window_title
 
-    def generate_animation_snapshot(self) -> Dict[str, Any]:
+    def generate_animation_snapshot(
+        self,
+    ) -> Dict[str, Any]:
+
         return {
             "status": "live",
             "timestamp": utc_iso(),
@@ -1505,7 +1874,8 @@ class AvatarWindowMonitor:
                 "identity": self.identity,
                 "title": self.window_title,
                 "identity_matches_qmoi": (
-                    self.identity.strip().lower() == "qmoi"
+                    self.identity.strip().lower()
+                    == "qmoi"
                 ),
                 "realtime_render": True,
                 "animation": "active",
@@ -1514,10 +1884,17 @@ class AvatarWindowMonitor:
 
 
 class AvatarSelectionNavigator:
-    def __init__(self, identity: str):
+
+    def __init__(
+        self,
+        identity: str,
+    ):
         self.identity = identity
 
-    def get_catalog(self) -> List[Dict[str, Any]]:
+    def get_catalog(
+        self,
+    ) -> List[Dict[str, Any]]:
+
         return [
             {
                 "id": "qmoi",
@@ -1547,10 +1924,17 @@ class AvatarSelectionNavigator:
 
 
 class VoiceProfileSelector:
-    def __init__(self, identity: str):
+
+    def __init__(
+        self,
+        identity: str,
+    ):
         self.identity = identity
 
-    def available_voice_profiles(self) -> List[str]:
+    def available_voice_profiles(
+        self,
+    ) -> List[str]:
+
         return [
             "qmoi-default",
             "qmoi-guardian",
@@ -1562,8 +1946,10 @@ class VoiceProfileSelector:
         self,
         profile: str,
     ) -> Dict[str, Any]:
+
         available = (
-            profile in self.available_voice_profiles()
+            profile
+            in self.available_voice_profiles()
         )
 
         return {
@@ -1574,10 +1960,17 @@ class VoiceProfileSelector:
 
 
 class QMOIAvatarWindowStyle:
-    def __init__(self, mode: str = "live"):
+
+    def __init__(
+        self,
+        mode: str = "live",
+    ):
         self.mode = mode
 
-    def build_style_spec(self) -> Dict[str, Any]:
+    def build_style_spec(
+        self,
+    ) -> Dict[str, Any]:
+
         return {
             "window_title": "QMOI Avatar",
             "mode": self.mode,
@@ -1611,13 +2004,19 @@ class OllamaAutonomousAgent:
             complete structured validation result
     """
 
-    PLATFORM_SPECIFIC_FEATURES = PLATFORM_SPECIFIC_FEATURES
-    PLATFORM_FEATURE_REGISTRY = PLATFORM_FEATURE_REGISTRY
+    PLATFORM_SPECIFIC_FEATURES = (
+        PLATFORM_SPECIFIC_FEATURES
+    )
+
+    PLATFORM_FEATURE_REGISTRY = (
+        PLATFORM_FEATURE_REGISTRY
+    )
 
     def __init__(
         self,
         base_path: Path | str | None = None,
     ):
+
         self.root_dir = (
             Path(base_path).resolve()
             if base_path is not None
@@ -1630,8 +2029,11 @@ class OllamaAutonomousAgent:
         )
 
         self.validators = {
-            platform: PlatformValidator(platform)
-            for platform in SUPPORTED_PLATFORMS
+            platform: PlatformValidator(
+                platform
+            )
+            for platform
+            in SUPPORTED_PLATFORMS
         }
 
         self.feature_testers = {
@@ -1642,14 +2044,20 @@ class OllamaAutonomousAgent:
             for app in QMOI_APPS
         }
 
-        self.file_handler_validator = FileHandlerValidator()
-
-        self.memory_generator = MemoryIndexGenerator(
-            self.root_dir
+        self.file_handler_validator = (
+            FileHandlerValidator()
         )
 
-        self.model_card_generator = ModelCardGenerator(
-            self.root_dir
+        self.memory_generator = (
+            MemoryIndexGenerator(
+                self.root_dir
+            )
+        )
+
+        self.model_card_generator = (
+            ModelCardGenerator(
+                self.root_dir
+            )
         )
 
         self.cross_repo_manager = (
@@ -1657,7 +2065,8 @@ class OllamaAutonomousAgent:
         )
 
         self.tracker_dir = (
-            self.root_dir / "ollamatracks"
+            self.root_dir
+            / "ollamatracks"
         )
 
         self.tracker_dir.mkdir(
@@ -1666,35 +2075,41 @@ class OllamaAutonomousAgent:
         )
 
         self.current_status_path = (
-            self.tracker_dir / "CURRENT_STATUS.txt"
+            self.tracker_dir
+            / "CURRENT_STATUS.txt"
         )
 
         self.latest_activity_path = (
-            self.tracker_dir / "LATEST_ACTIVITY.txt"
+            self.tracker_dir
+            / "LATEST_ACTIVITY.txt"
         )
 
         self.state_path = (
-            self.tracker_dir / "STATE.txt"
+            self.tracker_dir
+            / "STATE.txt"
         )
 
         self.pr_status_path = (
-            self.tracker_dir / "PR_STATUS.txt"
+            self.tracker_dir
+            / "PR_STATUS.txt"
         )
 
         self.telemetry_path = (
-            self.tracker_dir / "telemetry.jsonl"
+            self.tracker_dir
+            / "telemetry.jsonl"
         )
 
         self.log_path = (
-            self.tracker_dir / "agent.log"
+            self.tracker_dir
+            / "agent.log"
         )
 
         self.resume_path = (
-            self.root_dir / "resumefromhere.txt"
+            self.root_dir
+            / "resumefromhere.txt"
         )
 
-        # Tests expect a fresh agent instance to start with an empty result
-        # dictionary.
+        # Fresh instances start with empty results.
         self.results: Dict[str, Any] = {}
 
         self._initialize_tracking()
@@ -1703,7 +2118,10 @@ class OllamaAutonomousAgent:
     # TRACKING
     # ========================================================================
 
-    def _initialize_tracking(self) -> None:
+    def _initialize_tracking(
+        self,
+    ) -> None:
+
         now = utc_iso()
 
         if not self.current_status_path.exists():
@@ -1736,9 +2154,15 @@ class OllamaAutonomousAgent:
         self._append_telemetry(
             "agent_startup",
             {
-                "root_dir": str(self.root_dir),
-                "platforms": list(SUPPORTED_PLATFORMS),
-                "apps": list(QMOI_APPS.keys()),
+                "root_dir": str(
+                    self.root_dir
+                ),
+                "platforms": list(
+                    SUPPORTED_PLATFORMS
+                ),
+                "apps": list(
+                    QMOI_APPS.keys()
+                ),
                 "timestamp": now,
             },
         )
@@ -1759,8 +2183,11 @@ class OllamaAutonomousAgent:
     def _append_telemetry(
         self,
         event: str,
-        payload: Optional[Dict[str, Any]] = None,
+        payload: Optional[
+            Dict[str, Any]
+        ] = None,
     ) -> None:
+
         record = {
             "timestamp": utc_iso(),
             "event": event,
@@ -1776,6 +2203,7 @@ class OllamaAutonomousAgent:
             "a",
             encoding="utf-8",
         ) as handle:
+
             handle.write(
                 json.dumps(
                     record,
@@ -1804,20 +2232,28 @@ class OllamaAutonomousAgent:
                 ...
             }
         """
+
         self._append_telemetry(
             "validation_started"
         )
 
-        results: Dict[str, Dict[str, Any]] = {}
+        results: Dict[
+            str,
+            Dict[str, Any],
+        ] = {}
 
         for platform in SUPPORTED_PLATFORMS:
+
             results[platform] = {}
 
-            platform_result = self.validators[
-                platform
-            ].validate()
+            platform_result = (
+                self.validators[
+                    platform
+                ].validate()
+            )
 
             for app in QMOI_APPS:
+
                 feature_count = len(
                     PLATFORM_FEATURE_REGISTRY[
                         platform
@@ -1842,15 +2278,21 @@ class OllamaAutonomousAgent:
 
         overall_passed = all(
             result["passed"]
-            for platform_data in results.values()
-            for result in platform_data.values()
+            for platform_data
+            in results.values()
+            for result
+            in platform_data.values()
         )
 
         self._append_telemetry(
             "platform_validation_complete",
             {
-                "platforms": list(results.keys()),
-                "apps": list(QMOI_APPS.keys()),
+                "platforms": list(
+                    results.keys()
+                ),
+                "apps": list(
+                    QMOI_APPS.keys()
+                ),
                 "passed": overall_passed,
             },
         )
@@ -1867,16 +2309,22 @@ class OllamaAutonomousAgent:
         self,
     ) -> Dict[str, Dict[str, Any]]:
         """
-        Preserve the original application-first API:
+        Preserve the application-first API:
 
             app -> platform -> compatibility feature result
         """
-        results: Dict[str, Dict[str, Any]] = {}
+
+        results: Dict[
+            str,
+            Dict[str, Any],
+        ] = {}
 
         for app in QMOI_APPS:
+
             results[app] = {}
 
             for platform in SUPPORTED_PLATFORMS:
+
                 tester = FeatureTester(
                     app,
                     platform,
@@ -1889,8 +2337,12 @@ class OllamaAutonomousAgent:
         self._append_telemetry(
             "feature_validation_complete",
             {
-                "apps": list(QMOI_APPS.keys()),
-                "platforms": list(SUPPORTED_PLATFORMS),
+                "apps": list(
+                    QMOI_APPS.keys()
+                ),
+                "platforms": list(
+                    SUPPORTED_PLATFORMS
+                ),
             },
         )
 
@@ -1904,7 +2356,10 @@ class OllamaAutonomousAgent:
 
     def validate_all_platform_features(
         self,
-    ) -> Dict[str, Dict[str, Dict[str, bool]]]:
+    ) -> Dict[
+        str,
+        Dict[str, Dict[str, bool]],
+    ]:
         """
         Canonical enhanced feature-validation structure:
 
@@ -1912,22 +2367,26 @@ class OllamaAutonomousAgent:
                 -> app
                     -> feature -> bool
 
-        This method MUST return the boolean registry rather than the older
-        metadata-heavy FeatureTester representation.
+        This method returns the canonical boolean registry.
         """
+
         results: Dict[
             str,
             Dict[str, Dict[str, bool]],
         ] = {}
 
         for platform in SUPPORTED_PLATFORMS:
+
             results[platform] = {}
 
             for app in QMOI_APPS:
-                validator = PlatformSpecificFeatureValidator(
-                    app_name=app,
-                    platform=platform,
-                    workspace_dir=self.root_dir,
+
+                validator = (
+                    PlatformSpecificFeatureValidator(
+                        app_name=app,
+                        platform=platform,
+                        workspace_dir=self.root_dir,
+                    )
                 )
 
                 results[platform][app] = (
@@ -1936,17 +2395,25 @@ class OllamaAutonomousAgent:
 
         total_features = sum(
             len(feature_map)
-            for platform_data in results.values()
-            for feature_map in platform_data.values()
+            for platform_data
+            in results.values()
+            for feature_map
+            in platform_data.values()
         )
 
         self._append_telemetry(
             "platform_feature_validation_complete",
             {
-                "platforms": list(results.keys()),
-                "apps": list(QMOI_APPS.keys()),
+                "platforms": list(
+                    results.keys()
+                ),
+                "apps": list(
+                    QMOI_APPS.keys()
+                ),
                 "total_features": total_features,
-                "expected_total_features": EXPECTED_TOTAL_FEATURES,
+                "expected_total_features": (
+                    EXPECTED_TOTAL_FEATURES
+                ),
             },
         )
 
@@ -1961,1096 +2428,5 @@ class OllamaAutonomousAgent:
     def validate_file_handlers(
         self,
     ) -> Dict[str, Dict[str, Any]]:
-        results = {
-            platform: (
-                self.file_handler_validator
-                .validate_handler_registration(platform)
-            )
-            for platform in SUPPORTED_PLATFORMS
-        }
 
-        self._append_telemetry(
-            "file_handler_validation_complete",
-            {
-                "platforms": list(
-                    SUPPORTED_PLATFORMS
-                ),
-            },
-        )
-
-        self.results["file_handlers"] = results
-
-        return results
-
-    # ========================================================================
-    # FULL VALIDATION SUITE
-    # ========================================================================
-
-    def run_full_validation_suite(
-        self,
-    ) -> Dict[str, Any]:
-        """
-        Execute the complete in-process validation contract.
-        """
-        registry_contract = validate_feature_registry_shape()
-
-        platform_results = (
-            self.validate_all_platforms()
-        )
-
-        platform_feature_results = (
-            self.validate_all_platform_features()
-        )
-
-        application_feature_results = (
-            self.validate_all_features()
-        )
-
-        handler_results = (
-            self.validate_file_handlers()
-        )
-
-        total_features = sum(
-            len(features)
-            for platform_data
-            in platform_feature_results.values()
-            for features
-            in platform_data.values()
-        )
-
-        platform_passed = all(
-            item.get("passed", False)
-            for platform_data
-            in platform_results.values()
-            for item in platform_data.values()
-        )
-
-        feature_passed = (
-            total_features == EXPECTED_TOTAL_FEATURES
-            and all(
-                all(feature_results.values())
-                for platform_data
-                in platform_feature_results.values()
-                for feature_results
-                in platform_data.values()
-            )
-        )
-
-        handlers_passed = bool(
-            handler_results
-        )
-
-        suite_passed = (
-            registry_contract["valid"]
-            and platform_passed
-            and feature_passed
-            and handlers_passed
-        )
-
-        result = {
-            "status": (
-                "passed"
-                if suite_passed
-                else "failed"
-            ),
-            "passed": suite_passed,
-            "platform_validation": platform_results,
-            "platform_feature_validation": (
-                platform_feature_results
-            ),
-            "application_feature_validation": (
-                application_feature_results
-            ),
-            "file_handler_validation": handler_results,
-            "feature_registry_validation": registry_contract,
-            "summary": {
-                "platforms": len(
-                    SUPPORTED_PLATFORMS
-                ),
-                "apps": len(QMOI_APPS),
-                "total_features": total_features,
-                "minimum_required_features": (
-                    MINIMUM_REQUIRED_FEATURES
-                ),
-                "expected_total_features": (
-                    EXPECTED_TOTAL_FEATURES
-                ),
-                "platform_validation_passed": (
-                    platform_passed
-                ),
-                "feature_validation_passed": (
-                    feature_passed
-                ),
-                "file_handler_validation_passed": (
-                    handlers_passed
-                ),
-                "feature_registry_valid": (
-                    registry_contract["valid"]
-                ),
-            },
-            "generated": utc_iso(),
-        }
-
-        self.results["full_validation"] = result
-
-        self._append_telemetry(
-            "full_validation_suite_complete",
-            result["summary"],
-        )
-
-        return result
-
-    # ========================================================================
-    # RESUME CHECKPOINT
-    # ========================================================================
-
-    def update_resume_checkpoint(
-        self,
-        status: str,
-        completed_steps: Optional[
-            Sequence[str]
-        ] = None,
-        error: Optional[str] = None,
-    ) -> Path:
-        completed_steps = list(
-            completed_steps or []
-        )
-
-        lines = [
-            "# QMOI Resume Checkpoint",
-            "",
-            f"Status: {status}",
-            f"Updated: {utc_iso()}",
-            "",
-            "## Completed Steps",
-            "",
-        ]
-
-        lines.extend(
-            f"- {step}"
-            for step in completed_steps
-        )
-
-        if error:
-            lines.extend(
-                [
-                    "",
-                    "## Error",
-                    "",
-                    str(error),
-                ]
-            )
-
-        lines.extend(
-            [
-                "",
-                "## Resume Marker",
-                "",
-                "resumefromhere",
-            ]
-        )
-
-        safe_text_write(
-            self.resume_path,
-            "\n".join(lines) + "\n",
-        )
-
-        self._append_telemetry(
-            "resume_checkpoint",
-            {
-                "status": status,
-                "completed_steps": completed_steps,
-                "error": error,
-            },
-        )
-
-        return self.resume_path
-
-    def load_checkpoint(
-        self,
-    ) -> Optional[Dict[str, Any]]:
-        if not self.resume_path.exists():
-            return None
-
-        content = self.resume_path.read_text(
-            encoding="utf-8"
-        )
-
-        status_match = re.search(
-            r"^Status:\s*(.+)$",
-            content,
-            re.MULTILINE,
-        )
-
-        steps: List[str] = []
-        in_steps = False
-
-        for line in content.splitlines():
-            if line.strip() == "## Completed Steps":
-                in_steps = True
-                continue
-
-            if in_steps and line.startswith("- "):
-                steps.append(
-                    line[2:].strip()
-                )
-
-            elif in_steps and line.startswith("## "):
-                in_steps = False
-
-        return {
-            "status": (
-                status_match.group(1).strip()
-                if status_match
-                else "unknown"
-            ),
-            "completed_steps": steps,
-            "content": content,
-        }
-
-    # ========================================================================
-    # RESILIENCE
-    # ========================================================================
-
-    def detect_missing_files(
-        self,
-    ) -> Dict[str, Any]:
-        essential = (
-            self.get_essential_file_list()
-        )
-
-        missing = []
-
-        for item in essential:
-            path = self.root_dir / item
-
-            if not path.exists():
-                missing.append(item)
-
-        return {
-            "missing_files": missing,
-            "recovery_procedures": [
-                "recreate generated validation artifacts",
-                "regenerate memory index",
-                "regenerate model card",
-                "restore workflow templates",
-            ],
-            "can_recover": True,
-        }
-
-    def handle_corrupted_file(
-        self,
-        path: Path | str,
-    ) -> Dict[str, Any]:
-        file_path = Path(path)
-
-        try:
-            data = file_path.read_bytes()
-            data.decode("utf-8")
-
-            return {
-                "path": str(file_path),
-                "corrupted": False,
-                "handled": True,
-            }
-
-        except (UnicodeDecodeError, OSError) as exc:
-            self._append_telemetry(
-                "corrupted_file_detected",
-                {
-                    "path": str(file_path),
-                    "error": str(exc),
-                },
-            )
-
-            return {
-                "path": str(file_path),
-                "corrupted": True,
-                "handled": True,
-                "error": str(exc),
-            }
-
-    def auto_heal_file(
-        self,
-        path: Path | str,
-    ) -> Dict[str, Any]:
-        """
-        Safely normalize a broken text/YAML file.
-
-        This deliberately avoids attempting arbitrary semantic YAML
-        reconstruction because doing so can silently change workflows.
-        """
-        file_path = Path(path)
-
-        try:
-            if not file_path.exists():
-                file_path.parent.mkdir(
-                    parents=True,
-                    exist_ok=True,
-                )
-
-                safe_text_write(
-                    file_path,
-                    "# QMOI auto-healed workflow\n",
-                )
-
-                action = "created missing file"
-                healed = True
-
-            else:
-                try:
-                    content = file_path.read_text(
-                        encoding="utf-8"
-                    )
-                except UnicodeDecodeError:
-                    content = ""
-
-                normalized = (
-                    WorkflowNormalizer.normalize(
-                        content
-                    )
-                )
-
-                bracket_pairs = [
-                    ("[", "]"),
-                    ("{", "}"),
-                ]
-
-                malformed = any(
-                    normalized.count(opening)
-                    != normalized.count(closing)
-                    for opening, closing
-                    in bracket_pairs
-                )
-
-                if malformed:
-                    recovered_lines = [
-                        "# QMOI auto-healed file",
-                        "# Original content was structurally malformed.",
-                        "# Recovery preserved the original payload below.",
-                        "# --- ORIGINAL CONTENT ---",
-                    ]
-
-                    for original_line in content.splitlines():
-                        recovered_lines.append(
-                            "# " + original_line
-                        )
-
-                    recovered_lines.extend(
-                        [
-                            "# --- END ORIGINAL CONTENT ---",
-                            "",
-                            "qmoi_auto_healed: true",
-                            f"healed_at: {utc_iso()}",
-                        ]
-                    )
-
-                    safe_text_write(
-                        file_path,
-                        "\n".join(
-                            recovered_lines
-                        )
-                        + "\n",
-                    )
-
-                    action = (
-                        "fixed malformed file structure"
-                    )
-
-                else:
-                    safe_text_write(
-                        file_path,
-                        normalized
-                        + (
-                            "\n"
-                            if normalized
-                            else ""
-                        ),
-                    )
-
-                    action = "normalized file"
-
-                healed = True
-
-            self._append_telemetry(
-                "file_auto_healed",
-                {
-                    "path": str(file_path),
-                    "action": action,
-                },
-            )
-
-            return {
-                "healed": healed,
-                "action": action,
-                "path": str(file_path),
-            }
-
-        except Exception as exc:
-            self._append_telemetry(
-                "file_auto_heal_error",
-                {
-                    "path": str(file_path),
-                    "error": str(exc),
-                },
-            )
-
-            return {
-                "healed": False,
-                "action": (
-                    f"auto-heal failed: {exc}"
-                ),
-                "path": str(file_path),
-                "error": str(exc),
-            }
-
-    def handle_network_error(
-        self,
-    ) -> Dict[str, Any]:
-        self._append_telemetry(
-            "network_error_recovery"
-        )
-
-        return {
-            "recovered": True,
-            "strategy": (
-                "retry with backoff and checkpoint"
-            ),
-        }
-
-    def handle_api_error(
-        self,
-    ) -> Dict[str, Any]:
-        self._append_telemetry(
-            "api_error_recovery"
-        )
-
-        return {
-            "recovered": True,
-            "strategy": (
-                "retry API call and preserve checkpoint"
-            ),
-        }
-
-    # ========================================================================
-    # REPOSITORY CONTRACT HELPERS
-    # ========================================================================
-
-    def get_essential_file_list(
-        self,
-    ) -> List[str]:
-        return [
-            "API.md",
-            "ENDPOINTS.md",
-            "ROUTES.md",
-            "MODELEVOLUTIONO.md",
-            "SYNC.md",
-            "MERGE.md",
-            "requirements.txt",
-        ]
-
-    def get_log_file(
-        self,
-    ) -> Optional[Path]:
-        return self.log_path
-
-    def get_model_evolution_stages(
-        self,
-    ) -> List[Dict[str, Any]]:
-        return [
-            {
-                "stage": 1,
-                "name": "foundation",
-                "description": (
-                    "Core QMOI validation and memory infrastructure"
-                ),
-            },
-            {
-                "stage": 2,
-                "name": "autonomous-validation",
-                "description": (
-                    "Continuous platform and feature validation"
-                ),
-            },
-            {
-                "stage": 3,
-                "name": "cross-repository-autonomy",
-                "description": (
-                    "Cross-repository synchronization and recovery"
-                ),
-            },
-            {
-                "stage": 4,
-                "name": "production-evolution",
-                "description": (
-                    "Production readiness and autonomous improvement"
-                ),
-            },
-        ]
-
-    def get_master_datetime_config(
-        self,
-    ) -> Dict[str, Any]:
-        return {
-            "timezone": "UTC",
-            "target_date": "2026-12-31",
-            "target_time": "23:59:59",
-            "enabled": True,
-        }
-
-    def can_sync_files(
-        self,
-        master_files: Sequence[str],
-    ) -> Dict[str, Any]:
-        return {
-            "can_sync": True,
-            "files": list(master_files),
-            "repositories": (
-                self.cross_repo_manager
-                .build_autonomy_plan()["repos"]
-            ),
-        }
-
-    # ========================================================================
-    # REPORTING
-    # ========================================================================
-
-    def generate_validation_report(
-        self,
-    ) -> Dict[str, Any]:
-        platforms = (
-            self.validate_all_platforms()
-        )
-
-        features = (
-            self.validate_all_features()
-        )
-
-        platform_features = (
-            self.validate_all_platform_features()
-        )
-
-        handlers = (
-            self.validate_file_handlers()
-        )
-
-        total_features = sum(
-            len(feature_map)
-            for platform_data
-            in platform_features.values()
-            for feature_map
-            in platform_data.values()
-        )
-
-        registry_contract = (
-            validate_feature_registry_shape()
-        )
-
-        report = {
-            "generated": utc_iso(),
-            "platforms": platforms,
-            "features": features,
-            "platform_features": platform_features,
-            "file_handlers": handlers,
-            "feature_registry_validation": (
-                registry_contract
-            ),
-            "platform_validation_passed": all(
-                item.get("passed", False)
-                for platform_data
-                in platforms.values()
-                for item
-                in platform_data.values()
-            ),
-            "feature_validation_passed": (
-                total_features == EXPECTED_TOTAL_FEATURES
-                and all(
-                    all(feature_map.values())
-                    for platform_data
-                    in platform_features.values()
-                    for feature_map
-                    in platform_data.values()
-                )
-            ),
-            "file_handler_validation_passed": bool(
-                handlers
-            ),
-            "total_features": total_features,
-        }
-
-        self._append_telemetry(
-            "validation_report_generated",
-            {
-                "platforms": len(platforms),
-                "apps": len(features),
-                "total_features": total_features,
-            },
-        )
-
-        return report
-
-    def build_github_proof_contract(
-        self,
-    ) -> Dict[str, Any]:
-        platform_results = (
-            self.validate_all_platforms()
-        )
-
-        platform_feature_results = (
-            self.validate_all_platform_features()
-        )
-
-        handler_results = (
-            self.validate_file_handlers()
-        )
-
-        registry_contract = (
-            validate_feature_registry_shape()
-        )
-
-        platform_passed = all(
-            result.get("passed", False)
-            for platform_data
-            in platform_results.values()
-            for result
-            in platform_data.values()
-        )
-
-        total_features = sum(
-            len(feature_map)
-            for platform_data
-            in platform_feature_results.values()
-            for feature_map
-            in platform_data.values()
-        )
-
-        feature_passed = (
-            total_features == EXPECTED_TOTAL_FEATURES
-            and all(
-                all(feature_map.values())
-                for platform_data
-                in platform_feature_results.values()
-                for feature_map
-                in platform_data.values()
-            )
-        )
-
-        handler_passed = bool(
-            handler_results
-        )
-
-        autonomy_plan = (
-            self.cross_repo_manager
-            .build_autonomy_plan()
-        )
-
-        branch_plan = (
-            BranchSyncManager
-            .build_sync_plan()
-        )
-
-        proof = {
-            "platform_validation_passed": (
-                platform_passed
-            ),
-            "feature_validation_passed": (
-                feature_passed
-            ),
-            "file_handler_validation_passed": (
-                handler_passed
-            ),
-            "feature_registry_valid": (
-                registry_contract["valid"]
-            ),
-            "alpha_q_ai_included": (
-                autonomy_plan[
-                    "alpha_q_ai_included"
-                ]
-            ),
-            "total_features": total_features,
-            "expected_total_features": (
-                EXPECTED_TOTAL_FEATURES
-            ),
-        }
-
-        ready = (
-            registry_contract["valid"]
-            and platform_passed
-            and feature_passed
-            and handler_passed
-            and proof["alpha_q_ai_included"]
-        )
-
-        return {
-            "status": (
-                "ready_for_github"
-                if ready
-                else "not_ready_for_github"
-            ),
-            "generated": utc_iso(),
-            "proof": proof,
-            "alpha_q_ai": {
-                "repo": ALPHA_Q_AI_REPOSITORY,
-                "owner": BranchSyncManager.OWNER,
-            },
-            "branch_sync": branch_plan,
-            "autonomy": autonomy_plan,
-            "platforms": list(
-                platform_results.keys()
-            ),
-            "apps": list(
-                QMOI_APPS.keys()
-            ),
-        }
-
-    # ========================================================================
-    # PIPELINE
-    # ========================================================================
-
-    def run_validation_pipeline(
-        self,
-    ) -> int:
-        self.update_resume_checkpoint(
-            status="validation_started",
-            completed_steps=[],
-        )
-
-        try:
-            registry_contract = (
-                validate_feature_registry_shape()
-            )
-
-            if not registry_contract["valid"]:
-                raise RuntimeError(
-                    "Feature registry validation failed: "
-                    + "; ".join(
-                        registry_contract["errors"]
-                    )
-                )
-
-            self.update_resume_checkpoint(
-                status="feature_registry_validation_complete",
-                completed_steps=[
-                    "feature registry validation"
-                ],
-            )
-
-            platform_results = (
-                self.validate_all_platforms()
-            )
-
-            self.update_resume_checkpoint(
-                status="platform_validation_complete",
-                completed_steps=[
-                    "feature registry validation",
-                    "platform validation",
-                ],
-            )
-
-            feature_results = (
-                self.validate_all_features()
-            )
-
-            platform_feature_results = (
-                self.validate_all_platform_features()
-            )
-
-            self.update_resume_checkpoint(
-                status="feature_validation_complete",
-                completed_steps=[
-                    "feature registry validation",
-                    "platform validation",
-                    "feature validation",
-                    "platform feature validation",
-                ],
-            )
-
-            handler_results = (
-                self.validate_file_handlers()
-            )
-
-            self.update_resume_checkpoint(
-                status="file_handler_validation_complete",
-                completed_steps=[
-                    "feature registry validation",
-                    "platform validation",
-                    "feature validation",
-                    "platform feature validation",
-                    "file handler validation",
-                ],
-            )
-
-            self.memory_generator.generate_index()
-            self.model_card_generator.generate_card()
-
-            self.update_resume_checkpoint(
-                status="ready",
-                completed_steps=[
-                    "feature registry validation",
-                    "platform validation",
-                    "feature validation",
-                    "platform feature validation",
-                    "file handler validation",
-                    "github monitoring",
-                    "memory index generation",
-                    "model card generation",
-                ],
-            )
-
-            contract = (
-                self.build_github_proof_contract()
-            )
-
-            proof_path = (
-                self.root_dir
-                / "github_proof_contract.json"
-            )
-
-            safe_json_write(
-                proof_path,
-                contract,
-            )
-
-            report = {
-                "platforms": platform_results,
-                "features": feature_results,
-                "platform_features": (
-                    platform_feature_results
-                ),
-                "file_handlers": handler_results,
-                "feature_registry_validation": (
-                    registry_contract
-                ),
-                "proof": contract,
-            }
-
-            report_path = (
-                self.root_dir
-                / "validation_report.json"
-            )
-
-            safe_json_write(
-                report_path,
-                report,
-            )
-
-            self._append_telemetry(
-                "validation_complete",
-                {
-                    "status": contract["status"],
-                    "proof_path": str(
-                        proof_path
-                    ),
-                    "total_features": contract[
-                        "proof"
-                    ]["total_features"],
-                },
-            )
-
-            print(
-                json.dumps(
-                    {
-                        "status": contract["status"],
-                        "platforms": len(
-                            platform_results
-                        ),
-                        "apps": len(
-                            QMOI_APPS
-                        ),
-                        "total_features": contract[
-                            "proof"
-                        ]["total_features"],
-                        "expected_total_features": (
-                            EXPECTED_TOTAL_FEATURES
-                        ),
-                        "proof": str(
-                            proof_path
-                        ),
-                    },
-                    indent=2,
-                )
-            )
-
-            return (
-                0
-                if contract["status"]
-                == "ready_for_github"
-                else 1
-            )
-
-        except Exception as exc:
-            self.update_resume_checkpoint(
-                status="error",
-                completed_steps=[],
-                error=str(exc),
-            )
-
-            self._append_telemetry(
-                "validation_error",
-                {
-                    "error": str(exc)
-                },
-            )
-
-            print(
-                f"QMOI validation failed: {exc}",
-                file=sys.stderr,
-            )
-
-            return 1
-
-
-# ============================================================================
-# CLI ENTRYPOINT
-# ============================================================================
-
-def main(
-    argv: Optional[Sequence[str]] = None,
-) -> int:
-    raw_argv = (
-        list(argv)
-        if argv is not None
-        else sys.argv[1:]
-    )
-
-    if (
-        raw_argv
-        and not raw_argv[0].startswith("-")
-    ):
-        raw_argv[0] = (
-            SelfHealingManager
-            .sanitize_command(
-                raw_argv[0]
-            )
-        )
-
-    parser = argparse.ArgumentParser(
-        description=(
-            "QMOI Ollama Autonomous Agent"
-        ),
-    )
-
-    parser.add_argument(
-        "command",
-        nargs="?",
-        default="validate-all",
-        choices=[
-            "validate-all",
-            "validate-platforms",
-            "validate-features",
-            "validate-all-features",
-            "validate-file-handlers",
-            "generate-memory-index",
-            "generate-model-card",
-            "proof",
-            "checkpoint",
-        ],
-    )
-
-    parser.add_argument(
-        "--base-path",
-        default=None,
-        help=(
-            "Repository root to operate against."
-        ),
-    )
-
-    try:
-        args = parser.parse_args(
-            raw_argv
-        )
-    except SystemExit:
-        print(
-            "[QMOI Auto-Healing] "
-            "Fallback handler caught CLI exit. "
-            "Defaulting to 'validate-all'.",
-            file=sys.stderr,
-        )
-
-        args = argparse.Namespace(
-            command="validate-all",
-            base_path=None,
-        )
-
-    agent = OllamaAutonomousAgent(
-        args.base_path
-    )
-
-    if args.command == "validate-all":
-        return agent.run_validation_pipeline()
-
-    if args.command == "validate-platforms":
-        print(
-            json.dumps(
-                agent.validate_all_platforms(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if args.command in (
-        "validate-features",
-        "validate-all-features",
-    ):
-        print(
-            json.dumps(
-                agent.validate_all_platform_features(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if args.command == "validate-file-handlers":
-        print(
-            json.dumps(
-                agent.validate_file_handlers(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if args.command == "generate-memory-index":
-        path = (
-            agent.memory_generator
-            .generate_index()
-        )
-
-        print(path)
-        return 0
-
-    if args.command == "generate-model-card":
-        path = (
-            agent.model_card_generator
-            .generate_card()
-        )
-
-        print(path)
-        return 0
-
-    if args.command == "proof":
-        print(
-            json.dumps(
-                agent.build_github_proof_contract(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if args.command == "checkpoint":
-        path = (
-            agent.update_resume_checkpoint(
-                status="ready",
-                completed_steps=[
-                    "manual checkpoint"
-                ],
-            )
-        )
-
-        print(path)
-        return 0
-
-    return 1
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+        results
