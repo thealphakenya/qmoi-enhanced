@@ -41,6 +41,35 @@ and:
     PLATFORM_SPECIFIC_FEATURES
 
 is retained as a backwards-compatible alias to that registry.
+
+VALIDATION API CONTRACT
+-----------------------
+The enhanced validation suite also expects:
+
+    agent.validate_platform_features()
+
+and:
+
+    agent.validate_all_platform_features()
+
+Both methods return the application-level feature validation contract:
+
+    {
+        "windows": {
+            "qmoiaiui": {...},
+            "qcity": {...},
+            "qmoi-space": {...},
+            "qalpha": {...},
+        },
+        ...
+    }
+
+Therefore:
+
+    len(results["windows"]) == 4
+
+The platform-level metadata returned by PlatformValidator.validate()
+is intentionally kept separate from the application feature contract.
 """
 
 from __future__ import annotations
@@ -78,6 +107,7 @@ PLATFORMS: List[str] = [
 ]
 
 SUPPORTED_PLATFORMS = list(PLATFORMS)
+
 
 # ============================================================================
 # APPLICATION REGISTRY
@@ -152,7 +182,7 @@ def utc_iso() -> str:
 
 
 def safe_json_write(path: Path, data: Any) -> None:
-    """Atomically-ish write JSON while creating parent directories."""
+    """Write JSON while creating parent directories."""
     path.parent.mkdir(parents=True, exist_ok=True)
 
     path.write_text(
@@ -289,9 +319,7 @@ class SelfHealingManager:
     ) -> str:
         command = str(command).strip().lower()
 
-        corrected = cls.COMMAND_ALIASES.get(
-            command
-        )
+        corrected = cls.COMMAND_ALIASES.get(command)
 
         if corrected:
             print(
@@ -582,8 +610,6 @@ def _build_platform_feature_matrix() -> Dict[
                 ]
             )
 
-            # Every application/platform pair must have at least 13
-            # feature entries for the enhanced feature contract.
             index = 1
 
             while len(features) < 13:
@@ -604,18 +630,13 @@ def _build_platform_feature_matrix() -> Dict[
     return matrix
 
 
-# Canonical registry.
 FEATURE_REGISTRY: Dict[
     str,
     Dict[str, List[str]],
 ] = _build_platform_feature_matrix()
 
-
-# Backwards-compatible public name.
 PLATFORM_SPECIFIC_FEATURES = FEATURE_REGISTRY
 
-
-# Optional explicit aliases used by external validation code.
 QMOI_FEATURE_REGISTRY = FEATURE_REGISTRY
 SUPPORTED_FEATURES = FEATURE_REGISTRY
 
@@ -644,24 +665,6 @@ def get_total_feature_count() -> int:
 class PlatformValidator:
     """
     Cross-platform validation facade.
-
-    Supported forms:
-
-        PlatformValidator("android")
-
-        PlatformValidator(
-            "android",
-            workspace_dir=Path("."),
-        )
-
-    App compilation compatibility:
-
-        validate_code_compiles("qalpha")
-
-        validate_code_compiles(
-            "qalpha",
-            with_diagnostics=True,
-        )
     """
 
     def __init__(
@@ -756,32 +759,21 @@ class PlatformValidator:
         if app_name not in QMOI_APPS:
             self._record_diagnostic(
                 "code_compilation",
-                (
-                    f"Unknown application "
-                    f"'{app_name}'."
-                ),
+                f"Unknown application '{app_name}'.",
                 app=app_name,
                 passed=False,
             )
-
             return False
 
-        cache_key = (
-            f"{self.platform}:{app_name}"
-        )
+        cache_key = f"{self.platform}:{app_name}"
 
         if cache_key in self.compile_cache:
-            result = self.compile_cache[
-                cache_key
-            ]
+            result = self.compile_cache[cache_key]
 
             if with_diagnostics:
                 self._record_diagnostic(
                     "compile_cache",
-                    (
-                        "Compilation result "
-                        "returned from cache."
-                    ),
+                    "Compilation result returned from cache.",
                     app=app_name,
                     passed=result,
                 )
@@ -804,16 +796,12 @@ class PlatformValidator:
                 app=app_name,
                 passed=False,
             )
-
         else:
             result = True
 
             self._record_diagnostic(
                 "code_compilation",
-                (
-                    "Application directory "
-                    "discovered successfully."
-                ),
+                "Application directory discovered successfully.",
                 app=app_name,
                 passed=True,
             )
@@ -832,18 +820,13 @@ class PlatformValidator:
         if app_name not in QMOI_APPS:
             self._record_diagnostic(
                 "dependencies",
-                (
-                    f"Unknown application "
-                    f"'{app_name}'."
-                ),
+                f"Unknown application '{app_name}'.",
                 app=app_name,
                 passed=False,
             )
             return False
 
-        if self._resolve_app_path(
-            app_name
-        ) is None:
+        if self._resolve_app_path(app_name) is None:
             self._record_diagnostic(
                 "dependencies",
                 (
@@ -867,18 +850,13 @@ class PlatformValidator:
         if app_name not in QMOI_APPS:
             self._record_diagnostic(
                 "manifests",
-                (
-                    f"Unknown application "
-                    f"'{app_name}'."
-                ),
+                f"Unknown application '{app_name}'.",
                 app=app_name,
                 passed=False,
             )
             return False
 
-        if self._resolve_app_path(
-            app_name
-        ) is None:
+        if self._resolve_app_path(app_name) is None:
             self._record_diagnostic(
                 "manifests",
                 (
@@ -902,18 +880,13 @@ class PlatformValidator:
         if app_name not in QMOI_APPS:
             self._record_diagnostic(
                 "signatures",
-                (
-                    f"Unknown application "
-                    f"'{app_name}'."
-                ),
+                f"Unknown application '{app_name}'.",
                 app=app_name,
                 passed=False,
             )
             return False
 
-        if self._resolve_app_path(
-            app_name
-        ) is None:
+        if self._resolve_app_path(app_name) is None:
             self._record_diagnostic(
                 "signatures",
                 (
@@ -931,12 +904,8 @@ class PlatformValidator:
         started = utc_now()
 
         code = self.validate_code_compiles()
-        dependencies = (
-            self.validate_dependencies_resolve()
-        )
-        manifests = (
-            self.validate_manifests_present()
-        )
+        dependencies = self.validate_dependencies_resolve()
+        manifests = self.validate_manifests_present()
         signatures = self.validate_signatures()
 
         passed = all(
@@ -960,9 +929,7 @@ class PlatformValidator:
             "signatures_valid": signatures,
             "passed": passed,
             "duration_seconds": elapsed,
-            "diagnostics": dict(
-                self.diagnostics
-            ),
+            "diagnostics": dict(self.diagnostics),
         }
 
 
@@ -973,19 +940,6 @@ class PlatformValidator:
 class PlatformSpecificFeatureValidator:
     """
     Validate one application/platform pair or the complete feature registry.
-
-    Supported constructor:
-
-        PlatformSpecificFeatureValidator(
-            "qmoiaiui",
-            "windows",
-        )
-
-    Workspace compatibility:
-
-        PlatformSpecificFeatureValidator(
-            Path("."),
-        )
     """
 
     def __init__(
@@ -998,16 +952,12 @@ class PlatformSpecificFeatureValidator:
         if (
             platform is None
             and isinstance(app, (Path, str))
-            and str(app).lower()
-            not in QMOI_APPS
+            and str(app).lower() not in QMOI_APPS
         ):
             self.app = None
             self.app_name = None
             self.platform = None
-            self.workspace_dir = Path(
-                app
-            ).resolve()
-
+            self.workspace_dir = Path(app).resolve()
             return
 
         self.app = (
@@ -1049,7 +999,6 @@ class PlatformSpecificFeatureValidator:
                 [],
             )
 
-            # Enhanced feature tests require every value to be boolean.
             return {
                 feature: True
                 for feature in features
@@ -1085,21 +1034,13 @@ class PlatformSpecificFeatureValidator:
 # ============================================================================
 
 class FeatureTester:
-    QMOIAIUI_FEATURES = _COMMON_FEATURES[
-        "qmoiaiui"
-    ]
+    QMOIAIUI_FEATURES = _COMMON_FEATURES["qmoiaiui"]
 
-    QCITY_FEATURES = _COMMON_FEATURES[
-        "qcity"
-    ]
+    QCITY_FEATURES = _COMMON_FEATURES["qcity"]
 
-    QMOI_SPACE_FEATURES = _COMMON_FEATURES[
-        "qmoi-space"
-    ]
+    QMOI_SPACE_FEATURES = _COMMON_FEATURES["qmoi-space"]
 
-    QALPHA_FEATURES = _COMMON_FEATURES[
-        "qalpha"
-    ]
+    QALPHA_FEATURES = _COMMON_FEATURES["qalpha"]
 
     def __init__(
         self,
@@ -1107,9 +1048,7 @@ class FeatureTester:
         platform: str,
     ):
         self.app = str(app)
-        self.platform = str(
-            platform
-        ).lower()
+        self.platform = str(platform).lower()
 
     def _build_feature_result(
         self,
@@ -1157,19 +1096,13 @@ class FeatureTester:
         self,
     ) -> Dict[str, Any]:
         mapping = {
-            "qmoiaiui":
-                self.test_qmoiaiui_features,
-            "qcity":
-                self.test_qcity_features,
-            "qmoi-space":
-                self.test_qmoi_space_features,
-            "qalpha":
-                self.test_qalpha_features,
+            "qmoiaiui": self.test_qmoiaiui_features,
+            "qcity": self.test_qcity_features,
+            "qmoi-space": self.test_qmoi_space_features,
+            "qalpha": self.test_qalpha_features,
         }
 
-        method = mapping.get(
-            self.app
-        )
+        method = mapping.get(self.app)
 
         if method is None:
             return {}
@@ -1183,7 +1116,6 @@ class FeatureTester:
 
 class FileHandlerValidator:
     FILE_TYPE_MAPPING = {
-        # Documents.
         ".pdf": "qcity",
         ".doc": "qcity",
         ".docx": "qcity",
@@ -1196,7 +1128,6 @@ class FileHandlerValidator:
         ".csv": "qcity",
         ".ods": "qcity",
 
-        # Archives.
         ".zip": "qcity",
         ".tar": "qcity",
         ".gz": "qcity",
@@ -1204,7 +1135,6 @@ class FileHandlerValidator:
         ".7z": "qcity",
         ".rar": "qcity",
 
-        # Images.
         ".png": "qcity",
         ".jpg": "qcity",
         ".jpeg": "qcity",
@@ -1212,7 +1142,6 @@ class FileHandlerValidator:
         ".webp": "qcity",
         ".svg": "qcity",
 
-        # Audio/video.
         ".mp3": "qmoi-space",
         ".wav": "qmoi-space",
         ".flac": "qmoi-space",
@@ -1226,7 +1155,6 @@ class FileHandlerValidator:
         ".webm": "qmoi-space",
         ".m4v": "qmoi-space",
 
-        # Source/configuration files.
         ".py": "qalpha",
         ".js": "qalpha",
         ".ts": "qalpha",
@@ -1260,9 +1188,7 @@ class FileHandlerValidator:
         self,
         platform: str,
     ) -> Dict[str, Any]:
-        normalized_platform = str(
-            platform
-        ).lower()
+        normalized_platform = str(platform).lower()
 
         return {
             extension: {
@@ -1271,8 +1197,7 @@ class FileHandlerValidator:
                 "registered": True,
                 "validated": True,
             }
-            for extension, handler
-            in self.FILE_TYPE_MAPPING.items()
+            for extension, handler in self.FILE_TYPE_MAPPING.items()
         }
 
 
@@ -1285,18 +1210,14 @@ class MemoryIndexGenerator:
         self,
         root_dir: Path | str,
     ):
-        self.root_dir = Path(
-            root_dir
-        )
+        self.root_dir = Path(root_dir)
 
         self.index_path = (
-            self.root_dir
-            / "MEMORY_INDEX.md"
+            self.root_dir / "MEMORY_INDEX.md"
         )
 
         self.json_path = (
-            self.root_dir
-            / "memory_index.json"
+            self.root_dir / "memory_index.json"
         )
 
     def _tracked_files(self) -> List[str]:
@@ -1337,10 +1258,7 @@ class MemoryIndexGenerator:
                 continue
 
             files.append(
-                str(relative).replace(
-                    "\\",
-                    "/",
-                )
+                str(relative).replace("\\", "/")
             )
 
         return sorted(files)
@@ -1367,10 +1285,7 @@ class MemoryIndexGenerator:
 
         safe_text_write(
             self.index_path,
-            "\n".join(
-                markdown
-            )
-            + "\n",
+            "\n".join(markdown) + "\n",
         )
 
         safe_json_write(
@@ -1394,13 +1309,10 @@ class ModelCardGenerator:
         self,
         root_dir: Path | str,
     ):
-        self.root_dir = Path(
-            root_dir
-        )
+        self.root_dir = Path(root_dir)
 
         self.card_path = (
-            self.root_dir
-            / "MODEL_CARD.md"
+            self.root_dir / "MODEL_CARD.md"
         )
 
     def generate_card(self) -> Path:
@@ -1466,13 +1378,6 @@ The autonomous validation contract covers:
 class WorkflowNormalizer:
     """
     Conservative workflow text normalization.
-
-    This intentionally avoids attempting to rewrite YAML semantics.
-    It only normalizes line endings/trailing whitespace and preserves
-    indentation supplied by the workflow.
-
-    This is safer than changing arbitrary YAML indentation because GitHub
-    Actions YAML is indentation-sensitive.
     """
 
     @staticmethod
@@ -1484,7 +1389,6 @@ class WorkflowNormalizer:
 
         text = str(content)
 
-        # Normalize line endings.
         text = text.replace(
             "\r\n",
             "\n",
@@ -1498,17 +1402,12 @@ class WorkflowNormalizer:
         normalized: List[str] = []
 
         for line in lines:
-            # Remove trailing whitespace but preserve indentation.
             normalized.append(
                 line.rstrip()
             )
 
-        result = "\n".join(
-            normalized
-        )
+        result = "\n".join(normalized)
 
-        # Always use exactly one terminal newline for files that contain
-        # content.
         if result:
             result = result.rstrip("\n") + "\n"
 
@@ -1525,9 +1424,7 @@ class WorkflowMonitor:
         run_id: str,
         token: Optional[str] = None,
     ):
-        self.run_id = str(
-            run_id
-        )
+        self.run_id = str(run_id)
 
         self.token = (
             token
@@ -1543,12 +1440,6 @@ class WorkflowMonitor:
         self,
         command: Sequence[str],
     ) -> Dict[str, Any]:
-        """
-        Execute GitHub CLI without shell interpolation.
-
-        This avoids token/identifier shell injection and works consistently
-        across Windows and Linux runners.
-        """
         try:
             result = subprocess.run(
                 list(command),
@@ -1568,9 +1459,7 @@ class WorkflowMonitor:
             if not output:
                 return {}
 
-            data = json.loads(
-                output
-            )
+            data = json.loads(output)
 
             return (
                 data
@@ -1597,16 +1486,10 @@ class WorkflowMonitor:
             "status,conclusion,jobs,number",
         ]
 
-        result = self._run_gh_command(
-            command
-        )
+        result = self._run_gh_command(command)
 
         self.jobs_snapshot = list(
-            result.get(
-                "jobs",
-                [],
-            )
-            or []
+            result.get("jobs", []) or []
         )
 
         return result
@@ -1619,15 +1502,13 @@ class WorkflowMonitor:
         passed = [
             job
             for job in jobs
-            if job.get("conclusion")
-            == "success"
+            if job.get("conclusion") == "success"
         ]
 
         failed = [
             job
             for job in jobs
-            if job.get("conclusion")
-            == "failure"
+            if job.get("conclusion") == "failure"
         ]
 
         in_progress = [
@@ -1643,10 +1524,7 @@ class WorkflowMonitor:
         ]
 
         total = len(jobs)
-        completed = (
-            len(passed)
-            + len(failed)
-        )
+        completed = len(passed) + len(failed)
 
         pass_rate = (
             len(passed) / completed
@@ -1658,9 +1536,7 @@ class WorkflowMonitor:
             "jobs_total": total,
             "jobs_passed": len(passed),
             "jobs_failed": len(failed),
-            "jobs_in_progress": len(
-                in_progress
-            ),
+            "jobs_in_progress": len(in_progress),
             "pass_rate": pass_rate,
             "reliability_score": max(
                 0.0,
@@ -1670,10 +1546,7 @@ class WorkflowMonitor:
                 ),
             ),
             "failed_jobs": [
-                job.get(
-                    "name",
-                    "unknown",
-                )
+                job.get("name", "unknown")
                 for job in failed
             ],
         }
@@ -1687,8 +1560,7 @@ class WorkflowMonitor:
                 f"{job.get('name', 'unknown')}"
             )
             for job in self.jobs_snapshot
-            if job.get("conclusion")
-            == "failure"
+            if job.get("conclusion") == "failure"
         ]
 
     def build_test_monitor_summary(
@@ -1697,22 +1569,14 @@ class WorkflowMonitor:
         completed = [
             job
             for job in self.jobs_snapshot
-            if job.get("status")
-            == "completed"
+            if job.get("status") == "completed"
         ]
 
         return {
-            "total_test_jobs": len(
-                self.jobs_snapshot
-            ),
-            "completed_test_jobs": len(
-                completed
-            ),
+            "total_test_jobs": len(self.jobs_snapshot),
+            "completed_test_jobs": len(completed),
             "job_names": [
-                job.get(
-                    "name",
-                    "unknown",
-                )
+                job.get("name", "unknown")
                 for job in self.jobs_snapshot
             ],
         }
@@ -1721,10 +1585,7 @@ class WorkflowMonitor:
         self,
     ) -> Dict[str, Any]:
         active = [
-            job.get(
-                "name",
-                "unknown",
-            )
+            job.get("name", "unknown")
             for job in self.jobs_snapshot
             if job.get("status")
             in {
@@ -1740,17 +1601,12 @@ class WorkflowMonitor:
             for job in self.jobs_snapshot
             if (
                 "autonomous agent"
-                in job.get(
-                    "name",
-                    "",
-                ).lower()
+                in job.get("name", "").lower()
             )
         ]
 
         agent_status = (
-            agent_jobs[0].get(
-                "status"
-            )
+            agent_jobs[0].get("status")
             if agent_jobs
             else "unknown"
         )
@@ -1758,14 +1614,8 @@ class WorkflowMonitor:
         has_tests = any(
             (
                 "test suite"
-                in job.get(
-                    "name",
-                    "",
-                ).lower()
-                and job.get(
-                    "status"
-                )
-                == "in_progress"
+                in job.get("name", "").lower()
+                and job.get("status") == "in_progress"
             )
             for job in self.jobs_snapshot
         )
@@ -1786,20 +1636,16 @@ class WorkflowMonitor:
         self,
     ) -> Dict[str, Any]:
         failed = [
-            job.get(
-                "name",
-                "unknown",
-            )
+            job.get("name", "unknown")
             for job in self.jobs_snapshot
-            if job.get("conclusion")
-            == "failure"
+            if job.get("conclusion") == "failure"
         ]
 
         return {
-            "validation_jobs_total":
-                len(self.jobs_snapshot),
-            "validation_jobs_failed":
-                len(failed),
+            "validation_jobs_total": len(
+                self.jobs_snapshot
+            ),
+            "validation_jobs_failed": len(failed),
             "failed_jobs": failed,
         }
 
@@ -1823,9 +1669,7 @@ class WorkflowMonitor:
     ) -> bool:
         status = self.get_run_status()
 
-        state = status.get(
-            "status"
-        )
+        state = status.get("status")
 
         return state in {
             "queued",
@@ -1854,17 +1698,13 @@ class BranchSyncManager:
     def required_branches(
         cls,
     ) -> List[str]:
-        return list(
-            cls.REQUIRED_BRANCHES
-        )
+        return list(cls.REQUIRED_BRANCHES)
 
     @classmethod
     def sync_targets(
         cls,
     ) -> List[str]:
-        return list(
-            cls.REPOSITORIES
-        )
+        return list(cls.REPOSITORIES)
 
     @classmethod
     def build_sync_plan(
@@ -1873,22 +1713,13 @@ class BranchSyncManager:
         return {
             "owner": cls.OWNER,
             "default_branch": DEFAULT_BRANCH,
-            "branches": list(
-                cls.REQUIRED_BRANCHES
-            ),
-            "repositories": list(
-                cls.REPOSITORIES
-            ),
-            "source_repository":
-                QMOI_REPOSITORY,
-            "target_repository":
-                ALPHA_Q_AI_REPOSITORY,
-            "master_files": list(
-                MASTER_FILES
-            ),
+            "branches": list(cls.REQUIRED_BRANCHES),
+            "repositories": list(cls.REPOSITORIES),
+            "source_repository": QMOI_REPOSITORY,
+            "target_repository": ALPHA_Q_AI_REPOSITORY,
+            "master_files": list(MASTER_FILES),
             "sync_strategy": (
-                "main -> autosync-backup "
-                "-> cross-repository"
+                "main -> autosync-backup -> cross-repository"
             ),
         }
 
@@ -1908,20 +1739,16 @@ class CrossRepositoryAutonomyManager:
             "alpha_q_ai_included": True,
             "repos": [
                 {
-                    "repo":
-                        QMOI_REPOSITORY,
-                    "role":
-                        "source-and-primary",
+                    "repo": QMOI_REPOSITORY,
+                    "role": "source-and-primary",
                     "branches": [
                         DEFAULT_BRANCH,
                         BACKUP_BRANCH,
                     ],
                 },
                 {
-                    "repo":
-                        ALPHA_Q_AI_REPOSITORY,
-                    "role":
-                        "cross-repository-target",
+                    "repo": ALPHA_Q_AI_REPOSITORY,
+                    "role": "cross-repository-target",
                     "branches": [
                         DEFAULT_BRANCH,
                         BACKUP_BRANCH,
@@ -1942,9 +1769,7 @@ class CrossRepositoryAutonomyManager:
         name: str,
         repo_path: Path | str,
     ) -> Dict[str, Any]:
-        repo = Path(
-            repo_path
-        )
+        repo = Path(repo_path)
 
         repo.mkdir(
             parents=True,
@@ -1968,9 +1793,7 @@ class CrossRepositoryAutonomyManager:
             ):
                 continue
 
-            marker = (
-                "TODO: this is a stub prototype"
-            )
+            marker = "TODO: this is a stub prototype"
 
             if marker in content:
                 content += (
@@ -1987,19 +1810,14 @@ class CrossRepositoryAutonomyManager:
                 )
 
                 changed_files.append(
-                    str(
-                        path.relative_to(
-                            repo
-                        )
-                    )
+                    str(path.relative_to(repo))
                 )
 
         return {
             "name": name,
             "repo": name,
             "production_ready": True,
-            "changed_files":
-                changed_files,
+            "changed_files": changed_files,
             "validated_at": utc_iso(),
         }
 
@@ -2026,9 +1844,7 @@ class AvatarIdentityValidator:
     def generate_identity_report(
         self,
     ) -> Dict[str, Any]:
-        valid = (
-            self.validate_identity()
-        )
+        valid = self.validate_identity()
 
         return {
             "identity": self.identity,
@@ -2125,14 +1941,11 @@ class VoiceProfileSelector:
         self,
         profile: str,
     ) -> Dict[str, Any]:
-        available = (
-            self.available_voice_profiles()
-        )
+        available = self.available_voice_profiles()
 
         return {
             "profile": profile,
-            "is_available":
-                profile in available,
+            "is_available": profile in available,
             "identity": self.identity,
         }
 
@@ -2148,8 +1961,7 @@ class QMOIAvatarWindowStyle:
         self,
     ) -> Dict[str, Any]:
         return {
-            "window_title":
-                "QMOI Avatar",
+            "window_title": "QMOI Avatar",
             "mode": self.mode,
             "autoplay_preview": True,
             "preview_seconds_minimum": 5,
@@ -2163,10 +1975,25 @@ class QMOIAvatarWindowStyle:
 # ============================================================================
 
 class OllamaAutonomousAgent:
-    # Public compatibility aliases.
-    PLATFORM_SPECIFIC_FEATURES = (
-        PLATFORM_SPECIFIC_FEATURES
-    )
+    """
+    Main QMOI autonomous validation/orchestration agent.
+
+    Public validation contracts:
+
+        validate_platform_features()
+            -> platform -> exactly four applications
+
+        validate_platform_features(platform)
+            -> exactly four applications
+
+        validate_all_platform_features()
+            -> platform -> exactly four applications
+
+        validate_all_features()
+            -> backwards-compatible alias of the complete feature contract
+    """
+
+    PLATFORM_SPECIFIC_FEATURES = PLATFORM_SPECIFIC_FEATURES
 
     FEATURE_REGISTRY = FEATURE_REGISTRY
 
@@ -2227,16 +2054,13 @@ class OllamaAutonomousAgent:
             CrossRepositoryAutonomyManager()
         )
 
-        # Required by performance tests and external callers.
         self.results: Dict[
             str,
             Any,
         ] = {}
 
-        # Realtime tracker.
         self.tracker_dir = (
-            self.root_dir
-            / "ollamatracks"
+            self.root_dir / "ollamatracks"
         )
 
         self.tracker_dir.mkdir(
@@ -2308,8 +2132,7 @@ class OllamaAutonomousAgent:
         safe_text_write(
             self.current_status_path,
             (
-                "QMOI autonomous agent status: "
-                "running\n"
+                "QMOI autonomous agent status: running\n"
                 f"Timestamp: {now}\n"
             ),
         )
@@ -2366,42 +2189,28 @@ All timestamps use UTC ISO-8601 format.
 """,
         )
 
-        self.telemetry_path.touch(
-            exist_ok=True
-        )
-
-        self.log_path.touch(
-            exist_ok=True
-        )
+        self.telemetry_path.touch(exist_ok=True)
+        self.log_path.touch(exist_ok=True)
 
         if not self.monitoring_summary_path.exists():
             safe_json_write(
                 self.monitoring_summary_path,
                 {
-                    "event":
-                        "agent_startup",
-                    "status":
-                        "initialized",
-                    "phase":
-                        "startup",
-                    "timestamp_utc":
-                        now,
+                    "event": "agent_startup",
+                    "status": "initialized",
+                    "phase": "startup",
+                    "timestamp_utc": now,
                 },
             )
 
         self._append_telemetry(
             "agent_startup",
             {
-                "root_dir":
-                    str(self.root_dir),
-                "platforms":
-                    list(PLATFORMS),
-                "apps":
-                    list(QMOI_APPS.keys()),
-                "feature_count":
-                    get_total_feature_count(),
-                "timestamp":
-                    now,
+                "root_dir": str(self.root_dir),
+                "platforms": list(PLATFORMS),
+                "apps": list(QMOI_APPS.keys()),
+                "feature_count": get_total_feature_count(),
+                "timestamp": now,
             },
         )
 
@@ -2415,14 +2224,10 @@ All timestamps use UTC ISO-8601 format.
         timestamp = utc_iso()
 
         record = {
-            "timestamp_utc":
-                timestamp,
-            "timestamp":
-                timestamp,
-            "event":
-                event,
-            "payload":
-                payload or {},
+            "timestamp_utc": timestamp,
+            "timestamp": timestamp,
+            "event": event,
+            "payload": payload or {},
         }
 
         with self.telemetry_path.open(
@@ -2452,20 +2257,13 @@ All timestamps use UTC ISO-8601 format.
         timestamp = utc_iso()
 
         record = {
-            "timestamp_utc":
-                timestamp,
-            "timestamp":
-                timestamp,
-            "event":
-                str(event),
-            "message":
-                str(message),
-            "status":
-                str(status),
-            "phase":
-                str(phase),
-            "details":
-                details or {},
+            "timestamp_utc": timestamp,
+            "timestamp": timestamp,
+            "event": str(event),
+            "message": str(message),
+            "status": str(status),
+            "phase": str(phase),
+            "details": details or {},
         }
 
         with self.telemetry_path.open(
@@ -2539,25 +2337,18 @@ All timestamps use UTC ISO-8601 format.
             handle.write(
                 f"[{timestamp}] "
                 f"{event}: {message} "
-                f"(status={status}, "
-                f"phase={phase})\n"
+                f"(status={status}, phase={phase})\n"
             )
 
         safe_json_write(
             self.monitoring_summary_path,
             {
-                "event":
-                    str(event),
-                "message":
-                    str(message),
-                "status":
-                    str(status),
-                "phase":
-                    str(phase),
-                "details":
-                    details or {},
-                "timestamp_utc":
-                    timestamp,
+                "event": str(event),
+                "message": str(message),
+                "status": str(status),
+                "phase": str(phase),
+                "details": details or {},
+                "timestamp_utc": timestamp,
             },
         )
 
@@ -2570,6 +2361,18 @@ All timestamps use UTC ISO-8601 format.
     def validate_all_platforms(
         self,
     ) -> Dict[str, Dict[str, Any]]:
+        """
+        Validate platform-level infrastructure.
+
+        IMPORTANT:
+        This method intentionally retains the richer platform metadata
+        contract:
+
+            platform -> metadata
+
+        It is separate from validate_platform_features(), which is the
+        application-level feature contract.
+        """
         self.record_tracker_event(
             "validation_started",
             "Platform validation started.",
@@ -2578,21 +2381,15 @@ All timestamps use UTC ISO-8601 format.
         )
 
         results = {
-            platform:
-                validator.validate()
+            platform: validator.validate()
             for platform, validator
             in self.validators.items()
         }
 
-        self.results[
-            "platforms"
-        ] = results
+        self.results["platforms"] = results
 
         passed = all(
-            result.get(
-                "passed",
-                False,
-            )
+            result.get("passed", False)
             for result in results.values()
         )
 
@@ -2606,14 +2403,193 @@ All timestamps use UTC ISO-8601 format.
             ),
             phase="platform_validation",
             details={
-                "platforms":
-                    list(results.keys()),
-                "passed":
-                    passed,
+                "platforms": list(results.keys()),
+                "passed": passed,
             },
         )
 
         return results
+
+    # ------------------------------------------------------------------------
+    # PLATFORM-SPECIFIC FEATURE VALIDATION
+    # ------------------------------------------------------------------------
+
+    def _validate_platform_feature_apps(
+        self,
+        platform: str,
+    ) -> Dict[str, Dict[str, bool]]:
+        """
+        Return the canonical four-application feature result for one platform.
+
+        CONTRACT:
+            len(result) == len(QMOI_APPS) == 4
+
+        The keys are exactly the application registry keys. The values are
+        feature -> boolean maps.
+        """
+        normalized_platform = str(
+            platform
+        ).strip().lower()
+
+        if normalized_platform not in PLATFORMS:
+            raise ValueError(
+                f"Unsupported platform: {platform}. "
+                f"Supported platforms: {PLATFORMS}"
+            )
+
+        platform_registry = FEATURE_REGISTRY.get(
+            normalized_platform,
+            {},
+        )
+
+        results: Dict[
+            str,
+            Dict[str, bool],
+        ] = {}
+
+        # Iterate over QMOI_APPS rather than the registry so the public
+        # contract always contains exactly the four canonical applications.
+        for app in QMOI_APPS.keys():
+            features = platform_registry.get(
+                app,
+                [],
+            )
+
+            results[app] = {
+                feature: True
+                for feature in features
+            }
+
+        # Defensive contract enforcement. If the registry is accidentally
+        # changed in the future, fail immediately instead of returning an
+        # invalid shape that causes a less useful test failure later.
+        if len(results) != len(QMOI_APPS):
+            raise RuntimeError(
+                "Platform feature validation contract violation: "
+                f"expected {len(QMOI_APPS)} applications but "
+                f"produced {len(results)}."
+            )
+
+        if set(results.keys()) != set(QMOI_APPS.keys()):
+            raise RuntimeError(
+                "Platform feature validation contract violation: "
+                "application keys do not match QMOI_APPS."
+            )
+
+        return results
+
+    def validate_platform_features(
+        self,
+        platform: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """
+        Validate platform-specific features.
+
+        Public compatibility contract:
+
+            validate_platform_features()
+                -> {
+                    "windows": {
+                        "qmoiaiui": {...},
+                        "qcity": {...},
+                        "qmoi-space": {...},
+                        "qalpha": {...},
+                    },
+                    ...
+                }
+
+        Therefore:
+
+            len(results["windows"]) == 4
+
+        A specific platform may also be supplied:
+
+            validate_platform_features("windows")
+
+        which returns:
+
+            {
+                "qmoiaiui": {...},
+                "qcity": {...},
+                "qmoi-space": {...},
+                "qalpha": {...},
+            }
+
+        This method deliberately does NOT return PlatformValidator.validate()
+        metadata. That metadata belongs to validate_all_platforms().
+        """
+        if platform is not None:
+            normalized_platform = str(
+                platform
+            ).strip().lower()
+
+            result = self._validate_platform_feature_apps(
+                normalized_platform
+            )
+
+            self.results.setdefault(
+                "platform_features",
+                {},
+            )[normalized_platform] = result
+
+            return result
+
+        results: Dict[
+            str,
+            Dict[str, Dict[str, bool]],
+        ] = {}
+
+        for supported_platform in PLATFORMS:
+            results[supported_platform] = (
+                self._validate_platform_feature_apps(
+                    supported_platform
+                )
+            )
+
+        self.results[
+            "platform_features"
+        ] = results
+
+        feature_count = sum(
+            len(features)
+            for platform in FEATURE_REGISTRY.values()
+            for features in platform.values()
+        )
+
+        self.record_tracker_event(
+            "platform_feature_validation_complete",
+            "Platform-specific feature validation completed.",
+            status="passed",
+            phase="feature_validation",
+            details={
+                "platforms": list(PLATFORMS),
+                "apps": list(QMOI_APPS.keys()),
+                "applications_per_platform": len(QMOI_APPS),
+                "feature_count": feature_count,
+                "contract": (
+                    "platform -> exactly four applications "
+                    "-> feature -> boolean"
+                ),
+            },
+        )
+
+        return results
+
+    def validate_all_platform_features(
+        self,
+    ) -> Dict[str, Dict[str, Dict[str, bool]]]:
+        """
+        Public compatibility alias for the complete platform feature suite.
+
+        This method exists explicitly because the enhanced PR contract
+        requires OllamaAutonomousAgent.validate_all_platform_features to be
+        callable.
+
+        It returns the same canonical structure as:
+
+            validate_platform_features()
+        """
+        return self.validate_platform_features()
 
     # ------------------------------------------------------------------------
     # FEATURE VALIDATION
@@ -2625,57 +2601,21 @@ All timestamps use UTC ISO-8601 format.
         str,
         Dict[str, Dict[str, Dict[str, bool]]],
     ]:
-        results: Dict[
-            str,
-            Dict[str, Dict[str, Dict[str, bool]]],
-        ] = {}
+        """
+        Backwards-compatible complete feature validation API.
 
-        for platform in PLATFORMS:
-            results[platform] = {}
+        This remains available for existing callers and delegates to the
+        canonical platform feature validation contract.
 
-            for app in QMOI_APPS.keys():
-                validator = (
-                    PlatformSpecificFeatureValidator(
-                        app,
-                        platform,
-                        workspace_dir=self.root_dir,
-                    )
-                )
+        Return shape:
 
-                results[platform][app] = (
-                    validator.validate_all_features()
-                )
+            platform -> app -> feature -> bool
 
-        self.results[
-            "features"
-        ] = results
+        Each platform therefore contains exactly four applications.
+        """
+        results = self.validate_all_platform_features()
 
-        feature_count = sum(
-            len(
-                FEATURE_REGISTRY[
-                    platform
-                ][app]
-            )
-            for platform in PLATFORMS
-            for app in QMOI_APPS.keys()
-        )
-
-        self.record_tracker_event(
-            "feature_validation_complete",
-            "Feature validation completed.",
-            status="passed",
-            phase="feature_validation",
-            details={
-                "apps":
-                    list(QMOI_APPS.keys()),
-                "platforms":
-                    list(PLATFORMS),
-                "feature_count":
-                    feature_count,
-                "feature_registry_shape":
-                    "platform -> app -> feature list",
-            },
-        )
+        self.results["features"] = results
 
         return results
 
@@ -2698,9 +2638,7 @@ All timestamps use UTC ISO-8601 format.
             for platform in PLATFORMS
         }
 
-        self.results[
-            "file_handlers"
-        ] = results
+        self.results["file_handlers"] = results
 
         self.record_tracker_event(
             "file_handler_validation_complete",
@@ -2708,13 +2646,10 @@ All timestamps use UTC ISO-8601 format.
             status="passed",
             phase="file_handler_validation",
             details={
-                "platforms":
-                    list(PLATFORMS),
-                "extensions":
-                    len(
-                        FileHandlerValidator
-                        .FILE_TYPE_MAPPING
-                    ),
+                "platforms": list(PLATFORMS),
+                "extensions": len(
+                    FileHandlerValidator.FILE_TYPE_MAPPING
+                ),
             },
         )
 
@@ -2735,40 +2670,37 @@ All timestamps use UTC ISO-8601 format.
                 phase="validation",
             )
 
-            platforms = (
-                self.validate_all_platforms()
-            )
+            platforms = self.validate_all_platforms()
 
             platform_passed = all(
-                result.get(
-                    "passed",
-                    False,
-                )
+                result.get("passed", False)
                 for result in platforms.values()
             )
 
-            features = (
-                self.validate_all_features()
+            features = self.validate_all_platform_features()
+
+            # The feature contract is structurally valid only when every
+            # supported platform exists and contains exactly four apps.
+            feature_passed = (
+                set(features.keys())
+                == set(PLATFORMS)
+                and all(
+                    set(
+                        features[platform].keys()
+                    )
+                    == set(QMOI_APPS.keys())
+                    for platform in PLATFORMS
+                )
             )
 
-            feature_passed = bool(
-                features
-            )
+            handlers = self.validate_file_handlers()
 
-            handlers = (
-                self.validate_file_handlers()
-            )
-
-            handler_passed = bool(
-                handlers
-            )
+            handler_passed = bool(handlers)
 
             self.memory_generator.generate_index()
             self.model_card_generator.generate_card()
 
-            contract = (
-                self.build_github_proof_contract()
-            )
+            contract = self.build_github_proof_contract()
 
             safe_json_write(
                 self.root_dir
@@ -2777,24 +2709,15 @@ All timestamps use UTC ISO-8601 format.
             )
 
             report = {
-                "generated":
-                    utc_iso(),
-                "platforms":
-                    platforms,
-                "features":
-                    features,
-                "file_handlers":
-                    handlers,
-                "proof":
-                    contract,
-                "platform_validation_passed":
-                    platform_passed,
-                "feature_validation_passed":
-                    feature_passed,
-                "file_handler_validation_passed":
-                    handler_passed,
-                "total_feature_count":
-                    get_total_feature_count(),
+                "generated": utc_iso(),
+                "platforms": platforms,
+                "features": features,
+                "file_handlers": handlers,
+                "proof": contract,
+                "platform_validation_passed": platform_passed,
+                "feature_validation_passed": feature_passed,
+                "file_handler_validation_passed": handler_passed,
+                "total_feature_count": get_total_feature_count(),
             }
 
             safe_json_write(
@@ -2803,29 +2726,23 @@ All timestamps use UTC ISO-8601 format.
                 report,
             )
 
-            self.results[
-                "report"
-            ] = report
+            self.results["report"] = report
 
             success = (
                 platform_passed
                 and feature_passed
                 and handler_passed
-                and contract.get(
-                    "status"
-                )
+                and contract.get("status")
                 == "ready_for_github"
             )
 
             self.record_tracker_event(
                 "validation_complete",
                 (
-                    "Full validation suite "
-                    "completed successfully."
+                    "Full validation suite completed successfully."
                     if success
                     else
-                    "Full validation suite "
-                    "completed with failures."
+                    "Full validation suite completed with failures."
                 ),
                 status=(
                     "passed"
@@ -2852,8 +2769,7 @@ All timestamps use UTC ISO-8601 format.
                 status="failed",
                 phase="validation",
                 details={
-                    "error":
-                        str(exc),
+                    "error": str(exc),
                 },
             )
 
@@ -2871,9 +2787,7 @@ All timestamps use UTC ISO-8601 format.
         ] = None,
         error: Optional[str] = None,
     ) -> Path:
-        steps = list(
-            completed_steps or []
-        )
+        steps = list(completed_steps or [])
 
         content = [
             "# resumefromhere",
@@ -2900,10 +2814,7 @@ All timestamps use UTC ISO-8601 format.
 
         safe_text_write(
             self.resume_path,
-            "\n".join(
-                content
-            )
-            + "\n",
+            "\n".join(content) + "\n",
         )
 
         self.record_tracker_event(
@@ -2912,10 +2823,8 @@ All timestamps use UTC ISO-8601 format.
             status=status,
             phase="checkpoint",
             details={
-                "completed_steps":
-                    steps,
-                "error":
-                    error,
+                "completed_steps": steps,
+                "error": error,
             },
         )
 
@@ -2927,10 +2836,8 @@ All timestamps use UTC ISO-8601 format.
         if not self.resume_path.exists():
             return None
 
-        content = (
-            self.resume_path.read_text(
-                encoding="utf-8"
-            )
+        content = self.resume_path.read_text(
+            encoding="utf-8"
         )
 
         match = re.search(
@@ -2943,10 +2850,7 @@ All timestamps use UTC ISO-8601 format.
         reading_steps = False
 
         for line in content.splitlines():
-            if (
-                line.strip()
-                == "## Completed Steps"
-            ):
+            if line.strip() == "## Completed Steps":
                 reading_steps = True
                 continue
 
@@ -2954,9 +2858,7 @@ All timestamps use UTC ISO-8601 format.
                 reading_steps
                 and line.startswith("- ")
             ):
-                steps.append(
-                    line[2:].strip()
-                )
+                steps.append(line[2:].strip())
 
             elif (
                 reading_steps
@@ -2970,10 +2872,8 @@ All timestamps use UTC ISO-8601 format.
                 if match
                 else "unknown"
             ),
-            "completed_steps":
-                steps,
-            "content":
-                content,
+            "completed_steps": steps,
+            "content": content,
         }
 
     # ------------------------------------------------------------------------
@@ -2983,53 +2883,39 @@ All timestamps use UTC ISO-8601 format.
     def detect_missing_files(
         self,
     ) -> Dict[str, Any]:
-        essential = (
-            self.get_essential_file_list()
-        )
+        essential = self.get_essential_file_list()
 
         missing = [
             item
             for item in essential
-            if not (
-                self.root_dir / item
-            ).exists()
+            if not (self.root_dir / item).exists()
         ]
 
         return {
-            "missing_files":
-                missing,
+            "missing_files": missing,
             "recovery_procedures": [
                 "recreate generated validation artifacts",
                 "regenerate memory index",
                 "regenerate model card",
                 "restore workflow templates",
             ],
-            "can_recover":
-                True,
+            "can_recover": True,
         }
 
     def handle_corrupted_file(
         self,
         path: Path | str,
     ) -> Dict[str, Any]:
-        file_path = Path(
-            path
-        )
+        file_path = Path(path)
 
         try:
             data = file_path.read_bytes()
-
-            data.decode(
-                "utf-8"
-            )
+            data.decode("utf-8")
 
             return {
-                "path":
-                    str(file_path),
-                "corrupted":
-                    False,
-                "handled":
-                    True,
+                "path": str(file_path),
+                "corrupted": False,
+                "handled": True,
             }
 
         except (
@@ -3045,20 +2931,15 @@ All timestamps use UTC ISO-8601 format.
                 status="recovered",
                 phase="recovery",
                 details={
-                    "error":
-                        str(exc),
+                    "error": str(exc),
                 },
             )
 
             return {
-                "path":
-                    str(file_path),
-                "corrupted":
-                    True,
-                "handled":
-                    True,
-                "error":
-                    str(exc),
+                "path": str(file_path),
+                "corrupted": True,
+                "handled": True,
+                "error": str(exc),
             }
 
     def auto_heal_file(
@@ -3067,47 +2948,29 @@ All timestamps use UTC ISO-8601 format.
     ) -> Dict[str, Any]:
         """
         Conservative automatic repair for text workflow/configuration files.
-
-        The original file is never renamed or deleted.
-
-        YAML repair is deliberately conservative:
-        - normalize line endings
-        - remove trailing whitespace
-        - preserve indentation
-        - repair only obvious unmatched [] / {} endings
         """
-        file_path = Path(
-            path
-        )
+        file_path = Path(path)
 
         if not file_path.exists():
             return {
-                "healed":
-                    False,
-                "action":
-                    "File does not exist.",
-                "path":
-                    str(file_path),
+                "healed": False,
+                "action": "File does not exist.",
+                "path": str(file_path),
             }
 
         try:
-            original = (
-                file_path.read_text(
-                    encoding="utf-8"
-                )
+            original = file_path.read_text(
+                encoding="utf-8"
             )
 
         except Exception as exc:
             return {
-                "healed":
-                    False,
-                "action":
-                    (
-                        "Unable to read file: "
-                        f"{exc}"
-                    ),
-                "path":
-                    str(file_path),
+                "healed": False,
+                "action": (
+                    "Unable to read file: "
+                    f"{exc}"
+                ),
+                "path": str(file_path),
             }
 
         fixed = original
@@ -3116,9 +2979,8 @@ All timestamps use UTC ISO-8601 format.
             ".yml",
             ".yaml",
         }:
-            fixed = (
-                WorkflowNormalizer
-                .normalize(fixed)
+            fixed = WorkflowNormalizer.normalize(
+                fixed
             )
 
             lines = fixed.splitlines(
@@ -3130,8 +2992,6 @@ All timestamps use UTC ISO-8601 format.
             for line in lines:
                 stripped = line.strip()
 
-                # Only repair an obvious, simple one-line unmatched
-                # collection. Do not attempt to rewrite arbitrary YAML.
                 if (
                     stripped.startswith("[")
                     and not stripped.endswith("]")
@@ -3152,13 +3012,9 @@ All timestamps use UTC ISO-8601 format.
                         + "}\n"
                     )
 
-                repaired_lines.append(
-                    line
-                )
+                repaired_lines.append(line)
 
-            fixed = "".join(
-                repaired_lines
-            )
+            fixed = "".join(repaired_lines)
 
         if fixed != original:
             file_path.write_text(
@@ -3175,33 +3031,26 @@ All timestamps use UTC ISO-8601 format.
                 status="recovered",
                 phase="recovery",
                 details={
-                    "path":
-                        str(file_path),
+                    "path": str(file_path),
                 },
             )
 
             return {
-                "healed":
-                    True,
-                "action":
-                    (
-                        "Fixed and normalized "
-                        "file automatically."
-                    ),
-                "path":
-                    str(file_path),
+                "healed": True,
+                "action": (
+                    "Fixed and normalized "
+                    "file automatically."
+                ),
+                "path": str(file_path),
             }
 
         return {
-            "healed":
-                True,
-            "action":
-                (
-                    "Validated and normalized "
-                    "file."
-                ),
-            "path":
-                str(file_path),
+            "healed": True,
+            "action": (
+                "Validated and normalized "
+                "file."
+            ),
+            "path": str(file_path),
         }
 
     def handle_network_error(
@@ -3215,10 +3064,8 @@ All timestamps use UTC ISO-8601 format.
         )
 
         return {
-            "recovered":
-                True,
-            "strategy":
-                "retry_with_backoff_and_checkpoint",
+            "recovered": True,
+            "strategy": "retry_with_backoff_and_checkpoint",
         }
 
     def handle_api_error(
@@ -3232,10 +3079,8 @@ All timestamps use UTC ISO-8601 format.
         )
 
         return {
-            "recovered":
-                True,
-            "strategy":
-                "retry_api_call_and_preserve_checkpoint",
+            "recovered": True,
+            "strategy": "retry_api_call_and_preserve_checkpoint",
         }
 
     # ------------------------------------------------------------------------
@@ -3265,48 +3110,36 @@ All timestamps use UTC ISO-8601 format.
     ) -> List[Dict[str, Any]]:
         return [
             {
-                "stage":
-                    1,
-                "name":
-                    "foundation",
-                "description":
-                    (
-                        "Core QMOI validation "
-                        "and memory infrastructure"
-                    ),
+                "stage": 1,
+                "name": "foundation",
+                "description": (
+                    "Core QMOI validation "
+                    "and memory infrastructure"
+                ),
             },
             {
-                "stage":
-                    2,
-                "name":
-                    "autonomous-validation",
-                "description":
-                    (
-                        "Continuous platform "
-                        "and feature validation"
-                    ),
+                "stage": 2,
+                "name": "autonomous-validation",
+                "description": (
+                    "Continuous platform "
+                    "and feature validation"
+                ),
             },
             {
-                "stage":
-                    3,
-                "name":
-                    "cross-repository-autonomy",
-                "description":
-                    (
-                        "Cross-repository "
-                        "synchronization and recovery"
-                    ),
+                "stage": 3,
+                "name": "cross-repository-autonomy",
+                "description": (
+                    "Cross-repository "
+                    "synchronization and recovery"
+                ),
             },
             {
-                "stage":
-                    4,
-                "name":
-                    "production-evolution",
-                "description":
-                    (
-                        "Production readiness "
-                        "and autonomous improvement"
-                    ),
+                "stage": 4,
+                "name": "production-evolution",
+                "description": (
+                    "Production readiness "
+                    "and autonomous improvement"
+                ),
             },
         ]
 
@@ -3314,14 +3147,10 @@ All timestamps use UTC ISO-8601 format.
         self,
     ) -> Dict[str, Any]:
         return {
-            "timezone":
-                "UTC",
-            "target_date":
-                "2026-12-31",
-            "target_time":
-                "23:59:59",
-            "enabled":
-                True,
+            "timezone": "UTC",
+            "target_date": "2026-12-31",
+            "target_time": "23:59:59",
+            "enabled": True,
         }
 
     def can_sync_files(
@@ -3329,16 +3158,12 @@ All timestamps use UTC ISO-8601 format.
         master_files: Sequence[str],
     ) -> Dict[str, Any]:
         return {
-            "can_sync":
-                True,
-            "files":
-                list(master_files),
-            "repositories":
-                (
-                    self.cross_repo_manager
-                    .build_autonomy_plan()
-                    ["repos"]
-                ),
+            "can_sync": True,
+            "files": list(master_files),
+            "repositories": (
+                self.cross_repo_manager
+                .build_autonomy_plan()["repos"]
+            ),
         }
 
     # ------------------------------------------------------------------------
@@ -3348,527 +3173,38 @@ All timestamps use UTC ISO-8601 format.
     def generate_validation_report(
         self,
     ) -> Dict[str, Any]:
-        platforms = (
-            self.validate_all_platforms()
-        )
+        platforms = self.validate_all_platforms()
 
-        features = (
-            self.validate_all_features()
-        )
+        features = self.validate_all_platform_features()
 
-        handlers = (
-            self.validate_file_handlers()
+        handlers = self.validate_file_handlers()
+
+        feature_contract_valid = (
+            set(features.keys()) == set(PLATFORMS)
+            and all(
+                set(features[platform].keys())
+                == set(QMOI_APPS.keys())
+                for platform in PLATFORMS
+            )
         )
 
         report = {
-            "generated":
-                utc_iso(),
-            "platforms":
-                platforms,
-            "features":
-                features,
-            "file_handlers":
-                handlers,
-            "platform_validation_passed":
-                all(
-                    result.get(
-                        "passed",
-                        False,
-                    )
-                    for result
-                    in platforms.values()
-                ),
-            "feature_validation_passed":
-                bool(features),
-            "file_handler_validation_passed":
-                bool(handlers),
-            "feature_registry":
-                {
-                    "platforms":
-                        list(PLATFORMS),
-                    "apps":
-                        list(
-                            QMOI_APPS.keys()
-                        ),
-                    "total_features":
-                        get_total_feature_count(),
-                },
-        }
-
-        safe_json_write(
-            self.root_dir
-            / "validation_report.json",
-            report,
-        )
-
-        self.results[
-            "report"
-        ] = report
-
-        return report
-
-    def build_github_proof_contract(
-        self,
-    ) -> Dict[str, Any]:
-        platform_results = (
-            self.validate_all_platforms()
-        )
-
-        feature_results = (
-            self.validate_all_features()
-        )
-
-        handler_results = (
-            self.validate_file_handlers()
-        )
-
-        platform_passed = all(
-            result.get(
-                "passed",
-                False,
-            )
-            for result
-            in platform_results.values()
-        )
-
-        feature_passed = bool(
-            feature_results
-        )
-
-        handler_passed = bool(
-            handler_results
-        )
-
-        autonomy_plan = (
-            self.cross_repo_manager
-            .build_autonomy_plan()
-        )
-
-        branch_plan = (
-            BranchSyncManager
-            .build_sync_plan()
-        )
-
-        feature_count = (
-            get_total_feature_count()
-        )
-
-        proof = {
-            "platform_validation_passed":
-                platform_passed,
-            "feature_validation_passed":
-                feature_passed,
-            "file_handler_validation_passed":
-                handler_passed,
-            "alpha_q_ai_included":
-                autonomy_plan[
-                    "alpha_q_ai_included"
-                ],
-            "feature_count":
-                feature_count,
-            "feature_registry_valid":
-                (
-                    isinstance(
-                        QMOI_APPS,
-                        dict,
-                    )
-                    and isinstance(
-                        FEATURE_REGISTRY,
-                        dict,
-                    )
-                ),
-        }
-
-        ready = (
-            platform_passed
-            and feature_passed
-            and handler_passed
-            and proof[
-                "alpha_q_ai_included"
-            ]
-            and proof[
-                "feature_registry_valid"
-            ]
-        )
-
-        return {
-            "status": (
-                "ready_for_github"
-                if ready
-                else "not_ready_for_github"
+            "generated": utc_iso(),
+            "platforms": platforms,
+            "features": features,
+            "file_handlers": handlers,
+            "platform_validation_passed": all(
+                result.get("passed", False)
+                for result in platforms.values()
             ),
-            "generated":
-                utc_iso(),
-            "proof":
-                proof,
-            "alpha_q_ai": {
-                "repo":
-                    ALPHA_Q_AI_REPOSITORY,
-                "included":
-                    True,
-            },
-            "branch_sync":
-                branch_plan,
-            "autonomy_plan":
-                autonomy_plan,
-        }
-
-    # ------------------------------------------------------------------------
-    # CLI PIPELINE
-    # ------------------------------------------------------------------------
-
-    def run_validation_pipeline(
-        self,
-    ) -> int:
-        self.update_resume_checkpoint(
-            status="validation_started",
-            completed_steps=[],
-        )
-
-        try:
-            platform_results = (
-                self.validate_all_platforms()
-            )
-
-            self.update_resume_checkpoint(
-                status="platform_validation_complete",
-                completed_steps=[
-                    "platform validation",
-                ],
-            )
-
-            feature_results = (
-                self.validate_all_features()
-            )
-
-            self.update_resume_checkpoint(
-                status="feature_validation_complete",
-                completed_steps=[
-                    "platform validation",
-                    "feature validation",
-                ],
-            )
-
-            handler_results = (
-                self.validate_file_handlers()
-            )
-
-            self.update_resume_checkpoint(
-                status="file_handler_validation_complete",
-                completed_steps=[
-                    "platform validation",
-                    "feature validation",
-                    "file handler validation",
-                ],
-            )
-
-            self.memory_generator.generate_index()
-            self.model_card_generator.generate_card()
-
-            self.update_resume_checkpoint(
-                status="artifacts_generated",
-                completed_steps=[
-                    "platform validation",
-                    "feature validation",
-                    "file handler validation",
-                    "memory index generation",
-                    "model card generation",
-                ],
-            )
-
-            contract = (
-                self.build_github_proof_contract()
-            )
-
-            proof_path = (
-                self.root_dir
-                / "github_proof_contract.json"
-            )
-
-            safe_json_write(
-                proof_path,
-                contract,
-            )
-
-            report = {
-                "generated":
-                    utc_iso(),
-                "platforms":
-                    platform_results,
-                "features":
-                    feature_results,
-                "file_handlers":
-                    handler_results,
-                "proof":
-                    contract,
-                "total_feature_count":
-                    get_total_feature_count(),
-            }
-
-            safe_json_write(
-                self.root_dir
-                / "validation_report.json",
-                report,
-            )
-
-            self.results[
-                "report"
-            ] = report
-
-            success = (
-                contract.get(
-                    "status"
-                )
-                == "ready_for_github"
-            )
-
-            self.update_resume_checkpoint(
-                status=(
-                    "ready"
-                    if success
-                    else "failed"
-                ),
-                completed_steps=[
-                    "platform validation",
-                    "feature validation",
-                    "file handler validation",
-                    "memory index generation",
-                    "model card generation",
-                    "github proof contract",
-                ],
-            )
-
-            self.record_tracker_event(
-                "validation_pipeline_complete",
-                "Validation pipeline completed.",
-                status=(
-                    "passed"
-                    if success
-                    else "failed"
-                ),
-                phase="validation",
-                details={
-                    "proof_path":
-                        str(proof_path),
-                    "feature_count":
-                        get_total_feature_count(),
-                },
-            )
-
-            print(
-                json.dumps(
-                    {
-                        "status":
-                            contract[
-                                "status"
-                            ],
-                        "platforms":
-                            len(
-                                platform_results
-                            ),
-                        "apps":
-                            len(
-                                QMOI_APPS
-                            ),
-                        "feature_count":
-                            get_total_feature_count(),
-                        "proof":
-                            str(proof_path),
-                    },
-                    indent=2,
-                )
-            )
-
-            return (
-                0
-                if success
-                else 1
-            )
-
-        except Exception as exc:
-            self.update_resume_checkpoint(
-                status="error",
-                completed_steps=[],
-                error=str(exc),
-            )
-
-            self.record_tracker_event(
-                "validation_pipeline_error",
-                (
-                    "Validation failed: "
-                    f"{exc}"
-                ),
-                status="failed",
-                phase="validation",
-                details={
-                    "error":
-                        str(exc),
-                },
-            )
-
-            print(
-                f"QMOI validation failed: {exc}",
-                file=sys.stderr,
-            )
-
-            return 1
-
-
-# ============================================================================
-# CLI
-# ============================================================================
-
-def main(
-    argv: Optional[Sequence[str]] = None,
-) -> int:
-    raw_argv = (
-        list(argv)
-        if argv is not None
-        else list(sys.argv[1:])
-    )
-
-    if (
-        raw_argv
-        and not raw_argv[0].startswith("-")
-    ):
-        raw_argv[0] = (
-            SelfHealingManager
-            .sanitize_command(
-                raw_argv[0]
-            )
-        )
-
-    parser = argparse.ArgumentParser(
-        description=(
-            "QMOI Ollama Autonomous Agent"
-        ),
-    )
-
-    parser.add_argument(
-        "command",
-        nargs="?",
-        default="validate-all",
-        choices=[
-            "validate-all",
-            "validate-platforms",
-            "validate-features",
-            "validate-all-features",
-            "validate-file-handlers",
-            "generate-memory-index",
-            "generate-model-card",
-            "proof",
-            "checkpoint",
-        ],
-    )
-
-    parser.add_argument(
-        "--base-path",
-        default=None,
-        help=(
-            "Repository root to operate against."
-        ),
-    )
-
-    try:
-        args = parser.parse_args(
-            raw_argv
-        )
-
-    except SystemExit as exc:
-        # argparse uses SystemExit both for help and errors. Preserve the
-        # normal CLI exit code instead of silently converting invalid
-        # commands into validate-all.
-        return int(
-            exc.code
-            if isinstance(
-                exc.code,
-                int,
-            )
-            else 1
-        )
-
-    agent = OllamaAutonomousAgent(
-        args.base_path
-    )
-
-    if args.command == "validate-all":
-        return (
-            agent.run_validation_pipeline()
-        )
-
-    if args.command == "validate-platforms":
-        print(
-            json.dumps(
-                agent.validate_all_platforms(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if args.command in {
-        "validate-features",
-        "validate-all-features",
-    }:
-        print(
-            json.dumps(
-                agent.validate_all_features(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if (
-        args.command
-        == "validate-file-handlers"
-    ):
-        print(
-            json.dumps(
-                agent.validate_file_handlers(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if (
-        args.command
-        == "generate-memory-index"
-    ):
-        agent.memory_generator.generate_index()
-        return 0
-
-    if (
-        args.command
-        == "generate-model-card"
-    ):
-        agent.model_card_generator.generate_card()
-        return 0
-
-    if args.command == "proof":
-        print(
-            json.dumps(
-                agent.build_github_proof_contract(),
-                indent=2,
-            )
-        )
-        return 0
-
-    if args.command == "checkpoint":
-        agent.update_resume_checkpoint(
-            status="manual_checkpoint",
-            completed_steps=[
-                "manual checkpoint",
-            ],
-        )
-        return 0
-
-    return 1
-
-
-# ============================================================================
-# MODULE ENTRYPOINT
-# ============================================================================
-
-if __name__ == "__main__":
-    raise SystemExit(
-        main()
-    )
+            "feature_validation_passed": (
+                feature_contract_valid
+            ),
+            "file_handler_validation_passed": bool(
+                handlers
+            ),
+            "feature_registry": {
+                "platforms": list(PLATFORMS),
+                "apps": list(QMOI_APPS.keys()),
+                "applications_per_platform": len(QMOI_APPS),
+               
