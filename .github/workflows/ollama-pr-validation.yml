@@ -328,7 +328,8 @@ jobs:
 
           python3 \
             scripts/ollama_autonomous_agent.py \
-            validate-all-platforms
+            validate-platforms \
+            --platform ${{ matrix.platform }}
 
           echo "Platform validation completed:"
           echo "${{ matrix.platform }}"
@@ -464,7 +465,7 @@ jobs:
 
           python3 \
             scripts/ollama_autonomous_agent.py \
-            validate-all-features
+            validate-features
 
           echo "Feature validation completed."
 
