@@ -545,7 +545,7 @@ jobs:
 
               python3 \
                 scripts/ollama_autonomous_agent.py \
-                validate-all-platforms
+                validate-platforms
 
               ;;
 
