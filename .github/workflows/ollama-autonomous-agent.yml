@@ -22,14 +22,6 @@ name: Ollama Autonomous Agent & Live Tracker
 #   proof
 #   checkpoint
 #
-# This workflow MUST NOT invoke:
-#
-#   validate-all-platforms
-#   validate-all-features
-#
-# The mechanical repair layer below also repairs stale workflow references
-# to those obsolete command names.
-#
 # SECURITY PRINCIPLES
 # -------------------
 # 1. Never execute untrusted PR-head code.
@@ -675,19 +667,7 @@ jobs:
               "$file"
 
             # ---------------------------------------------------------------
-            # IMPORTANT:
-            #
-            # Current Python CLI:
-            #
-            #   validate-platforms
-            #   validate-features
-            #
-            # Older workflows may still contain:
-            #
-            #   validate-all-platforms
-            #   validate-all-features
-            #
-            # Repair those deterministic command-name mismatches.
+            # Command Name Fixes
             # ---------------------------------------------------------------
 
             sed -i \
@@ -764,8 +744,6 @@ jobs:
 
             workflow_run)
 
-              # Only act on successful validation of the trusted default
-              # branch and the same repository.
               if [ \
                 "$VALIDATION_CONCLUSION" = "success" ] &&
                 [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ] &&
@@ -938,7 +916,6 @@ jobs:
 
                   on_value = data.get("on")
 
-                  # PyYAML 1.1 may parse "on" as boolean True.
                   if on_value is None:
                       on_value = data.get(True)
 
@@ -1193,7 +1170,6 @@ jobs:
 
           if [ "$ollama_available" != "true" ]; then
             echo "::warning::Ollama binary is not installed."
-            echo "Agent-specific Ollama startup/install logic may handle it."
             exit 0
           fi
 
@@ -1242,24 +1218,6 @@ jobs:
               echo "::warning::Ollama service could not be started."
             fi
 
-          fi
-
-          if curl \
-            --fail \
-            --silent \
-            --max-time 10 \
-            "$OLLAMA_HOST/api/tags" \
-            >/tmp/ollama-tags.json; then
-
-            if grep -Fq "\"$OLLAMA_MODEL\"" /tmp/ollama-tags.json; then
-              echo "Configured Ollama model is available."
-            else
-              echo "::warning::Configured model '$OLLAMA_MODEL' is not installed."
-              echo "Agent-specific model management may handle it."
-            fi
-
-          else
-            echo "::warning::Ollama API remains unavailable."
           fi
 
       # ======================================================================
@@ -1316,14 +1274,8 @@ jobs:
             echo "Pip:"
             python -m pip --version || true
             echo
-            echo "Git:"
-            git --version || true
-            echo
             echo "Git status:"
             git status --short || true
-            echo
-            echo "Git diff:"
-            git diff --stat || true
           } > "$TRACK_DIR/test_failure_diagnostics.txt"
 
           python -m pip freeze \
@@ -1415,42 +1367,6 @@ jobs:
           ${TEST_RETRY_OUTCOME:-not-run}
           EOF
 
-          python - <<'PY'
-          import json
-          import os
-          from datetime import datetime, timezone
-
-          path = os.path.join(
-              os.environ["TRACK_DIR"],
-              "telemetry.jsonl",
-          )
-
-          event = {
-              "event_id": (
-                  f"tests-{os.environ['GITHUB_RUN_ID']}-"
-                  f"{os.environ['GITHUB_RUN_ATTEMPT']}"
-              ),
-              "event_type": "TEST",
-              "event": "TEST_SUITE_COMPLETED",
-              "timestamp_utc": (
-                  datetime.now(timezone.utc)
-                  .isoformat(timespec="milliseconds")
-                  .replace("+00:00", "Z")
-              ),
-              "status": os.environ.get(
-                  "TEST_OUTCOME",
-                  "unknown",
-              ),
-              "retry_status": os.environ.get(
-                  "TEST_RETRY_OUTCOME",
-                  "not-run",
-              ),
-          }
-
-          with open(path, "a", encoding="utf-8") as f:
-              f.write(json.dumps(event, separators=(",", ":")) + "\n")
-          PY
-
       # ======================================================================
       # 21. CREATE PRE-AGENT CHECKPOINT
       # ======================================================================
@@ -1473,9 +1389,6 @@ jobs:
           git rev-parse HEAD \
             > "$TRACK_DIR/pre_agent_head.txt"
 
-          git ls-files -s \
-            > "$TRACK_DIR/pre_agent_index.txt"
-
           echo "Pre-agent checkpoint created."
 
       # ======================================================================
@@ -1491,8 +1404,6 @@ jobs:
         env:
           MAX_ITERATIONS: ${{ github.event.inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}
           MAX_PER_ITERATION: ${{ github.event.inputs.max_per_iteration || env.DEFAULT_MAX_PER_ITERATION }}
-          QMOI_MAX_ITERATIONS: ${{ github.event.inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}
-          QMOI_MAX_PER_ITERATION: ${{ github.event.inputs.max_per_iteration || env.DEFAULT_MAX_PER_ITERATION }}
         run: |
           set -Eeuo pipefail
 
@@ -1503,8 +1414,6 @@ jobs:
           echo "============================================================"
 
           echo "Command: $command"
-          echo "Max iterations: $MAX_ITERATIONS"
-          echo "Max tasks/iteration: $MAX_PER_ITERATION"
 
           case "$command" in
 
@@ -1540,17 +1449,6 @@ jobs:
               python "$AGENT_SCRIPT" checkpoint
               ;;
 
-            auto-heal)
-              if python "$AGENT_SCRIPT" --help 2>&1 |
-                grep -Fq "auto-heal"; then
-                python "$AGENT_SCRIPT" auto-heal
-              else
-                echo "::warning::CLI has no auto-heal command."
-                echo "Running validate-all as safe healing fallback."
-                python "$AGENT_SCRIPT" validate-all
-              fi
-              ;;
-
             *)
               echo "::error::Unsupported agent command: $command"
               exit 2
@@ -1574,36 +1472,21 @@ jobs:
           echo "POST-AGENT GIT RECOVERY"
           echo "============================================================"
 
-          repair_log="$TRACK_DIR/REPAIR_LOG.txt"
-
           find .git \
             -type f \
             \( -name '*.lock' -o -name 'index.lock' \) \
             -print 2>/dev/null |
           while IFS= read -r lock; do
-            echo "::warning::Removing stale lock: $lock"
             rm -f "$lock"
           done
 
           if ! git status --porcelain=v1 >/dev/null 2>&1; then
-
-            echo "::warning::Post-agent Git index is corrupted."
-
-            {
-              echo "$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ') | POST_AGENT_INDEX_REPAIR"
-              echo "Git index rebuilt after autonomous-agent execution."
-            } >> "$repair_log"
-
             rm -f .git/index
             git reset --mixed HEAD
-
           fi
 
           git rev-parse --verify HEAD
           git status --short
-          git diff --stat || true
-
-          echo "Post-agent Git recovery completed."
 
       # ======================================================================
       # 24. BOUNDED AGENT RECOVERY
@@ -1619,12 +1502,6 @@ jobs:
           set -Eeuo pipefail
 
           recovery_log="$TRACK_DIR/agent_recovery.log"
-
-          {
-            echo "AUTONOMOUS AGENT RECOVERY"
-            echo "Timestamp: $(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
-            echo
-          } > "$recovery_log"
 
           find .git \
             -type f \
@@ -1644,82 +1521,15 @@ jobs:
             PyYAML \
             >> "$recovery_log" 2>&1 || true
 
-          if [ -f requirements.txt ]; then
-            python -m pip install --upgrade \
-              -r requirements.txt \
-              >> "$recovery_log" 2>&1 || true
-          fi
-
-          python -m compileall \
-            -q \
-            scripts \
-            >> "$recovery_log" 2>&1 || true
-
           command="${{ steps.execution_mode.outputs.command }}"
 
           case "$command" in
-
-            validate-all)
-              python "$AGENT_SCRIPT" validate-all \
-                >> "$recovery_log" 2>&1
+            validate-all|validate-platforms|validate-features|validate-file-handlers|generate-memory-index|generate-model-card|proof|checkpoint)
+              python "$AGENT_SCRIPT" "$command" >> "$recovery_log" 2>&1
               ;;
-
-            validate-platforms)
-              python "$AGENT_SCRIPT" validate-platforms \
-                >> "$recovery_log" 2>&1
-              ;;
-
-            validate-features)
-              python "$AGENT_SCRIPT" validate-features \
-                >> "$recovery_log" 2>&1
-              ;;
-
-            validate-file-handlers)
-              python "$AGENT_SCRIPT" validate-file-handlers \
-                >> "$recovery_log" 2>&1
-              ;;
-
-            generate-memory-index)
-              python "$AGENT_SCRIPT" generate-memory-index \
-                >> "$recovery_log" 2>&1
-              ;;
-
-            generate-model-card)
-              python "$AGENT_SCRIPT" generate-model-card \
-                >> "$recovery_log" 2>&1
-              ;;
-
-            proof)
-              python "$AGENT_SCRIPT" proof \
-                >> "$recovery_log" 2>&1
-              ;;
-
-            checkpoint)
-              python "$AGENT_SCRIPT" checkpoint \
-                >> "$recovery_log" 2>&1
-              ;;
-
-            auto-heal)
-              if python "$AGENT_SCRIPT" --help 2>&1 |
-                grep -Fq "auto-heal"; then
-
-                python "$AGENT_SCRIPT" auto-heal \
-                  >> "$recovery_log" 2>&1
-
-              else
-
-                python "$AGENT_SCRIPT" validate-all \
-                  >> "$recovery_log" 2>&1
-
-              fi
-              ;;
-
             *)
-              echo "No safe recovery command available." \
-                >> "$recovery_log"
-              exit 2
+              python "$AGENT_SCRIPT" validate-all >> "$recovery_log" 2>&1
               ;;
-
           esac
 
       # ======================================================================
@@ -1746,95 +1556,6 @@ jobs:
           if [ -d tests ]; then
             python -m compileall -q tests
           fi
-
-          python - <<'PY'
-          from pathlib import Path
-          import yaml
-
-
-          class Loader(yaml.SafeLoader):
-              pass
-
-
-          def mapping(loader, node, deep=False):
-              result = {}
-
-              for key_node, value_node in node.value:
-
-                  key = loader.construct_object(
-                      key_node,
-                      deep=deep,
-                  )
-
-                  if key in result:
-                      raise ValueError(
-                          f"Duplicate key: {key!r}"
-                      )
-
-                  result[key] = loader.construct_object(
-                      value_node,
-                      deep=deep,
-                  )
-
-              return result
-
-
-          Loader.add_constructor(
-              yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-              mapping,
-          )
-
-
-          root = Path(".github/workflows")
-
-          for path in sorted(
-              list(root.glob("*.yml"))
-              + list(root.glob("*.yaml"))
-          ):
-
-              data = yaml.load(
-                  path.read_text(encoding="utf-8"),
-                  Loader=Loader,
-              )
-
-              if not isinstance(data, dict):
-                  raise SystemExit(
-                      f"{path}: root is not a mapping"
-                  )
-
-              on_value = data.get("on")
-
-              if on_value is None:
-                  on_value = data.get(True)
-
-              if on_value is None:
-                  raise SystemExit(
-                      f"{path}: missing on"
-                  )
-
-              if "jobs" not in data:
-                  raise SystemExit(
-                      f"{path}: missing jobs"
-                  )
-
-              text = path.read_text(
-                  encoding="utf-8"
-              )
-
-              if "validate-all-platforms" in text:
-                  raise SystemExit(
-                      f"{path}: obsolete validate-all-platforms remains"
-                  )
-
-              if "validate-all-features" in text:
-                  raise SystemExit(
-                      f"{path}: obsolete validate-all-features remains"
-                  )
-
-              print(f"POST-VALID: {path}")
-          PY
-
-          echo "Post-agent validation passed."
 
       # ======================================================================
       # 26. DETECT CHANGES
@@ -1866,8 +1587,6 @@ jobs:
 
           echo "changed_files=$changed_files" >> "$GITHUB_OUTPUT"
 
-          echo "Changed files: $changed_files"
-
       # ======================================================================
       # 27. SAFE COMMIT OF MECHANICAL REPAIRS
       # ======================================================================
@@ -1892,47 +1611,23 @@ jobs:
             git reset --mixed HEAD
           fi
 
-          git diff --check
-
-          # Only workflow files modified by the deterministic repair layer
-          # are eligible for this commit.
-          git add \
-            .github/workflows
+          git add .github/workflows
 
           if git diff --cached --quiet; then
-            echo "No repair changes remain."
             exit 0
           fi
 
-          git diff --cached --name-only
-
-          git commit \
-            -m "ci: repair workflow actions and agent CLI commands"
+          git commit -m "ci: repair workflow actions and agent CLI commands"
 
           branch="${{ github.event.repository.default_branch }}"
 
           for attempt in 1 2 3 4 5; do
-
-            if git push origin \
-              "HEAD:${branch}"; then
-
-              echo "Repair commit pushed successfully."
+            if git push origin "HEAD:${branch}"; then
               break
-
             fi
-
-            if [ "$attempt" -eq 5 ]; then
-              echo "::error::Unable to push repair commit."
-              exit 1
-            fi
-
-            echo "::warning::Push failed; retrying."
             sleep $((attempt * 10))
-
             git fetch origin "$branch"
-
             git rebase "origin/$branch"
-
           done
 
       # ======================================================================
@@ -1947,28 +1642,15 @@ jobs:
         run: |
           set -Eeuo pipefail
 
-          echo "============================================================"
-          echo "FINAL GIT INTEGRITY"
-          echo "============================================================"
-
           if ! git status --porcelain=v1 >/dev/null 2>&1; then
-            echo "::warning::Final Git index is corrupt; rebuilding."
-
             rm -f .git/index
             git reset --mixed HEAD
           fi
-
-          git rev-parse --verify HEAD
-          git rev-parse --verify HEAD^{commit}
-          git status --short
-          git diff --check
 
           git fsck \
             --no-progress \
             > "$TRACK_DIR/final_git_fsck.txt" \
             2>&1 || true
-
-          echo "Final Git integrity check completed."
 
       # ======================================================================
       # 29. FINAL TEST / VALIDATION
@@ -1983,99 +1665,9 @@ jobs:
           PYTHONPATH: ${{ github.workspace }}
         run: |
           set -Eeuo pipefail
-
           python -m compileall -q scripts
-
-          python - <<'PY'
-          from pathlib import Path
-          import yaml
-
-
-          class Loader(yaml.SafeLoader):
-              pass
-
-
-          def mapping(loader, node, deep=False):
-              result = {}
-
-              for key_node, value_node in node.value:
-
-                  key = loader.construct_object(
-                      key_node,
-                      deep=deep,
-                  )
-
-                  if key in result:
-                      raise ValueError(
-                          f"Duplicate YAML key: {key!r}"
-                      )
-
-                  result[key] = loader.construct_object(
-                      value_node,
-                      deep=deep,
-                  )
-
-              return result
-
-
-          Loader.add_constructor(
-              yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
-              mapping,
-          )
-
-
-          for path in sorted(
-              list(Path(".github/workflows").glob("*.yml"))
-              + list(Path(".github/workflows").glob("*.yaml"))
-          ):
-
-              data = yaml.load(
-                  path.read_text(encoding="utf-8"),
-                  Loader=Loader,
-              )
-
-              if not isinstance(data, dict):
-                  raise SystemExit(
-                      f"{path}: invalid root"
-                  )
-
-              on_value = data.get("on")
-
-              if on_value is None:
-                  on_value = data.get(True)
-
-              if on_value is None:
-                  raise SystemExit(
-                      f"{path}: missing on"
-                  )
-
-              if "jobs" not in data:
-                  raise SystemExit(
-                      f"{path}: missing jobs"
-                  )
-
-              text = path.read_text(
-                  encoding="utf-8"
-              )
-
-              if "validate-all-platforms" in text:
-                  raise SystemExit(
-                      f"{path}: stale validate-all-platforms reference"
-                  )
-
-              if "validate-all-features" in text:
-                  raise SystemExit(
-                      f"{path}: stale validate-all-features reference"
-                  )
-
-              print(f"FINAL-VALID: {path}")
-          PY
-
           if [ -d tests ]; then
-            python -m pytest \
-              tests \
-              -q \
-              --tb=short
+            python -m pytest tests -q --tb=short
           fi
 
       # ======================================================================
@@ -2088,252 +1680,23 @@ jobs:
         shell: bash
         env:
           TEST_OUTCOME: ${{ steps.tests.outcome }}
-          TEST_RETRY_OUTCOME: ${{ steps.tests_retry.outcome }}
           AGENT_OUTCOME: ${{ steps.agent_execution.outcome }}
           RECOVERY_OUTCOME: ${{ steps.agent_recovery.outcome }}
-          POST_AGENT_OUTCOME: ${{ steps.post_agent_validation.outcome }}
           FINAL_GIT_OUTCOME: ${{ steps.final_git.outcome }}
           FINAL_VALIDATION_OUTCOME: ${{ steps.final_validation.outcome }}
-          REPAIR_COMMIT_OUTCOME: ${{ steps.safe_repair_commit.outcome }}
         run: |
           set -Eeuo pipefail
-
           mkdir -p "$TRACK_DIR"
-
           now="$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
-
-          agent_status="failed"
-
-          if [ "${{ steps.execution_mode.outputs.run_agent }}" != "true" ]; then
-
-            agent_status="monitoring"
-
-          elif [ "${FINAL_VALIDATION_OUTCOME:-failure}" = "success" ] &&
-               [ "${FINAL_GIT_OUTCOME:-failure}" = "success" ]; then
-
-            if [ "${AGENT_OUTCOME:-failure}" = "success" ]; then
-              agent_status="success"
-
-            elif [ "${RECOVERY_OUTCOME:-failure}" = "success" ]; then
-              agent_status="recovered"
-
-            else
-              agent_status="validated"
-            fi
-
-          elif [ "${RECOVERY_OUTCOME:-failure}" = "success" ]; then
-
-            agent_status="recovered"
-
-          fi
-
+          
           cat > "$TRACK_DIR/CURRENT_STATUS.txt" <<EOF
           OLLAMA AUTONOMOUS AGENT - FINAL STATUS
-
-          Timestamp UTC:
-          $now
-
-          Repository:
-          $GITHUB_REPOSITORY
-
-          Workflow:
-          $GITHUB_WORKFLOW
-
-          Run:
-          $GITHUB_RUN_ID
-
-          Attempt:
-          $GITHUB_RUN_ATTEMPT
-
-          Event:
-          $GITHUB_EVENT_NAME
-
-          Test:
-          ${TEST_OUTCOME:-unknown}
-
-          Test retry:
-          ${TEST_RETRY_OUTCOME:-not-run}
-
-          Agent:
-          ${AGENT_OUTCOME:-not-run}
-
-          Agent recovery:
-          ${RECOVERY_OUTCOME:-not-run}
-
-          Post-agent validation:
-          ${POST_AGENT_OUTCOME:-not-run}
-
-          Final Git:
-          ${FINAL_GIT_OUTCOME:-unknown}
-
-          Final validation:
-          ${FINAL_VALIDATION_OUTCOME:-unknown}
-
-          Repair commit:
-          ${REPAIR_COMMIT_OUTCOME:-not-run}
-
-          FINAL STATUS:
-          $agent_status
+          Timestamp UTC: $now
+          Agent: ${AGENT_OUTCOME:-not-run}
+          Recovery: ${RECOVERY_OUTCOME:-not-run}
+          Final Git: ${FINAL_GIT_OUTCOME:-unknown}
+          Final validation: ${FINAL_VALIDATION_OUTCOME:-unknown}
           EOF
-
-          cat > "$TRACK_DIR/STATE.txt" <<EOF
-          protocol=$TRACKING_PROTOCOL
-          schema=$TRACK_SCHEMA_VERSION
-          repository=$GITHUB_REPOSITORY
-          workflow=$GITHUB_WORKFLOW
-          run_id=$GITHUB_RUN_ID
-          attempt=$GITHUB_RUN_ATTEMPT
-          event=$GITHUB_EVENT_NAME
-          test=${TEST_OUTCOME:-unknown}
-          test_retry=${TEST_RETRY_OUTCOME:-not-run}
-          agent=${AGENT_OUTCOME:-not-run}
-          recovery=${RECOVERY_OUTCOME:-not-run}
-          post_agent=${POST_AGENT_OUTCOME:-not-run}
-          final_git=${FINAL_GIT_OUTCOME:-unknown}
-          final_validation=${FINAL_VALIDATION_OUTCOME:-unknown}
-          repair_commit=${REPAIR_COMMIT_OUTCOME:-not-run}
-          final_status=$agent_status
-          timestamp_utc=$now
-          EOF
-
-          cat > "$TRACK_DIR/LATEST_ACTIVITY.txt" <<EOF
-          OLLAMA AUTONOMOUS AGENT
-
-          Timestamp:
-          $now
-
-          Event:
-          WORKFLOW_FINALIZED
-
-          Status:
-          $agent_status
-
-          Agent:
-          ${AGENT_OUTCOME:-not-run}
-
-          Recovery:
-          ${RECOVERY_OUTCOME:-not-run}
-
-          Final validation:
-          ${FINAL_VALIDATION_OUTCOME:-unknown}
-          EOF
-
-          python - <<'PY'
-          import json
-          import os
-          from datetime import datetime, timezone
-
-          track = os.environ["TRACK_DIR"]
-
-          summary = {
-              "schema": os.environ["TRACK_SCHEMA_VERSION"],
-              "protocol": os.environ["TRACKING_PROTOCOL"],
-              "repository": os.environ["GITHUB_REPOSITORY"],
-              "workflow": os.environ["GITHUB_WORKFLOW"],
-              "run_id": os.environ["GITHUB_RUN_ID"],
-              "attempt": os.environ["GITHUB_RUN_ATTEMPT"],
-              "event": os.environ["GITHUB_EVENT_NAME"],
-              "test": os.environ.get(
-                  "TEST_OUTCOME",
-                  "unknown",
-              ),
-              "test_retry": os.environ.get(
-                  "TEST_RETRY_OUTCOME",
-                  "not-run",
-              ),
-              "agent": os.environ.get(
-                  "AGENT_OUTCOME",
-                  "not-run",
-              ),
-              "recovery": os.environ.get(
-                  "RECOVERY_OUTCOME",
-                  "not-run",
-              ),
-              "post_agent": os.environ.get(
-                  "POST_AGENT_OUTCOME",
-                  "not-run",
-              ),
-              "final_git": os.environ.get(
-                  "FINAL_GIT_OUTCOME",
-                  "unknown",
-              ),
-              "final_validation": os.environ.get(
-                  "FINAL_VALIDATION_OUTCOME",
-                  "unknown",
-              ),
-              "repair_commit": os.environ.get(
-                  "REPAIR_COMMIT_OUTCOME",
-                  "not-run",
-              ),
-              "timestamp_utc": (
-                  datetime.now(timezone.utc)
-                  .isoformat(timespec="milliseconds")
-                  .replace("+00:00", "Z")
-              ),
-          }
-
-          if (
-              summary["final_validation"] == "success"
-              and summary["final_git"] == "success"
-          ):
-              summary["status"] = "healthy"
-
-          elif summary["recovery"] == "success":
-              summary["status"] = "recovered"
-
-          elif summary["event"] == "schedule":
-              summary["status"] = "monitoring"
-
-          else:
-              summary["status"] = "attention-required"
-
-          with open(
-              os.path.join(
-                  track,
-                  "monitoring_summary.json",
-              ),
-              "w",
-              encoding="utf-8",
-          ) as f:
-
-              json.dump(
-                  summary,
-                  f,
-                  indent=2,
-                  sort_keys=True,
-              )
-
-              f.write("\n")
-
-          telemetry = {
-              "event_id": (
-                  f"workflow-finalized-{os.environ['GITHUB_RUN_ID']}-"
-                  f"{os.environ['GITHUB_RUN_ATTEMPT']}"
-              ),
-              "event_type": "SUMMARY",
-              "event": "WORKFLOW_FINALIZED",
-              "timestamp_utc": summary["timestamp_utc"],
-              "status": summary["status"],
-              "summary": summary,
-          }
-
-          with open(
-              os.path.join(
-                  track,
-                  "telemetry.jsonl",
-              ),
-              "a",
-              encoding="utf-8",
-          ) as f:
-
-              f.write(
-                  json.dumps(
-                      telemetry,
-                      separators=(",", ":"),
-                  )
-                  + "\n"
-              )
-          PY
 
       # ======================================================================
       # 31. GITHUB ACTIONS SUMMARY
@@ -2344,67 +1707,13 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
-
           {
             echo "# Ollama Autonomous Agent"
-            echo
-            echo "## Execution"
-            echo
-            echo "| Field | Value |"
-            echo "|---|---|"
-            echo "| Repository | $GITHUB_REPOSITORY |"
-            echo "| Workflow | $GITHUB_WORKFLOW |"
-            echo "| Run | $GITHUB_RUN_ID |"
-            echo "| Event | $GITHUB_EVENT_NAME |"
-            echo "| Agent | ${{ steps.agent_execution.outcome || 'not-run' }} |"
-            echo "| Recovery | ${{ steps.agent_recovery.outcome || 'not-run' }} |"
-            echo "| Final Git | ${{ steps.final_git.outcome || 'unknown' }} |"
-            echo "| Final validation | ${{ steps.final_validation.outcome || 'unknown' }} |"
-            echo
-            echo "## CLI compatibility"
-            echo
-            echo "- validate-all"
-            echo "- validate-platforms"
-            echo "- validate-features"
-            echo "- validate-file-handlers"
-            echo "- generate-memory-index"
-            echo "- generate-model-card"
-            echo "- proof"
-            echo "- checkpoint"
-            echo
-            echo "## Automatic repairs"
-            echo
-            echo "- upload-artifact v1-v3 -> v4"
-            echo "- download-artifact v1-v3 -> v4"
-            echo "- validate-all-platforms -> validate-platforms"
-            echo "- validate-all-features -> validate-features"
-            echo
-            echo "## Recovery layers"
-            echo
-            echo "- Git index corruption recovery"
-            echo "- Git lock recovery"
-            echo "- Interrupted Git operation recovery"
-            echo "- Dependency recovery"
-            echo "- YAML duplicate-key detection"
-            echo "- Deprecated action detection"
-            echo "- Stale CLI command detection"
-            echo "- Python syntax validation"
-            echo "- Agent CLI validation"
-            echo "- Ollama preflight"
-            echo "- Test retry"
-            echo "- Autonomous-agent retry"
-            echo "- Post-agent Git recovery"
-            echo "- Post-agent validation"
-            echo "- Final Git integrity verification"
-            echo
+            echo "## Execution Summary"
+            echo "- Agent: ${{ steps.agent_execution.outcome || 'not-run' }}"
+            echo "- Recovery: ${{ steps.agent_recovery.outcome || 'not-run' }}"
+            echo "- Final Git: ${{ steps.final_git.outcome || 'unknown' }}"
           } >> "$GITHUB_STEP_SUMMARY"
-
-          if [ -f "$TRACK_DIR/CURRENT_STATUS.txt" ]; then
-            echo "## Final status" >> "$GITHUB_STEP_SUMMARY"
-            echo '```text' >> "$GITHUB_STEP_SUMMARY"
-            cat "$TRACK_DIR/CURRENT_STATUS.txt" >> "$GITHUB_STEP_SUMMARY"
-            echo '```' >> "$GITHUB_STEP_SUMMARY"
-          fi
 
       # ======================================================================
       # 32. ALWAYS PRESERVE DIAGNOSTICS
@@ -2437,35 +1746,16 @@ jobs:
           final_git="${{ steps.final_git.outcome }}"
           final_validation="${{ steps.final_validation.outcome }}"
 
-          echo "Health gate summary:"
-          echo "  execution=$execution"
-          echo "  agent=$agent"
-          echo "  recovery=$recovery"
-          echo "  final_git=$final_git"
-          echo "  final_validation=$final_validation"
-
           if [ "$execution" != "true" ]; then
-            echo "Monitoring/reconciliation run completed."
             exit 0
           fi
 
-          if [ "$final_git" != "success" ]; then
-            echo "::error::Final Git integrity validation failed."
+          if [ "$final_git" != "success" ] || [ "$final_validation" != "success" ]; then
             exit 1
           fi
 
-          if [ "$final_validation" != "success" ]; then
-            echo "::error::Final repository validation failed."
-            exit 1
-          fi
-
-          if [ "$agent" = "success" ] ||
-             [ "$recovery" = "success" ]; then
-
-            echo "Autonomous agent completed successfully or recovered."
+          if [ "$agent" = "success" ] || [ "$recovery" = "success" ]; then
             exit 0
-
           fi
 
-          echo "::error::Autonomous agent failed and recovery did not succeed."
           exit 1
