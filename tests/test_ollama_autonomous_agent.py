@@ -17,6 +17,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 
 from ollama_autonomous_agent import (
     OllamaAutonomousAgent,
+    AutonomousStepManager,
     PlatformValidator,
     FeatureTester,
     FileHandlerValidator,
@@ -485,6 +486,55 @@ class TestResumeCheckpoint:
         content = workflow_path.read_text()
         assert "workflow_run" in content
         assert "validate-all" in content or "ollama_autonomous_agent.py" in content
+
+    def test_step_manager_recovers_once_and_updates_resume(self, tmp_path):
+        """A productive repair is retried once and checkpointed at each phase."""
+        checkpoints = []
+        events = []
+        attempts = []
+
+        def checkpoint(**kwargs):
+            checkpoints.append(kwargs)
+            return tmp_path / "resumefromhere.txt"
+
+        def event(*args, **kwargs):
+            events.append((args, kwargs))
+            return {}
+
+        manager = AutonomousStepManager(checkpoint, event, max_attempts=3)
+
+        def action():
+            attempts.append(True)
+            if len(attempts) == 1:
+                raise FileNotFoundError("generated artifact")
+            return {"ok": True}
+
+        assert manager.run_step(
+            "artifact generation",
+            action,
+            repair=lambda category, error: category == "missing_file",
+        ) == {"ok": True}
+        assert len(attempts) == 2
+        assert manager.completed_steps == ["artifact generation"]
+        assert any(item["status"] == "step_retrying:artifact generation" for item in checkpoints)
+        assert checkpoints[-1]["status"] == "step_complete:artifact generation"
+
+    def test_step_manager_stops_repeated_failures(self, tmp_path):
+        """Identical failures cannot consume an unproductive retry loop."""
+        manager = AutonomousStepManager(
+            lambda **kwargs: tmp_path / "resumefromhere.txt",
+            lambda *args, **kwargs: {},
+            max_attempts=5,
+        )
+
+        with pytest.raises(RuntimeError, match="without productive recovery"):
+            manager.run_step(
+                "broken step",
+                lambda: (_ for _ in ()).throw(RuntimeError("same failure")),
+                repair=lambda category, error: True,
+            )
+        assert len(manager.history) == 2
+        assert manager.failure_fingerprints["broken step:RuntimeError:same failure"] == 2
 
 
 class TestBranchSyncManager:

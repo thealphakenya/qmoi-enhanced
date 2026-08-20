@@ -1,11 +1,18 @@
 {
   "details": {
-    "feature_count": 374,
-    "proof_path": "/workspaces/qmoi-enhanced/github_proof_contract.json"
+    "extensions": 62,
+    "platforms": [
+      "windows",
+      "macos",
+      "linux",
+      "ios",
+      "android",
+      "web"
+    ]
   },
-  "event": "validation_pipeline_complete",
-  "message": "Validation pipeline completed.",
-  "phase": "validation",
+  "event": "file_handler_validation_complete",
+  "message": "File-handler validation completed.",
+  "phase": "file_handler_validation",
   "status": "passed",
-  "timestamp_utc": "2026-08-20T21:37:08.727475Z"
+  "timestamp_utc": "2026-08-20T21:51:51.895090Z"
 }

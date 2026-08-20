@@ -1,24 +1,9 @@
 OLLAMA AUTONOMOUS AGENT STATE
 =============================
-
-Timestamp UTC: 2026-08-20T21:51:16.264Z
+STATE: initialized
+Timestamp UTC: 2026-08-20T22:46:29.575837Z
 Repository: thealphakenya/qmoi-enhanced
-Tracker run: 32421347084
-Tracker attempt: undefined
-Trigger event: schedule
-
-Validation workflow ID: 333901991
-Agent workflow ID: NOT_FOUND
-
-Latest validation run: 32420424517
-Latest validation status: completed
-Latest validation conclusion: success
-
-Latest agent run: NONE
-Latest agent status: NONE
-Latest agent conclusion: NONE
-
+Validation status: completed / success
+Agent status: running
 Active workflow runs: 0
-Open pull requests inspected: 0
-
-Snapshot SHA-256: 631eb717538933bd0b6006fbbccf772d3cbf67164dc5fe6f9d7a49f05f7e8704
+Q Steps Manager schema: qsteps-v1

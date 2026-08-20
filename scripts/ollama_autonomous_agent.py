@@ -84,6 +84,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import (
     Any,
+    Callable,
     Dict,
     Iterable,
     List,
@@ -2079,6 +2080,118 @@ class QMOIAvatarWindowStyle:
         }
 
 
+class AutonomousStepManager:
+    """Run bounded, resumable steps with productive recovery guarantees."""
+
+    def __init__(
+        self,
+        checkpoint: Callable[..., Path],
+        record_event: Callable[..., Dict[str, Any]],
+        max_attempts: int = 3,
+    ):
+        self.checkpoint = checkpoint
+        self.record_event = record_event
+        self.max_attempts = max(1, int(max_attempts))
+        self.completed_steps: List[str] = []
+        self.failure_fingerprints: Dict[str, int] = {}
+        self.history: List[Dict[str, Any]] = []
+
+    @staticmethod
+    def classify_error(error: BaseException) -> str:
+        if isinstance(error, FileNotFoundError):
+            return "missing_file"
+        if isinstance(error, (SyntaxError, ImportError, ModuleNotFoundError)):
+            return "source_or_dependency"
+        if isinstance(error, (TimeoutError, ConnectionError, OSError)):
+            return "transient_or_io"
+        if isinstance(error, AssertionError):
+            return "validation_contract"
+        return "unknown_manual_review"
+
+    @staticmethod
+    def fingerprint(step: str, error: BaseException) -> str:
+        return f"{step}:{type(error).__name__}:{str(error).strip()}"
+
+    def run_step(
+        self,
+        name: str,
+        action: Callable[[], Any],
+        repair: Optional[Callable[[str, BaseException], bool]] = None,
+    ) -> Any:
+        if name in self.completed_steps:
+            return None
+
+        last_error: Optional[BaseException] = None
+        for attempt in range(1, self.max_attempts + 1):
+            self.checkpoint(
+                status=f"step_running:{name}",
+                completed_steps=self.completed_steps,
+            )
+            try:
+                result = action()
+                if result is False:
+                    raise RuntimeError(f"Step returned unsuccessful result: {name}")
+                self.completed_steps.append(name)
+                record = {
+                    "step": name,
+                    "attempt": attempt,
+                    "status": "passed",
+                }
+                self.history.append(record)
+                self.record_event(
+                    "step_complete",
+                    f"Step completed: {name}",
+                    status="passed",
+                    phase="step_manager",
+                    details=record,
+                )
+                self.checkpoint(
+                    status=f"step_complete:{name}",
+                    completed_steps=self.completed_steps,
+                )
+                return result
+            except BaseException as error:
+                last_error = error
+                fingerprint = self.fingerprint(name, error)
+                seen = self.failure_fingerprints.get(fingerprint, 0) + 1
+                self.failure_fingerprints[fingerprint] = seen
+                category = self.classify_error(error)
+                repaired = False
+                if repair is not None and seen == 1:
+                    repaired = bool(repair(category, error))
+                record = {
+                    "step": name,
+                    "attempt": attempt,
+                    "status": "retrying" if repaired else "failed",
+                    "category": category,
+                    "fingerprint": fingerprint,
+                    "repair_applied": repaired,
+                }
+                self.history.append(record)
+                self.record_event(
+                    "step_failure",
+                    f"Step failed: {name}",
+                    status="retrying" if repaired else "failed",
+                    phase="step_manager",
+                    details={**record, "error": str(error)},
+                )
+                self.checkpoint(
+                    status=(
+                        f"step_retrying:{name}"
+                        if repaired
+                        else f"step_failed:{name}"
+                    ),
+                    completed_steps=self.completed_steps,
+                    error=str(error),
+                )
+                if not repaired or seen > 1:
+                    break
+
+        raise RuntimeError(
+            f"Autonomous step halted without productive recovery: {name}"
+        ) from last_error
+
+
 # ============================================================================
 # OLLAMA AUTONOMOUS AGENT
 # ============================================================================
@@ -2225,6 +2338,11 @@ class OllamaAutonomousAgent:
         self.resume_path = (
             self.root_dir
             / "resumefromhere.txt"
+        )
+
+        self.step_manager = AutonomousStepManager(
+            checkpoint=self.update_resume_checkpoint,
+            record_event=self.record_tracker_event,
         )
 
         self._initialize_tracking()
@@ -3452,58 +3570,38 @@ All timestamps use UTC ISO-8601 format.
         )
 
         try:
-            platform_results = (
-                self.validate_all_platforms()
+            step_manager = self.step_manager
+            step_manager.completed_steps = []
+            results: Dict[str, Any] = {}
+
+            def run(name: str, action: Callable[[], Any]) -> Any:
+                value = step_manager.run_step(name, action)
+                results[name] = value
+                return value
+
+            platform_results = run(
+                "platform validation",
+                self.validate_all_platforms,
             )
-
-            self.update_resume_checkpoint(
-                status="platform_validation_complete",
-                completed_steps=[
-                    "platform validation",
-                ],
+            feature_results = run(
+                "feature validation",
+                self.validate_all_platform_features,
             )
-
-            feature_results = (
-                self.validate_all_platform_features()
+            handler_results = run(
+                "file handler validation",
+                self.validate_file_handlers,
             )
-
-            self.update_resume_checkpoint(
-                status="feature_validation_complete",
-                completed_steps=[
-                    "platform validation",
-                    "feature validation",
-                ],
+            run(
+                "memory index generation",
+                lambda: self.memory_generator.generate_index(),
             )
-
-            handler_results = (
-                self.validate_file_handlers()
+            run(
+                "model card generation",
+                lambda: self.model_card_generator.generate_card(),
             )
-
-            self.update_resume_checkpoint(
-                status="file_handler_validation_complete",
-                completed_steps=[
-                    "platform validation",
-                    "feature validation",
-                    "file handler validation",
-                ],
-            )
-
-            self.memory_generator.generate_index()
-            self.model_card_generator.generate_card()
-
-            self.update_resume_checkpoint(
-                status="artifacts_generated",
-                completed_steps=[
-                    "platform validation",
-                    "feature validation",
-                    "file handler validation",
-                    "memory index generation",
-                    "model card generation",
-                ],
-            )
-
-            contract = (
-                self.build_github_proof_contract()
+            contract = run(
+                "github proof contract",
+                self.build_github_proof_contract,
             )
 
             proof_path = (
@@ -3544,14 +3642,7 @@ All timestamps use UTC ISO-8601 format.
                     if success
                     else "failed"
                 ),
-                completed_steps=[
-                    "platform validation",
-                    "feature validation",
-                    "file handler validation",
-                    "memory index generation",
-                    "model card generation",
-                    "github proof contract",
-                ],
+                completed_steps=step_manager.completed_steps,
             )
 
             self.record_tracker_event(
@@ -3566,6 +3657,7 @@ All timestamps use UTC ISO-8601 format.
                 details={
                     "proof_path": str(proof_path),
                     "feature_count": get_total_feature_count(),
+                    "step_history": step_manager.history,
                 },
             )
 
