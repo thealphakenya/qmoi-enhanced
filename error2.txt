@@ -235,6 +235,16 @@ Hosted trigger correction:
 - Added a `copilot/**` push trigger to the Ollama PR-validation workflow and a regression test, so published manager branches execute the GitHub-hosted autonomous-agent test gate.
 - Adjusted the regression test for PyYAML 1.1 boolean parsing of the YAML `on` key.
 
+GitHub-hosted validation completion:
+- Published branch: `copilot/hosted-step-manager`.
+- PR: `thealphakenya/qmoi-enhanced#2096`.
+- Hosted run: `32430724637`.
+- Result: PASS.
+- All 11 executed Ollama validation jobs passed, including the full autonomous-agent test suite, workflow integrity, six platform compilations, feature validation, documentation, and final validation.
+- The autonomous-agent dispatch job was skipped as designed for a non-main branch push.
+- Initial workflow dispatch returned HTTP 403 because the available token lacked Actions-dispatch permission; the branch push trigger successfully provided the hosted execution path.
+- Unrelated auto-merge and Vercel checks on the PR remain external failures and did not affect the Ollama validation workflow result.
+
 Continuation publication audit (2026-08-20):
 - Rechecked all local completion gates: workflow inventory 8, jobs 21, readiness true.
 - Confirmed no unresolved index paths and clean diff-check status.
