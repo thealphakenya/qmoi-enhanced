@@ -167,6 +167,9 @@ jobs:
       - name: Q Steps Manager start pre-flight
         run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:pre-flight-checks"
 
+      - name: Q Steps Manager validate repository
+        run: python3 scripts/qsteps_manager.py validate-all --root . --skip-tests
+
 
       # ========================================================================
       # PYTHON

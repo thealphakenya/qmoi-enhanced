@@ -245,6 +245,14 @@ GitHub-hosted validation completion:
 - Initial workflow dispatch returned HTTP 403 because the available token lacked Actions-dispatch permission; the branch push trigger successfully provided the hosted execution path.
 - Unrelated auto-merge and Vercel checks on the PR remain external failures and did not affect the Ollama validation workflow result.
 
+Current enhancement:
+- Added manager-owned `validate-all` aggregation for every local workflow and Python script, with optional full tests, durable `QSTEPS_VALIDATION.json`, and fail-closed exit status.
+- Added regression coverage for dynamic workflow/script discovery without manual file-by-file editing.
+
+Hosted wiring:
+- Added the manager-owned `validate-all --root . --skip-tests` gate to the master orchestrator pre-flight and PR-validation workflow integrity jobs.
+- Added regression coverage proving both primary hosted gates invoke the central aggregate validator.
+
 Continuation publication audit (2026-08-20):
 - Rechecked all local completion gates: workflow inventory 8, jobs 21, readiness true.
 - Confirmed no unresolved index paths and clean diff-check status.

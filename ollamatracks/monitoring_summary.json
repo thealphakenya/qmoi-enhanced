@@ -1,43 +1,26 @@
 {
   "details": {
+    "applications_per_platform": 4,
+    "apps": [
+      "qmoiaiui",
+      "qcity",
+      "qmoi-space",
+      "qalpha"
+    ],
+    "contract": "platform -> exactly four applications -> feature -> boolean",
     "feature_count": 374,
-    "proof_path": "/workspaces/qmoi-enhanced/github_proof_contract.json",
-    "step_history": [
-      {
-        "attempt": 1,
-        "status": "passed",
-        "step": "platform validation"
-      },
-      {
-        "attempt": 1,
-        "status": "passed",
-        "step": "feature validation"
-      },
-      {
-        "attempt": 1,
-        "status": "passed",
-        "step": "file handler validation"
-      },
-      {
-        "attempt": 1,
-        "status": "passed",
-        "step": "memory index generation"
-      },
-      {
-        "attempt": 1,
-        "status": "passed",
-        "step": "model card generation"
-      },
-      {
-        "attempt": 1,
-        "status": "passed",
-        "step": "github proof contract"
-      }
+    "platforms": [
+      "windows",
+      "macos",
+      "linux",
+      "ios",
+      "android",
+      "web"
     ]
   },
-  "event": "validation_pipeline_complete",
-  "message": "Validation pipeline completed.",
-  "phase": "validation",
+  "event": "platform_feature_validation_complete",
+  "message": "Platform-specific feature validation completed.",
+  "phase": "feature_validation",
   "status": "passed",
-  "timestamp_utc": "2026-08-20T23:45:31.240225Z"
+  "timestamp_utc": "2026-08-21T00:14:58.659500Z"
 }

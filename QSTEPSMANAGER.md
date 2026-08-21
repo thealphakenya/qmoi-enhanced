@@ -91,4 +91,6 @@ For new command-oriented steps, use `python3 scripts/qsteps_manager.py run --ste
 
 This is the intentionally small maintenance API: update the manager or the command it invokes, then apply that contract to one or many files through the existing workflow/script command. The manager can orchestrate validation and deterministic repair tools without opening each target file; it does not invent semantic edits or perform blind destructive rewrites.
 
+For a complete local or hosted gate, use `python3 scripts/qsteps_manager.py validate-all --root .`. It discovers every workflow and script, validates the shared workflow contract, compiles all scripts, optionally runs `pytest tests -q`, writes `QSTEPS_VALIDATION.json`, and returns nonzero for any unresolved issue. Use `--skip-tests` only when a later job owns the test suite.
+
 The realtime monitor polls bounded GitHub notifications with the configured token, summarizes unread workflow/agent items, and stores that state with each workflow snapshot. A custom token with notification-read access is required for user-level notifications; the default Actions token remains sufficient for workflow and repository telemetry.

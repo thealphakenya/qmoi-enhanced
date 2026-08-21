@@ -166,6 +166,57 @@ def emit(event: str, step: str, status: str, **details: Any) -> Dict[str, Any]:
     return record
 
 
+def validate_all(root: Path, run_tests: bool = True) -> Dict[str, Any]:
+    """Validate every local workflow and Python source through one command."""
+    workflow_dir = root / ".github" / "workflows"
+    scripts_dir = root / "scripts"
+    workflows = sorted(workflow_dir.glob("*.y*ml"))
+    scripts = sorted(scripts_dir.glob("*.py"))
+    report: Dict[str, Any] = {
+        "schema": SCHEMA_VERSION,
+        "timestamp_utc": utc_now(),
+        "workflow_count": len(workflows),
+        "script_count": len(scripts),
+        "tests_requested": run_tests,
+        "errors": [],
+    }
+    try:
+        import yaml
+        for workflow in workflows:
+            try:
+                document = yaml.safe_load(workflow.read_text(encoding="utf-8")) or {}
+                if document.get("env", {}).get("QSTEPS_MANAGER") != SCHEMA_VERSION:
+                    report["errors"].append(f"{workflow}: missing {SCHEMA_VERSION}")
+                if not document.get("jobs"):
+                    report["errors"].append(f"{workflow}: no jobs")
+            except (OSError, yaml.YAMLError) as error:
+                report["errors"].append(f"{workflow}: {error}")
+    except ImportError as error:
+        report["errors"].append(f"workflow parser unavailable: {error}")
+    compile_result = subprocess.run(
+        [sys.executable, "-m", "py_compile", *(str(path) for path in scripts)],
+        cwd=root, check=False, capture_output=True, text=True,
+    )
+    report["python_compile"] = compile_result.returncode == 0
+    if compile_result.returncode:
+        report["errors"].append(compile_result.stderr.strip() or "Python compilation failed")
+    if run_tests:
+        test_result = subprocess.run(
+            [sys.executable, "-m", "pytest", "tests", "-q"],
+            cwd=root, check=False, capture_output=True, text=True,
+        )
+        report["tests_passed"] = test_result.returncode == 0
+        report["test_output"] = (test_result.stdout + test_result.stderr)[-4000:]
+        if test_result.returncode:
+            report["errors"].append("test suite failed")
+    report["ready"] = not report["errors"]
+    _atomic_write(
+        tracker_path() / "QSTEPS_VALIDATION.json",
+        json.dumps(report, indent=2, sort_keys=True) + "\n",
+    )
+    return report
+
+
 def main() -> int:
     raw_arguments = sys.argv[1:]
     command: list[str] = []
@@ -174,13 +225,27 @@ def main() -> int:
         command = raw_arguments[separator + 1:]
         raw_arguments = raw_arguments[:separator]
     parser = argparse.ArgumentParser(description="QMOI workflow step manager")
-    parser.add_argument("action", choices=["start", "heartbeat", "complete", "fail", "run"])
-    parser.add_argument("--step", required=True)
+    parser.add_argument(
+        "action",
+        choices=["start", "heartbeat", "complete", "fail", "run", "validate-all"],
+    )
+    parser.add_argument("--step", default="repository")
     parser.add_argument("--error", default="")
     parser.add_argument("--evidence", default="")
     parser.add_argument("--duration-seconds", type=float, default=None)
     parser.add_argument("--attempt", type=int, default=None)
+    parser.add_argument("--root", type=Path, default=Path("."))
+    parser.add_argument("--skip-tests", action="store_true")
     args = parser.parse_args(raw_arguments)
+    if args.action == "validate-all":
+        report = validate_all(args.root.resolve(), run_tests=not args.skip_tests)
+        emit("validate-all", "repository", "completed" if report["ready"] else "failed",
+             evidence=str(tracker_path() / "QSTEPS_VALIDATION.json"),
+             error="; ".join(report["errors"]) if report["errors"] else None)
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return 0 if report["ready"] else 1
+    if args.step == "repository":
+        parser.error("the following arguments are required: --step")
     if args.action == "run":
         if not command:
             parser.error("run requires a command after --")

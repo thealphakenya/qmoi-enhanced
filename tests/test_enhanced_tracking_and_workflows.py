@@ -307,6 +307,21 @@ class TestWorkflowIntegration:
         assert records[-1]["status"] == "failed"
         assert records[-1]["error"] == "command exited 7"
 
+    def test_q_steps_manager_validate_all_discovers_repository(self, tmp_path):
+        """The aggregate command validates workflows and scripts without file-by-file edits."""
+        script = Path(__file__).parent.parent / "scripts" / "qsteps_manager.py"
+        environment = {**__import__("os").environ, "QSTEPS_TRACK_DIR": str(tmp_path)}
+        result = subprocess.run(
+            [sys.executable, str(script), "validate-all", "--root",
+             str(Path(__file__).parent.parent), "--skip-tests"],
+            env=environment, check=False, capture_output=True, text=True,
+        )
+        assert result.returncode == 0, result.stderr
+        report = json.loads((tmp_path / "QSTEPS_VALIDATION.json").read_text())
+        assert report["ready"] is True
+        assert report["workflow_count"] == 8
+        assert report["script_count"] >= 8
+
     def test_every_workflow_declares_q_steps_manager(self):
         """All GitHub workflows must opt into the shared step contract."""
         import yaml
@@ -341,6 +356,12 @@ class TestWorkflowIntegration:
         for job in expected:
             assert job in text
         assert text.count("Q Steps Manager start") >= len(expected)
+
+    def test_primary_hosted_gates_invoke_validate_all(self):
+        """Primary hosted gates use the centralized repository validation command."""
+        workflow_dir = Path(__file__).parent.parent / ".github" / "workflows"
+        for name in ("ollama-master-orchestrator.yml", "ollama-pr-validation.yml"):
+            assert "qsteps_manager.py validate-all --root ." in (workflow_dir / name).read_text()
 
     def test_hosted_workflow_contract_validator_passes(self, tmp_path):
         """The contract validator used by GitHub must pass locally."""

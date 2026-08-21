@@ -1,0 +1,22 @@
+{
+  "attempt": "1",
+  "attempt_budget": 3,
+  "error": null,
+  "error_category": "",
+  "event": "validate-all",
+  "event_id": "fc9b12333fcbe7fb",
+  "evidence": "ollamatracks/QSTEPS_VALIDATION.json",
+  "job": "local",
+  "run_id": "local",
+  "run_metadata": {
+    "actor": "local",
+    "ref": "local",
+    "repository": "thealphakenya/qmoi-enhanced",
+    "sha": "local"
+  },
+  "schema": "qsteps-v1",
+  "status": "completed",
+  "step": "repository",
+  "timestamp_utc": "2026-08-21T00:14:35.212006Z",
+  "workflow": "local"
+}

@@ -127,6 +127,9 @@ jobs:
       - name: Q Steps Manager start integrity validation
         run: python3 scripts/qsteps_manager.py start --step "${GITHUB_JOB}:workflow-integrity"
 
+      - name: Q Steps Manager validate repository
+        run: python3 scripts/qsteps_manager.py validate-all --root . --skip-tests
+
 
       # ----------------------------------------------------------------------
       # VERIFY ARTIFACT ACTION VERSIONS

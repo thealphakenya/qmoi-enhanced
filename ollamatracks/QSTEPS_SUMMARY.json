@@ -1,0 +1,13 @@
+{
+  "current_step": "repository",
+  "error_category": "",
+  "events_total": 1,
+  "evidence": "ollamatracks/QSTEPS_VALIDATION.json",
+  "job": "local",
+  "last_event": "validate-all",
+  "schema": "qsteps-v1",
+  "status": "completed",
+  "step_events": 1,
+  "updated_at_utc": "2026-08-21T00:14:35.212006Z",
+  "workflow": "local"
+}
