@@ -257,6 +257,12 @@ Final continuation completion (2026-08-21):
 - `WORKFLOWSO.md` remains the durable workflow/manager contract; per-step realtime state is projected to `ollamatracks` and GitHub job summaries to avoid mutating documentation on every runner event.
 - No unresolved implementation or validation work remains. Runtime-generated tracker/cache changes remain intentionally outside the source commit.
 
+Workflow inventory completion (2026-08-21):
+- Added `ollamatracks/workflowso.txt`, regenerated on every realtime monitor snapshot.
+- The inventory lists every workflow file, every bounded GitHub run observed, run timestamps/branch/SHA/event/URL/conclusion, and all jobs/phases for the monitored run.
+- Missing GitHub API data is explicitly represented as `not observed` or `pending`; GitHub run and job fields remain authoritative.
+- Added regression coverage for workflow inventory output; focused monitor tests pass.
+
 Current enhancement:
 - Added manager-owned `validate-all` aggregation for every local workflow and Python script, with optional full tests, durable `QSTEPS_VALIDATION.json`, and fail-closed exit status.
 - Added regression coverage for dynamic workflow/script discovery without manual file-by-file editing.

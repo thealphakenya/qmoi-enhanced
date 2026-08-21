@@ -8,6 +8,13 @@
 
 ## Overview
 
+The realtime monitor regenerates `ollamatracks/workflowso.txt` on every
+refresh. It is the plain-text live inventory for all workflow files and all
+bounded GitHub runs observed by the API, including run timestamps, branch,
+commit, event, URL, conclusion, and the monitored run's job/phase status.
+GitHub API values are authoritative; unavailable values are explicitly marked
+`not observed` or `pending`.
+
 This document provides comprehensive documentation for all 8 GitHub Actions workflows in the qmoi-enhanced repository with ADVANCED AUTO-HEALING, AUTO-RETRY, and AUTOMATIC AGENT TRIGGERING capabilities.
 
 **Workflow Architecture:**
@@ -176,6 +183,7 @@ Autonomous agent orchestrator that starts processing after successful PR validat
 
 ### Tracking Integration
 Updates these files in real-time:
+- ollamatracks/workflowso.txt - Human-readable workflow/run/step inventory
 - ollamatracks/STATE.txt - Current state snapshot
 - ollamatracks/telemetry.jsonl - Append-only event log
 - ollamatracks/monitoring_summary.json - Latest aggregated stats

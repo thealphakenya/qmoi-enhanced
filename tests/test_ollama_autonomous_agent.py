@@ -465,6 +465,37 @@ class TestWorkflowMonitor:
         assert "Run ID: 123456" in content
         assert "Phase: tests" in content
 
+    def test_workflow_monitor_writes_workflow_inventory(self, tmp_path):
+        """The workflow inventory contains run and monitored-step evidence."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.track_dir = tmp_path
+        monitor.workflow_runs_snapshot = [{
+            "workflowName": "Ollama PR Validation",
+            "databaseId": 99,
+            "status": "completed",
+            "conclusion": "success",
+            "createdAt": "2026-08-21T00:00:00Z",
+            "updatedAt": "2026-08-21T00:01:00Z",
+            "headBranch": "main",
+            "headSha": "abc123",
+            "event": "push",
+            "url": "https://github.com/example/actions/runs/99",
+        }]
+        monitor.jobs_snapshot = [{
+            "name": "Execute Test Suite",
+            "status": "completed",
+            "conclusion": "success",
+            "startedAt": "2026-08-21T00:00:10Z",
+            "completedAt": "2026-08-21T00:00:50Z",
+            "url": "https://github.com/example/actions/runs/99/job/1",
+        }]
+        monitor._write_workflowso_projection()
+        content = (tmp_path / "workflowso.txt").read_text()
+        assert "Ollama PR Validation" in content
+        assert "Run ID: 99" in content
+        assert "Execute Test Suite" in content
+        assert "Conclusion: success" in content
+
 
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""

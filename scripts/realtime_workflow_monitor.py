@@ -209,6 +209,82 @@ class WorkflowMonitor:
             "failed_runs": len(failures),
             "failed_workflows": sorted({run.get("workflowName") for run in failures if run.get("workflowName")}),
         }
+
+    def _write_workflowso_projection(self) -> None:
+        """Write a human-readable inventory and run/step status projection."""
+        workflow_dir = self.track_dir.parent / ".github" / "workflows"
+        workflow_files = sorted(workflow_dir.glob("*.y*ml"))
+        observed_by_name = {
+            str(run.get("workflowName")): run
+            for run in self.workflow_runs_snapshot
+            if run.get("workflowName")
+        }
+        summary = self.build_repository_workflow_summary()
+        lines = [
+            "QMOI GITHUB WORKFLOW REALTIME INVENTORY",
+            "========================================",
+            f"Generated UTC: {datetime.now().isoformat(timespec='seconds')}Z",
+            f"Repository: {self.repo}",
+            f"Monitored run: {self.run_id}",
+            "",
+            "REPOSITORY SUMMARY",
+            f"Runs observed: {summary['runs_observed']}",
+            f"Active runs: {summary['active_runs']}",
+            f"Successful runs: {summary['successful_runs']}",
+            f"Failed runs: {summary['failed_runs']}",
+            "",
+            "WORKFLOW INVENTORY",
+        ]
+        for workflow_file in workflow_files:
+            workflow_name = workflow_file.stem
+            run = observed_by_name.get(workflow_name) or observed_by_name.get(workflow_file.name)
+            lines.extend([
+                f"- File: {workflow_file.relative_to(self.track_dir.parent)}",
+                f"  Name: {run.get('workflowName', 'not observed')}" if run else "  Name: not observed from GitHub API",
+                f"  Run ID: {run.get('databaseId', 'none')}" if run else "  Run ID: none",
+                f"  Status: {run.get('status', 'not observed')}" if run else "  Status: not observed",
+                f"  Conclusion: {run.get('conclusion') or 'pending/not observed'}" if run else "  Conclusion: pending/not observed",
+                f"  Created: {run.get('createdAt', 'unknown')}" if run else "  Created: unknown",
+                f"  Updated: {run.get('updatedAt', 'unknown')}" if run else "  Updated: unknown",
+                f"  URL: {run.get('url', 'unknown')}" if run else "  URL: unknown",
+            ])
+        lines.extend(["", "OBSERVED WORKFLOW RUNS"])
+        if self.workflow_runs_snapshot:
+            for run in self.workflow_runs_snapshot:
+                lines.extend([
+                    f"- Workflow: {run.get('workflowName', 'unknown')}",
+                    f"  Run ID: {run.get('databaseId', 'unknown')}",
+                    f"  Status: {run.get('status', 'unknown')}",
+                    f"  Conclusion: {run.get('conclusion') or 'pending'}",
+                    f"  Created: {run.get('createdAt', 'unknown')}",
+                    f"  Updated: {run.get('updatedAt', 'unknown')}",
+                    f"  Branch: {run.get('headBranch', 'unknown')}",
+                    f"  SHA: {run.get('headSha', 'unknown')}",
+                    f"  Event: {run.get('event', 'unknown')}",
+                    f"  URL: {run.get('url', 'unknown')}",
+                ])
+        else:
+            lines.append("- No workflow runs returned yet; the next monitor refresh will update this section.")
+        lines.extend(["", "MONITORED RUN STEPS / PHASES"])
+        if self.jobs_snapshot:
+            for job in self.jobs_snapshot:
+                lines.extend([
+                    f"- Step: {job.get('name', 'unknown')}",
+                    f"  Status: {job.get('status', 'unknown')}",
+                    f"  Conclusion: {job.get('conclusion') or 'pending'}",
+                    f"  Started: {job.get('startedAt', 'unknown')}",
+                    f"  Completed: {job.get('completedAt', 'unknown')}",
+                    f"  URL: {job.get('url', 'unknown')}",
+                ])
+        else:
+            lines.append("- No job data returned yet; the next monitor refresh will update this section.")
+        lines.extend([
+            "",
+            "MONITORING CONTRACT",
+            "GitHub API run and job fields are authoritative; missing data is reported as not observed.",
+            "This file is a mutable realtime projection and is regenerated on every monitor refresh.",
+        ])
+        (self.track_dir / "workflowso.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
     
     def get_job_logs(self, job_id: str) -> str:
         """Fetch logs for a specific job"""
@@ -723,6 +799,7 @@ class WorkflowMonitor:
         }
         with (self.track_dir / 'telemetry.jsonl').open('a', encoding='utf-8') as handle:
             handle.write(json.dumps(telemetry_line, default=str, sort_keys=True) + '\n')
+        self._write_workflowso_projection()
 
     def _save_report(self):
         """Save monitoring report to JSON file"""
