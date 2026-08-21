@@ -118,6 +118,16 @@ class TestEnhancedTracking:
         activity_file = agent.tracker_dir / "LATEST_ACTIVITY.txt"
         content = activity_file.read_text()
         assert "activity_test" in content or "Latest activity message" in content
+
+    def test_ollama_status_history_is_written(self, tmp_path):
+        """Each agent event gets a durable, human-readable status snapshot."""
+        agent = OllamaAutonomousAgent(tmp_path)
+        agent.record_tracker_event("status_history", "Agent status snapshot", status="active", phase="testing")
+        status_files = list(agent.tracker_dir.glob("ollamastatus.txt *.txt"))
+        assert status_files
+        content = status_files[-1].read_text()
+        assert "OLLAMA AUTONOMOUS AGENT STATUS" in content
+        assert "status_history" in content
     
     def test_tracking_index_updated(self, tmp_path):
         """TRACKING_INDEX.txt should document tracking schema."""

@@ -251,6 +251,8 @@ Final continuation completion (2026-08-21):
 - Workflow contract and Python compilation checks: PASS.
 - Latest hosted Ollama validation for commit `9b5f2850b7`: PASS (run `32431956885`; all executed validation jobs successful).
 - Hosted test coverage includes the autonomous-agent, enhanced tracking/manager, and enhanced-feature test modules.
+- Added timestamped `ollamastatus.txt *.txt` history snapshots for both agent events and realtime monitor cycles, including status, phase, event, run identity, metrics, and details.
+- Documented the status-history contract in `QSTEPSMANAGER.md` and `WORKFLOWSO.md`.
 - Realtime monitor coverage includes workflow runs, jobs, notifications, agent phase, health, alerts, and durable `ollamatracks` projections.
 - `WORKFLOWSO.md` remains the durable workflow/manager contract; per-step realtime state is projected to `ollamatracks` and GitHub job summaries to avoid mutating documentation on every runner event.
 - No unresolved implementation or validation work remains. Runtime-generated tracker/cache changes remain intentionally outside the source commit.

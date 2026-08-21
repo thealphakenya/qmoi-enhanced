@@ -657,6 +657,19 @@ class WorkflowMonitor:
             f"status: {status}\nphase: {phase}\nevent: {event}\ndescription: {description}\nlast_updated_utc: {timestamp}\n",
             encoding='utf-8',
         )
+        status_name = f"ollamastatus.txt {timestamp.replace(':', '-')}.txt"
+        (self.track_dir / status_name).write_text(
+            "OLLAMA AUTONOMOUS AGENT LIVE STATUS\n"
+            f"Timestamp UTC: {timestamp}\n"
+            f"Repository: {self.repo}\n"
+            f"Run ID: {self.run_id}\n"
+            f"Status: {status}\n"
+            f"Phase: {phase}\n"
+            f"Event: {event}\n"
+            f"Description: {description}\n"
+            f"Metrics: {json.dumps(details, default=str, sort_keys=True)}\n",
+            encoding='utf-8',
+        )
         (self.track_dir / 'PR_STATUS.txt').write_text(
             f"PR Status: {status}\nPhase: {phase}\nEvent: {event}\nRun ID: {self.run_id}\nLast update UTC: {timestamp}\n",
             encoding='utf-8',

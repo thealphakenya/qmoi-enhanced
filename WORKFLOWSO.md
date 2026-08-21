@@ -178,6 +178,7 @@ Updates these files in real-time:
 - ollamatracks/telemetry.jsonl - Append-only event log
 - ollamatracks/monitoring_summary.json - Latest aggregated stats
 - ollamatracks/CURRENT_STATUS.txt - Live status projection
+- ollamatracks/ollamastatus.txt *.txt - Timestamped agent and monitor status history
 
 ---
 

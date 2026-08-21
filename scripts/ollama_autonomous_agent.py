@@ -2581,6 +2581,21 @@ All timestamps use UTC ISO-8601 format.
             },
         )
 
+        status_name = f"ollamastatus.txt {timestamp.replace(':', '-')}.txt"
+        safe_text_write(
+            self.tracker_dir / status_name,
+            (
+                "OLLAMA AUTONOMOUS AGENT STATUS\n"
+                f"Timestamp UTC: {timestamp}\n"
+                f"Status: {status}\n"
+                f"Phase: {phase}\n"
+                f"Event: {event}\n"
+                f"Message: {message}\n"
+                f"Repository: {self.root_dir}\n"
+                f"Details: {json.dumps(details or {}, default=str, sort_keys=True)}\n"
+            ),
+        )
+
         return record
 
     # ------------------------------------------------------------------------

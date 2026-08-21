@@ -436,6 +436,17 @@ class TestWorkflowMonitor:
         assert summary["unread"] == 1
         assert summary["relevant"] == 1
 
+    def test_workflow_monitor_writes_ollama_status_history(self, tmp_path, monkeypatch):
+        """Live monitor snapshots include durable Ollama status history."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.track_dir = tmp_path
+        monitor._write_tracker_snapshot("heartbeat", "Agent is running", "in_progress", "tests", {"jobs": 2})
+        status_files = list(tmp_path.glob("ollamastatus.txt *.txt"))
+        assert status_files
+        content = status_files[-1].read_text()
+        assert "Run ID: 123456" in content
+        assert "Phase: tests" in content
+
 
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""

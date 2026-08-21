@@ -94,3 +94,5 @@ This is the intentionally small maintenance API: update the manager or the comma
 For a complete local or hosted gate, use `python3 scripts/qsteps_manager.py validate-all --root .`. It discovers every workflow and script, validates the shared workflow contract, compiles all scripts, optionally runs `pytest tests -q`, writes `QSTEPS_VALIDATION.json`, and returns nonzero for any unresolved issue. Use `--skip-tests` only when a later job owns the test suite.
 
 The realtime monitor polls bounded GitHub notifications with the configured token, summarizes unread workflow/agent items, and stores that state with each workflow snapshot. A custom token with notification-read access is required for user-level notifications; the default Actions token remains sufficient for workflow and repository telemetry.
+
+Every agent event and realtime monitor snapshot also writes a human-readable `ollamastatus.txt *.txt` record under `ollamatracks/`. These timestamped records preserve status, phase, event, run identity, metrics, and details for historical inspection while the mutable projections remain optimized for current state.
