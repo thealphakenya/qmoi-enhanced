@@ -436,6 +436,24 @@ class TestWorkflowMonitor:
         assert summary["unread"] == 1
         assert summary["relevant"] == 1
 
+    def test_workflow_monitor_summarizes_all_repository_workflows(self, monkeypatch):
+        """Repository monitoring includes bounded workflow-run health metrics."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monkeypatch.setattr(
+            monitor, "_run_gh_command", lambda command: [
+                {"workflowName": "Ollama PR Validation", "status": "completed", "conclusion": "success"},
+                {"workflowName": "Ollama Master", "status": "in_progress", "conclusion": None},
+                {"workflowName": "Other Workflow", "status": "completed", "conclusion": "failure"},
+            ]
+        )
+        runs = monitor.get_repository_workflow_runs()
+        summary = monitor.build_repository_workflow_summary()
+        assert len(runs) == 3
+        assert summary["runs_observed"] == 3
+        assert summary["active_runs"] == 1
+        assert summary["successful_runs"] == 1
+        assert summary["failed_workflows"] == ["Other Workflow"]
+
     def test_workflow_monitor_writes_ollama_status_history(self, tmp_path, monkeypatch):
         """Live monitor snapshots include durable Ollama status history."""
         monitor = WorkflowMonitor("123456", token="test-token")
@@ -518,6 +536,13 @@ class TestResumeCheckpoint:
         content = workflow_path.read_text()
         assert "workflow_run" in content
         assert "validate-all" in content or "ollama_autonomous_agent.py" in content
+
+    def test_auto_merge_workflow_passes_one_json_field_argument(self):
+        """gh pr view must receive one comma-separated --json argument."""
+        workflow_path = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "auto-merge-automated-pr.yml"
+        content = workflow_path.read_text()
+        assert '--json "number,state,isDraft,headRefName,headRefOid,baseRefName,baseRefOid,headRepository,headRepositoryOwner,isCrossRepository,mergeStateStatus,mergeable,autoMergeRequest,url"' in content
+        assert "number,\\\n" not in content
 
     def test_step_manager_recovers_once_and_updates_resume(self, tmp_path):
         """A productive repair is retried once and checkpointed at each phase."""

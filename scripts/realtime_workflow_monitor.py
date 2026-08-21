@@ -90,6 +90,7 @@ class WorkflowMonitor:
         self.current_status = None
         self.current_conclusion = None
         self.jobs_snapshot = []
+        self.workflow_runs_snapshot: List[Dict[str, Any]] = []
         self.notifications_snapshot: List[Dict[str, Any]] = []
         
         self._setup_gh_token()
@@ -178,6 +179,36 @@ class WorkflowMonitor:
         if not isinstance(data, dict):
             return {}
         return data
+
+    def get_repository_workflow_runs(self, limit: int = 50) -> List[Dict[str, Any]]:
+        """Fetch a bounded view of every hosted workflow run in the repository."""
+        bounded_limit = max(1, min(limit, 100))
+        data = self._run_gh_command(
+            f"run list --repo {self.repo} --limit {bounded_limit} --json "
+            "databaseId,workflowName,status,conclusion,headBranch,headSha,"
+            "createdAt,updatedAt,event,url"
+        )
+        if not isinstance(data, list):
+            self.workflow_runs_snapshot = []
+            return []
+        self.workflow_runs_snapshot = [item for item in data if isinstance(item, dict)]
+        return self.workflow_runs_snapshot
+
+    def build_repository_workflow_summary(self) -> Dict[str, Any]:
+        """Summarize all recently observed hosted workflows and failures."""
+        runs = self.workflow_runs_snapshot
+        failures = [run for run in runs if run.get("conclusion") == "failure"]
+        active = [run for run in runs if run.get("status") in {
+            "queued", "in_progress", "requested", "waiting", "pending"
+        }]
+        return {
+            "runs_observed": len(runs),
+            "workflow_names": sorted({run.get("workflowName") for run in runs if run.get("workflowName")}),
+            "active_runs": len(active),
+            "successful_runs": sum(1 for run in runs if run.get("conclusion") == "success"),
+            "failed_runs": len(failures),
+            "failed_workflows": sorted({run.get("workflowName") for run in failures if run.get("workflowName")}),
+        }
     
     def get_job_logs(self, job_id: str) -> str:
         """Fetch logs for a specific job"""
@@ -497,6 +528,7 @@ class WorkflowMonitor:
         self.current_status = data.get('status', 'unknown')
         self.current_conclusion = data.get('conclusion', '')
         self.jobs_snapshot = data.get('jobs', []) or []
+        self.get_repository_workflow_runs()
         self.get_notifications()
         self._write_tracker_snapshot(
             'workflow_status_snapshot',
@@ -507,6 +539,7 @@ class WorkflowMonitor:
                 'jobs': len(self.jobs_snapshot),
                 'conclusion': self.current_conclusion,
                 'notifications': self.build_notification_summary(),
+                'repository_workflows': self.build_repository_workflow_summary(),
             },
         )
         

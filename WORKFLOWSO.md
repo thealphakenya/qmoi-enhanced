@@ -21,7 +21,7 @@ Push → Master Orchestrator → Validation → Tests → Agent (Auto-Trigger)
 
 ## 1. Ollama PR Validation Workflow
 **File**: `.github/workflows/ollama-pr-validation.yml`
-**Triggers**: `workflow_dispatch`, `pull_request` (main/develop), `push` (main)
+**Triggers**: `workflow_dispatch`, `pull_request` (main/develop), `push` (main and `copilot/**`)
 **Duration**: ~3-5 minutes
 
 ### Purpose
@@ -85,6 +85,8 @@ Main comprehensive validation pipeline that proves PR readiness before merge. Ex
 ✅ **Artifact retention** - 30 days for debugging
 ✅ **Comprehensive logging** - Timestamp-based tracking at each step
 ✅ **Durable evidence** - Proof contract generated in ollamatracks/
+✅ **Repository-wide monitoring** - The realtime monitor polls bounded recent runs across hosted workflows and reports active, successful, failed, and affected workflow counts.
+✅ **Status history** - Agent and monitor snapshots write timestamped `ollamatracks/ollamastatus.txt <timestamp>.txt` records with phase, run, job, notification, and health metrics.
 
 ### Success Criteria
 - All 6 platforms validate successfully
