@@ -308,3 +308,9 @@ Final hosted validation result (2026-08-21T02:44:22Z):
 - Run `32440571837` completed successfully for commit `9fa235b035`.
 - All hosted validation jobs passed, including workflow integrity, documentation, six platform jobs, feature validation, tests, and final aggregation.
 - The bounded realtime monitor observed no failed jobs before the final successful completion.
+
+Permission check (2026-08-21T02:55:00Z):
+- `gh secret set MY_CUSTOM_TOKEN --repo thealphakenya/qmoi-enhanced` could not complete because the current integration credential returned HTTP 403 while listing Actions secrets.
+- The command was cancelled at its secret-entry prompt; no token value was entered, persisted, or printed.
+- Master-orchestrator dispatch remains blocked by the same Actions write/dispatch permission boundary.
+- Required operator action: revoke the token exposed in chat, then have a repository administrator create `MY_CUSTOM_TOKEN` in GitHub Settings, or authenticate `gh` with a credential that has repository Actions secrets write permission and enter the replacement directly at the terminal prompt.

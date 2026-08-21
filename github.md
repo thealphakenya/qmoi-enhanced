@@ -127,3 +127,7 @@ Published commit `c777112a63` passed hosted Ollama validation in [run 3244007856
 The auto-merge run [32440079218](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32440079218) remains a legacy base-branch result: `pull_request_target` loads its workflow from `main`, so the new non-automated/fork skip gate on this branch cannot change that check until merged. Alpha-Q-ai’s latest observation at this timestamp included active branch-sync run `32440401203`; its previous three observed runs were successful.
 
 Final hosted validation: [run 32440571837](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32440571837) completed successfully at 2026-08-21T02:44:22Z for commit `9fa235b035`. All workflow integrity, documentation, platform, feature, test, and final aggregation jobs passed.
+
+## Permission check (2026-08-21T02:55:00Z)
+
+The current `gh` integration credential returns HTTP 403 for repository Actions secrets, so `MY_CUSTOM_TOKEN` could not be created from this environment. The secret prompt was cancelled without entering or storing a token. A repository administrator must create the secret, or an authorized `gh` login with Actions-secrets write permission must be used. The previously exposed token must be revoked.
