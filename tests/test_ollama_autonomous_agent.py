@@ -581,12 +581,26 @@ class TestResumeCheckpoint:
         assert "workflow_run" in content
         assert "validate-all" in content or "ollama_autonomous_agent.py" in content
 
+    def test_master_orchestrator_prefers_configured_dispatch_token(self):
+        """Dispatches should use the repository secret when one is configured."""
+        workflow_path = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "ollama-master-orchestrator.yml"
+        content = workflow_path.read_text()
+        assert "github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}" in content
+
     def test_auto_merge_workflow_passes_one_json_field_argument(self):
         """gh pr view must receive one comma-separated --json argument."""
         workflow_path = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "auto-merge-automated-pr.yml"
         content = workflow_path.read_text()
         assert '--json "number,state,isDraft,headRefName,headRefOid,baseRefName,baseRefOid,headRepository,headRepositoryOwner,isCrossRepository,mergeStateStatus,mergeable,autoMergeRequest,url"' in content
         assert "number,\\\n" not in content
+
+    def test_auto_merge_workflow_skips_ineligible_pull_requests(self):
+        """Non-automated or fork PRs must not create failed no-op checks."""
+        workflow_path = Path(__file__).resolve().parent.parent / ".github" / "workflows" / "auto-merge-automated-pr.yml"
+        content = workflow_path.read_text()
+        assert "github.event.pull_request.head.repo.full_name == github.repository" in content
+        assert "startsWith(github.event.pull_request.head.ref, 'automated/')" in content
+        assert "startsWith(github.event.pull_request.head.ref, 'auto/')" in content
 
     def test_step_manager_recovers_once_and_updates_resume(self, tmp_path):
         """A productive repair is retried once and checkpointed at each phase."""

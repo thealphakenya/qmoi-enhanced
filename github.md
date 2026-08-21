@@ -103,3 +103,19 @@ Current repo:
 ## Notes
 
 The repository is configured so the PR Ollama Autonomous Agent runs in GitHub-hosted infrastructure without depending on the local codespace. The active validation run is the best place to inspect exactly what the agent is doing in real time. The workflow tracker and monitor scripts are hardened with retry logic, queued-state handling, and validation summaries to reduce false failures and to make the live status easier to diagnose.
+
+## Audit refresh (2026-08-21T02:21:05Z)
+
+Latest observed GitHub-hosted workflow metrics:
+
+| Workflow | Run | Status | Conclusion | Created UTC |
+| --- | ---: | --- | --- | --- |
+| Auto-merge automated proposals | [32439095443](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32439095443) | completed | failure (old ineligible-PR no-op path) | 2026-08-21T02:13:26Z |
+| Branch Sync Monitor & Auto-Update | [32437934279](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32437934279) | completed | success | 2026-08-21T01:54:20Z |
+| Ollama Autonomous Agent & Live Tracker | [32437422845](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32437422845) | completed | success | 2026-08-21T01:45:26Z |
+| Ollama Autonomous Agent - PR Realtime Tracker | [32438792912](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32438792912) | completed | success | 2026-08-21T02:08:27Z |
+| Ollama Master Orchestrator - Enhanced Auto-Healing | [32436920893](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32436920893) | completed | failure (dispatch permission boundary) | 2026-08-21T01:36:47Z |
+| Ollama PR Validation - 293+ Platform Features | [32439096726](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32439096726) | completed | success | 2026-08-21T02:13:28Z |
+| Workflow Status Tracker | [32438869463](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32438869463) | completed | success | 2026-08-21T02:09:45Z |
+
+The current branch is `copilot/hosted-step-manager`; local validation is green. The auto-merge workflow now skips non-automated and fork PRs at job level, and the master orchestrator now prefers the repository-scoped `MY_CUSTOM_TOKEN` secret without persisting credentials. The latest four Alpha-Q-ai runs inspected at 2026-08-21T02:21:05Z were successful: 32439002484, 32437446070, 32435625272, and 32435588975.

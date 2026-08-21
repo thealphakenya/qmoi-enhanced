@@ -4,7 +4,9 @@
   "ready": true,
   "schema": "qsteps-v1",
   "script_count": 8,
-  "tests_requested": false,
-  "timestamp_utc": "2026-08-21T00:14:34.906926Z",
+  "test_output": "........................................................................ [ 40%]\n........................................................................ [ 80%]\n....................................                                     [100%]\n180 passed in 8.89s\n",
+  "tests_passed": true,
+  "tests_requested": true,
+  "timestamp_utc": "2026-08-21T00:45:52.752504Z",
   "workflow_count": 8
 }

@@ -104,7 +104,12 @@ jobs:
       github.event_name == 'workflow_dispatch' ||
       (
         github.event_name == 'pull_request_target' &&
-        github.event.pull_request.number != null
+        github.event.pull_request.number != null &&
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        (
+          startsWith(github.event.pull_request.head.ref, 'automated/') ||
+          startsWith(github.event.pull_request.head.ref, 'auto/')
+        )
       )
 
     steps:

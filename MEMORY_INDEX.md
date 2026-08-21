@@ -1,0 +1,1161 @@
+# QMOI Realtime Memory Index
+
+Generated: 2026-08-21T02:18:28.306031Z
+
+Files Tracked: 1153
+
+## Files
+
+- `.github/workflows/auto-merge-automated-pr.yml`
+- `.github/workflows/branch-sync.yml`
+- `.github/workflows/ollama-autonomous-agent-realtime-monitor.yml`
+- `.github/workflows/ollama-autonomous-agent.yml`
+- `.github/workflows/ollama-master-orchestrator.yml`
+- `.github/workflows/ollama-pr-validation.yml`
+- `.github/workflows/pr-monitor.yml`
+- `.github/workflows/workflow-tracker.yml`
+- `.qmoi_memory_index.json`
+- `ACCOUNTABILITY.md`
+- `ADVANCEMENT.md`
+- `ALLAUTO.md`
+- `ALLBACKEND.md`
+- `ALLFRONTEND.md`
+- `ALLMDFILESREFS.md`
+- `ALLPLATFORMSDEVICE.md`
+- `ALLPORTS.md`
+- `API.md`
+- `AUTODEV.md`
+- `BUILD.md`
+- `DOWNLOAD.md`
+- `ENDPOINTS.md`
+- `ENHANCEMENT_SESSION_2026_08_18.md`
+- `FINAL_SESSION_COMPLETION_REPORT.md`
+- `GITHUB_SETUP_COMPLETE.md`
+- `IMPLEMENTATION_COMPLETE.md`
+- `INSTALL.md`
+- `MERGE.md`
+- `MODELEVOLUTIONO.md`
+- `MODEL_CARD.md`
+- `MONITORING_GUIDE.md`
+- `OLLAMA_AUTOMATION_GUIDE.md`
+- `OLLAMA_ENHANCEMENT_COMPLETE.md`
+- `OLLAMA_ENHANCEMENT_SUCCESS.md`
+- `PHASE_1_4_COMPLETION_SUMMARY.md`
+- `PLATFORM_REQUIREMENTS.md`
+- `QALPHA.md`
+- `QALPHAUI.md`
+- `QCITY.md`
+- `QCITYUI.md`
+- `QMOIAI.md`
+- `QMOIAIUI.md`
+- `QMOISPACE.md`
+- `QMOISPACEUI.md`
+- `QMOI_MODEL_CARD.md`
+- `QMOI_REALTIME_MEMORY_INDEX.md`
+- `QSTEPSMANAGER.md`
+- `QTEAM.md`
+- `README.md`
+- `RESILIENCE_AUTO_HEALING.md`
+- `ROUTES.md`
+- `SESSION_COMPLETION_REPORT.md`
+- `SESSION_COMPLETION_REPORT_2025_01_10.md`
+- `STYLES.md`
+- `SYNC.md`
+- `TEST_ENHANCEMENTS.md`
+- `TREE_FULL_STRUCTURE.md`
+- `UNIVERSALS.md`
+- `WORKFLOWSO.md`
+- `error2.txt`
+- `github.md`
+- `github_proof_contract.json`
+- `oe.md`
+- `ollama.md`
+- `ollama_agent.log`
+- `ollamatracks/000001_tracker_reconciliation.txt`
+- `ollamatracks/000002_tracker_reconciliation.txt`
+- `ollamatracks/000003_tracker_reconciliation.txt`
+- `ollamatracks/000004_tracker_reconciliation.txt`
+- `ollamatracks/000005_tracker_reconciliation.txt`
+- `ollamatracks/000006_tracker_reconciliation.txt`
+- `ollamatracks/000007_tracker_reconciliation.txt`
+- `ollamatracks/000008_tracker_reconciliation.txt`
+- `ollamatracks/000009_tracker_reconciliation.txt`
+- `ollamatracks/000010_tracker_reconciliation.txt`
+- `ollamatracks/000011_tracker_reconciliation.txt`
+- `ollamatracks/000012_tracker_reconciliation.txt`
+- `ollamatracks/000013_tracker_reconciliation.txt`
+- `ollamatracks/000014_tracker_reconciliation.txt`
+- `ollamatracks/000015_tracker_reconciliation.txt`
+- `ollamatracks/000016_tracker_reconciliation.txt`
+- `ollamatracks/000017_tracker_reconciliation.txt`
+- `ollamatracks/000018_tracker_reconciliation.txt`
+- `ollamatracks/000019_tracker_reconciliation.txt`
+- `ollamatracks/000020_tracker_reconciliation.txt`
+- `ollamatracks/000021_tracker_reconciliation.txt`
+- `ollamatracks/000022_tracker_reconciliation.txt`
+- `ollamatracks/000023_tracker_reconciliation.txt`
+- `ollamatracks/000024_tracker_reconciliation.txt`
+- `ollamatracks/000025_tracker_reconciliation.txt`
+- `ollamatracks/000026_tracker_reconciliation.txt`
+- `ollamatracks/000027_tracker_reconciliation.txt`
+- `ollamatracks/000028_tracker_reconciliation.txt`
+- `ollamatracks/000029_tracker_reconciliation.txt`
+- `ollamatracks/000030_tracker_reconciliation.txt`
+- `ollamatracks/000031_tracker_reconciliation.txt`
+- `ollamatracks/000032_tracker_reconciliation.txt`
+- `ollamatracks/000033_tracker_reconciliation.txt`
+- `ollamatracks/000034_tracker_reconciliation.txt`
+- `ollamatracks/000035_tracker_reconciliation.txt`
+- `ollamatracks/000036_tracker_reconciliation.txt`
+- `ollamatracks/000037_tracker_reconciliation.txt`
+- `ollamatracks/000038_tracker_reconciliation.txt`
+- `ollamatracks/000039_tracker_reconciliation.txt`
+- `ollamatracks/000040_tracker_reconciliation.txt`
+- `ollamatracks/000041_tracker_reconciliation.txt`
+- `ollamatracks/000042_tracker_reconciliation.txt`
+- `ollamatracks/000043_tracker_reconciliation.txt`
+- `ollamatracks/000044_tracker_reconciliation.txt`
+- `ollamatracks/000045_tracker_reconciliation.txt`
+- `ollamatracks/000046_tracker_reconciliation.txt`
+- `ollamatracks/000047_tracker_reconciliation.txt`
+- `ollamatracks/000048_tracker_reconciliation.txt`
+- `ollamatracks/000049_tracker_reconciliation.txt`
+- `ollamatracks/000050_tracker_reconciliation.txt`
+- `ollamatracks/000051_tracker_reconciliation.txt`
+- `ollamatracks/000052_tracker_reconciliation.txt`
+- `ollamatracks/000053_tracker_reconciliation.txt`
+- `ollamatracks/000054_tracker_reconciliation.txt`
+- `ollamatracks/000055_tracker_reconciliation.txt`
+- `ollamatracks/000056_tracker_reconciliation.txt`
+- `ollamatracks/000057_tracker_reconciliation.txt`
+- `ollamatracks/000058_tracker_reconciliation.txt`
+- `ollamatracks/000059_tracker_reconciliation.txt`
+- `ollamatracks/000060_tracker_reconciliation.txt`
+- `ollamatracks/000061_tracker_reconciliation.txt`
+- `ollamatracks/000062_tracker_reconciliation.txt`
+- `ollamatracks/000063_tracker_reconciliation.txt`
+- `ollamatracks/000064_tracker_reconciliation.txt`
+- `ollamatracks/000065_tracker_reconciliation.txt`
+- `ollamatracks/000066_tracker_reconciliation.txt`
+- `ollamatracks/000067_tracker_reconciliation.txt`
+- `ollamatracks/000068_tracker_reconciliation.txt`
+- `ollamatracks/000069_tracker_reconciliation.txt`
+- `ollamatracks/000070_tracker_reconciliation.txt`
+- `ollamatracks/000071_tracker_reconciliation.txt`
+- `ollamatracks/000072_tracker_reconciliation.txt`
+- `ollamatracks/000073_tracker_reconciliation.txt`
+- `ollamatracks/000074_tracker_reconciliation.txt`
+- `ollamatracks/000075_tracker_reconciliation.txt`
+- `ollamatracks/000076_tracker_reconciliation.txt`
+- `ollamatracks/000077_tracker_reconciliation.txt`
+- `ollamatracks/000078_tracker_reconciliation.txt`
+- `ollamatracks/000079_tracker_reconciliation.txt`
+- `ollamatracks/000080_tracker_reconciliation.txt`
+- `ollamatracks/000081_tracker_reconciliation.txt`
+- `ollamatracks/000082_tracker_reconciliation.txt`
+- `ollamatracks/000083_tracker_reconciliation.txt`
+- `ollamatracks/000084_tracker_reconciliation.txt`
+- `ollamatracks/000085_tracker_reconciliation.txt`
+- `ollamatracks/000086_tracker_reconciliation.txt`
+- `ollamatracks/000087_tracker_reconciliation.txt`
+- `ollamatracks/000088_tracker_reconciliation.txt`
+- `ollamatracks/000089_tracker_reconciliation.txt`
+- `ollamatracks/000090_tracker_reconciliation.txt`
+- `ollamatracks/000091_tracker_reconciliation.txt`
+- `ollamatracks/000092_tracker_reconciliation.txt`
+- `ollamatracks/000093_tracker_reconciliation.txt`
+- `ollamatracks/000094_tracker_reconciliation.txt`
+- `ollamatracks/000095_tracker_reconciliation.txt`
+- `ollamatracks/000096_tracker_reconciliation.txt`
+- `ollamatracks/000097_tracker_reconciliation.txt`
+- `ollamatracks/000098_tracker_reconciliation.txt`
+- `ollamatracks/000099_tracker_reconciliation.txt`
+- `ollamatracks/000100_tracker_reconciliation.txt`
+- `ollamatracks/000101_tracker_reconciliation.txt`
+- `ollamatracks/000102_tracker_reconciliation.txt`
+- `ollamatracks/000103_tracker_reconciliation.txt`
+- `ollamatracks/000104_tracker_reconciliation.txt`
+- `ollamatracks/000105_tracker_reconciliation.txt`
+- `ollamatracks/000106_tracker_reconciliation.txt`
+- `ollamatracks/000107_tracker_reconciliation.txt`
+- `ollamatracks/000108_tracker_reconciliation.txt`
+- `ollamatracks/000109_tracker_reconciliation.txt`
+- `ollamatracks/000110_tracker_reconciliation.txt`
+- `ollamatracks/000111_tracker_reconciliation.txt`
+- `ollamatracks/000112_tracker_reconciliation.txt`
+- `ollamatracks/000113_tracker_reconciliation.txt`
+- `ollamatracks/000114_tracker_reconciliation.txt`
+- `ollamatracks/000115_tracker_reconciliation.txt`
+- `ollamatracks/000116_tracker_reconciliation.txt`
+- `ollamatracks/000117_tracker_reconciliation.txt`
+- `ollamatracks/000118_tracker_reconciliation.txt`
+- `ollamatracks/000119_tracker_reconciliation.txt`
+- `ollamatracks/000120_tracker_reconciliation.txt`
+- `ollamatracks/000121_tracker_reconciliation.txt`
+- `ollamatracks/000122_tracker_reconciliation.txt`
+- `ollamatracks/000123_tracker_reconciliation.txt`
+- `ollamatracks/000124_tracker_reconciliation.txt`
+- `ollamatracks/000125_tracker_reconciliation.txt`
+- `ollamatracks/000126_tracker_reconciliation.txt`
+- `ollamatracks/000127_tracker_reconciliation.txt`
+- `ollamatracks/000128_tracker_reconciliation.txt`
+- `ollamatracks/000129_tracker_reconciliation.txt`
+- `ollamatracks/000130_tracker_reconciliation.txt`
+- `ollamatracks/000131_tracker_reconciliation.txt`
+- `ollamatracks/000132_tracker_reconciliation.txt`
+- `ollamatracks/000133_tracker_reconciliation.txt`
+- `ollamatracks/000134_tracker_reconciliation.txt`
+- `ollamatracks/000135_tracker_reconciliation.txt`
+- `ollamatracks/000136_tracker_reconciliation.txt`
+- `ollamatracks/000137_tracker_reconciliation.txt`
+- `ollamatracks/000138_tracker_reconciliation.txt`
+- `ollamatracks/000139_tracker_reconciliation.txt`
+- `ollamatracks/000140_tracker_reconciliation.txt`
+- `ollamatracks/000141_tracker_reconciliation.txt`
+- `ollamatracks/000142_tracker_reconciliation.txt`
+- `ollamatracks/000143_tracker_reconciliation.txt`
+- `ollamatracks/000144_tracker_reconciliation.txt`
+- `ollamatracks/000145_tracker_reconciliation.txt`
+- `ollamatracks/000146_tracker_reconciliation.txt`
+- `ollamatracks/000147_tracker_reconciliation.txt`
+- `ollamatracks/000148_tracker_reconciliation.txt`
+- `ollamatracks/000149_tracker_reconciliation.txt`
+- `ollamatracks/000150_tracker_reconciliation.txt`
+- `ollamatracks/000151_tracker_reconciliation.txt`
+- `ollamatracks/000152_tracker_reconciliation.txt`
+- `ollamatracks/000153_tracker_reconciliation.txt`
+- `ollamatracks/000154_tracker_reconciliation.txt`
+- `ollamatracks/000155_tracker_reconciliation.txt`
+- `ollamatracks/000156_tracker_reconciliation.txt`
+- `ollamatracks/000157_tracker_reconciliation.txt`
+- `ollamatracks/000158_tracker_reconciliation.txt`
+- `ollamatracks/000159_tracker_reconciliation.txt`
+- `ollamatracks/000160_tracker_reconciliation.txt`
+- `ollamatracks/000161_tracker_reconciliation.txt`
+- `ollamatracks/000162_tracker_reconciliation.txt`
+- `ollamatracks/000163_tracker_reconciliation.txt`
+- `ollamatracks/000164_tracker_reconciliation.txt`
+- `ollamatracks/000165_tracker_reconciliation.txt`
+- `ollamatracks/000166_tracker_reconciliation.txt`
+- `ollamatracks/000167_tracker_reconciliation.txt`
+- `ollamatracks/000168_tracker_reconciliation.txt`
+- `ollamatracks/000169_tracker_reconciliation.txt`
+- `ollamatracks/000170_tracker_reconciliation.txt`
+- `ollamatracks/000171_tracker_reconciliation.txt`
+- `ollamatracks/000172_tracker_reconciliation.txt`
+- `ollamatracks/000173_tracker_reconciliation.txt`
+- `ollamatracks/000174_tracker_reconciliation.txt`
+- `ollamatracks/000175_tracker_reconciliation.txt`
+- `ollamatracks/000176_tracker_reconciliation.txt`
+- `ollamatracks/000177_tracker_reconciliation.txt`
+- `ollamatracks/000178_tracker_reconciliation.txt`
+- `ollamatracks/000179_tracker_reconciliation.txt`
+- `ollamatracks/000180_tracker_reconciliation.txt`
+- `ollamatracks/000181_tracker_reconciliation.txt`
+- `ollamatracks/000182_tracker_reconciliation.txt`
+- `ollamatracks/000183_tracker_reconciliation.txt`
+- `ollamatracks/000184_tracker_reconciliation.txt`
+- `ollamatracks/000185_tracker_reconciliation.txt`
+- `ollamatracks/000186_tracker_reconciliation.txt`
+- `ollamatracks/000187_tracker_reconciliation.txt`
+- `ollamatracks/000188_tracker_reconciliation.txt`
+- `ollamatracks/000189_tracker_reconciliation.txt`
+- `ollamatracks/000190_tracker_reconciliation.txt`
+- `ollamatracks/000191_tracker_reconciliation.txt`
+- `ollamatracks/000192_tracker_reconciliation.txt`
+- `ollamatracks/000193_tracker_reconciliation.txt`
+- `ollamatracks/000194_tracker_reconciliation.txt`
+- `ollamatracks/000195_tracker_reconciliation.txt`
+- `ollamatracks/000196_tracker_reconciliation.txt`
+- `ollamatracks/000197_tracker_reconciliation.txt`
+- `ollamatracks/000198_tracker_reconciliation.txt`
+- `ollamatracks/000199_tracker_reconciliation.txt`
+- `ollamatracks/000200_tracker_reconciliation.txt`
+- `ollamatracks/000201_tracker_reconciliation.txt`
+- `ollamatracks/000202_tracker_reconciliation.txt`
+- `ollamatracks/000203_tracker_reconciliation.txt`
+- `ollamatracks/000204_tracker_reconciliation.txt`
+- `ollamatracks/000205_tracker_reconciliation.txt`
+- `ollamatracks/000206_tracker_reconciliation.txt`
+- `ollamatracks/000207_tracker_reconciliation.txt`
+- `ollamatracks/000208_tracker_reconciliation.txt`
+- `ollamatracks/000209_tracker_reconciliation.txt`
+- `ollamatracks/000210_tracker_reconciliation.txt`
+- `ollamatracks/000211_tracker_reconciliation.txt`
+- `ollamatracks/000212_tracker_reconciliation.txt`
+- `ollamatracks/000213_tracker_reconciliation.txt`
+- `ollamatracks/000214_tracker_reconciliation.txt`
+- `ollamatracks/000215_tracker_reconciliation.txt`
+- `ollamatracks/000216_tracker_reconciliation.txt`
+- `ollamatracks/000217_tracker_reconciliation.txt`
+- `ollamatracks/000218_tracker_reconciliation.txt`
+- `ollamatracks/000219_tracker_reconciliation.txt`
+- `ollamatracks/000220_tracker_reconciliation.txt`
+- `ollamatracks/000221_tracker_reconciliation.txt`
+- `ollamatracks/000222_tracker_reconciliation.txt`
+- `ollamatracks/000223_tracker_reconciliation.txt`
+- `ollamatracks/000224_tracker_reconciliation.txt`
+- `ollamatracks/000225_tracker_reconciliation.txt`
+- `ollamatracks/000226_tracker_reconciliation.txt`
+- `ollamatracks/000227_tracker_reconciliation.txt`
+- `ollamatracks/000228_tracker_reconciliation.txt`
+- `ollamatracks/000229_tracker_reconciliation.txt`
+- `ollamatracks/000230_tracker_reconciliation.txt`
+- `ollamatracks/000231_tracker_reconciliation.txt`
+- `ollamatracks/000232_tracker_reconciliation.txt`
+- `ollamatracks/000233_tracker_reconciliation.txt`
+- `ollamatracks/000234_tracker_reconciliation.txt`
+- `ollamatracks/000235_tracker_reconciliation.txt`
+- `ollamatracks/000236_tracker_reconciliation.txt`
+- `ollamatracks/000237_tracker_reconciliation.txt`
+- `ollamatracks/000238_tracker_reconciliation.txt`
+- `ollamatracks/000239_tracker_reconciliation.txt`
+- `ollamatracks/000240_tracker_reconciliation.txt`
+- `ollamatracks/000241_tracker_reconciliation.txt`
+- `ollamatracks/000242_tracker_reconciliation.txt`
+- `ollamatracks/000243_tracker_reconciliation.txt`
+- `ollamatracks/000244_tracker_reconciliation.txt`
+- `ollamatracks/000245_tracker_reconciliation.txt`
+- `ollamatracks/000246_tracker_reconciliation.txt`
+- `ollamatracks/000247_tracker_reconciliation.txt`
+- `ollamatracks/000248_tracker_reconciliation.txt`
+- `ollamatracks/000249_tracker_reconciliation.txt`
+- `ollamatracks/000250_tracker_reconciliation.txt`
+- `ollamatracks/000251_tracker_reconciliation.txt`
+- `ollamatracks/000252_tracker_reconciliation.txt`
+- `ollamatracks/000253_tracker_reconciliation.txt`
+- `ollamatracks/000254_tracker_reconciliation.txt`
+- `ollamatracks/000255_tracker_reconciliation.txt`
+- `ollamatracks/000256_tracker_reconciliation.txt`
+- `ollamatracks/000257_tracker_reconciliation.txt`
+- `ollamatracks/000258_tracker_reconciliation.txt`
+- `ollamatracks/000259_tracker_reconciliation.txt`
+- `ollamatracks/000260_tracker_reconciliation.txt`
+- `ollamatracks/000261_tracker_reconciliation.txt`
+- `ollamatracks/000262_tracker_reconciliation.txt`
+- `ollamatracks/000263_tracker_reconciliation.txt`
+- `ollamatracks/000264_tracker_reconciliation.txt`
+- `ollamatracks/000265_tracker_reconciliation.txt`
+- `ollamatracks/000266_tracker_reconciliation.txt`
+- `ollamatracks/000267_tracker_reconciliation.txt`
+- `ollamatracks/000268_tracker_reconciliation.txt`
+- `ollamatracks/000269_tracker_reconciliation.txt`
+- `ollamatracks/000270_tracker_reconciliation.txt`
+- `ollamatracks/000271_tracker_reconciliation.txt`
+- `ollamatracks/000272_tracker_reconciliation.txt`
+- `ollamatracks/000273_tracker_reconciliation.txt`
+- `ollamatracks/000274_tracker_reconciliation.txt`
+- `ollamatracks/000275_tracker_reconciliation.txt`
+- `ollamatracks/000276_tracker_reconciliation.txt`
+- `ollamatracks/000277_tracker_reconciliation.txt`
+- `ollamatracks/000278_tracker_reconciliation.txt`
+- `ollamatracks/000279_tracker_reconciliation.txt`
+- `ollamatracks/000280_tracker_reconciliation.txt`
+- `ollamatracks/000281_tracker_reconciliation.txt`
+- `ollamatracks/000282_tracker_reconciliation.txt`
+- `ollamatracks/000283_tracker_reconciliation.txt`
+- `ollamatracks/000284_tracker_reconciliation.txt`
+- `ollamatracks/000285_tracker_reconciliation.txt`
+- `ollamatracks/000286_tracker_reconciliation.txt`
+- `ollamatracks/000287_tracker_reconciliation.txt`
+- `ollamatracks/000288_tracker_reconciliation.txt`
+- `ollamatracks/000289_tracker_reconciliation.txt`
+- `ollamatracks/000290_tracker_reconciliation.txt`
+- `ollamatracks/000291_tracker_reconciliation.txt`
+- `ollamatracks/000292_tracker_reconciliation.txt`
+- `ollamatracks/000293_tracker_reconciliation.txt`
+- `ollamatracks/000294_tracker_reconciliation.txt`
+- `ollamatracks/000295_tracker_reconciliation.txt`
+- `ollamatracks/000296_tracker_reconciliation.txt`
+- `ollamatracks/000297_tracker_reconciliation.txt`
+- `ollamatracks/000298_tracker_reconciliation.txt`
+- `ollamatracks/000299_tracker_reconciliation.txt`
+- `ollamatracks/000300_tracker_reconciliation.txt`
+- `ollamatracks/000301_tracker_reconciliation.txt`
+- `ollamatracks/000302_tracker_reconciliation.txt`
+- `ollamatracks/000303_tracker_reconciliation.txt`
+- `ollamatracks/000304_tracker_reconciliation.txt`
+- `ollamatracks/000305_tracker_reconciliation.txt`
+- `ollamatracks/000306_tracker_reconciliation.txt`
+- `ollamatracks/000307_tracker_reconciliation.txt`
+- `ollamatracks/000308_tracker_reconciliation.txt`
+- `ollamatracks/000309_tracker_reconciliation.txt`
+- `ollamatracks/000310_tracker_reconciliation.txt`
+- `ollamatracks/000311_tracker_reconciliation.txt`
+- `ollamatracks/000312_tracker_reconciliation.txt`
+- `ollamatracks/000313_tracker_reconciliation.txt`
+- `ollamatracks/000314_tracker_reconciliation.txt`
+- `ollamatracks/000315_tracker_reconciliation.txt`
+- `ollamatracks/000316_tracker_reconciliation.txt`
+- `ollamatracks/000317_tracker_reconciliation.txt`
+- `ollamatracks/000318_tracker_reconciliation.txt`
+- `ollamatracks/000319_tracker_reconciliation.txt`
+- `ollamatracks/000320_tracker_reconciliation.txt`
+- `ollamatracks/000321_tracker_reconciliation.txt`
+- `ollamatracks/000322_tracker_reconciliation.txt`
+- `ollamatracks/000323_tracker_reconciliation.txt`
+- `ollamatracks/000324_tracker_reconciliation.txt`
+- `ollamatracks/000325_tracker_reconciliation.txt`
+- `ollamatracks/000326_tracker_reconciliation.txt`
+- `ollamatracks/000327_tracker_reconciliation.txt`
+- `ollamatracks/000328_tracker_reconciliation.txt`
+- `ollamatracks/000329_tracker_reconciliation.txt`
+- `ollamatracks/000330_tracker_reconciliation.txt`
+- `ollamatracks/000331_tracker_reconciliation.txt`
+- `ollamatracks/000332_tracker_reconciliation.txt`
+- `ollamatracks/000333_tracker_reconciliation.txt`
+- `ollamatracks/000334_tracker_reconciliation.txt`
+- `ollamatracks/000335_tracker_reconciliation.txt`
+- `ollamatracks/000336_tracker_reconciliation.txt`
+- `ollamatracks/000337_tracker_reconciliation.txt`
+- `ollamatracks/000338_tracker_reconciliation.txt`
+- `ollamatracks/000339_tracker_reconciliation.txt`
+- `ollamatracks/000340_tracker_reconciliation.txt`
+- `ollamatracks/000341_tracker_reconciliation.txt`
+- `ollamatracks/000342_tracker_reconciliation.txt`
+- `ollamatracks/000343_tracker_reconciliation.txt`
+- `ollamatracks/000344_tracker_reconciliation.txt`
+- `ollamatracks/000345_tracker_reconciliation.txt`
+- `ollamatracks/000346_tracker_reconciliation.txt`
+- `ollamatracks/000347_tracker_reconciliation.txt`
+- `ollamatracks/000348_tracker_reconciliation.txt`
+- `ollamatracks/000349_tracker_reconciliation.txt`
+- `ollamatracks/000350_tracker_reconciliation.txt`
+- `ollamatracks/000351_tracker_reconciliation.txt`
+- `ollamatracks/000352_tracker_reconciliation.txt`
+- `ollamatracks/000353_tracker_reconciliation.txt`
+- `ollamatracks/000354_tracker_reconciliation.txt`
+- `ollamatracks/000355_tracker_reconciliation.txt`
+- `ollamatracks/000356_tracker_reconciliation.txt`
+- `ollamatracks/000357_tracker_reconciliation.txt`
+- `ollamatracks/000358_tracker_reconciliation.txt`
+- `ollamatracks/000359_tracker_reconciliation.txt`
+- `ollamatracks/000360_tracker_reconciliation.txt`
+- `ollamatracks/000361_tracker_reconciliation.txt`
+- `ollamatracks/000362_tracker_reconciliation.txt`
+- `ollamatracks/000363_tracker_reconciliation.txt`
+- `ollamatracks/000364_tracker_reconciliation.txt`
+- `ollamatracks/000365_tracker_reconciliation.txt`
+- `ollamatracks/000366_tracker_reconciliation.txt`
+- `ollamatracks/000367_tracker_reconciliation.txt`
+- `ollamatracks/000368_tracker_reconciliation.txt`
+- `ollamatracks/000369_tracker_reconciliation.txt`
+- `ollamatracks/000370_tracker_reconciliation.txt`
+- `ollamatracks/000371_tracker_reconciliation.txt`
+- `ollamatracks/000372_tracker_reconciliation.txt`
+- `ollamatracks/000373_tracker_reconciliation.txt`
+- `ollamatracks/000374_tracker_reconciliation.txt`
+- `ollamatracks/000375_tracker_reconciliation.txt`
+- `ollamatracks/000376_tracker_reconciliation.txt`
+- `ollamatracks/000377_tracker_reconciliation.txt`
+- `ollamatracks/000378_tracker_reconciliation.txt`
+- `ollamatracks/000379_tracker_reconciliation.txt`
+- `ollamatracks/000380_tracker_reconciliation.txt`
+- `ollamatracks/000381_tracker_reconciliation.txt`
+- `ollamatracks/000382_tracker_reconciliation.txt`
+- `ollamatracks/000383_tracker_reconciliation.txt`
+- `ollamatracks/000384_tracker_reconciliation.txt`
+- `ollamatracks/000385_tracker_reconciliation.txt`
+- `ollamatracks/000386_tracker_reconciliation.txt`
+- `ollamatracks/000387_tracker_reconciliation.txt`
+- `ollamatracks/000388_tracker_reconciliation.txt`
+- `ollamatracks/000389_tracker_reconciliation.txt`
+- `ollamatracks/000390_tracker_reconciliation.txt`
+- `ollamatracks/000391_tracker_reconciliation.txt`
+- `ollamatracks/000392_tracker_reconciliation.txt`
+- `ollamatracks/000393_tracker_reconciliation.txt`
+- `ollamatracks/000394_tracker_reconciliation.txt`
+- `ollamatracks/000395_tracker_reconciliation.txt`
+- `ollamatracks/000396_tracker_reconciliation.txt`
+- `ollamatracks/000397_tracker_reconciliation.txt`
+- `ollamatracks/000398_tracker_reconciliation.txt`
+- `ollamatracks/000399_tracker_reconciliation.txt`
+- `ollamatracks/000400_tracker_reconciliation.txt`
+- `ollamatracks/000401_tracker_reconciliation.txt`
+- `ollamatracks/000402_tracker_reconciliation.txt`
+- `ollamatracks/000403_tracker_reconciliation.txt`
+- `ollamatracks/000404_tracker_reconciliation.txt`
+- `ollamatracks/000405_tracker_reconciliation.txt`
+- `ollamatracks/000406_tracker_reconciliation.txt`
+- `ollamatracks/000407_tracker_reconciliation.txt`
+- `ollamatracks/000408_tracker_reconciliation.txt`
+- `ollamatracks/000409_tracker_reconciliation.txt`
+- `ollamatracks/000410_tracker_reconciliation.txt`
+- `ollamatracks/000411_tracker_reconciliation.txt`
+- `ollamatracks/000412_tracker_reconciliation.txt`
+- `ollamatracks/000413_tracker_reconciliation.txt`
+- `ollamatracks/000414_tracker_reconciliation.txt`
+- `ollamatracks/000415_tracker_reconciliation.txt`
+- `ollamatracks/000416_tracker_reconciliation.txt`
+- `ollamatracks/000417_tracker_reconciliation.txt`
+- `ollamatracks/000418_tracker_reconciliation.txt`
+- `ollamatracks/000419_tracker_reconciliation.txt`
+- `ollamatracks/000420_tracker_reconciliation.txt`
+- `ollamatracks/000421_tracker_reconciliation.txt`
+- `ollamatracks/000422_tracker_reconciliation.txt`
+- `ollamatracks/000423_tracker_reconciliation.txt`
+- `ollamatracks/000424_tracker_reconciliation.txt`
+- `ollamatracks/000425_tracker_reconciliation.txt`
+- `ollamatracks/000426_tracker_reconciliation.txt`
+- `ollamatracks/000427_tracker_reconciliation.txt`
+- `ollamatracks/000428_tracker_reconciliation.txt`
+- `ollamatracks/000429_tracker_reconciliation.txt`
+- `ollamatracks/000430_tracker_reconciliation.txt`
+- `ollamatracks/000431_tracker_reconciliation.txt`
+- `ollamatracks/000432_tracker_reconciliation.txt`
+- `ollamatracks/000433_tracker_reconciliation.txt`
+- `ollamatracks/000434_tracker_reconciliation.txt`
+- `ollamatracks/000435_tracker_reconciliation.txt`
+- `ollamatracks/000436_tracker_reconciliation.txt`
+- `ollamatracks/000437_tracker_reconciliation.txt`
+- `ollamatracks/000438_tracker_reconciliation.txt`
+- `ollamatracks/000439_tracker_reconciliation.txt`
+- `ollamatracks/000440_tracker_reconciliation.txt`
+- `ollamatracks/000441_tracker_reconciliation.txt`
+- `ollamatracks/000442_tracker_reconciliation.txt`
+- `ollamatracks/000443_tracker_reconciliation.txt`
+- `ollamatracks/000444_tracker_reconciliation.txt`
+- `ollamatracks/000445_tracker_reconciliation.txt`
+- `ollamatracks/000446_tracker_reconciliation.txt`
+- `ollamatracks/000447_tracker_reconciliation.txt`
+- `ollamatracks/000448_tracker_reconciliation.txt`
+- `ollamatracks/000449_tracker_reconciliation.txt`
+- `ollamatracks/000450_tracker_reconciliation.txt`
+- `ollamatracks/000451_tracker_reconciliation.txt`
+- `ollamatracks/000452_tracker_reconciliation.txt`
+- `ollamatracks/000453_tracker_reconciliation.txt`
+- `ollamatracks/000454_tracker_reconciliation.txt`
+- `ollamatracks/000455_tracker_reconciliation.txt`
+- `ollamatracks/000456_tracker_reconciliation.txt`
+- `ollamatracks/000457_tracker_reconciliation.txt`
+- `ollamatracks/000458_tracker_reconciliation.txt`
+- `ollamatracks/000459_tracker_reconciliation.txt`
+- `ollamatracks/000460_tracker_reconciliation.txt`
+- `ollamatracks/000461_tracker_reconciliation.txt`
+- `ollamatracks/000462_tracker_reconciliation.txt`
+- `ollamatracks/000463_tracker_reconciliation.txt`
+- `ollamatracks/000464_tracker_reconciliation.txt`
+- `ollamatracks/000465_tracker_reconciliation.txt`
+- `ollamatracks/000466_tracker_reconciliation.txt`
+- `ollamatracks/000467_tracker_reconciliation.txt`
+- `ollamatracks/000468_tracker_reconciliation.txt`
+- `ollamatracks/000469_tracker_reconciliation.txt`
+- `ollamatracks/000470_tracker_reconciliation.txt`
+- `ollamatracks/000471_tracker_reconciliation.txt`
+- `ollamatracks/000472_tracker_reconciliation.txt`
+- `ollamatracks/000473_tracker_reconciliation.txt`
+- `ollamatracks/000474_tracker_reconciliation.txt`
+- `ollamatracks/000475_tracker_reconciliation.txt`
+- `ollamatracks/000476_tracker_reconciliation.txt`
+- `ollamatracks/000477_tracker_reconciliation.txt`
+- `ollamatracks/000478_tracker_reconciliation.txt`
+- `ollamatracks/000479_tracker_reconciliation.txt`
+- `ollamatracks/000480_tracker_reconciliation.txt`
+- `ollamatracks/000481_tracker_reconciliation.txt`
+- `ollamatracks/000482_tracker_reconciliation.txt`
+- `ollamatracks/000483_tracker_reconciliation.txt`
+- `ollamatracks/000484_tracker_reconciliation.txt`
+- `ollamatracks/000485_tracker_reconciliation.txt`
+- `ollamatracks/000486_tracker_reconciliation.txt`
+- `ollamatracks/000487_tracker_reconciliation.txt`
+- `ollamatracks/000488_tracker_reconciliation.txt`
+- `ollamatracks/000489_tracker_reconciliation.txt`
+- `ollamatracks/000490_tracker_reconciliation.txt`
+- `ollamatracks/000491_tracker_reconciliation.txt`
+- `ollamatracks/000492_tracker_reconciliation.txt`
+- `ollamatracks/000493_tracker_reconciliation.txt`
+- `ollamatracks/000494_tracker_reconciliation.txt`
+- `ollamatracks/000495_tracker_reconciliation.txt`
+- `ollamatracks/000496_tracker_reconciliation.txt`
+- `ollamatracks/000497_tracker_reconciliation.txt`
+- `ollamatracks/000498_tracker_reconciliation.txt`
+- `ollamatracks/AUTO_HEALING_REPORT.json`
+- `ollamatracks/CURRENT_STATUS.txt`
+- `ollamatracks/LAST_RECONCILIATION.txt`
+- `ollamatracks/LATEST_ACTIVITY.txt`
+- `ollamatracks/PR_STATUS.txt`
+- `ollamatracks/QSTEPS_CHECKPOINT.json`
+- `ollamatracks/QSTEPS_STATUS.json`
+- `ollamatracks/QSTEPS_SUMMARY.json`
+- `ollamatracks/QSTEPS_VALIDATION.json`
+- `ollamatracks/STATE.txt`
+- `ollamatracks/TRACKING_INDEX.txt`
+- `ollamatracks/TRACKING_PROTOCOL.txt`
+- `ollamatracks/agent.log`
+- `ollamatracks/github-state.json`
+- `ollamatracks/monitoring_summary.json`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-08Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-38Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.206386Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.208433Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.210085Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.211855Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.213482Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.215369Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.217212Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.218982Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.220542Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.222360Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.224254Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.226114Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.227740Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.229497Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.231363Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.313677Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.315646Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.317528Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.319442Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.321333Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.323245Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.324910Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.326648Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.328325Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.330986Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.332742Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.334580Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.339758Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.341406Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.548922Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.551555Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45.556613Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-45Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-52Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.962026Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.963986Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.965572Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.967322Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.968991Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.970845Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.972380Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.973911Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.975587Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.977469Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.979404Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.981284Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.982883Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.984722Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58.986555Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-58Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.067687Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.069695Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.071582Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.073434Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.075309Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.077155Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.078815Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.080539Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.082284Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.084941Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.086685Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.088559Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.093731Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.095407Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.273561Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.275592Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-37-59.285849Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-45Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.237443Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.239428Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.241194Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.243016Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.244700Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.246638Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.248487Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.250348Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.252057Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.253902Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.255754Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.257607Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.259143Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.261315Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.263460Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.358261Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.360354Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.362487Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.364477Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.366389Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.368324Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.370073Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.372093Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.374001Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.377445Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.379214Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.381115Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.387861Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.389541Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.574632Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.576237Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52.580446Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-52Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-45-54Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.801968Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.803920Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.806147Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.808418Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.810400Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.812853Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.814792Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.817205Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.819480Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.822028Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.824288Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.826341Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.828746Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.830374Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.833173Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.944225Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.946118Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.947974Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.949840Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.951787Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.953881Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.955511Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.957190Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.958881Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.961507Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.963197Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.964884Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.970922Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01.972606Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-01Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-02.141164Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-02.142884Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-46-02.147150Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-47-17Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-47-31Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-48-13Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T00-48-27Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-30Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.811190Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.813209Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.814956Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.816724Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.818397Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.820284Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.822246Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.824058Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.825724Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.827691Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.829575Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.831439Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.833146Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.835053Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.837165Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.936916Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.938995Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.940996Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.943000Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.944972Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.947045Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.948753Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.950545Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.952311Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.955002Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.956774Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.958743Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.963904Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43.965598Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-43Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-44.163715Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-44.165352Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-01-44.169847Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-04-48Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.474374Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.477021Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.478949Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.480929Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.482846Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.484805Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.486710Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.488418Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.490072Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.491660Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.493539Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.495231Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.496707Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.498338Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.499968Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.592608Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.594599Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.596482Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.598323Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.600339Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.602137Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.603659Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.605264Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.606881Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.609541Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.611366Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.613939Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.619682Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02.621330Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-02Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-05-53Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.450301Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.452393Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.454065Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.455799Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.457455Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.459316Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.461204Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.462977Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.464565Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.466401Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.468284Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.470142Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.471828Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.473737Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.475596Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.566900Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.568853Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.570785Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.572699Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.574579Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.576519Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.578173Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.579937Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.581693Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.584312Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.586128Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.588027Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.593077Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07.594816Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-07Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-36Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.215136Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.217091Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.218706Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.220412Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.222054Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.223906Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.225737Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.227490Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.229134Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.230987Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.232890Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.234746Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.236371Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.238279Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.240153Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.328380Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.330192Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.332038Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.333939Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.335752Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.337597Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.339246Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.341002Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.342688Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.345006Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.346720Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.348471Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.353369Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.354974Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.549601Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.551989Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50.557947Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-06-50Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-18-59Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.754986Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.757182Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.759575Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.761645Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.763605Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.765509Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.767671Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.769372Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.770938Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.772704Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.774418Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.776130Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.777734Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.779418Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.781370Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.886794Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.888608Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.890412Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.892212Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.893792Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.895464Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.897060Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.898715Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.900363Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.903175Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.904819Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.906684Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.913790Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12.915487Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-12Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-44Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.944448Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.946381Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.948000Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.949679Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.951288Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.952960Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.954524Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.956943Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.960611Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.964305Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.967977Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.971423Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.974822Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.978297Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57.981769Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-57Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.095895Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.097835Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.099694Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.101498Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.103358Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.105598Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.107931Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.109663Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.111317Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.113900Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.115515Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.117289Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.122250Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-19-58.123857Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-38Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.944166Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.946126Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.947773Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.949505Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.951167Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.953016Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.954859Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.956543Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.958194Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.960022Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.961881Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.963690Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.965331Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.967200Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51.969041Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-51Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.062895Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.064753Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.066663Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.068491Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.070426Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.072301Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.073934Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.075672Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.077381Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.079771Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.081481Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.083327Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.088267Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-20-52.089960Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-22-23Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-22-51Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.965322Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.967196Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.968872Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.970564Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.972202Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.974053Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.975863Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.977525Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.979155Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.980997Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.982829Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.984581Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.986076Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.987851Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05.989753Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-05Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.122910Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.124746Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.126547Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.128403Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.130278Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.132086Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.133685Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.135322Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.137002Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.139530Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.141211Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.143010Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.147915Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.149518Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.330738Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.332215Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-23-06.336581Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-06Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.297094Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.298986Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.300636Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.302382Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.304027Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.305917Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.307767Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.309424Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.311106Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.312953Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.314827Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.316856Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.318510Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.320359Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.322244Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.433252Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.435248Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.437240Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.439863Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.442224Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.444439Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.446465Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.448367Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.450669Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.453222Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.455238Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.457122Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.462186Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20.463897Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-20Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-42-55Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.643602Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.645537Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.647218Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.648966Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.650669Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.652541Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.654443Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.656160Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.657812Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.659702Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.661582Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.663457Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.665142Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.667023Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.668695Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.770850Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.772768Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.774727Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.776611Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.778485Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.780316Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.782002Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.783787Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.785451Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.788248Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.790198Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.792010Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.797497Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.799095Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.986575Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.988257Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09.992438Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-43-09Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-38Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.640291Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.642255Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.643861Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.645899Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.648057Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.650459Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.652806Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.654478Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.656140Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.658009Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.659864Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.661671Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.663329Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.666431Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.668568Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.809303Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.811158Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.813086Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.814941Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.816781Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.818650Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.820259Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.821983Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.823656Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.826489Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.828590Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.830429Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.835549Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52.837209Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-52Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-53.020780Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-53.022581Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-44-53.027533Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-51-56Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T01-56-33Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-12Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.428084Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.430016Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.431635Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.433381Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.435023Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.436863Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.438769Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.440464Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.442150Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.443977Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.445822Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.447818Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.449410Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.451175Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.453017Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.565509Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.567372Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.569223Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.571082Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.572893Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.574765Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.576356Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.578020Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.579641Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.582483Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.584887Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.586761Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.591833Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.593445Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.788932Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.790558Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26.795173Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-00-26Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-14Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.165807Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.167821Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.169537Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.171378Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.173166Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.175140Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.177126Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.178984Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.180810Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.182779Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.184766Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.186678Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.188295Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.190178Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28.192087Z.txt`
+- `ollamatracks/ollamastatus.txt 2026-08-21T02-18-28Z.txt`
+- `ollamatracks/qsteps.jsonl`
+- `ollamatracks/telemetry.jsonl`
+- `ollamatracks/workflowso.txt`
+- `or.md`
+- `package-lock.json`
+- `package.json`
+- `requirements.txt`
+- `resumefromhere.txt`
+- `scripts/advanced_agent_healer.py`
+- `scripts/autonomous_runner.py`
+- `scripts/create-pr.sh`
+- `scripts/github-auto-setup.sh`
+- `scripts/github_auto_setup.py`
+- `scripts/monitor.sh`
+- `scripts/ollama_autonomous_agent.py`
+- `scripts/qsteps_manager.py`
+- `scripts/realtime_workflow_monitor.py`
+- `scripts/resilience_auto_healing.py`
+- `scripts/validate_workflow_contracts.py`
+- `tests/test_enhanced_tracking_and_workflows.py`
+- `tests/test_ollama_autonomous_agent.py`
+- `tests/test_ollama_enhanced_features.py`
+- `validation_report.json`
+- `zx.txt`

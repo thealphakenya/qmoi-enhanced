@@ -1146,7 +1146,7 @@ jobs:
         env:
           AGENT_WORKFLOW_FILE: ollama-autonomous-agent.yml
         with:
-          github-token: ${{ github.token }}
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
 
           script: |
             const workflowId =

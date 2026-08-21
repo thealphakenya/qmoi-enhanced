@@ -2681,7 +2681,7 @@
       }
     }
   },
-  "generated": "2026-08-21T00:14:58.459442Z",
+  "generated": "2026-08-21T02:18:28.330731Z",
   "platforms": {
     "android": {
       "code_compiles": true,
@@ -2845,7 +2845,7 @@
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 1e-06,
+      "duration_seconds": 2e-06,
       "manifests_present": true,
       "passed": true,
       "platform": "linux",
@@ -2921,7 +2921,7 @@
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 3e-06,
+      "duration_seconds": 2e-06,
       "manifests_present": true,
       "passed": true,
       "platform": "macos",
@@ -3073,7 +3073,7 @@
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 4e-06,
+      "duration_seconds": 6e-06,
       "manifests_present": true,
       "passed": true,
       "platform": "windows",
@@ -3221,7 +3221,21 @@
       "sync_strategy": "main -> autosync-backup -> cross-repository",
       "target_repository": "thealphakenya/Alpha-Q-ai"
     },
-    "generated": "2026-08-21T00:14:58.455212Z",
+    "generated": "2026-08-21T02:18:28.326927Z",
+    "model_validation": {
+      "card_path": "/workspaces/qmoi-enhanced/MODEL_CARD.md",
+      "human_review_required": true,
+      "missing_sections": [],
+      "network_required": false,
+      "passed": true,
+      "required_sections": [
+        "## Intended Use and Boundaries",
+        "## Core Model Qualities",
+        "## Research and Learning Policy",
+        "## Model Test Plan"
+      ],
+      "research_provenance_required": true
+    },
     "proof": {
       "alpha_q_ai_included": true,
       "applications_per_platform": 4,
@@ -3229,6 +3243,7 @@
       "feature_registry_valid": true,
       "feature_validation_passed": true,
       "file_handler_validation_passed": true,
+      "model_validation_passed": true,
       "platform_feature_contract_valid": true,
       "platform_validation_passed": true
     },

@@ -282,3 +282,15 @@ Continuation publication audit (2026-08-20):
 - Confirmed no unresolved index paths and clean diff-check status.
 - Confirmed detached `HEAD` is already an ancestor of `origin/main`, but staged and unstaged scopes differ materially and include generated tracker artifacts.
 - No additional safe implementation work remains locally; commit/branch selection and remote publication remain deliberate operator actions.
+
+Continuation audit (2026-08-21T02:21:05Z):
+- Local full suite: PASS (184 tests before the current workflow-contract additions).
+- Focused workflow regressions after hardening: PASS (4 passed).
+- Workflow contract validation: PASS (8 workflows, 21 jobs, ready_for_github=true).
+- Fixed auto-merge false failures: non-automated and fork pull requests now skip at job level.
+- Fixed dispatch token selection: master orchestrator prefers secrets.MY_CUSTOM_TOKEN and falls back to github.token.
+- Hosted Ollama validation run 32438327814: PASS; auto-merge run 32438329276: expected no-op was incorrectly recorded as failure by the old workflow.
+- Master orchestrator run 32436920893: validation jobs passed; agent dispatch failed at the Actions permission boundary and was recorded as a failure.
+- Latest Alpha-Q-ai runs inspected: 32439002484, 32437446070, 32435625272, 32435588975; all completed successfully.
+- No token was written to source, tracker files, documentation, or git history.
+- Publication and hosted revalidation remain pending until the deliberate commit and push below.
