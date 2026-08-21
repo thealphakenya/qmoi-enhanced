@@ -294,3 +294,12 @@ Continuation audit (2026-08-21T02:21:05Z):
 - Latest Alpha-Q-ai runs inspected: 32439002484, 32437446070, 32435625272, 32435588975; all completed successfully.
 - No token was written to source, tracker files, documentation, or git history.
 - Publication and hosted revalidation remain pending until the deliberate commit and push below.
+
+Hosted publication result (2026-08-21T02:37:00Z):
+- Commit `c777112a63` is published on `origin/copilot/hosted-step-manager`.
+- Ollama PR validation run `32440078563`: PASS; all 11 validation jobs passed and the branch-only autonomous trigger was skipped by design.
+- Realtime monitor observed the run from 90.9% complete to final success and persisted its report under `/tmp/workflow_monitor_32440078563.json` plus ollamatracks projections.
+- Master orchestrator dispatch attempt: HTTP 403, `Resource not accessible by integration`; no workflow run was created.
+- Auto-merge run `32440079218` still failed because `pull_request_target` reads the base-branch workflow, so the new branch-side skip gate takes effect only after it is merged to main.
+- Latest Alpha-Q-ai observation included active branch-sync run `32440401203`; prior three observed runs were successful.
+- The local and hosted Ollama validation gates are successful; remaining red checks are the base-branch auto-merge behavior, external Vercel rate limits, and unavailable Actions-dispatch permission.

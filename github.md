@@ -119,3 +119,9 @@ Latest observed GitHub-hosted workflow metrics:
 | Workflow Status Tracker | [32438869463](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32438869463) | completed | success | 2026-08-21T02:09:45Z |
 
 The current branch is `copilot/hosted-step-manager`; local validation is green. The auto-merge workflow now skips non-automated and fork PRs at job level, and the master orchestrator now prefers the repository-scoped `MY_CUSTOM_TOKEN` secret without persisting credentials. The latest four Alpha-Q-ai runs inspected at 2026-08-21T02:21:05Z were successful: 32439002484, 32437446070, 32435625272, and 32435588975.
+
+## Hosted execution result (2026-08-21T02:37:00Z)
+
+Published commit `c777112a63` passed hosted Ollama validation in [run 32440078563](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32440078563): all 11 validation jobs passed. The realtime monitor observed the final transition and recorded durable tracker projections. The master-orchestrator dispatch was rejected with HTTP 403 by the current integration token, so no autonomous-agent dispatch run was falsely reported.
+
+The auto-merge run [32440079218](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32440079218) remains a legacy base-branch result: `pull_request_target` loads its workflow from `main`, so the new non-automated/fork skip gate on this branch cannot change that check until merged. Alpha-Q-ai’s latest observation at this timestamp included active branch-sync run `32440401203`; its previous three observed runs were successful.
