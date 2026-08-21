@@ -1,5 +1,25 @@
 # GitHub Automation & Live Job Links
 
+## Current verified state (2026-08-21)
+
+- Branch: `copilot/hosted-step-manager`
+- Active PR: [#2096](https://github.com/thealphakenya/qmoi-enhanced/pull/2096)
+- Latest successful hosted validation: [32437814209](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/32437814209)
+- Result: all integrity, documentation, six platform, feature, test, and final aggregation jobs passed.
+- Latest pushed inventory commit: `bbea973dfa`
+- Live inventory: `ollamatracks/workflowso.txt` records bounded GitHub run and job metrics.
+
+The autonomous-agent, realtime-monitor, and master-orchestrator dispatches require
+an authorized token with Actions write permission. The current integration token
+returned HTTP 403 for those dispatches. Never place a personal access token in
+source files, tracker artifacts, issue comments, or chat; revoke any token that
+has been exposed and authenticate directly in the terminal.
+
+PR #2096 is currently `CONFLICTING`/`DIRTY`. Auto-merge is therefore not
+eligible, and external Vercel rate-limit failures are separate from the passing
+Ollama validation gate. Resolve the PR conflict and review external deployment
+checks before merging.
+
 ## Current active runs
 
 The two most recent GitHub Actions runs currently in motion are:
