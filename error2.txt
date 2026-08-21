@@ -263,6 +263,12 @@ Workflow inventory completion (2026-08-21):
 - Missing GitHub API data is explicitly represented as `not observed` or `pending`; GitHub run and job fields remain authoritative.
 - Added regression coverage for workflow inventory output; focused monitor tests pass.
 
+QMOI model enhancement completion (2026-08-21):
+- Expanded generated `MODEL_CARD.md` with intended use/boundaries, safety, quality, provenance, research, learning, and model-test requirements.
+- Added deterministic `ModelCardGenerator.validate_model_contract()` and required it for GitHub proof readiness and full validation reports.
+- Added an explicit model phase to the master orchestrator after pre-flight, alongside platform, feature, and test validation; downstream tests and agent triggering retain their dependency order.
+- Added regression coverage; complete local validation passes with 184 tests.
+
 Current enhancement:
 - Added manager-owned `validate-all` aggregation for every local workflow and Python script, with optional full tests, durable `QSTEPS_VALIDATION.json`, and fail-closed exit status.
 - Added regression coverage for dynamic workflow/script discovery without manual file-by-file editing.

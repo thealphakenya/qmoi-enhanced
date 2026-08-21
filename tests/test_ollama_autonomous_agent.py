@@ -233,6 +233,10 @@ class TestModelCardGenerator:
         assert "QCity" in content
         assert "QMOI Space" in content
         assert "QALPHA" in content
+        assert "## Intended Use and Boundaries" in content
+        assert "## Core Model Qualities" in content
+        assert "## Research and Learning Policy" in content
+        assert "## Model Test Plan" in content
     
     def test_model_card_includes_all_apps(self, tmp_path):
         """Verify model card documents all apps."""
@@ -250,6 +254,15 @@ class TestModelCardGenerator:
         
         for app, description in apps.items():
             assert app in content
+
+    def test_model_contract_is_deterministically_validated(self, tmp_path):
+        """Model quality, provenance, and review requirements are checked."""
+        generator = ModelCardGenerator(tmp_path)
+        result = generator.validate_model_contract()
+        assert result["passed"] is True
+        assert result["network_required"] is False
+        assert result["research_provenance_required"] is True
+        assert result["human_review_required"] is True
 
 
 class TestRealtimeTracker:

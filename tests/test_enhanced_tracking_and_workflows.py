@@ -366,6 +366,7 @@ class TestWorkflowIntegration:
         for job in expected:
             assert job in text
         assert text.count("Q Steps Manager start") >= len(expected)
+        assert "validation_type:\n          - platforms\n          - features\n          - tests\n          - model" in text
 
     def test_primary_hosted_gates_invoke_validate_all(self):
         """Primary hosted gates use the centralized repository validation command."""

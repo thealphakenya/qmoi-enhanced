@@ -394,12 +394,20 @@ Meta-workflow that tracks all workflow executions and maintains workflow health 
 | Job | Steps and evidence |
 |---|---|
 | `pre-flight-checks` | Checkout full history; Q Steps Manager start; setup Python; health check; Git/index recovery; dependency and required-file checks; upload diagnostics. |
-| `comprehensive-validation` | Run platform validation; feature validation; file-handler validation; generate proof and reports; publish artifacts. |
+| `comprehensive-validation` | Run platform, feature, test, and model validation matrix with fail-fast disabled; generate proof and reports; publish artifacts. |
 | `enhanced-test-execution` | Run the complete pytest suite; capture failures and test artifacts. |
 | `trigger-agent-on-success` | Confirm upstream outputs; dispatch the autonomous agent only after successful validation. |
 | `final-status-report` | Aggregate job conclusions; write the final summary and preserve evidence with `always()`. |
 
 The orchestrator is finite. Its Q Steps Manager contract bounds retries, records checkpoints, and leaves fetch, merge, commit, and push operations explicit. The master orchestrator also validates every workflow YAML contract and compiles every Python script during pre-flight. Its auto-healing path backs up a broken Git index before reconstruction and restores that backup if recovery validation fails. Each executable orchestrator job emits a stable Q Steps Manager start event, while `if: always()` report and artifact steps preserve evidence on failure.
+
+Execution order is explicit: `pre-flight-checks` must pass first; the
+`comprehensive-validation` matrix then runs platforms, features, tests, and
+the model-card contract; `enhanced-test-execution` follows the matrix;
+`trigger-agent-on-success` follows successful validation and tests; and
+`final-status-report` aggregates every result with `always()`. The model phase
+checks safety, provenance, reproducibility, and human-review requirements
+without requiring network access.
 
 ## Q Steps Manager Contract (All Workflows)
 

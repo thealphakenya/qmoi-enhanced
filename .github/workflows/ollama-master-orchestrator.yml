@@ -431,6 +431,7 @@ jobs:
           - platforms
           - features
           - tests
+          - model
 
 
     steps:
@@ -613,6 +614,26 @@ jobs:
                 -v \
                 --tb=short \
                 --timeout=60
+
+              ;;
+
+
+            model)
+
+              echo
+              echo "Validating QMOI model card, safety, provenance, and test contract..."
+
+              python3 - <<'PY'
+              from pathlib import Path
+              import sys
+              sys.path.insert(0, "scripts")
+              from ollama_autonomous_agent import ModelCardGenerator
+
+              result = ModelCardGenerator(Path(".")).validate_model_contract()
+              if not result["passed"]:
+                  raise SystemExit(f"Model contract failed: {result['missing_sections']}")
+              print("QMOI model contract passed")
+              PY
 
               ;;
 
