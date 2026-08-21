@@ -131,3 +131,7 @@ Final hosted validation: [run 32440571837](https://github.com/thealphakenya/qmoi
 ## Permission check (2026-08-21T02:55:00Z)
 
 The current `gh` integration credential returns HTTP 403 for repository Actions secrets, so `MY_CUSTOM_TOKEN` could not be created from this environment. The secret prompt was cancelled without entering or storing a token. A repository administrator must create the secret, or an authorized `gh` login with Actions-secrets write permission must be used. The previously exposed token must be revoked.
+
+## GitHub access readiness
+
+Added `.github/workflows/github-access-readiness.yml`. It runs manually or every six hours, checks `MY_CUSTOM_TOKEN`, verifies repository API access without exposing credential contents, and writes sign-in/setup instructions to the GitHub step summary. Interactive account sign-in is intentionally outside the runner: a repository administrator must authenticate to GitHub and create the Actions secret. The workflow does not check out code or persist credentials.

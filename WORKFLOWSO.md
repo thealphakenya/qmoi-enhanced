@@ -2,7 +2,7 @@
 
 **Last Updated:** 2026-08-20
 **Version:** 3.0 (Q Steps Manager lifecycle contract)
-**Total Workflows:** 8  
+**Total Workflows:** 9
 **Total Jobs:** 25+  
 **Status:** 🟢 Production Ready
 
@@ -15,7 +15,19 @@ commit, event, URL, conclusion, and the monitored run's job/phase status.
 GitHub API values are authoritative; unavailable values are explicitly marked
 `not observed` or `pending`.
 
-This document provides comprehensive documentation for all 8 GitHub Actions workflows in the qmoi-enhanced repository with ADVANCED AUTO-HEALING, AUTO-RETRY, and AUTOMATIC AGENT TRIGGERING capabilities.
+This document provides comprehensive documentation for all 9 GitHub Actions workflows in the qmoi-enhanced repository with ADVANCED AUTO-HEALING, AUTO-RETRY, and AUTOMATIC AGENT TRIGGERING capabilities.
+
+## GitHub Access Readiness Workflow
+**File**: `.github/workflows/github-access-readiness.yml`
+**Triggers**: `workflow_dispatch`, every six hours
+
+This secure setup gate checks whether `MY_CUSTOM_TOKEN` is configured and whether
+the GitHub API can read the repository. It writes non-secret sign-in and setup
+guidance to the GitHub step summary when configuration is incomplete. GitHub
+Actions runners cannot safely perform an interactive browser sign-in; an
+authorized repository administrator must authenticate outside the runner and
+create the Actions secret. The workflow never checks out code, prints the token,
+or stores credentials in tracker artifacts.
 
 **Workflow Architecture:**
 ```

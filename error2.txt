@@ -314,3 +314,8 @@ Permission check (2026-08-21T02:55:00Z):
 - The command was cancelled at its secret-entry prompt; no token value was entered, persisted, or printed.
 - Master-orchestrator dispatch remains blocked by the same Actions write/dispatch permission boundary.
 - Required operator action: revoke the token exposed in chat, then have a repository administrator create `MY_CUSTOM_TOKEN` in GitHub Settings, or authenticate `gh` with a credential that has repository Actions secrets write permission and enter the replacement directly at the terminal prompt.
+
+Access-readiness enhancement (2026-08-21T03:13:33Z):
+- Added `.github/workflows/github-access-readiness.yml` with manual and six-hour scheduled checks.
+- The workflow reports secret/API readiness in `GITHUB_STEP_SUMMARY` and gives safe external sign-in instructions when setup is incomplete.
+- It performs no interactive login, checkout, credential printing, or credential persistence.

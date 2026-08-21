@@ -329,7 +329,8 @@ class TestWorkflowIntegration:
         assert result.returncode == 0, result.stderr
         report = json.loads((tmp_path / "QSTEPS_VALIDATION.json").read_text())
         assert report["ready"] is True
-        assert report["workflow_count"] == 8
+        workflow_dir = Path(__file__).parent.parent / ".github" / "workflows"
+        assert report["workflow_count"] == len(list(workflow_dir.glob("*.y*ml")))
         assert report["script_count"] >= 8
 
     def test_every_workflow_declares_q_steps_manager(self):
@@ -374,13 +375,24 @@ class TestWorkflowIntegration:
         for name in ("ollama-master-orchestrator.yml", "ollama-pr-validation.yml"):
             assert "qsteps_manager.py validate-all --root ." in (workflow_dir / name).read_text()
 
+    def test_github_access_readiness_workflow_is_safe_and_actionable(self):
+        """Access setup must be non-interactive and must never print credentials."""
+        workflow = Path(__file__).parent.parent / ".github" / "workflows" / "github-access-readiness.yml"
+        content = workflow.read_text()
+        assert "MY_CUSTOM_TOKEN" in content
+        assert "GITHUB_STEP_SUMMARY" in content
+        assert "Authorization: Bearer ${CUSTOM_TOKEN}" in content
+        assert "Do not paste the credential" in content
+        assert "actions/checkout" not in content
+
     def test_hosted_workflow_contract_validator_passes(self, tmp_path):
         """The contract validator used by GitHub must pass locally."""
         from validate_workflow_contracts import validate
 
         report = validate(Path(__file__).parent.parent / ".github" / "workflows")
         assert report["ready_for_github"] is True
-        assert report["workflow_count"] == 8
+        workflow_dir = Path(__file__).parent.parent / ".github" / "workflows"
+        assert report["workflow_count"] == len(list(workflow_dir.glob("*.y*ml")))
         assert report["job_count"] >= 20
         output = tmp_path / "workflow_contract.json"
         output.write_text(json.dumps(report), encoding="utf-8")

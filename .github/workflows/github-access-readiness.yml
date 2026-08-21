@@ -1,0 +1,98 @@
+name: GitHub Access Readiness
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+
+concurrency:
+  group: github-access-readiness-${{ github.repository }}
+  cancel-in-progress: false
+
+env:
+  QSTEPS_MANAGER: "qsteps-v1"
+  REQUIRED_SECRET: "MY_CUSTOM_TOKEN"
+
+jobs:
+  check-access:
+    name: Check GitHub account and Actions access
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Record access readiness start
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          mkdir -p ollamatracks
+          printf 'GitHub access readiness started at %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" > ollamatracks/github_access_readiness.txt
+
+      - name: Check configured repository secret
+        id: secret
+        env:
+          CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if [[ -n "${CUSTOM_TOKEN:-}" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "MY_CUSTOM_TOKEN is configured (value intentionally withheld)."
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "MY_CUSTOM_TOKEN is not configured."
+          fi
+
+      - name: Verify GitHub repository API access
+        id: api
+        env:
+          CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          response_file="$(mktemp)"
+          status_code="$(curl --silent --show-error --output "$response_file" --write-out '%{http_code}' \
+            --header 'Accept: application/vnd.github+json' \
+            --header "Authorization: Bearer ${CUSTOM_TOKEN}" \
+            "https://api.github.com/repos/${REPOSITORY}")"
+          if [[ "$status_code" == "200" ]]; then
+            echo "repository_access=true" >> "$GITHUB_OUTPUT"
+            echo "GitHub API can read ${REPOSITORY}."
+          else
+            echo "repository_access=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::GitHub API repository check returned HTTP ${status_code}."
+          fi
+          rm -f "$response_file"
+
+      - name: Write sign-in and setup guidance
+        if: always()
+        env:
+          SECRET_CONFIGURED: ${{ steps.secret.outputs.configured || 'false' }}
+          REPOSITORY_ACCESS: ${{ steps.api.outputs.repository_access || 'false' }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          {
+            echo "## GitHub access readiness"
+            echo
+            echo "Checked at $(date -u +'%Y-%m-%dT%H:%M:%SZ') for ${GITHUB_REPOSITORY}."
+            echo
+            echo "- MY_CUSTOM_TOKEN configured: ${SECRET_CONFIGURED}"
+            echo "- Repository API readable: ${REPOSITORY_ACCESS}"
+            echo
+            if [[ "$SECRET_CONFIGURED" != "true" ]]; then
+              echo "### Action required"
+              echo
+              echo "Sign in to GitHub outside Actions with a repository administrator account."
+              echo "Create or authorize a minimum-scope credential with the repository Actions and workflow-dispatch permissions required by this repository."
+              echo "Add it as the repository Actions secret MY_CUSTOM_TOKEN in Settings > Secrets and variables > Actions."
+              echo "Do not paste the credential into workflow files, issues, logs, chat, or tracker artifacts."
+            else
+              echo "The configured secret is available without exposing its value."
+              echo "The master orchestrator can use it for authorized workflow dispatch when its permissions allow that operation."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
