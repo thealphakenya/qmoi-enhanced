@@ -99,3 +99,20 @@ The repository is configured so the PR Ollama Autonomous Agent runs in GitHub-ho
 - The exposed credential was not used, stored, echoed, or added to repository files.
 - Current authentication remains the Codespaces `GITHUB_TOKEN`.
 - Replacement credentials must be created with least privilege, stored in GitHub Secrets or the Codespaces secret store, and never passed in command arguments or logs.
+
+## Workflow metrics: 2026-08-23
+
+Snapshot after push `54e5cb1f2b9`:
+
+| Workflow | Latest run | Status | Result | SHA |
+| --- | ---: | --- | --- | --- |
+| Auto-merge automated proposals | 32442743661 | completed | failure (historical) | 5d61750be5ad |
+| Branch Sync Monitor & Auto-Update | 32643389408 | in_progress | pending | 54e5cb1f2b9 |
+| Ollama Autonomous Agent - PR Realtime Tracker | 32643353706 | completed | success | 54e5cb1f2b9 |
+| Ollama Autonomous Agent & Live Tracker | 32643163358 | completed | success | 407049d3f705 |
+| Ollama Master Orchestrator - Enhanced Auto-Healing | 32640424370 | completed | failure (historical) | 4fc7be1169eb |
+| Ollama PR Validation - 293+ Platform Features | 32643309908 | queued | pending | 54e5cb1f2b9 |
+| PR Monitor | none returned | not run | no recent run | n/a |
+| Workflow Status Tracker | 32642930937 | completed | success | 407049d3f705 |
+
+The latest successful validation for the repaired dispatch workflow is run `32642348677` on `c4ac85293a`. Historical failures are retained for auditability and are not reported as current success. Queued and in-progress runs remain active until GitHub reports a terminal result.

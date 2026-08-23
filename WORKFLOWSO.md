@@ -670,3 +670,26 @@ This workflow orchestration system provides:
 
 All workflows are designed to be resilient, observable, and maintainable.
 
+## GitHub Hosted Operations Record
+
+Snapshot: 2026-08-23, after push `54e5cb1f2b9`.
+
+| Workflow file | Latest hosted run | Current result |
+| --- | --- | --- |
+| `auto-merge-automated-pr.yml` | `32442743661` | Historical failure; requires separate proposal/permission investigation |
+| `branch-sync.yml` | `32643389408` | In progress on `54e5cb1f2b9` |
+| `ollama-autonomous-agent-realtime-monitor.yml` | `32643353706` | Success on `54e5cb1f2b9` |
+| `ollama-autonomous-agent.yml` | `32643163358` | Success on `407049d3f705` |
+| `ollama-master-orchestrator.yml` | `32640424370` | Historical failure on `4fc7be1169eb`; repaired dispatch payload is in `c4ac85293a` |
+| `ollama-pr-validation.yml` | `32643309908` | Queued on `54e5cb1f2b9` |
+| `pr-monitor.yml` | No recent run returned | No recent hosted execution recorded |
+| `workflow-tracker.yml` | `32642930937` | Success on `407049d3f705` |
+
+Operational rules:
+
+- Treat queued and in-progress runs as active, not successful or failed.
+- Record run ID, workflow name, commit SHA, branch, start/end timestamps, status, conclusion, and URL in `github.md`.
+- Keep historical failures visible while separating them from current-run health.
+- Do not claim all workflows are successful until every required workflow has a terminal success result.
+- Manual dispatch requires a GitHub token with Actions write permission; the current Codespaces token previously returned HTTP 403.
+

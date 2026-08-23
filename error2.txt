@@ -196,3 +196,12 @@ Error: Unhandled error: HttpError: Unexpected inputs provided: ["verbose"]
       - The exposed credential was not used, stored, echoed, or written to files.
       - Current authentication remains the Codespaces `GITHUB_TOKEN`.
       - Store replacement credentials only in GitHub Secrets or the Codespaces secret store.
+
+      --- 2026-08-23 WORKFLOW METRICS ---
+
+      - Realtime tracker run `32643353706`: PASS on `54e5cb1f2b`.
+      - Ollama PR validation run `32643309908`: QUEUED on `54e5cb1f2b`.
+      - Branch sync run `32643389408`: IN PROGRESS on `54e5cb1f2b`.
+      - Workflow tracker run `32642930937`: PASS on `407049d3f705`.
+      - Historical auto-merge and master-orchestrator failures remain recorded.
+      - `github.md` and `WORKFLOWSO.md` were updated with the complete eight-workflow snapshot.
