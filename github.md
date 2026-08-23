@@ -130,3 +130,11 @@ The latest successful validation for the repaired dispatch workflow is run `3264
 - PR Monitor: no recent hosted run returned.
 
 All workflows cannot yet be declared successful because one reporting job is active, two workflows have historical failures without newer runs, and PR Monitor has no recent run. These states require GitHub-hosted execution or Actions permission and are intentionally reported as unresolved.
+
+## Active-run monitoring enhancement: 2026-08-23
+
+- Realtime monitor now queries repository-wide active runs through `listWorkflowRunsForRepo`.
+- It covers `queued`, `in_progress`, `requested`, `waiting`, and `pending` states for every workflow, not only the validation and autonomous-agent workflow names.
+- Active runs are deduplicated by run ID and combined with named historical runs and manual-run overrides.
+- Focused monitor tests: `8 passed`.
+- Workflow YAML and active-run collection validation: PASS.

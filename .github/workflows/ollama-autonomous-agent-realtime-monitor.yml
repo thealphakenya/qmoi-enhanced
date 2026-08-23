@@ -808,6 +808,48 @@ jobs:
                 agentWorkflow
               );
 
+            // Collect every active run in the repository, regardless of which
+            // workflow created it. This keeps monitoring independent of the
+            // workflow-name allowlist above.
+            const activeRunStatuses = [
+              "queued",
+              "in_progress",
+              "requested",
+              "waiting",
+              "pending"
+            ];
+
+            async function collectActiveRuns() {
+              const activeRunsById = new Map();
+
+              for (const status of activeRunStatuses) {
+                try {
+                  const runs = await github.paginate(
+                    github.rest.actions.listWorkflowRunsForRepo,
+                    {
+                      owner,
+                      repo,
+                      status,
+                      per_page: 100
+                    }
+                  );
+
+                  for (const run of runs) {
+                    activeRunsById.set(run.id, run);
+                  }
+                } catch (error) {
+                  core.warning(
+                    `Active run collection failed for ${status}: ${error.message}`
+                  );
+                }
+              }
+
+              return Array.from(activeRunsById.values());
+            }
+
+            const activeRuns =
+              await collectActiveRuns();
+
             // =================================================================
             // MANUAL RUN OVERRIDE
             // =================================================================
@@ -864,6 +906,16 @@ jobs:
             for (
               const run
               of agentRuns
+            ) {
+              allRunsById.set(
+                run.id,
+                run
+              );
+            }
+
+            for (
+              const run
+              of activeRuns
             ) {
               allRunsById.set(
                 run.id,

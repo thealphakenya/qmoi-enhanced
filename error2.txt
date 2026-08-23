@@ -216,3 +216,12 @@ Error: Unhandled error: HttpError: Unexpected inputs provided: ["verbose"]
                   - PR Monitor has no recent hosted run.
                   - All workflows are not yet fully successful; unresolved states are
                         documented in `github.md` rather than falsely marked PASS.
+
+                  --- 2026-08-23 ALL ACTIVE RUN MONITORING ---
+
+                  - Realtime monitor enhanced to query every repository workflow's active
+                        runs, covering queued, in_progress, requested, waiting, and pending.
+                  - Active runs are deduplicated by run ID and merged with existing named
+                        workflow history and manual-run inspection.
+                  - Focused monitor tests: PASS (8 passed).
+                  - Workflow YAML and monitor collection validation: PASS.
