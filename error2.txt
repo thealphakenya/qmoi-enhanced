@@ -205,3 +205,14 @@ Error: Unhandled error: HttpError: Unexpected inputs provided: ["verbose"]
       - Workflow tracker run `32642930937`: PASS on `407049d3f705`.
       - Historical auto-merge and master-orchestrator failures remain recorded.
       - `github.md` and `WORKFLOWSO.md` were updated with the complete eight-workflow snapshot.
+
+                  --- 2026-08-23 REALTIME WORKFLOW CHECKPOINT ---
+
+                  - Branch Sync run `32643796801`: PASS.
+                  - PR Validation run `32643712530`: all substantive validation jobs PASS;
+                        final status-reporting job remains IN PROGRESS.
+                  - Autonomous/live tracker runs: PASS.
+                  - Auto-merge and master-orchestrator latest failures are historical.
+                  - PR Monitor has no recent hosted run.
+                  - All workflows are not yet fully successful; unresolved states are
+                        documented in `github.md` rather than falsely marked PASS.
