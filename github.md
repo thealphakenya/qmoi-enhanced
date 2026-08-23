@@ -138,3 +138,11 @@ All workflows cannot yet be declared successful because one reporting job is act
 - Active runs are deduplicated by run ID and combined with named historical runs and manual-run overrides.
 - Focused monitor tests: `8 passed`.
 - Workflow YAML and active-run collection validation: PASS.
+
+## Live run follow-up: 2026-08-23
+
+- PR validation run `32644238115` for `394caf7ba0a3`: in progress; integrity and documentation jobs passed, while six platform jobs remain active.
+- Branch sync run `32644238113` for `394caf7ba0a3`: cancelled by concurrency after a newer reconciliation was queued; this is not a test failure.
+- New branch sync run `32644312057` for `394caf7ba0a3`: pending.
+- Older branch sync run `32644169261` for `86bcffbdc6e5`: still in progress.
+- The all-active-run monitor now includes all of these runs in one repository-wide collection cycle.

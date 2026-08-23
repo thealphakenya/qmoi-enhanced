@@ -225,3 +225,12 @@ Error: Unhandled error: HttpError: Unexpected inputs provided: ["verbose"]
                         workflow history and manual-run inspection.
                   - Focused monitor tests: PASS (8 passed).
                   - Workflow YAML and monitor collection validation: PASS.
+
+                  --- 2026-08-23 LIVE RUN FOLLOW-UP ---
+
+                  - PR validation `32644238115`: IN PROGRESS; completed integrity and
+                        documentation jobs passed, six platform jobs remain active.
+                  - Branch sync `32644238113`: CANCELLED by concurrency, superseded by
+                        pending run `32644312057`; not a test failure.
+                  - Older branch sync `32644169261`: still IN PROGRESS.
+                  - Repository-wide active-run collection covers all listed runs.
