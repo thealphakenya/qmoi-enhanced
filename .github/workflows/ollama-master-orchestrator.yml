@@ -1106,8 +1106,7 @@ jobs:
                 ref: ref || "main",
                 inputs: {
                   mode: "full",
-                  auto_heal: "true",
-                  verbose: "true"
+                  auto_heal: "true"
                 }
               });
 
