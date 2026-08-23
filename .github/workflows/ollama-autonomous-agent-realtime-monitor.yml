@@ -4,10 +4,7 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 # OLLAMA AUTONOMOUS AGENT - PR REALTIME TRACKER
 # ============================================================================
 #
-# PURPOSE
-# -------
 # Durable GitHub-level observability and reconciliation for:
-#
 #   - Ollama PR validation workflow
 #   - Ollama autonomous-agent workflow
 #   - workflow runs
@@ -20,23 +17,33 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 #   - agent telemetry
 #   - current repository state
 #
-# IMPORTANT
-# ---------
-# This workflow is a FINITE RECONCILER.
-#
-# It is NOT an infinite daemon.
-#
 # SECURITY
 # --------
-# workflow_run is a privileged event.
+# This workflow checks out only the repository default branch and never
+# executes untrusted pull-request source code.
 #
-# This workflow:
+# It only observes GitHub API metadata and persists tracker state under
+# ollamatracks/.
 #
-#   1. Checks out ONLY the repository default branch.
-#   2. NEVER checks out an untrusted pull-request head.
-#   3. NEVER executes arbitrary code from a PR merely to inspect it.
-#   4. Uses GitHub API data for PR/workflow/check inspection.
-#   5. Commits ONLY ollamatracks/.
+# IMPORTANT JAVASCRIPT FIX
+# ------------------------
+# This workflow previously declared:
+#
+#     const activeRuns = ...
+#
+# twice in the same github-script scope.
+#
+# The first declaration is now:
+#
+#     const collectedActiveRuns = ...
+#
+# and the final reconciled collection remains:
+#
+#     const activeRuns = ...
+#
+# This eliminates:
+#
+#     SyntaxError: Identifier 'activeRuns' has already been declared
 #
 # ============================================================================
 
@@ -60,7 +67,6 @@ on:
     - cron: "*/5 * * * *"
 
   workflow_dispatch:
-
     inputs:
 
       run_id:
@@ -99,7 +105,6 @@ on:
 # ============================================================================
 
 permissions:
-
   actions: read
   checks: read
   contents: write
@@ -112,9 +117,7 @@ permissions:
 # ============================================================================
 
 concurrency:
-
   group: ollama-pr-realtime-tracker-writer
-
   cancel-in-progress: false
 
 
@@ -123,23 +126,16 @@ concurrency:
 # ============================================================================
 
 env:
-
   TRACK_DIR: ollamatracks
-
   TRACK_SCHEMA_VERSION: "4.0"
 
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
-
   AGENT_WORKFLOW_NAME: "Ollama Autonomous Agent Trigger & Live Tracker"
 
   MAX_RUNS: "20"
-
   MAX_JOBS_PER_RUN: "100"
-
   MAX_CHECKS: "100"
-
   MAX_PRS: "100"
-
   MAX_STATUS_ENTRIES: "100"
 
   PYTHON_VERSION: "3.12"
@@ -178,7 +174,7 @@ jobs:
 
 
       # ======================================================================
-      # INITIALIZE TRACKING SYSTEM
+      # INITIALIZE TRACKING INFRASTRUCTURE
       # ======================================================================
 
       - name: Initialize tracking infrastructure
@@ -189,6 +185,7 @@ jobs:
           mkdir -p "$TRACK_DIR"
 
           touch "$TRACK_DIR/TRACKING_INDEX.txt"
+          touch "$TRACK_DIR/TRACKING_PROTOCOL.txt"
           touch "$TRACK_DIR/CURRENT_STATUS.txt"
           touch "$TRACK_DIR/LATEST_ACTIVITY.txt"
           touch "$TRACK_DIR/STATE.txt"
@@ -347,11 +344,12 @@ jobs:
           MAX_CHECKS: ${{ env.MAX_CHECKS }}
           MAX_PRS: ${{ env.MAX_PRS }}
           MAX_STATUS_ENTRIES: ${{ env.MAX_STATUS_ENTRIES }}
-          MANUAL_RUN_ID: ${{ inputs.run_id }}
-          FORCE_SNAPSHOT: ${{ inputs.force_snapshot }}
-          INSPECT_PRS: ${{ inputs.inspect_prs }}
-          INSPECT_JOBS: ${{ inputs.inspect_jobs }}
-          INSPECT_CHECKS: ${{ inputs.inspect_checks }}
+
+          MANUAL_RUN_ID: ${{ inputs.run_id || '' }}
+          FORCE_SNAPSHOT: ${{ inputs.force_snapshot || 'true' }}
+          INSPECT_PRS: ${{ inputs.inspect_prs || 'true' }}
+          INSPECT_JOBS: ${{ inputs.inspect_jobs || 'true' }}
+          INSPECT_CHECKS: ${{ inputs.inspect_checks || 'true' }}
 
         with:
           github-token: ${{ github.token }}
@@ -441,7 +439,6 @@ jobs:
               }
             );
 
-
             // =================================================================
             // TIME
             // =================================================================
@@ -451,7 +448,6 @@ jobs:
             }
 
             const timestamp = utcNow();
-
 
             // =================================================================
             // HELPERS
@@ -567,9 +563,7 @@ jobs:
                 "OLLAMA AUTONOMOUS AGENT TRACKING EVENT",
                 "=======================================",
                 "",
-                `Schema version: ${
-                  process.env.TRACK_SCHEMA_VERSION || "4.0"
-                }`,
+                "Schema version: 4.0",
                 `Sequence: ${sequenceText}`,
                 `Event: ${eventName}`,
                 `Timestamp UTC: ${timestamp}`,
@@ -670,7 +664,6 @@ jobs:
               };
             }
 
-
             // =================================================================
             // DISCOVER WORKFLOWS
             // =================================================================
@@ -706,7 +699,6 @@ jobs:
                   workflow.name ===
                   agentWorkflowName
               ) || null;
-
 
             // =================================================================
             // WORKFLOW RUN COLLECTION
@@ -756,20 +748,8 @@ jobs:
                 agentWorkflow
               );
 
-
             // =================================================================
-            // REPOSITORY-WIDE ACTIVE RUN COLLECTION
-            // =================================================================
-            //
-            // IMPORTANT:
-            // This variable is intentionally named repositoryActiveRuns.
-            //
-            // A later projection named activeRuns is derived from allRuns.
-            //
-            // This avoids the previous JavaScript SyntaxError:
-            //
-            //   Identifier 'activeRuns' has already been declared
-            //
+            // COLLECT ALL ACTIVE RUNS
             // =================================================================
 
             const activeRunStatuses = [
@@ -820,9 +800,13 @@ jobs:
               );
             }
 
-            const repositoryActiveRuns =
-              await collectActiveRuns();
+            // IMPORTANT:
+            // This variable is intentionally named collectedActiveRuns.
+            // Do NOT rename it to activeRuns because activeRuns is declared
+            // later for the final reconciled state.
 
+            const collectedActiveRuns =
+              await collectActiveRuns();
 
             // =================================================================
             // MANUAL RUN OVERRIDE
@@ -860,7 +844,6 @@ jobs:
               }
             }
 
-
             // =================================================================
             // COMBINE RUNS
             // =================================================================
@@ -888,9 +871,11 @@ jobs:
               );
             }
 
+            // FIX:
+            // Use collectedActiveRuns here.
             for (
               const run
-              of repositoryActiveRuns
+              of collectedActiveRuns
             ) {
               allRunsById.set(
                 run.id,
@@ -918,7 +903,6 @@ jobs:
                 0,
                 maxRuns
               );
-
 
             // =================================================================
             // JOB COLLECTION
@@ -1003,7 +987,6 @@ jobs:
               });
             }
 
-
             // =================================================================
             // PULL REQUEST COLLECTION
             // =================================================================
@@ -1072,7 +1055,6 @@ jobs:
                   pr.html_url
               };
 
-
               // ---------------------------------------------------------------
               // CHECK RUNS
               // ---------------------------------------------------------------
@@ -1127,7 +1109,6 @@ jobs:
               } else {
                 report.checks = [];
               }
-
 
               // ---------------------------------------------------------------
               // COMMIT STATUSES
@@ -1193,14 +1174,15 @@ jobs:
               prReports.push(report);
             }
 
-
             // =================================================================
-            // ACTIVE RUN PROJECTION
+            // FINAL ACTIVE RUN STATE
             // =================================================================
             //
-            // This is the ONLY declaration of `activeRuns`.
+            // IMPORTANT FIX:
             //
-            // The repository-wide collection above is `repositoryActiveRuns`.
+            // There is only ONE declaration of `activeRuns` in this scope.
+            //
+            // The earlier GitHub collection uses `collectedActiveRuns`.
             //
             // =================================================================
 
@@ -1221,7 +1203,6 @@ jobs:
                   )
               );
 
-
             // =================================================================
             // LATEST VALIDATION / AGENT RUNS
             // =================================================================
@@ -1235,7 +1216,6 @@ jobs:
               agentRuns.length > 0
                 ? agentRuns[0]
                 : null;
-
 
             // =================================================================
             // SNAPSHOT
@@ -1343,7 +1323,6 @@ jobs:
                   : null
             };
 
-
             // =================================================================
             // SNAPSHOT HASH
             // =================================================================
@@ -1361,7 +1340,6 @@ jobs:
             snapshot.snapshot_hash =
               snapshotHash;
 
-
             // =================================================================
             // PERSIST JSON SNAPSHOT
             // =================================================================
@@ -1377,7 +1355,6 @@ jobs:
                 2
               ) + "\n"
             );
-
 
             // =================================================================
             // STATE PROJECTION
@@ -1423,9 +1400,6 @@ jobs:
               `Active workflow runs: ${
                 activeRuns.length
               }`,
-              `Repository-wide active runs discovered: ${
-                repositoryActiveRuns.length
-              }`,
               `Open pull requests inspected: ${
                 prReports.length
               }`,
@@ -1443,7 +1417,6 @@ jobs:
               ),
               stateLines.join("\n")
             );
-
 
             // =================================================================
             // CURRENT STATUS
@@ -1545,11 +1518,8 @@ jobs:
               "",
               "RECONCILIATION",
               "--------------",
-              `Active runs included in snapshot: ${
+              `Active runs: ${
                 activeRuns.length
-              }`,
-              `Repository-wide active runs discovered: ${
-                repositoryActiveRuns.length
               }`,
               `Snapshot hash: ${
                 snapshotHash
@@ -1568,7 +1538,6 @@ jobs:
               ),
               currentStatus
             );
-
 
             // =================================================================
             // PR STATUS PROJECTION
@@ -1642,7 +1611,6 @@ jobs:
               prStatusLines.join("\n")
             );
 
-
             // =================================================================
             // RECONCILIATION RECORD
             // =================================================================
@@ -1673,9 +1641,6 @@ jobs:
               active_run_count:
                 activeRuns.length,
 
-              repository_active_run_count:
-                repositoryActiveRuns.length,
-
               open_pr_count:
                 prReports.length,
 
@@ -1694,7 +1659,6 @@ jobs:
                 2
               ) + "\n"
             );
-
 
             // =================================================================
             // STRUCTURED TELEMETRY
@@ -1731,9 +1695,6 @@ jobs:
               active_runs:
                 activeRuns.length,
 
-              repository_active_runs:
-                repositoryActiveRuns.length,
-
               open_prs:
                 prReports.length,
 
@@ -1753,7 +1714,6 @@ jobs:
                 telemetryEvent
               ) + "\n"
             );
-
 
             // =================================================================
             // HISTORICAL EVENT
@@ -1785,9 +1745,6 @@ jobs:
                   active_runs:
                     activeRuns.length,
 
-                  repository_active_runs:
-                    repositoryActiveRuns.length,
-
                   open_pull_requests:
                     prReports.length,
 
@@ -1800,7 +1757,6 @@ jobs:
               "TRACKER_RECONCILIATION",
               `Reconciled ${activeRuns.length} active workflow runs and ${prReports.length} open pull requests.`
             );
-
 
             // =================================================================
             // GITHUB STEP SUMMARY
@@ -1836,10 +1792,6 @@ jobs:
                   String(activeRuns.length)
                 ],
                 [
-                  "Repository active runs discovered",
-                  String(repositoryActiveRuns.length)
-                ],
-                [
                   "Open PRs",
                   String(prReports.length)
                 ],
@@ -1856,11 +1808,6 @@ jobs:
                 `Generated: ${timestamp}`
               )
               .write();
-
-
-            // =================================================================
-            // OUTPUTS
-            // =================================================================
 
             core.setOutput(
               "snapshot_hash",
@@ -1945,7 +1892,10 @@ jobs:
           reconciliation = track_dir / "LAST_RECONCILIATION.txt"
           telemetry = track_dir / "telemetry.jsonl"
 
-          with snapshot.open("r", encoding="utf-8") as handle:
+          with snapshot.open(
+              "r",
+              encoding="utf-8"
+          ) as handle:
               data = json.load(handle)
 
           required_snapshot_keys = {
@@ -1961,7 +1911,10 @@ jobs:
               "snapshot_hash",
           }
 
-          missing = required_snapshot_keys - set(data)
+          missing = (
+              required_snapshot_keys -
+              set(data)
+          )
 
           if missing:
               raise SystemExit(
@@ -1978,7 +1931,10 @@ jobs:
               "r",
               encoding="utf-8"
           ) as handle:
-              for line_number, line in enumerate(handle, 1):
+              for line_number, line in enumerate(
+                  handle,
+                  1
+              ):
                   line = line.strip()
 
                   if not line:
