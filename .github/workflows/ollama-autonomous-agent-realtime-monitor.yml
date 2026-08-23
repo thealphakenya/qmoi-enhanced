@@ -5,6 +5,7 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 # ============================================================================
 #
 # Durable GitHub-level observability and reconciliation for:
+#
 #   - Ollama PR validation workflow
 #   - Ollama autonomous-agent workflow
 #   - workflow runs
@@ -19,31 +20,19 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 #
 # SECURITY
 # --------
-# This workflow checks out only the repository default branch and never
-# executes untrusted pull-request source code.
+# This workflow is triggered by workflow_run and therefore may receive
+# privileged repository permissions.
 #
-# It only observes GitHub API metadata and persists tracker state under
-# ollamatracks/.
+# It:
+#   1. Checks out ONLY the repository default branch.
+#   2. NEVER checks out an untrusted pull-request head.
+#   3. NEVER executes arbitrary PR source code.
+#   4. Uses GitHub API metadata for PR/workflow/check inspection.
+#   5. Commits ONLY ollamatracks/.
 #
-# IMPORTANT JAVASCRIPT FIX
-# ------------------------
-# This workflow previously declared:
-#
-#     const activeRuns = ...
-#
-# twice in the same github-script scope.
-#
-# The first declaration is now:
-#
-#     const collectedActiveRuns = ...
-#
-# and the final reconciled collection remains:
-#
-#     const activeRuns = ...
-#
-# This eliminates:
-#
-#     SyntaxError: Identifier 'activeRuns' has already been declared
+# IMPORTANT
+# ---------
+# This is a finite reconciler, not an infinite daemon.
 #
 # ============================================================================
 
@@ -128,16 +117,13 @@ concurrency:
 env:
   TRACK_DIR: ollamatracks
   TRACK_SCHEMA_VERSION: "4.0"
-
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
   AGENT_WORKFLOW_NAME: "Ollama Autonomous Agent Trigger & Live Tracker"
-
   MAX_RUNS: "20"
   MAX_JOBS_PER_RUN: "100"
   MAX_CHECKS: "100"
   MAX_PRS: "100"
   MAX_STATUS_ENTRIES: "100"
-
   PYTHON_VERSION: "3.12"
 
 
@@ -146,10 +132,6 @@ env:
 # ============================================================================
 
 jobs:
-
-  # ==========================================================================
-  # RECONCILIATION
-  # ==========================================================================
 
   reconcile:
 
@@ -174,7 +156,7 @@ jobs:
 
 
       # ======================================================================
-      # INITIALIZE TRACKING INFRASTRUCTURE
+      # INITIALIZE TRACKING SYSTEM
       # ======================================================================
 
       - name: Initialize tracking infrastructure
@@ -185,7 +167,6 @@ jobs:
           mkdir -p "$TRACK_DIR"
 
           touch "$TRACK_DIR/TRACKING_INDEX.txt"
-          touch "$TRACK_DIR/TRACKING_PROTOCOL.txt"
           touch "$TRACK_DIR/CURRENT_STATUS.txt"
           touch "$TRACK_DIR/LATEST_ACTIVITY.txt"
           touch "$TRACK_DIR/STATE.txt"
@@ -334,6 +315,7 @@ jobs:
       - name: Collect GitHub workflow, job, PR and check state
         id: collect
         uses: actions/github-script@v8
+
         env:
           TRACK_DIR: ${{ env.TRACK_DIR }}
           TRACK_SCHEMA_VERSION: ${{ env.TRACK_SCHEMA_VERSION }}
@@ -344,12 +326,11 @@ jobs:
           MAX_CHECKS: ${{ env.MAX_CHECKS }}
           MAX_PRS: ${{ env.MAX_PRS }}
           MAX_STATUS_ENTRIES: ${{ env.MAX_STATUS_ENTRIES }}
-
-          MANUAL_RUN_ID: ${{ inputs.run_id || '' }}
-          FORCE_SNAPSHOT: ${{ inputs.force_snapshot || 'true' }}
-          INSPECT_PRS: ${{ inputs.inspect_prs || 'true' }}
-          INSPECT_JOBS: ${{ inputs.inspect_jobs || 'true' }}
-          INSPECT_CHECKS: ${{ inputs.inspect_checks || 'true' }}
+          MANUAL_RUN_ID: ${{ inputs.run_id }}
+          FORCE_SNAPSHOT: ${{ inputs.force_snapshot }}
+          INSPECT_PRS: ${{ inputs.inspect_prs }}
+          INSPECT_JOBS: ${{ inputs.inspect_jobs }}
+          INSPECT_CHECKS: ${{ inputs.inspect_checks }}
 
         with:
           github-token: ${{ github.token }}
@@ -368,6 +349,9 @@ jobs:
 
             const trackDir =
               process.env.TRACK_DIR || "ollamatracks";
+
+            const schemaVersion =
+              process.env.TRACK_SCHEMA_VERSION || "4.0";
 
             const validationWorkflowName =
               process.env.VALIDATION_WORKFLOW_NAME ||
@@ -443,11 +427,8 @@ jobs:
             // TIME
             // =================================================================
 
-            function utcNow() {
-              return new Date().toISOString();
-            }
-
-            const timestamp = utcNow();
+            const timestamp =
+              new Date().toISOString();
 
             // =================================================================
             // HELPERS
@@ -455,9 +436,7 @@ jobs:
 
             function safe(value) {
               const result =
-                String(
-                  value ?? "unknown"
-                )
+                String(value ?? "unknown")
                   .replace(
                     /[^a-zA-Z0-9._-]+/g,
                     "-"
@@ -477,16 +456,11 @@ jobs:
             function sha256(value) {
               return crypto
                 .createHash("sha256")
-                .update(
-                  String(value)
-                )
+                .update(String(value))
                 .digest("hex");
             }
 
-            function writeFile(
-              file,
-              content
-            ) {
+            function writeFile(file, content) {
               fs.writeFileSync(
                 file,
                 content,
@@ -494,10 +468,7 @@ jobs:
               );
             }
 
-            function appendFile(
-              file,
-              content
-            ) {
+            function appendFile(file, content) {
               fs.appendFileSync(
                 file,
                 content,
@@ -518,8 +489,7 @@ jobs:
               let highest = 0;
 
               for (
-                const file
-                of historicalFiles()
+                const file of historicalFiles()
               ) {
                 const match =
                   /^(\d{6})_/.exec(file);
@@ -563,7 +533,7 @@ jobs:
                 "OLLAMA AUTONOMOUS AGENT TRACKING EVENT",
                 "=======================================",
                 "",
-                "Schema version: 4.0",
+                `Schema version: ${schemaVersion}`,
                 `Sequence: ${sequenceText}`,
                 `Event: ${eventName}`,
                 `Timestamp UTC: ${timestamp}`,
@@ -583,10 +553,7 @@ jobs:
                   value !== null &&
                   typeof value === "object"
                 ) {
-                  lines.push(
-                    `${key}:`
-                  );
-
+                  lines.push(`${key}:`);
                   lines.push(
                     JSON.stringify(
                       value,
@@ -704,9 +671,7 @@ jobs:
             // WORKFLOW RUN COLLECTION
             // =================================================================
 
-            async function collectRuns(
-              workflow
-            ) {
+            async function collectRuns(workflow) {
               if (!workflow) {
                 return [];
               }
@@ -749,7 +714,18 @@ jobs:
               );
 
             // =================================================================
-            // COLLECT ALL ACTIVE RUNS
+            // REPOSITORY-WIDE ACTIVE RUN COLLECTION
+            //
+            // IMPORTANT:
+            // Do NOT call this variable "activeRuns".
+            //
+            // "activeRuns" is reserved below for the final reconciled
+            // projection derived from allRuns.
+            //
+            // This prevents:
+            //
+            // SyntaxError: Identifier 'activeRuns' has already been declared
+            //
             // =================================================================
 
             const activeRunStatuses = [
@@ -761,11 +737,11 @@ jobs:
             ];
 
             async function collectActiveRuns() {
-              const activeRunsById = new Map();
+              const activeRunsById =
+                new Map();
 
               for (
-                const status
-                of activeRunStatuses
+                const status of activeRunStatuses
               ) {
                 try {
                   const runs =
@@ -780,8 +756,7 @@ jobs:
                     );
 
                   for (
-                    const run
-                    of runs
+                    const run of runs
                   ) {
                     activeRunsById.set(
                       run.id,
@@ -801,10 +776,7 @@ jobs:
             }
 
             // IMPORTANT:
-            // This variable is intentionally named collectedActiveRuns.
-            // Do NOT rename it to activeRuns because activeRuns is declared
-            // later for the final reconciled state.
-
+            // This is intentionally named collectedActiveRuns.
             const collectedActiveRuns =
               await collectActiveRuns();
 
@@ -852,8 +824,7 @@ jobs:
               new Map();
 
             for (
-              const run
-              of validationRuns
+              const run of validationRuns
             ) {
               allRunsById.set(
                 run.id,
@@ -862,8 +833,7 @@ jobs:
             }
 
             for (
-              const run
-              of agentRuns
+              const run of agentRuns
             ) {
               allRunsById.set(
                 run.id,
@@ -871,11 +841,8 @@ jobs:
               );
             }
 
-            // FIX:
-            // Use collectedActiveRuns here.
             for (
-              const run
-              of collectedActiveRuns
+              const run of collectedActiveRuns
             ) {
               allRunsById.set(
                 run.id,
@@ -908,9 +875,7 @@ jobs:
             // JOB COLLECTION
             // =================================================================
 
-            async function collectJobs(
-              run
-            ) {
+            async function collectJobs(run) {
               if (!inspectJobs) {
                 return [];
               }
@@ -943,8 +908,7 @@ jobs:
             const runReports = [];
 
             for (
-              const run
-              of allRuns
+              const run of allRuns
             ) {
               const jobs =
                 await collectJobs(run);
@@ -1020,8 +984,7 @@ jobs:
             const prReports = [];
 
             for (
-              const pr
-              of prs.slice(
+              const pr of prs.slice(
                 0,
                 maxPRs
               )
@@ -1175,15 +1138,11 @@ jobs:
             }
 
             // =================================================================
-            // FINAL ACTIVE RUN STATE
-            // =================================================================
+            // FINAL ACTIVE RUN PROJECTION
             //
-            // IMPORTANT FIX:
+            // This is the ONLY declaration of "activeRuns".
             //
-            // There is only ONE declaration of `activeRuns` in this scope.
-            //
-            // The earlier GitHub collection uses `collectedActiveRuns`.
-            //
+            // It is deliberately different from "collectedActiveRuns" above.
             // =================================================================
 
             const activeStates =
@@ -1223,8 +1182,7 @@ jobs:
 
             const snapshot = {
               schema_version:
-                process.env.TRACK_SCHEMA_VERSION ||
-                "4.0",
+                schemaVersion,
 
               generated_at:
                 timestamp,
@@ -1558,8 +1516,7 @@ jobs:
               );
             } else {
               for (
-                const pr
-                of prReports
+                const pr of prReports
               ) {
                 prStatusLines.push(
                   `PR #${pr.number}: ${pr.title}`
@@ -1788,12 +1745,22 @@ jobs:
                     : "NOT FOUND"
                 ],
                 [
-                  "Active runs",
-                  String(activeRuns.length)
+                  "Collected active runs",
+                  String(
+                    collectedActiveRuns.length
+                  )
+                ],
+                [
+                  "Reconciled active runs",
+                  String(
+                    activeRuns.length
+                  )
                 ],
                 [
                   "Open PRs",
-                  String(prReports.length)
+                  String(
+                    prReports.length
+                  )
                 ],
                 [
                   "Historical event",
@@ -1821,12 +1788,16 @@ jobs:
 
             core.setOutput(
               "active_runs",
-              String(activeRuns.length)
+              String(
+                activeRuns.length
+              )
             );
 
             core.setOutput(
               "open_prs",
-              String(prReports.length)
+              String(
+                prReports.length
+              )
             );
 
             core.info(
@@ -1931,7 +1902,10 @@ jobs:
               "r",
               encoding="utf-8"
           ) as handle:
-              for line_number, line in enumerate(
+              for (
+                  line_number,
+                  line
+              ) in enumerate(
                   handle,
                   1
               ):
@@ -1948,7 +1922,9 @@ jobs:
                           f"{line_number}: {exc}"
                       )
 
-          print("Tracking JSON validation passed.")
+          print(
+              "Tracking JSON validation passed."
+          )
           PY
 
 
@@ -1982,6 +1958,10 @@ jobs:
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # ------------------------------------------------------------------
+          # Ensure only tracking files are staged.
+          # ------------------------------------------------------------------
+
           git add -- "$TRACK_DIR"
 
           if git diff --cached --quiet; then
@@ -1991,6 +1971,10 @@ jobs:
 
           git commit \
             -m "chore(ollamatracks): reconcile agent telemetry [skip ci]"
+
+          # ------------------------------------------------------------------
+          # Determine the exact branch checked out above.
+          # ------------------------------------------------------------------
 
           target_branch="$(
             git symbolic-ref \
