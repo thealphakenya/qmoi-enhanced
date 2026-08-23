@@ -26,30 +26,11 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 #
 # It is NOT an infinite daemon.
 #
-# It combines:
-#
-#   workflow_run
-#       +
-#   schedule
-#       +
-#   workflow_dispatch
-#       +
-#   durable ollamatracks/
-#       +
-#   GitHub Actions artifacts
-#       +
-#   job summaries
-#
-# The Python autonomous agent is responsible for internal execution
-# telemetry.
-#
-# This workflow is responsible for GitHub-level telemetry.
-#
 # SECURITY
 # --------
 # workflow_run is a privileged event.
 #
-# This workflow therefore:
+# This workflow:
 #
 #   1. Checks out ONLY the repository default branch.
 #   2. NEVER checks out an untrusted pull-request head.
@@ -66,10 +47,6 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 
 on:
 
-  # --------------------------------------------------------------------------
-  # Observe validation and autonomous-agent workflow lifecycle.
-  # --------------------------------------------------------------------------
-
   workflow_run:
     workflows:
       - "Ollama PR Validation - 293+ Platform Features"
@@ -79,16 +56,8 @@ on:
       - in_progress
       - completed
 
-  # --------------------------------------------------------------------------
-  # Periodic reconciliation.
-  # --------------------------------------------------------------------------
-
   schedule:
     - cron: "*/5 * * * *"
-
-  # --------------------------------------------------------------------------
-  # Manual reconciliation.
-  # --------------------------------------------------------------------------
 
   workflow_dispatch:
 
@@ -132,42 +101,14 @@ on:
 permissions:
 
   actions: read
-
   checks: read
-
   contents: write
-
   pull-requests: read
-
   statuses: read
 
 
 # ============================================================================
 # CONCURRENCY
-# ============================================================================
-#
-# All tracker instances share one writer lock.
-#
-# This protects:
-#
-#   ollamatracks/
-#   historical sequence numbers
-#   CURRENT_STATUS.txt
-#   STATE.txt
-#   PR_STATUS.txt
-#
-# IMPORTANT:
-# GitHub Actions concurrency supports:
-#
-#   group
-#   cancel-in-progress
-#
-# There is NO supported "queue: max" concurrency property.
-#
-# Therefore it is intentionally omitted.
-#
-# cancel-in-progress remains false because a monitoring writer must not be
-# deliberately terminated by a newer monitoring event.
 # ============================================================================
 
 concurrency:
@@ -398,6 +339,7 @@ jobs:
         uses: actions/github-script@v8
         env:
           TRACK_DIR: ${{ env.TRACK_DIR }}
+          TRACK_SCHEMA_VERSION: ${{ env.TRACK_SCHEMA_VERSION }}
           VALIDATION_WORKFLOW_NAME: ${{ env.VALIDATION_WORKFLOW_NAME }}
           AGENT_WORKFLOW_NAME: ${{ env.AGENT_WORKFLOW_NAME }}
           MAX_RUNS: ${{ env.MAX_RUNS }}
@@ -499,6 +441,7 @@ jobs:
               }
             );
 
+
             // =================================================================
             // TIME
             // =================================================================
@@ -508,6 +451,7 @@ jobs:
             }
 
             const timestamp = utcNow();
+
 
             // =================================================================
             // HELPERS
@@ -623,7 +567,9 @@ jobs:
                 "OLLAMA AUTONOMOUS AGENT TRACKING EVENT",
                 "=======================================",
                 "",
-                "Schema version: 4.0",
+                `Schema version: ${
+                  process.env.TRACK_SCHEMA_VERSION || "4.0"
+                }`,
                 `Sequence: ${sequenceText}`,
                 `Event: ${eventName}`,
                 `Timestamp UTC: ${timestamp}`,
@@ -724,6 +670,7 @@ jobs:
               };
             }
 
+
             // =================================================================
             // DISCOVER WORKFLOWS
             // =================================================================
@@ -759,6 +706,7 @@ jobs:
                   workflow.name ===
                   agentWorkflowName
               ) || null;
+
 
             // =================================================================
             // WORKFLOW RUN COLLECTION
@@ -808,9 +756,22 @@ jobs:
                 agentWorkflow
               );
 
-            // Collect every active run in the repository, regardless of which
-            // workflow created it. This keeps monitoring independent of the
-            // workflow-name allowlist above.
+
+            // =================================================================
+            // REPOSITORY-WIDE ACTIVE RUN COLLECTION
+            // =================================================================
+            //
+            // IMPORTANT:
+            // This variable is intentionally named repositoryActiveRuns.
+            //
+            // A later projection named activeRuns is derived from allRuns.
+            //
+            // This avoids the previous JavaScript SyntaxError:
+            //
+            //   Identifier 'activeRuns' has already been declared
+            //
+            // =================================================================
+
             const activeRunStatuses = [
               "queued",
               "in_progress",
@@ -822,20 +783,30 @@ jobs:
             async function collectActiveRuns() {
               const activeRunsById = new Map();
 
-              for (const status of activeRunStatuses) {
+              for (
+                const status
+                of activeRunStatuses
+              ) {
                 try {
-                  const runs = await github.paginate(
-                    github.rest.actions.listWorkflowRunsForRepo,
-                    {
-                      owner,
-                      repo,
-                      status,
-                      per_page: 100
-                    }
-                  );
+                  const runs =
+                    await github.paginate(
+                      github.rest.actions.listWorkflowRunsForRepo,
+                      {
+                        owner,
+                        repo,
+                        status,
+                        per_page: 100
+                      }
+                    );
 
-                  for (const run of runs) {
-                    activeRunsById.set(run.id, run);
+                  for (
+                    const run
+                    of runs
+                  ) {
+                    activeRunsById.set(
+                      run.id,
+                      run
+                    );
                   }
                 } catch (error) {
                   core.warning(
@@ -844,11 +815,14 @@ jobs:
                 }
               }
 
-              return Array.from(activeRunsById.values());
+              return Array.from(
+                activeRunsById.values()
+              );
             }
 
-            const activeRuns =
+            const repositoryActiveRuns =
               await collectActiveRuns();
+
 
             // =================================================================
             // MANUAL RUN OVERRIDE
@@ -886,6 +860,7 @@ jobs:
               }
             }
 
+
             // =================================================================
             // COMBINE RUNS
             // =================================================================
@@ -915,7 +890,7 @@ jobs:
 
             for (
               const run
-              of activeRuns
+              of repositoryActiveRuns
             ) {
               allRunsById.set(
                 run.id,
@@ -943,6 +918,7 @@ jobs:
                 0,
                 maxRuns
               );
+
 
             // =================================================================
             // JOB COLLECTION
@@ -1027,6 +1003,7 @@ jobs:
               });
             }
 
+
             // =================================================================
             // PULL REQUEST COLLECTION
             // =================================================================
@@ -1095,6 +1072,7 @@ jobs:
                   pr.html_url
               };
 
+
               // ---------------------------------------------------------------
               // CHECK RUNS
               // ---------------------------------------------------------------
@@ -1149,6 +1127,7 @@ jobs:
               } else {
                 report.checks = [];
               }
+
 
               // ---------------------------------------------------------------
               // COMMIT STATUSES
@@ -1214,8 +1193,15 @@ jobs:
               prReports.push(report);
             }
 
+
             // =================================================================
-            // ACTIVE RUNS
+            // ACTIVE RUN PROJECTION
+            // =================================================================
+            //
+            // This is the ONLY declaration of `activeRuns`.
+            //
+            // The repository-wide collection above is `repositoryActiveRuns`.
+            //
             // =================================================================
 
             const activeStates =
@@ -1235,6 +1221,7 @@ jobs:
                   )
               );
 
+
             // =================================================================
             // LATEST VALIDATION / AGENT RUNS
             // =================================================================
@@ -1248,6 +1235,7 @@ jobs:
               agentRuns.length > 0
                 ? agentRuns[0]
                 : null;
+
 
             // =================================================================
             // SNAPSHOT
@@ -1355,6 +1343,7 @@ jobs:
                   : null
             };
 
+
             // =================================================================
             // SNAPSHOT HASH
             // =================================================================
@@ -1372,6 +1361,7 @@ jobs:
             snapshot.snapshot_hash =
               snapshotHash;
 
+
             // =================================================================
             // PERSIST JSON SNAPSHOT
             // =================================================================
@@ -1387,6 +1377,7 @@ jobs:
                 2
               ) + "\n"
             );
+
 
             // =================================================================
             // STATE PROJECTION
@@ -1432,6 +1423,9 @@ jobs:
               `Active workflow runs: ${
                 activeRuns.length
               }`,
+              `Repository-wide active runs discovered: ${
+                repositoryActiveRuns.length
+              }`,
               `Open pull requests inspected: ${
                 prReports.length
               }`,
@@ -1449,6 +1443,7 @@ jobs:
               ),
               stateLines.join("\n")
             );
+
 
             // =================================================================
             // CURRENT STATUS
@@ -1550,8 +1545,11 @@ jobs:
               "",
               "RECONCILIATION",
               "--------------",
-              `Active runs: ${
+              `Active runs included in snapshot: ${
                 activeRuns.length
+              }`,
+              `Repository-wide active runs discovered: ${
+                repositoryActiveRuns.length
               }`,
               `Snapshot hash: ${
                 snapshotHash
@@ -1570,6 +1568,7 @@ jobs:
               ),
               currentStatus
             );
+
 
             // =================================================================
             // PR STATUS PROJECTION
@@ -1643,6 +1642,7 @@ jobs:
               prStatusLines.join("\n")
             );
 
+
             // =================================================================
             // RECONCILIATION RECORD
             // =================================================================
@@ -1673,6 +1673,9 @@ jobs:
               active_run_count:
                 activeRuns.length,
 
+              repository_active_run_count:
+                repositoryActiveRuns.length,
+
               open_pr_count:
                 prReports.length,
 
@@ -1691,6 +1694,7 @@ jobs:
                 2
               ) + "\n"
             );
+
 
             // =================================================================
             // STRUCTURED TELEMETRY
@@ -1727,6 +1731,9 @@ jobs:
               active_runs:
                 activeRuns.length,
 
+              repository_active_runs:
+                repositoryActiveRuns.length,
+
               open_prs:
                 prReports.length,
 
@@ -1746,6 +1753,7 @@ jobs:
                 telemetryEvent
               ) + "\n"
             );
+
 
             // =================================================================
             // HISTORICAL EVENT
@@ -1777,6 +1785,9 @@ jobs:
                   active_runs:
                     activeRuns.length,
 
+                  repository_active_runs:
+                    repositoryActiveRuns.length,
+
                   open_pull_requests:
                     prReports.length,
 
@@ -1789,6 +1800,7 @@ jobs:
               "TRACKER_RECONCILIATION",
               `Reconciled ${activeRuns.length} active workflow runs and ${prReports.length} open pull requests.`
             );
+
 
             // =================================================================
             // GITHUB STEP SUMMARY
@@ -1824,6 +1836,10 @@ jobs:
                   String(activeRuns.length)
                 ],
                 [
+                  "Repository active runs discovered",
+                  String(repositoryActiveRuns.length)
+                ],
+                [
                   "Open PRs",
                   String(prReports.length)
                 ],
@@ -1840,6 +1856,11 @@ jobs:
                 `Generated: ${timestamp}`
               )
               .write();
+
+
+            // =================================================================
+            // OUTPUTS
+            // =================================================================
 
             core.setOutput(
               "snapshot_hash",
@@ -1978,13 +1999,6 @@ jobs:
       # ======================================================================
       # UPLOAD TRACKING ARTIFACT
       # ======================================================================
-      #
-      # GitHub Artifact v4 is required.
-      #
-      # The artifact name is unique per workflow run/attempt so immutable v4
-      # artifacts never collide.
-      #
-      # ======================================================================
 
       - name: Upload realtime tracking artifact
         if: always()
@@ -2012,10 +2026,6 @@ jobs:
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # ------------------------------------------------------------------
-          # Ensure only tracking files are staged.
-          # ------------------------------------------------------------------
-
           git add -- "$TRACK_DIR"
 
           if git diff --cached --quiet; then
@@ -2025,10 +2035,6 @@ jobs:
 
           git commit \
             -m "chore(ollamatracks): reconcile agent telemetry [skip ci]"
-
-          # ------------------------------------------------------------------
-          # Determine the exact branch checked out above.
-          # ------------------------------------------------------------------
 
           target_branch="$(
             git symbolic-ref \
