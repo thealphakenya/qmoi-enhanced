@@ -189,3 +189,10 @@ Error: Unhandled error: HttpError: Unexpected inputs provided: ["verbose"]
       - Python compilation: PASS.
       - Pytest was unavailable because `pytest` is not installed in this container.
       - User changes remain preserved: `error2.txt` and untracked `package-lock.json` are not included in the published commit.
+
+      --- 2026-08-23 CREDENTIAL SECURITY ---
+
+      - A PAT was exposed in chat; revoke it immediately and create a replacement.
+      - The exposed credential was not used, stored, echoed, or written to files.
+      - Current authentication remains the Codespaces `GITHUB_TOKEN`.
+      - Store replacement credentials only in GitHub Secrets or the Codespaces secret store.

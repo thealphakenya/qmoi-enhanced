@@ -92,3 +92,10 @@ The repository is configured so the PR Ollama Autonomous Agent runs in GitHub-ho
 - Alpha-Q-ai latest four pushes were inspected and recent hosted runs were successful.
 - Manual workflow dispatch returned HTTP 403 because the current GitHub token lacks Actions write permission.
 - Existing historical failures remain documented above; they are not overwritten by current results.
+
+## Credential security: 2026-08-23
+
+- A PAT was exposed in chat and must be revoked immediately in GitHub Settings.
+- The exposed credential was not used, stored, echoed, or added to repository files.
+- Current authentication remains the Codespaces `GITHUB_TOKEN`.
+- Replacement credentials must be created with least privilege, stored in GitHub Secrets or the Codespaces secret store, and never passed in command arguments or logs.
