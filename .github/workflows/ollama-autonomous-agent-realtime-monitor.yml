@@ -4,6 +4,8 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 # OLLAMA AUTONOMOUS AGENT - PR REALTIME TRACKER
 # ============================================================================
 #
+# PURPOSE
+# -------
 # Durable GitHub-level observability and reconciliation for:
 #
 #   - Ollama PR validation workflow
@@ -20,25 +22,21 @@ name: Ollama Autonomous Agent - PR Realtime Tracker
 #
 # SECURITY
 # --------
-# This workflow is triggered by workflow_run and therefore may receive
-# privileged repository permissions.
-#
-# It:
-#   1. Checks out ONLY the repository default branch.
-#   2. NEVER checks out an untrusted pull-request head.
-#   3. NEVER executes arbitrary PR source code.
-#   4. Uses GitHub API metadata for PR/workflow/check inspection.
-#   5. Commits ONLY ollamatracks/.
+# This workflow checks out only the repository default branch.
+# It never checks out or executes arbitrary PR-head source code.
 #
 # IMPORTANT
 # ---------
-# This is a finite reconciler, not an infinite daemon.
+# This is a FINITE RECONCILER.
 #
-# ============================================================================
-
-
-# ============================================================================
-# EVENTS
+# It is triggered by:
+#
+#   workflow_run
+#   schedule
+#   workflow_dispatch
+#
+# It is NOT an infinite daemon.
+#
 # ============================================================================
 
 on:
@@ -156,7 +154,7 @@ jobs:
 
 
       # ======================================================================
-      # INITIALIZE TRACKING SYSTEM
+      # INITIALIZE TRACKING INFRASTRUCTURE
       # ======================================================================
 
       - name: Initialize tracking infrastructure
@@ -167,6 +165,7 @@ jobs:
           mkdir -p "$TRACK_DIR"
 
           touch "$TRACK_DIR/TRACKING_INDEX.txt"
+          touch "$TRACK_DIR/TRACKING_PROTOCOL.txt"
           touch "$TRACK_DIR/CURRENT_STATUS.txt"
           touch "$TRACK_DIR/LATEST_ACTIVITY.txt"
           touch "$TRACK_DIR/STATE.txt"
@@ -315,7 +314,6 @@ jobs:
       - name: Collect GitHub workflow, job, PR and check state
         id: collect
         uses: actions/github-script@v8
-
         env:
           TRACK_DIR: ${{ env.TRACK_DIR }}
           TRACK_SCHEMA_VERSION: ${{ env.TRACK_SCHEMA_VERSION }}
@@ -350,9 +348,6 @@ jobs:
             const trackDir =
               process.env.TRACK_DIR || "ollamatracks";
 
-            const schemaVersion =
-              process.env.TRACK_SCHEMA_VERSION || "4.0";
-
             const validationWorkflowName =
               process.env.VALIDATION_WORKFLOW_NAME ||
               "Ollama PR Validation - 293+ Platform Features";
@@ -361,40 +356,33 @@ jobs:
               process.env.AGENT_WORKFLOW_NAME ||
               "Ollama Autonomous Agent Trigger & Live Tracker";
 
-            const maxRuns =
-              Math.max(
-                1,
-                Number(process.env.MAX_RUNS || "20")
-              );
+            const maxRuns = Math.max(
+              1,
+              Number(process.env.MAX_RUNS || "20")
+            );
 
-            const maxJobs =
-              Math.max(
-                1,
-                Number(process.env.MAX_JOBS_PER_RUN || "100")
-              );
+            const maxJobs = Math.max(
+              1,
+              Number(process.env.MAX_JOBS_PER_RUN || "100")
+            );
 
-            const maxChecks =
-              Math.max(
-                1,
-                Number(process.env.MAX_CHECKS || "100")
-              );
+            const maxChecks = Math.max(
+              1,
+              Number(process.env.MAX_CHECKS || "100")
+            );
 
-            const maxPRs =
-              Math.max(
-                1,
-                Number(process.env.MAX_PRS || "100")
-              );
+            const maxPRs = Math.max(
+              1,
+              Number(process.env.MAX_PRS || "100")
+            );
 
-            const maxStatuses =
-              Math.max(
-                1,
-                Number(process.env.MAX_STATUS_ENTRIES || "100")
-              );
+            const maxStatuses = Math.max(
+              1,
+              Number(process.env.MAX_STATUS_ENTRIES || "100")
+            );
 
             const manualRunId =
-              String(
-                process.env.MANUAL_RUN_ID || ""
-              ).trim();
+              String(process.env.MANUAL_RUN_ID || "").trim();
 
             const forceSnapshot =
               String(
@@ -416,19 +404,21 @@ jobs:
                 process.env.INSPECT_CHECKS || "true"
               ).toLowerCase() !== "false";
 
-            fs.mkdirSync(
-              trackDir,
-              {
-                recursive: true
-              }
-            );
+            fs.mkdirSync(trackDir, {
+              recursive: true
+            });
+
 
             // =================================================================
             // TIME
             // =================================================================
 
-            const timestamp =
-              new Date().toISOString();
+            function utcNow() {
+              return new Date().toISOString();
+            }
+
+            const timestamp = utcNow();
+
 
             // =================================================================
             // HELPERS
@@ -445,10 +435,7 @@ jobs:
                     /^-+|-+$/g,
                     ""
                   )
-                  .slice(
-                    0,
-                    100
-                  );
+                  .slice(0, 100);
 
               return result || "unknown";
             }
@@ -488,9 +475,7 @@ jobs:
             function nextSequence() {
               let highest = 0;
 
-              for (
-                const file of historicalFiles()
-              ) {
+              for (const file of historicalFiles()) {
                 const match =
                   /^(\d{6})_/.exec(file);
 
@@ -498,8 +483,7 @@ jobs:
                   continue;
                 }
 
-                const value =
-                  Number(match[1]);
+                const value = Number(match[1]);
 
                 if (value > highest) {
                   highest = value;
@@ -517,8 +501,7 @@ jobs:
                 nextSequence();
 
               const sequenceText =
-                String(sequence)
-                  .padStart(6, "0");
+                String(sequence).padStart(6, "0");
 
               const filename =
                 `${sequenceText}_${safe(eventName)}.txt`;
@@ -533,7 +516,7 @@ jobs:
                 "OLLAMA AUTONOMOUS AGENT TRACKING EVENT",
                 "=======================================",
                 "",
-                `Schema version: ${schemaVersion}`,
+                "Schema version: 4.0",
                 `Sequence: ${sequenceText}`,
                 `Event: ${eventName}`,
                 `Timestamp UTC: ${timestamp}`,
@@ -631,6 +614,7 @@ jobs:
               };
             }
 
+
             // =================================================================
             // DISCOVER WORKFLOWS
             // =================================================================
@@ -666,6 +650,7 @@ jobs:
                   workflow.name ===
                   agentWorkflowName
               ) || null;
+
 
             // =================================================================
             // WORKFLOW RUN COLLECTION
@@ -713,16 +698,18 @@ jobs:
                 agentWorkflow
               );
 
+
             // =================================================================
-            // REPOSITORY-WIDE ACTIVE RUN COLLECTION
+            // ACTIVE RUN COLLECTION
+            // =================================================================
             //
             // IMPORTANT:
-            // Do NOT call this variable "activeRuns".
+            // This variable is deliberately named discoveredActiveRuns.
             //
-            // "activeRuns" is reserved below for the final reconciled
-            // projection derived from allRuns.
+            // The workflow later creates another collection called activeRuns
+            // from the final merged run list.
             //
-            // This prevents:
+            // Keeping these names distinct prevents:
             //
             // SyntaxError: Identifier 'activeRuns' has already been declared
             //
@@ -737,11 +724,11 @@ jobs:
             ];
 
             async function collectActiveRuns() {
-              const activeRunsById =
-                new Map();
+              const activeRunsById = new Map();
 
               for (
-                const status of activeRunStatuses
+                const status
+                of activeRunStatuses
               ) {
                 try {
                   const runs =
@@ -755,9 +742,7 @@ jobs:
                       }
                     );
 
-                  for (
-                    const run of runs
-                  ) {
+                  for (const run of runs) {
                     activeRunsById.set(
                       run.id,
                       run
@@ -775,10 +760,11 @@ jobs:
               );
             }
 
-            // IMPORTANT:
-            // This is intentionally named collectedActiveRuns.
-            const collectedActiveRuns =
+            // FIX:
+            // Do NOT call this variable "activeRuns".
+            const discoveredActiveRuns =
               await collectActiveRuns();
+
 
             // =================================================================
             // MANUAL RUN OVERRIDE
@@ -816,6 +802,7 @@ jobs:
               }
             }
 
+
             // =================================================================
             // COMBINE RUNS
             // =================================================================
@@ -824,7 +811,8 @@ jobs:
               new Map();
 
             for (
-              const run of validationRuns
+              const run
+              of validationRuns
             ) {
               allRunsById.set(
                 run.id,
@@ -833,7 +821,8 @@ jobs:
             }
 
             for (
-              const run of agentRuns
+              const run
+              of agentRuns
             ) {
               allRunsById.set(
                 run.id,
@@ -841,8 +830,11 @@ jobs:
               );
             }
 
+            // FIX:
+            // Use discoveredActiveRuns here.
             for (
-              const run of collectedActiveRuns
+              const run
+              of discoveredActiveRuns
             ) {
               allRunsById.set(
                 run.id,
@@ -870,6 +862,7 @@ jobs:
                 0,
                 maxRuns
               );
+
 
             // =================================================================
             // JOB COLLECTION
@@ -908,7 +901,8 @@ jobs:
             const runReports = [];
 
             for (
-              const run of allRuns
+              const run
+              of allRuns
             ) {
               const jobs =
                 await collectJobs(run);
@@ -951,6 +945,7 @@ jobs:
               });
             }
 
+
             // =================================================================
             // PULL REQUEST COLLECTION
             // =================================================================
@@ -984,7 +979,8 @@ jobs:
             const prReports = [];
 
             for (
-              const pr of prs.slice(
+              const pr
+              of prs.slice(
                 0,
                 maxPRs
               )
@@ -1073,6 +1069,7 @@ jobs:
                 report.checks = [];
               }
 
+
               // ---------------------------------------------------------------
               // COMMIT STATUSES
               // ---------------------------------------------------------------
@@ -1137,12 +1134,16 @@ jobs:
               prReports.push(report);
             }
 
+
             // =================================================================
             // FINAL ACTIVE RUN PROJECTION
+            // =================================================================
             //
-            // This is the ONLY declaration of "activeRuns".
+            // This is intentionally the ONLY declaration of "activeRuns".
             //
-            // It is deliberately different from "collectedActiveRuns" above.
+            // It is derived from allRuns after validation, agent, repository
+            // active-run and optional manual-run sources have been merged.
+            //
             // =================================================================
 
             const activeStates =
@@ -1162,6 +1163,7 @@ jobs:
                   )
               );
 
+
             // =================================================================
             // LATEST VALIDATION / AGENT RUNS
             // =================================================================
@@ -1176,13 +1178,15 @@ jobs:
                 ? agentRuns[0]
                 : null;
 
+
             // =================================================================
             // SNAPSHOT
             // =================================================================
 
             const snapshot = {
               schema_version:
-                schemaVersion,
+                process.env.TRACK_SCHEMA_VERSION ||
+                "4.0",
 
               generated_at:
                 timestamp,
@@ -1281,6 +1285,7 @@ jobs:
                   : null
             };
 
+
             // =================================================================
             // SNAPSHOT HASH
             // =================================================================
@@ -1298,6 +1303,7 @@ jobs:
             snapshot.snapshot_hash =
               snapshotHash;
 
+
             // =================================================================
             // PERSIST JSON SNAPSHOT
             // =================================================================
@@ -1313,6 +1319,7 @@ jobs:
                 2
               ) + "\n"
             );
+
 
             // =================================================================
             // STATE PROJECTION
@@ -1375,6 +1382,7 @@ jobs:
               ),
               stateLines.join("\n")
             );
+
 
             // =================================================================
             // CURRENT STATUS
@@ -1476,7 +1484,10 @@ jobs:
               "",
               "RECONCILIATION",
               "--------------",
-              `Active runs: ${
+              `Discovered active runs: ${
+                discoveredActiveRuns.length
+              }`,
+              `Merged active runs: ${
                 activeRuns.length
               }`,
               `Snapshot hash: ${
@@ -1497,6 +1508,7 @@ jobs:
               currentStatus
             );
 
+
             // =================================================================
             // PR STATUS PROJECTION
             // =================================================================
@@ -1516,7 +1528,8 @@ jobs:
               );
             } else {
               for (
-                const pr of prReports
+                const pr
+                of prReports
               ) {
                 prStatusLines.push(
                   `PR #${pr.number}: ${pr.title}`
@@ -1568,6 +1581,7 @@ jobs:
               prStatusLines.join("\n")
             );
 
+
             // =================================================================
             // RECONCILIATION RECORD
             // =================================================================
@@ -1595,6 +1609,9 @@ jobs:
                 latestAgentRun?.id ??
                 null,
 
+              discovered_active_run_count:
+                discoveredActiveRuns.length,
+
               active_run_count:
                 activeRuns.length,
 
@@ -1616,6 +1633,7 @@ jobs:
                 2
               ) + "\n"
             );
+
 
             // =================================================================
             // STRUCTURED TELEMETRY
@@ -1649,6 +1667,9 @@ jobs:
               snapshot_hash:
                 snapshotHash,
 
+              discovered_active_runs:
+                discoveredActiveRuns.length,
+
               active_runs:
                 activeRuns.length,
 
@@ -1671,6 +1692,7 @@ jobs:
                 telemetryEvent
               ) + "\n"
             );
+
 
             // =================================================================
             // HISTORICAL EVENT
@@ -1699,6 +1721,9 @@ jobs:
                     latestAgentRun?.id ??
                     "NONE",
 
+                  discovered_active_runs:
+                    discoveredActiveRuns.length,
+
                   active_runs:
                     activeRuns.length,
 
@@ -1714,6 +1739,7 @@ jobs:
               "TRACKER_RECONCILIATION",
               `Reconciled ${activeRuns.length} active workflow runs and ${prReports.length} open pull requests.`
             );
+
 
             // =================================================================
             // GITHUB STEP SUMMARY
@@ -1745,13 +1771,13 @@ jobs:
                     : "NOT FOUND"
                 ],
                 [
-                  "Collected active runs",
+                  "Discovered active runs",
                   String(
-                    collectedActiveRuns.length
+                    discoveredActiveRuns.length
                   )
                 ],
                 [
-                  "Reconciled active runs",
+                  "Merged active runs",
                   String(
                     activeRuns.length
                   )
@@ -1776,6 +1802,11 @@ jobs:
               )
               .write();
 
+
+            // =================================================================
+            // OUTPUTS
+            // =================================================================
+
             core.setOutput(
               "snapshot_hash",
               snapshotHash
@@ -1790,6 +1821,13 @@ jobs:
               "active_runs",
               String(
                 activeRuns.length
+              )
+            );
+
+            core.setOutput(
+              "discovered_active_runs",
+              String(
+                discoveredActiveRuns.length
               )
             );
 
@@ -1902,10 +1940,7 @@ jobs:
               "r",
               encoding="utf-8"
           ) as handle:
-              for (
-                  line_number,
-                  line
-              ) in enumerate(
+              for line_number, line in enumerate(
                   handle,
                   1
               ):
@@ -1958,10 +1993,6 @@ jobs:
           git config user.email \
             "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # ------------------------------------------------------------------
-          # Ensure only tracking files are staged.
-          # ------------------------------------------------------------------
-
           git add -- "$TRACK_DIR"
 
           if git diff --cached --quiet; then
@@ -1971,10 +2002,6 @@ jobs:
 
           git commit \
             -m "chore(ollamatracks): reconcile agent telemetry [skip ci]"
-
-          # ------------------------------------------------------------------
-          # Determine the exact branch checked out above.
-          # ------------------------------------------------------------------
 
           target_branch="$(
             git symbolic-ref \
