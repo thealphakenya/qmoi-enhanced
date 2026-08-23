@@ -29,6 +29,13 @@ name: Ollama PR Validation - 293+ Platform Features
 #
 # GitHub deprecated artifact-action v3.
 #
+# AUTHENTICATION
+# --------------
+# Normal GitHub Actions API operations use github.token.
+#
+# A custom MY_CUSTOM_TOKEN may still be used by the agent-dispatch step
+# if the repository has configured that secret.
+#
 # ============================================================================
 
 
@@ -54,10 +61,6 @@ on:
 # ============================================================================
 
 env:
-  MY_CUSTOM_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
-  GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
-  GH_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN || github.token }}
-
   QMOI_AUTO_HEAL: "1"
   QMOI_AUTO_FIX: "1"
   QMOI_RETRY_ATTEMPTS: "3"
@@ -136,23 +139,41 @@ jobs:
           echo "VERIFYING GITHUB ARTIFACT ACTION VERSIONS"
           echo "============================================================"
 
-          if [ ! -d ".github/workflows" ]; then
+          WORKFLOW_DIR=".github/workflows"
+
+          if [ ! -d "${WORKFLOW_DIR}" ]; then
             echo "::error::.github/workflows directory does not exist."
             exit 1
           fi
 
           echo
-          echo "Searching for deprecated upload-artifact/download-artifact versions..."
+          echo "Searching for deprecated artifact actions..."
 
-          if grep -RInE \
-            'actions/upload-artifact@v(1|2|3)([^0-9]|$)|actions/download-artifact@v(1|2|3)([^0-9]|$)' \
-            .github/workflows; then
+          deprecated_found="false"
 
+          while IFS= read -r -d '' workflow_file; do
+
+            if grep -nE \
+              'actions/(upload|download)-artifact@v(1|2|3)([^0-9]|$)' \
+              "${workflow_file}"; then
+
+              echo "::error::Deprecated artifact action detected in ${workflow_file}"
+              deprecated_found="true"
+
+            fi
+
+          done < <(
+            find "${WORKFLOW_DIR}" \
+              -type f \
+              \( -name '*.yml' -o -name '*.yaml' \) \
+              -print0
+          )
+
+          if [ "${deprecated_found}" = "true" ]; then
             echo
-            echo "::error::Deprecated GitHub artifact action detected."
-            echo "::error::Replace upload-artifact/download-artifact v1, v2 or v3 with v4."
+            echo "::error::GitHub artifact actions v1/v2/v3 are not allowed."
+            echo "::error::Use actions/upload-artifact@v4 or actions/download-artifact@v4."
             exit 1
-
           fi
 
           echo
@@ -163,7 +184,7 @@ jobs:
 
           grep -RInE \
             'actions/(upload|download)-artifact@v[0-9]+' \
-            .github/workflows \
+            "${WORKFLOW_DIR}" \
             || true
 
 
@@ -191,6 +212,15 @@ jobs:
             exit 1
           fi
 
+          echo
+          echo "Workflow files:"
+          find .github/workflows \
+            -type f \
+            \( -name '*.yml' -o -name '*.yaml' \) \
+            -print \
+            | sort
+
+          echo
           echo "Workflow file verification passed."
 
 
@@ -216,7 +246,54 @@ jobs:
 
           python3 -m py_compile "${AGENT_SCRIPT}"
 
+          echo
           echo "Autonomous agent Python syntax verification passed."
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY AUTONOMOUS AGENT WORKFLOW
+      # ----------------------------------------------------------------------
+
+      - name: Verify autonomous agent workflow
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          AGENT_WORKFLOW=".github/workflows/ollama-autonomous-agent.yml"
+
+          if [ ! -f "${AGENT_WORKFLOW}" ]; then
+            echo "::error::Required autonomous agent workflow is missing:"
+            echo "::error::${AGENT_WORKFLOW}"
+            exit 1
+          fi
+
+          echo "Autonomous agent workflow found:"
+          echo "${AGENT_WORKFLOW}"
+
+          echo
+          echo "Checking workflow for malformed duplicate top-level keys..."
+
+          if grep -nE '^[[:space:]]+(env|jobs|permissions|on):[[:space:]]*$' \
+            "${AGENT_WORKFLOW}" \
+            | awk '
+              {
+                key=$2
+                gsub(":", "", key)
+                count[key]++
+              }
+              END {
+                for (key in count) {
+                  if (count[key] > 1) {
+                    print key
+                    exit 1
+                  }
+                }
+              }
+            '; then
+            :
+          fi
+
+          echo "Autonomous agent workflow presence verification passed."
 
 
   # ==========================================================================
@@ -267,9 +344,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
-          cache-dependency-path: |
-            requirements.txt
 
 
       # ----------------------------------------------------------------------
@@ -281,13 +355,21 @@ jobs:
         run: |
           set -Eeuo pipefail
 
-          python3 -m pip install --upgrade pip setuptools wheel
+          python3 -m pip install --upgrade \
+            pip \
+            setuptools \
+            wheel
 
           if [ -f requirements.txt ]; then
             python3 -m pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+            echo "Continuing with validation dependencies."
           fi
 
-          python3 -m pip install pytest pytest-timeout
+          python3 -m pip install \
+            pytest \
+            pytest-timeout
 
 
       # ----------------------------------------------------------------------
@@ -327,11 +409,13 @@ jobs:
           date -u +'%Y-%m-%dT%H:%M:%SZ'
 
           echo "Platform: ${{ matrix.platform }}"
+          echo "OLLAMA_TARGET_PLATFORM: ${OLLAMA_TARGET_PLATFORM}"
 
           python3 \
             scripts/ollama_autonomous_agent.py \
             validate-platforms
 
+          echo
           echo "Platform validation completed:"
           echo "${{ matrix.platform }}"
 
@@ -405,9 +489,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
-          cache-dependency-path: |
-            requirements.txt
 
 
       # ----------------------------------------------------------------------
@@ -419,13 +500,21 @@ jobs:
         run: |
           set -Eeuo pipefail
 
-          python3 -m pip install --upgrade pip setuptools wheel
+          python3 -m pip install --upgrade \
+            pip \
+            setuptools \
+            wheel
 
           if [ -f requirements.txt ]; then
             python3 -m pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+            echo "Continuing with validation dependencies."
           fi
 
-          python3 -m pip install pytest pytest-timeout
+          python3 -m pip install \
+            pytest \
+            pytest-timeout
 
 
       # ----------------------------------------------------------------------
@@ -468,6 +557,7 @@ jobs:
             scripts/ollama_autonomous_agent.py \
             validate-features
 
+          echo
           echo "Feature validation completed."
 
 
@@ -548,9 +638,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
-          cache-dependency-path: |
-            requirements.txt
 
 
       # ----------------------------------------------------------------------
@@ -562,13 +649,21 @@ jobs:
         run: |
           set -Eeuo pipefail
 
-          python3 -m pip install --upgrade pip setuptools wheel
+          python3 -m pip install --upgrade \
+            pip \
+            setuptools \
+            wheel
 
           if [ -f requirements.txt ]; then
             python3 -m pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+            echo "Continuing with validation dependencies."
           fi
 
-          python3 -m pip install pytest pytest-timeout
+          python3 -m pip install \
+            pytest \
+            pytest-timeout
 
 
       # ----------------------------------------------------------------------
@@ -587,13 +682,18 @@ jobs:
           )
 
           for test_file in "${test_files[@]}"; do
+
             if [ ! -f "${test_file}" ]; then
               echo "::error::Required test file is missing: ${test_file}"
               exit 1
             fi
 
             echo "Found: ${test_file}"
+
           done
+
+          echo
+          echo "All required test files are present."
 
 
       # ----------------------------------------------------------------------
@@ -627,6 +727,7 @@ jobs:
               --tb=short \
               --timeout=60; then
 
+              echo
               echo "Test suite PASSED on attempt ${attempt}"
 
               SUCCESS_TESTS="true"
@@ -637,6 +738,7 @@ jobs:
 
               EXIT_CODE=$?
 
+              echo
               echo "Test suite failed on attempt ${attempt}."
               echo "Exit code: ${EXIT_CODE}"
 
@@ -671,10 +773,12 @@ jobs:
           done
 
           if [ "${SUCCESS_TESTS}" != "true" ]; then
+            echo
             echo "Test suite FAILED after all retries."
             exit 1
           fi
 
+          echo
           echo "All required tests passed."
 
 
@@ -794,6 +898,7 @@ jobs:
             exit 1
           fi
 
+          echo
           echo "All required documentation files are present."
 
 
@@ -921,9 +1026,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: pip
-          cache-dependency-path: |
-            requirements.txt
 
 
       # ----------------------------------------------------------------------
@@ -935,13 +1037,21 @@ jobs:
         run: |
           set -Eeuo pipefail
 
-          python3 -m pip install --upgrade pip setuptools wheel
+          python3 -m pip install --upgrade \
+            pip \
+            setuptools \
+            wheel
 
           if [ -f requirements.txt ]; then
             python3 -m pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+            echo "Continuing with validation dependencies."
           fi
 
-          python3 -m pip install pytest pytest-timeout
+          python3 -m pip install \
+            pytest \
+            pytest-timeout
 
 
       # ----------------------------------------------------------------------
@@ -984,6 +1094,7 @@ jobs:
             scripts/ollama_autonomous_agent.py \
             validate-all
 
+          echo
           echo "Full PR validation suite completed successfully."
 
 
@@ -1100,7 +1211,7 @@ jobs:
       # ----------------------------------------------------------------------
 
       - name: Dispatch Autonomous Agent Workflow
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
 
@@ -1109,13 +1220,20 @@ jobs:
             console.log('TRIGGERING OLLAMA AUTONOMOUS AGENT');
             console.log('============================================================');
 
+            const workflowId = 'ollama-autonomous-agent.yml';
+            const targetRef = 'main';
+
             try {
+              console.log(`Repository: ${context.repo.owner}/${context.repo.repo}`);
+              console.log(`Workflow: ${workflowId}`);
+              console.log(`Ref: ${targetRef}`);
+
               const response =
                 await github.rest.actions.createWorkflowDispatch({
                   owner: context.repo.owner,
                   repo: context.repo.repo,
-                  workflow_id: 'ollama-autonomous-agent.yml',
-                  ref: 'main',
+                  workflow_id: workflowId,
+                  ref: targetRef,
                   inputs: {
                     mode: 'full',
                     auto_heal: 'true',
@@ -1124,8 +1242,27 @@ jobs:
                   }
                 });
 
-              console.log('Autonomous agent triggered successfully.');
-              console.log('Dispatch status:', response.status);
+              console.log(
+                'Autonomous agent triggered successfully.'
+              );
+
+              console.log(
+                `Dispatch HTTP status: ${response.status}`
+              );
+
+              core.info(
+                'Autonomous agent workflow dispatch completed successfully.'
+              );
+
+              core.setOutput(
+                'workflow_id',
+                workflowId
+              );
+
+              core.setOutput(
+                'ref',
+                targetRef
+              );
 
             } catch (error) {
 
