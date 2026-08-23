@@ -146,3 +146,11 @@ All workflows cannot yet be declared successful because one reporting job is act
 - New branch sync run `32644312057` for `394caf7ba0a3`: pending.
 - Older branch sync run `32644169261` for `86bcffbdc6e5`: still in progress.
 - The all-active-run monitor now includes all of these runs in one repository-wide collection cycle.
+
+## Active job checkpoint: 2026-08-23
+
+- PR validation `32644363957` remains in progress; workflow integrity, documentation, Windows, macOS, Linux, web, and iOS jobs are successful, with Android still active.
+- Autonomous agent run `32644388010` remains in progress with its agent job active.
+- Branch sync `32644403642` is pending and branch sync `32644312057` is in progress.
+- Older PR validation `32644238115` has all validation and test jobs successful; only final status reporting remains active.
+- No active job currently reports failure.

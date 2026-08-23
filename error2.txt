@@ -234,3 +234,13 @@ Error: Unhandled error: HttpError: Unexpected inputs provided: ["verbose"]
                         pending run `32644312057`; not a test failure.
                   - Older branch sync `32644169261`: still IN PROGRESS.
                   - Repository-wide active-run collection covers all listed runs.
+
+                  --- 2026-08-23 ACTIVE JOB CHECKPOINT ---
+
+                  - PR validation `32644363957`: active; Android is the remaining platform
+                        job, with all other listed jobs PASS.
+                  - Autonomous agent `32644388010`: active.
+                  - Branch sync `32644403642`: pending; `32644312057`: active.
+                  - Older validation `32644238115`: all substantive jobs PASS; final report
+                        job remains active.
+                  - No active job currently reports failure.
