@@ -78,8 +78,17 @@ The monitoring stack is designed to watch all of the following in real time:
 
 Current repo:
 
-- https://github.com/thealphakenya/qmoi-enhanced
 
 ## Notes
 
 The repository is configured so the PR Ollama Autonomous Agent runs in GitHub-hosted infrastructure without depending on the local codespace. The active validation run is the best place to inspect exactly what the agent is doing in real time. The workflow tracker and monitor scripts are hardened with retry logic, queued-state handling, and validation summaries to reduce false failures and to make the live status easier to diagnose.
+
+## Current status: 2026-08-23
+
+- Published fix commit: `c4ac85293a` on `main`.
+- Ollama PR Validation run `32642348677`: completed successfully.
+- Branch Sync Monitor for the published commit: completed successfully.
+- Local Ollama regression suite: `161 passed`.
+- Alpha-Q-ai latest four pushes were inspected and recent hosted runs were successful.
+- Manual workflow dispatch returned HTTP 403 because the current GitHub token lacks Actions write permission.
+- Existing historical failures remain documented above; they are not overwritten by current results.

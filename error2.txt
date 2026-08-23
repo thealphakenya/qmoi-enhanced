@@ -101,3 +101,91 @@ Publication result:
 - Push: PASS to `origin/main`.
 - Final audit-log update is being published with this commit.
 0s
+
+
+
+
+
+Skip to content
+Alpha-Q-ai
+Repository navigation
+Code
+Issues
+Pull requests
+Ollama Master Orchestrator - Enhanced Auto-Healing
+Ollama Master Orchestrator - Enhanced Auto-Healing #22
+Annotations
+2 errors and 1 warning
+Auto-Trigger Agent (Tests Success)
+failed 9 hours ago in 17s
+1s
+3s
+3s
+6s
+0s
+1s
+Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Run actions/github-script@v7
+Dispatching ollama-autonomous-agent.yml for thealphakenya/Alpha-Q-ai on ref main
+[@octokit/request] "POST https://api.github.com/repos/thealphakenya/Alpha-Q-ai/actions/workflows/ollama-autonomous-agent.yml/dispatches" is deprecated. It is scheduled to be removed on Fri, 10 Mar 2028 00:00:00 GMT. See https://docs.github.com/en/rest/about-the-rest-api/api-versions
+Error: Autonomous-agent dispatch failed: Unexpected inputs provided: ["verbose"]
+RequestError [HttpError]: Unexpected inputs provided: ["verbose"]
+Error: Unhandled error: HttpError: Unexpected inputs provided: ["verbose"]
+    at /home/runner/work/_actions/actions/github-script/v7/dist/index.js:9537:21
+        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+            at async eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:36187:16), <anonymous>:21:3)
+                at async main (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:36285:20) {
+                      status: 422,
+                        response: {
+                                url: 'https://api.github.com/repos/thealphakenya/Alpha-Q-ai/actions/workflows/ollama-autonomous-agent.yml/dispatches',
+                                    status: 422,
+                                        headers: {
+                                                  'access-control-allow-origin': '*',
+                                                        'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset, Warning',
+                                                              'content-length': '172',
+                                                                    'content-security-policy': "default-src 'none'",
+                                                                          'content-type': 'application/json; charset=utf-8',
+                                                                                date: 'Sun, 23 Aug 2026 00:31:19 GMT',
+                                                                                      deprecation: 'Tue, 10 Mar 2026 00:00:00 GMT',
+                                                                                            link: '<https://docs.github.com/en/rest/about-the-rest-api/api-versions>; rel="deprecation"; type="text/html"',
+                                                                                                  'referrer-policy': 'origin-when-cross-origin, strict-origin-when-cross-origin',
+                                                                                                  0s
+                                                                                                  1s
+                                                                                                  0s
+                                                                                                  0s
+                                                                                                  0s
+                                                                                                  
+                                        }
+                        }
+                }
+
+      --- 2026-08-23 FOLLOW-UP STATUS ---
+
+                  --- 2026-08-23 FINAL FOLLOW-UP ---
+
+                  - Local Ollama regression suite: PASS (161 passed).
+                  - Hosted Ollama PR Validation run `32642348677`: PASS.
+                  - Hosted Branch Sync Monitor for `c4ac85293a`: PASS.
+                  - Manual workflow dispatch remains blocked by HTTP 403 because the current
+                        GitHub token lacks Actions write permission.
+
+      Remediation:
+      - Removed the unsupported `verbose` input from the QMOI master orchestrator dispatch payload.
+      - Published as commit `c4ac85293a` to `thealphakenya/qmoi-enhanced` `main`.
+
+      Hosted validation:
+      - Branch Sync Monitor: PASS for `c4ac85293a`.
+      - Ollama PR Validation: IN PROGRESS for `c4ac85293a`.
+      - Previous orchestrator failure `32640424370` is from the older SHA and is retained for history.
+      - Alpha-Q-ai latest four pushes were inspected; recent hosted runs were successful.
+
+      Permissions:
+      - GitHub identity: `theofalphakenya`.
+      - Workflow dispatch attempt was blocked by GitHub API HTTP 403: `Resource not accessible by integration`.
+      - A token or repository authorization with Actions write permission is required to manually dispatch the master orchestrator.
+
+      Local validation:
+      - Workflow YAML parsing: PASS.
+      - Python compilation: PASS.
+      - Pytest was unavailable because `pytest` is not installed in this container.
+      - User changes remain preserved: `error2.txt` and untracked `package-lock.json` are not included in the published commit.
