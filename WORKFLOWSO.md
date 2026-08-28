@@ -6,6 +6,41 @@
 **Total Jobs:** 25+  
 **Status:** 🟢 Production Ready
 
+## Current Execution Contract (2026-08-28)
+
+The authoritative implementation is `.github/workflows/ollama-autonomous-agent.yml`
+and `scripts/ollama_autonomous_agent.py`. A successful run must install or reuse
+Ollama, verify `OLLAMA_HOST`, make `OLLAMA_MODEL` available, perform real
+inference, execute the bounded `autonomous` command, validate afterward, write a
+checkpoint, and pass `ollamatracks/OLLAMA_SUCCESS.json`. The success message is
+never based on Python validation alone. `MAX_ITERATIONS`,
+`MAX_TASKS_PER_ITERATION`, and `MAX_RECOVERY_ATTEMPTS` are enforced bounds.
+
+GitHub-hosted runners are the execution authority; a codespace is only for
+local development. `WORKFLOWS.md` is the concise canonical map, while this
+file remains the detailed reference. Historical run claims below are retained
+for audit and must not be interpreted as current success evidence.
+
+## Stage Matrix (2026-08-28)
+
+| Workflow | Responsibility | Required terminal evidence |
+| --- | --- | --- |
+| `ollama-pr-validation.yml` | Source, YAML, tests, and documentation validation | All validation jobs pass |
+| `ollama-master-orchestrator.yml` | Preflight, validation, checkpoint/telemetry, single dispatch | Dispatch only after validation success |
+| `ollama-autonomous-agent.yml` | Ollama bootstrap, model/inference proof, bounded coding, post-validation | `OLLAMA_SUCCESS.json` with `SUCCESS` |
+| `ollama-autonomous-agent-realtime-monitor.yml` | Reconcile agent, PR, job, and check states | Never infer success from Python-only events |
+| `pr-monitor.yml` | Report PR validation and failure/success status | Report source workflow conclusion |
+| `workflow-tracker.yml` | Track workflow lifecycle and metrics | Preserve queued/in-progress/failed states |
+| `branch-sync.yml` | Audited main/backup and Alpha-Q-ai synchronization | Conflict-free, reviewable sync result |
+| `auto-merge-automated-pr.yml` | Merge only validated, approved changes | Required checks and permissions pass |
+
+The stage sequence is: trusted checkout, runner preflight, Python and
+dependencies, Git integrity, Ollama bootstrap, health/model/inference checks,
+repository validation, bounded autonomous loop, post-loop validation, recovery
+when authorized, telemetry, checkpoint, artifact upload, and final contract
+gate. Monitor, sync, and merge workflows observe or reconcile this result; they
+do not replace it or start competing Ollama servers.
+
 ## Overview
 
 This document provides comprehensive documentation for all 8 GitHub Actions workflows in the qmoi-enhanced repository with ADVANCED AUTO-HEALING, AUTO-RETRY, and AUTOMATIC AGENT TRIGGERING capabilities.

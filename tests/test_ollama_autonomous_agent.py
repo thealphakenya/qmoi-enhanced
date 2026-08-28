@@ -24,6 +24,7 @@ from ollama_autonomous_agent import (
     ModelCardGenerator,
     WorkflowNormalizer,
     BranchSyncManager,
+    CrossRepositoryAutonomyManager,
     AvatarIdentityValidator,
     AvatarWindowMonitor,
     AvatarSelectionNavigator,
@@ -511,6 +512,20 @@ class TestBranchSyncManager:
         assert plan["default_branch"] == "main"
         assert "autosync-backup" in plan["branches"]
         assert "thealphakenya/qmoi-enhanced" in plan["repositories"]
+
+    def test_reference_inventory_is_read_only_and_lists_markdown(self):
+        manager = CrossRepositoryAutonomyManager()
+        inventory = manager.collect_reference_inventory(
+            Path(__file__).resolve().parent.parent,
+            "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp",
+        )
+        assert inventory["read_only"] is True
+        assert inventory["file_count"] >= len(inventory["markdown_files"])
+
+    def test_merge_audit_requires_historical_and_markdown_inventory(self):
+        plan = CrossRepositoryAutonomyManager().build_merge_audit_plan()
+        assert plan["markdown_inventory_required"] is True
+        assert "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp" in plan["historical_refs"]
 
     def test_branch_sync_workflow_exists(self):
         """A GitHub workflow should exist to keep the branch sync running independently of the codespace."""

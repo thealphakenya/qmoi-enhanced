@@ -914,6 +914,37 @@ Most importantly:
 
 Do not claim that the system is complete unless the implementation genuinely starts Ollama and performs real qwen2.5-coder:3b inference.
 
+============================================================
+IMPLEMENTATION LEDGER (2026-08-28)
+============================================================
+
+COMPLETED IN THIS PASS
+- Added scripts/ollama_runtime.py as the bounded HTTP runtime and truthful success-contract owner.
+- Added real server reuse/startup detection, bounded startup timeout, model availability/pull, and deterministic inference verification.
+- Added health and autonomous CLI operations while preserving existing commands.
+- Added mocked runtime tests covering health failure, pull, inference, malformed plans, path safety, and false-success prevention.
+- Added WORKFLOWS.md as the canonical workflow execution and success-gate contract.
+- Updated SYNC.md and ALLMDFILESREFS.md with historical-branch audit and single-writer sync policy.
+- Updated ollama-autonomous-agent.yml to use autonomous execution, real Ollama bootstrap, bounded limits, strict tests, and OLLAMA_SUCCESS.json gating.
+
+REMAINING ACCEPTANCE CHECKS
+- Complete the all-workflow audit and remove only failure masking that can hide required health/LLM failures.
+- Add explicit tracker state transition tests and enrich checkpoint schema with commit, run, model, files, tests, and failure fingerprint.
+- Add remote branch/Alpha-Q-ai inventory generation and reviewable sync implementation; never blindly copy stale snapshots.
+- Update model-evolution Q COUNTDOWN documentation and all workflow/agent documentation from generated evidence.
+- Run the complete test suite, YAML validation, compile checks, secret scan, recursion scan, and a real Ollama integration run where the model is available.
+
+SUCCESS RULE
+Do not mark this ledger complete, and do not emit “Autonomous agent executed successfully.”, unless a real Ollama inference, bounded LLM coding loop, post-loop validation, checkpoint, and SUCCESS contract have all passed.
+
+VERIFICATION SNAPSHOT
+- Local regression suite: 171 passed.
+- Workflow YAML: 8 files parsed successfully.
+- Python compileall and git diff check: passed.
+- Real Ollama/GitHub-hosted acceptance: still pending; this environment did not run a live model inference.
+- Hosted core workflow evidence: runs 33147727426 (Branch Sync), 33146083610 (PR Validation), and 33146369282 (Autonomous Agent) succeeded on the prior published SHA; the autonomous artifact was not independently retrieved, so real inference for the new unpushed implementation remains unproven.
+- Remote-only workflow failures remain unresolved and are listed in github.md; all workflows cannot honestly be marked successful from this checkout.
+
 Do not only patch the workflow.
 
 Trace the complete execution path from GitHub Actions -> Ollama -> model -> LLM -> autonomous agent -> code changes -> validation -> success contract.

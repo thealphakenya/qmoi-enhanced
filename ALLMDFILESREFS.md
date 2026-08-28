@@ -13,8 +13,8 @@ This document provides a comprehensive index of all markdown (.md) files in both
 ## Canonical Inventory Verification
 This repository currently contains one canonical root-level ALLMDFILESREFS.md and no hidden or alternate markdown index files were found elsewhere in the repo tree. The root file is therefore the authoritative inventory for this workspace. The final audit verified the following:
 
-- Total repo-level .md files found: 42
-- Root directory .md files found: 42
+- Total repo-level .md files found: 43
+- Root directory .md files found: 43
 - Hidden/alternate .md indexes outside the root: 0
 - Unreferenced .md files in the repo tree: 0
 - Duplicate/companion markdown files are treated as reconciliation artifacts, not independent sources of truth; they must be merged into the authoritative canonical files when content overlaps.
@@ -28,6 +28,16 @@ This repository currently contains one canonical root-level ALLMDFILESREFS.md an
 3. Preserve all visible root-level files and directories in the final working tree; they are expected to remain available after a successful PR run.
 4. Treat partial or rebased history as a recovery case, not as a reason to delete valid files. Reconcile content into the canonical file set before finalizing the PR.
 5. Keep `.github/workflows`, `scripts`, `tests`, and `ollamatracks` authoritative for automation, validation, and runtime tracking; keep markdown summaries as derived documentation of the same reality.
+
+### Historical Branch Coverage
+
+The remote branch `origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp`
+is included in the documentation audit. Its complete markdown inventory must be
+collected with `git ls-tree -r --name-only` during each merge audit and compared
+with `Alpha-Q-ai` and `qmoi-enhanced`. The generated comparison must list every
+path, including markdown files absent from the current checkout, and classify it
+as `QE`, `AQ`, `BOTH`, `HISTORICAL`, or `CONFLICT`. This keeps the index complete
+without copying stale historical files into production.
 
 ## Current root inventory and canonical ownership
 - Root docs: README.md, BUILD.md, INSTALL.md, DOWNLOAD.md, PLATFORM_REQUIREMENTS.md, ALLPLATFORMSDEVICE.md, ACCOUNTABILITY.md, SYNC.md, MERGE.md, MODELEVOLUTIONO.md, QMOI_MODEL_CARD.md, QMOI_REALTIME_MEMORY_INDEX.md, STYLES.md, MONITORING_GUIDE.md, OLLAMA_AUTOMATION_GUIDE.md, OLLAMA_ENHANCEMENT_COMPLETE.md, OLLAMA_ENHANCEMENT_SUCCESS.md, GITHUB_SETUP_COMPLETE.md, IMPLEMENTATION_COMPLETE.md, SESSION_COMPLETION_REPORT.md, PHASE_1_4_COMPLETION_SUMMARY.md, RESILIENCE_AUTO_HEALING.md, TEST_ENHANCEMENTS.md, TREE_FULL_STRUCTURE.md, ALLMDFILESREFS.md, oe.md, or.md, ollama.md, github.md, zx.txt, QTEAM.md, API.md, ENDPOINTS.md, ROUTES.md, ALLAUTO.md, AUTODEV.md, UNIVERSALS.md, QMOIAI.md, QCITY.md, QMOISPACE.md, QALPHA.md, QMOIAIUI.md, QCITYUI.md, QMOISPACEUI.md, QALPHAUI.md, ALLFRONTEND.md, ALLBACKEND.md, ALLPORTS.md
@@ -52,6 +62,9 @@ This repository currently contains one canonical root-level ALLMDFILESREFS.md an
 ---
 
 ## SECTION 1: Root-Level Documentation Files
+
+`WORKFLOWS.md` is the concise canonical workflow contract; `WORKFLOWSO.md` is
+the expanded operational reference. Both are maintained together.
 
 ### Core Repository Files (QE)
 

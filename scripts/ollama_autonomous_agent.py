@@ -92,6 +92,14 @@ from typing import (
     Sequence,
 )
 
+from ollama_runtime import (
+    OllamaClient,
+    OllamaBootstrap,
+    OllamaRuntimeError,
+    build_success_contract,
+    parse_repair_plan,
+)
+
 
 # ============================================================================
 # CONSTANTS
@@ -1837,6 +1845,26 @@ class CrossRepositoryAutonomyManager:
             "history_scope": "all reachable refs",
         }
 
+    def collect_reference_inventory(
+        self,
+        repo_path: Path | str,
+        git_ref: str,
+    ) -> Dict[str, Any]:
+        """Read a complete tracked-file inventory for a branch or remote ref."""
+        if not re.fullmatch(r"[A-Za-z0-9._/@-]+", git_ref):
+            raise ValueError("Unsafe Git reference")
+        repo = Path(repo_path).resolve()
+        files = self._git_output(repo, "ls-tree", "-r", "--name-only", git_ref)
+        return {
+            "repository": str(repo),
+            "git_ref": git_ref,
+            "files": files,
+            "markdown_files": [item for item in files if item.lower().endswith(".md")],
+            "file_count": len(files),
+            "captured_at": utc_iso(),
+            "read_only": True,
+        }
+
     def build_merge_audit_plan(self) -> Dict[str, Any]:
         """Describe the history and structure evidence required before merges."""
         return {
@@ -1846,6 +1874,11 @@ class CrossRepositoryAutonomyManager:
             "include_authors_and_timestamps": True,
             "qmoi_enhanced_recent_pushes": "all contributors",
             "alpha_q_ai_recent_pushes_minimum": 4,
+            "historical_refs": [
+                "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp",
+            ],
+            "markdown_inventory_required": True,
+            "classification": ["QE", "AQ", "BOTH", "HISTORICAL", "CONFLICT"],
             "merge_log_file": "MERGE.md",
             "mutations_allowed": False,
         }
@@ -2225,6 +2258,20 @@ class OllamaAutonomousAgent:
         self.resume_path = (
             self.root_dir
             / "resumefromhere.txt"
+        )
+
+        self.ollama = OllamaClient()
+        self.ollama_bootstrap = OllamaBootstrap(
+            self.ollama,
+            startup_timeout=float(os.getenv("OLLAMA_STARTUP_TIMEOUT_SECONDS", "90")),
+        )
+        self.max_iterations = max(
+            1,
+            int(os.getenv("MAX_ITERATIONS", "3")),
+        )
+        self.max_tasks_per_iteration = max(
+            1,
+            int(os.getenv("MAX_TASKS_PER_ITERATION", "10")),
         )
 
         self._initialize_tracking()
@@ -2899,6 +2946,102 @@ All timestamps use UTC ISO-8601 format.
             )
 
             return False
+
+    # ------------------------------------------------------------------------
+    # OLLAMA RUNTIME AND BOUNDED CODING LOOP
+    # ------------------------------------------------------------------------
+
+    def verify_ollama(self) -> Dict[str, Any]:
+        """Perform health, model, and real inference checks."""
+        self.record_tracker_event(
+            "inference_testing",
+            "Verifying Ollama server, model, and inference.",
+            status="INFERENCE_TESTING",
+            phase="ollama",
+        )
+        health = self.ollama.verify(self.ollama_bootstrap)
+        result = health.as_dict()
+        safe_json_write(self.tracker_dir / "OLLAMA_HEALTH.json", result)
+        self.record_tracker_event(
+            "model_ready",
+            "Configured Ollama model passed inference verification.",
+            status="MODEL_READY",
+            phase="ollama",
+            details=result,
+        )
+        return result
+
+    def _repository_context(self) -> List[str]:
+        ignored = {".git", ".venv", "venv", "node_modules", "__pycache__"}
+        files: List[str] = []
+        for path in self.root_dir.rglob("*"):
+            if path.is_file() and not any(part in ignored for part in path.relative_to(self.root_dir).parts):
+                files.append(str(path.relative_to(self.root_dir)).replace("\\", "/"))
+        return sorted(files)[:100]
+
+    def run_autonomous_loop(self) -> Dict[str, Any]:
+        """Ask Ollama for bounded repair plans and validate the repository."""
+        health = self.verify_ollama()
+        files = self._repository_context()
+        iterations = 0
+        modified: List[str] = []
+        previous_response = ""
+        self.record_tracker_event(
+            "llm_coding",
+            "Bounded LLM coding loop started.",
+            status="LLM_CODING",
+            phase="autonomous",
+            details={"max_iterations": self.max_iterations},
+        )
+        for iterations in range(1, self.max_iterations + 1):
+            prompt = (
+                "Return JSON only with keys summary and changes. "
+                "Each change must have a relative path and content. "
+                "Do not propose workflow, secret, git, or credential changes. "
+                f"Repository files: {json.dumps(files[:self.max_tasks_per_iteration])}"
+            )
+            response = self.ollama.generate(prompt)
+            if response == previous_response:
+                break
+            previous_response = response
+            plan = parse_repair_plan(response, self.root_dir)
+            changes = plan.get("changes", [])
+            if os.getenv("OLLAMA_APPLY_REPAIRS", "false").lower() != "true":
+                break
+            for change in changes[:self.max_tasks_per_iteration]:
+                path = (self.root_dir / str(change["path"])).resolve()
+                content = change.get("content")
+                if not isinstance(content, str):
+                    raise OllamaRuntimeError("Repair content must be a string")
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(content, encoding="utf-8")
+                modified.append(str(path.relative_to(self.root_dir)).replace("\\", "/"))
+            if not changes:
+                break
+        validation_passed = self.run_full_validation_suite()
+        checkpoint = self.update_resume_checkpoint(
+            status="autonomous_complete" if validation_passed else "autonomous_failed",
+            completed_steps=["Ollama health", "LLM coding loop", "post-agent validation"],
+        )
+        contract = build_success_contract(
+            self.root_dir,
+            health,
+            llm_coding_started=True,
+            llm_iterations=iterations,
+            files_analyzed=files,
+            files_modified=modified,
+            validation_passed=validation_passed,
+            checkpoint_created=checkpoint.exists(),
+        )
+        safe_json_write(self.tracker_dir / "OLLAMA_SUCCESS.json", contract)
+        self.record_tracker_event(
+            "success_contract",
+            f"Autonomous contract completed: {contract['final_status']}.",
+            status=contract["final_status"],
+            phase="complete",
+            details=contract,
+        )
+        return contract
 
     # ------------------------------------------------------------------------
     # RESUME CHECKPOINT
@@ -3651,6 +3794,8 @@ def main(
             "generate-model-card",
             "proof",
             "checkpoint",
+            "health",
+            "autonomous",
         ],
     )
 
@@ -3676,6 +3821,23 @@ def main(
 
     if args.command == "validate-all":
         return agent.run_validation_pipeline()
+
+    if args.command == "health":
+        try:
+            print(json.dumps(agent.verify_ollama(), indent=2))
+            return 0
+        except OllamaRuntimeError as exc:
+            print(f"Ollama health check failed: {exc}", file=sys.stderr)
+            return 1
+
+    if args.command == "autonomous":
+        try:
+            contract = agent.run_autonomous_loop()
+            print(json.dumps(contract, indent=2))
+            return 0 if contract.get("final_status") == "SUCCESS" else 1
+        except (OllamaRuntimeError, OSError, ValueError) as exc:
+            print(f"Autonomous execution failed: {exc}", file=sys.stderr)
+            return 1
 
     if args.command == "validate-platforms":
         print(

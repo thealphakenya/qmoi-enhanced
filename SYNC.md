@@ -21,6 +21,14 @@ This document details the synchronization mechanisms between the **qmoi-enhanced
 
 ## Synchronization Strategy
 
+The remote historical branch `codespace-potential-space-happiness-wrv69x5j6qjq2g7wp`
+is an auditable source snapshot. Before importing anything, automation must
+enumerate its reachable files and commits, compare checksums against both
+repositories, classify each path as QE-only, AQ-only, shared, or obsolete, and
+create a reviewable sync PR. It must never overwrite current `main` implicitly.
+Missing files are included through the PR when classification and validation
+agree; conflicts remain blocked for review.
+
 ### Bidirectional Sync Model
 Both repositories maintain:
 1. **Main Branch**: Production-ready code with validated features
@@ -70,6 +78,13 @@ The following critical files are synced bidirectionally:
 - **On PR Merge**: Validate and sync features between repos
 - **Scheduled Daily**: Full sync check and reconciliation
 - **On File Update**: Real-time sync for critical documentation files
+
+All sync jobs use a single-writer rule per repository, `autosync-backup` as the
+first publication target, `[sync]` commit markers, and `[skip ci]` only for the
+resulting synchronization commit. This prevents push-trigger recursion and
+competing Ollama servers. The agent records branch, file inventory, checksums,
+authors, timestamps, and conflict decisions in `MERGE.md` and
+`ollamatracks/SYNC_STATUS.txt`.
 
 ## File Distribution Strategy
 

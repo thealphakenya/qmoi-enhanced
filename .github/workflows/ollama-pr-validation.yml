@@ -293,6 +293,22 @@ jobs:
             :
           fi
 
+          for required in \
+            "Bootstrap Ollama runtime" \
+            "Strictly validate all GitHub workflow YAML" \
+            "Execute Autonomous Agent with Circuit-Breaker Loop Protection" \
+            "Create pre-agent repository checkpoint" \
+            "Upload autonomous-agent diagnostics" \
+            "Enforce final health gate"; do
+            if ! grep -Fq "$required" "${AGENT_WORKFLOW}"; then
+              echo "::error::Autonomous workflow stage is missing: $required"
+              exit 1
+            fi
+          done
+
+          test -f scripts/ollama_runtime.py
+          test -f tests/test_ollama_runtime.py
+
           echo "Autonomous agent workflow presence verification passed."
 
 

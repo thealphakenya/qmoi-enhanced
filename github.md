@@ -1,5 +1,53 @@
 # GitHub Automation & Live Job Links
 
+## Current Agent Truth Contract (2026-08-28)
+
+The GitHub-hosted autonomous workflow is successful only when
+`ollamatracks/OLLAMA_SUCCESS.json` contains `final_status: SUCCESS` with healthy
+Ollama, an available configured model, verified real inference, an executed
+bounded LLM loop, passed post-loop validation, and a created checkpoint. Local
+pytest success or a completed dispatch is not proof of autonomous execution.
+
+The workflow bootstraps or reuses Ollama at `http://127.0.0.1:11434`, defaults to
+`qwen2.5-coder:3b`, and accepts bounded iteration/recovery inputs. Diagnostics
+are uploaded from `ollamatracks/`; secrets remain GitHub-managed and are never
+included in prompts, logs, or JSON evidence. Scheduled runs use the same gate.
+
+The historical branch `codespace-potential-space-happiness-wrv69x5j6qjq2g7wp`
+is read-only audit input for cross-repository reconciliation. It is never
+blindly copied into `main`; missing files and conflicts require a reviewable
+sync change. `Alpha-Q-ai` synchronization follows `SYNC.md`, `MERGE.md`, and
+the setup key in `zx.txt`.
+
+## Current Verification Results
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Python test suite | PASS | `171 passed` locally on 2026-08-28 |
+| Workflow YAML syntax | PASS | 8 workflow files parsed locally |
+| Python compilation | PASS | `scripts` and `tests` compile successfully |
+| Diff integrity | PASS | `git diff --check` |
+| Live Ollama/model inference | NOT RUN | Requires GitHub-hosted runner or local Ollama with `qwen2.5-coder:3b` |
+
+No current GitHub run is marked successful for this unpushed workspace state.
+The hosted workflow must be dispatched after publication; its result is only
+accepted when the uploaded `OLLAMA_SUCCESS.json` passes the final contract.
+
+## Hosted Run Evidence (2026-08-28)
+
+The latest visible core runs on SHA `da5b560b55467bad8c1e846581fda7833cc87076`
+were successful: Branch Sync run `33147727426`, autonomous workflow run
+`33146369282`, and PR Validation run `33146083610`. Run `33146369282` completed
+all listed agent steps, including its final health gate, but it predates the
+current unpushed bootstrap/contract changes and its artifact contract was not
+retrieved here; therefore it is historical evidence, not proof of the new
+implementation's real inference.
+
+GitHub also reports failures for remote-only workflows such as `build.yml`,
+`android-build.yml`, `ci-cd.yml`, `release.yml`, `nightly.yml`, `npm.yml`, and
+others that are not present in this checkout. Those workflows remain unresolved
+and are deliberately not reported as successful.
+
 ## Current active runs
 
 The two most recent GitHub Actions runs currently in motion are:

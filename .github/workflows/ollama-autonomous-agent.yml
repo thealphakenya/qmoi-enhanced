@@ -131,8 +131,8 @@ env:
   VALIDATION_WORKFLOW_NAME: "Ollama Master Orchestrator - Enhanced Auto-Healing"
   AGENT_SCRIPT: "scripts/ollama_autonomous_agent.py"
   PYTHON_VERSION: "3.11"
-  DEFAULT_MAX_ITERATIONS: "200"
-  DEFAULT_MAX_PER_ITERATION: "200"
+  DEFAULT_MAX_ITERATIONS: "3"
+  DEFAULT_MAX_PER_ITERATION: "10"
   DEFAULT_MAX_RECOVERY_ATTEMPTS: "3"
   QMOI_AUTO_HEAL: ${{ github.event.inputs.auto_heal || 'true' }}
   QMOI_AUTO_FIX: ${{ github.event.inputs.auto_fix || 'true' }}
@@ -143,6 +143,7 @@ env:
   QMOI_TIMEOUT_SECONDS: "300"
   OLLAMA_HOST: "http://127.0.0.1:11434"
   OLLAMA_MODEL: "qwen2.5-coder:3b"
+  OLLAMA_APPLY_REPAIRS: ${{ github.event.inputs.auto_fix || 'true' }}
   REASON: ${{ github.event.inputs.reason || 'Scheduled/workflow-triggered execution' }}
 
 jobs:
@@ -272,6 +273,32 @@ jobs:
             python -m pip install -r requirements.txt
           fi
 
+      - name: Bootstrap Ollama runtime
+        id: ollama_bootstrap
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if ! command -v ollama >/dev/null 2>&1; then
+            curl --fail --silent --show-error --location https://ollama.com/install.sh | sh
+          fi
+          ollama --version
+          export OLLAMA_HOST="$OLLAMA_HOST"
+          if ! curl --fail --silent --show-error "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
+            nohup ollama serve > "$TRACK_DIR/ollama-server.log" 2>&1 &
+          fi
+          for attempt in $(seq 1 90); do
+            if curl --fail --silent --show-error "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
+              break
+            fi
+            if [ "$attempt" -eq 90 ]; then
+              echo "::error::Ollama did not become healthy within 90 seconds."
+              tail -100 "$TRACK_DIR/ollama-server.log" 2>/dev/null || true
+              exit 1
+            fi
+            sleep 1
+          done
+          echo "Ollama server is healthy at $OLLAMA_HOST"
+
       - name: Universal Autonomous File Auto-Fix Engine
         id: action_repair
         if: env.QMOI_AUTO_FIX == 'true'
@@ -336,7 +363,7 @@ jobs:
             workflow_run)
               if [ "$VALIDATION_CONCLUSION" = "success" ]; then
                 run_agent="true"
-                command="validate-all"
+                command="autonomous"
                 reason="Trusted default-branch validation succeeded."
               fi
               ;;
@@ -344,17 +371,16 @@ jobs:
               if [ "$FORCE_AGENT" = "true" ]; then
                 run_agent="true"
                 case "$REQUESTED_MODE" in
-                  full|validate) command="validate-all" ;;
-                  heal) command="validate-all" ;;
+                  full|validate|heal) command="autonomous" ;;
                   *) command="monitor" ;;
                 esac
                 reason="Manual autonomous execution."
               fi
               ;;
             schedule)
-              run_agent="false"
-              command="monitor"
-              reason="Scheduled reconciliation."
+              run_agent="true"
+              command="autonomous"
+              reason="Scheduled bounded autonomous health and repair cycle."
               ;;
           esac
 
@@ -390,18 +416,17 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
-          python -m compileall -q scripts tests || true
+          python -m compileall -q scripts tests
 
       - name: Execute repository test suite
         id: tests
-        continue-on-error: true
         shell: bash
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: |
           set -Eeuo pipefail
           if [ -d tests ]; then
-            python -m pytest tests -v --tb=short || true
+            python -m pytest tests -v --tb=short
           fi
 
       - name: Create pre-agent repository checkpoint
@@ -417,11 +442,12 @@ jobs:
       - name: Execute Autonomous Agent with Circuit-Breaker Loop Protection
         id: agent_execution
         if: steps.execution_mode.outputs.run_agent == 'true'
-        continue-on-error: true
         timeout-minutes: 240
         shell: bash
         env:
           MAX_RETRIES: ${{ github.event.inputs.max_recovery_attempts || env.DEFAULT_MAX_RECOVERY_ATTEMPTS }}
+          MAX_ITERATIONS: ${{ github.event.inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}
+          MAX_TASKS_PER_ITERATION: ${{ github.event.inputs.max_per_iteration || env.DEFAULT_MAX_PER_ITERATION }}
         run: |
           set -Eeuo pipefail
           command="${{ steps.execution_mode.outputs.command }}"
@@ -441,7 +467,8 @@ jobs:
             exit_code=$?
             set -e
 
-            if [ $exit_code -eq 0 ]; then
+            if [ "$exit_code" -eq 0 ] && [ -f "$TRACK_DIR/OLLAMA_SUCCESS.json" ] && \
+              python -c 'import json,sys; data=json.load(open(sys.argv[1])); raise SystemExit(0 if data.get("final_status") == "SUCCESS" else 1)' "$TRACK_DIR/OLLAMA_SUCCESS.json"; then
               echo "Autonomous agent executed successfully."
               success=1
               break
@@ -456,8 +483,7 @@ jobs:
             fi
             last_fingerprint="$current_fingerprint"
 
-            python -m compileall -q scripts/ tests/ || true
-            python -m pip install --upgrade pytest PyYAML || true
+            python -m compileall -q scripts/ tests/
 
             attempt=$((attempt + 1))
             sleep 5
@@ -471,7 +497,6 @@ jobs:
       - name: Repair Git repository after autonomous agent
         id: git_recovery_post_agent
         if: always() && steps.execution_mode.outputs.run_agent == 'true'
-        continue-on-error: true
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -486,7 +511,6 @@ jobs:
         if: |
           env.QMOI_AUTO_FIX == 'true' &&
           steps.action_repair.outputs.changed == '1'
-        continue-on-error: true
         shell: bash
         run: |
           set -Eeuo pipefail
@@ -494,12 +518,12 @@ jobs:
           if git diff --cached --quiet; then
             exit 0
           fi
-          git commit -m "ci: autonomous self-healing and automatic workflow remediation [skip ci]" || true
+          git commit -m "ci: autonomous self-healing and automatic workflow remediation [skip ci]"
 
           branch="${{ github.event.repository.default_branch }}"
           for i in 1 2 3; do
             # Safely pull and rebase first to integrate incoming remote updates before pushing
-            git pull origin "${branch}" --rebase --autostash || true
+            git pull origin "${branch}" --rebase --autostash
             
             if git push origin "HEAD:${branch}"; then
               break
@@ -510,7 +534,6 @@ jobs:
       - name: Final lightweight validation
         id: final_validation
         if: always()
-        continue-on-error: true
         shell: bash
         env:
           PYTHONPATH: ${{ github.workspace }}
@@ -518,7 +541,7 @@ jobs:
           set -Eeuo pipefail
           python -m compileall -q scripts
           if [ -d tests ]; then
-            python -m pytest tests -q --tb=short || true
+            python -m pytest tests -q --tb=short
           fi
 
       - name: Publish GitHub Actions summary
@@ -552,7 +575,8 @@ jobs:
           if [ "$execution" != "true" ]; then
             exit 0
           fi
-          if [ "$agent" = "success" ]; then
+          if [ "$agent" = "success" ] && [ -f "$TRACK_DIR/OLLAMA_SUCCESS.json" ] && \
+            python -c 'import json,sys; data=json.load(open(sys.argv[1])); required=("ollama_healthy","model_available","inference_verified","llm_coding_started","validation_passed","checkpoint_created"); raise SystemExit(0 if data.get("final_status") == "SUCCESS" and all(data.get(key) for key in required) else 1)' "$TRACK_DIR/OLLAMA_SUCCESS.json"; then
             exit 0
           fi
           exit 1

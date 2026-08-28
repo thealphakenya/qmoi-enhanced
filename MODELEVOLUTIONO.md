@@ -25,6 +25,21 @@ Real-time countdown to the next major QMOI evolution milestone.
 - **Last Updated**: 2026-08-17T21:30:00Z
 - **Update Frequency**: Real-time (on access)
 
+### Q COUNTDOWN Evidence Chart
+
+```mermaid
+xychart-beta
+	title "QMOI Evolution Readiness"
+	x-axis [Foundation, Enhancement, Production]
+	y-axis "Completion %" 0 --> 100
+	bar [100, 45, 0]
+```
+
+The displayed countdown is a generated operational value, not proof of model
+health. The agent should refresh the target timestamp and derived values in UTC
+when this document is intentionally updated, and record the source run in
+`ollamatracks/telemetry.jsonl`.
+
 ## Model Evolution Stages
 
 ### Stage 1: Foundation (2026-Q1 to Q2)
