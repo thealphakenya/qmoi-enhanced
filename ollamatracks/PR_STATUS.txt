@@ -1,2 +1,50 @@
-PR_STATUS: monitoring
-Timestamp: 2026-08-28T08:18:18.310466Z
+OLLAMA PR STATUS
+================
+
+Timestamp UTC: 2026-08-28T17:19:23.922Z
+Repository: thealphakenya/qmoi-enhanced
+
+PR #2100: build(deps): bump the npm_and_yarn group across 2 directories with 10 updates
+  head: dependabot/npm_and_yarn/qmoi-enhanced-history-14/npm_and_yarn-36f0a19845
+  head_sha: 484493ff91c31f6849562fc01e861633177503cb
+  base: main
+  draft: false
+  mergeable: unknown
+  checks: 14
+  combined_status: failure
+
+PR #2096: feat: centralize hosted workflow step management
+  head: copilot/hosted-step-manager
+  head_sha: 5d61750be5adb62667cc21d0932cb29687cf0d07
+  base: main
+  draft: false
+  mergeable: unknown
+  checks: 13
+  combined_status: failure
+
+PR #2099: Update requests requirement from >=2.31.0 to >=2.34.2
+  head: dependabot/pip/requests-gte-2.34.2
+  head_sha: 9df1a60f6d5704438560bc6599a6ff5970757e5a
+  base: main
+  draft: false
+  mergeable: unknown
+  checks: 13
+  combined_status: failure
+
+PR #2098: Update pytest requirement from >=8.0.0 to >=9.1.1
+  head: dependabot/pip/pytest-gte-9.1.1
+  head_sha: f69ee67e9141d942136b4fb8b37531e5dc84a147
+  base: main
+  draft: false
+  mergeable: unknown
+  checks: 13
+  combined_status: failure
+
+PR #2097: Update pyyaml requirement from >=6.0.0 to >=6.0.3
+  head: dependabot/pip/pyyaml-gte-6.0.3
+  head_sha: 43985dd7db48d501b774c13b35be6a4b84a5e1bb
+  base: main
+  draft: false
+  mergeable: unknown
+  checks: 13
+  combined_status: failure
