@@ -1,0 +1,99 @@
+---
+title: "Issue draft for BUILDAPPSFORALLPLATFORMS.md"
+generated: 2025-11-08T16:06:38.268333Z
+---
+
+# Review needed: BUILDAPPSFORALLPLATFORMS.md
+
+Status: AUTOMATED_REMOVAL_FROM_DONEREFS
+
+Suggested next steps:
+
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:41.712319Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:41.712319Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:41.712319Z] and add tests / small PR.
+- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
+- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
+
+Excerpt (first 2KB):
+
+```
+---
+title: "🚀 QMOI AI - Build Apps for All Platforms"
+qmoi_validation_frontmatter: true
+---
+
+<!-- LION_VALIDATION_START -->
+## 🦁 L — Validated by QMOI Lion
+
+- validated: yes
+- validator: QMOI Lion
+- timestamp: 2025-10-25T00:32:32.231969Z
+- note: Auto-inserted by `scripts/autotag_md_with_lion.py` (creates .bak backup)
+<!-- LION_VALIDATION_END -->
+
+# 🚀 QMOI AI - Build Apps for All Platforms
+
+## ✅ Latest Build Artifacts (v1.0.177)
+
+(Generated on: 2025-08-30)
+
+GitHub Release: https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.177
+
+### Windows
+✅ qmoi_ai.zip (34 B) - Universal Windows package
+
+### macOS
+✅ qmoi_ai.zip (34 B) - Universal macOS package
+
+### Linux
+✅ qmoi_ai.deb (27 B) - Debian package
+
+### Android
+✅ qmoi_ai.qcapp (29 B) - QCity mobile app
+
+### Smart TV
+✅ qmoi_ai.tvapp (31 B) - TV application
+
+### Progressive Web Application (PWA)
+✅ Web export ready for deployment
+
+## Build Completion Summary
+
+### ✅ Successfully Built Platforms
+- **Windows**: Universal package (qmoi_ai.zip - 34 B)
+- **macOS**: Universal package (qmoi_ai.zip - 34 B)
+- **Linux**: Debian package (qmoi_ai.deb - 27 B)
+- **Android**: QCity mobile app (qmoi_ai.qcapp - 29 B)
+- **Smart TV**: TV application (qmoi_ai.tvapp - 31 B)
+- **PWA**: Web export ready for deployment
+
+### 🔗 GitHub Release
+- **Release**: v1.0.177
+- **URL**: https://github.com/thealphakenya/Alpha-Q-ai/releases/tag/v1.0.177
+- **Status**: All platforms successfully built and published
+- **Automation**: Fully automated build pipeline with no billing issues
+
+### 📋 Build Summary
+- **Total Artifacts**: 6 platform-specific packages
+- **Build Method**: Python app builder + Electron + PyInstaller
+- **CI/CD**: GitHub Actions with automated release publishing
+- **Billing Safety**: No paid runners used, all builds completed successfully
+
+---
+
+*Last updated: 2025-08-30*
+
+<!-- QMOI_VALIDATION_START -->
+{
+  "file": "BUILDAPPSFORALLPLATFORMS.md",
+  "validated_at": "2025-10-26T20:51:22.285784Z",
+  "validator": "QMOI Lion (automated)",
+  "checks": [
+    {
+      "name": "title_present
+```
+
+Notes:
+
+- This draft was generated automatically to help triage files removed from `donerefs.txt`.
+- Backups and previous runs may exist under `.qmoi_validation`.

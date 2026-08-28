@@ -1,0 +1,119 @@
+# Merge manifest
+# Merge operations
+- Branch: 
+- Auto-push: 1
+- Auto-merge: 0
+- Policy: keep docs, tests, routes, manifests, styles, universals, and merge state synchronized securely.
+- Last sync: 2026-07-31T00:38:53.046673Z
+
+## Documentation inventory
+- @ALLMDFILESREFS.md
+- ADVANCED_USER_IDENTIFICATION_SYSTEM.md
+- ALLAUTO.md
+- ALLBACKEND.md
+- ALLCLONEDRELEASES.md
+- ALLDEVICESSETTINGS.md
+- ALLERRORS.md
+- ALLERRORSSTATSQMOI.md
+- ALLERRORSTYPESFILES.md
+- ALLERRORTYPESANDHEALTHCHECKS.md
+- ALLFRONTEND.md
+- ALLHOOKSWEBHOOKS.md
+- ALLLINKS.md
+- ALLMDFILES.md
+- ALLMDFILESREFS.md
+- ALLPORTS.md
+- ALLQMOIAIAPPSREALEASESVERSIONS.md
+- ALLQMOIAUTOEVOLVINGENVS.md
+- ALLSYSTEMSSTRUCTURESREFERENCES.md
+- ALLTESTSAUOTOTESTS.md
+- ALLUI.md
+- ALLVERSIONS.md
+- ALLWALLETSQVS.md
+- ALPHAQMOIENGINE.md
+- API.md
+- API_ENDPOINTS_COMPLETE_AUDIT.md
+- API_ENDPOINTS_REFERENCE.md
+- API_INTEGRATION_GUIDE.md
+- API_REFERENCE.md
+- APPS_PLATFORMS_DOCUMENTATION_UPDATE.md
+- APP_BUILD_MATRIX.md
+- APP_FIX_ACTION_PLAN.md
+- APP_FIX_CHECKLIST.md
+- APP_FIX_COMPLETE.md
+- AUTH_SYSTEM_IMPLEMENTATION.md
+- AUTOCLONE_STANDALONE.md
+- AUTODEV_SECRETS.md
+- AUTODOWNLOAD.md
+- AUTOGIT.md
+- AUTOLINTREADME.md
+- AUTOMATION-SUMMARY.md
+- AUTOOPTIMIZEALPHAQMOIENGINE.md
+- AUTO_RECOVERY_PROCEDURES.md
+- AUTO_SETUP_COMPLETION_SUMMARY.md
+- BACKEND_API_TEMPLATES.md
+- BACKGROUND_AUTOMATION_COMPLETE.md
+- BIOMETRIC_LOGIN_TEST_RESULTS.md
+- BUILDAPPSFORALLPLATFORMS.md
+- BUILD_COMPLETION_REPORT_v2.md
+- BUILD_COMPLETION_SUMMARY.md
+- BUILD_INSTRUCTIONS.md
+- BUILD_INSTRUCTIONS_PRODUCTION.md
+- BUILD_REAL_APPS.md
+- BUILD_TRIGGER.md
+- CACHING_GUIDE.md
+- CAMPAIGN_COMPLETION_SUMMARY.md
+- CASHON.md
+- CASHONTRADINGREADME.md
+- CHANGES.md
+- CMDCOMMANDS.md
+- COLAB_DAGSHUB_DEPLOY_CHECKLIST.md
+- COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md
+- COMPLETION_INDEX.md
+- COMPLETION_REPORT.md
+- COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md
+- COMPONENTS.md
+- COMPONENTS_MIGRATION_PLAN.md
+- COMPREHENSIVE_TESTING_QA_STRATEGY.md
+- CONSOLIDATION_ANALYSIS.md
+- CONTINUOUS_IMPROVEMENT.md
+- CONTRIBUTING.md
+- CREDENTIAL_ROTATION_PLAYBOOK.md
+- CRITICAL_APP_AUDIT_REPORT.md
+- CURLCOMMANDS.md
+- CURLQMOIMASTERSISTERUSER.md
+- DASHBOARDTRACKS.md
+- DEALS.md
+- DELIVERABLES_CHECKLIST.md
+- DELIVERABLES_FINAL_INVENTORY.md
+- DEPLOYMENT-README.md
+- ...and 586 more documentation files
+
+## Official deployment references
+- Vercel: https://vercel.com/docs (Use official Vercel documentation for deployments, redeployments, environment variables, and build settings.)
+- GitHub Actions: https://docs.github.com/actions (Use GitHub Actions documentation for workflow reliability, secrets, and deployment automation.)
+- Netlify: https://docs.netlify.com/ (Use Netlify docs for deployment configuration, environment handling, and redeploys.)
+- Render: https://render.com/docs (Use Render docs for service deployments, health checks, and runtime environment configuration.)
+- Railway: https://docs.railway.app/ (Use Railway docs for environment provisioning and staging deployment flows.)
+- Fly.io: https://fly.io/docs/ (Use Fly.io docs for app deployment, scaling, and runtime health checks.)
+
+## Production sync notes
+- Ensure API.md, ENDPOINTS.md, ROUTES.md, and DOCS.md all reflect the current implementation.
+- Ensure UNIVERSALS.md and STYLES.md remain aligned with the active UI and accessibility guidance.
+- Ensure deployment and redeployment workflows reference the official documentation for each supported platform.
+
+## DELS (all deleted after merge)
+- tests/test_backup_monitor.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_backup_restore.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_backup_state.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_check_and_replace_placeholders.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_check_placeholders.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_create_release_placeholders.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_fix_removed_placeholders_batch.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_placeholder_fixer.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_placeholder_scanner.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_replace_placeholders.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_run_placeholder_scans.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_scan_placeholders.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_scan_replace_placeholders.py: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.
+- tests/test_placeholder_scan.py.ollama.bak: Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration.

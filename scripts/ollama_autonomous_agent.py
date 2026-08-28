@@ -166,12 +166,17 @@ ALPHA_Q_AI_REPOSITORY = "thealphakenya/Alpha-Q-ai"
 
 DEFAULT_BRANCH = "main"
 BACKUP_BRANCH = "autosync-backup"
+HISTORICAL_BRANCH = (
+    "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp"
+)
+HISTORY_SNAPSHOT_DIRECTORY = "qmoi-enhanced-history-14"
 
 MASTER_FILES: List[str] = [
     "API.md",
     "ENDPOINTS.md",
     "ROUTES.md",
     "MODELEVOLUTIONO.md",
+    "ALLMDFILESREFS.md",
 ]
 
 
@@ -1701,6 +1706,7 @@ class BranchSyncManager:
     REQUIRED_BRANCHES = [
         DEFAULT_BRANCH,
         BACKUP_BRANCH,
+        HISTORICAL_BRANCH,
     ]
 
     @classmethod
@@ -1727,6 +1733,11 @@ class BranchSyncManager:
             "source_repository": QMOI_REPOSITORY,
             "target_repository": ALPHA_Q_AI_REPOSITORY,
             "master_files": list(MASTER_FILES),
+            "history_snapshot": HISTORY_SNAPSHOT_DIRECTORY,
+            "inventory_scope": (
+                "all reachable refs, all tracked paths, symlinks, and the "
+                "materialized historical snapshot"
+            ),
             "sync_strategy": (
                 "main -> autosync-backup -> cross-repository"
             ),
@@ -1753,7 +1764,10 @@ class CrossRepositoryAutonomyManager:
                     "branches": [
                         DEFAULT_BRANCH,
                         BACKUP_BRANCH,
+                        HISTORICAL_BRANCH,
                     ],
+                    "history_snapshot": HISTORY_SNAPSHOT_DIRECTORY,
+                    "ownership": "QE primary and shared implementation source",
                 },
                 {
                     "repo": ALPHA_Q_AI_REPOSITORY,
@@ -1761,7 +1775,10 @@ class CrossRepositoryAutonomyManager:
                     "branches": [
                         DEFAULT_BRANCH,
                         BACKUP_BRANCH,
+                        HISTORICAL_BRANCH,
                     ],
+                    "history_snapshot": HISTORY_SNAPSHOT_DIRECTORY,
+                    "ownership": "AQ-specific backend and integration target",
                 },
             ],
             "operations": [
@@ -1875,8 +1892,24 @@ class CrossRepositoryAutonomyManager:
             "qmoi_enhanced_recent_pushes": "all contributors",
             "alpha_q_ai_recent_pushes_minimum": 4,
             "historical_refs": [
-                "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp",
+                HISTORICAL_BRANCH,
             ],
+            "history_snapshot_directory": HISTORY_SNAPSHOT_DIRECTORY,
+            "inventory_requirements": [
+                "all reachable local and remote branches",
+                "all tracked files and directories, including symlinks",
+                "all markdown files from QE, AQ, and the historical ref",
+                "materialized history snapshot contents",
+                "unreferenced and unused paths",
+                "commit authors, timestamps, subjects, and hashes",
+            ],
+            "ownership_rules": {
+                "QE": "primary QMOI implementation and shared docs",
+                "AQ": "Alpha-Q-ai-specific backend and integrations",
+                "HISTORICAL": "reference and recovery source; preserve until classified",
+                "BOTH": "shared canonical content validated in both repositories",
+                "CONFLICT": "block automatic merge and require review",
+            },
             "markdown_inventory_required": True,
             "classification": ["QE", "AQ", "BOTH", "HISTORICAL", "CONFLICT"],
             "merge_log_file": "MERGE.md",

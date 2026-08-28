@@ -1,4 +1,30 @@
-As you continue, also ensure ollama autonomous agent and qmoi also note everything in the codespace-potential-space-happiness-wrv69x5j6qjq2g7wp branch and include all files, directories and everything in the codespace-potential-space-happiness-wrv69x5j6qjq2g7wp branch in all the merge activities and how it will automatically include all the missing files and directories and implementations in all merge actually. The codespace-potential-space-happiness-wrv69x5j6qjq2g7wp branch contains all files that were in qmoi-enhanced repo a while ago and should be included in all activities and how ollama autonomous agent and qmoi have all files in all repos including all that are not cute used. Go through all merge activities and instructions to know how best to set up everything. Also note how ollama autonomous agent and qmoi automatically decides which files and directories that should be in which repo best (qmoi-enhanced and Alpha-Q-ai repo). It should also ensure ALLMDFILESREFS.md has reference of all .MD files in all repos plus all .MD files in codespace-potential-space-happiness-wrv69x5j6qjq2g7wp repo should all be in ALLMDFILESREFS.md . Note that codespace-potential-space-happiness-wrv69x5j6qjq2g7wp also has ALLMDFILESREFS.md and all common .MD files as you will notice.
+## Repository-Wide Completion Contract (2026-08-28)
+
+- [x] Added `qmoi-enhanced-history-14/` as a complete tracked snapshot of
+    `origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp`.
+- [x] Made that historical ref and snapshot first-class inputs to branch-sync
+    and cross-repository merge planning.
+- [x] Required inventories of both QE and Alpha-Q-ai, every reachable branch,
+    every tracked file/directory/symlink, unused content, commits, and contributors.
+- [x] Required classification of every path as `QE`, `AQ`, `BOTH`, `HISTORICAL`,
+    or `CONFLICT`, with uncertain ownership blocking automatic mutation.
+- [x] Required all historical and live `.md` files to be reconciled into
+    `ALLMDFILESREFS.md` during merge audits.
+- [x] Updated `ALLAUTO.md`, `WORKFLOWSO.md`, and `MERGE.md` with the shared
+    history-aware discovery, planning, checkpoint, validation, and evidence gate.
+
+## Operating Rule For Remaining Work
+
+For every future Ollama/QMOI run, start with a read-only audit and record the
+source refs, tree counts, markdown inventory, ownership decisions, missing
+paths, and conflicts. Then checkpoint the plan, apply only authorized changes,
+run targeted and full validation, compare all source trees again, and update
+this file plus `MERGE.md` and `ALLMDFILESREFS.md`. Never treat a successful
+script exit or a partial checkout as proof that all repositories, branches,
+history, files, directories, or implementations were included.
+
+As you continue, also ensure ollama autonomous agent and qmoi note everything
+in the historical branch and include all files and directories in merge audits.
 Yes. Give Copilot the following as one repository-wide implementation task. The key requirement is that Copilot must inspect the entire repository first, rather than blindly modifying only ollama-autonomous-agent.yml.
 Copy/paste this into Copilot Chat
 TASK: FULL REPOSITORY AUDIT AND PRODUCTION IMPLEMENTATION OF THE QMOI OLLAMA AUTONOMOUS CODING SYSTEM

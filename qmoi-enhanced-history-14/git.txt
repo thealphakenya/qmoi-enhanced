@@ -1,0 +1,18 @@
+# Git Automation Reference
+
+All git operations (commit, push, pull, error-fix, notifications) are now handled by the new QMOI automation system:
+
+- `scripts/qmoi-auto-push.js`
+- `scripts/auto-git-update.js`
+- `scripts/qmoi-qcity-automatic.py`
+- `scripts/qmoi-enhanced-master-automation.py`
+- `scripts/qmoi_notification_manager.py`
+
+## Usage
+- All changes are auto-staged, committed, and pushed on schedule and on file changes.
+- Pulls and merges are handled automatically.
+- All errors are auto-fixed and retried.
+- Notifications are sent to all configured channels.
+- All actions are logged and visible in the QCity dashboard (master-only).
+
+See `ALLMDFILESREFS.md` for full documentation and update history. 

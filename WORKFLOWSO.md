@@ -41,6 +41,32 @@ when authorized, telemetry, checkpoint, artifact upload, and final contract
 gate. Monitor, sync, and merge workflows observe or reconcile this result; they
 do not replace it or start competing Ollama servers.
 
+## History-Aware Merge Gate
+
+All agent, sync, monitor, and auto-merge workflows share one repository coverage
+contract. Before any merge activity they must inspect both repositories, all
+reachable branches and refs, and all tracked paths, including unused files,
+directories, symlinks, and implementation artifacts. The required historical
+source is `origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp`; its
+complete contents are preserved in `qmoi-enhanced-history-14/` and are included
+in missing-path and feature-degradation comparisons.
+
+The workflow must generate a read-only inventory and classify each path as
+`QE`, `AQ`, `BOTH`, `HISTORICAL`, or `CONFLICT`. It must enumerate every `.md`
+file from both live repositories and the historical ref and reconcile the
+results into the root `ALLMDFILESREFS.md`. Ownership is determined by actual
+imports, workflow references, package/build configuration, history, and
+documented repository boundaries, not by filename alone. Conflicts, uncertain
+ownership, failed validation, incomplete history, or missing evidence block
+automatic merge.
+
+The merge sequence is discovery, immutable audit, ownership/classification,
+plan and checkpoint, authorized application, targeted validation, full
+validation, complete tree comparison, documentation/index update, telemetry,
+and only then push/merge. `qmoi-enhanced` remains the primary QMOI source;
+`Alpha-Q-ai` receives only content proven to belong there or to be shared.
+Historical content is never silently deleted because it is currently unused.
+
 Checkpoint evidence is written in both human-readable `resumefromhere.txt` and
 machine-readable `ollamatracks/checkpoint.json`. Resume data is treated as
 untrusted until its status and evidence are parsed; failed or incomplete

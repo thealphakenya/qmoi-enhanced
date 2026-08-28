@@ -1,0 +1,40 @@
+// NOTE: 4 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+/// <reference types="cypress" />
+
+describe("QMOI Kernel Panel SSO/OAuth E2E - Device & Delegated Access", () => {
+  it("allows device-based SSO login", () => {
+    cy.visit(
+      "/auth/callback?provider=device&token=device-[PRODUCTION IMPLEMENTATION REQUIRED]-token&device_id=dev123",
+    );
+    cy.setCookie(
+      "authToken",
+      "device-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+    );
+    cy.setCookie("deviceId", "dev123");
+    cy.visit("/qcity/kernel");
+    cy.contains("QMOI Kernel Control Panel").should("exist");
+    // cy.contains('Device Verified').should('exist');
+  });
+
+  it("handles delegated access", () => {
+    cy.visit(
+      "/auth/callback?provider=delegated&token=delegated-[PRODUCTION IMPLEMENTATION REQUIRED]-token&delegator=admin",
+    );
+    cy.setCookie(
+      "authToken",
+      "delegated-[PRODUCTION IMPLEMENTATION REQUIRED]-token",
+    );
+    cy.setCookie("delegator", "admin");
+    cy.visit("/qcity/kernel");
+    cy.contains("QMOI Kernel Control Panel").should("exist");
+    // cy.contains('Access granted by admin').should('exist');
+  });
+});
+
+// AUTOFIXED by Ollama at 2026-07-20T01:19:39.196285Z: replaced placeholders or noted TODOs. Please review.
+
+// AUTOFIXED by Ollama at 2026-07-26T18:54:40.002902Z
+
+// AUTOFIXED by Ollama at 2026-07-26T18:57:33.149132Z
+
+// AUTOFIXED by Ollama at 2026-07-26T19:31:03.586292Z

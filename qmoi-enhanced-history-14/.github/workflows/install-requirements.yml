@@ -1,0 +1,46 @@
+name: Install and verify Python dependencies
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [ autosync-md-fixes-20251107, autosync-backup-20250926-232440 ]
+
+jobs:
+  install-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-cache-${{ runner.os }}-py-${{ matrix.python-version }}
+          restore-keys: |
+            pip-cache-${{ runner.os }}-py-
+
+      - name: Install minimal dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Install minimal dependencies for quick verification
+          pip install -r requirements-minimal.txt
+
+      - name: (optional) Install full requirements (CPU-friendly)
+        run: |
+          python -m pip install --upgrade pip
+          # NOTE: torch and transformers are platform-sensitive. On ubuntu runners, use the
+          # official PyTorch wheels (CPU) URL. If you need GPU, use a runner with GPU and
+          # the appropriate wheel index.
+          pip install --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt || true
+
+      - name: Smoke test: run supervised start (dry-run)
+        run: |
+          # Run under a short timeout to validate scripts can import installed packages
+          python scripts/qmoi-start-watch.py --timeout 20 || true
+
+    permissions: write-all

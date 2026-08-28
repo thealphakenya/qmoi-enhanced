@@ -1,0 +1,50 @@
+/**
+ * Production Signing Configuration for QMOI Android App
+ * This file configures signing for release and debug builds
+ */
+
+android {
+    signingConfigs {
+        // Debug signing configuration (development)
+        debug {
+            storeFile file("debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+
+        // Release signing configuration (production)
+        release {
+            // Uses environment variables set by GitHub Actions
+            if (System.getenv("KEYSTORE_FILE_PATH")) {
+                storeFile file(System.getenv("KEYSTORE_FILE_PATH"))
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+            } else if (project.hasProperty("KEYSTORE_FILE")) {
+                storeFile file(project.property("KEYSTORE_FILE"))
+                storePassword project.property("KEYSTORE_PASSWORD")
+                keyAlias project.property("KEY_ALIAS")
+                keyPassword project.property("KEY_PASSWORD")
+            } else {
+                // Fallback to debug keystore for development
+                storeFile file("debug.keystore")
+                storePassword "android"
+                keyAlias "androiddebugkey"
+                keyPassword "android"
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
+            debuggable false
+        }
+    }
+}

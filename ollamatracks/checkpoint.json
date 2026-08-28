@@ -1,0 +1,26 @@
+{
+  "completed_steps": [
+    "platform validation",
+    "feature validation",
+    "file handler validation",
+    "memory index generation",
+    "model card generation",
+    "github proof contract"
+  ],
+  "error": null,
+  "failure_fingerprint": null,
+  "files_changed": [],
+  "files_inspected": [],
+  "iteration": 0,
+  "model": "qwen2.5-coder:3b",
+  "ollama_health": null,
+  "ollama_host": "http://127.0.0.1:11434",
+  "repair_state": "ready",
+  "repository_commit": null,
+  "status": "ready",
+  "task": null,
+  "test_result": null,
+  "tests_run": null,
+  "timestamp": "2026-08-28T08:15:15.426279Z",
+  "workflow_run": null
+}

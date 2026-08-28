@@ -1,0 +1,8 @@
+{
+  "id": "qstore",
+  "name": "QStore",
+  "version": "v1.0.0",
+  "type": "web",
+  "platforms": ["Web"],
+  "icon": "assets/icons/qstore.svg"
+}

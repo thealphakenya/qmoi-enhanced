@@ -1,0 +1,75 @@
+{
+  "name": "qmoi-watchdebug",
+  "version": "1.1.0",
+  "description": "QMOI Comprehensive Monitoring, Debugging & Auto-Fixing System",
+  "main": "start-watchdebug.js",
+  "scripts": {
+    "start": "node start-watchdebug.js",
+    "monitor": "node start-watchdebug.js",
+    "dev": "nodemon start-watchdebug.js",
+    "watch": "chokidar '**/*.js' -c 'npm run monitor'",
+    "debug": "node --inspect-brk start-watchdebug.js",
+    "lint": "eslint . --fix",
+    "test": "jest",
+    "fix": "node scripts/qmoi-autofixer.js",
+    "report": "node scripts/generate-debug-report.js",
+    "log:errors": "node scripts/log-errors.js",
+    "log:summary": "node scripts/log-summary.js",
+
+    "autofix:all": "node scripts/qmoi-autofixer.js",
+    "check:release": "node scripts/check-latest-release.js",
+    "verify:install": "node scripts/verify-installable.js",
+
+    "release:generate": "node scripts/generate-release-json.js",
+    "upload:assets": "node scripts/upload-release-assets.js",
+    "notify:telegram": "node scripts/notify-telegram.js",
+
+    "publish:all": "node scripts/auto-publish-all.js",
+    "diagnose:all": "npm run publish:all"
+  },
+  "keywords": [
+    "qmoi",
+    "watch",
+    "debug",
+    "monitoring",
+    "autofix",
+    "auto-release",
+    "error-fixing",
+    "logger",
+    "telemetry",
+    "automation",
+    "github",
+    "gitlab",
+    "vercel"
+  ],
+  "author": "QMOI System",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "chokidar": "^4.0.3",
+    "child_process": "^1.0.2",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.3.0",
+    "path": "^0.12.7",
+    "nodemailer": "^7.0.5",
+    "dotenv": "^16.3.1",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.0.0",
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thealphakenya/Alpha-Q-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thealphakenya/Alpha-Q-ai/issues"
+  },
+  "homepage": "https://github.com/thealphakenya/Alpha-Q-ai#readme"
+}

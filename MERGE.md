@@ -25,6 +25,57 @@ The audit is evidence collection only: it must not fetch, merge, reset, or push
 implicitly. Network synchronization and publication remain explicit workflow
 steps, followed by validation and a recorded result.
 
+## Required History Source And Complete Coverage
+
+The ref `origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp` is a
+required historical source for every merge audit. Its complete branch contents
+are materialized in `qmoi-enhanced-history-14/`, whose instruction file records
+the source commit. The snapshot is part of merge input and recovery evidence;
+it is not merely a note or an optional backup.
+
+Before planning a merge, QMOI must inventory both repositories, every reachable
+local and remote branch, every tracked path (including symlinks and currently
+unused files/directories), and every commit needed for attribution. For each
+path, record repository/ref, existence, content identity, dependencies,
+implementation role, and classification: `QE`, `AQ`, `BOTH`, `HISTORICAL`, or
+`CONFLICT`. Missing paths from the historical source must be evaluated for
+restoration and feature degradation before they can be omitted. `CONFLICT` or
+uncertain ownership blocks automatic changes and requires a review record.
+
+`ALLMDFILESREFS.md` is updated from the complete `.md` inventory for both live
+repositories and the historical ref, including markdown files not present in
+the current checkout. The inventory is evidence, not permission to copy stale
+content blindly.
+
+## Autonomous Merge Procedure
+
+1. Discover repository remotes, all refs, default/backup/history branches, and
+    working-tree state without mutation.
+2. Capture immutable inventories of all trees, markdown paths, commits,
+    contributors, timestamps, symlinks, and the `qmoi-enhanced-history-14`
+    materialization.
+3. Determine ownership from imports, workflow/config references, package/build
+    dependencies, history, and repository boundaries. Preserve unused content
+    until this analysis is complete.
+4. Build a path-level plan for additions, updates, deletions, and conflicts;
+    checkpoint it before applying anything. Never auto-delete a path solely
+    because it is absent from the target branch.
+5. Apply only authorized changes inside the intended repository. Reject unsafe
+    paths, secret/authentication changes, destructive commands, and unreviewed
+    conflict resolutions.
+6. Validate syntax, dependencies, links, workflows, targeted tests, full tests,
+    feature preservation, and the complete post-merge tree against every source.
+7. Update `MERGE.md`, `ALLMDFILESREFS.md`, checkpoint, telemetry, and the final
+    proof contract with source refs, counts, decisions, and validation evidence.
+8. Push or merge only when all required evidence passes and authorization is
+    present. A partial inventory, inferred success, or Python-only check is a
+    failed merge gate.
+
+The Ollama autonomous agent and QMOI automation must use this procedure for
+branch sync, PR merge, recovery, auto-healing, and cross-repository operations.
+They may automate speed and repetition, but not bypass evidence, ownership,
+review, or validation gates.
+
 ## File Type Specific Procedures
 
 ### Markdown Files (.md)

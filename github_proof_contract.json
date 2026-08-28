@@ -1,0 +1,77 @@
+{
+  "alpha_q_ai": {
+    "included": true,
+    "repo": "thealphakenya/Alpha-Q-ai"
+  },
+  "autonomy_plan": {
+    "alpha_q_ai_included": true,
+    "operations": [
+      "validate",
+      "checkpoint",
+      "sync",
+      "verify",
+      "recover"
+    ],
+    "owner": "thealphakenya",
+    "repos": [
+      {
+        "branches": [
+          "main",
+          "autosync-backup",
+          "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp"
+        ],
+        "history_snapshot": "qmoi-enhanced-history-14",
+        "ownership": "QE primary and shared implementation source",
+        "repo": "thealphakenya/qmoi-enhanced",
+        "role": "source-and-primary"
+      },
+      {
+        "branches": [
+          "main",
+          "autosync-backup",
+          "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp"
+        ],
+        "history_snapshot": "qmoi-enhanced-history-14",
+        "ownership": "AQ-specific backend and integration target",
+        "repo": "thealphakenya/Alpha-Q-ai",
+        "role": "cross-repository-target"
+      }
+    ]
+  },
+  "branch_sync": {
+    "branches": [
+      "main",
+      "autosync-backup",
+      "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp"
+    ],
+    "default_branch": "main",
+    "history_snapshot": "qmoi-enhanced-history-14",
+    "inventory_scope": "all reachable refs, all tracked paths, symlinks, and the materialized historical snapshot",
+    "master_files": [
+      "API.md",
+      "ENDPOINTS.md",
+      "ROUTES.md",
+      "MODELEVOLUTIONO.md"
+    ],
+    "owner": "thealphakenya",
+    "repositories": [
+      "thealphakenya/qmoi-enhanced",
+      "thealphakenya/Alpha-Q-ai"
+    ],
+    "source_repository": "thealphakenya/qmoi-enhanced",
+    "sync_strategy": "main -> autosync-backup -> cross-repository",
+    "target_repository": "thealphakenya/Alpha-Q-ai"
+  },
+  "generated": "2026-08-28T08:15:15.422432Z",
+  "proof": {
+    "alpha_q_ai_included": true,
+    "applications_per_platform": 4,
+    "feature_count": 374,
+    "feature_registry_valid": true,
+    "feature_validation_passed": true,
+    "file_handler_validation_passed": true,
+    "platform_feature_contract_valid": true,
+    "platform_validation_passed": true
+  },
+  "status": "ready_for_github"
+}

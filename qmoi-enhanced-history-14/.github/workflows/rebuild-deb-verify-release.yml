@@ -1,0 +1,96 @@
+name: Rebuild and Replace corrupted .deb
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild-deb:
+    name: Rebuild .deb, verify and replace release asset
+    runs-on: ubuntu-latest
+
+    env:
+      REPO_OWNER: thealphakenya
+      REPO_NAME: qmoi-enhanced
+      RELEASE_TAG: v1.2.3
+      ASSET_NAME: qmoi_ai.deb
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install apt tools
+        run: sudo apt-get update && sudo apt-get install -y rpm dpkg ar
+
+      - name: Install Node deps
+        run: npm ci --no-audit --no-fund
+
+      - name: Build linux deb (electron-builder)
+        run: |
+          # try repo build script if present
+          if [ -x ./scripts/build-all-platforms.sh ]; then
+            bash ./scripts/build-all-platforms.sh || true
+          fi
+          # electron-builder common invocation
+          npx electron-builder --linux deb --publish never || true
+
+      - name: Find built deb
+        run: |
+          echo "Looking for *.deb in dist/ and release output"
+          find . -type f -name "*.deb" -print -maxdepth 6 || true
+
+      - name: Copy deb to workspace
+        run: |
+          mkdir -p artifacts
+          # prefer dist or release outputs
+          DEB=$(find . -type f -name "*${ASSET_NAME}" -print -o -name "*.deb" -print | head -n1 || true)
+          echo "DEB=$DEB" > debpath.txt
+          if [ -f "$DEB" ]; then cp "$DEB" artifacts/${ASSET_NAME}; fi
+        shell: bash
+
+      - name: Verify deb with ar
+        run: |
+          set -e
+          if [ -f artifacts/${ASSET_NAME} ]; then
+            file artifacts/${ASSET_NAME} || true
+            ar t artifacts/${ASSET_NAME}
+          else
+            echo "No deb found to verify"; exit 2
+          fi
+
+      - name: Run Python verification
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install -r requirements.txt || true
+          python3 scripts/verify_apps.py || true
+
+      - name: Upload and replace release asset
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN || secrets.GITHUB_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          # Use a PAT with repo scope if you want to replace assets in a release.
+          python3 scripts/replace_release_asset.py --owner "$REPO_OWNER" --repo "$REPO_NAME" --tag "$RELEASE_TAG" --asset "artifacts/${ASSET_NAME}" --name "$ASSET_NAME" --token "${GH_PAT:-${GITHUB_TOKEN}}"
+
+      - name: Run release check
+        run: |
+          python3 scripts/check_github_releases.py || true
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: rebuilt-deb
+          path: artifacts/${ASSET_NAME}

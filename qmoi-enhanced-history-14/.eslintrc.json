@@ -1,0 +1,133 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "ignorePatterns": [
+    "_archive_qmoi-enhanced",
+    "d",
+    "app",
+    "components",
+    "dashboard",
+    "lib",
+    "mobile",
+    "huggingface_space",
+    "scripts",
+    "pwa_apps",
+    "earnvault",
+    "hooks",
+    "__tests__",
+    "tests",
+    "test*.js",
+    "transfer-money.js",
+    "test-*.js",
+    "*.test.js",
+    "*.test.ts",
+    "*.test.tsx"
+  ],
+  "globals": {
+    "Request": "readonly",
+    "URL": "readonly",
+    "URLSearchParams": "readonly",
+    "NextRequest": "readonly",
+    "NextResponse": "readonly",
+    "Buffer": "readonly",
+    "Headers": "readonly",
+    "AbortController": "readonly",
+    "AbortSignal": "readonly",
+    "EventSource": "readonly",
+    "FormData": "readonly",
+    "FileReader": "readonly",
+    "EventListener": "readonly",
+    "Document": "readonly",
+    "document": "readonly",
+    "Window": "readonly",
+    "NodeJS": "readonly",
+    "fetch": "readonly",
+    "ReadableStream": "readonly"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "react"],
+  "rules": {
+    "no-undef": "off",
+    "no-case-declarations": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "no-useless-escape": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^(?:_|req|res|next|params|query|options|error|err|metrics|discussion|data|filters|hf|local|tags)$",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "no-console": ["warn", { "allow": ["warn", "error"] }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "overrides": [
+    {
+      "files": ["**/__tests__/**", "**/*.test.{js,ts,tsx}", "tests/**"],
+      "env": { "jest": true }
+    },
+    {
+      "files": [
+        "scripts/**",
+        "tools/**",
+        "watchdebug.js",
+        "start-watchdebug.js"
+      ],
+      "parserOptions": { "sourceType": "script" },
+      "env": { "node": true },
+      "globals": { "fetch": "readonly", "URL": "readonly" }
+    },
+    {
+      "files": ["app/api/**", "**/app/api/**"],
+      "globals": {
+        "Request": "readonly",
+        "Headers": "readonly",
+        "URLSearchParams": "readonly",
+        "NextRequest": "readonly",
+        "NextResponse": "readonly",
+        "AbortController": "readonly",
+        "AbortSignal": "readonly",
+        "Buffer": "readonly",
+        "fetch": "readonly",
+        "ReadableStream": "readonly"
+      },
+      "rules": {
+        "no-undef": "off",
+        "no-useless-escape": "off",
+        "no-empty": "warn",
+        "no-case-declarations": "off",
+        "@typescript-eslint/no-require-imports": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
+        "@typescript-eslint/no-empty-object-type": "off",
+        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off"
+      }
+    }
+  ]
+}

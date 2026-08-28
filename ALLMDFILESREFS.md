@@ -39,6 +39,14 @@ path, including markdown files absent from the current checkout, and classify it
 as `QE`, `AQ`, `BOTH`, `HISTORICAL`, or `CONFLICT`. This keeps the index complete
 without copying stale historical files into production.
 
+The materialized copy of that complete source is
+`qmoi-enhanced-history-14/`. Its `.md` files are historical inventory inputs
+and must remain discoverable during every merge audit. The agent must compare
+the live QE and AQ inventories with both the historical Git ref and this
+materialized snapshot, including paths that are currently unused or absent
+from the active checkout. Any mismatch is recorded as an addition, omission,
+duplicate, or conflict before merge authorization.
+
 ## Current root inventory and canonical ownership
 - Root docs: README.md, BUILD.md, INSTALL.md, DOWNLOAD.md, PLATFORM_REQUIREMENTS.md, ALLPLATFORMSDEVICE.md, ACCOUNTABILITY.md, SYNC.md, MERGE.md, MODELEVOLUTIONO.md, QMOI_MODEL_CARD.md, QMOI_REALTIME_MEMORY_INDEX.md, STYLES.md, MONITORING_GUIDE.md, OLLAMA_AUTOMATION_GUIDE.md, OLLAMA_ENHANCEMENT_COMPLETE.md, OLLAMA_ENHANCEMENT_SUCCESS.md, GITHUB_SETUP_COMPLETE.md, IMPLEMENTATION_COMPLETE.md, SESSION_COMPLETION_REPORT.md, PHASE_1_4_COMPLETION_SUMMARY.md, RESILIENCE_AUTO_HEALING.md, TEST_ENHANCEMENTS.md, TREE_FULL_STRUCTURE.md, ALLMDFILESREFS.md, oe.md, or.md, ollama.md, github.md, zx.txt, QTEAM.md, API.md, ENDPOINTS.md, ROUTES.md, ALLAUTO.md, AUTODEV.md, UNIVERSALS.md, QMOIAI.md, QCITY.md, QMOISPACE.md, QALPHA.md, QMOIAIUI.md, QCITYUI.md, QMOISPACEUI.md, QALPHAUI.md, ALLFRONTEND.md, ALLBACKEND.md, ALLPORTS.md
 - Directories: .github, scripts, tests, ollamatracks, and the repo root itself
