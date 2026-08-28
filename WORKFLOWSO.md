@@ -41,6 +41,11 @@ when authorized, telemetry, checkpoint, artifact upload, and final contract
 gate. Monitor, sync, and merge workflows observe or reconcile this result; they
 do not replace it or start competing Ollama servers.
 
+Checkpoint evidence is written in both human-readable `resumefromhere.txt` and
+machine-readable `ollamatracks/checkpoint.json`. Resume data is treated as
+untrusted until its status and evidence are parsed; failed or incomplete
+contracts remain failed and cannot be promoted to success.
+
 ## Overview
 
 This document provides comprehensive documentation for all 8 GitHub Actions workflows in the qmoi-enhanced repository with ADVANCED AUTO-HEALING, AUTO-RETRY, and AUTOMATIC AGENT TRIGGERING capabilities.

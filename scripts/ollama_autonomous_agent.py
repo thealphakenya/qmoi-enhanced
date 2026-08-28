@@ -2145,6 +2145,13 @@ class OllamaAutonomousAgent:
 
     SUPPORTED_APPS = SUPPORTED_APPS
 
+    TRACKER_STATES = {
+        "QUEUED", "INITIALIZING", "OLLAMA_STARTING", "OLLAMA_HEALTHY",
+        "MODEL_LOADING", "MODEL_READY", "INFERENCE_TESTING", "LLM_CODING",
+        "VALIDATING", "REPAIRING", "CHECKPOINTING", "SUCCESS", "FAILED",
+        "BLOCKED",
+    }
+
     def __init__(
         self,
         base_path: Path | str | None = None,
@@ -2509,6 +2516,24 @@ All timestamps use UTC ISO-8601 format.
         )
 
         return record
+
+    def record_tracker_state(
+        self,
+        state: str,
+        message: str,
+        details: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        """Record one of the documented lifecycle states."""
+        normalized = str(state).upper()
+        if normalized not in self.TRACKER_STATES:
+            raise ValueError(f"Unsupported tracker state: {state}")
+        return self.record_tracker_event(
+            normalized.lower(),
+            message,
+            status=normalized,
+            phase="lifecycle",
+            details=details,
+        )
 
     # ------------------------------------------------------------------------
     # PLATFORM VALIDATION
@@ -3054,8 +3079,25 @@ All timestamps use UTC ISO-8601 format.
             Sequence[str]
         ] = None,
         error: Optional[str] = None,
+        evidence: Optional[Mapping[str, Any]] = None,
     ) -> Path:
         steps = list(completed_steps or [])
+        checkpoint_evidence = {
+            "repository_commit": os.getenv("GITHUB_SHA"),
+            "workflow_run": os.getenv("GITHUB_RUN_ID"),
+            "iteration": self.results.get("llm_iterations", 0),
+            "model": self.ollama.model,
+            "ollama_host": self.ollama.host,
+            "ollama_health": self.results.get("ollama_health"),
+            "task": self.results.get("current_task"),
+            "files_inspected": self.results.get("files_analyzed", []),
+            "files_changed": self.results.get("files_modified", []),
+            "tests_run": self.results.get("tests_after"),
+            "test_result": self.results.get("validation_passed"),
+            "repair_state": status,
+            "failure_fingerprint": self.results.get("failure_fingerprint"),
+            **dict(evidence or {}),
+        }
 
         content = [
             "# resumefromhere",
@@ -3083,6 +3125,23 @@ All timestamps use UTC ISO-8601 format.
         safe_text_write(
             self.resume_path,
             "\n".join(content) + "\n",
+        )
+
+        safe_json_write(
+            self.tracker_dir / "checkpoint.json",
+            {
+                "status": status,
+                "timestamp": utc_iso(),
+                "completed_steps": steps,
+                "error": error,
+                **checkpoint_evidence,
+            },
+        )
+
+        self.record_tracker_state(
+            "CHECKPOINTING",
+            f"Checkpoint recorded: {status}",
+            details=checkpoint_evidence,
         )
 
         self.record_tracker_event(

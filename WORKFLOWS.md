@@ -30,6 +30,9 @@ Set `OLLAMA_APPLY_REPAIRS=true` only in a trusted, explicitly authorized run. Sc
 ## Evidence
 
 Diagnostics live under `ollamatracks/`, including `OLLAMA_HEALTH.json`, `OLLAMA_SUCCESS.json`, telemetry, logs, and resume state. Failed or blocked runs upload diagnostics and do not emit success.
+`checkpoint.json` records the commit, workflow run, iteration, model, Ollama
+health, task, inspected/changed files, tests, repair state, and failure
+fingerprint needed for trusted resume.
 
 ## Sister Repository
 

@@ -478,6 +478,21 @@ class TestResumeCheckpoint:
         assert "platform validation" in content.lower()
         assert "feature validation" in content.lower()
         assert "github monitoring" in content.lower()
+        checkpoint = tmp_path / "ollamatracks" / "checkpoint.json"
+        assert checkpoint.exists()
+        data = json.loads(checkpoint.read_text())
+        assert data["status"] == "ready"
+        assert "repair_state" in data
+
+    def test_tracker_state_rejects_unknown_states(self, tmp_path):
+        agent = OllamaAutonomousAgent(tmp_path)
+        with pytest.raises(ValueError):
+            agent.record_tracker_state("UNKNOWN", "invalid")
+
+    def test_tracker_state_records_documented_lifecycle_state(self, tmp_path):
+        agent = OllamaAutonomousAgent(tmp_path)
+        event = agent.record_tracker_state("OLLAMA_HEALTHY", "health passed")
+        assert event["status"] == "OLLAMA_HEALTHY"
 
     def test_autonomous_agent_trigger_workflow_exists(self):
         """A successful validation run should automatically trigger the autonomous agent."""

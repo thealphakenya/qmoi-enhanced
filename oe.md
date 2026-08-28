@@ -929,7 +929,7 @@ COMPLETED IN THIS PASS
 
 REMAINING ACCEPTANCE CHECKS
 - Complete the all-workflow audit and remove only failure masking that can hide required health/LLM failures.
-- Add explicit tracker state transition tests and enrich checkpoint schema with commit, run, model, files, tests, and failure fingerprint.
+- [DONE] Added explicit tracker state validation/tests and enriched checkpoint schema with commit, run, model, health, task, files, tests, repair state, and failure fingerprint.
 - Add remote branch/Alpha-Q-ai inventory generation and reviewable sync implementation; never blindly copy stale snapshots.
 - Update model-evolution Q COUNTDOWN documentation and all workflow/agent documentation from generated evidence.
 - Run the complete test suite, YAML validation, compile checks, secret scan, recursion scan, and a real Ollama integration run where the model is available.
