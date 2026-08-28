@@ -48,6 +48,21 @@ GitHub also reports failures for remote-only workflows such as `build.yml`,
 others that are not present in this checkout. Those workflows remain unresolved
 and are deliberately not reported as successful.
 
+## Published Commit Run Status
+
+Published commit: `d3c71d082915d2a8084c7d0e516165ba8c0c3e3e`.
+
+| Workflow | Run | Current result |
+| --- | ---: | --- |
+| Branch Sync Monitor & Auto-Update | `33149284819` | SUCCESS |
+| Ollama PR Validation - 293+ Platform Features | `33149284728` | IN PROGRESS; workflow integrity and documentation jobs passed |
+| Branch Sync Monitor & Auto-Update | `33149387928` | IN PROGRESS |
+| Ollama Autonomous Agent & Live Tracker | not yet triggered for this SHA | PENDING validation completion |
+
+The autonomous workflow is intentionally not marked successful yet. It must
+run against this published SHA and produce a verified `OLLAMA_SUCCESS.json`
+showing real model inference and post-LLM validation.
+
 ## Current active runs
 
 The two most recent GitHub Actions runs currently in motion are:
