@@ -63,6 +63,11 @@ The autonomous workflow is intentionally not marked successful yet. It must
 run against this published SHA and produce a verified `OLLAMA_SUCCESS.json`
 showing real model inference and post-LLM validation.
 
+The hosted validation run `33149463193` completed successfully, including all
+platform jobs, tests, documentation, final validation, and autonomous dispatch.
+Autonomous run `33149850525` is still executing and has not reached Ollama
+bootstrap, so no real-inference success claim is made yet.
+
 ## Current active runs
 
 The two most recent GitHub Actions runs currently in motion are:
