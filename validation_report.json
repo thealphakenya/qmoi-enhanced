@@ -2681,13 +2681,13 @@
       }
     }
   },
-  "generated": "2026-08-28T08:15:15.422827Z",
+  "generated": "2026-08-29T05:34:26.067357Z",
   "platforms": {
     "android": {
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 0.0,
+      "duration_seconds": 1e-06,
       "manifests_present": true,
       "passed": true,
       "platform": "android",
@@ -2845,7 +2845,7 @@
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 1e-06,
+      "duration_seconds": 2e-06,
       "manifests_present": true,
       "passed": true,
       "platform": "linux",
@@ -2921,7 +2921,7 @@
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 2e-06,
+      "duration_seconds": 3e-06,
       "manifests_present": true,
       "passed": true,
       "platform": "macos",
@@ -3073,7 +3073,7 @@
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 4e-06,
+      "duration_seconds": 5e-06,
       "manifests_present": true,
       "passed": true,
       "platform": "windows",
@@ -3219,7 +3219,8 @@
         "API.md",
         "ENDPOINTS.md",
         "ROUTES.md",
-        "MODELEVOLUTIONO.md"
+        "MODELEVOLUTIONO.md",
+        "ALLMDFILESREFS.md"
       ],
       "owner": "thealphakenya",
       "repositories": [
@@ -3230,7 +3231,7 @@
       "sync_strategy": "main -> autosync-backup -> cross-repository",
       "target_repository": "thealphakenya/Alpha-Q-ai"
     },
-    "generated": "2026-08-28T08:15:15.422432Z",
+    "generated": "2026-08-29T05:34:26.067008Z",
     "proof": {
       "alpha_q_ai_included": true,
       "applications_per_platform": 4,

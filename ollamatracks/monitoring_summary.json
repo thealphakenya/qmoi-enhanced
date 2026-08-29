@@ -1,26 +1,11 @@
 {
   "details": {
-    "applications_per_platform": 4,
-    "apps": [
-      "qmoiaiui",
-      "qcity",
-      "qmoi-space",
-      "qalpha"
-    ],
-    "contract": "platform -> exactly four applications -> feature -> boolean",
     "feature_count": 374,
-    "platforms": [
-      "windows",
-      "macos",
-      "linux",
-      "ios",
-      "android",
-      "web"
-    ]
+    "proof_path": "/workspaces/qmoi-enhanced/github_proof_contract.json"
   },
-  "event": "platform_feature_validation_complete",
-  "message": "Platform-specific feature validation completed.",
-  "phase": "feature_validation",
+  "event": "validation_pipeline_complete",
+  "message": "Validation pipeline completed.",
+  "phase": "validation",
   "status": "passed",
-  "timestamp_utc": "2026-08-28T08:15:15.614099Z"
+  "timestamp_utc": "2026-08-29T05:34:26.072661Z"
 }
