@@ -1,11 +1,13 @@
 # QMOI Realtime Memory Index
 
-Generated: 2026-08-29T05:34:26.045799Z
+Generated: 2026-08-29T06:55:06.398934Z
 
-Files Tracked: 10168
+Files Tracked: 10187
 
 ## Files
 
+- `.env`
+- `.env.example`
 - `.github/workflows/auto-merge-automated-pr.yml`
 - `.github/workflows/branch-sync.yml`
 - `.github/workflows/ollama-autonomous-agent-realtime-monitor.yml`
@@ -14,6 +16,7 @@ Files Tracked: 10168
 - `.github/workflows/ollama-pr-validation.yml`
 - `.github/workflows/pr-monitor.yml`
 - `.github/workflows/workflow-tracker.yml`
+- `.gitignore`
 - `.qmoi_memory_index.json`
 - `ACCOUNTABILITY.md`
 - `ADVANCEMENT.md`
@@ -30,6 +33,8 @@ Files Tracked: 10168
 - `ENDPOINTS.md`
 - `ENHANCEMENT_SESSION_2026_08_18.md`
 - `FINAL_SESSION_COMPLETION_REPORT.md`
+- `FINAL_VALIDATION_EVIDENCE_2026_08_29.md`
+- `GITHUB_ACTIONS_EXECUTION_GUIDE.md`
 - `GITHUB_SETUP_COMPLETE.md`
 - `IMPLEMENTATION_COMPLETE.md`
 - `INSTALL.md`
@@ -37,6 +42,9 @@ Files Tracked: 10168
 - `MODELEVOLUTIONO.md`
 - `MODEL_CARD.md`
 - `MONITORING_GUIDE.md`
+- `MONITORING_INDEX.md`
+- `MONITORING_SUMMARY.md`
+- `MONITORING_VERIFICATION_CHECKLIST.txt`
 - `OLLAMA_AUTOMATION_GUIDE.md`
 - `OLLAMA_ENHANCEMENT_COMPLETE.md`
 - `OLLAMA_ENHANCEMENT_SUCCESS.md`
@@ -54,6 +62,8 @@ Files Tracked: 10168
 - `QMOI_REALTIME_MEMORY_INDEX.md`
 - `QTEAM.md`
 - `README.md`
+- `REAL_TIME_MONITORING_GUIDE.md`
+- `REAL_TIME_MONITORING_README.md`
 - `RESILIENCE_AUTO_HEALING.md`
 - `ROUTES.md`
 - `SESSION_COMPLETION_REPORT.md`
@@ -65,9 +75,12 @@ Files Tracked: 10168
 - `UNIVERSALS.md`
 - `WORKFLOWS.md`
 - `WORKFLOWSO.md`
+- `WORKFLOW_EXECUTION_PLAN.md`
+- `WORKFLOW_STATUS_DASHBOARD.md`
 - `error2.txt`
 - `github.md`
 - `github_proof_contract.json`
+- `monitor.md`
 - `oe.md`
 - `ollama.md`
 - `ollama_agent.log`
@@ -927,6 +940,7 @@ Files Tracked: 10168
 - `qmoi-enhanced-history-14/.qmoi_state/recovery_memory.json`
 - `qmoi-enhanced-history-14/.qmoi_state/secure_credentials.enc`
 - `qmoi-enhanced-history-14/.qmoi_state/wallets.json`
+- `qmoi-enhanced-history-14/.qmoi_validation/qcity_enhancer.log`
 - `qmoi-enhanced-history-14/.secrets/credentials.json`
 - `qmoi-enhanced-history-14/.spec`
 - `qmoi-enhanced-history-14/.sync-log`
@@ -6808,6 +6822,7 @@ Files Tracked: 10168
 - `qmoi-enhanced-history-14/qmoi-test-runner.cjs`
 - `qmoi-enhanced-history-14/qmoi-test-runner.js`
 - `qmoi-enhanced-history-14/qmoi-ultimate-push.log`
+- `qmoi-enhanced-history-14/qmoi.db`
 - `qmoi-enhanced-history-14/qmoi/__init__.py`
 - `qmoi-enhanced-history-14/qmoi/claude_integration.py`
 - `qmoi-enhanced-history-14/qmoi/local_model_manager.py`
@@ -10163,14 +10178,18 @@ Files Tracked: 10168
 - `scripts/github-auto-setup.sh`
 - `scripts/github_auto_setup.py`
 - `scripts/monitor.sh`
+- `scripts/monitor_workflows.py`
 - `scripts/ollama_autonomous_agent.py`
 - `scripts/ollama_runtime.py`
 - `scripts/realtime_workflow_monitor.py`
 - `scripts/resilience_auto_healing.py`
+- `scripts/validate_workflows.py`
+- `scripts/workflow_status_dashboard.py`
 - `test-results.txt`
 - `tests/test_enhanced_tracking_and_workflows.py`
 - `tests/test_ollama_autonomous_agent.py`
 - `tests/test_ollama_enhanced_features.py`
 - `tests/test_ollama_runtime.py`
+- `trigger.md`
 - `validation_report.json`
 - `zx.txt`

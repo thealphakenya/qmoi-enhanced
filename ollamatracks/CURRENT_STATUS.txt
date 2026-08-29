@@ -1,5 +1,9 @@
-STATUS: passed
-EVENT: validation_pipeline_complete
-MESSAGE: Validation pipeline completed.
-PHASE: validation
-Timestamp: 2026-08-29T05:34:26.072661Z
+QMOI autonomous agent status: running
+Timestamp: 2026-08-29T06:55:06.494995Z
+gh api -H 'Accept: application/vnd.github+json' \
+  /repos/thealphakenya/qmoi-enhanced/actions/permissions \
+  --jq '{enabled,allowed_actions}'gh api -H 'Accept: application/vnd.github+json' \
+  /repos/thealphakenya/qmoi-enhanced/actions/permissions \
+  --jq '{enabled,allowed_actions}'gh api -H 'Accept: application/vnd.github+json' \
+  /repos/thealphakenya/qmoi-enhanced/actions/permissions \
+  --jq '{enabled,allowed_actions}'gh workflow run ollama-pr-validation.yml -R thealphakenya/qmoi-enhanced --ref main

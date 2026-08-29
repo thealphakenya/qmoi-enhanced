@@ -219,53 +219,46 @@ class PythonRepairManager:
 
 class FileCorruptionHandler:
     """Handles corrupted file detection and recovery."""
-    
+
     def __init__(self, backup_dir: Optional[Path] = None):
         """Initialize with optional backup directory."""
         self.backup_dir = backup_dir or Path.home() / ".qmoi_backups"
-        self.backup_dir.mkdir(exist_ok=True)
-    
+        self.backup_dir.mkdir(parents=True, exist_ok=True)
+
     @staticmethod
     def detect_corruption(file_path: Path) -> Tuple[bool, Optional[str]]:
         """Detect if file is corrupted (binary data in text file)."""
         try:
             with open(file_path, 'rb') as f:
                 chunk = f.read(512)
-            
-            # Check for null bytes (typical binary marker)
+
             if b'\x00' in chunk:
                 return True, "Binary null bytes detected in text file"
-            
-            # Check if file can be decoded as text
+
             try:
                 chunk.decode('utf-8')
             except UnicodeDecodeError:
                 return True, "File contains non-UTF8 data"
-            
+
             return False, None
-        
         except Exception as e:
             return True, str(e)
-    
-    def recover_from_corruption(self, file_path: Path) -> Tuple[bool, Optional[str]]:
-        """Attempt to recover from file corruption."""
-        # Check backup
-        backup_path = self.backup_dir / file_path.name
-        
-        if backup_path.exists():
-            try:
+
+    def recover_from_corruption(self, file_path: Path) -> Tuple[bool, str]:
+        """Recover a corrupted file by restoring a backup or truncating it."""
+        try:
+            backup_path = self.backup_dir / f"{file_path.name}.bak"
+            if backup_path.exists():
                 shutil.copy(backup_path, file_path)
                 logger.info(f"✓ Recovered {file_path} from backup")
                 return True, f"Recovered from backup: {backup_path}"
-            except Exception as e:
-                logger.warning(f"✗ Backup recovery failed: {e}")
-        
-        # If no backup, truncate file
+        except Exception as e:
+            logger.warning(f"✗ Backup recovery failed: {e}")
+
         try:
-            file_path.write_text("# File corrupted and recovered\n# Please restore contents\n")
+            file_path.write_text("# File corrupted and recovered\n# Please restore contents\n", encoding="utf-8")
             logger.info(f"✓ Truncated corrupted file: {file_path}")
             return True, "File truncated, contents cleared"
-        
         except Exception as e:
             logger.error(f"✗ Recovery failed for {file_path}: {e}")
             return False, str(e)
