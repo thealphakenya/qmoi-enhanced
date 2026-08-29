@@ -1,9 +1,42 @@
-QMOI autonomous agent status: running
-Timestamp: 2026-08-29T06:55:06.494995Z
-gh api -H 'Accept: application/vnd.github+json' \
-  /repos/thealphakenya/qmoi-enhanced/actions/permissions \
-  --jq '{enabled,allowed_actions}'gh api -H 'Accept: application/vnd.github+json' \
-  /repos/thealphakenya/qmoi-enhanced/actions/permissions \
-  --jq '{enabled,allowed_actions}'gh api -H 'Accept: application/vnd.github+json' \
-  /repos/thealphakenya/qmoi-enhanced/actions/permissions \
-  --jq '{enabled,allowed_actions}'gh workflow run ollama-pr-validation.yml -R thealphakenya/qmoi-enhanced --ref main
+OLLAMA AUTONOMOUS AGENT - CURRENT STATUS
+=========================================
+
+Timestamp UTC: 2026-08-29T07:50:56.389Z
+
+Repository: thealphakenya/qmoi-enhanced
+Default branch: main
+
+Tracker workflow: Ollama Autonomous Agent - PR Realtime Tracker
+Tracker run ID: 33241726174
+Tracker attempt: undefined
+Trigger event: schedule
+
+Overall state: IDLE
+
+VALIDATION WORKFLOW
+-------------------
+Workflow: Ollama PR Validation - 293+ Platform Features
+Workflow ID: 333901991
+Latest run: 33239754280
+Status: completed
+Conclusion: success
+
+AUTONOMOUS AGENT WORKFLOW
+--------------------------
+Workflow: Ollama Autonomous Agent Trigger & Live Tracker
+Workflow ID: NOT_FOUND
+Latest run: NONE
+Status: NONE
+Conclusion: NONE
+
+PULL REQUESTS
+-------------
+Open PRs inspected: 5
+
+RECONCILIATION
+--------------
+Discovered active runs: 1
+Merged active runs: 1
+Snapshot hash: f74eefa07660a11088419a9121ca7bd7c70cb080f0836ca9b509ecc5d1317c61
+
+Last update UTC: 2026-08-29T07:50:56.389Z
