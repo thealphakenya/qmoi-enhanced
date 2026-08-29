@@ -91,6 +91,213 @@ The two most recent GitHub Actions runs currently in motion are:
 - Tracker workflow: https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/workflow-tracker.yml
 - Repository actions dashboard: https://github.com/thealphakenya/qmoi-enhanced/actions
 
+## Real-Time Monitoring Dashboard (2026-08-29)
+
+### Quick Status Overview
+
+| Workflow | Status | Last Run | Duration | Next Check |
+|----------|--------|----------|----------|-----------|
+| Ollama PR Validation | ⏳ PENDING | - | - | Push to main |
+| Ollama Master Orchestrator | ⏳ PENDING | - | - | After PR validation |
+| Ollama Autonomous Agent | ⏳ PENDING | - | - | After orchestrator |
+| Realtime Monitor | ⏳ PENDING | - | - | Every 5 min |
+| Branch Sync | ⏳ PENDING | - | - | Every 12 hours |
+| Auto-Merge PR | ⏳ PENDING | - | - | On approved PR |
+| PR Monitor | ⏳ PENDING | - | - | On PR events |
+| Workflow Tracker | ⏳ PENDING | - | - | All events |
+
+**Key Indicators**:
+- ✅ = SUCCESS (workflow passed)
+- ❌ = FAILED (workflow failed)
+- 🔄 = IN PROGRESS (currently running)
+- ⏳ = PENDING (queued or waiting)
+- ❓ = UNKNOWN (not run yet)
+
+### How to Monitor Live
+
+#### Option 1: GitHub Web UI (Recommended)
+1. Go to: https://github.com/thealphakenya/qmoi-enhanced/actions
+2. Watch workflows execute in real-time
+3. Click individual jobs for detailed logs
+4. Check artifacts when workflow completes
+
+#### Option 2: GitHub CLI
+```bash
+# List latest runs
+gh run list -R thealphakenya/qmoi-enhanced -L 8
+
+# Watch specific run
+gh run watch <RUN_ID> -R thealphakenya/qmoi-enhanced
+
+# Download artifacts
+gh run download <RUN_ID> -R thealphakenya/qmoi-enhanced -D ./artifacts
+```
+
+#### Option 3: Python Monitor Script
+```bash
+export GITHUB_TOKEN=<your-github-token>
+python scripts/monitor_workflows.py
+```
+
+### Critical Success Checkpoints
+
+#### ✅ Phase 1: PR Validation (Target: 5-10 minutes)
+
+Watch for these jobs to complete ✅:
+1. **workflow-integrity** - Verify workflow structure
+2. **validate-platforms** - Test all 6 platforms
+3. **validate-features** - Verify 293+ features
+4. **test-suite** - Run 173 tests
+5. **validate-documentation** - Check required files
+6. **final-validation** - Generate proof contract
+
+**Success Criteria**: All jobs green + `github_proof_contract.json` shows `status: ready_for_github`
+
+**Failure**: ❌ If any job fails, check logs and don't proceed to next phase
+
+#### ✅ Phase 2: Master Orchestrator (Target: 3-5 minutes)
+
+Auto-triggered after PR validation succeeds.
+
+Watch for:
+1. **pre-flight-checks** - Environment verification
+2. **comprehensive-validation** - Repeat validation
+3. **dispatch-autonomous-agent** - Trigger agent
+
+**Success Criteria**: All jobs green + Agent workflow triggered
+
+#### ✅ Phase 3: Ollama Autonomous Agent (Target: 20-120 minutes) ⭐ CRITICAL
+
+**Most important phase - Real Ollama + Real LLM inference**
+
+Watch for in logs:
+```
+✅ Ollama server is healthy at http://127.0.0.1:11434
+✅ Model qwen2.5-coder:3b available
+✅ Inference test: OLLAMA_QMOI_HEALTH_OK received
+✅ Autonomous agent executed successfully.
+✅ Ollama AI has started coding.
+✅ Autonomous iterations: X
+✅ Files analyzed: X
+✅ Files modified: X
+✅ Final validation: PASSED
+```
+
+**Mandatory Success Contract**: Download `ollamatracks/OLLAMA_SUCCESS.json` artifact
+
+File MUST contain:
+```json
+{
+  "final_status": "SUCCESS",
+  "ollama_started": true,
+  "ollama_healthy": true,
+  "model_available": true,
+  "inference_verified": true,
+  "llm_coding_started": true,
+  "validation_passed": true,
+  "checkpoint_created": true
+}
+```
+
+**Failure Detection**: ❌ If contract missing or `final_status != "SUCCESS"`, workflow failed
+
+### Telemetry & Diagnostics
+
+#### Live Status File: ollamatracks/CURRENT_STATUS.txt
+Updates in real-time during execution:
+```
+QMOI AUTONOMOUS AGENT
+State: INITIALIZING | OLLAMA_STARTING | OLLAMA_HEALTHY | MODEL_LOADING | MODEL_READY | 
+       INFERENCE_TESTING | LLM_CODING | VALIDATING | REPAIRING | CHECKPOINTING | 
+       SUCCESS | FAILED | BLOCKED
+```
+
+#### Event Log: ollamatracks/telemetry.jsonl
+Append-only log with one JSON event per line:
+- WORKFLOW_START
+- OLLAMA_BOOTSTRAP_START / OLLAMA_STARTED / OLLAMA_HEALTHY
+- MODEL_CHECK / MODEL_AVAILABLE / MODEL_PULLING
+- INFERENCE_TEST_START / INFERENCE_SUCCESS / INFERENCE_FAILED
+- LLM_CODING_START / LLM_CODING_ITERATION_X
+- VALIDATION_START / VALIDATION_SUCCESS / VALIDATION_FAILED
+- SUCCESS_CONTRACT_CREATED
+
+#### Checkpoint: ollamatracks/checkpoint.json
+Machine-readable checkpoint for resumable execution:
+```json
+{
+  "last_successful_state": "INFERENCE_VERIFIED",
+  "iteration": 1,
+  "files_modified": [...],
+  "timestamp": "2026-08-29T12:00:00Z",
+  "can_resume": true
+}
+```
+
+### Debugging Failed Workflows
+
+#### PR Validation Failed?
+1. Check which job failed (job name highlighted in red)
+2. Click job name to expand logs
+3. Search for "FAILED" or "ERROR"
+4. Download artifact with test output
+5. Run locally: `python -m pytest tests -v`
+
+#### Autonomous Agent Failed?
+1. Download `ollamatracks/` artifact
+2. Check `ollama-server.log` for Ollama startup issues
+3. Check `agent_run_*.log` for execution errors
+4. Check `telemetry.jsonl` for event sequence
+5. Verify `OLLAMA_SUCCESS.json` doesn't exist or has `final_status: FAILED`
+
+#### Branch Sync Failed?
+1. Check logs for conflict markers
+2. Review `MERGE.md` for conflict details
+3. Check created sync PR for details
+
+### Expected Timing
+
+| Phase | Min | Max | Notes |
+|-------|-----|-----|-------|
+| PR Validation Setup | 1 | 2 | Workflow queue + start |
+| Platform/Feature/Test Jobs | 2 | 5 | Run in parallel |
+| Final Validation | 1 | 2 | Generate proof |
+| **PR Validation Total** | **5** | **10** | |
+| Orchestrator Setup | 1 | 2 | Preflight |
+| Orchestrator Validation | 2 | 3 | Repeat validation |
+| Agent Dispatch | 1 | 1 | Queue agent |
+| **Orchestrator Total** | **3** | **5** | |
+| Ollama Bootstrap | 1 | 5 | May need install |
+| Model Pull | 1 | 10 | Depends on network |
+| Inference Test | 1 | 2 | Quick check |
+| Autonomous Loop | 5 | 30 | Per iteration (default 1-3) |
+| Post-Loop Validation | 2 | 3 | Final checks |
+| Contract Generation | 1 | 1 | Write JSON |
+| **Agent Total** | **20** | **120** | Most runs: 20-60 min |
+| **Grand Total** | **30** | **160** | |
+
+### Automated Monitoring Commands
+
+```bash
+# Watch all workflows in a loop
+watch -n 60 'gh run list -R thealphakenya/qmoi-enhanced -L 8 --json status,name,conclusion'
+
+# Monitor specific workflow
+while true; do
+  echo "=== $(date) ==="
+  gh run view 12345 -R thealphakenya/qmoi-enhanced --json status,jobs
+  sleep 30
+done
+
+# Get run artifacts when complete
+gh run download 12345 -R thealphakenya/qmoi-enhanced -D ./artifacts
+
+# Check OLLAMA_SUCCESS.json in artifacts
+cat artifacts/ollamatracks/OLLAMA_SUCCESS.json | jq '.final_status'
+```
+
+---
+
 ## Recent runs and outcomes
 
 | Run ID | Workflow | Status | Outcome | Notes |
@@ -98,6 +305,20 @@ The two most recent GitHub Actions runs currently in motion are:
 | 31844735339 | Ollama PR Validation - 293+ Platform Features | in_progress | pending | Latest validation run; still active after the queued-monitor fix |
 | 31844735360 | Branch Sync Monitor & Auto-Update | in_progress | pending | Latest branch sync and repo coordination run |
 | 31844734643 | .github/workflows/auto-merge-automated-pr.yml | completed | failure | Post-validation automation workflow failed during the latest push |
+
+---
+
+## Monitoring Status (2026-08-29)
+
+**Current Setup**: ✅ All workflows ready for GitHub Actions execution
+
+**Next Steps**:
+1. Push code to trigger PR Validation
+2. Use monitoring dashboard above to watch progress
+3. Check each phase success criteria
+4. Verify OLLAMA_SUCCESS.json for final confirmation
+
+**Success Definition**: All workflows ✅ green + OLLAMA_SUCCESS.json with `final_status: SUCCESS`
 | 31844496909 | Branch Sync Monitor & Auto-Update | completed | failure | Scheduled sync run failed after the latest intervention cycle |
 | 31844475339 | Branch Sync Monitor & Auto-Update | completed | failure | Earlier branch sync attempt after monitoring hardening commit |
 | 31844475280 | Ollama PR Validation - 293+ Platform Features | in_progress | pending | Validation run remained active while monitor detection was being hardened |
