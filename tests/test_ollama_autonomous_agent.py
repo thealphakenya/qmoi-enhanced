@@ -416,6 +416,42 @@ class TestWorkflowMonitor:
         assert "number" in issued
 
 
+class TestSetupContractDocumentation:
+    """Tests ensuring the repo documents the production setup contract from oe.md."""
+
+    def test_oe_markdown_documents_github_hosted_agent_setup(self):
+        repo_root = Path(__file__).resolve().parent.parent
+        oe_text = (repo_root / "oe.md").read_text(encoding="utf-8")
+        required_terms = [
+            "GitHub-hosted",
+            "GITHUB_ACTIONS=true",
+            "QMOI_RUNTIME_MODE=github-hosted",
+            "QMOI_GITHUB_HOSTED=true",
+            "qwen2.5-coder:3b",
+            "Codespaces",
+            "resumefromhere.txt",
+            "ollamatracks/checkpoint.json",
+        ]
+        for term in required_terms:
+            assert term.lower() in oe_text.lower(), f"Missing setup requirement in oe.md: {term}"
+
+    def test_automation_guide_matches_production_setup_contract(self):
+        repo_root = Path(__file__).resolve().parent.parent
+        guide_text = (repo_root / "OLLAMA_AUTOMATION_GUIDE.md").read_text(encoding="utf-8")
+        required_terms = [
+            "GitHub-hosted",
+            "GITHUB_ACTIONS=true",
+            "QMOI_RUNTIME_MODE=github-hosted",
+            "QMOI_GITHUB_HOSTED=true",
+            "qwen2.5-coder:3b",
+            "ollamatracks",
+            "resumefromhere.txt",
+            "MAX_ITERATIONS",
+        ]
+        for term in required_terms:
+            assert term.lower() in guide_text.lower(), f"Missing production setup narrative in guide: {term}"
+
+
 class TestGitHubTokenConfiguration:
     """Tests for secure GitHub token resolution and masking."""
 

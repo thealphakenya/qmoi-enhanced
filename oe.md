@@ -26,6 +26,32 @@ history, files, directories, or implementations were included.
 As you continue, also ensure ollama autonomous agent and qmoi note everything
 in the historical branch and include all files and directories in merge audits.
 Yes. Give Copilot the following as one repository-wide implementation task. The key requirement is that Copilot must inspect the entire repository first, rather than blindly modifying only ollama-autonomous-agent.yml.
+
+## Ollama Autonomous Agent Setup Contract
+
+The production Ollama autonomous agent must be set up as a GitHub-hosted system,
+not as a local terminal script. The authoritative runtime is GitHub Actions.
+
+Required setup rules:
+
+1. Use GitHub-hosted Ubuntu runners as the production execution environment.
+2. Require `GITHUB_ACTIONS=true` before the agent is allowed to declare success.
+3. Set `QMOI_RUNTIME_MODE=github-hosted` and `QMOI_GITHUB_HOSTED=true` in the job environment.
+4. Treat local Codespaces, local shells, and dev containers as non-authoritative development environments only.
+5. Install or reuse Ollama from the runner environment, then start the local server on `http://127.0.0.1:11434`.
+6. Verify the Ollama API responds on `/api/tags` and `/api/version` before continuing.
+7. Use the default model `qwen2.5-coder:3b` unless explicitly overridden by environment variables or workflow inputs.
+8. Pull the model if it is missing and wait until it is available.
+9. Perform a real inference request and require the sentinel response `OLLAMA_QMOI_HEALTH_OK` or an exact equivalent proof.
+10. Record Ollama version, model, server health, model health, and inference latency in telemetry and proof artifacts.
+11. Keep all repository monitoring and checkpoint artifacts in `ollamatracks/`.
+12. Never emit `Autonomous agent executed successfully.` unless the runtime is GitHub-hosted and all proof checks are true.
+13. Keep the autonomous loop bounded by `MAX_ITERATIONS`, `MAX_TASKS_PER_ITERATION`, and `MAX_RECOVERY_ATTEMPTS`.
+14. Preserve resume/checkpoint state in `resumefromhere.txt` and `ollamatracks/checkpoint.json` for safe recovery.
+15. Maintain a repository-wide GitHub monitoring view for queued, in-progress, successful, and failed runs.
+
+The setup must support a clean Ubuntu GitHub Actions runner, and it must fail closed if the environment is not valid.
+
 Copy/paste this into Copilot Chat
 TASK: FULL REPOSITORY AUDIT AND PRODUCTION IMPLEMENTATION OF THE QMOI OLLAMA AUTONOMOUS CODING SYSTEM
 

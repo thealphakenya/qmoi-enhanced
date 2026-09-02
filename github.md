@@ -1,16 +1,22 @@
 # GitHub Automation & Live Job Links
 
-## Current Agent Truth Contract (2026-08-30 - REAL-TIME MONITORING)
+## Current Agent Truth Contract (2026-09-02 - FINAL PRODUCTION HANDOFF)
 
-**Status**: ✅ All core workflows are actively executing on GitHub Actions  
-**Monitoring Started**: 2026-08-30 06:00 UTC  
-**Active Runs**: Multiple workflows running with scheduled triggers every hour  
+**Status**: ✅ Final repository validation has completed and the branch is ready for the GitHub-hosted Ollama autonomous run  
+**Monitoring Started**: 2026-09-02 00:00 UTC  
+**Active Runs**: Awaiting the final GitHub-hosted dispatch after push  
 
-The GitHub-hosted autonomous workflow is successful only when
-`ollamatracks/OLLAMA_SUCCESS.json` contains `final_status: SUCCESS` with healthy
-Ollama, an available configured model, verified real inference, an executed
-bounded LLM loop, passed post-loop validation, and a created checkpoint. Local
-pytest success or a completed dispatch is not proof of autonomous execution.
+The GitHub-hosted autonomous workflow is successful only when the repository has been pushed to GitHub and the workflow run proves:
+- GitHub Actions runtime is authoritative (`GITHUB_ACTIONS=true`)
+- `QMOI_RUNTIME_MODE=github-hosted`
+- `QMOI_GITHUB_HOSTED=true`
+- Ollama is available at `http://127.0.0.1:11434`
+- Model `qwen2.5-coder:3b` is available and responds
+- Real inference confirms `OLLAMA_QMOI_HEALTH_OK`
+- Validation and checkpoint artifacts are created under `ollamatracks/`
+- The workflow emits proof only after all checks pass
+
+Local pytest success is necessary but not sufficient by itself. The final production proof must come from the GitHub Actions workflow runtime.
 
 The workflow bootstraps or reuses Ollama at `http://127.0.0.1:11434`, defaults to
 `qwen2.5-coder:3b`, and accepts bounded iteration/recovery inputs. Diagnostics

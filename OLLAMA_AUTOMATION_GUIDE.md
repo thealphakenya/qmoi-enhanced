@@ -10,6 +10,29 @@
 
 The QMOI Ollama Autonomous Agent is a sophisticated system that automates all aspects of build, test, validation, and deployment across 6 platforms (Windows, macOS, Linux, iOS, Android, Web) for 4 apps (QMOIAIUI, QCity, QMOI Space, QALPHA).
 
+## GitHub-hosted setup and production contract
+
+The autonomous agent is designed to run as a GitHub-hosted production system and must not be treated as a local terminal-only utility. The authoritative execution environment is GitHub Actions.
+
+Required setup flow:
+
+1. Run the workflow in a GitHub-hosted Ubuntu runner.
+2. Require `GITHUB_ACTIONS=true` before the workflow may declare success.
+3. Set `QMOI_RUNTIME_MODE=github-hosted` and `QMOI_GITHUB_HOSTED=true` in the job environment.
+4. Treat local Codespaces, dev containers, and ad hoc local terminals as non-authoritative and never production proof.
+5. Install or reuse Ollama on the runner, then start the local server at `http://127.0.0.1:11434`.
+6. Verify Ollama health through `/api/version` and `/api/tags`.
+7. Use the default model `qwen2.5-coder:3b` unless a workflow input or environment override is supplied.
+8. Pull the model when missing and wait until it is available.
+9. Run a real inference prompt and require a verified response such as `OLLAMA_QMOI_HEALTH_OK`.
+10. Write the proof data to `ollamatracks/OLLAMA_HEALTH.json`, `ollamatracks/OLLAMA_SUCCESS.json`, and `ollamatracks/checkpoint.json`.
+11. Keep the agent bounded by `MAX_ITERATIONS`, `MAX_TASKS_PER_ITERATION`, and `MAX_RECOVERY_ATTEMPTS`.
+12. Preserve resumable state in `resumefromhere.txt` and `ollamatracks/checkpoint.json`.
+13. Monitor repo-wide GitHub run state in real time and record queued, active, failed, and successful runs.
+14. Only print success messages when the runtime proof, model proof, inference proof, validation proof, and checkpoint proof all pass.
+
+This setup contract is the official source for GitHub-hosted execution and must be preserved in every run, CI workflow, and documentation update.
+
 ### Key Responsibilities
 
 **Before Each PR Merge:**
