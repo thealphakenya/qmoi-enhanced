@@ -22,11 +22,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -60,7 +60,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -70,11 +70,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -142,8 +142,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -155,8 +155,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -167,8 +167,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -183,8 +183,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -201,7 +201,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -214,11 +214,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -552,12 +552,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -584,12 +584,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -616,12 +616,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -648,12 +648,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -748,13 +748,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -867,12 +867,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -906,11 +906,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -944,7 +944,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -954,11 +954,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -1026,8 +1026,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -1039,8 +1039,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -1051,8 +1051,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -1067,8 +1067,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -1085,7 +1085,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -1098,11 +1098,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -1436,12 +1436,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -1468,12 +1468,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -1500,12 +1500,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -1532,12 +1532,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -1632,13 +1632,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -1751,12 +1751,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -1790,11 +1790,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -1828,7 +1828,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -1838,11 +1838,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -1910,8 +1910,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -1923,8 +1923,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -1935,8 +1935,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -1951,8 +1951,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -1969,7 +1969,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -1982,11 +1982,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -2320,12 +2320,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -2352,12 +2352,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -2384,12 +2384,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -2416,12 +2416,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -2516,13 +2516,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -2635,12 +2635,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -2674,11 +2674,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -2712,7 +2712,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -2722,11 +2722,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -2794,8 +2794,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -2807,8 +2807,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -2819,8 +2819,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -2835,8 +2835,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -2853,7 +2853,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -2866,11 +2866,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -3204,12 +3204,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -3236,12 +3236,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -3268,12 +3268,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -3300,12 +3300,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -3400,13 +3400,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -3519,12 +3519,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -3558,11 +3558,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -3596,7 +3596,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -3606,11 +3606,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -3678,8 +3678,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -3691,8 +3691,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -3703,8 +3703,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -3719,8 +3719,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -3737,7 +3737,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -3750,11 +3750,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -4088,12 +4088,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -4120,12 +4120,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -4152,12 +4152,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -4184,12 +4184,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -4284,13 +4284,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -4403,12 +4403,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -4442,11 +4442,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -4480,7 +4480,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -4490,11 +4490,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -4562,8 +4562,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -4575,8 +4575,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -4587,8 +4587,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -4603,8 +4603,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -4621,7 +4621,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -4634,11 +4634,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -4972,12 +4972,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -5004,12 +5004,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -5036,12 +5036,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -5068,12 +5068,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -5168,13 +5168,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -5287,12 +5287,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -5326,11 +5326,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -5364,7 +5364,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -5374,11 +5374,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -5446,8 +5446,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -5459,8 +5459,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -5471,8 +5471,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -5487,8 +5487,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -5505,7 +5505,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -5518,11 +5518,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -5856,12 +5856,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -5888,12 +5888,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -5920,12 +5920,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -5952,12 +5952,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -6052,13 +6052,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -6171,12 +6171,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -6210,11 +6210,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -6248,7 +6248,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -6258,11 +6258,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -6330,8 +6330,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -6343,8 +6343,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -6355,8 +6355,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -6371,8 +6371,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -6389,7 +6389,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -6402,11 +6402,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -6740,12 +6740,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -6772,12 +6772,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -6804,12 +6804,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -6836,12 +6836,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -6936,13 +6936,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -7055,12 +7055,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -7094,11 +7094,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -7132,7 +7132,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -7142,11 +7142,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -7214,8 +7214,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -7227,8 +7227,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -7239,8 +7239,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -7255,8 +7255,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -7273,7 +7273,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -7286,11 +7286,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -7624,12 +7624,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -7656,12 +7656,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -7688,12 +7688,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -7720,12 +7720,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -7820,13 +7820,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -7939,12 +7939,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -7978,11 +7978,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -8016,7 +8016,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -8026,11 +8026,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -8098,8 +8098,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -8111,8 +8111,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -8123,8 +8123,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -8139,8 +8139,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -8157,7 +8157,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -8170,11 +8170,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -8508,12 +8508,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -8540,12 +8540,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -8572,12 +8572,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -8604,12 +8604,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -8704,13 +8704,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -8823,12 +8823,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -8862,11 +8862,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -8900,7 +8900,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -8910,11 +8910,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -8982,8 +8982,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -8995,8 +8995,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -9007,8 +9007,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -9023,8 +9023,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -9041,7 +9041,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -9054,11 +9054,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -9392,12 +9392,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -9424,12 +9424,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -9456,12 +9456,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -9488,12 +9488,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -9588,13 +9588,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -9707,12 +9707,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -9746,11 +9746,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -9784,7 +9784,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -9794,11 +9794,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -9866,8 +9866,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -9879,8 +9879,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -9891,8 +9891,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -9907,8 +9907,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -9925,7 +9925,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -9938,11 +9938,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -10276,12 +10276,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -10308,12 +10308,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -10340,12 +10340,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -10372,12 +10372,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -10472,13 +10472,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -10591,12 +10591,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -10630,11 +10630,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -10668,7 +10668,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -10678,11 +10678,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -10750,8 +10750,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -10763,8 +10763,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -10775,8 +10775,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -10791,8 +10791,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -10809,7 +10809,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -10822,11 +10822,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -11160,12 +11160,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -11192,12 +11192,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -11224,12 +11224,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -11256,12 +11256,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -11356,13 +11356,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -11475,12 +11475,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -11514,11 +11514,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -11552,7 +11552,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -11562,11 +11562,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -11634,8 +11634,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -11647,8 +11647,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -11659,8 +11659,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -11675,8 +11675,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -11693,7 +11693,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -11706,11 +11706,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -12044,12 +12044,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -12076,12 +12076,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -12108,12 +12108,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -12140,12 +12140,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -12240,13 +12240,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -12359,12 +12359,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -12398,11 +12398,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -12436,7 +12436,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -12446,11 +12446,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -12518,8 +12518,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -12531,8 +12531,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -12543,8 +12543,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -12559,8 +12559,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -12577,7 +12577,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -12590,11 +12590,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -12928,12 +12928,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -12960,12 +12960,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -12992,12 +12992,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -13024,12 +13024,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -13124,13 +13124,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -13243,12 +13243,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -13282,11 +13282,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -13320,7 +13320,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -13330,11 +13330,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -13402,8 +13402,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -13415,8 +13415,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -13427,8 +13427,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -13443,8 +13443,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -13461,7 +13461,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -13474,11 +13474,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -13812,12 +13812,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -13844,12 +13844,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -13876,12 +13876,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -13908,12 +13908,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -14008,13 +14008,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -14127,12 +14127,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -14166,11 +14166,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -14204,7 +14204,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -14214,11 +14214,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -14286,8 +14286,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -14299,8 +14299,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -14311,8 +14311,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -14327,8 +14327,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -14345,7 +14345,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -14358,11 +14358,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -14696,12 +14696,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -14728,12 +14728,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -14760,12 +14760,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -14792,12 +14792,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -14892,13 +14892,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -15011,12 +15011,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -15050,11 +15050,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -15088,7 +15088,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -15098,11 +15098,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -15170,8 +15170,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -15183,8 +15183,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -15195,8 +15195,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -15211,8 +15211,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -15229,7 +15229,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -15242,11 +15242,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -15580,12 +15580,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -15612,12 +15612,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -15644,12 +15644,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -15676,12 +15676,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -15776,13 +15776,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -15895,12 +15895,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -15934,11 +15934,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -15972,7 +15972,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -15982,11 +15982,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -16054,8 +16054,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -16067,8 +16067,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -16079,8 +16079,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -16095,8 +16095,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -16113,7 +16113,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -16126,11 +16126,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -16464,12 +16464,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -16496,12 +16496,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -16528,12 +16528,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -16560,12 +16560,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -16660,13 +16660,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -16779,12 +16779,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -16818,11 +16818,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -16856,7 +16856,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -16866,11 +16866,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -16938,8 +16938,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -16951,8 +16951,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -16963,8 +16963,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -16979,8 +16979,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -16997,7 +16997,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -17010,11 +17010,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -17348,12 +17348,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -17380,12 +17380,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -17412,12 +17412,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -17444,12 +17444,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -17544,13 +17544,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -17663,12 +17663,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -17702,11 +17702,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -17740,7 +17740,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -17750,11 +17750,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -17822,8 +17822,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -17835,8 +17835,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -17847,8 +17847,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -17863,8 +17863,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -17881,7 +17881,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -17894,11 +17894,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -18232,12 +18232,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -18264,12 +18264,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -18296,12 +18296,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -18328,12 +18328,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -18428,13 +18428,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -18547,12 +18547,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -18586,11 +18586,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -18624,7 +18624,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -18634,11 +18634,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -18706,8 +18706,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -18719,8 +18719,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -18731,8 +18731,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -18747,8 +18747,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -18765,7 +18765,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -18778,11 +18778,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -19116,12 +19116,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -19148,12 +19148,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -19180,12 +19180,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -19212,12 +19212,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -19312,13 +19312,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -19431,12 +19431,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -19470,11 +19470,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -19508,7 +19508,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -19518,11 +19518,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -19590,8 +19590,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -19603,8 +19603,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -19615,8 +19615,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -19631,8 +19631,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -19649,7 +19649,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -19662,11 +19662,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -20000,12 +20000,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -20032,12 +20032,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -20064,12 +20064,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -20096,12 +20096,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -20196,13 +20196,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -20315,12 +20315,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -20354,11 +20354,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -20392,7 +20392,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -20402,11 +20402,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -20474,8 +20474,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -20487,8 +20487,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -20499,8 +20499,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -20515,8 +20515,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -20533,7 +20533,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -20546,11 +20546,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -20884,12 +20884,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -20916,12 +20916,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -20948,12 +20948,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -20980,12 +20980,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -21080,13 +21080,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -21199,12 +21199,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -21238,11 +21238,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -21276,7 +21276,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -21286,11 +21286,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -21358,8 +21358,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -21371,8 +21371,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -21383,8 +21383,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -21399,8 +21399,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -21417,7 +21417,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -21430,11 +21430,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -21768,12 +21768,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -21800,12 +21800,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -21832,12 +21832,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -21864,12 +21864,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -21964,13 +21964,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -22083,12 +22083,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -22122,11 +22122,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -22160,7 +22160,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -22170,11 +22170,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -22242,8 +22242,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -22255,8 +22255,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -22267,8 +22267,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -22283,8 +22283,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -22301,7 +22301,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -22314,11 +22314,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -22652,12 +22652,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -22684,12 +22684,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -22716,12 +22716,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -22748,12 +22748,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -22848,13 +22848,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -22967,12 +22967,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -23006,11 +23006,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -23044,7 +23044,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -23054,11 +23054,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -23126,8 +23126,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -23139,8 +23139,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -23151,8 +23151,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -23167,8 +23167,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -23185,7 +23185,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -23198,11 +23198,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -23536,12 +23536,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -23568,12 +23568,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -23600,12 +23600,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -23632,12 +23632,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -23732,13 +23732,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -23851,12 +23851,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -23890,11 +23890,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -23928,7 +23928,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -23938,11 +23938,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -24010,8 +24010,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -24023,8 +24023,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -24035,8 +24035,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -24051,8 +24051,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -24069,7 +24069,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -24082,11 +24082,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -24420,12 +24420,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -24452,12 +24452,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -24484,12 +24484,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -24516,12 +24516,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -24616,13 +24616,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -24735,12 +24735,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -24774,11 +24774,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -24812,7 +24812,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -24822,11 +24822,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -24894,8 +24894,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -24907,8 +24907,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -24919,8 +24919,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -24935,8 +24935,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -24953,7 +24953,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -24966,11 +24966,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -25304,12 +25304,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -25336,12 +25336,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -25368,12 +25368,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -25400,12 +25400,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -25500,13 +25500,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -25619,12 +25619,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -25658,11 +25658,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -25696,7 +25696,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -25706,11 +25706,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -25778,8 +25778,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -25791,8 +25791,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -25803,8 +25803,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -25819,8 +25819,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -25837,7 +25837,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -25850,11 +25850,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -26188,12 +26188,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -26220,12 +26220,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -26252,12 +26252,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -26284,12 +26284,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -26384,13 +26384,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -26503,12 +26503,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -26542,11 +26542,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -26580,7 +26580,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -26590,11 +26590,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -26662,8 +26662,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -26675,8 +26675,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -26687,8 +26687,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -26703,8 +26703,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -26721,7 +26721,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -26734,11 +26734,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -27072,12 +27072,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -27104,12 +27104,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -27136,12 +27136,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -27168,12 +27168,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -27268,13 +27268,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -27387,12 +27387,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -27426,11 +27426,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -27464,7 +27464,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -27474,11 +27474,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -27546,8 +27546,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -27559,8 +27559,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -27571,8 +27571,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -27587,8 +27587,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -27605,7 +27605,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -27618,11 +27618,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -27956,12 +27956,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -27988,12 +27988,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -28020,12 +28020,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -28052,12 +28052,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -28152,13 +28152,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -28271,12 +28271,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -28310,11 +28310,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -28348,7 +28348,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -28358,11 +28358,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -28430,8 +28430,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -28443,8 +28443,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -28455,8 +28455,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -28471,8 +28471,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -28489,7 +28489,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -28502,11 +28502,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -28840,12 +28840,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -28872,12 +28872,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -28904,12 +28904,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -28936,12 +28936,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -29036,13 +29036,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -29155,12 +29155,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -29194,11 +29194,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -29232,7 +29232,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -29242,11 +29242,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -29314,8 +29314,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -29327,8 +29327,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -29339,8 +29339,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -29355,8 +29355,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -29373,7 +29373,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -29386,11 +29386,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -29724,12 +29724,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -29756,12 +29756,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -29788,12 +29788,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -29820,12 +29820,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -29920,13 +29920,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -30039,12 +30039,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -30078,11 +30078,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -30116,7 +30116,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -30126,11 +30126,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -30198,8 +30198,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -30211,8 +30211,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -30223,8 +30223,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -30239,8 +30239,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -30257,7 +30257,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -30270,11 +30270,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -30608,12 +30608,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -30640,12 +30640,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -30672,12 +30672,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -30704,12 +30704,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -30804,13 +30804,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -30923,12 +30923,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],
@@ -30962,11 +30962,11 @@ export async function GET(_request: Request) {
       timestamp: new Date().toISOString(),
       recommendations: generateRecommendations(healthReport),
     });
-  } catch (_error) {
-    (console as any).error("Health check _error:", _error);
+  } catch (error) {
+    (console as any).error("Health check error:", error);
     return NextResponse.json(
       {
-        _error: "Health check failed",
+        error: "Health check failed",
         overall_health: "critical",
         health_score: 0,
         qmoi_superior: false,
@@ -31000,7 +31000,7 @@ export async function POST(_request: Request) {
         result = await performOptimization(component);
         break;
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
 
     return NextResponse.json({
@@ -31010,11 +31010,11 @@ export async function POST(_request: Request) {
       result,
       qmoi_enhanced: true,
     });
-  } catch (_error) {
-    (console as any).error("Auto-heal _error:", _error);
+  } catch (error) {
+    (console as any).error("Auto-heal error:", error);
     return NextResponse.json(
       {
-        _error: "Auto-heal failed",
+        error: "Auto-heal failed",
         action,
         component,
       },
@@ -31082,8 +31082,8 @@ async function getCPUUsage(): Promise<number> {
     // In production, use system monitoring libraries
     // For now, simulate realistic values
     return Math.random() * 60 + 20; // 20-80% range
-  } catch (_error) {
-    (console as any).error("Error getting CPU usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting CPU usage:", error);
     return 50; // Default value
   }
 }
@@ -31095,8 +31095,8 @@ async function getMemoryUsage(): Promise<number> {
     const totalMem = 8 * 1024 * 1024 * 1024; // Assume 8GB total (in production, get from system)
     const usedMem = memUsage.heapUsed + memUsage.external;
     return (usedMem / totalMem) * 100;
-  } catch (_error) {
-    (console as any).error("Error getting memory usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting memory usage:", error);
     return 60; // Default value
   }
 }
@@ -31107,8 +31107,8 @@ async function getDiskUsage(): Promise<number> {
     // In production, use fs.statvfs or similar
     // For now, simulate realistic values
     return Math.random() * 40 + 30; // 30-70% range
-  } catch (_error) {
-    (console as any).error("Error getting disk usage:", _error);
+  } catch (error) {
+    (console as any).error("Error getting disk usage:", error);
     return 45; // Default value
   }
 }
@@ -31123,8 +31123,8 @@ async function getNetworkLatency(): Promise<number> {
       signal: AbortSignal.timeout(5000),
     });
     return Date.now() - start;
-  } catch (_error) {
-    (console as any).error("Error getting network latency:", _error);
+  } catch (error) {
+    (console as any).error("Error getting network latency:", error);
     return 50; // Default value
   }
 }
@@ -31141,7 +31141,7 @@ async function checkAPIHealth() {
   const endpointChecks = await Promise.all(
     endpoints.map(async (endpoint) => {
       try {
-        const _response = await fetch(
+        const response = await fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
           }${endpoint}`,
@@ -31154,11 +31154,11 @@ async function checkAPIHealth() {
           status: response.ok ? "healthy" : "degraded",
           response_time: Math.random() * 200 + 50,
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           endpoint,
           status: "unhealthy",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     })
@@ -31492,12 +31492,12 @@ async function performAutoHeal(component: string) {
             "services_restarted",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "system_restart",
           status: "partial",
           message: "Some system healing actions completed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -31524,12 +31524,12 @@ async function performAutoHeal(component: string) {
             "connections_reset",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "api_restart",
           status: "failed",
           message: "API healing failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -31556,12 +31556,12 @@ async function performAutoHeal(component: string) {
             "maintenance_completed",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "db_optimize",
           status: "failed",
           message: "Database optimization failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -31588,12 +31588,12 @@ async function performAutoHeal(component: string) {
             "caches_cleared",
           ],
         };
-      } catch (_error) {
+      } catch (error) {
         return {
           action: "qmoi_refresh",
           status: "failed",
           message: "QMOI refresh failed",
-          _error: error instanceof Error ? error.message : String(_error),
+          error: error instanceof Error ? error.message : String(error),
         };
       }
     },
@@ -31688,13 +31688,13 @@ async function performDeepDiagnosis(component: string) {
     }
 
     return diagnosisResults;
-  } catch (_error) {
-    (console as any).error("Error in deep diagnosis:", _error);
+  } catch (error) {
+    (console as any).error("Error in deep diagnosis:", error);
     return {
       component,
       diagnosis: "failed",
       timestamp: new Date().toISOString(),
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       findings: ["Diagnosis could not be completed"],
       recommendations: ["Manual inspection required"],
       confidence: 0.0,
@@ -31807,12 +31807,12 @@ async function performOptimization(component: string) {
     );
 
     return optimizationResults;
-  } catch (_error) {
-    (console as any).error("Error in optimization:", _error);
+  } catch (error) {
+    (console as any).error("Error in optimization:", error);
     return {
       component,
       optimization: "failed",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
       improvements: [],
       performance_gain: 0.0,
       actions_taken: [],

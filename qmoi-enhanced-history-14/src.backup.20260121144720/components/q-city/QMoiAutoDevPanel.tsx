@@ -74,7 +74,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -89,18 +89,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -110,7 +110,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -127,11 +127,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -165,11 +165,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -180,7 +180,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -189,11 +189,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -633,7 +633,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -648,18 +648,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -669,7 +669,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -686,11 +686,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -724,11 +724,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -739,7 +739,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -748,11 +748,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -1192,7 +1192,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -1207,18 +1207,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -1228,7 +1228,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -1245,11 +1245,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -1283,11 +1283,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -1298,7 +1298,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -1307,11 +1307,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -1751,7 +1751,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -1766,18 +1766,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -1787,7 +1787,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -1804,11 +1804,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -1842,11 +1842,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -1857,7 +1857,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -1866,11 +1866,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -2310,7 +2310,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -2325,18 +2325,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -2346,7 +2346,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -2363,11 +2363,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -2401,11 +2401,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -2416,7 +2416,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -2425,11 +2425,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -2869,7 +2869,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -2884,18 +2884,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -2905,7 +2905,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -2922,11 +2922,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -2960,11 +2960,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -2975,7 +2975,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -2984,11 +2984,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -3428,7 +3428,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -3443,18 +3443,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -3464,7 +3464,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -3481,11 +3481,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -3519,11 +3519,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -3534,7 +3534,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -3543,11 +3543,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -3987,7 +3987,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -4002,18 +4002,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -4023,7 +4023,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -4040,11 +4040,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -4078,11 +4078,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -4093,7 +4093,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -4102,11 +4102,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -4546,7 +4546,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -4561,18 +4561,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -4582,7 +4582,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -4599,11 +4599,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -4637,11 +4637,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -4652,7 +4652,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -4661,11 +4661,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -5105,7 +5105,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -5120,18 +5120,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -5141,7 +5141,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -5158,11 +5158,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -5196,11 +5196,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -5211,7 +5211,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -5220,11 +5220,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -5664,7 +5664,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -5679,18 +5679,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -5700,7 +5700,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -5717,11 +5717,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -5755,11 +5755,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -5770,7 +5770,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -5779,11 +5779,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -6223,7 +6223,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -6238,18 +6238,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -6259,7 +6259,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -6276,11 +6276,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -6314,11 +6314,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -6329,7 +6329,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -6338,11 +6338,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -6782,7 +6782,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -6797,18 +6797,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -6818,7 +6818,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -6835,11 +6835,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -6873,11 +6873,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -6888,7 +6888,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -6897,11 +6897,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -7341,7 +7341,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -7356,18 +7356,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -7377,7 +7377,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -7394,11 +7394,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -7432,11 +7432,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -7447,7 +7447,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -7456,11 +7456,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -7900,7 +7900,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -7915,18 +7915,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -7936,7 +7936,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -7953,11 +7953,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -7991,11 +7991,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -8006,7 +8006,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -8015,11 +8015,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -8459,7 +8459,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -8474,18 +8474,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -8495,7 +8495,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -8512,11 +8512,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -8550,11 +8550,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -8565,7 +8565,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -8574,11 +8574,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -9018,7 +9018,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -9033,18 +9033,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -9054,7 +9054,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -9071,11 +9071,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -9109,11 +9109,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -9124,7 +9124,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -9133,11 +9133,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -9577,7 +9577,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -9592,18 +9592,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -9613,7 +9613,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -9630,11 +9630,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -9668,11 +9668,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -9683,7 +9683,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -9692,11 +9692,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -10136,7 +10136,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -10151,18 +10151,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -10172,7 +10172,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -10189,11 +10189,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -10227,11 +10227,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -10242,7 +10242,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -10251,11 +10251,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -10695,7 +10695,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -10710,18 +10710,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -10731,7 +10731,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -10748,11 +10748,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -10786,11 +10786,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -10801,7 +10801,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -10810,11 +10810,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -11254,7 +11254,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -11269,18 +11269,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -11290,7 +11290,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -11307,11 +11307,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -11345,11 +11345,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -11360,7 +11360,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -11369,11 +11369,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -11813,7 +11813,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -11828,18 +11828,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -11849,7 +11849,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -11866,11 +11866,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -11904,11 +11904,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -11919,7 +11919,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -11928,11 +11928,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -12372,7 +12372,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -12387,18 +12387,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -12408,7 +12408,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -12425,11 +12425,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -12463,11 +12463,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -12478,7 +12478,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -12487,11 +12487,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -12931,7 +12931,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -12946,18 +12946,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -12967,7 +12967,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -12984,11 +12984,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -13022,11 +13022,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -13037,7 +13037,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -13046,11 +13046,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -13490,7 +13490,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -13505,18 +13505,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -13526,7 +13526,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -13543,11 +13543,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -13581,11 +13581,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -13596,7 +13596,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -13605,11 +13605,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -14049,7 +14049,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -14064,18 +14064,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -14085,7 +14085,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -14102,11 +14102,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -14140,11 +14140,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -14155,7 +14155,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -14164,11 +14164,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -14608,7 +14608,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -14623,18 +14623,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -14644,7 +14644,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -14661,11 +14661,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -14699,11 +14699,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -14714,7 +14714,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -14723,11 +14723,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -15167,7 +15167,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -15182,18 +15182,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -15203,7 +15203,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -15220,11 +15220,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -15258,11 +15258,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -15273,7 +15273,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -15282,11 +15282,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -15726,7 +15726,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -15741,18 +15741,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -15762,7 +15762,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -15779,11 +15779,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -15817,11 +15817,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -15832,7 +15832,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -15841,11 +15841,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -16285,7 +16285,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -16300,18 +16300,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -16321,7 +16321,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -16338,11 +16338,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -16376,11 +16376,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -16391,7 +16391,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -16400,11 +16400,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -16844,7 +16844,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -16859,18 +16859,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -16880,7 +16880,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -16897,11 +16897,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -16935,11 +16935,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -16950,7 +16950,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -16959,11 +16959,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -17403,7 +17403,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -17418,18 +17418,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -17439,7 +17439,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -17456,11 +17456,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -17494,11 +17494,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -17509,7 +17509,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -17518,11 +17518,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -17962,7 +17962,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -17977,18 +17977,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -17998,7 +17998,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -18015,11 +18015,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -18053,11 +18053,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -18068,7 +18068,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -18077,11 +18077,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -18521,7 +18521,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -18536,18 +18536,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -18557,7 +18557,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -18574,11 +18574,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -18612,11 +18612,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -18627,7 +18627,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -18636,11 +18636,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -19080,7 +19080,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -19095,18 +19095,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -19116,7 +19116,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -19133,11 +19133,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -19171,11 +19171,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -19186,7 +19186,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -19195,11 +19195,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);
@@ -19639,7 +19639,7 @@ export default function QMoiAutoDevPanel({
   const [daemonAction, setDaemonAction] = useState<"start" | "stop" | null>(
     null,
   );
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [logs, setLogs] = useState<LogEntry[]>([]);
   const [logsLoading, setLogsLoading] = useState(false);
   const [logFilter, setLogFilter] = useState<"all" | "fix" | "cicd">("all");
@@ -19654,18 +19654,18 @@ export default function QMoiAutoDevPanel({
     setLoading(true);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "full_status" }),
       });
       const data: unknown = await _res.json();
       setStatus(data as AutoDevStatus);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLoading(false);
@@ -19675,7 +19675,7 @@ export default function QMoiAutoDevPanel({
     setDaemonAction(action);
     setError(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -19692,11 +19692,11 @@ export default function QMoiAutoDevPanel({
         daemon: d.status,
         running: d.status?.running,
       }));
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setDaemonAction(null);
@@ -19730,11 +19730,11 @@ export default function QMoiAutoDevPanel({
       } else {
         setLogs([]);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setLogsLoading(false);
@@ -19745,7 +19745,7 @@ export default function QMoiAutoDevPanel({
     setError(null);
     setForceRunResult(null);
     try {
-      const _res = await fetch("/api/qmoi/autodev", {
+      const response = await fetch("/api/qmoi/autodev", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "force_run", platform: deployPlatform }),
@@ -19754,11 +19754,11 @@ export default function QMoiAutoDevPanel({
       setForceRunResult(data);
       fetchStatus();
       fetchLogs();
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       setError(msg);
     }
     setForceRunLoading(false);

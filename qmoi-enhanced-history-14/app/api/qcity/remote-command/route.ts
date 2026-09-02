@@ -33,10 +33,10 @@ export default async function handler(
       user: _req.headers["x-user"] || "unknown",
       status: "fail",
     });
-    return _res.status(401).json({ _error: "Unauthorized" });
+    return _res.status(401).json({ error: "Unauthorized" });
   }
   const { cmd, deviceId = "qcity", stream = false } = _req.body;
-  if (!cmd) return _res.status(400).json({ _error: "Missing command" });
+  if (!cmd) return _res.status(400).json({ error: "Missing command" });
   logAudit({
     action: "run",
     cmd: maskCommand(cmd),
@@ -83,17 +83,17 @@ export default async function handler(
         });
         _res.status(200).json({ output, code });
       });
-    } catch (_e) {
-      const errorMessage = _e instanceof Error ? _e.message : String(_e);
+    } catch (e) {
+      const errorMessage = _e instanceof Error ? _e.message : String(e);
       logAudit({
         action: "run",
         cmd: maskCommand(cmd),
         deviceId,
         user: _req.headers["x-user"] || "unknown",
         status: "error",
-        _error: errorMessage,
+        error: errorMessage,
       });
-      _res.status(500).json({ _error: errorMessage });
+      _res.status(500).json({ error: errorMessage });
     }
   }
 }

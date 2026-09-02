@@ -10,7 +10,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = await import("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -19,13 +19,13 @@ export async function getHandlers() {
 
   if (rest) {
     const handlers = [
-      rest.get("/api/qmoi/status", (_req: unknown, res: unknown, ctx: any) =>
+      rest.get("/api/qmoi/status", (_req: unknown, res: any, ctx: any) =>
         res(
           ctx.status(200),
           ctx.json({ status: "OK", last_check: new Date().toISOString() }),
         ),
       ),
-      rest.post("/api/qmoi/payload", (_req: unknown, res: unknown, ctx: any) =>
+      rest.post("/api/qmoi/payload", (_req: unknown, res: any, ctx: any) =>
         res(ctx.status(200), ctx.json({ message: "Processed" })),
       ),
     ];

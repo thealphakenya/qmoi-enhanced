@@ -37,7 +37,7 @@ export async function POST(_request: Request) {
     if (!isPrismaAvailable) {
       return NextResponse.json(
         {
-          _error: "Database not configured",
+          error: "Database not configured",
           message: "Using mock data - database not configured",
         },
         { status: 503 },
@@ -49,7 +49,7 @@ export async function POST(_request: Request) {
 
     // Enhanced security verification
     if (!verifyWebhookSignature(body, signature)) {
-      return NextResponse.json({ _error: "Invalid signature" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
     }
 
     switch (webhookType) {
@@ -67,14 +67,14 @@ export async function POST(_request: Request) {
         return await handlePerformanceAlert(body);
       default:
         return NextResponse.json(
-          { _error: "Invalid webhook type" },
+          { error: "Invalid webhook type" },
           { status: 400 },
         );
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("QVillage webhook _error:", _error);
+  } catch (error) {
+    globalThis.console.error("QVillage webhook error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -345,8 +345,8 @@ function verifyWebhookSignature(
     if (signature === expected || signature === `sha256=${expected}`)
       return true;
     return false;
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Signature verification _error:", _e);
+  } catch (e) {
+    globalThis.console.error("Signature verification error:", _e);
     return false;
   }
 }
@@ -375,16 +375,16 @@ async function processPaperUpdate(paper: unknown, source: string) {
     console.log(`Processed paper: ${p.id} from ${source}`);
 
     return processedPaper;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error processing paper update:",
-      _error,
+      error,
     );
     const p: unknown = paper ?? {};
     return {
       id: p.id ?? null,
       status: "error",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -431,11 +431,11 @@ async function triggerQMOISync(type: string, data: unknown) {
       type,
       count: Array.isArray(data) ? data.length : 1,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error triggering QMOI sync:", _error);
+  } catch (error) {
+    globalThis.console.error("Error triggering QMOI sync:", error);
     return {
       status: "error",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -562,11 +562,11 @@ async function storeKBEntries(
       indexed: true,
       metadata,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error storing KB entries:", _error);
+  } catch (error) {
+    globalThis.console.error("Error storing KB entries:", error);
     return {
       success: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -588,14 +588,14 @@ async function notifyKBSubscribers(data: unknown) {
       channels: ["websocket", "email"],
       subscriber_count: 150, // Mock count
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error notifying KB subscribers:",
-      _error,
+      error,
     );
     return {
       notified: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -623,12 +623,12 @@ async function moderateContent(content: unknown) {
       moderation_checks: checks,
       moderated_at: new Date().toISOString(),
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error moderating content:", _error);
+  } catch (error) {
+    globalThis.console.error("Error moderating content:", error);
     return {
       ...content,
       status: "error",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -673,8 +673,8 @@ async function analyzeSentiment(content: unknown) {
       label,
       confidence: 0.8,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error analyzing sentiment:", _error);
+  } catch (error) {
+    globalThis.console.error("Error analyzing sentiment:", error);
     return { score: 0.5, label: "neutral", confidence: 0.5 };
   }
 }
@@ -710,8 +710,8 @@ async function storeDiscussion(discussion: unknown) {
 
     // In production, save to database
     return discussionId;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error storing discussion:", _error);
+  } catch (error) {
+    globalThis.console.error("Error storing discussion:", error);
     throw error;
   }
 }
@@ -737,14 +737,14 @@ async function enhanceDiscussionWithQMOI(discussionId: string, content: unknown)
       suggestions: ["Add related research links", "Generate summary points"],
       quality_score: 0.92,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error enhancing discussion with QMOI:",
-      _error,
+      error,
     );
     return {
       enhanced: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -766,10 +766,10 @@ async function updateSyncMetrics(
 
     console.log("Updated sync metrics:", metrics);
     return metrics;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error updating sync metrics:", _error);
+  } catch (error) {
+    globalThis.console.error("Error updating sync metrics:", error);
     return {
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -793,10 +793,10 @@ async function invalidateRelevantCaches(sync_type: string) {
 
     console.log(`Invalidating caches: ${cachesToInvalidate.join(", ")}`);
     return { invalidated: cachesToInvalidate };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error invalidating caches:", _error);
+  } catch (error) {
+    globalThis.console.error("Error invalidating caches:", error);
     return {
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -813,14 +813,14 @@ async function broadcastSyncCompletion(sync_type: string, results: unknown) {
 
     console.log("Broadcasting sync completion:", notification);
     return { broadcasted: true, notification };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error broadcasting sync completion:",
-      _error,
+      error,
     );
     return {
       broadcasted: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -876,14 +876,14 @@ async function triggerAutoOptimization(
       triggered: recommendations.length > 0,
       optimizations: recommendations,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error triggering auto-optimization:",
-      _error,
+      error,
     );
     return {
       triggered: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -909,15 +909,15 @@ async function applyAIEnhancement(item: unknown, enhancement_type: string) {
     }
 
     return enhanced;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error applying AI enhancement:",
-      _error,
+      error,
     );
     return {
       ...item,
       enhanced: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -940,15 +940,15 @@ async function synthesizeEnhancements(
       synthesis_method: "weighted_average",
       confidence: 0.9,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error synthesizing enhancements:",
-      _error,
+      error,
     );
     return {
       quality: 0.5,
       enhancements: results,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -971,11 +971,11 @@ async function applyEnhancementsWithRollback(
       backup_id: backup.id,
       rollback_available: true,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error applying enhancements:", _error);
+  } catch (error) {
+    globalThis.console.error("Error applying enhancements:", error);
     return {
       applied: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1009,13 +1009,13 @@ async function trackEnhancementMetrics(
 
     console.log("Tracked enhancement metrics:", metrics);
     return metrics;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error tracking enhancement metrics:",
-      _error,
+      error,
     );
     return {
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1050,14 +1050,14 @@ async function analyzePerformanceAlert(
       analysis: `Alert type: ${alert_type}, severity: ${severity}`,
       recommended_action: getRecommendedAction(severity, alert_type),
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error analyzing performance alert:",
-      _error,
+      error,
     );
     return {
       severity: "unknown",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1134,8 +1134,8 @@ async function attemptAutoFixes(alert_type: string, metrics: unknown) {
 
     console.log(`Attempted auto-fixes for ${alert_type}:`, fixes);
     return fixes;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Error attempting auto-fixes:", _error);
+  } catch (error) {
+    globalThis.console.error("Error attempting auto-fixes:", error);
     return ["fix_attempt_failed"];
   }
 }
@@ -1151,14 +1151,14 @@ async function escalateCriticalAlert(alert: unknown) {
       channels: ["email", "sms", "slack"],
       incident_id: `incident-${Date.now()}`,
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error escalating critical alert:",
-      _error,
+      error,
     );
     return {
       escalated: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1183,13 +1183,13 @@ async function adjustMonitoringThresholds(alert_type: string, metrics: unknown) 
 
     console.log("Adjusted monitoring thresholds:", adjustments);
     return adjustments;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error adjusting monitoring thresholds:",
-      _error,
+      error,
     );
     return {
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1220,14 +1220,14 @@ async function notifyWebSubscribers(_event: string, data: unknown) {
 
     // In production: broadcast via WebSocket, Server-Sent Events, etc.
     return { sent: true, recipients: users.length };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error sending web notification:",
-      _error,
+      error,
     );
     return {
       sent: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1289,14 +1289,14 @@ async function notifyEmailSubscribers(_event: string, data: unknown) {
 
     // In production: send via email service (SendGrid, SES, etc.)
     return { sent: true, recipients: users.length };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error sending email notification:",
-      _error,
+      error,
     );
     return {
       sent: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1327,14 +1327,14 @@ async function notifyPushSubscribers(_event: string, data: unknown) {
 
     // In production: send via push service (FCM, APNs, etc.)
     return { sent: true, recipients: users.length };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Error sending push notification:",
-      _error,
+      error,
     );
     return {
       sent: false,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }

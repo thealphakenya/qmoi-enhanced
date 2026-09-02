@@ -33,7 +33,7 @@ function MainPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
 
   // Check authentication status
   useEffect(() => {
@@ -124,7 +124,7 @@ function MainPage() {
     setIsLoading(true);
 
     try {
-      const _response = await fetch("/api/auth/login", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username: email, password }),
@@ -345,7 +345,7 @@ function MainPage() {
                         biometricMethods: ["fingerprint", "face", "voice"],
                       }),
                     });
-                  } catch (_e) {
+                  } catch (e) {
                     console.warn("Could not create session", _e);
                   }
                   handleLogin({

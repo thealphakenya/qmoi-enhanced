@@ -11,7 +11,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -196,7 +196,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -227,7 +227,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -254,7 +254,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -383,7 +383,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -414,7 +414,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -441,7 +441,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -568,7 +568,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -599,7 +599,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -626,7 +626,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -753,7 +753,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -784,7 +784,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -811,7 +811,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -938,7 +938,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -969,7 +969,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -996,7 +996,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -1123,7 +1123,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1154,7 +1154,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1181,7 +1181,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -1308,7 +1308,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1339,7 +1339,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1366,7 +1366,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -1493,7 +1493,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1524,7 +1524,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1551,7 +1551,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -1678,7 +1678,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1709,7 +1709,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1736,7 +1736,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -1863,7 +1863,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1894,7 +1894,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -1921,7 +1921,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -2048,7 +2048,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -2079,7 +2079,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2106,7 +2106,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -2233,7 +2233,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -2264,7 +2264,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2291,7 +2291,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -2418,7 +2418,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -2449,7 +2449,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2476,7 +2476,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -2603,7 +2603,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -2634,7 +2634,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2661,7 +2661,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -2788,7 +2788,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -2819,7 +2819,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2846,7 +2846,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -2973,7 +2973,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -3004,7 +3004,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -3031,7 +3031,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -3158,7 +3158,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -3189,7 +3189,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -3216,7 +3216,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -3343,7 +3343,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -3374,7 +3374,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -3401,7 +3401,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -3528,7 +3528,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -3559,7 +3559,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -3586,7 +3586,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -3713,7 +3713,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -3744,7 +3744,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -3771,7 +3771,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -3898,7 +3898,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -3929,7 +3929,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -3956,7 +3956,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -4083,7 +4083,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -4114,7 +4114,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -4141,7 +4141,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -4268,7 +4268,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -4299,7 +4299,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -4326,7 +4326,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -4453,7 +4453,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -4484,7 +4484,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -4511,7 +4511,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -4638,7 +4638,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -4669,7 +4669,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -4696,7 +4696,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -4823,7 +4823,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -4854,7 +4854,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -4881,7 +4881,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -5008,7 +5008,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -5039,7 +5039,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -5066,7 +5066,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -5193,7 +5193,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -5224,7 +5224,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -5251,7 +5251,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -5378,7 +5378,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -5409,7 +5409,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -5436,7 +5436,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -5563,7 +5563,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -5594,7 +5594,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -5621,7 +5621,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -5748,7 +5748,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -5779,7 +5779,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -5806,7 +5806,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -5933,7 +5933,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -5964,7 +5964,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -5991,7 +5991,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -6118,7 +6118,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -6149,7 +6149,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -6176,7 +6176,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -6303,7 +6303,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -6334,7 +6334,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -6361,7 +6361,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }
@@ -6488,7 +6488,7 @@ export function RegisterForm() {
     password: "",
     confirmPassword: "",
   });
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (_e: React.ChangeEvent<HTMLInputElement>) => {
@@ -6519,7 +6519,7 @@ export function RegisterForm() {
       }
 
       // Call registration API
-      const _response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -6546,7 +6546,7 @@ export function RegisterForm() {
 
       // Redirect to dashboard
       router.push("/dashboard");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
       setLoading(false);
     }

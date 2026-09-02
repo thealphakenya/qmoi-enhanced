@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error in QMOI model endpoint:",
       error,
     );
@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error in QMOI model enhancement endpoint:",
       error,
     );

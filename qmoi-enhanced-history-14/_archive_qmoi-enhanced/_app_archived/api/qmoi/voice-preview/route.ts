@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.('Error generating voice preview:', error);
+    globalThis.console.error('Error generating voice preview:', error);
     return NextResponse.json(
       { error: 'Failed to generate voice preview' },
       { status: 500 }
@@ -83,7 +83,7 @@ async function generateTTSAudio(voiceId: string, text: string, quality: string, 
       console.warn('ElevenLabs TTS returned non-2xx:', resp.status);
       return Buffer.from(generateSilentWAV());
     } catch (err) {
-      (globalThis.console as any)?.error?.('ElevenLabs TTS error:', err && err.message ? err.message : err);
+      globalThis.console.error('ElevenLabs TTS error:', err && err.message ? err.message : err);
       return Buffer.from(generateSilentWAV());
     }
   }

@@ -23,29 +23,50 @@ The agent resolves tokens in this order:
 This makes the GitHub automation robust even when environment names vary or older aliases are used.
 
 ## GitHub-hosted execution model
-The repository runs the validation workflow in GitHub-hosted infrastructure through:
+The repository is designed to run its production autonomous agent in GitHub-hosted infrastructure only. Local machines, dev containers, and Codespaces are treated as development sandboxes; the authoritative runtime for the agent is always a GitHub Actions runner.
+
+The production runtime contract is:
+- the workflow must run with `GITHUB_ACTIONS=true`
+- the job must execute on a GitHub-hosted Ubuntu runner, not on a local or codespace environment
+- the script must treat codespace-local runs as non-authoritative and never emit a production success claim from them
+- monitoring, validation, branch sync, and recovery must be driven by GitHub run state and artifacts, not by local machine state
+
+The repository runs the validation and autonomous workflows in GitHub via:
 - .github/workflows/ollama-pr-validation.yml
 - .github/workflows/pr-monitor.yml
 - .github/workflows/workflow-tracker.yml
 - .github/workflows/ollama-autonomous-agent.yml
 - .github/workflows/branch-sync.yml
+- .github/workflows/ollama-master-orchestrator.yml
 
 These workflows are intended to run independently of the local codespace and to keep validation and monitoring active while the repo is in GitHub.
 
 ## Monitoring contract
 The monitoring stack is designed to:
-- fetch live workflow run status from GitHub
-- track job-by-job completion
-- compute health, pass-rate, and reliability metrics
-- raise alerts on failed jobs
-- store monitoring snapshots and connected evidence
+- fetch live workflow run status from GitHub across all active runs in the repo
+- track queued, waiting, requested, in-progress, completed, success, failure, cancelled, and skipped states
+- correlate validation, branch-sync, PR monitor, and autonomous-agent runs into one live repository view
+- compute health, pass-rate, reliability, and completion metrics
+- raise alerts on failed or blocked jobs
+- persist monitoring snapshots and connected evidence to `ollamatracks/`
 - keep watching queued or waiting runs instead of stopping early
+- surface repository-wide activity, not only a single run ID
 
 The project monitor is implemented in:
 - scripts/realtime_workflow_monitor.py
 
 The monitor is validated by the automated tests in:
 - tests/test_ollama_autonomous_agent.py
+
+## Real-time repo monitoring requirement
+The production monitor should be able to:
+1. list all active GitHub workflow runs for the repository
+2. show the current status of each workflow, job, and run conclusion
+3. correlate validation and sync phases across the repo lifecycle
+4. record evidence in `ollamatracks/telemetry.jsonl` and `CURRENT_STATUS.txt`
+5. keep the GitHub run overview fresh even while queued or waiting runs are still active
+
+This is the monitoring baseline required for GitHub-hosted autonomous execution to remain auditable and observable in real time.
 
 ## Current live run links
 The latest validation and sync runs currently visible in GitHub are:

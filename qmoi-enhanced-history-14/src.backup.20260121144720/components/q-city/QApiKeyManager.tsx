@@ -12,7 +12,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -102,7 +102,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -192,7 +192,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -282,7 +282,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -372,7 +372,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -462,7 +462,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -552,7 +552,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -642,7 +642,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -732,7 +732,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -822,7 +822,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -912,7 +912,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1002,7 +1002,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1092,7 +1092,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1182,7 +1182,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1272,7 +1272,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1362,7 +1362,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1452,7 +1452,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1542,7 +1542,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1632,7 +1632,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1722,7 +1722,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1812,7 +1812,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1902,7 +1902,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -1992,7 +1992,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2082,7 +2082,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2172,7 +2172,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2262,7 +2262,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2352,7 +2352,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2442,7 +2442,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2532,7 +2532,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2622,7 +2622,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2712,7 +2712,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2802,7 +2802,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2892,7 +2892,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -2982,7 +2982,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -3072,7 +3072,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };
@@ -3162,7 +3162,7 @@ interface ApiKey {
 const QApiKeyManager: React.FC = () => {
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const fetchKeys = async () => {
-    const _res = await fetch("/api/qapikey");
+    const response = await fetch("/api/qapikey");
     const data = await _res.json();
     setKeys(data.keys || []);
   };

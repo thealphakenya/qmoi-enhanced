@@ -187,7 +187,7 @@ class QIErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    (globalThis.console as any)?.error?.("QI Error:", error, errorInfo);
+    globalThis.console.error("QI Error:", error, errorInfo);
   }
 
   render(): React.ReactNode {
@@ -226,7 +226,7 @@ function isMasterOrSister(): boolean {
     const email = localStorage.getItem("userEmail") || "";
     return MASTER_EMAILS.includes(email);
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Failed to check master/sister status:",
       error,
     );
@@ -312,7 +312,7 @@ function QIComponent() {
           setAiTasks(aiData.tasks || []);
         }
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to fetch data:", error);
+        globalThis.console.error("Failed to fetch data:", error);
         if (isMounted) {
           setError(
             error instanceof Error ? error.message : "Failed to fetch data",
@@ -361,7 +361,7 @@ function QIComponent() {
 
       if (!response.ok) throw new Error("Failed to trigger enhancement");
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to trigger enhancement:",
         error,
       );
@@ -417,7 +417,7 @@ function QIComponent() {
           URL.revokeObjectURL(url);
         }
       } catch (error) {
-        (globalThis.console as any)?.error?.("Failed to export tasks:", error);
+        globalThis.console.error("Failed to export tasks:", error);
         toast({
           title: "Error",
           description: "Failed to export tasks",
@@ -457,7 +457,7 @@ function QIComponent() {
       a.click();
       URL.revokeObjectURL(url);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to download data:", error);
+      globalThis.console.error("Failed to download data:", error);
       toast({
         title: "Error",
         description: "Failed to download data",

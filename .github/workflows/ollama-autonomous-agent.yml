@@ -134,6 +134,8 @@ env:
   DEFAULT_MAX_ITERATIONS: "3"
   DEFAULT_MAX_PER_ITERATION: "10"
   DEFAULT_MAX_RECOVERY_ATTEMPTS: "3"
+  QMOI_RUNTIME_MODE: "github-hosted"
+  QMOI_GITHUB_HOSTED: "true"
   QMOI_AUTO_HEAL: ${{ github.event.inputs.auto_heal || 'true' }}
   QMOI_AUTO_FIX: ${{ github.event.inputs.auto_fix || 'true' }}
   QMOI_AGENT_MODE: ${{ github.event.inputs.mode || 'full' }}
@@ -177,6 +179,18 @@ jobs:
           git --version
           pwd
           test -d "$GITHUB_WORKSPACE"
+
+      - name: Enforce GitHub-hosted runtime contract
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if [ "${GITHUB_ACTIONS:-false}" != "true" ]; then
+            echo "::error::This QMOI autonomous agent must run on a GitHub-hosted runner. Local codespaces and local shells are not the authoritative production runtime."
+            exit 1
+          fi
+          echo "GitHub Actions runtime confirmed: $GITHUB_ACTIONS"
+          echo "Runtime mode: ${QMOI_RUNTIME_MODE}"
+          echo "GitHub-hosted: ${QMOI_GITHUB_HOSTED}"
 
       - name: Setup Python
         uses: actions/setup-python@v5

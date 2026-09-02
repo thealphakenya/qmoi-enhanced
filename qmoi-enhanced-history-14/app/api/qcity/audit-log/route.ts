@@ -18,7 +18,7 @@ function parseLogLine(line: string) {
 export default function handler(_req: NextApiRequest, _res: NextApiResponse) {
   const key = _req.headers["x-qcity-admin-key"];
   if (key !== ADMIN_KEY)
-    return _res.status(401).json({ _error: "Unauthorized" });
+    return _res.status(401).json({ error: "Unauthorized" });
   const {
     format = "json",
     limit = 100,

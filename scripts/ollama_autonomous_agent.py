@@ -3009,8 +3009,36 @@ All timestamps use UTC ISO-8601 format.
     # OLLAMA RUNTIME AND BOUNDED CODING LOOP
     # ------------------------------------------------------------------------
 
+    def enforce_github_runtime(self) -> None:
+        """Require the agent to run in GitHub-hosted production mode."""
+        if os.getenv("QMOI_REQUIRE_GITHUB_HOSTED", "true").lower() not in {"1", "true", "yes", "on"}:
+            return
+
+        github_actions = os.getenv("GITHUB_ACTIONS", "").lower() == "true"
+        runtime_mode = str(os.getenv("QMOI_RUNTIME_MODE", "")).strip().lower()
+        github_hosted_flag = str(os.getenv("QMOI_GITHUB_HOSTED", "")).strip().lower()
+
+        if not github_actions or runtime_mode not in {"github-hosted", "github_hosted"} or github_hosted_flag not in {"1", "true", "yes", "on"}:
+            raise RuntimeError(
+                "GitHub-hosted production runtime required. Local codespaces and local shells are not authoritative. "
+                "Set GITHUB_ACTIONS=true, QMOI_RUNTIME_MODE=github-hosted, and QMOI_GITHUB_HOSTED=true before running the autonomous agent."
+            )
+
+        self.record_tracker_event(
+            "github_runtime_verified",
+            "GitHub-hosted runtime contract satisfied.",
+            status="SUCCESS",
+            phase="runtime",
+            details={
+                "GITHUB_ACTIONS": github_actions,
+                "QMOI_RUNTIME_MODE": runtime_mode,
+                "QMOI_GITHUB_HOSTED": github_hosted_flag,
+            },
+        )
+
     def verify_ollama(self) -> Dict[str, Any]:
         """Perform health, model, and real inference checks."""
+        self.enforce_github_runtime()
         self.record_tracker_event(
             "inference_testing",
             "Verifying Ollama server, model, and inference.",

@@ -12,7 +12,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -38,7 +38,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -75,7 +75,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -97,7 +97,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -125,7 +125,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -293,7 +293,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -319,7 +319,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -356,7 +356,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -378,7 +378,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -406,7 +406,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -576,7 +576,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -602,7 +602,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -639,7 +639,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -661,7 +661,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -689,7 +689,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -857,7 +857,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -883,7 +883,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -920,7 +920,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -942,7 +942,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -970,7 +970,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -1138,7 +1138,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -1164,7 +1164,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1201,7 +1201,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1223,7 +1223,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1251,7 +1251,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -1419,7 +1419,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -1445,7 +1445,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1482,7 +1482,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1504,7 +1504,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1532,7 +1532,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -1700,7 +1700,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -1726,7 +1726,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1763,7 +1763,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1785,7 +1785,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -1813,7 +1813,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -1981,7 +1981,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -2007,7 +2007,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2044,7 +2044,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2066,7 +2066,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2094,7 +2094,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -2262,7 +2262,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -2288,7 +2288,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2325,7 +2325,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2347,7 +2347,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2375,7 +2375,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -2543,7 +2543,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -2569,7 +2569,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2606,7 +2606,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2628,7 +2628,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2656,7 +2656,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -2824,7 +2824,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -2850,7 +2850,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2887,7 +2887,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2909,7 +2909,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -2937,7 +2937,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -3105,7 +3105,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -3131,7 +3131,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3168,7 +3168,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3190,7 +3190,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3218,7 +3218,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -3386,7 +3386,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -3412,7 +3412,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3449,7 +3449,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3471,7 +3471,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3499,7 +3499,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -3667,7 +3667,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -3693,7 +3693,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3730,7 +3730,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3752,7 +3752,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -3780,7 +3780,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -3948,7 +3948,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -3974,7 +3974,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4011,7 +4011,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4033,7 +4033,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4061,7 +4061,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -4229,7 +4229,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -4255,7 +4255,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4292,7 +4292,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4314,7 +4314,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4342,7 +4342,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -4510,7 +4510,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -4536,7 +4536,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4573,7 +4573,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4595,7 +4595,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4623,7 +4623,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -4791,7 +4791,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -4817,7 +4817,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4854,7 +4854,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4876,7 +4876,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -4904,7 +4904,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -5072,7 +5072,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -5098,7 +5098,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5135,7 +5135,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5157,7 +5157,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5185,7 +5185,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -5353,7 +5353,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -5379,7 +5379,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5416,7 +5416,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5438,7 +5438,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5466,7 +5466,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -5634,7 +5634,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -5660,7 +5660,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5697,7 +5697,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5719,7 +5719,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5747,7 +5747,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -5915,7 +5915,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -5941,7 +5941,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -5978,7 +5978,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6000,7 +6000,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6028,7 +6028,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -6196,7 +6196,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -6222,7 +6222,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6259,7 +6259,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6281,7 +6281,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6309,7 +6309,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -6477,7 +6477,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -6503,7 +6503,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6540,7 +6540,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6562,7 +6562,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6590,7 +6590,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -6758,7 +6758,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -6784,7 +6784,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6821,7 +6821,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6843,7 +6843,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -6871,7 +6871,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -7039,7 +7039,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -7065,7 +7065,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7102,7 +7102,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7124,7 +7124,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7152,7 +7152,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -7320,7 +7320,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -7346,7 +7346,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7383,7 +7383,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7405,7 +7405,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7433,7 +7433,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -7601,7 +7601,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -7627,7 +7627,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7664,7 +7664,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7686,7 +7686,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7714,7 +7714,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -7882,7 +7882,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -7908,7 +7908,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7945,7 +7945,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7967,7 +7967,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -7995,7 +7995,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -8163,7 +8163,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -8189,7 +8189,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8226,7 +8226,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8248,7 +8248,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8276,7 +8276,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -8444,7 +8444,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -8470,7 +8470,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8507,7 +8507,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8529,7 +8529,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8557,7 +8557,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -8725,7 +8725,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -8751,7 +8751,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8788,7 +8788,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8810,7 +8810,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -8838,7 +8838,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -9006,7 +9006,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -9032,7 +9032,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9069,7 +9069,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9091,7 +9091,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9119,7 +9119,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -9287,7 +9287,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -9313,7 +9313,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9350,7 +9350,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9372,7 +9372,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9400,7 +9400,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -9568,7 +9568,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -9594,7 +9594,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9631,7 +9631,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9653,7 +9653,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9681,7 +9681,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });
@@ -9849,7 +9849,7 @@ export default function DevicePanel() {
   };
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string>("");
+  const [error, setError] = useState<string>("");
   const [form, setForm] = useState<Device>({
     name: "",
     host: "",
@@ -9875,7 +9875,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9912,7 +9912,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9934,7 +9934,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })
@@ -9962,7 +9962,7 @@ export default function DevicePanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setTestResult(msg);
       });

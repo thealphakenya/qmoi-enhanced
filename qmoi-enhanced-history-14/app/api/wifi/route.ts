@@ -13,7 +13,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -24,9 +24,9 @@ export async function POST(_request: NextRequest) {
       status: "success",
       message: `WiFi network ${ssid} configured successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

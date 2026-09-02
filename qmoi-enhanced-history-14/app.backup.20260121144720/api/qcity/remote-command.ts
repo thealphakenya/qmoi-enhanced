@@ -33,7 +33,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -43,7 +43,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -92,7 +92,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -136,7 +136,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -146,7 +146,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -195,7 +195,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -239,7 +239,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -249,7 +249,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -298,7 +298,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -342,7 +342,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -352,7 +352,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -401,7 +401,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -445,7 +445,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -455,7 +455,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -504,7 +504,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -548,7 +548,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -558,7 +558,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -607,7 +607,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -651,7 +651,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -661,7 +661,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -710,7 +710,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -754,7 +754,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -764,7 +764,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -813,7 +813,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -857,7 +857,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -867,7 +867,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -916,7 +916,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -960,7 +960,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -970,7 +970,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1019,7 +1019,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1063,7 +1063,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1073,7 +1073,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1122,7 +1122,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1166,7 +1166,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1176,7 +1176,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1225,7 +1225,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1269,7 +1269,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1279,7 +1279,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1328,7 +1328,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1372,7 +1372,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1382,7 +1382,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1431,7 +1431,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1475,7 +1475,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1485,7 +1485,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1534,7 +1534,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1578,7 +1578,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1588,7 +1588,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1637,7 +1637,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1681,7 +1681,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1691,7 +1691,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1740,7 +1740,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1784,7 +1784,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1794,7 +1794,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1843,7 +1843,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1887,7 +1887,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -1897,7 +1897,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -1946,7 +1946,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -1990,7 +1990,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2000,7 +2000,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2049,7 +2049,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2093,7 +2093,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2103,7 +2103,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2152,7 +2152,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2196,7 +2196,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2206,7 +2206,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2255,7 +2255,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2299,7 +2299,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2309,7 +2309,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2358,7 +2358,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2402,7 +2402,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2412,7 +2412,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2461,7 +2461,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2505,7 +2505,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2515,7 +2515,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2564,7 +2564,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2608,7 +2608,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2618,7 +2618,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2667,7 +2667,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2711,7 +2711,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2721,7 +2721,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2770,7 +2770,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2814,7 +2814,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2824,7 +2824,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2873,7 +2873,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -2917,7 +2917,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -2927,7 +2927,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -2976,7 +2976,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -3020,7 +3020,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -3030,7 +3030,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -3079,7 +3079,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -3123,7 +3123,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -3133,7 +3133,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -3182,7 +3182,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -3226,7 +3226,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -3236,7 +3236,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -3285,7 +3285,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -3329,7 +3329,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -3339,7 +3339,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -3388,7 +3388,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -3432,7 +3432,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -3442,7 +3442,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -3491,7 +3491,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -3535,7 +3535,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -3545,7 +3545,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -3594,7 +3594,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }
@@ -3638,7 +3638,7 @@ export async function POST(_req: NextRequest) {
       ip: _req.headers.get("x-forwarded-for"),
       status: 401,
     });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const {
@@ -3648,7 +3648,7 @@ export async function POST(_req: NextRequest) {
   } = ((await _req.json()) as any).catch(() => ({}) as any);
   if (!cmd)
     return NextResponse.json(
-      { _error: "No command provided" },
+      { error: "No command provided" },
       { status: 400 },
     );
 
@@ -3697,7 +3697,7 @@ export async function POST(_req: NextRequest) {
 
   const result = await qcityService
     .runRemoteCommand(cmd, deviceId)
-    .catch((_e) => ({ _error: String(_e) }));
+    .catch((_e) => ({ error: String(e) }));
   logAudit({ action: "run", cmd, deviceId, user: "admin", status: "done" });
   return NextResponse.json(result);
 }

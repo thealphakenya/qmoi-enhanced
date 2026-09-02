@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
     );
 
     if (stderr) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Logger export script stderr:",
         stderr,
       );
@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
     try {
       exportData = JSON.parse(stdout);
     } catch (parseError) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to parse export data:",
         parseError,
       );
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "QMOI Own Device Export API error:",
       error,
     );
@@ -146,7 +146,7 @@ async function checkMasterAccess(request: NextRequest): Promise<boolean> {
 
     return false;
   } catch (error) {
-    (globalThis.console as any)?.error?.("Master access check error:", error);
+    globalThis.console.error("Master access check error:", error);
     return false;
   }
 }

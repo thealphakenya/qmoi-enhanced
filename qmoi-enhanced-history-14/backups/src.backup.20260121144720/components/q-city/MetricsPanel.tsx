@@ -13,7 +13,7 @@ export default function MetricsPanel() {
   };
   const [metrics, setMetrics] = useState<Metrics | null>(null);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
@@ -28,7 +28,7 @@ export default function MetricsPanel() {
         const msg =
           _e && typeof _e === "object" && "message" in _e
             ? String((_e as { message?: unknown }).message)
-            : String(_e);
+            : String(e);
         console.warn(msg);
         setError(msg);
       })

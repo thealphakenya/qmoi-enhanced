@@ -55,7 +55,7 @@ export const Chatbot: React.FC<ChatbotProps> = ({
         setIsLoading(false);
       }, 1000);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error sending message:", error);
+      globalThis.console.error("Error sending message:", error);
       setIsLoading(false);
     }
   };

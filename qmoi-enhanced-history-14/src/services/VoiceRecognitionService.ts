@@ -333,7 +333,7 @@ export class VoiceRecognitionService {
           // Use `new` to construct the recognition object if available in the environment
           this.recognition = new ctor() as SpeechRecognitionLike;
           this.setupRecognitionHandlers();
-        } catch (_err) {
+        } catch (err) {
           (globalThis.console).error(
             "Failed to construct SpeechRecognition instance:",
             _err,
@@ -344,10 +344,10 @@ export class VoiceRecognitionService {
           "Speech recognition not supported",
         );
       }
-    } catch (_error) {
+    } catch (error) {
       (globalThis.console).error(
         "Error initializing speech recognition:",
-        _error,
+        error,
       );
     }
   }
@@ -364,10 +364,10 @@ export class VoiceRecognitionService {
           "Speech synthesis not supported",
         );
       }
-    } catch (_error) {
+    } catch (error) {
       (globalThis.console).error(
         "Error initializing speech synthesis:",
-        _error,
+        error,
       );
     }
   }
@@ -416,7 +416,7 @@ export class VoiceRecognitionService {
         const transcript = String(first?.["transcript"] ?? "");
         const confidence = Number(first?.["confidence"] ?? 0);
 
-        const _response: VoiceResponse = {
+        const response: VoiceResponse = {
           text: transcript,
           confidence,
           isFinal,
@@ -435,7 +435,7 @@ export class VoiceRecognitionService {
     this.recognition.onerror = (evt: unknown) => {
       const _err = (evt as Record<string, unknown>)?.["error"];
       (globalThis.console).error(
-        "Voice recognition _error:",
+        "Voice recognition error:",
         _err,
       );
       this.eventEmitter.emit("recognitionError", String(err ?? ""));
@@ -495,7 +495,7 @@ export class VoiceRecognitionService {
     ) => {
       const _err = (evt as Record<string, unknown>)?.["error"];
       (globalThis.console).error(
-        "Speech synthesis _error:",
+        "Speech synthesis error:",
         _err,
       );
       this.eventEmitter.emit("synthesisError", String(err ?? ""));
@@ -668,10 +668,10 @@ export class VoiceRecognitionService {
           transcript,
           confidence,
         });
-      } catch (_error) {
+      } catch (error) {
         (globalThis.console).error(
           "Error executing voice command:",
-          _error,
+          error,
         );
         this.speak(
           "Sorry, I encountered an error while executing that command",
@@ -756,10 +756,10 @@ export class VoiceRecognitionService {
     if (this.recognition && !this.isListening) {
       try {
         this.recognition?.start?.();
-      } catch (_error) {
+      } catch (error) {
         (globalThis.console).error(
           "Error starting voice recognition:",
-          _error,
+          error,
         );
       }
     }
@@ -769,10 +769,10 @@ export class VoiceRecognitionService {
     if (this.recognition && this.isListening) {
       try {
         this.recognition?.stop?.();
-      } catch (_error) {
+      } catch (error) {
         (globalThis.console).error(
           "Error stopping voice recognition:",
-          _error,
+          error,
         );
       }
     }
@@ -942,10 +942,10 @@ export class VoiceRecognitionService {
           }
         }
       }
-    } catch (_error) {
+    } catch (error) {
       (globalThis.console).error(
         "Error loading voice user settings:",
-        _error,
+        error,
       );
     }
   }
@@ -956,10 +956,10 @@ export class VoiceRecognitionService {
         "voiceUserSettings",
         JSON.stringify(this.userSettings),
       );
-    } catch (_error) {
+    } catch (error) {
       (globalThis.console).error(
         "Error saving voice user settings:",
-        _error,
+        error,
       );
     }
   }
@@ -980,7 +980,7 @@ export class VoiceRecognitionService {
     this.eventEmitter.on("recognitionEnd", callback);
   }
 
-  public onRecognitionError(callback: (_error: string) => void): void {
+  public onRecognitionError(callback: (error: string) => void): void {
     this.eventEmitter.on("recognitionError", (_err: unknown) =>
       callback(String(err ?? "")),
     );

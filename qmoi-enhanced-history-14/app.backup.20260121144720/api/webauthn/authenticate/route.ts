@@ -14,12 +14,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -31,7 +31,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -48,9 +48,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -74,12 +74,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -91,7 +91,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -108,9 +108,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -134,12 +134,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -151,7 +151,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -168,9 +168,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -194,12 +194,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -211,7 +211,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -228,9 +228,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -254,12 +254,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -271,7 +271,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -288,9 +288,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -314,12 +314,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -331,7 +331,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -348,9 +348,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -374,12 +374,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -391,7 +391,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -408,9 +408,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -434,12 +434,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -451,7 +451,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -468,9 +468,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -494,12 +494,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -511,7 +511,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -528,9 +528,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -554,12 +554,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -571,7 +571,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -588,9 +588,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -614,12 +614,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -631,7 +631,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -648,9 +648,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -674,12 +674,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -691,7 +691,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -708,9 +708,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -734,12 +734,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -751,7 +751,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -768,9 +768,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -794,12 +794,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -811,7 +811,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -828,9 +828,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -854,12 +854,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -871,7 +871,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -888,9 +888,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -914,12 +914,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -931,7 +931,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -948,9 +948,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -974,12 +974,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -991,7 +991,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1008,9 +1008,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1034,12 +1034,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1051,7 +1051,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1068,9 +1068,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1094,12 +1094,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1111,7 +1111,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1128,9 +1128,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1154,12 +1154,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1171,7 +1171,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1188,9 +1188,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1214,12 +1214,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1231,7 +1231,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1248,9 +1248,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1274,12 +1274,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1291,7 +1291,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1308,9 +1308,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1334,12 +1334,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1351,7 +1351,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1368,9 +1368,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1394,12 +1394,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1411,7 +1411,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1428,9 +1428,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1454,12 +1454,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1471,7 +1471,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1488,9 +1488,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1514,12 +1514,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1531,7 +1531,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1548,9 +1548,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1574,12 +1574,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1591,7 +1591,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1608,9 +1608,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1634,12 +1634,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1651,7 +1651,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1668,9 +1668,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1694,12 +1694,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1711,7 +1711,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1728,9 +1728,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1754,12 +1754,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1771,7 +1771,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1788,9 +1788,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1814,12 +1814,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1831,7 +1831,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1848,9 +1848,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1874,12 +1874,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1891,7 +1891,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1908,9 +1908,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1934,12 +1934,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -1951,7 +1951,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -1968,9 +1968,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1994,12 +1994,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -2011,7 +2011,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -2028,9 +2028,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2054,12 +2054,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -2071,7 +2071,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -2088,9 +2088,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2114,12 +2114,12 @@ export async function POST(_request: NextRequest) {
     const { credentialId, assertion } = body;
 
     if (!credentialId || !assertion) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(CREDENTIALS_FILE)) {
       return NextResponse.json(
-        { _error: "No credentials registered" },
+        { error: "No credentials registered" },
         { status: 401 },
       );
     }
@@ -2131,7 +2131,7 @@ export async function POST(_request: NextRequest) {
 
     if (!cred) {
       return NextResponse.json(
-        { _error: "Credential not found" },
+        { error: "Credential not found" },
         { status: 401 },
       );
     }
@@ -2148,9 +2148,9 @@ export async function POST(_request: NextRequest) {
       confidence: 0.95,
       message: "WebAuthn authentication successful",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }

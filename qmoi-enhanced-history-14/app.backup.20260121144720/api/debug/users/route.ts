@@ -10,8 +10,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -29,8 +29,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -48,8 +48,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -67,8 +67,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -86,8 +86,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -105,8 +105,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -124,8 +124,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -143,8 +143,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -162,8 +162,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -181,8 +181,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -200,8 +200,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -219,8 +219,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -238,8 +238,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -257,8 +257,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -276,8 +276,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -295,8 +295,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -314,8 +314,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -333,8 +333,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -352,8 +352,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -371,8 +371,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -390,8 +390,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -409,8 +409,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -428,8 +428,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -447,8 +447,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -466,8 +466,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -485,8 +485,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -504,8 +504,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -523,8 +523,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -542,8 +542,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -561,8 +561,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -580,8 +580,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -599,8 +599,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -618,8 +618,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -637,8 +637,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -656,8 +656,8 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -675,7 +675,7 @@ export async function GET() {
       ? JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"))
       : [];
     return NextResponse.json({ users: data });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }

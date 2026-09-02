@@ -19,14 +19,14 @@ const SocialAutomationPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchContacts = async () => {
-    const _res = await fetch("/api/social-automation/contacts");
-    const data = await _res.json();
+    const response = await fetch("/api/social-automation/contacts");
+    const data = await response.json();
     setContacts(data.contacts || []);
   };
 
   const fetchFeatures = async () => {
-    const _res = await fetch("/api/social-automation/features");
-    const data = await _res.json();
+    const response = await fetch("/api/social-automation/features");
+    const data = await response.json();
     setFeatures(data.features || []);
   };
 
@@ -36,22 +36,22 @@ const SocialAutomationPanel: React.FC = () => {
   }, []);
 
   const postStatus = async () => {
-    const _res = await fetch("/api/social-automation/post", {
+    const response = await fetch("/api/social-automation/post", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content, platform }),
     });
-    const data = await _res.json();
+    const data = await response.json();
     setStatus(data.success ? "Posted!" : "Post failed");
   };
 
   const tagContact = async (id: number) => {
-    const _res = await fetch("/api/social-automation/tag", {
+    const response = await fetch("/api/social-automation/tag", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, tag }),
     });
-    const data = await _res.json();
+    const data = await response.json();
     setStatus(data.success ? "Tagged!" : "Tag failed");
     fetchContacts();
   };

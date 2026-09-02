@@ -66,10 +66,10 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
     };
     console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally do not send raw credentials anywhere.
-  } catch (_error) {
+  } catch (error) {
     (console as any).error(
       "Failed to create safe backup for megavault credentials:",
-      _error,
+      error,
     );
   }
 }
@@ -90,16 +90,16 @@ async function initializePayPalAccount() {
     await backupCredentialsSafe(PAYPAL_CREDENTIALS, "paypal");
 
     return { success: true, account: accountData };
-  } catch (_error) {
-    (console as any).error("Failed to initialize PayPal account:", _error);
-    return { success: false, _error: "PayPal initialization failed" };
+  } catch (error) {
+    (console as any).error("Failed to initialize PayPal account:", error);
+    return { success: false, error: "PayPal initialization failed" };
   }
 }
 
 async function processPayPalTransaction(transactionData: unknown) {
   try {
     // Simulate PayPal transaction
-    const _response = await fetch(
+    const response = await fetch(
       "https://www.paypal.com/api/PostPayPalDirectOrderV4",
       {
         method: "POST",
@@ -126,9 +126,9 @@ async function processPayPalTransaction(transactionData: unknown) {
 
     const result = await response.text();
     return { success: true, transactionId: result, provider: "paypal" };
-  } catch (_error) {
-    (console as any).error("PayPal transaction failed:", _error);
-    return { success: false, _error: "PayPal transaction failed" };
+  } catch (error) {
+    (console as any).error("PayPal transaction failed:", error);
+    return { success: false, error: "PayPal transaction failed" };
   }
 }
 
@@ -206,9 +206,9 @@ async function distributeDividends(distributionData: unknown) {
     });
 
     return { success: true, distributions, totalAmount };
-  } catch (_error) {
-    (console as any).error("Dividend distribution failed:", _error);
-    return { success: false, _error: "Dividend distribution failed" };
+  } catch (error) {
+    (console as any).error("Dividend distribution failed:", error);
+    return { success: false, error: "Dividend distribution failed" };
   }
 }
 
@@ -278,11 +278,11 @@ export async function GET(_request: NextRequest) {
           data: megavaultData,
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch megavault data",
+        error: "Failed to fetch megavault data",
       },
       { status: 500 },
     );
@@ -302,7 +302,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: "Insufficient funds in Megavault",
+              error: "Insufficient funds in Megavault",
             },
             { status: 400 },
           );
@@ -360,7 +360,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: dividendResult.error,
+              error: dividendResult.error,
             },
             { status: 500 },
           );
@@ -379,7 +379,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: paypalResult.error,
+              error: paypalResult.error,
             },
             { status: 500 },
           );
@@ -420,17 +420,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -440,7 +440,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process megavault action",
+        error: "Failed to process megavault action",
       },
       { status: 500 },
     );
@@ -460,7 +460,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Transaction not found",
+          error: "Transaction not found",
         },
         { status: 404 },
       );
@@ -477,11 +477,11 @@ export async function PUT(_request: NextRequest) {
       data: megavaultData.transactions[transactionIndex],
       message: "Transaction updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update transaction",
+        error: "Failed to update transaction",
       },
       { status: 500 },
     );

@@ -32,9 +32,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -72,14 +72,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -124,10 +124,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -273,9 +273,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -313,14 +313,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -365,10 +365,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -514,9 +514,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -554,14 +554,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -606,10 +606,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -755,9 +755,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -795,14 +795,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -847,10 +847,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -996,9 +996,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -1036,14 +1036,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -1088,10 +1088,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -1237,9 +1237,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -1277,14 +1277,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -1329,10 +1329,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -1478,9 +1478,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -1518,14 +1518,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -1570,10 +1570,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -1719,9 +1719,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -1759,14 +1759,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -1811,10 +1811,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -1960,9 +1960,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -2000,14 +2000,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -2052,10 +2052,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -2201,9 +2201,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -2241,14 +2241,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -2293,10 +2293,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -2442,9 +2442,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -2482,14 +2482,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -2534,10 +2534,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -2683,9 +2683,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -2723,14 +2723,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -2775,10 +2775,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -2924,9 +2924,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -2964,14 +2964,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -3016,10 +3016,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -3165,9 +3165,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -3205,14 +3205,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -3257,10 +3257,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -3406,9 +3406,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -3446,14 +3446,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -3498,10 +3498,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -3647,9 +3647,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -3687,14 +3687,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -3739,10 +3739,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -3888,9 +3888,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -3928,14 +3928,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -3980,10 +3980,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -4129,9 +4129,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -4169,14 +4169,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -4221,10 +4221,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -4370,9 +4370,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -4410,14 +4410,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -4462,10 +4462,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -4611,9 +4611,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -4651,14 +4651,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -4703,10 +4703,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -4852,9 +4852,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -4892,14 +4892,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -4944,10 +4944,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -5093,9 +5093,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -5133,14 +5133,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -5185,10 +5185,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -5334,9 +5334,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -5374,14 +5374,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -5426,10 +5426,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -5575,9 +5575,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -5615,14 +5615,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -5667,10 +5667,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -5816,9 +5816,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -5856,14 +5856,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -5908,10 +5908,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -6057,9 +6057,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -6097,14 +6097,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -6149,10 +6149,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -6298,9 +6298,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -6338,14 +6338,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -6390,10 +6390,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -6539,9 +6539,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -6579,14 +6579,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -6631,10 +6631,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -6780,9 +6780,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -6820,14 +6820,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -6872,10 +6872,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -7021,9 +7021,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -7061,14 +7061,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -7113,10 +7113,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -7262,9 +7262,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -7302,14 +7302,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -7354,10 +7354,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -7503,9 +7503,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -7543,14 +7543,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -7595,10 +7595,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -7744,9 +7744,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -7784,14 +7784,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -7836,10 +7836,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -7985,9 +7985,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -8025,14 +8025,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -8077,10 +8077,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -8226,9 +8226,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -8266,14 +8266,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -8318,10 +8318,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }
@@ -8467,9 +8467,9 @@ export async function initializeServices(): Promise<void> {
     setupHealthMonitoring();
 
     console.info("[Init] Service initialization complete!");
-  } catch (_err) {
+  } catch (err) {
     void _err;
-    (globalThis.console as unknown)?.error?.(
+    globalThis.console.error(
       "[Init] Service initialization failed:",
       _err,
     );
@@ -8507,14 +8507,14 @@ function setupRecoveryListeners(): void {
       }
 
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.("[Init] Fetch _error:", _err);
+      globalThis.console.error("[Init] Fetch error:", _err);
 
       // Attempt to recover
       recoveryManager.scheduleRecovery(
         "api-endpoint",
-        String(_err),
+        String(err),
         async () => {
           await checkHealth();
         },
@@ -8559,10 +8559,10 @@ function setupHealthMonitoring(): void {
         totalSamples: stats.totalSamples,
         avgResponseTimes: stats.avgResponseTimes,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
-        "[Monitor] Health monitoring _error:",
+      globalThis.console.error(
+        "[Monitor] Health monitoring error:",
         _err,
       );
     }

@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(status);
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error in monitor status endpoint:",
       error,
     );
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(status);
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error in monitor control endpoint:",
       error,
     );

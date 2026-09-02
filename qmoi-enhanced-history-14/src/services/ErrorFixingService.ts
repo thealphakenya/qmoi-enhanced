@@ -59,7 +59,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -70,10 +70,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
+      } catch (error) {
         globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;

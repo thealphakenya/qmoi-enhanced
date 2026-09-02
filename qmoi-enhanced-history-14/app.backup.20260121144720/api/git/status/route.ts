@@ -37,11 +37,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -89,11 +89,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -141,11 +141,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -193,11 +193,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -245,11 +245,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -297,11 +297,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -349,11 +349,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -401,11 +401,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -453,11 +453,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -505,11 +505,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -557,11 +557,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -609,11 +609,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -661,11 +661,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -713,11 +713,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -765,11 +765,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -817,11 +817,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -869,11 +869,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -921,11 +921,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -973,11 +973,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1025,11 +1025,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1077,11 +1077,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1129,11 +1129,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1181,11 +1181,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1233,11 +1233,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1285,11 +1285,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1337,11 +1337,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1389,11 +1389,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1441,11 +1441,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1493,11 +1493,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1545,11 +1545,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1597,11 +1597,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1649,11 +1649,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1701,11 +1701,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1753,11 +1753,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1805,11 +1805,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1857,11 +1857,11 @@ export async function GET(_req: NextRequest) {
       changesCount: statusOutput.split("\n").filter((line) => line.trim())
         .length,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to get Git status",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to get Git status",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );

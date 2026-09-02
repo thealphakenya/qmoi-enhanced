@@ -11,7 +11,7 @@ function loadUsers(): unknown[] {
   if (!fs.existsSync(USERS_FILE)) return [];
   try {
     return JSON.parse(fs.readFileSync(USERS_FILE, "utf-8"));
-  } catch (_e) {
+  } catch (e) {
     return [];
   }
 }
@@ -21,21 +21,21 @@ export async function POST(_request: NextRequest) {
     const body = await _request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
     if (!user)
       return NextResponse.json(
-        { _error: "Invalid credentials" },
+        { error: "Invalid credentials" },
         { status: 401 },
       );
 
     const valid = await bcrypt.compare(password, user.password);
     if (!valid)
       return NextResponse.json(
-        { _error: "Invalid credentials" },
+        { error: "Invalid credentials" },
         { status: 401 },
       );
 
@@ -49,9 +49,9 @@ export async function POST(_request: NextRequest) {
       token,
       user: { id: user.id, username: user.username, role: user.role },
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (_error as Error).message || "Internal error" },
+      { error: (error as Error).message || "Internal error" },
       { status: 500 },
     );
   }

@@ -152,7 +152,7 @@ export default function CashonTradingPanel() {
       }
     } catch (err) {
       setError("Failed to load trading data");
-      (globalThis.console as any)?.error?.("Load data error:", err);
+      globalThis.console.error("Load data error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -173,7 +173,7 @@ export default function CashonTradingPanel() {
       }
     } catch (err) {
       setError("Failed to start trading");
-      (globalThis.console as any)?.error?.("Start trading error:", err);
+      globalThis.console.error("Start trading error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -194,7 +194,7 @@ export default function CashonTradingPanel() {
       }
     } catch (err) {
       setError("Failed to stop trading");
-      (globalThis.console as any)?.error?.("Stop trading error:", err);
+      globalThis.console.error("Stop trading error:", err);
     } finally {
       setIsLoading(false);
     }
@@ -219,7 +219,7 @@ export default function CashonTradingPanel() {
       }
     } catch (err) {
       setError("Failed to request deposit");
-      (globalThis.console as any)?.error?.("Deposit error:", err);
+      globalThis.console.error("Deposit error:", err);
     } finally {
       setIsLoading(false);
     }

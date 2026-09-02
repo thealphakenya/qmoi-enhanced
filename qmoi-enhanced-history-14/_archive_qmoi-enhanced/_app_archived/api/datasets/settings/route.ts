@@ -55,7 +55,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(updatedSettings);
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error in dataset settings endpoint:",
       error,
     );

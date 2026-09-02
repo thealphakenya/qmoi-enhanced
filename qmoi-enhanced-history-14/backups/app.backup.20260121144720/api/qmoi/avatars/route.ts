@@ -28,10 +28,10 @@ export async function GET() {
       engines: Object.keys(animationEngines),
       qualityLevels: Object.keys(qualityLevels),
     });
-  } catch (_error) {
-    (console as any).error("Error fetching avatars:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching avatars:", error);
     return NextResponse.json(
-      { _error: "Failed to fetch avatars" },
+      { error: "Failed to fetch avatars" },
       { status: 500 },
     );
   }
@@ -56,12 +56,12 @@ export async function POST(_request: NextRequest) {
         return await customizeAvatar(avatarId, voiceProfile);
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Error in avatars API:", _error);
+  } catch (error) {
+    (console as any).error("Error in avatars API:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -73,7 +73,7 @@ async function switchAvatar(avatarId: string) {
     const avatar = avatarsConfig.find((a) => a.id === avatarId);
     if (!avatar) {
       return NextResponse.json(
-        { _error: "Invalid avatar ID" },
+        { error: "Invalid avatar ID" },
         { status: 400 },
       );
     }
@@ -100,10 +100,10 @@ async function switchAvatar(avatarId: string) {
       engineInfo: animationEngines[avatar.animationEngine],
       qualityInfo: qualityLevels[avatar.qualityLevel],
     });
-  } catch (_error) {
-    (console as any).error("Error switching avatar:", _error);
+  } catch (error) {
+    (console as any).error("Error switching avatar:", error);
     return NextResponse.json(
-      { _error: "Failed to switch avatar" },
+      { error: "Failed to switch avatar" },
       { status: 500 },
     );
   }
@@ -128,10 +128,10 @@ async function upgradeAvatar(avatarId: string) {
       newVersion: "2.1.0",
       improvements: ["better_animations", "enhanced_quality", "new_features"],
     });
-  } catch (_error) {
-    (console as any).error("Error upgrading avatar:", _error);
+  } catch (error) {
+    (console as any).error("Error upgrading avatar:", error);
     return NextResponse.json(
-      { _error: "Failed to upgrade avatar" },
+      { error: "Failed to upgrade avatar" },
       { status: 500 },
     );
   }
@@ -164,10 +164,10 @@ async function enhanceAvatar(
         "improved_quality",
       ],
     });
-  } catch (_error) {
-    (console as any).error("Error enhancing avatar:", _error);
+  } catch (error) {
+    (console as any).error("Error enhancing avatar:", error);
     return NextResponse.json(
-      { _error: "Failed to enhance avatar" },
+      { error: "Failed to enhance avatar" },
       { status: 500 },
     );
   }
@@ -195,10 +195,10 @@ async function customizeAvatar(avatarId: string, voiceProfile: string) {
         "preference_saved",
       ],
     });
-  } catch (_error) {
-    (console as any).error("Error customizing avatar:", _error);
+  } catch (error) {
+    (console as any).error("Error customizing avatar:", error);
     return NextResponse.json(
-      { _error: "Failed to customize avatar" },
+      { error: "Failed to customize avatar" },
       { status: 500 },
     );
   }

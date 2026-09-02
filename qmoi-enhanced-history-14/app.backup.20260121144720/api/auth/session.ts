@@ -27,9 +27,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -65,9 +65,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -103,9 +103,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -141,9 +141,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -179,9 +179,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -217,9 +217,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -255,9 +255,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -293,9 +293,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -331,9 +331,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -369,9 +369,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -407,9 +407,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -445,9 +445,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -483,9 +483,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -521,9 +521,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -559,9 +559,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -597,9 +597,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -635,9 +635,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -673,9 +673,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -711,9 +711,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -749,9 +749,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -787,9 +787,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -825,9 +825,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -863,9 +863,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -901,9 +901,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -939,9 +939,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -977,9 +977,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1015,9 +1015,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1053,9 +1053,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1091,9 +1091,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1129,9 +1129,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1167,9 +1167,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1205,9 +1205,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1243,9 +1243,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1281,9 +1281,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1319,9 +1319,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1357,9 +1357,9 @@ const handler = requireRole(["user", "admin", "master"])(async (
       delete sessions[sid];
       return _res.status(200).json({ success: true });
     }
-    return _res.status(404).json({ _error: "Session not found" });
+    return _res.status(404).json({ error: "Session not found" });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;

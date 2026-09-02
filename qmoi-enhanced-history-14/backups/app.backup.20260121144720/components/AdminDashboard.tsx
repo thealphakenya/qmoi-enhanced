@@ -29,7 +29,7 @@ export default function AdminDashboard() {
   const [monitoring, setMonitoring] = useState<HealthMetrics | null>(null);
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [refreshInterval, setRefreshInterval] = useState(30); // seconds
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function AdminDashboard() {
 
         setMonitoring(monitoringData.monitoring);
         setAlerts(alertsData.alerts);
-      } catch (_err) {
+      } catch (err) {
         setError(_err instanceof Error ? _err.message : "Unknown error");
       } finally {
         setLoading(false);
@@ -79,7 +79,7 @@ export default function AdminDashboard() {
     );
   }
 
-  if (_error) {
+  if (error) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="text-center text-red-600">

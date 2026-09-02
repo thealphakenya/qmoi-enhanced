@@ -55,7 +55,7 @@ function logDownloadFix(
     app: "QCity",
     device: (_options as any).device || "unknown",
     status,
-    _error,
+    error,
   };
   fs.appendFileSync("logs/download_fixes.log", JSON.stringify(entry) + "\n");
 }

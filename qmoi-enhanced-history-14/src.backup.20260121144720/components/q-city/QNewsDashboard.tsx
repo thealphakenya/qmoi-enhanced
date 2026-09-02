@@ -45,7 +45,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -53,7 +53,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -389,7 +389,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -397,7 +397,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -735,7 +735,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -743,7 +743,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -1079,7 +1079,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -1087,7 +1087,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -1423,7 +1423,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -1431,7 +1431,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -1767,7 +1767,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -1775,7 +1775,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -2111,7 +2111,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -2119,7 +2119,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -2455,7 +2455,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -2463,7 +2463,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -2799,7 +2799,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -2807,7 +2807,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -3143,7 +3143,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -3151,7 +3151,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -3487,7 +3487,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -3495,7 +3495,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -3831,7 +3831,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -3839,7 +3839,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -4175,7 +4175,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -4183,7 +4183,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -4519,7 +4519,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -4527,7 +4527,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -4863,7 +4863,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -4871,7 +4871,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -5207,7 +5207,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -5215,7 +5215,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -5551,7 +5551,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -5559,7 +5559,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -5895,7 +5895,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -5903,7 +5903,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -6239,7 +6239,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -6247,7 +6247,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -6583,7 +6583,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -6591,7 +6591,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -6927,7 +6927,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -6935,7 +6935,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -7271,7 +7271,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -7279,7 +7279,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -7615,7 +7615,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -7623,7 +7623,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -7959,7 +7959,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -7967,7 +7967,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -8303,7 +8303,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -8311,7 +8311,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -8647,7 +8647,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -8655,7 +8655,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -8991,7 +8991,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -8999,7 +8999,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -9335,7 +9335,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -9343,7 +9343,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -9679,7 +9679,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -9687,7 +9687,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -10023,7 +10023,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -10031,7 +10031,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -10367,7 +10367,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -10375,7 +10375,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -10711,7 +10711,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -10719,7 +10719,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -11055,7 +11055,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -11063,7 +11063,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -11399,7 +11399,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -11407,7 +11407,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -11743,7 +11743,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -11751,7 +11751,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();
@@ -12087,7 +12087,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchNews = async () => {
     setLoading(true);
-    const _res = await fetch("/api/qnews");
+    const response = await fetch("/api/qnews");
     const data = await _res.json();
     setNews(data.news || []);
     setLoading(false);
@@ -12095,7 +12095,7 @@ const QNewsDashboard: React.FC<QNewsDashboardProps> = ({ isMaster }) => {
 
   const fetchAnalytics = async () => {
     if (!isMaster) return;
-    const _res = await fetch("/api/qnews/analytics", {
+    const response = await fetch("/api/qnews/analytics", {
       headers: { "x-qmoi-master": "true" },
     });
     const data = await _res.json();

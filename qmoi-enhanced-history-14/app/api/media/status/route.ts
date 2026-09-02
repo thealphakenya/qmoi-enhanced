@@ -63,10 +63,10 @@ export async function GET() {
         message: "Database temporarily disabled for build compatibility",
       });
     }
-  } catch (_error) {
-    (console as any).error("Error fetching media status:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching media status:", error);
     return NextResponse.json(
-      { _error: "Failed to fetch media status" },
+      { error: "Failed to fetch media status" },
       { status: 500 },
     );
   }

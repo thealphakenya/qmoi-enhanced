@@ -1,4 +1,5 @@
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -119,3 +120,16 @@ def test_success_contract_cannot_report_success_without_validation(tmp_path: Pat
         checkpoint_created=True,
     )
     assert contract["final_status"] == "FAILED"
+
+
+def test_agent_rejects_non_github_hosted_runtime(monkeypatch, tmp_path):
+    monkeypatch.setenv("QMOI_RUNTIME_MODE", "github-hosted")
+    monkeypatch.setenv("QMOI_GITHUB_HOSTED", "true")
+    monkeypatch.setenv("QMOI_REQUIRE_GITHUB_HOSTED", "true")
+    monkeypatch.setenv("GITHUB_ACTIONS", "false")
+
+    from scripts.ollama_autonomous_agent import OllamaAutonomousAgent
+
+    agent = OllamaAutonomousAgent(tmp_path)
+    with pytest.raises(RuntimeError, match="GitHub-hosted"):
+        agent.enforce_github_runtime()

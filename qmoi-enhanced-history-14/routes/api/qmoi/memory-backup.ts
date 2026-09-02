@@ -93,7 +93,7 @@ export default async function handler(
 
     return res.status(200).json({ success: true, backupFile: dest, details });
   } catch (error: unknown) {
-    (globalThis.console as any)?.error?.("Memory backup failed:", error);
+    globalThis.console.error("Memory backup failed:", error);
     return res.status(500).json({ success: false, error: String(error) });
   }
 }

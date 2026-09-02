@@ -22,7 +22,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -43,17 +43,17 @@ export async function GET(_request: NextRequest) {
             }))
           : [];
       return NextResponse.json({ errors });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       return NextResponse.json(
         {
-          _error: _e instanceof Error ? _e.message : String(_e),
+          error: _e instanceof Error ? _e.message : String(e),
         },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -61,7 +61,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -72,17 +72,17 @@ export async function POST(_request: NextRequest) {
       // Simulate auto-fix (could trigger a script, restart service, etc.)
       // In production, implement real fix logic
       return NextResponse.json({ status: "fixed" });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       return NextResponse.json(
         {
-          _error: _e instanceof Error ? _e.message : String(_e),
+          error: _e instanceof Error ? _e.message : String(e),
         },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 // AUTOFIXED by Ollama at 2026-07-20T01:09:53.415302Z: replaced placeholders or noted TODOs. Please review.

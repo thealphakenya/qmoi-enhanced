@@ -37,7 +37,7 @@ export async function GET(_request: Request) {
 
     if (!isPrismaAvailable) {
       return NextResponse.json({
-        _error: "Database not configured",
+        error: "Database not configured",
         message: "Using mock data - database not configured",
       });
     }
@@ -55,14 +55,14 @@ export async function GET(_request: Request) {
         return await getStatus();
       default:
         return NextResponse.json(
-          { _error: "Invalid endpoint" },
+          { error: "Invalid endpoint" },
           { status: 400 },
         );
     }
-  } catch (_error) {
-    (console as any).error("QVillage API _error:", _error);
+  } catch (error) {
+    (console as any).error("QVillage API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -84,14 +84,14 @@ export async function POST(_request: Request) {
         return await performAnalysis(body);
       default:
         return NextResponse.json(
-          { _error: "Invalid endpoint" },
+          { error: "Invalid endpoint" },
           { status: 400 },
         );
     }
-  } catch (_error) {
-    (console as any).error("QVillage API _error:", _error);
+  } catch (error) {
+    (console as any).error("QVillage API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -300,7 +300,7 @@ async function fetchArxivPapers(_params: URLSearchParams) {
     const maxResults = parseInt(_params.get("limit") || "10");
 
     // Real arXiv API call
-    const _response = await fetch(
+    const response = await fetch(
       `http://export.arxiv.org/api/query?search_query=all:${encodeURIComponent(
         _query,
       )}&start=0&max_results=${maxResults}&sortBy=submittedDate&sortOrder=descending`,
@@ -319,8 +319,8 @@ async function fetchArxivPapers(_params: URLSearchParams) {
       source: "arxiv",
       relevanceScore: Math.random() * 0.3 + 0.7, // Enhanced scoring
     }));
-  } catch (_error) {
-    (console as any).error("Error fetching arXiv papers:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching arXiv papers:", error);
     return [];
   }
 }
@@ -331,7 +331,7 @@ async function fetchHuggingFacePapers(_params: URLSearchParams) {
     const maxResults = parseInt(_params.get("limit") || "10");
 
     // Real Hugging Face Hub API call
-    const _response = await fetch(
+    const response = await fetch(
       `https://huggingface.co/api/models?search=${encodeURIComponent(
         _query,
       )}&limit=${maxResults}&sort=downloads&direction=-1`,
@@ -357,8 +357,8 @@ async function fetchHuggingFacePapers(_params: URLSearchParams) {
       downloads: model.downloads,
       likes: model.likes,
     }));
-  } catch (_error) {
-    (console as any).error("Error fetching Hugging Face papers:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching Hugging Face papers:", error);
     return [];
   }
 }
@@ -681,8 +681,8 @@ async function searchDiscussions(_query: string, filters: unknown) {
       tags: disc.tags,
       relevanceScore: disc.relevanceScore,
     }));
-  } catch (_error) {
-    (console as any).error("Error searching discussions:", _error);
+  } catch (error) {
+    (console as any).error("Error searching discussions:", error);
     return [];
   }
 }
@@ -793,12 +793,12 @@ async function syncWithQMOI(direction: string) {
       status: "success",
       data: qmoiData,
     };
-  } catch (_error) {
-    (console as any).error("Error syncing with QMOI:", _error);
+  } catch (error) {
+    (console as any).error("Error syncing with QMOI:", error);
     return {
       count: 0,
       status: "error",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -843,12 +843,12 @@ async function syncLocalData(direction: string) {
       status: "success",
       data: localData,
     };
-  } catch (_error) {
-    (console as any).error("Error syncing local data:", _error);
+  } catch (error) {
+    (console as any).error("Error syncing local data:", error);
     return {
       count: 0,
       status: "error",
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -914,12 +914,12 @@ async function analyzeWithQMOI(content: unknown, type: string, _options: unknown
       processing_method: "qmoi_superior_analysis",
       analysis_quality: "excellent",
     };
-  } catch (_error) {
-    (console as any).error("Error in QMOI analysis:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI analysis:", error);
     return {
       insights: [],
       confidence: 0.5,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -935,7 +935,7 @@ async function analyzeWithHuggingFace(
 
     if (type === "text") {
       // Use a text analysis model from Hugging Face
-      const _response = await fetch(
+      const response = await fetch(
         "https://api-inference.huggingface.co/models/distilbert-base-uncased-finetuned-sst-2-english",
         {
           method: "POST",
@@ -979,12 +979,12 @@ async function analyzeWithHuggingFace(
       processing_method: "huggingface_model_analysis",
       models_used: ["distilbert-base-uncased-finetuned-sst-2-english"],
     };
-  } catch (_error) {
-    (console as any).error("Error in Hugging Face analysis:", _error);
+  } catch (error) {
+    (console as any).error("Error in Hugging Face analysis:", error);
     return {
       insights: [],
       confidence: 0.5,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1060,12 +1060,12 @@ async function analyzeLocally(content: unknown, type: string, _options: unknown)
       processing_method: "local_computational_analysis",
       analysis_quality: "good",
     };
-  } catch (_error) {
-    (console as any).error("Error in local analysis:", _error);
+  } catch (error) {
+    (console as any).error("Error in local analysis:", error);
     return {
       insights: [],
       confidence: 0.5,
-      _error: error instanceof Error ? error.message : String(_error),
+      error: error instanceof Error ? error.message : String(error),
     };
   }
 }
@@ -1127,8 +1127,8 @@ function parseArxivXML(xmlText: string) {
         });
       }
     }
-  } catch (_error) {
-    (console as any).error("Error parsing arXiv XML:", _error);
+  } catch (error) {
+    (console as any).error("Error parsing arXiv XML:", error);
   }
 
   return papers;
@@ -1170,8 +1170,8 @@ async function performSemanticSearch(_query: string) {
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (_error) {
-    (console as any).error("Error performing semantic search:", _error);
+  } catch (error) {
+    (console as any).error("Error performing semantic search:", error);
     return [];
   }
 }
@@ -1206,8 +1206,8 @@ async function searchByTags(tags: string[]) {
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (_error) {
-    (console as any).error("Error searching by tags:", _error);
+  } catch (error) {
+    (console as any).error("Error searching by tags:", error);
     return [];
   }
 }
@@ -1237,8 +1237,8 @@ async function getRecentEntries() {
       tags: entry.tags,
       relevanceScore: entry.relevanceScore,
     }));
-  } catch (_error) {
-    (console as any).error("Error fetching recent entries:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching recent entries:", error);
     return [];
   }
 }

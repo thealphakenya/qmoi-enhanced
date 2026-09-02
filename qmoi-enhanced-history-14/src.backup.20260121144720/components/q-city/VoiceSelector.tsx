@@ -68,7 +68,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -85,8 +85,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -105,7 +105,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -120,8 +120,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -444,7 +444,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -461,8 +461,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -481,7 +481,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -496,8 +496,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -822,7 +822,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -839,8 +839,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -859,7 +859,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -874,8 +874,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -1198,7 +1198,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -1215,8 +1215,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -1235,7 +1235,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -1250,8 +1250,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -1574,7 +1574,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -1591,8 +1591,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -1611,7 +1611,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -1626,8 +1626,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -1950,7 +1950,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -1967,8 +1967,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -1987,7 +1987,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -2002,8 +2002,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -2326,7 +2326,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -2343,8 +2343,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -2363,7 +2363,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -2378,8 +2378,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -2702,7 +2702,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -2719,8 +2719,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -2739,7 +2739,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -2754,8 +2754,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -3078,7 +3078,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -3095,8 +3095,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -3115,7 +3115,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -3130,8 +3130,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -3454,7 +3454,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -3471,8 +3471,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -3491,7 +3491,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -3506,8 +3506,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -3830,7 +3830,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -3847,8 +3847,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -3867,7 +3867,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -3882,8 +3882,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -4206,7 +4206,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -4223,8 +4223,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -4243,7 +4243,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -4258,8 +4258,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -4582,7 +4582,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -4599,8 +4599,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -4619,7 +4619,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -4634,8 +4634,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -4958,7 +4958,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -4975,8 +4975,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -4995,7 +4995,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -5010,8 +5010,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -5334,7 +5334,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -5351,8 +5351,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -5371,7 +5371,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -5386,8 +5386,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -5710,7 +5710,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -5727,8 +5727,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -5747,7 +5747,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -5762,8 +5762,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -6086,7 +6086,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -6103,8 +6103,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -6123,7 +6123,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -6138,8 +6138,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -6462,7 +6462,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -6479,8 +6479,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -6499,7 +6499,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -6514,8 +6514,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -6838,7 +6838,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -6855,8 +6855,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -6875,7 +6875,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -6890,8 +6890,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -7214,7 +7214,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -7231,8 +7231,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -7251,7 +7251,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -7266,8 +7266,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -7590,7 +7590,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -7607,8 +7607,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -7627,7 +7627,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -7642,8 +7642,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -7966,7 +7966,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -7983,8 +7983,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -8003,7 +8003,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -8018,8 +8018,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -8342,7 +8342,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -8359,8 +8359,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -8379,7 +8379,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -8394,8 +8394,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -8718,7 +8718,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -8735,8 +8735,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -8755,7 +8755,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -8770,8 +8770,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -9094,7 +9094,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -9111,8 +9111,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -9131,7 +9131,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -9146,8 +9146,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -9470,7 +9470,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -9487,8 +9487,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -9507,7 +9507,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -9522,8 +9522,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -9846,7 +9846,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -9863,8 +9863,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -9883,7 +9883,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -9898,8 +9898,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -10222,7 +10222,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -10239,8 +10239,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -10259,7 +10259,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -10274,8 +10274,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -10598,7 +10598,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -10615,8 +10615,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -10635,7 +10635,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -10650,8 +10650,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -10974,7 +10974,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -10991,8 +10991,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -11011,7 +11011,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -11026,8 +11026,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -11350,7 +11350,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -11367,8 +11367,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -11387,7 +11387,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -11402,8 +11402,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -11726,7 +11726,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -11743,8 +11743,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -11763,7 +11763,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -11778,8 +11778,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -12102,7 +12102,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -12119,8 +12119,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -12139,7 +12139,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -12154,8 +12154,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -12478,7 +12478,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -12495,8 +12495,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -12515,7 +12515,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -12530,8 +12530,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -12854,7 +12854,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -12871,8 +12871,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -12891,7 +12891,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -12906,8 +12906,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",
@@ -13230,7 +13230,7 @@ export function VoiceSelector({
       setSelectedVoice(voiceId);
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -13247,8 +13247,8 @@ export function VoiceSelector({
           voiceProfiles.find((v) => v.id === voiceId)?.name
         } voice.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch voice. Please try again.",
@@ -13267,7 +13267,7 @@ export function VoiceSelector({
 
     setIsPlaying(true);
     try {
-      const _response = await fetch("/api/qmoi/voice-preview", {
+      const response = await fetch("/api/qmoi/voice-preview", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -13282,8 +13282,8 @@ export function VoiceSelector({
 
       // Simulate audio playback
       setTimeout(() => setIsPlaying(false), 3000);
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Preview Error",
         description: "Could not play voice preview.",

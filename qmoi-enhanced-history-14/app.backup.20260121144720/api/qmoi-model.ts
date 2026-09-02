@@ -300,8 +300,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -599,8 +599,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -632,8 +632,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -761,7 +761,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -789,7 +789,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -825,12 +825,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -1148,8 +1148,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -1447,8 +1447,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -1480,8 +1480,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -1609,7 +1609,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -1637,7 +1637,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -1673,12 +1673,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -1998,8 +1998,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -2297,8 +2297,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -2330,8 +2330,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -2459,7 +2459,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -2487,7 +2487,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -2523,12 +2523,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -2846,8 +2846,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -3145,8 +3145,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -3178,8 +3178,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -3307,7 +3307,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -3335,7 +3335,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -3371,12 +3371,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -3694,8 +3694,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -3993,8 +3993,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -4026,8 +4026,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -4155,7 +4155,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -4183,7 +4183,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -4219,12 +4219,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -4542,8 +4542,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -4841,8 +4841,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -4874,8 +4874,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -5003,7 +5003,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -5031,7 +5031,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -5067,12 +5067,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -5390,8 +5390,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -5689,8 +5689,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -5722,8 +5722,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -5851,7 +5851,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -5879,7 +5879,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -5915,12 +5915,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -6238,8 +6238,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -6537,8 +6537,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -6570,8 +6570,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -6699,7 +6699,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -6727,7 +6727,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -6763,12 +6763,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -7086,8 +7086,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -7385,8 +7385,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -7418,8 +7418,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -7547,7 +7547,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -7575,7 +7575,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -7611,12 +7611,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -7934,8 +7934,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -8233,8 +8233,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -8266,8 +8266,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -8395,7 +8395,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -8423,7 +8423,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -8459,12 +8459,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -8782,8 +8782,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -9081,8 +9081,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -9114,8 +9114,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -9243,7 +9243,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -9271,7 +9271,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -9307,12 +9307,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -9630,8 +9630,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -9929,8 +9929,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -9962,8 +9962,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -10091,7 +10091,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -10119,7 +10119,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -10155,12 +10155,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -10478,8 +10478,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -10777,8 +10777,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -10810,8 +10810,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -10939,7 +10939,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -10967,7 +10967,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -11003,12 +11003,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -11326,8 +11326,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -11625,8 +11625,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -11658,8 +11658,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -12073,8 +12073,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -12372,8 +12372,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -12405,8 +12405,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -12534,7 +12534,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -12562,7 +12562,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -12598,12 +12598,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -12921,8 +12921,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -13220,8 +13220,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -13253,8 +13253,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -13382,7 +13382,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -13410,7 +13410,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -13446,12 +13446,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -13769,8 +13769,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -14068,8 +14068,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -14101,8 +14101,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -14230,7 +14230,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -14258,7 +14258,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -14294,12 +14294,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -14617,8 +14617,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -14916,8 +14916,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -14949,8 +14949,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -15078,7 +15078,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -15106,7 +15106,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -15142,12 +15142,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -15465,8 +15465,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -15764,8 +15764,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -15797,8 +15797,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -15926,7 +15926,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -15954,7 +15954,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -15990,12 +15990,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -16313,8 +16313,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -16612,8 +16612,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -16645,8 +16645,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -16774,7 +16774,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -16802,7 +16802,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -16838,12 +16838,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }
@@ -17161,8 +17161,8 @@ async function runAdvancedAIGeneration(
         try {
           const result = JSON.parse(stdout.split("\n").pop() || "{}");
           resolve(result);
-        } catch (_e) {
-          resolve({ status: "error", _error: String(_e), raw: stdout });
+        } catch (e) {
+          resolve({ status: "error", error: String(e), raw: stdout });
         }
       },
     );
@@ -17460,8 +17460,8 @@ async function aiResearch(url: string, query?: string) {
       summary: text.slice(0, 2000) + (text.length > 2000 ? "..." : ""),
       url,
     };
-  } catch (_e) {
-    return { _error: "Failed to fetch or parse URL", url };
+  } catch (e) {
+    return { error: "Failed to fetch or parse URL", url };
   }
 }
 // --- Enhanced AI Research: Multi-page, PDF, and Q&A ---
@@ -17493,8 +17493,8 @@ async function aiPdfResearch(buffer: Buffer, query?: string) {
       type: "pdf",
       pages: data.numpages,
     };
-  } catch (_e) {
-    return { _error: "Failed to parse PDF", type: "pdf" };
+  } catch (e) {
+    return { error: "Failed to parse PDF", type: "pdf" };
   }
 }
 
@@ -17622,7 +17622,7 @@ export default async function handler(
     import("formidable").then((mod) => {
       const form = (mod as any).default ?? mod;
       form.parse(_req as any, async (_err: unknown, fields: unknown, files: unknown) => {
-        if (_err) return _res.status(500).json({ _error: _err.message });
+        if (_err) return _res.status(500).json({ error: _err.message });
         if (files.file) {
           const file = files.file[0];
           const buffer = fs.readFileSync(file.filepath);
@@ -17650,7 +17650,7 @@ export default async function handler(
             });
           }
         }
-        return _res.status(400).json({ _error: "No file uploaded" });
+        return _res.status(400).json({ error: "No file uploaded" });
       });
     });
   }
@@ -17686,12 +17686,12 @@ export async function POST(_req: Request) {
       if (speak) payload.suggestClientTTS = true;
       return new Response(JSON.stringify(payload), { status: 200 });
     }
-    return new Response(JSON.stringify({ _error: "no_message" }), {
+    return new Response(JSON.stringify({ error: "no_message" }), {
       status: 400,
     });
-  } catch (_e: unknown) {
+  } catch (e: unknown) {
     return new Response(
-      JSON.stringify({ _error: "server_error", detail: String(_e) }),
+      JSON.stringify({ error: "server_error", detail: String(e) }),
       { status: 500 },
     );
   }

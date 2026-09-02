@@ -20,7 +20,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -31,7 +31,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -44,7 +44,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -56,7 +56,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -189,7 +189,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -200,7 +200,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -213,7 +213,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -225,7 +225,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -360,7 +360,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -371,7 +371,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -384,7 +384,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -396,7 +396,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -529,7 +529,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -540,7 +540,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -553,7 +553,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -565,7 +565,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -698,7 +698,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -709,7 +709,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -722,7 +722,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -734,7 +734,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -867,7 +867,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -878,7 +878,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -891,7 +891,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -903,7 +903,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -1036,7 +1036,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1047,7 +1047,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1060,7 +1060,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -1072,7 +1072,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -1205,7 +1205,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1216,7 +1216,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1229,7 +1229,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -1241,7 +1241,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -1374,7 +1374,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1385,7 +1385,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1398,7 +1398,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -1410,7 +1410,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -1543,7 +1543,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1554,7 +1554,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1567,7 +1567,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -1579,7 +1579,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -1712,7 +1712,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1723,7 +1723,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1736,7 +1736,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -1748,7 +1748,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -1881,7 +1881,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1892,7 +1892,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -1905,7 +1905,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -1917,7 +1917,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -2050,7 +2050,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2061,7 +2061,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -2074,7 +2074,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -2086,7 +2086,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -2219,7 +2219,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2230,7 +2230,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -2243,7 +2243,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -2255,7 +2255,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -2388,7 +2388,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2399,7 +2399,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -2412,7 +2412,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -2424,7 +2424,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -2557,7 +2557,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2568,7 +2568,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -2581,7 +2581,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -2593,7 +2593,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -2726,7 +2726,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2737,7 +2737,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -2750,7 +2750,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -2762,7 +2762,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -2895,7 +2895,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2906,7 +2906,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -2919,7 +2919,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -2931,7 +2931,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -3064,7 +3064,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3075,7 +3075,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -3088,7 +3088,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -3100,7 +3100,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -3233,7 +3233,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3244,7 +3244,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -3257,7 +3257,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -3269,7 +3269,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -3402,7 +3402,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3413,7 +3413,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -3426,7 +3426,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -3438,7 +3438,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -3571,7 +3571,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3582,7 +3582,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -3595,7 +3595,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -3607,7 +3607,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -3740,7 +3740,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3751,7 +3751,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -3764,7 +3764,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -3776,7 +3776,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -3909,7 +3909,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3920,7 +3920,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -3933,7 +3933,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -3945,7 +3945,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -4078,7 +4078,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4089,7 +4089,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -4102,7 +4102,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -4114,7 +4114,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -4247,7 +4247,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4258,7 +4258,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -4271,7 +4271,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -4283,7 +4283,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -4416,7 +4416,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4427,7 +4427,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -4440,7 +4440,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -4452,7 +4452,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -4585,7 +4585,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4596,7 +4596,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -4609,7 +4609,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -4621,7 +4621,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -4754,7 +4754,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4765,7 +4765,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -4778,7 +4778,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -4790,7 +4790,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -4923,7 +4923,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4934,7 +4934,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -4947,7 +4947,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -4959,7 +4959,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -5092,7 +5092,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -5103,7 +5103,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -5116,7 +5116,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -5128,7 +5128,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -5261,7 +5261,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -5272,7 +5272,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -5285,7 +5285,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -5297,7 +5297,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -5430,7 +5430,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -5441,7 +5441,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -5454,7 +5454,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -5466,7 +5466,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -5599,7 +5599,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -5610,7 +5610,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -5623,7 +5623,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -5635,7 +5635,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -5768,7 +5768,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -5779,7 +5779,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -5792,7 +5792,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -5804,7 +5804,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status
@@ -5937,7 +5937,7 @@ const AccountAutomationPanel: React.FC = () => {
   const [idToCheck, setIdToCheck] = useState("");
 
   const createAccount = async () => {
-    const _res = await fetch("/api/account-automation/create", {
+    const response = await fetch("/api/account-automation/create", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -5948,7 +5948,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const login = async () => {
-    const _res = await fetch("/api/account-automation/login", {
+    const response = await fetch("/api/account-automation/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -5961,7 +5961,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const verify = async (id: number, email: string) => {
-    const _res = await fetch("/api/account-automation/verify", {
+    const response = await fetch("/api/account-automation/verify", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id, email }),
@@ -5973,7 +5973,7 @@ const AccountAutomationPanel: React.FC = () => {
   };
 
   const checkStatus = async () => {
-    const _res = await fetch(`/api/account-automation/status?id=${idToCheck}`);
+    const response = await fetch(`/api/account-automation/status?id=${idToCheck}`);
     const data = await _res.json();
     setStatus(
       data.status

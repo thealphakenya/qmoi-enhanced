@@ -17,7 +17,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -40,11 +40,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -72,7 +72,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -95,11 +95,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -127,7 +127,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -150,11 +150,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -182,7 +182,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -205,11 +205,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -237,7 +237,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -260,11 +260,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -292,7 +292,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -315,11 +315,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -347,7 +347,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -370,11 +370,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -402,7 +402,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -425,11 +425,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -457,7 +457,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -480,11 +480,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -512,7 +512,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -535,11 +535,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -567,7 +567,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -590,11 +590,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -622,7 +622,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -645,11 +645,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -677,7 +677,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -700,11 +700,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -732,7 +732,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -755,11 +755,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -787,7 +787,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -810,11 +810,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -842,7 +842,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -865,11 +865,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -897,7 +897,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -920,11 +920,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -952,7 +952,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -975,11 +975,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1007,7 +1007,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1030,11 +1030,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1062,7 +1062,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1085,11 +1085,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1117,7 +1117,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1140,11 +1140,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1172,7 +1172,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1195,11 +1195,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1227,7 +1227,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1250,11 +1250,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1282,7 +1282,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1305,11 +1305,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1337,7 +1337,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1360,11 +1360,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1392,7 +1392,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1415,11 +1415,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1447,7 +1447,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1470,11 +1470,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1502,7 +1502,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1525,11 +1525,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1557,7 +1557,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1580,11 +1580,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1612,7 +1612,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1635,11 +1635,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1667,7 +1667,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1690,11 +1690,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1722,7 +1722,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1745,11 +1745,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1777,7 +1777,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1800,11 +1800,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1832,7 +1832,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1855,11 +1855,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1887,7 +1887,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1910,11 +1910,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1942,7 +1942,7 @@ export async function POST(_req: NextRequest) {
 
     if (!title || !headBranch) {
       return NextResponse.json(
-        { _error: "Title and head branch are required" },
+        { error: "Title and head branch are required" },
         { status: 400 },
       );
     }
@@ -1965,11 +1965,11 @@ export async function POST(_req: NextRequest) {
       headBranch,
       output: prOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to create pull _request",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to create pull _request",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );

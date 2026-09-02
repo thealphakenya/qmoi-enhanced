@@ -256,7 +256,7 @@ export const QmoiEnhancedSystem: React.FC = () => {
       };
 
       recognition.onerror = (event) => {
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           "Speech recognition error:",
           event.error,
         );

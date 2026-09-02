@@ -93,14 +93,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -209,14 +209,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -325,14 +325,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -441,14 +441,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -557,14 +557,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -673,14 +673,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -789,14 +789,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -905,14 +905,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1021,14 +1021,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1137,14 +1137,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1253,14 +1253,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1369,14 +1369,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1485,14 +1485,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1601,14 +1601,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1717,14 +1717,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1833,14 +1833,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -1949,14 +1949,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2065,14 +2065,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2181,14 +2181,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2297,14 +2297,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2413,14 +2413,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2529,14 +2529,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2645,14 +2645,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2761,14 +2761,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2877,14 +2877,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -2993,14 +2993,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -3109,14 +3109,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -3225,14 +3225,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -3341,14 +3341,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -3457,14 +3457,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -3573,14 +3573,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -3689,14 +3689,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -3805,14 +3805,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -3921,14 +3921,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -4037,14 +4037,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {
@@ -4153,14 +4153,14 @@ export async function POST(_req: NextRequest) {
         message: ResultDesc,
       });
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
-      _error,
+      error,
     );
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+      error instanceof Error ? error.message : String(error);
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       {

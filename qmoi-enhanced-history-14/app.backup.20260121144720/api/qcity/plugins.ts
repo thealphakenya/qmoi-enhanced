@@ -12,7 +12,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -38,7 +38,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -64,7 +64,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -90,7 +90,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -116,7 +116,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -142,7 +142,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -168,7 +168,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -194,7 +194,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -220,7 +220,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -246,7 +246,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -272,7 +272,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -298,7 +298,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -324,7 +324,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -350,7 +350,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -376,7 +376,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -402,7 +402,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -428,7 +428,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -454,7 +454,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -480,7 +480,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -506,7 +506,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -532,7 +532,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -558,7 +558,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -584,7 +584,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -610,7 +610,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -636,7 +636,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -662,7 +662,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -688,7 +688,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -714,7 +714,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -740,7 +740,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -766,7 +766,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -792,7 +792,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -818,7 +818,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -844,7 +844,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -870,7 +870,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -896,7 +896,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)
@@ -922,7 +922,7 @@ const handler = requireRole(["admin", "master"])(async (
   _res: NextApiResponse,
 ) => {
   if (_req.method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(PLUGIN_DIR)) return _res.status(200).json({ plugins: [] });
   const files = fs
     .readdirSync(PLUGIN_DIR)

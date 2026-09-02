@@ -12,7 +12,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -40,11 +40,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -67,7 +67,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -95,11 +95,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -122,7 +122,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -150,11 +150,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -177,7 +177,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -205,11 +205,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -232,7 +232,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -260,11 +260,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -287,7 +287,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -315,11 +315,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -342,7 +342,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -370,11 +370,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -397,7 +397,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -425,11 +425,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -452,7 +452,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -480,11 +480,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -507,7 +507,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -535,11 +535,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -562,7 +562,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -590,11 +590,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -617,7 +617,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -645,11 +645,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -672,7 +672,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -700,11 +700,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -727,7 +727,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -755,11 +755,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -782,7 +782,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -810,11 +810,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -837,7 +837,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -865,11 +865,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -892,7 +892,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -920,11 +920,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -947,7 +947,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -975,11 +975,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1002,7 +1002,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1030,11 +1030,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1057,7 +1057,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1085,11 +1085,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1112,7 +1112,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1140,11 +1140,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1167,7 +1167,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1195,11 +1195,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1222,7 +1222,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1250,11 +1250,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1277,7 +1277,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1305,11 +1305,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1332,7 +1332,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1360,11 +1360,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1387,7 +1387,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1415,11 +1415,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1442,7 +1442,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1470,11 +1470,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1497,7 +1497,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1525,11 +1525,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1552,7 +1552,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1580,11 +1580,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1607,7 +1607,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1635,11 +1635,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1662,7 +1662,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1690,11 +1690,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1717,7 +1717,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1745,11 +1745,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1772,7 +1772,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1800,11 +1800,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1827,7 +1827,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1855,11 +1855,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1882,7 +1882,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1910,11 +1910,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1937,7 +1937,7 @@ export async function POST(_req: NextRequest) {
 
     if (!message || !message.trim()) {
       return NextResponse.json(
-        { _error: "Commit message is required" },
+        { error: "Commit message is required" },
         { status: 400 },
       );
     }
@@ -1965,11 +1965,11 @@ export async function POST(_req: NextRequest) {
       message,
       output: commitOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to commit changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to commit changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );

@@ -32,7 +32,7 @@ export default async function handler(
   if (!auth.ok) {
     return _res
       .status(auth.response?.status || 401)
-      .json(auth.response?.body || { _error: "Unauthorized" });
+      .json(auth.response?.body || { error: "Unauthorized" });
   }
   // Authenticate user and check permissions
   // Log action for audit
@@ -44,7 +44,7 @@ export default async function handler(
 
       if (!userId) {
         return _res.status(400).json({
-          _error: "Missing user ID",
+          error: "Missing user ID",
           _code: "VALIDATION_001",
         });
       }
@@ -86,7 +86,7 @@ export default async function handler(
 
           if (!firstName || !lastName) {
             return _res.status(400).json({
-              _error: "Missing required fields: firstName, lastName",
+              error: "Missing required fields: firstName, lastName",
               _code: "VALIDATION_002",
             });
           }
@@ -116,7 +116,7 @@ export default async function handler(
 
           if (!Array.isArray(goals)) {
             return _res.status(400).json({
-              _error: "Invalid format: goals must be an array",
+              error: "Invalid format: goals must be an array",
               _code: "VALIDATION_003",
             });
           }
@@ -131,14 +131,14 @@ export default async function handler(
         }
         default:
           return _res.status(400).json({
-            _error: "Unknown action",
+            error: "Unknown action",
             _code: "ACTION_001",
           });
       }
     }
     default:
       return _res.status(405).json({
-        _error: "Method not allowed",
+        error: "Method not allowed",
         _code: "METHOD_001",
       });
   }

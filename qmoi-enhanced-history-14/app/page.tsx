@@ -539,9 +539,9 @@ function MainPage() {
                   />
                 </div>
 
-                {_error && (
+                {error && (
                   <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-2 rounded-lg text-sm">
-                    {_error}
+                    {error}
                   </div>
                 )}
 
@@ -610,7 +610,7 @@ function MainPage() {
                         biometricMethods: ["fingerprint", "face", "voice"],
                       }),
                     });
-                  } catch (_e) {
+                  } catch (e) {
                     console.warn("Could not create session", _e);
                   }
                   handleLogin({

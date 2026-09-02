@@ -17,18 +17,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -187,18 +187,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -359,18 +359,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -529,18 +529,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -699,18 +699,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -869,18 +869,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -1039,18 +1039,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -1209,18 +1209,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -1379,18 +1379,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -1549,18 +1549,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -1719,18 +1719,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -1889,18 +1889,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -2059,18 +2059,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -2229,18 +2229,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -2399,18 +2399,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -2569,18 +2569,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -2739,18 +2739,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -2909,18 +2909,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -3079,18 +3079,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -3249,18 +3249,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -3419,18 +3419,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -3589,18 +3589,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -3759,18 +3759,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -3929,18 +3929,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -4099,18 +4099,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -4269,18 +4269,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -4439,18 +4439,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -4609,18 +4609,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -4779,18 +4779,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -4949,18 +4949,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -5119,18 +5119,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -5289,18 +5289,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -5459,18 +5459,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -5629,18 +5629,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -5799,18 +5799,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };
@@ -5969,18 +5969,18 @@ const QRadioPanel: React.FC<{ isMaster: boolean }> = ({ isMaster }) => {
   });
 
   const fetchChannels = async () => {
-    const _res = await fetch("/api/qradio/channels");
+    const response = await fetch("/api/qradio/channels");
     const data = await _res.json();
     setChannels(data.channels || []);
   };
   const fetchStatus = async () => {
-    const _res = await fetch("/api/qradio/status");
+    const response = await fetch("/api/qradio/status");
     const data = await _res.json();
     setCurrent(data.nowPlaying);
     setListeners(data.listeners);
   };
   const fetchPrograms = async () => {
-    const _res = await fetch("/api/qradio/programs");
+    const response = await fetch("/api/qradio/programs");
     const data = await _res.json();
     setPrograms(data.programs || []);
   };

@@ -26,7 +26,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -38,7 +38,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -64,7 +64,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -75,13 +75,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -92,7 +92,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -106,7 +106,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -116,7 +116,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -129,13 +129,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -175,7 +175,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -187,7 +187,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -213,7 +213,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -224,13 +224,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -241,7 +241,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -255,7 +255,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -265,7 +265,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -278,13 +278,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -324,7 +324,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -336,7 +336,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -362,7 +362,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -373,13 +373,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -390,7 +390,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -404,7 +404,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -414,7 +414,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -427,13 +427,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -473,7 +473,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -485,7 +485,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -511,7 +511,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -522,13 +522,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -539,7 +539,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -553,7 +553,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -563,7 +563,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -576,13 +576,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -622,7 +622,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -634,7 +634,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -660,7 +660,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -671,13 +671,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -688,7 +688,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -702,7 +702,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -712,7 +712,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -725,13 +725,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -771,7 +771,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -783,7 +783,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -809,7 +809,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -820,13 +820,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -837,7 +837,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -851,7 +851,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -861,7 +861,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -874,13 +874,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -920,7 +920,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -932,7 +932,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -958,7 +958,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -969,13 +969,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -986,7 +986,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -1000,7 +1000,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -1010,7 +1010,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -1023,13 +1023,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -1069,7 +1069,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -1081,7 +1081,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -1107,7 +1107,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -1118,13 +1118,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -1135,7 +1135,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -1149,7 +1149,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -1159,7 +1159,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -1172,13 +1172,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -1218,7 +1218,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -1230,7 +1230,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -1256,7 +1256,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -1267,13 +1267,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -1284,7 +1284,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -1298,7 +1298,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -1308,7 +1308,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -1321,13 +1321,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -1367,7 +1367,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -1379,7 +1379,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -1405,7 +1405,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -1416,13 +1416,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -1433,7 +1433,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -1447,7 +1447,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -1457,7 +1457,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -1470,13 +1470,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -1516,7 +1516,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -1528,7 +1528,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -1554,7 +1554,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -1565,13 +1565,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -1582,7 +1582,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -1596,7 +1596,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -1606,7 +1606,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -1619,13 +1619,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -1665,7 +1665,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -1677,7 +1677,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -1703,7 +1703,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -1714,13 +1714,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -1731,7 +1731,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -1745,7 +1745,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -1755,7 +1755,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -1768,13 +1768,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -1814,7 +1814,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -1826,7 +1826,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -1852,7 +1852,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -1863,13 +1863,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -1880,7 +1880,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -1894,7 +1894,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -1904,7 +1904,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -1917,13 +1917,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -1963,7 +1963,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -1975,7 +1975,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -2001,7 +2001,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -2012,13 +2012,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -2029,7 +2029,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -2043,7 +2043,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -2053,7 +2053,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -2066,13 +2066,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -2112,7 +2112,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -2124,7 +2124,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -2150,7 +2150,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -2161,13 +2161,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -2178,7 +2178,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -2192,7 +2192,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -2202,7 +2202,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -2215,13 +2215,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -2261,7 +2261,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -2273,7 +2273,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -2299,7 +2299,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -2310,13 +2310,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -2327,7 +2327,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -2341,7 +2341,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -2351,7 +2351,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -2364,13 +2364,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -2410,7 +2410,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -2422,7 +2422,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -2448,7 +2448,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -2459,13 +2459,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -2476,7 +2476,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -2490,7 +2490,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -2500,7 +2500,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -2513,13 +2513,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -2559,7 +2559,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -2571,7 +2571,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -2597,7 +2597,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -2608,13 +2608,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -2625,7 +2625,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -2639,7 +2639,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -2649,7 +2649,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -2662,13 +2662,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -2708,7 +2708,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -2720,7 +2720,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -2746,7 +2746,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -2757,13 +2757,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -2774,7 +2774,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -2788,7 +2788,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -2798,7 +2798,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -2811,13 +2811,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -2857,7 +2857,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -2869,7 +2869,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -2895,7 +2895,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -2906,13 +2906,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -2923,7 +2923,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -2937,7 +2937,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -2947,7 +2947,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -2960,13 +2960,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -3006,7 +3006,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -3018,7 +3018,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -3044,7 +3044,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -3055,13 +3055,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -3072,7 +3072,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -3086,7 +3086,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -3096,7 +3096,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -3109,13 +3109,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -3155,7 +3155,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -3167,7 +3167,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -3193,7 +3193,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -3204,13 +3204,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -3221,7 +3221,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -3235,7 +3235,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -3245,7 +3245,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -3258,13 +3258,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -3304,7 +3304,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -3316,7 +3316,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -3342,7 +3342,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -3353,13 +3353,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -3370,7 +3370,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -3384,7 +3384,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -3394,7 +3394,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -3407,13 +3407,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -3453,7 +3453,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -3465,7 +3465,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -3491,7 +3491,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -3502,13 +3502,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -3519,7 +3519,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -3533,7 +3533,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -3543,7 +3543,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -3556,13 +3556,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -3602,7 +3602,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -3614,7 +3614,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -3640,7 +3640,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -3651,13 +3651,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -3668,7 +3668,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -3682,7 +3682,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -3692,7 +3692,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -3705,13 +3705,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -3751,7 +3751,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -3763,7 +3763,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -3789,7 +3789,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -3800,13 +3800,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -3817,7 +3817,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -3831,7 +3831,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -3841,7 +3841,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -3854,13 +3854,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -3900,7 +3900,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -3912,7 +3912,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -3938,7 +3938,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -3949,13 +3949,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -3966,7 +3966,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -3980,7 +3980,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -3990,7 +3990,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -4003,13 +4003,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -4049,7 +4049,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -4061,7 +4061,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -4087,7 +4087,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -4098,13 +4098,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -4115,7 +4115,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -4129,7 +4129,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -4139,7 +4139,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -4152,13 +4152,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -4198,7 +4198,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -4210,7 +4210,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -4236,7 +4236,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -4247,13 +4247,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -4264,7 +4264,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -4278,7 +4278,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -4288,7 +4288,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -4301,13 +4301,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -4347,7 +4347,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -4359,7 +4359,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -4385,7 +4385,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -4396,13 +4396,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -4413,7 +4413,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -4427,7 +4427,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -4437,7 +4437,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -4450,13 +4450,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -4496,7 +4496,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -4508,7 +4508,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -4534,7 +4534,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -4545,13 +4545,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -4562,7 +4562,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -4576,7 +4576,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -4586,7 +4586,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -4599,13 +4599,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -4645,7 +4645,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -4657,7 +4657,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -4683,7 +4683,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -4694,13 +4694,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -4711,7 +4711,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -4725,7 +4725,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -4735,7 +4735,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -4748,13 +4748,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -4794,7 +4794,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -4806,7 +4806,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -4832,7 +4832,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -4843,13 +4843,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -4860,7 +4860,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -4874,7 +4874,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -4884,7 +4884,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -4897,13 +4897,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -4943,7 +4943,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -4955,7 +4955,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -4981,7 +4981,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -4992,13 +4992,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -5009,7 +5009,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -5023,7 +5023,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -5033,7 +5033,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -5046,13 +5046,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -5092,7 +5092,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -5104,7 +5104,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -5130,7 +5130,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -5141,13 +5141,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -5158,7 +5158,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -5172,7 +5172,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -5182,7 +5182,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -5195,13 +5195,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,
@@ -5241,7 +5241,7 @@ export async function POST_CREATE(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Create new account
@@ -5253,7 +5253,7 @@ export async function POST_CREATE(_req: NextRequest) {
 
   if (!username || !email) {
     return NextResponse.json(
-      { _error: "Missing username or email" },
+      { error: "Missing username or email" },
       { status: 400 },
     );
   }
@@ -5279,7 +5279,7 @@ export async function POST_LOGIN(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Login (stub)
@@ -5290,13 +5290,13 @@ export async function POST_LOGIN(_req: NextRequest) {
   const platform = body.platform ?? undefined;
 
   if (!username)
-    return NextResponse.json({ _error: "Missing username" }, { status: 400 });
+    return NextResponse.json({ error: "Missing username" }, { status: 400 });
 
   const account = accounts.find(
     (a) => a.username === username && a.platform === platform,
   );
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   // Production: add real authentication (password hashing, tokens, rate limiting, MFA)
   return NextResponse.json({ success: true, account });
@@ -5307,7 +5307,7 @@ export async function POST_VERIFY(_req: NextRequest) {
   if (!auth.ok) {
     const r = auth.response;
     if (r) return NextResponse.json(r.body, { status: r.status });
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   // Trigger verification (_e.g. send email)
@@ -5321,7 +5321,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   if (!email || !Number.isFinite(id)) {
     return NextResponse.json(
-      { _error: "Missing email or id" },
+      { error: "Missing email or id" },
       { status: 400 },
     );
   }
@@ -5331,7 +5331,7 @@ export async function POST_VERIFY(_req: NextRequest) {
 
   const idx = accounts.findIndex((a) => a.id === id && a.email === email);
   if (idx === -1)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
 
   accounts[idx].verified = true;
   accounts[idx].status = "verified";
@@ -5344,13 +5344,13 @@ export async function GET_STATUS(_req: NextRequest) {
   const id = Number(url.searchParams.get("id"));
   if (!Number.isFinite(id))
     return NextResponse.json(
-      { _error: "Missing or invalid id" },
+      { error: "Missing or invalid id" },
       { status: 400 },
     );
 
   const account = accounts.find((a) => a.id === id);
   if (!account)
-    return NextResponse.json({ _error: "Account not found" }, { status: 404 });
+    return NextResponse.json({ error: "Account not found" }, { status: 404 });
   return NextResponse.json({
     status: account.status,
     verified: account.verified,

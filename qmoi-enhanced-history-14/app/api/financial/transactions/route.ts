@@ -27,7 +27,7 @@ export async function GET(_req: NextRequest) {
     });
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ success: false, _error: msg }, { status: 500 });
+    return NextResponse.json({ success: false, error: msg }, { status: 500 });
   }
 }
 
@@ -39,7 +39,7 @@ export async function POST(_req: NextRequest) {
     // Validate with ML before executing
     const validationScore = mlModels.predict("trading-lstm-v1", { amount, type });
     if (validationScore < 0.3) {
-      return NextResponse.json({ success: false, _error: "Low confidence transaction" }, { status: 400 });
+      return NextResponse.json({ success: false, error: "Low confidence transaction" }, { status: 400 });
     }
     
     // Create real transaction record
@@ -64,6 +64,6 @@ export async function POST(_req: NextRequest) {
     return NextResponse.json({ success: true, transaction });
   } catch (e) {
     const msg = e instanceof Error ? e.message : "Unknown error";
-    return NextResponse.json({ success: false, _error: msg }, { status: 500 });
+    return NextResponse.json({ success: false, error: msg }, { status: 500 });
   }
 }

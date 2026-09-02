@@ -40,8 +40,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -98,8 +98,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -156,8 +156,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -214,8 +214,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -272,8 +272,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -330,8 +330,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -388,8 +388,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -446,8 +446,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -504,8 +504,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -562,8 +562,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -620,8 +620,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -678,8 +678,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -736,8 +736,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -794,8 +794,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -852,8 +852,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -910,8 +910,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -968,8 +968,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1026,8 +1026,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1084,8 +1084,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1142,8 +1142,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1200,8 +1200,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1258,8 +1258,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1316,8 +1316,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1374,8 +1374,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1432,8 +1432,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1490,8 +1490,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1548,8 +1548,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1606,8 +1606,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1664,8 +1664,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1722,8 +1722,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1780,8 +1780,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1838,8 +1838,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1896,8 +1896,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -1954,8 +1954,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -2012,8 +2012,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,
@@ -2070,8 +2070,8 @@ export async function GET(_request: NextRequest) {
           ? Math.round((successCount / (errorCount + successCount)) * 100)
           : 0,
     });
-  } catch (_error) {
-    (console as any).error("Error fetching error statistics:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching error statistics:", error);
     return NextResponse.json(
       {
         errorCount: 0,

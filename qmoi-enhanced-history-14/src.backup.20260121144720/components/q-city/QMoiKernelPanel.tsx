@@ -3,7 +3,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -144,7 +144,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -285,7 +285,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -426,7 +426,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -567,7 +567,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -708,7 +708,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -849,7 +849,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -990,7 +990,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -1131,7 +1131,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -1272,7 +1272,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -1413,7 +1413,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -1554,7 +1554,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -1695,7 +1695,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -1836,7 +1836,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -1977,7 +1977,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -2118,7 +2118,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -2259,7 +2259,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -2400,7 +2400,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -2541,7 +2541,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -2682,7 +2682,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -2823,7 +2823,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -2964,7 +2964,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -3105,7 +3105,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -3246,7 +3246,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -3387,7 +3387,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -3528,7 +3528,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -3669,7 +3669,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -3810,7 +3810,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -3951,7 +3951,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -4092,7 +4092,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -4233,7 +4233,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -4374,7 +4374,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -4515,7 +4515,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -4656,7 +4656,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -4797,7 +4797,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);
@@ -4938,7 +4938,7 @@ import EnhancedQMOIDashboard from "./EnhancedQMOIDashboard";
 import { useQmoiKernel } from "../../hooks/useQmoiKernel";
 
 function QMoiKernelPanel({ isMaster = false }: { isMaster?: boolean }) {
-  const { status, loading, _error, lastAction, fetchStatus, runAction } =
+  const { status, loading, error, lastAction, fetchStatus, runAction } =
     useQmoiKernel();
   const [showEnhancedDashboard, setShowEnhancedDashboard] =
     React.useState(false);

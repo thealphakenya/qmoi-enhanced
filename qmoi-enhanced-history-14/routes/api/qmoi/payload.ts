@@ -13,7 +13,7 @@ function appendJob(job: Record<string, any>) {
     jobs.push(job);
     fs.writeFileSync(JOB_QUEUE, JSON.stringify(jobs, null, 2), "utf-8");
   } catch (e) {
-    (globalThis.console as any)?.error?.("Failed to append job", e);
+    globalThis.console.error("Failed to append job", e);
   }
 }
 
@@ -71,7 +71,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         .status(200)
         .json({ success: true, message: `${q} queued and script started` });
     } catch (e) {
-      (globalThis.console as any)?.error?.("Failed to spawn python payload", e);
+      globalThis.console.error("Failed to spawn python payload", e);
     }
   }
   if (fs.existsSync(scriptSh)) {
@@ -83,7 +83,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         message: `${q} queued and shell script started`,
       });
     } catch (e) {
-      (globalThis.console as any)?.error?.("Failed to spawn shell payload", e);
+      globalThis.console.error("Failed to spawn shell payload", e);
     }
   }
 

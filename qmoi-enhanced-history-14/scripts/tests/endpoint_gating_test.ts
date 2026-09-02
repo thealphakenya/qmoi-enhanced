@@ -208,7 +208,7 @@ async function runAll() {
     await testQNewsGating(qnewsPOST);
     console.log("All endpoint gating tests passed.");
     process.exit(0);
-  } catch (_e) {
+  } catch (e) {
     (console as any).error(
       "Endpoint gating tests failed:",
       _e instanceof Error ? _e.stack : _e,

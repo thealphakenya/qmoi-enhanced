@@ -8,7 +8,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -16,28 +16,28 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const user = await db.userService.getById(decoded.userId);
     if (!user) {
-      return NextResponse.json({ _error: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
     // Remove sensitive data
     const { passwordHash, ...safeUser } = user;
     return NextResponse.json(safeUser);
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
-      "GET /api/users/profile _error:",
-      _error,
+  } catch (error) {
+    globalThis.console.error(
+      "GET /api/users/profile error:",
+      error,
     );
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -48,7 +48,7 @@ export async function PUT(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -56,11 +56,11 @@ export async function PUT(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -83,7 +83,7 @@ export async function PUT(_request: NextRequest) {
 
     const updated = await db.userService.update(decoded.userId, updateData);
     if (!updated) {
-      return NextResponse.json({ _error: "User not found" }, { status: 404 });
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
     const { passwordHash, ...safeUser } = updated as unknown as Record<
       string,
@@ -91,13 +91,13 @@ export async function PUT(_request: NextRequest) {
     >;
 
     return NextResponse.json(safeUser);
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
-      "PUT /api/users/profile _error:",
-      _error,
+  } catch (error) {
+    globalThis.console.error(
+      "PUT /api/users/profile error:",
+      error,
     );
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }

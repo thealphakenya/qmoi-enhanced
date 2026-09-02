@@ -170,7 +170,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         return { success: !!credential, confidence: 0.95 };
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "WebAuthn authentication failed:",
         error,
       );
@@ -219,7 +219,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         setTimeout(() => recorder.stop(), 2000);
       });
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Voice authentication failed:",
         error,
       );
@@ -261,7 +261,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
       return { success: confidence > requiredConfidence, confidence };
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Device fingerprint authentication failed:",
         error,
       );
@@ -289,7 +289,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
 
       return { success: confidence > requiredConfidence, confidence };
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Behavioral authentication failed:",
         error,
       );
@@ -364,7 +364,7 @@ export const BiometricAuth: React.FC<BiometricAuthProps> = ({
         });
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Authentication error:", error);
+      globalThis.console.error("Authentication error:", error);
       onFailed("Authentication system error");
 
       toast({

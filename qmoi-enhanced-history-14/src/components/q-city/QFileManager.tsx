@@ -45,13 +45,13 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const [walletRequested, setWalletRequested] = useState(false);
   const [pendingRequests, setPendingRequests] = useState<WalletRequest[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
 
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   // Fetch pending requests for master
   useEffect(() => {
@@ -63,13 +63,13 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
-      const _res = await fetch("/api/wallet?pending_wallets=1", {
+      const response = await fetch("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg = extractMessage(_e);
       setError("Failed to load pending requests: " + msg);
       toast({
@@ -211,8 +211,8 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         // Simulate deletion
         await new Promise((resolve) => setTimeout(resolve, 1000));
         setFiles((prev) => prev.filter((file) => !file.isSelected));
-      } catch (_e: unknown) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (e: unknown) {
+        globalThis.console.error(
           "Error deleting files:",
           extractMessage(_e),
         );
@@ -235,10 +235,10 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
           tags: [...file.tags, "organized"],
         })),
       );
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Error organizing files:",
-        _error,
+        error,
       );
     } finally {
       setIsLoading(false);
@@ -296,7 +296,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
         throw new Error("Please complete your profile first");
       }
 
-      const _res = await fetch("/api/wallet", {
+      const response = await fetch("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -320,7 +320,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to _request wallet");
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg = extractMessage(_e);
       setError(msg);
       toast({
@@ -337,7 +337,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
     try {
       setLoading(true);
       setError(null);
-      const _res = await fetch("/api/wallet", {
+      const response = await fetch("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -361,7 +361,7 @@ export const QFileManager: React.FC<QFileManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to approve wallet");
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg = extractMessage(_e);
       setError(msg);
       toast({

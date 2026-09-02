@@ -27,7 +27,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -36,9 +36,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -47,7 +47,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -85,10 +85,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Rate limits _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Rate limits error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -106,7 +106,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -115,9 +115,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -126,7 +126,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(decoded.userId);
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -137,7 +137,7 @@ export async function PUT(_request: NextRequest) {
     if (!userId || !endpoint || (!newLimit && action !== "reset")) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Missing required fields: userId, endpoint, newLimit",
             code: "MISSING_FIELDS",
           },
@@ -184,10 +184,10 @@ export async function PUT(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Rate limit update _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Rate limit update error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }

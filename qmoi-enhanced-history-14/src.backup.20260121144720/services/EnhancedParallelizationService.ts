@@ -164,12 +164,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -195,9 +195,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -492,12 +492,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -523,9 +523,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -820,12 +820,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -851,9 +851,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -1148,12 +1148,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -1179,9 +1179,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -1476,12 +1476,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -1507,9 +1507,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -1804,12 +1804,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -1835,9 +1835,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -2132,12 +2132,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -2163,9 +2163,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -2460,12 +2460,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -2491,9 +2491,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -2788,12 +2788,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -2819,9 +2819,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -3116,12 +3116,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -3147,9 +3147,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -3444,12 +3444,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -3475,9 +3475,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -3772,12 +3772,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -3803,9 +3803,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -4100,12 +4100,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -4131,9 +4131,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -4428,12 +4428,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -4459,9 +4459,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -4756,12 +4756,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -4787,9 +4787,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -5084,12 +5084,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -5115,9 +5115,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -5412,12 +5412,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -5443,9 +5443,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -5740,12 +5740,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -5771,9 +5771,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -6068,12 +6068,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -6099,9 +6099,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -6396,12 +6396,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -6427,9 +6427,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -6724,12 +6724,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -6755,9 +6755,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -7052,12 +7052,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -7083,9 +7083,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -7380,12 +7380,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -7411,9 +7411,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -7708,12 +7708,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -7739,9 +7739,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -8036,12 +8036,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -8067,9 +8067,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -8364,12 +8364,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -8395,9 +8395,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -8692,12 +8692,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -8723,9 +8723,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -9020,12 +9020,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -9051,9 +9051,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -9348,12 +9348,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -9379,9 +9379,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -9676,12 +9676,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -9707,9 +9707,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -10004,12 +10004,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -10035,9 +10035,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -10332,12 +10332,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -10363,9 +10363,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -10660,12 +10660,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -10691,9 +10691,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -10988,12 +10988,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -11019,9 +11019,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -11316,12 +11316,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -11347,9 +11347,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }
@@ -11644,12 +11644,12 @@ export class EnhancedParallelizationService extends EventEmitter {
       task.result = result;
       this.completedTasks.push(task);
       this.systemHealth.completedTasks++;
-    } catch (_error) {
+    } catch (error) {
       task.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       task.error = errMsg;
       this.systemHealth.failedTasks++;
-      this.emit("taskFailed", { task, _error: errMsg });
+      this.emit("taskFailed", { task, error: errMsg });
     } finally {
       task.endTime = new Date().toISOString();
       this.activeTasks.delete(task.id);
@@ -11675,9 +11675,9 @@ export class EnhancedParallelizationService extends EventEmitter {
           clearTimeout(timeout);
           resolve(result);
         })
-        .catch((_error) => {
+        .catch((error) => {
           clearTimeout(timeout);
-          reject(_error);
+          reject(error);
         });
     });
   }

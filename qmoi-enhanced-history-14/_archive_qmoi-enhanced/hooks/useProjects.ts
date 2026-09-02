@@ -120,7 +120,7 @@ export function useProjects() {
         console.log("Colab job initiated:", response.data);
         refetchProjects();
       } catch (err) {
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           "Error initiating Colab job:",
           err,
         );

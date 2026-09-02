@@ -60,10 +60,10 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
     };
     console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally avoid sending raw secrets via email or API.
-  } catch (_error) {
+  } catch (error) {
     (console as any).error(
       "Failed to create safe backup for credentials:",
-      _error,
+      error,
     );
   }
 }
@@ -72,7 +72,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
 async function processMpesaPayment(paymentData: unknown) {
   try {
     // Simulate M-Pesa API call
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
         method: "POST",
@@ -102,16 +102,16 @@ async function processMpesaPayment(paymentData: unknown) {
       reference: result.CheckoutRequestID,
       provider: "mpesa",
     };
-  } catch (_error) {
-    (console as any).error("M-Pesa payment failed:", _error);
-    return { success: false, _error: "M-Pesa payment failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa payment failed:", error);
+    return { success: false, error: "M-Pesa payment failed" };
   }
 }
 
 async function processAirtelPayment(paymentData: unknown) {
   try {
     // Simulate Airtel Money API call
-    const _response = await fetch(
+    const response = await fetch(
       "https://openapiuat.airtel.africa/merchant/v1/payments/",
       {
         method: "POST",
@@ -144,16 +144,16 @@ async function processAirtelPayment(paymentData: unknown) {
       reference: result.data.transaction.id,
       provider: "airtel",
     };
-  } catch (_error) {
-    (console as any).error("Airtel payment failed:", _error);
-    return { success: false, _error: "Airtel payment failed" };
+  } catch (error) {
+    (console as any).error("Airtel payment failed:", error);
+    return { success: false, error: "Airtel payment failed" };
   }
 }
 
 async function processPayPalPayment(paymentData: unknown) {
   try {
     // Simulate PayPal API call
-    const _response = await fetch(
+    const response = await fetch(
       "https://www.paypal.com/api/PostPayPalDirectOrderV4",
       {
         method: "POST",
@@ -181,9 +181,9 @@ async function processPayPalPayment(paymentData: unknown) {
 
     const result = await response.text();
     return { success: true, reference: result, provider: "paypal" };
-  } catch (_error) {
-    (console as any).error("PayPal payment failed:", _error);
-    return { success: false, _error: "PayPal payment failed" };
+  } catch (error) {
+    (console as any).error("PayPal payment failed:", error);
+    return { success: false, error: "PayPal payment failed" };
   }
 }
 
@@ -218,11 +218,11 @@ export async function GET(_request: NextRequest) {
         data: { payments, logs: paymentLogs },
       });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch payment data",
+        error: "Failed to fetch payment data",
       },
       { status: 500 },
     );
@@ -261,7 +261,7 @@ export async function POST(_request: NextRequest) {
           result = await processPayPalPayment(validatedData);
           break;
         default:
-          result = { success: false, _error: "Unsupported payment method" };
+          result = { success: false, error: "Unsupported payment method" };
       }
 
       // Update payment status
@@ -329,17 +329,17 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Invalid action specified",
+          error: "Invalid action specified",
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -349,7 +349,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process payment action",
+        error: "Failed to process payment action",
       },
       { status: 500 },
     );
@@ -366,7 +366,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Payment not found",
+          error: "Payment not found",
         },
         { status: 404 },
       );
@@ -388,11 +388,11 @@ export async function PUT(_request: NextRequest) {
       data: payments[index],
       message: "Payment updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update payment",
+        error: "Failed to update payment",
       },
       { status: 500 },
     );

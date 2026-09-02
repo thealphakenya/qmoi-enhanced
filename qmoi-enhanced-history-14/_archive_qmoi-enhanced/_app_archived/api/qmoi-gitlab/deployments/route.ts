@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ deployments });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error fetching deployments:", error);
+    globalThis.console.error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }

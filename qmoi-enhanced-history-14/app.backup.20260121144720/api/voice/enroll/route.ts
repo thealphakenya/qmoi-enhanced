@@ -23,7 +23,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -61,9 +61,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -96,7 +96,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -134,9 +134,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -169,7 +169,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -207,9 +207,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -242,7 +242,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -280,9 +280,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -315,7 +315,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -353,9 +353,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -388,7 +388,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -426,9 +426,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -461,7 +461,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -499,9 +499,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -534,7 +534,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -572,9 +572,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -607,7 +607,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -645,9 +645,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -680,7 +680,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -718,9 +718,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -753,7 +753,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -791,9 +791,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -826,7 +826,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -864,9 +864,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -899,7 +899,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -937,9 +937,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -972,7 +972,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1010,9 +1010,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1045,7 +1045,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1083,9 +1083,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1118,7 +1118,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1156,9 +1156,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1191,7 +1191,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1229,9 +1229,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1264,7 +1264,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1302,9 +1302,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1337,7 +1337,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1375,9 +1375,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1410,7 +1410,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1448,9 +1448,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1483,7 +1483,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1521,9 +1521,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1556,7 +1556,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1594,9 +1594,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1629,7 +1629,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1667,9 +1667,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1702,7 +1702,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1740,9 +1740,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1775,7 +1775,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1813,9 +1813,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1848,7 +1848,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1886,9 +1886,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1921,7 +1921,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -1959,9 +1959,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1994,7 +1994,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2032,9 +2032,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2067,7 +2067,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2105,9 +2105,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2140,7 +2140,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2178,9 +2178,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2213,7 +2213,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2251,9 +2251,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2286,7 +2286,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2324,9 +2324,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2359,7 +2359,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2397,9 +2397,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2432,7 +2432,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2470,9 +2470,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2505,7 +2505,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2543,9 +2543,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2578,7 +2578,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, audioData, duration } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const profiles = JSON.parse(fs.readFileSync(VOICE_PROFILES_FILE, "utf-8"));
@@ -2616,9 +2616,9 @@ export async function POST(_request: NextRequest) {
       quality: voiceProfile.quality,
       message: "Voice profile enrolled successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }

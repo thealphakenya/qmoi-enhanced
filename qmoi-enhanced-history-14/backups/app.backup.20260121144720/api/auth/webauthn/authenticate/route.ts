@@ -9,11 +9,11 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, assertion } = body;
     if (!username || !assertion)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     if (!fs.existsSync(FILE))
       return NextResponse.json(
-        { _error: "No credentials stored" },
+        { error: "No credentials stored" },
         { status: 404 },
       );
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
@@ -32,7 +32,7 @@ export async function POST(_request: NextRequest) {
       success: true,
       message: "Authentication succeeded",
     });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }

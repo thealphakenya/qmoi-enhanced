@@ -23,8 +23,8 @@ class UnifiedCICDService {
       await execAsync("git push origin main");
       logger.info("[CI/CD] Commit and push successful.");
       return { success: true, message: "Commit and push successful." };
-    } catch (_error: unknown) {
-      logger.error("[CI/CD] Commit/push failed:", _error);
+    } catch (error: unknown) {
+      logger.error("[CI/CD] Commit/push failed:", error);
       await notificationService.sendCriticalEventNotification(
         "commit_failed",
         error.message,
@@ -45,8 +45,8 @@ class UnifiedCICDService {
       );
       logger.info("[CI/CD] Pull _request created.");
       return { success: true, message: "Pull _request created." };
-    } catch (_error: unknown) {
-      logger.error("[CI/CD] PR creation failed:", _error);
+    } catch (error: unknown) {
+      logger.error("[CI/CD] PR creation failed:", error);
       await notificationService.sendCriticalEventNotification(
         "pr_failed",
         error.message,
@@ -65,8 +65,8 @@ class UnifiedCICDService {
         "Vercel deployment successful.",
       );
       return { success: true, message: "Vercel deployment successful." };
-    } catch (_error: unknown) {
-      logger.error("[CI/CD] Vercel deployment failed:", _error);
+    } catch (error: unknown) {
+      logger.error("[CI/CD] Vercel deployment failed:", error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -87,8 +87,8 @@ class UnifiedCICDService {
         "Heroku deployment successful.",
       );
       return { success: true, message: "Heroku deployment successful." };
-    } catch (_error: unknown) {
-      logger.error("[CI/CD] Heroku deployment failed:", _error);
+    } catch (error: unknown) {
+      logger.error("[CI/CD] Heroku deployment failed:", error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -109,8 +109,8 @@ class UnifiedCICDService {
         "AWS deployment successful.",
       );
       return { success: true, message: "AWS deployment successful." };
-    } catch (_error: unknown) {
-      logger.error("[CI/CD] AWS deployment failed:", _error);
+    } catch (error: unknown) {
+      logger.error("[CI/CD] AWS deployment failed:", error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -131,8 +131,8 @@ class UnifiedCICDService {
         "Azure deployment successful.",
       );
       return { success: true, message: "Azure deployment successful." };
-    } catch (_error: unknown) {
-      logger.error("[CI/CD] Azure deployment failed:", _error);
+    } catch (error: unknown) {
+      logger.error("[CI/CD] Azure deployment failed:", error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -151,8 +151,8 @@ class UnifiedCICDService {
         "GCP deployment successful.",
       );
       return { success: true, message: "GCP deployment successful." };
-    } catch (_error: unknown) {
-      logger.error("[CI/CD] GCP deployment failed:", _error);
+    } catch (error: unknown) {
+      logger.error("[CI/CD] GCP deployment failed:", error);
       await notificationService.sendCriticalEventNotification(
         "deploy_failed",
         error.message,
@@ -182,7 +182,7 @@ class UnifiedCICDService {
   async monitorDeployment(url: string) {
     try {
       logger.info(`[CI/CD] Monitoring deployment at ${url}...`);
-      const _res = await fetch(url);
+      const response = await fetch(url);
       if (_res.ok) {
         logger.info("[CI/CD] Deployment healthy.");
         return { success: true, message: "Deployment healthy." };
@@ -190,8 +190,8 @@ class UnifiedCICDService {
         logger.warn("[CI/CD] Deployment unhealthy:", _res.statusText);
         return { success: false, message: "Deployment unhealthy." };
       }
-    } catch (_error: unknown) {
-      logger.error("[CI/CD] Deployment monitoring failed:", _error);
+    } catch (error: unknown) {
+      logger.error("[CI/CD] Deployment monitoring failed:", error);
       return { success: false, message: error.message };
     }
   }

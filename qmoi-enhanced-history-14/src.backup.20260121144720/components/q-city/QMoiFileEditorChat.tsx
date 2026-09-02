@@ -126,11 +126,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -152,11 +152,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -186,11 +186,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -216,11 +216,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -569,11 +569,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -595,11 +595,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -629,11 +629,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -659,11 +659,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1014,11 +1014,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1040,11 +1040,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1074,11 +1074,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1104,11 +1104,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1457,11 +1457,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1483,11 +1483,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1517,11 +1517,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1547,11 +1547,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1900,11 +1900,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1926,11 +1926,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1960,11 +1960,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -1990,11 +1990,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -2343,11 +2343,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -2369,11 +2369,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -2403,11 +2403,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -2433,11 +2433,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -2786,11 +2786,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -2812,11 +2812,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -2846,11 +2846,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -2876,11 +2876,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -3229,11 +3229,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -3255,11 +3255,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -3289,11 +3289,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -3319,11 +3319,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -3672,11 +3672,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -3698,11 +3698,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -3732,11 +3732,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -3762,11 +3762,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -4115,11 +4115,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -4141,11 +4141,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -4175,11 +4175,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -4205,11 +4205,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -4558,11 +4558,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -4584,11 +4584,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -4618,11 +4618,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -4648,11 +4648,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5001,11 +5001,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5027,11 +5027,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5061,11 +5061,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5091,11 +5091,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5444,11 +5444,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5470,11 +5470,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5504,11 +5504,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5534,11 +5534,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5887,11 +5887,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5913,11 +5913,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5947,11 +5947,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -5977,11 +5977,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -6330,11 +6330,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -6356,11 +6356,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -6390,11 +6390,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -6420,11 +6420,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -6773,11 +6773,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -6799,11 +6799,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -6833,11 +6833,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -6863,11 +6863,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -7216,11 +7216,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -7242,11 +7242,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -7276,11 +7276,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -7306,11 +7306,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -7659,11 +7659,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -7685,11 +7685,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -7719,11 +7719,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -7749,11 +7749,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8102,11 +8102,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8128,11 +8128,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8162,11 +8162,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8192,11 +8192,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8545,11 +8545,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8571,11 +8571,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8605,11 +8605,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8635,11 +8635,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -8988,11 +8988,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9014,11 +9014,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9048,11 +9048,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9078,11 +9078,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9431,11 +9431,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9457,11 +9457,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9491,11 +9491,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9521,11 +9521,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9874,11 +9874,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9900,11 +9900,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9934,11 +9934,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -9964,11 +9964,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -10317,11 +10317,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -10343,11 +10343,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -10377,11 +10377,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -10407,11 +10407,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -10760,11 +10760,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -10786,11 +10786,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -10820,11 +10820,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -10850,11 +10850,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -11203,11 +11203,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -11229,11 +11229,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -11263,11 +11263,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -11293,11 +11293,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -11646,11 +11646,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -11672,11 +11672,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -11706,11 +11706,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -11736,11 +11736,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12089,11 +12089,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12115,11 +12115,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12149,11 +12149,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12179,11 +12179,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12532,11 +12532,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12558,11 +12558,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12592,11 +12592,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12622,11 +12622,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -12975,11 +12975,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13001,11 +13001,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13035,11 +13035,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13065,11 +13065,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13418,11 +13418,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13444,11 +13444,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13478,11 +13478,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13508,11 +13508,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13861,11 +13861,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13887,11 +13887,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13921,11 +13921,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -13951,11 +13951,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -14304,11 +14304,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -14330,11 +14330,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -14364,11 +14364,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -14394,11 +14394,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -14747,11 +14747,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -14773,11 +14773,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -14807,11 +14807,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -14837,11 +14837,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -15190,11 +15190,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -15216,11 +15216,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -15250,11 +15250,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -15280,11 +15280,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -15633,11 +15633,11 @@ export default function QMoiFileEditorChat({
       } else {
         _response = "Unknown command. Use /view, /edit, /append, /replace.";
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -15659,11 +15659,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Rollback successful."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -15693,11 +15693,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? highlightCode(String(d.suggestion ?? ""))
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [
@@ -15723,11 +15723,11 @@ export default function QMoiFileEditorChat({
         d && d.success
           ? "Batch edit complete."
           : `Error: ${d?.error ?? String(data)}`;
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       _response = `Error: ${msg}`;
     }
     setMessages((msgs) => [

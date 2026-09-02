@@ -12,7 +12,7 @@ export default function ProjectsPage() {
       await createProject(projectData);
       setShowNewProjectForm(false);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to create project:", error);
+      globalThis.console.error("Failed to create project:", error);
     }
   };
 

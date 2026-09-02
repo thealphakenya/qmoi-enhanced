@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
       message: "AI trading started successfully",
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Start trading API error:", error);
+    globalThis.console.error("Start trading API error:", error);
     return NextResponse.json(
       { error: "Failed to start trading" },
       { status: 500 },

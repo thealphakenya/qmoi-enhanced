@@ -148,7 +148,7 @@ const EmploymentDashboard: React.FC = () => {
       const megavaultData = await megavaultResponse.json();
       if (megavaultData.success) setMegavaultData(megavaultData.data);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch data:", error);
+      globalThis.console.error("Failed to fetch data:", error);
       toast({
         title: "Error",
         description: "Failed to fetch employment data",

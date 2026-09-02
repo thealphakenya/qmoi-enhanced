@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
     );
 
     if (stderr) {
-      (globalThis.console as any)?.error?.("Logger script stderr:", stderr);
+      globalThis.console.error("Logger script stderr:", stderr);
     }
 
     // Parse the output
@@ -87,7 +87,7 @@ export async function POST(request: NextRequest) {
     try {
       logs = JSON.parse(stdout);
     } catch (parseError) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to parse logger output:",
         parseError,
       );
@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(logs);
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "QMOI Own Device Logs API error:",
       error,
     );
@@ -145,7 +145,7 @@ export async function GET(request: NextRequest) {
     try {
       stats = JSON.parse(stdout);
     } catch (parseError) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to parse statistics:",
         parseError,
       );
@@ -157,7 +157,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(stats);
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "QMOI Own Device Statistics API error:",
       error,
     );
@@ -196,7 +196,7 @@ async function checkMasterAccess(request: NextRequest): Promise<boolean> {
 
     return false;
   } catch (error) {
-    (globalThis.console as any)?.error?.("Master access check error:", error);
+    globalThis.console.error("Master access check error:", error);
     return false;
   }
 }

@@ -66,7 +66,7 @@ describe("QMoiKernelPanel Integration", () => {
         const handlers = await handlersMod.getHandlers();
         server.use(...handlers);
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       void _e; /* ignore */
     }
   });
@@ -79,7 +79,7 @@ describe("QMoiKernelPanel Integration", () => {
       const hs = await handlersMod.getHandlers();
       server.use(...hs);
     }
-    const _res = await fetch("/api/qmoi/status");
+    const response = await fetch("/api/qmoi/status");
     const text = await _res.text().catch(() => "<no-body>");
     console.debug("DEBUG FETCH: status=", _res.status, "body=", text);
     expect(_res.status).toBe(200);
@@ -160,7 +160,7 @@ describe("QMoiKernelPanel Integration", () => {
             server.use(handler as unknown as Parameters<typeof server.use>[0]);
         }
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       void _e; /* ignore - msw may not be available in this environment */
     }
 

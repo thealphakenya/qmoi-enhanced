@@ -96,7 +96,7 @@ export const QmoiAutoDistribution: React.FC = () => {
       const response = await axios.get("/api/git/status");
       setGitStatus(response.data);
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to fetch Git status:",
         error,
       );
@@ -111,7 +111,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         setDeploymentUrl(response.data.url);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to fetch Vercel status:",
         error,
       );
@@ -135,7 +135,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("Git commit failed:", error);
+      globalThis.console.error("Git commit failed:", error);
     } finally {
       setGitLoading(false);
     }
@@ -153,7 +153,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("Git push failed:", error);
+      globalThis.console.error("Git push failed:", error);
     } finally {
       setGitLoading(false);
     }
@@ -178,7 +178,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("PR creation failed:", error);
+      globalThis.console.error("PR creation failed:", error);
     } finally {
       setGitLoading(false);
     }
@@ -202,7 +202,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.("Vercel deployment failed:", error);
+      globalThis.console.error("Vercel deployment failed:", error);
     } finally {
       setVercelLoading(false);
     }
@@ -221,7 +221,7 @@ export const QmoiAutoDistribution: React.FC = () => {
         ...prev,
       ]);
     } catch (error: unknown) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Auto-redeploy toggle failed:",
         error,
       );

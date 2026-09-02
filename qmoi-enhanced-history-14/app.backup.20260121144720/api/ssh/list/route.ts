@@ -8,7 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -25,7 +25,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -42,7 +42,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -59,7 +59,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -76,7 +76,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -93,7 +93,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -110,7 +110,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -127,7 +127,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -144,7 +144,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -161,7 +161,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -178,7 +178,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -195,7 +195,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -212,7 +212,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -229,7 +229,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -246,7 +246,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -263,7 +263,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -280,7 +280,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -297,7 +297,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -314,7 +314,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -331,7 +331,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -348,7 +348,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -365,7 +365,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -382,7 +382,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -399,7 +399,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -416,7 +416,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -433,7 +433,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -450,7 +450,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -467,7 +467,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -484,7 +484,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -501,7 +501,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -518,7 +518,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -535,7 +535,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -552,7 +552,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -569,7 +569,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -586,7 +586,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }
@@ -603,7 +603,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(_req: NextRequest) {
   return NextResponse.json(
-    { _error: "SSH functionality is not available in this build" },
+    { error: "SSH functionality is not available in this build" },
     { status: 501 },
   );
 }

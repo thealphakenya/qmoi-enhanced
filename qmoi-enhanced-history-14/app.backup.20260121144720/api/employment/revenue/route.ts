@@ -102,8 +102,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -197,9 +197,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -226,9 +226,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -258,9 +258,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -286,9 +286,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -316,9 +316,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -326,7 +326,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -358,9 +358,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -386,8 +386,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -412,8 +412,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -439,8 +439,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -501,11 +501,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -642,7 +642,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -689,17 +689,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -709,7 +709,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -751,7 +751,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -761,7 +761,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -772,11 +772,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -897,8 +897,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -992,9 +992,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -1021,9 +1021,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -1053,9 +1053,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -1081,9 +1081,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -1111,9 +1111,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -1121,7 +1121,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -1153,9 +1153,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -1181,8 +1181,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -1207,8 +1207,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -1234,8 +1234,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -1296,11 +1296,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -1437,7 +1437,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -1484,17 +1484,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -1504,7 +1504,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -1546,7 +1546,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -1556,7 +1556,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -1567,11 +1567,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -1694,8 +1694,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -1789,9 +1789,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -1818,9 +1818,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -1850,9 +1850,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -1878,9 +1878,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -1908,9 +1908,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -1918,7 +1918,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -1950,9 +1950,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -1978,8 +1978,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -2004,8 +2004,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -2031,8 +2031,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -2093,11 +2093,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -2234,7 +2234,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -2281,17 +2281,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -2301,7 +2301,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -2343,7 +2343,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -2353,7 +2353,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -2364,11 +2364,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -2489,8 +2489,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -2584,9 +2584,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -2613,9 +2613,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -2645,9 +2645,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -2673,9 +2673,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -2703,9 +2703,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -2713,7 +2713,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -2745,9 +2745,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -2773,8 +2773,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -2799,8 +2799,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -2826,8 +2826,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -2888,11 +2888,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -3029,7 +3029,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -3076,17 +3076,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -3096,7 +3096,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -3138,7 +3138,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -3148,7 +3148,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -3159,11 +3159,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -3284,8 +3284,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -3379,9 +3379,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -3408,9 +3408,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -3440,9 +3440,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -3468,9 +3468,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -3498,9 +3498,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -3508,7 +3508,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -3540,9 +3540,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -3568,8 +3568,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -3594,8 +3594,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -3621,8 +3621,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -3683,11 +3683,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -3824,7 +3824,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -3871,17 +3871,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -3891,7 +3891,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -3933,7 +3933,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -3943,7 +3943,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -3954,11 +3954,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -4079,8 +4079,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -4174,9 +4174,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -4203,9 +4203,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -4235,9 +4235,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -4263,9 +4263,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -4293,9 +4293,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -4303,7 +4303,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -4335,9 +4335,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -4363,8 +4363,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -4389,8 +4389,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -4416,8 +4416,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -4478,11 +4478,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -4619,7 +4619,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -4666,17 +4666,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -4686,7 +4686,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -4728,7 +4728,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -4738,7 +4738,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -4749,11 +4749,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -4874,8 +4874,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -4969,9 +4969,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -4998,9 +4998,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -5030,9 +5030,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -5058,9 +5058,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -5088,9 +5088,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -5098,7 +5098,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -5130,9 +5130,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -5158,8 +5158,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -5184,8 +5184,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -5211,8 +5211,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -5273,11 +5273,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -5414,7 +5414,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -5461,17 +5461,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -5481,7 +5481,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -5523,7 +5523,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -5533,7 +5533,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -5544,11 +5544,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -5669,8 +5669,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -5764,9 +5764,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -5793,9 +5793,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -5825,9 +5825,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -5853,9 +5853,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -5883,9 +5883,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -5893,7 +5893,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -5925,9 +5925,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -5953,8 +5953,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -5979,8 +5979,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -6006,8 +6006,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -6068,11 +6068,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -6209,7 +6209,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -6256,17 +6256,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -6276,7 +6276,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -6318,7 +6318,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -6328,7 +6328,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -6339,11 +6339,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -6464,8 +6464,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -6559,9 +6559,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -6588,9 +6588,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -6620,9 +6620,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -6648,9 +6648,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -6678,9 +6678,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -6688,7 +6688,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -6720,9 +6720,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -6748,8 +6748,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -6774,8 +6774,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -6801,8 +6801,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -6863,11 +6863,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -7004,7 +7004,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -7051,17 +7051,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -7071,7 +7071,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -7113,7 +7113,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -7123,7 +7123,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -7134,11 +7134,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -7259,8 +7259,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -7354,9 +7354,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -7383,9 +7383,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -7415,9 +7415,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -7443,9 +7443,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -7473,9 +7473,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -7483,7 +7483,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -7515,9 +7515,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -7543,8 +7543,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -7569,8 +7569,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -7596,8 +7596,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -7658,11 +7658,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -7799,7 +7799,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -7846,17 +7846,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -7866,7 +7866,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -7908,7 +7908,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -7918,7 +7918,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -7929,11 +7929,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -8054,8 +8054,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -8149,9 +8149,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -8178,9 +8178,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -8210,9 +8210,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -8238,9 +8238,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -8268,9 +8268,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -8278,7 +8278,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -8310,9 +8310,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -8338,8 +8338,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -8364,8 +8364,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -8391,8 +8391,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -8453,11 +8453,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -8594,7 +8594,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -8641,17 +8641,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -8661,7 +8661,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -8703,7 +8703,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -8713,7 +8713,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -8724,11 +8724,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -8849,8 +8849,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -8944,9 +8944,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -8973,9 +8973,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -9005,9 +9005,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -9033,9 +9033,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -9063,9 +9063,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -9073,7 +9073,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -9105,9 +9105,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -9133,8 +9133,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -9159,8 +9159,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -9186,8 +9186,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -9248,11 +9248,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -9389,7 +9389,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -9436,17 +9436,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -9456,7 +9456,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -9498,7 +9498,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -9508,7 +9508,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -9519,11 +9519,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -9644,8 +9644,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -9739,9 +9739,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -9768,9 +9768,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -9800,9 +9800,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -9828,9 +9828,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -9858,9 +9858,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -9868,7 +9868,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -9900,9 +9900,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -9928,8 +9928,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -9954,8 +9954,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -9981,8 +9981,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -10043,11 +10043,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -10184,7 +10184,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -10231,17 +10231,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -10251,7 +10251,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -10293,7 +10293,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -10303,7 +10303,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -10314,11 +10314,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -10439,8 +10439,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -10534,9 +10534,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -10563,9 +10563,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -10595,9 +10595,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -10623,9 +10623,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -10653,9 +10653,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -10663,7 +10663,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -10695,9 +10695,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -10723,8 +10723,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -10749,8 +10749,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -10776,8 +10776,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -10838,11 +10838,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -10979,7 +10979,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -11026,17 +11026,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -11046,7 +11046,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -11088,7 +11088,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -11098,7 +11098,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -11109,11 +11109,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -11234,8 +11234,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -11329,9 +11329,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -11358,9 +11358,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -11390,9 +11390,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -11418,9 +11418,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -11448,9 +11448,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -11458,7 +11458,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -11490,9 +11490,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -11518,8 +11518,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -11544,8 +11544,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -11571,8 +11571,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -11633,11 +11633,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -11774,7 +11774,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -11821,17 +11821,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -11841,7 +11841,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -11883,7 +11883,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -11893,7 +11893,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -11904,11 +11904,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -12029,8 +12029,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -12124,9 +12124,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -12153,9 +12153,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -12185,9 +12185,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -12213,9 +12213,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -12243,9 +12243,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -12253,7 +12253,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -12285,9 +12285,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -12313,8 +12313,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -12339,8 +12339,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -12366,8 +12366,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -12428,11 +12428,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -12569,7 +12569,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -12616,17 +12616,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -12636,7 +12636,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -12678,7 +12678,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -12688,7 +12688,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -12699,11 +12699,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -12824,8 +12824,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -12919,9 +12919,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -12948,9 +12948,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -12980,9 +12980,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -13008,9 +13008,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -13038,9 +13038,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -13048,7 +13048,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -13080,9 +13080,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -13108,8 +13108,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -13134,8 +13134,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -13161,8 +13161,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -13223,11 +13223,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -13364,7 +13364,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -13411,17 +13411,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -13431,7 +13431,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -13473,7 +13473,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -13483,7 +13483,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -13494,11 +13494,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -13619,8 +13619,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -13714,9 +13714,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -13743,9 +13743,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -13775,9 +13775,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -13803,9 +13803,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -13833,9 +13833,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -13843,7 +13843,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -13875,9 +13875,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -13903,8 +13903,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -13929,8 +13929,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -13956,8 +13956,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -14018,11 +14018,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -14159,7 +14159,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -14206,17 +14206,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -14226,7 +14226,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -14268,7 +14268,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -14278,7 +14278,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -14289,11 +14289,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -14414,8 +14414,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -14509,9 +14509,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -14538,9 +14538,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -14570,9 +14570,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -14598,9 +14598,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -14628,9 +14628,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -14638,7 +14638,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -14670,9 +14670,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -14698,8 +14698,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -14724,8 +14724,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -14751,8 +14751,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -14813,11 +14813,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -14954,7 +14954,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -15001,17 +15001,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -15021,7 +15021,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -15063,7 +15063,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -15073,7 +15073,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -15084,11 +15084,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -15209,8 +15209,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -15304,9 +15304,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -15333,9 +15333,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -15365,9 +15365,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -15393,9 +15393,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -15423,9 +15423,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -15433,7 +15433,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -15465,9 +15465,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -15493,8 +15493,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -15519,8 +15519,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -15546,8 +15546,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -15608,11 +15608,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -15749,7 +15749,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -15796,17 +15796,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -15816,7 +15816,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -15858,7 +15858,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -15868,7 +15868,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -15879,11 +15879,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -16004,8 +16004,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -16099,9 +16099,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -16128,9 +16128,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -16160,9 +16160,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -16188,9 +16188,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -16218,9 +16218,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -16228,7 +16228,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -16260,9 +16260,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -16288,8 +16288,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -16314,8 +16314,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -16341,8 +16341,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -16403,11 +16403,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -16544,7 +16544,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -16591,17 +16591,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -16611,7 +16611,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -16653,7 +16653,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -16663,7 +16663,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -16674,11 +16674,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -16799,8 +16799,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -16894,9 +16894,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -16923,9 +16923,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -16955,9 +16955,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -16983,9 +16983,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -17013,9 +17013,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -17023,7 +17023,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -17055,9 +17055,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -17083,8 +17083,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -17109,8 +17109,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -17136,8 +17136,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -17198,11 +17198,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -17339,7 +17339,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -17386,17 +17386,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -17406,7 +17406,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -17448,7 +17448,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -17458,7 +17458,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -17469,11 +17469,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -17594,8 +17594,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -17689,9 +17689,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -17718,9 +17718,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -17750,9 +17750,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -17778,9 +17778,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -17808,9 +17808,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -17818,7 +17818,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -17850,9 +17850,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -17878,8 +17878,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -17904,8 +17904,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -17931,8 +17931,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -17993,11 +17993,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -18134,7 +18134,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -18181,17 +18181,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -18201,7 +18201,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -18243,7 +18243,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -18253,7 +18253,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -18264,11 +18264,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -18389,8 +18389,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -18484,9 +18484,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -18513,9 +18513,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -18545,9 +18545,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -18573,9 +18573,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -18603,9 +18603,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -18613,7 +18613,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -18645,9 +18645,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -18673,8 +18673,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -18699,8 +18699,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -18726,8 +18726,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -18788,11 +18788,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -18929,7 +18929,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -18976,17 +18976,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -18996,7 +18996,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -19038,7 +19038,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -19048,7 +19048,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -19059,11 +19059,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -19184,8 +19184,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -19279,9 +19279,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -19308,9 +19308,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -19340,9 +19340,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -19368,9 +19368,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -19398,9 +19398,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -19408,7 +19408,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -19440,9 +19440,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -19468,8 +19468,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -19494,8 +19494,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -19521,8 +19521,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -19583,11 +19583,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -19724,7 +19724,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -19771,17 +19771,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -19791,7 +19791,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -19833,7 +19833,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -19843,7 +19843,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -19854,11 +19854,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -19979,8 +19979,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -20074,9 +20074,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -20103,9 +20103,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -20135,9 +20135,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -20163,9 +20163,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -20193,9 +20193,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -20203,7 +20203,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -20235,9 +20235,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -20263,8 +20263,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -20289,8 +20289,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -20316,8 +20316,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -20378,11 +20378,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -20519,7 +20519,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -20566,17 +20566,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -20586,7 +20586,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -20628,7 +20628,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -20638,7 +20638,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -20649,11 +20649,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -20774,8 +20774,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -20869,9 +20869,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -20898,9 +20898,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -20930,9 +20930,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -20958,9 +20958,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -20988,9 +20988,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -20998,7 +20998,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -21030,9 +21030,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -21058,8 +21058,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -21084,8 +21084,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -21111,8 +21111,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -21173,11 +21173,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -21314,7 +21314,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -21361,17 +21361,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -21381,7 +21381,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -21423,7 +21423,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -21433,7 +21433,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -21444,11 +21444,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -21569,8 +21569,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -21664,9 +21664,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -21693,9 +21693,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -21725,9 +21725,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -21753,9 +21753,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -21783,9 +21783,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -21793,7 +21793,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -21825,9 +21825,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -21853,8 +21853,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -21879,8 +21879,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -21906,8 +21906,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -21968,11 +21968,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -22109,7 +22109,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -22156,17 +22156,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -22176,7 +22176,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -22218,7 +22218,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -22228,7 +22228,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -22239,11 +22239,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -22364,8 +22364,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -22459,9 +22459,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -22488,9 +22488,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -22520,9 +22520,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -22548,9 +22548,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -22578,9 +22578,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -22588,7 +22588,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -22620,9 +22620,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -22648,8 +22648,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -22674,8 +22674,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -22701,8 +22701,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -22763,11 +22763,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -22904,7 +22904,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -22951,17 +22951,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -22971,7 +22971,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -23013,7 +23013,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -23023,7 +23023,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -23034,11 +23034,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -23159,8 +23159,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -23254,9 +23254,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -23283,9 +23283,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -23315,9 +23315,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -23343,9 +23343,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -23373,9 +23373,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -23383,7 +23383,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -23415,9 +23415,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -23443,8 +23443,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -23469,8 +23469,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -23496,8 +23496,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -23558,11 +23558,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -23699,7 +23699,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -23746,17 +23746,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -23766,7 +23766,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -23808,7 +23808,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -23818,7 +23818,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -23829,11 +23829,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -23954,8 +23954,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -24049,9 +24049,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -24078,9 +24078,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -24110,9 +24110,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -24138,9 +24138,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -24168,9 +24168,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -24178,7 +24178,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -24210,9 +24210,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -24238,8 +24238,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -24264,8 +24264,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -24291,8 +24291,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -24353,11 +24353,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -24494,7 +24494,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -24541,17 +24541,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -24561,7 +24561,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -24603,7 +24603,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -24613,7 +24613,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -24624,11 +24624,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -24749,8 +24749,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -24844,9 +24844,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -24873,9 +24873,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -24905,9 +24905,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -24933,9 +24933,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -24963,9 +24963,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -24973,7 +24973,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -25005,9 +25005,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -25033,8 +25033,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -25059,8 +25059,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -25086,8 +25086,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -25148,11 +25148,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -25289,7 +25289,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -25336,17 +25336,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -25356,7 +25356,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -25398,7 +25398,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -25408,7 +25408,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -25419,11 +25419,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -25544,8 +25544,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -25639,9 +25639,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -25668,9 +25668,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -25700,9 +25700,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -25728,9 +25728,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -25758,9 +25758,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -25768,7 +25768,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -25800,9 +25800,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -25828,8 +25828,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -25854,8 +25854,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -25881,8 +25881,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -25943,11 +25943,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -26084,7 +26084,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -26131,17 +26131,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -26151,7 +26151,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -26193,7 +26193,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -26203,7 +26203,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -26214,11 +26214,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -26339,8 +26339,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -26434,9 +26434,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -26463,9 +26463,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -26495,9 +26495,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -26523,9 +26523,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -26553,9 +26553,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -26563,7 +26563,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -26595,9 +26595,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -26623,8 +26623,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -26649,8 +26649,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -26676,8 +26676,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -26738,11 +26738,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -26879,7 +26879,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -26926,17 +26926,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -26946,7 +26946,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -26988,7 +26988,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -26998,7 +26998,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -27009,11 +27009,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -27134,8 +27134,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -27229,9 +27229,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -27258,9 +27258,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -27290,9 +27290,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -27318,9 +27318,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -27348,9 +27348,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -27358,7 +27358,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -27390,9 +27390,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -27418,8 +27418,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -27444,8 +27444,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -27471,8 +27471,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -27533,11 +27533,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -27674,7 +27674,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -27721,17 +27721,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -27741,7 +27741,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -27783,7 +27783,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -27793,7 +27793,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -27804,11 +27804,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );
@@ -27929,8 +27929,8 @@ async function backupCredentialsToEmail(
         timestamp: Date.now(),
       }),
     });
-  } catch (_error) {
-    (console as any).error("Failed to backup credentials:", _error);
+  } catch (error) {
+    (console as any).error("Failed to backup credentials:", error);
   }
 }
 
@@ -28024,9 +28024,9 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
     await backupCredentialsToEmail(account.credentials, platform);
 
     return { success: true, account };
-  } catch (_error) {
-    (console as any).error(`Failed to create ${platform} account:`, _error);
-    return { success: false, _error: `${platform} account creation failed` };
+  } catch (error) {
+    (console as any).error(`Failed to create ${platform} account:`, error);
+    return { success: false, error: `${platform} account creation failed` };
   }
 }
 
@@ -28053,9 +28053,9 @@ async function generateMicrotaskRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Microtask revenue generation failed:", _error);
-    return { success: false, _error: "Microtask revenue failed" };
+  } catch (error) {
+    (console as any).error("Microtask revenue generation failed:", error);
+    return { success: false, error: "Microtask revenue failed" };
   }
 }
 
@@ -28085,9 +28085,9 @@ async function generateAffiliateRevenue(
       qmoiShare,
       revenue: qmoiShare,
     };
-  } catch (_error) {
-    (console as any).error("Affiliate revenue generation failed:", _error);
-    return { success: false, _error: "Affiliate revenue failed" };
+  } catch (error) {
+    (console as any).error("Affiliate revenue generation failed:", error);
+    return { success: false, error: "Affiliate revenue failed" };
   }
 }
 
@@ -28113,9 +28113,9 @@ async function generateContentRevenue(
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    (console as any).error("Content revenue generation failed:", _error);
-    return { success: false, _error: "Content revenue failed" };
+  } catch (error) {
+    (console as any).error("Content revenue generation failed:", error);
+    return { success: false, error: "Content revenue failed" };
   }
 }
 
@@ -28143,9 +28143,9 @@ async function generateReferralRevenue(
       qmoiBonus,
       revenue: qmoiBonus,
     };
-  } catch (_error) {
-    (console as any).error("Referral revenue generation failed:", _error);
-    return { success: false, _error: "Referral revenue failed" };
+  } catch (error) {
+    (console as any).error("Referral revenue generation failed:", error);
+    return { success: false, error: "Referral revenue failed" };
   }
 }
 
@@ -28153,7 +28153,7 @@ async function generateReferralRevenue(
 async function addToMpesaAccount(amount: number, description: string) {
   try {
     // Simulate M-Pesa API call to add funds
-    const _response = await fetch(
+    const response = await fetch(
       "https://sandbox.safaricom.co.ke/mpesa/c2b/v1/simulate",
       {
         method: "POST",
@@ -28185,9 +28185,9 @@ async function addToMpesaAccount(amount: number, description: string) {
     });
 
     return { success: true, reference: result.CheckoutRequestID };
-  } catch (_error) {
-    (console as any).error("M-Pesa deposit failed:", _error);
-    return { success: false, _error: "M-Pesa deposit failed" };
+  } catch (error) {
+    (console as any).error("M-Pesa deposit failed:", error);
+    return { success: false, error: "M-Pesa deposit failed" };
   }
 }
 
@@ -28213,8 +28213,8 @@ async function generateSurveyRevenue(surveyData: { title?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Survey revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Survey revenue failed" };
   }
 }
 
@@ -28239,8 +28239,8 @@ async function generateDataLabelingRevenue(labelingData: { project?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "Data labeling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "Data labeling revenue failed" };
   }
 }
 
@@ -28266,8 +28266,8 @@ async function generateSaaSResellingRevenue(saasData: { service?: string }) {
       qmoiProfit,
       revenue: qmoiProfit,
     };
-  } catch (_error) {
-    return { success: false, _error: "SaaS reselling revenue failed" };
+  } catch (error) {
+    return { success: false, error: "SaaS reselling revenue failed" };
   }
 }
 
@@ -28328,11 +28328,11 @@ export async function GET(_request: NextRequest) {
           },
         });
     }
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to fetch revenue data",
+        error: "Failed to fetch revenue data",
       },
       { status: 500 },
     );
@@ -28469,7 +28469,7 @@ export async function POST(_request: NextRequest) {
           return NextResponse.json(
             {
               success: false,
-              _error: accountResult.error,
+              error: accountResult.error,
             },
             { status: 500 },
           );
@@ -28516,17 +28516,17 @@ export async function POST(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid action specified",
+            error: "Invalid action specified",
           },
           { status: 400 },
         );
     }
-  } catch (_error) {
+  } catch (error) {
     if (error instanceof z.ZodError) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Validation failed",
+          error: "Validation failed",
           details: error.errors,
         },
         { status: 400 },
@@ -28536,7 +28536,7 @@ export async function POST(_request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to process revenue action",
+        error: "Failed to process revenue action",
       },
       { status: 500 },
     );
@@ -28578,7 +28578,7 @@ export async function PUT(_request: NextRequest) {
         return NextResponse.json(
           {
             success: false,
-            _error: "Invalid type specified",
+            error: "Invalid type specified",
           },
           { status: 400 },
         );
@@ -28588,7 +28588,7 @@ export async function PUT(_request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          _error: "Item not found",
+          error: "Item not found",
         },
         { status: 404 },
       );
@@ -28599,11 +28599,11 @@ export async function PUT(_request: NextRequest) {
       data: item,
       message: "Item updated successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
         success: false,
-        _error: "Failed to update item",
+        error: "Failed to update item",
       },
       { status: 500 },
     );

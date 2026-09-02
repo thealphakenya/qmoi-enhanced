@@ -8,8 +8,8 @@ export async function GET() {
     const data = fs.readFileSync("logs/financial_verification.log", "utf-8");
     const lines = data.split("\n").filter(Boolean);
     return NextResponse.json({ success: true, logs: lines });
-  } catch (_e) {
-    const errorMessage = _e instanceof Error ? _e.message : String(_e);
-    return NextResponse.json({ success: false, _error: errorMessage });
+  } catch (e) {
+    const errorMessage = _e instanceof Error ? _e.message : String(e);
+    return NextResponse.json({ success: false, error: errorMessage });
   }
 }

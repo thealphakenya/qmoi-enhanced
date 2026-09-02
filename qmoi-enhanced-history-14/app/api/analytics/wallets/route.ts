@@ -13,7 +13,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -22,9 +22,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -32,7 +32,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -154,10 +154,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Wallet analytics _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Wallet analytics error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }

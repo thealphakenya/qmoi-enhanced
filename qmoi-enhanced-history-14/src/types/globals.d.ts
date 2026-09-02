@@ -5,77 +5,54 @@
 // change runtime semantics — refine types per-module later.
 
 declare global {
-  // common runtime/test placeholders
-  var localServer: unknown;
-  var _request: unknown;
-  var _response: unknown;
-  var _req: unknown;
-  var _res: unknown;
+  var process: any;
+  var Buffer: any;
   var __dirname: string;
   var __filename: string;
-  var global: unknown;
-  var window: unknown;
-  var navigator: unknown;
-  var localStorage: unknown;
-  var performance: unknown;
-
-  // Fetch / Web API types (permissive)
-  var Headers: unknown;
-  type Request = any;
-  type Response = any;
-  var FormData: unknown;
-  var URL: unknown;
-  var URLSearchParams: unknown;
-  var EventSource: unknown;
-  var FileReader: unknown;
-  var AbortSignal: unknown;
-  var EventListener: unknown;
-  var KeyboardEvent: unknown;
-  var AbortController: unknown;
-  var XMLHttpRequest: unknown;
-  var Document: unknown;
-  type Window = any;
-  var Element: unknown;
-  var Node: unknown;
-  var MutationObserver: unknown;
-  var CustomEvent: unknown;
-  var fetch: unknown;
-  var ReadableStream: unknown;
-  var WritableStream: unknown;
-  var TextEncoder: unknown;
-  var TextDecoder: unknown;
-  var crypto: unknown;
-  var structuredClone: unknown;
-  var setTimeout: unknown;
-  var clearTimeout: unknown;
-  var setInterval: unknown;
-  var clearInterval: unknown;
-
-  // Node bridging
-  var Buffer: unknown;
-  var require: unknown;
-  var module: unknown;
-  var process: unknown;
+  var localServer: any;
+  var _request: any;
+  var _response: any;
+  var _req: any;
+  var _res: any;
+  var _err: any;
+  var _e: any;
+  var e: any;
+  var error: any;
+  var _error: any;
+  var err: any;
+  var response: any;
+  var res: any;
+  var req: any;
+  var next: any;
   var console: Console;
-  var NodeJS: unknown;
-
-  // Jest test globals
-  const jest: unknown;
-  function describe(name: string, fn: (...args: unknown[]) => any): void;
-  function it(name: string, fn: (...args: unknown[]) => any): void;
-  function test(name: string, fn: (...args: unknown[]) => any): void;
-  function beforeAll(fn: (...args: unknown[]) => any): void;
-  function afterAll(fn: (...args: unknown[]) => any): void;
-  function beforeEach(fn: (...args: unknown[]) => any): void;
-  function afterEach(fn: (...args: unknown[]) => any): void;
-  var expect: unknown;
+  var fetch: any;
+  var setTimeout: any;
+  var clearTimeout: any;
+  var setInterval: any;
+  var clearInterval: any;
+  var localStorage: Storage;
 }
 
-declare global {
-  interface Console {
-    error?: (...args: unknown[]) => void;
-  }
+declare const _request: any;
+declare const _response: any;
+declare const _req: any;
+declare const _res: any;
+declare const _err: any;
+declare const _e: any;
+declare const e: any;
+declare const error: any;
+declare const _error: any;
+declare const err: any;
+declare const response: any;
+declare const res: any;
+declare const req: any;
+
+interface Window {
+  SpeechRecognition?: any;
+  webkitSpeechRecognition?: any;
 }
+
+export {};
 
 export {};
 

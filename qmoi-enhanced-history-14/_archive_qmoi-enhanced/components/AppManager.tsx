@@ -130,7 +130,7 @@ export default function AppManager() {
     });
 
     appManagementService.onAppError(({ appId, error }) => {
-      (globalThis.console as any)?.error?.(`App error for ${appId}:`, error);
+      globalThis.console.error(`App error for ${appId}:`, error);
     });
 
     appManagementService.onUpdateAvailable(({ app, update }) => {
@@ -167,7 +167,7 @@ export default function AppManager() {
     try {
       await appManagementService.downloadApp(appId);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Download failed:", error);
+      globalThis.console.error("Download failed:", error);
     }
   };
 
@@ -175,7 +175,7 @@ export default function AppManager() {
     try {
       await appManagementService.updateApp(appId);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Update failed:", error);
+      globalThis.console.error("Update failed:", error);
     }
   };
 
@@ -183,7 +183,7 @@ export default function AppManager() {
     try {
       await appManagementService.troubleshootApp(appId);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Troubleshooting failed:", error);
+      globalThis.console.error("Troubleshooting failed:", error);
     }
   };
 

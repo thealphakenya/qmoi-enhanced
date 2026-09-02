@@ -158,7 +158,7 @@ export function FloatingPreviewWindow({
         }
       } catch (err) {
         setDownloadProgress(0);
-        (globalThis.console as any)?.error?.("youtubeDownload failed", err);
+        globalThis.console.error("youtubeDownload failed", err);
         alert("YouTube download failed");
       }
     }

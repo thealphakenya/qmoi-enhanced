@@ -18,7 +18,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -49,9 +49,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -64,7 +64,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -73,14 +73,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -88,9 +88,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -118,7 +118,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -149,9 +149,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -164,7 +164,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -173,14 +173,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -188,9 +188,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -218,7 +218,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -249,9 +249,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -264,7 +264,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -273,14 +273,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -288,9 +288,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -318,7 +318,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -349,9 +349,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -364,7 +364,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -373,14 +373,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -388,9 +388,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -418,7 +418,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -449,9 +449,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -464,7 +464,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -473,14 +473,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -488,9 +488,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -518,7 +518,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -549,9 +549,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -564,7 +564,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -573,14 +573,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -588,9 +588,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -618,7 +618,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -649,9 +649,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -664,7 +664,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -673,14 +673,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -688,9 +688,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -718,7 +718,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -749,9 +749,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -764,7 +764,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -773,14 +773,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -788,9 +788,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -818,7 +818,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -849,9 +849,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -864,7 +864,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -873,14 +873,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -888,9 +888,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -918,7 +918,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -949,9 +949,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -964,7 +964,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -973,14 +973,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -988,9 +988,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1018,7 +1018,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1049,9 +1049,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1064,7 +1064,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1073,14 +1073,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1088,9 +1088,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1118,7 +1118,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1149,9 +1149,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1164,7 +1164,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1173,14 +1173,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1188,9 +1188,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1218,7 +1218,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1249,9 +1249,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1264,7 +1264,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1273,14 +1273,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1288,9 +1288,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1318,7 +1318,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1349,9 +1349,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1364,7 +1364,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1373,14 +1373,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1388,9 +1388,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1418,7 +1418,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1449,9 +1449,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1464,7 +1464,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1473,14 +1473,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1488,9 +1488,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1518,7 +1518,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1549,9 +1549,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1564,7 +1564,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1573,14 +1573,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1588,9 +1588,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1618,7 +1618,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1649,9 +1649,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1664,7 +1664,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1673,14 +1673,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1688,9 +1688,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1718,7 +1718,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1749,9 +1749,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1764,7 +1764,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1773,14 +1773,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1788,9 +1788,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1818,7 +1818,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1849,9 +1849,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1864,7 +1864,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1873,14 +1873,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1888,9 +1888,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1918,7 +1918,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -1949,9 +1949,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1964,7 +1964,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -1973,14 +1973,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -1988,9 +1988,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2018,7 +2018,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2049,9 +2049,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2064,7 +2064,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2073,14 +2073,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2088,9 +2088,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2118,7 +2118,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2149,9 +2149,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2164,7 +2164,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2173,14 +2173,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2188,9 +2188,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2218,7 +2218,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2249,9 +2249,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2264,7 +2264,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2273,14 +2273,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2288,9 +2288,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2318,7 +2318,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2349,9 +2349,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2364,7 +2364,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2373,14 +2373,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2388,9 +2388,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2418,7 +2418,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2449,9 +2449,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2464,7 +2464,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2473,14 +2473,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2488,9 +2488,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2518,7 +2518,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2549,9 +2549,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2564,7 +2564,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2573,14 +2573,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2588,9 +2588,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2618,7 +2618,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2649,9 +2649,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2664,7 +2664,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2673,14 +2673,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2688,9 +2688,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2718,7 +2718,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2749,9 +2749,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2764,7 +2764,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2773,14 +2773,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2788,9 +2788,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2818,7 +2818,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2849,9 +2849,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2864,7 +2864,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2873,14 +2873,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2888,9 +2888,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2918,7 +2918,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -2949,9 +2949,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2964,7 +2964,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -2973,14 +2973,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -2988,9 +2988,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3018,7 +3018,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -3049,9 +3049,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3064,7 +3064,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -3073,14 +3073,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -3088,9 +3088,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3118,7 +3118,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -3149,9 +3149,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3164,7 +3164,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -3173,14 +3173,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -3188,9 +3188,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3218,7 +3218,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -3249,9 +3249,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3264,7 +3264,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -3273,14 +3273,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -3288,9 +3288,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3318,7 +3318,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -3349,9 +3349,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3364,7 +3364,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -3373,14 +3373,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -3388,9 +3388,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3418,7 +3418,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -3449,9 +3449,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3464,7 +3464,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -3473,14 +3473,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -3488,9 +3488,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3518,7 +3518,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, role, biometricMethods } = body;
 
     if (!userId) {
-      return NextResponse.json({ _error: "Missing userId" }, { status: 400 });
+      return NextResponse.json({ error: "Missing userId" }, { status: 400 });
     }
 
     const sessions = JSON.parse(fs.readFileSync(SESSIONS_FILE, "utf-8"));
@@ -3549,9 +3549,9 @@ export async function POST(_request: NextRequest) {
       expiresAt: session.expiresAt,
       message: "Session created",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3564,7 +3564,7 @@ export async function GET(_request: NextRequest) {
 
     if (!sessionId) {
       return NextResponse.json(
-        { _error: "Missing sessionId" },
+        { error: "Missing sessionId" },
         { status: 400 },
       );
     }
@@ -3573,14 +3573,14 @@ export async function GET(_request: NextRequest) {
     const session = sessions.find((s: unknown) => s.id === sessionId);
 
     if (!session || !session.active) {
-      return NextResponse.json({ _error: "Invalid session" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid session" }, { status: 401 });
     }
 
     // Check expiration
     if (new Date(session.expiresAt) < new Date()) {
       session.active = false;
       fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
-      return NextResponse.json({ _error: "Session expired" }, { status: 401 });
+      return NextResponse.json({ error: "Session expired" }, { status: 401 });
     }
 
     // Update lastActivity
@@ -3588,9 +3588,9 @@ export async function GET(_request: NextRequest) {
     fs.writeFileSync(SESSIONS_FILE, JSON.stringify(sessions, null, 2));
 
     return NextResponse.json({ success: true, session });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }

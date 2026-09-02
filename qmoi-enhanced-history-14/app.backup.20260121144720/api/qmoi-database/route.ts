@@ -116,22 +116,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -166,7 +166,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -183,9 +183,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -202,9 +202,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -222,21 +222,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -297,10 +297,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -426,22 +426,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -476,7 +476,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -493,9 +493,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -512,9 +512,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -532,21 +532,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -607,10 +607,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -736,22 +736,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -786,7 +786,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -803,9 +803,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -822,9 +822,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -842,21 +842,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -917,10 +917,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -1046,22 +1046,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -1096,7 +1096,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -1113,9 +1113,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -1132,9 +1132,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -1152,21 +1152,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -1227,10 +1227,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -1356,22 +1356,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -1406,7 +1406,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -1423,9 +1423,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -1442,9 +1442,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -1462,21 +1462,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -1537,10 +1537,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -1666,22 +1666,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -1716,7 +1716,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -1733,9 +1733,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -1752,9 +1752,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -1772,21 +1772,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -1847,10 +1847,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -1976,22 +1976,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -2026,7 +2026,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -2043,9 +2043,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -2062,9 +2062,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -2082,21 +2082,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -2157,10 +2157,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -2286,22 +2286,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -2336,7 +2336,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -2353,9 +2353,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -2372,9 +2372,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -2392,21 +2392,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -2467,10 +2467,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -2596,22 +2596,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -2646,7 +2646,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -2663,9 +2663,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -2682,9 +2682,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -2702,21 +2702,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -2777,10 +2777,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -2906,22 +2906,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -2956,7 +2956,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -2973,9 +2973,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -2992,9 +2992,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -3012,21 +3012,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -3087,10 +3087,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -3216,22 +3216,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -3266,7 +3266,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -3283,9 +3283,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -3302,9 +3302,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -3322,21 +3322,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -3397,10 +3397,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -3526,22 +3526,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -3576,7 +3576,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -3593,9 +3593,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -3612,9 +3612,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -3632,21 +3632,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -3707,10 +3707,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -3836,22 +3836,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -3886,7 +3886,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -3903,9 +3903,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -3922,9 +3922,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -3942,21 +3942,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -4017,10 +4017,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -4146,22 +4146,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -4196,7 +4196,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -4213,9 +4213,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -4232,9 +4232,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -4252,21 +4252,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -4327,10 +4327,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -4456,22 +4456,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -4506,7 +4506,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -4523,9 +4523,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -4542,9 +4542,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -4562,21 +4562,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -4637,10 +4637,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -4766,22 +4766,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -4816,7 +4816,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -4833,9 +4833,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -4852,9 +4852,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -4872,21 +4872,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -4947,10 +4947,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -5076,22 +5076,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -5126,7 +5126,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -5143,9 +5143,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -5162,9 +5162,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -5182,21 +5182,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -5257,10 +5257,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -5386,22 +5386,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -5436,7 +5436,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -5453,9 +5453,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -5472,9 +5472,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -5492,21 +5492,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -5567,10 +5567,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -5696,22 +5696,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -5746,7 +5746,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -5763,9 +5763,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -5782,9 +5782,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -5802,21 +5802,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -5877,10 +5877,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -6006,22 +6006,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -6056,7 +6056,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -6073,9 +6073,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -6092,9 +6092,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -6112,21 +6112,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -6187,10 +6187,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -6316,22 +6316,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -6366,7 +6366,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -6383,9 +6383,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -6402,9 +6402,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -6422,21 +6422,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -6497,10 +6497,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -6626,22 +6626,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -6676,7 +6676,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -6693,9 +6693,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -6712,9 +6712,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -6732,21 +6732,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -6807,10 +6807,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -6936,22 +6936,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -6986,7 +6986,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -7003,9 +7003,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -7022,9 +7022,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -7042,21 +7042,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -7117,10 +7117,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -7246,22 +7246,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -7296,7 +7296,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -7313,9 +7313,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -7332,9 +7332,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -7352,21 +7352,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -7427,10 +7427,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -7556,22 +7556,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -7606,7 +7606,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -7623,9 +7623,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -7642,9 +7642,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -7662,21 +7662,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -7737,10 +7737,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -7866,22 +7866,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -7916,7 +7916,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -7933,9 +7933,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -7952,9 +7952,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -7972,21 +7972,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -8047,10 +8047,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -8176,22 +8176,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -8226,7 +8226,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -8243,9 +8243,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -8262,9 +8262,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -8282,21 +8282,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -8357,10 +8357,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -8486,22 +8486,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -8536,7 +8536,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -8553,9 +8553,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -8572,9 +8572,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -8592,21 +8592,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -8667,10 +8667,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -8796,22 +8796,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -8846,7 +8846,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -8863,9 +8863,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -8882,9 +8882,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -8902,21 +8902,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -8977,10 +8977,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -9106,22 +9106,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -9156,7 +9156,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -9173,9 +9173,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -9192,9 +9192,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -9212,21 +9212,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -9287,10 +9287,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -9416,22 +9416,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -9466,7 +9466,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -9483,9 +9483,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -9502,9 +9502,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -9522,21 +9522,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -9597,10 +9597,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -9726,22 +9726,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -9776,7 +9776,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -9793,9 +9793,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -9812,9 +9812,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -9832,21 +9832,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -9907,10 +9907,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -10036,22 +10036,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -10086,7 +10086,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -10103,9 +10103,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -10122,9 +10122,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -10142,21 +10142,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -10217,10 +10217,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -10346,22 +10346,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -10396,7 +10396,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -10413,9 +10413,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -10432,9 +10432,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -10452,21 +10452,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -10527,10 +10527,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -10656,22 +10656,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -10706,7 +10706,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -10723,9 +10723,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -10742,9 +10742,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -10762,21 +10762,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -10837,10 +10837,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }
@@ -10966,22 +10966,22 @@ async function downloadMedia(mediaId: string) {
       success: true,
       message: "Media downloaded successfully",
     };
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
-      error instanceof Error ? error.message : String(_error);
+      error instanceof Error ? error.message : String(error);
 
     await prisma.mediaTask.update({
       where: { id: mediaId },
       data: {
         status: "failed",
-        _error: errorMessage,
+        error: errorMessage,
       },
     });
 
     return {
       success: false,
       message: `Download failed: ${errorMessage}`,
-      _error: errorMessage,
+      error: errorMessage,
     };
   }
 }
@@ -11016,7 +11016,7 @@ async function getMediaLogs(filter?: {
 export async function GET(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -11033,9 +11033,9 @@ export async function GET(_request: NextRequest) {
         searchParams.get("source") || undefined,
       );
       return NextResponse.json({ media: results });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Search failed: ${error}` },
+        { error: `Search failed: ${error}` },
         { status: 500 },
       );
     }
@@ -11052,9 +11052,9 @@ export async function GET(_request: NextRequest) {
           : undefined,
       });
       return NextResponse.json({ logs });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get logs: ${error}` },
+        { error: `Failed to get logs: ${error}` },
         { status: 500 },
       );
     }
@@ -11072,21 +11072,21 @@ export async function GET(_request: NextRequest) {
         auditLogs: auditLogCount,
         mediaTasks: mediaTaskCount,
       });
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: `Failed to get database info: ${error}` },
+        { error: `Failed to get database info: ${error}` },
         { status: 500 },
       );
     }
   }
 
-  return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
+  return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
   if (!isMaster(_request)) {
     return NextResponse.json(
-      { _error: "Master access required" },
+      { error: "Master access required" },
       { status: 403 },
     );
   }
@@ -11147,10 +11147,10 @@ export async function POST(_request: NextRequest) {
       return NextResponse.json({ success: true, log: auditLog });
     }
 
-    return NextResponse.json({ _error: "Invalid _request" }, { status: 400 });
-  } catch (_error) {
+    return NextResponse.json({ error: "Invalid _request" }, { status: 400 });
+  } catch (error) {
     return NextResponse.json(
-      { _error: `Request failed: ${error}` },
+      { error: `Request failed: ${error}` },
       { status: 500 },
     );
   }

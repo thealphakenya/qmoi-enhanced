@@ -18,7 +18,7 @@ async function callPythonAnomalyService(
   events: Array<{ timestamp: string; ip: string }>
 ) {
   // Call the Python microservice for anomaly detection
-  const _res = await fetch("http://localhost:5001/detect-anomaly", {
+  const response = await fetch("http://localhost:5001/detect-anomaly", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ events }),
@@ -121,11 +121,11 @@ export default async function handler(
         });
       }
       default:
-        return _res.status(400).json({ _error: "Unknown action" });
+        return _res.status(400).json({ error: "Unknown action" });
     }
-  } catch (_e) {
+  } catch (e) {
     return _res
       .status(500)
-      .json({ _error: (_e as Error).message || "Internal error" });
+      .json({ error: (_e as Error).message || "Internal error" });
   }
 }

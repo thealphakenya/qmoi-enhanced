@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
     console.error("WhatsApp webhook error:", error);
     return NextResponse.json(
       {
-        _error: "Webhook processing error",
+        error: "Webhook processing error",
         _code: "WEBHOOK_001",
       },
       { status: 500 },
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     if (!action) {
       return NextResponse.json(
         {
-          _error: "Missing required field: action",
+          error: "Missing required field: action",
           _code: "VALIDATION_001",
           _availableActions: [
             "send-message",
@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
         if (!recipientPhoneNumber || !message) {
           return NextResponse.json(
             {
-              _error: "Missing required fields: recipientPhoneNumber, message",
+              error: "Missing required fields: recipientPhoneNumber, message",
               _code: "VALIDATION_002",
             },
             { status: 400 },
@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
         if (!templateName || !recipientPhoneNumber) {
           return NextResponse.json(
             {
-              _error:
+              error:
                 "Missing required fields: templateName, recipientPhoneNumber",
               _code: "VALIDATION_003",
             },
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
         if (!mediaUrl || !mediaType) {
           return NextResponse.json(
             {
-              _error: "Missing required fields: mediaUrl, mediaType",
+              error: "Missing required fields: mediaUrl, mediaType",
               _code: "VALIDATION_004",
             },
             { status: 400 },
@@ -165,7 +165,7 @@ export async function POST(request: NextRequest) {
         if (!phoneNumber) {
           return NextResponse.json(
             {
-              _error: "Missing required field: phoneNumber",
+              error: "Missing required field: phoneNumber",
               _code: "VALIDATION_005",
             },
             { status: 400 },
@@ -190,7 +190,7 @@ export async function POST(request: NextRequest) {
       default:
         return NextResponse.json(
           {
-            _error: "Unknown action",
+            error: "Unknown action",
             _code: "ACTION_001",
             _availableActions: [
               "send-message",
@@ -206,7 +206,7 @@ export async function POST(request: NextRequest) {
     console.error("WhatsApp API error:", error);
     return NextResponse.json(
       {
-        _error: "Internal server error",
+        error: "Internal server error",
         _code: "INTERNAL_500",
       },
       { status: 500 },

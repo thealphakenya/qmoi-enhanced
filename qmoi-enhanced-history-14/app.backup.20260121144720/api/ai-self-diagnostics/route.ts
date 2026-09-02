@@ -27,7 +27,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -39,7 +39,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -51,7 +51,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -62,17 +62,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -82,7 +82,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -90,7 +90,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -102,7 +102,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -111,7 +111,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -119,21 +119,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -146,16 +146,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -189,7 +189,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -201,7 +201,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -213,7 +213,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -224,17 +224,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -244,7 +244,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -252,7 +252,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -264,7 +264,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -273,7 +273,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -281,21 +281,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -308,16 +308,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -351,7 +351,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -363,7 +363,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -375,7 +375,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -386,17 +386,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -406,7 +406,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -414,7 +414,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -426,7 +426,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -435,7 +435,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -443,21 +443,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -470,16 +470,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -513,7 +513,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -525,7 +525,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -537,7 +537,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -548,17 +548,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -568,7 +568,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -576,7 +576,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -588,7 +588,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -597,7 +597,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -605,21 +605,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -632,16 +632,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -675,7 +675,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -687,7 +687,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -699,7 +699,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -710,17 +710,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -730,7 +730,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -738,7 +738,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -750,7 +750,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -759,7 +759,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -767,21 +767,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -794,16 +794,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -837,7 +837,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -849,7 +849,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -861,7 +861,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -872,17 +872,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -892,7 +892,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -900,7 +900,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -912,7 +912,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -921,7 +921,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -929,21 +929,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -956,16 +956,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -999,7 +999,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1011,7 +1011,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -1023,7 +1023,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -1034,17 +1034,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -1054,7 +1054,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -1062,7 +1062,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1074,7 +1074,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -1083,7 +1083,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -1091,21 +1091,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -1118,16 +1118,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -1161,7 +1161,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1173,7 +1173,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -1185,7 +1185,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -1196,17 +1196,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -1216,7 +1216,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -1224,7 +1224,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1236,7 +1236,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -1245,7 +1245,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -1253,21 +1253,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -1280,16 +1280,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -1323,7 +1323,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1335,7 +1335,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -1347,7 +1347,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -1358,17 +1358,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -1378,7 +1378,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -1386,7 +1386,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1398,7 +1398,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -1407,7 +1407,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -1415,21 +1415,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -1442,16 +1442,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -1485,7 +1485,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1497,7 +1497,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -1509,7 +1509,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -1520,17 +1520,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -1540,7 +1540,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -1548,7 +1548,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1560,7 +1560,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -1569,7 +1569,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -1577,21 +1577,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -1604,16 +1604,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -1647,7 +1647,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1659,7 +1659,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -1671,7 +1671,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -1682,17 +1682,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -1702,7 +1702,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -1710,7 +1710,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1722,7 +1722,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -1731,7 +1731,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -1739,21 +1739,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -1766,16 +1766,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -1809,7 +1809,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1821,7 +1821,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -1833,7 +1833,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -1844,17 +1844,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -1864,7 +1864,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -1872,7 +1872,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1884,7 +1884,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -1893,7 +1893,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -1901,21 +1901,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -1928,16 +1928,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -1971,7 +1971,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -1983,7 +1983,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -1995,7 +1995,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -2006,17 +2006,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -2026,7 +2026,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -2034,7 +2034,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2046,7 +2046,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -2055,7 +2055,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -2063,21 +2063,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -2090,16 +2090,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -2133,7 +2133,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2145,7 +2145,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -2157,7 +2157,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -2168,17 +2168,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -2188,7 +2188,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -2196,7 +2196,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2208,7 +2208,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -2217,7 +2217,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -2225,21 +2225,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -2252,16 +2252,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -2295,7 +2295,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2307,7 +2307,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -2319,7 +2319,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -2330,17 +2330,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -2350,7 +2350,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -2358,7 +2358,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2370,7 +2370,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -2379,7 +2379,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -2387,21 +2387,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -2414,16 +2414,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -2457,7 +2457,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2469,7 +2469,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -2481,7 +2481,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -2492,17 +2492,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -2512,7 +2512,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -2520,7 +2520,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2532,7 +2532,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -2541,7 +2541,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -2549,21 +2549,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -2576,16 +2576,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -2619,7 +2619,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2631,7 +2631,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -2643,7 +2643,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -2654,17 +2654,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -2674,7 +2674,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -2682,7 +2682,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2694,7 +2694,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -2703,7 +2703,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -2711,21 +2711,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -2738,16 +2738,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -2781,7 +2781,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2793,7 +2793,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -2805,7 +2805,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -2816,17 +2816,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -2836,7 +2836,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -2844,7 +2844,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2856,7 +2856,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -2865,7 +2865,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -2873,21 +2873,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -2900,16 +2900,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -2943,7 +2943,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -2955,7 +2955,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -2967,7 +2967,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -2978,17 +2978,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -2998,7 +2998,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -3006,7 +3006,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3018,7 +3018,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -3027,7 +3027,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -3035,21 +3035,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -3062,16 +3062,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -3105,7 +3105,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3117,7 +3117,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -3129,7 +3129,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -3140,17 +3140,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -3160,7 +3160,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -3168,7 +3168,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3180,7 +3180,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -3189,7 +3189,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -3197,21 +3197,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -3224,16 +3224,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -3267,7 +3267,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3279,7 +3279,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -3291,7 +3291,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -3302,17 +3302,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -3322,7 +3322,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -3330,7 +3330,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3342,7 +3342,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -3351,7 +3351,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -3359,21 +3359,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -3386,16 +3386,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -3429,7 +3429,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3441,7 +3441,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -3453,7 +3453,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -3464,17 +3464,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -3484,7 +3484,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -3492,7 +3492,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3504,7 +3504,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -3513,7 +3513,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -3521,21 +3521,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -3548,16 +3548,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -3591,7 +3591,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3603,7 +3603,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -3615,7 +3615,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -3626,17 +3626,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -3646,7 +3646,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -3654,7 +3654,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3666,7 +3666,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -3675,7 +3675,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -3683,21 +3683,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -3710,16 +3710,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -3753,7 +3753,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3765,7 +3765,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -3777,7 +3777,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -3788,17 +3788,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -3808,7 +3808,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -3816,7 +3816,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3828,7 +3828,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -3837,7 +3837,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -3845,21 +3845,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -3872,16 +3872,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -3915,7 +3915,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3927,7 +3927,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -3939,7 +3939,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -3950,17 +3950,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -3970,7 +3970,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -3978,7 +3978,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -3990,7 +3990,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -3999,7 +3999,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -4007,21 +4007,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -4034,16 +4034,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -4077,7 +4077,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4089,7 +4089,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -4101,7 +4101,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -4112,17 +4112,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -4132,7 +4132,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -4140,7 +4140,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4152,7 +4152,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -4161,7 +4161,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -4169,21 +4169,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -4196,16 +4196,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -4239,7 +4239,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4251,7 +4251,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -4263,7 +4263,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -4274,17 +4274,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -4294,7 +4294,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -4302,7 +4302,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4314,7 +4314,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -4323,7 +4323,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -4331,21 +4331,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -4358,16 +4358,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -4401,7 +4401,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4413,7 +4413,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -4425,7 +4425,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -4436,17 +4436,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -4456,7 +4456,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -4464,7 +4464,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4476,7 +4476,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -4485,7 +4485,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -4493,21 +4493,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -4520,16 +4520,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -4563,7 +4563,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4575,7 +4575,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -4587,7 +4587,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -4598,17 +4598,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -4618,7 +4618,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -4626,7 +4626,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4638,7 +4638,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -4647,7 +4647,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -4655,21 +4655,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -4682,16 +4682,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -4725,7 +4725,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4737,7 +4737,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -4749,7 +4749,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -4760,17 +4760,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -4780,7 +4780,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -4788,7 +4788,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4800,7 +4800,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -4809,7 +4809,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -4817,21 +4817,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -4844,16 +4844,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -4887,7 +4887,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4899,7 +4899,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -4911,7 +4911,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -4922,17 +4922,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -4942,7 +4942,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -4950,7 +4950,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -4962,7 +4962,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -4971,7 +4971,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -4979,21 +4979,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -5006,16 +5006,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -5049,7 +5049,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5061,7 +5061,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -5073,7 +5073,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -5084,17 +5084,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -5104,7 +5104,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -5112,7 +5112,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5124,7 +5124,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -5133,7 +5133,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -5141,21 +5141,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -5168,16 +5168,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -5211,7 +5211,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5223,7 +5223,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -5235,7 +5235,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -5246,17 +5246,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -5266,7 +5266,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -5274,7 +5274,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5286,7 +5286,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -5295,7 +5295,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -5303,21 +5303,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -5330,16 +5330,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -5373,7 +5373,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5385,7 +5385,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -5397,7 +5397,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -5408,17 +5408,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -5428,7 +5428,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -5436,7 +5436,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5448,7 +5448,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -5457,7 +5457,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -5465,21 +5465,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -5492,16 +5492,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -5535,7 +5535,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5547,7 +5547,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -5559,7 +5559,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -5570,17 +5570,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -5590,7 +5590,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -5598,7 +5598,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5610,7 +5610,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -5619,7 +5619,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -5627,21 +5627,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -5654,16 +5654,16 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }
 
 
@@ -5697,7 +5697,7 @@ export async function GET(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5709,7 +5709,7 @@ export async function GET(_request: NextRequest) {
       // TypeScript/JS
       const tsc = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       tsc.split("\n").forEach((line) => {
@@ -5721,7 +5721,7 @@ export async function GET(_request: NextRequest) {
       for (const file of pyFiles) {
         const flake = await new Promise<string>((resolve) =>
           exec(`flake8 ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         flake.split("\n").forEach((line) => {
@@ -5732,17 +5732,17 @@ export async function GET(_request: NextRequest) {
       // JS/TS Lint
       const eslint = await new Promise<string>((resolve) =>
         exec("npx eslint .", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       eslint.split("\n").forEach((line) => {
         if (line.includes("error"))
           problems.push({ type: "eslint", message: line });
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       problems.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     const _respons_e: DiagnosticResponse = {
@@ -5752,7 +5752,7 @@ export async function GET(_request: NextRequest) {
     return NextResponse.json(_respons_e);
   }
 
-  return NextResponse.json({ _error: "Unknown GET action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown GET action" }, { status: 400 });
 }
 
 export async function POST(_request: NextRequest) {
@@ -5760,7 +5760,7 @@ export async function POST(_request: NextRequest) {
   const adminToken = _request.headers.get("x-admin-token");
   if (!apiAuth.ok && adminToken !== process.env.ADMIN_TOKEN) {
     const _r = apiAuth.response;
-    return NextResponse.json(_r?.body ?? { _error: "Forbidden" }, {
+    return NextResponse.json(_r?.body ?? { error: "Forbidden" }, {
       status: _r?.status ?? 403,
     });
   }
@@ -5772,7 +5772,7 @@ export async function POST(_request: NextRequest) {
       // TypeScript/JS
       const eslintFix = await new Promise<string>((resolve) =>
         exec("npx eslint . --fix", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "eslint", result: eslintFix });
@@ -5781,7 +5781,7 @@ export async function POST(_request: NextRequest) {
       for (const file of pyFiles) {
         const autopep8 = await new Promise<string>((resolve) =>
           exec(`autopep8 --in-place ${file}`, (_e, out, _err) =>
-            resolve(String(out) + String(_err)),
+            resolve(String(out) + String(err)),
           ),
         );
         results.push({ type: "autopep8", file, result: autopep8 });
@@ -5789,21 +5789,21 @@ export async function POST(_request: NextRequest) {
       // Install missing npm modules
       const npmInstall = await new Promise<string>((resolve) =>
         exec("npm install", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "npm", result: npmInstall });
       // Install missing Python modules
       const pipInstall = await new Promise<string>((resolve) =>
         exec("pip install -r requirements.txt", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       results.push({ type: "pip", result: pipInstall });
       // Create missing files if referenced in errors
       const problemsRes = await new Promise<string>((resolve) =>
         exec("npx tsc --noEmit", (_e, out, _err) =>
-          resolve(String(out) + String(_err)),
+          resolve(String(out) + String(err)),
         ),
       );
       problemsRes.split("\n").forEach((line) => {
@@ -5816,14 +5816,14 @@ export async function POST(_request: NextRequest) {
           }
         }
       });
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       results.push({
         type: "system",
-        message: _e instanceof Error ? _e.message : String(_e),
+        message: _e instanceof Error ? _e.message : String(e),
       });
     }
     return NextResponse.json({ results });
   }
 
-  return NextResponse.json({ _error: "Unknown POST action" }, { status: 400 });
+  return NextResponse.json({ error: "Unknown POST action" }, { status: 400 });
 }

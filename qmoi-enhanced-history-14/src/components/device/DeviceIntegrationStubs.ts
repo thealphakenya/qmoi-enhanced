@@ -110,7 +110,7 @@ export const TVDecoderIntegration: TVDecoderDevice = {
         setTimeout(() => resolve(true), 100);
       });
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to connect to TV decoder:",
         err,
       );
@@ -151,7 +151,7 @@ export const TVDecoderIntegration: TVDecoderDevice = {
       );
       return true; // Always return true in simulation mode
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to auto-detect TV decoder:",
         err,
       );
@@ -187,7 +187,7 @@ export const CarRadioIntegration: CarRadioDevice = {
       this.device = new HIDMock(carRadio.path);
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to connect to car radio:",
         err,
       );
@@ -214,7 +214,7 @@ export const CarRadioIntegration: CarRadioDevice = {
         }, 100);
       });
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to send command to car radio:",
         err,
       );
@@ -234,7 +234,7 @@ export const CarRadioIntegration: CarRadioDevice = {
       );
       return true; // Always return true in simulation mode
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to auto-detect car radio:",
         err,
       );
@@ -256,7 +256,7 @@ export const SmartHomeIntegration: DeviceIntegration = {
       (this as any).connectionState = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to connect to smart home bridge:",
         err,
       );
@@ -427,7 +427,7 @@ export const AWSIntegration: DeviceIntegration = {
       (this as any).connected = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to connect to AWS:", err);
+      globalThis.console.error("Failed to connect to AWS:", err);
       (this as any).connected = false;
       return false;
     }
@@ -482,7 +482,7 @@ export const AzureIntegration: DeviceIntegration = {
       (this as any).connected = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to connect to Azure:", err);
+      globalThis.console.error("Failed to connect to Azure:", err);
       (this as any).connected = false;
       return false;
     }
@@ -540,7 +540,7 @@ export const GCPIntegration: DeviceIntegration = {
       (this as any).connected = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.("Failed to connect to GCP:", err);
+      globalThis.console.error("Failed to connect to GCP:", err);
       (this as any).connected = false;
       return false;
     }
@@ -594,7 +594,7 @@ export const IoTIntegration: DeviceIntegration = {
       (this as any).connected = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to connect to IoT network:",
         err,
       );
@@ -648,7 +648,7 @@ export const MobileIntegration: DeviceIntegration = {
       (this as any).connected = true;
       return true;
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to connect to mobile device:",
         err,
       );

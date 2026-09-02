@@ -36,7 +36,7 @@ export async function handlePaymentWebhook(
   let body: unknown;
   try {
     body = JSON.parse(payload);
-  } catch (_e) {
+  } catch (e) {
     body = { raw: payload };
   }
 

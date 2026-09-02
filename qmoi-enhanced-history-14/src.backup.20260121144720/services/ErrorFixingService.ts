@@ -53,7 +53,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -64,10 +64,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -79,11 +79,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -161,7 +161,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -259,7 +259,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -270,10 +270,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -285,11 +285,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -367,7 +367,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -467,7 +467,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -478,10 +478,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -493,11 +493,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -575,7 +575,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -673,7 +673,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -684,10 +684,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -699,11 +699,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -781,7 +781,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -879,7 +879,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -890,10 +890,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -905,11 +905,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -987,7 +987,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -1085,7 +1085,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -1096,10 +1096,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -1111,11 +1111,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -1193,7 +1193,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -1291,7 +1291,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -1302,10 +1302,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -1317,11 +1317,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -1399,7 +1399,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -1497,7 +1497,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -1508,10 +1508,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -1523,11 +1523,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -1605,7 +1605,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -1703,7 +1703,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -1714,10 +1714,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -1729,11 +1729,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -1811,7 +1811,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -1909,7 +1909,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -1920,10 +1920,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -1935,11 +1935,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -2017,7 +2017,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -2115,7 +2115,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -2126,10 +2126,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -2141,11 +2141,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -2223,7 +2223,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -2321,7 +2321,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -2332,10 +2332,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -2347,11 +2347,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -2429,7 +2429,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -2527,7 +2527,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -2538,10 +2538,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -2553,11 +2553,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -2635,7 +2635,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -2733,7 +2733,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -2744,10 +2744,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -2759,11 +2759,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -2841,7 +2841,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -2939,7 +2939,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -2950,10 +2950,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -2965,11 +2965,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -3047,7 +3047,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -3145,7 +3145,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -3156,10 +3156,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -3171,11 +3171,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -3253,7 +3253,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -3351,7 +3351,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -3362,10 +3362,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -3377,11 +3377,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -3459,7 +3459,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -3557,7 +3557,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -3568,10 +3568,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -3583,11 +3583,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -3665,7 +3665,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -3763,7 +3763,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -3774,10 +3774,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -3789,11 +3789,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -3871,7 +3871,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -3969,7 +3969,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -3980,10 +3980,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -3995,11 +3995,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -4077,7 +4077,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -4175,7 +4175,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -4186,10 +4186,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -4201,11 +4201,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -4283,7 +4283,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -4381,7 +4381,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -4392,10 +4392,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -4407,11 +4407,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -4489,7 +4489,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -4587,7 +4587,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -4598,10 +4598,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -4613,11 +4613,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -4695,7 +4695,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -4793,7 +4793,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -4804,10 +4804,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -4819,11 +4819,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -4901,7 +4901,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -4999,7 +4999,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -5010,10 +5010,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -5025,11 +5025,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -5107,7 +5107,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -5205,7 +5205,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -5216,10 +5216,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -5231,11 +5231,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -5313,7 +5313,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -5411,7 +5411,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -5422,10 +5422,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -5437,11 +5437,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -5519,7 +5519,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -5617,7 +5617,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -5628,10 +5628,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -5643,11 +5643,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -5725,7 +5725,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -5823,7 +5823,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -5834,10 +5834,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -5849,11 +5849,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -5931,7 +5931,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -6029,7 +6029,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -6040,10 +6040,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -6055,11 +6055,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -6137,7 +6137,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -6235,7 +6235,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -6246,10 +6246,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -6261,11 +6261,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -6343,7 +6343,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -6441,7 +6441,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -6452,10 +6452,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -6467,11 +6467,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -6549,7 +6549,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -6647,7 +6647,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -6658,10 +6658,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -6673,11 +6673,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -6755,7 +6755,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -6853,7 +6853,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -6864,10 +6864,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -6879,11 +6879,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -6961,7 +6961,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -7059,7 +7059,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -7070,10 +7070,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -7085,11 +7085,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -7167,7 +7167,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };
@@ -7265,7 +7265,7 @@ export class ErrorFixingService {
     const errorReport = this.errorQueue.shift();
 
     if (errorReport) {
-      console.log("Processing _error:", errorReport);
+      console.log("Processing error:", errorReport);
       try {
         // Simulate AI analysis and fix suggestion
         const fixSuggestion = await this.analyzeAndSuggestFix(errorReport);
@@ -7276,10 +7276,10 @@ export class ErrorFixingService {
         } else {
           console.log("No automatic fix suggested for this error.");
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Failed to process error or apply fix:",
-          _error,
+          error,
         );
       } finally {
         this.isProcessing = false;
@@ -7291,11 +7291,11 @@ export class ErrorFixingService {
   }
 
   private async analyzeAndSuggestFix(
-    _error: ErrorReport,
+    error: ErrorReport,
   ): Promise<FixSuggestion | null> {
     // This is where the AI logic for analyzing errors and suggesting fixes would go.
     // For now, this is a [PRODUCTION IMPLEMENTATION REQUIRED] with some basic examples.
-    console.log("AI analyzing _error:", _error);
+    console.log("AI analyzing error:", error);
 
     // License compliance error handling
     if (
@@ -7373,7 +7373,7 @@ export class ErrorFixingService {
     // Example for a hypothetical GitHub push error
     if (error.type === "GitHubPushError") {
       return {
-        description: `Attempting to resolve GitHub push _error: ${error.message}`,
+        description: `Attempting to resolve GitHub push error: ${error.message}`,
         codeChanges: [],
         commands: ["git pull --rebase", "git push"],
       };

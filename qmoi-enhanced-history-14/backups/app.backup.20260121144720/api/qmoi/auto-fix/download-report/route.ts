@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     const r = auth.response;
     if (!r)
       return NextResponse.json(
-        { _error: "Unknown auth error" },
+        { error: "Unknown auth error" },
         { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
@@ -28,7 +28,7 @@ export async function GET(_request: NextRequest) {
       await fs.access(latestReportPath);
     } catch (e) {
       return NextResponse.json(
-        { _error: "No report available for download" },
+        { error: "No report available for download" },
         { status: 404 },
       );
     }
@@ -41,7 +41,7 @@ export async function GET(_request: NextRequest) {
       user: process.env.AUTH_USER || "unknown", // Production: Extract from JWT auth context
       app: "QMOI",
       device: "unknown",
-      _error: null,
+      error: null,
     };
     try {
       await fs.appendFile(
@@ -65,9 +65,9 @@ export async function GET(_request: NextRequest) {
     );
 
     return response;
-  } catch (_error) {
-    // On _error, log the error
-    (console as any).error("Error downloading report:", _error);
+  } catch (error) {
+    // On error, log the error
+    (console as any).error("Error downloading report:", error);
     const logEntryErr = {
       timestamp: new Date().toISOString(),
       action: "download-report-access",
@@ -75,7 +75,7 @@ export async function GET(_request: NextRequest) {
       user: "unknown",
       app: "QMOI",
       device: "unknown",
-      _error: error?.toString() || "unknown error",
+      error: error?.toString() || "unknown error",
     };
     try {
       await fs.appendFile(
@@ -84,7 +84,7 @@ export async function GET(_request: NextRequest) {
       );
     } catch (e) {
     return NextResponse.json(
-      { _error: "Failed to download report" },
+      { error: "Failed to download report" },
       { status: 500 },
     );
   }

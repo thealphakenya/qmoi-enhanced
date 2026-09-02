@@ -212,7 +212,7 @@ export function useDeviceHealth(): DeviceHealth {
           warnings,
         });
       } catch (error) {
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           "Device health check failed:",
           error,
         );

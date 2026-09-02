@@ -42,7 +42,7 @@ async function writeProposal(proposal: unknown) {
       "utf8",
     );
   } catch (err) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Failed to write voice profile proposal:",
       err && err.message ? err.message : err,
     );
@@ -66,7 +66,7 @@ export async function GET() {
       total: profilesWithMetadata.length,
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error fetching voice profiles:",
       error,
     );
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error in voice profiles API:", error);
+    globalThis.console.error("Error in voice profiles API:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },
@@ -159,7 +159,7 @@ async function switchVoice(voiceId: string) {
         `✅ Voice switched to ${voiceProfile.name} and persisted to ${stateFile}`,
       );
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to persist voice state:",
         err && (err as any).message ? (err as any).message : err,
       );
@@ -176,7 +176,7 @@ async function switchVoice(voiceId: string) {
       voice: voiceProfile,
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error switching voice:", error);
+    globalThis.console.error("Error switching voice:", error);
     return NextResponse.json(
       { error: "Failed to switch voice" },
       { status: 500 },
@@ -233,14 +233,14 @@ async function previewVoice(
         voice: voiceProfile,
       });
     } catch (err) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Error proxying to TTS:",
         err && (err as any).message ? (err as any).message : err,
       );
       return NextResponse.json({ error: "TTS proxy failed" }, { status: 502 });
     }
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error previewing voice:", error);
+    globalThis.console.error("Error previewing voice:", error);
     return NextResponse.json(
       { error: "Failed to generate voice preview" },
       { status: 500 },
@@ -277,7 +277,7 @@ async function enhanceVoice(voiceId: string) {
       message: "Voice enhancement enqueued/applied",
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error enhancing voice:", error);
+    globalThis.console.error("Error enhancing voice:", error);
     return NextResponse.json(
       { error: "Failed to enhance voice" },
       { status: 500 },
@@ -314,7 +314,7 @@ async function upgradeVoice(voiceId: string) {
       newVersion: "2.1.0",
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error upgrading voice:", error);
+    globalThis.console.error("Error upgrading voice:", error);
     return NextResponse.json(
       { error: "Failed to upgrade voice" },
       { status: 500 },

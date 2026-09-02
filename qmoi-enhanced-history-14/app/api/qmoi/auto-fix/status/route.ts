@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
     const logsDir = path.join(process.cwd(), "logs");
@@ -42,7 +42,7 @@ export async function GET(_request: NextRequest) {
     try {
       const reportData = await fs.readFile(latestReportPath, "utf-8");
       report = JSON.parse(reportData);
-    } catch (_e) {
+    } catch (e) {
       // Report file not found or invalid, will use default report
     }
 
@@ -67,8 +67,8 @@ export async function GET(_request: NextRequest) {
           }
         }
       }
-    } catch (_error) {
-      console.log("Error checking running process_es:", _error);
+    } catch (error) {
+      console.log("Error checking running process_es:", error);
     }
 
     // Check deployment status
@@ -99,10 +99,10 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(report);
-  } catch (_error) {
-    (console as any).error("Error getting auto-fix status:", _error);
+  } catch (error) {
+    (console as any).error("Error getting auto-fix status:", error);
     return NextResponse.json(
-      { _error: "Failed to get auto-fix status" },
+      { error: "Failed to get auto-fix status" },
       { status: 500 },
     );
   }

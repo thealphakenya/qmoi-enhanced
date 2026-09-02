@@ -31,10 +31,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(mockStatus);
-  } catch (_error) {
-    (console as any).error("Error in monitor status endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in monitor status endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -47,14 +47,14 @@ export async function POST(_request: NextRequest) {
 
     if (typeof enable !== "boolean") {
       return NextResponse.json(
-        { _error: "Enable flag is required" },
+        { error: "Enable flag is required" },
         { status: 400 },
       );
     }
 
     if (interval && (interval < 10 || interval > 3600)) {
       return NextResponse.json(
-        { _error: "Interval must be between 10 and 3600 seconds" },
+        { error: "Interval must be between 10 and 3600 seconds" },
         { status: 400 },
       );
     }
@@ -67,10 +67,10 @@ export async function POST(_request: NextRequest) {
     };
 
     return NextResponse.json(updateStatus);
-  } catch (_error) {
-    (console as any).error("Error in monitor control endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in monitor control endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

@@ -202,7 +202,7 @@ export async function POST(req: Request) {
     }
   } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -257,7 +257,7 @@ export async function GET() {
     }
   } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }

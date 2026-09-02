@@ -88,8 +88,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -269,8 +269,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -452,8 +452,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -633,8 +633,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -814,8 +814,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -995,8 +995,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -1176,8 +1176,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -1357,8 +1357,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -1538,8 +1538,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -1719,8 +1719,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -1900,8 +1900,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -2081,8 +2081,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -2262,8 +2262,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -2443,8 +2443,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -2624,8 +2624,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -2805,8 +2805,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -2986,8 +2986,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -3167,8 +3167,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -3348,8 +3348,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -3529,8 +3529,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -3710,8 +3710,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -3891,8 +3891,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -4072,8 +4072,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -4253,8 +4253,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -4434,8 +4434,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -4615,8 +4615,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -4796,8 +4796,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -4977,8 +4977,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -5158,8 +5158,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -5339,8 +5339,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -5520,8 +5520,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -5701,8 +5701,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -5882,8 +5882,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -6063,8 +6063,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -6244,8 +6244,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };
@@ -6425,8 +6425,8 @@ export const QMoiSettingsPanel: React.FC = () => {
             JSON.stringify(importedData["qavatar"]),
           );
         alert("Settings imported!");
-      } catch (_err: unknown) {
-        console.warn("importSettings failed", String(_err));
+      } catch (err: unknown) {
+        console.warn("importSettings failed", String(err));
         alert("Invalid settings file.");
       }
     };

@@ -58,7 +58,7 @@ export async function POST() {
       killedProcesses,
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error stopping auto-fix process:",
       error,
     );

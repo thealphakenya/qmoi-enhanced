@@ -34,7 +34,7 @@ export default async function handler(
   if (!auth.ok) {
     return _res
       .status(auth.response?.status || 401)
-      .json(auth.response?.body || { _error: "Unauthorized" });
+      .json(auth.response?.body || { error: "Unauthorized" });
   }
   const { method, body } = _req;
   switch (method) {
@@ -45,7 +45,7 @@ export default async function handler(
           const { text, sourceLanguage, targetLanguage } = body;
           if (!text || !targetLanguage) {
             return _res.status(400).json({
-              _error: "Missing required fields: text, targetLanguage",
+              error: "Missing required fields: text, targetLanguage",
               _code: "VALIDATION_001",
             });
           }
@@ -63,7 +63,7 @@ export default async function handler(
           const { audioUrl, language } = body;
           if (!audioUrl) {
             return _res.status(400).json({
-              _error: "Missing required field: audioUrl",
+              error: "Missing required field: audioUrl",
               _code: "VALIDATION_002",
             });
           }
@@ -81,7 +81,7 @@ export default async function handler(
           const { text, language, voice } = body;
           if (!text) {
             return _res.status(400).json({
-              _error: "Missing required field: text",
+              error: "Missing required field: text",
               _code: "VALIDATION_003",
             });
           }
@@ -99,7 +99,7 @@ export default async function handler(
           const { text } = body;
           if (!text) {
             return _res.status(400).json({
-              _error: "Missing required field: text",
+              error: "Missing required field: text",
               _code: "VALIDATION_004",
             });
           }
@@ -116,7 +116,7 @@ export default async function handler(
           const { language, level } = body;
           if (!language || !level) {
             return _res.status(400).json({
-              _error: "Missing required fields: language, level",
+              error: "Missing required fields: language, level",
               _code: "VALIDATION_005",
             });
           }
@@ -135,7 +135,7 @@ export default async function handler(
           const { language, level } = body;
           if (!language || !level) {
             return _res.status(400).json({
-              _error: "Missing required fields: language, level",
+              error: "Missing required fields: language, level",
               _code: "VALIDATION_006",
             });
           }
@@ -154,7 +154,7 @@ export default async function handler(
           const { audioUrl, targetText, language } = body;
           if (!audioUrl || !targetText) {
             return _res.status(400).json({
-              _error: "Missing required fields: audioUrl, targetText",
+              error: "Missing required fields: audioUrl, targetText",
               _code: "VALIDATION_007",
             });
           }
@@ -170,14 +170,14 @@ export default async function handler(
         }
         default:
           return _res.status(400).json({
-            _error: "Unknown action",
+            error: "Unknown action",
             _code: "ACTION_001",
           });
       }
     }
     default:
       return _res.status(405).json({
-        _error: "Method not allowed",
+        error: "Method not allowed",
         _code: "METHOD_001",
       });
   }

@@ -24,7 +24,7 @@ export function registerDefaults() {
     registry.registerAdapter("stripe", new (StripeAdapter as any)());
     registry.registerAdapter("paypal", new (PayPalAdapter as any)());
     console.log("[registerDefaults] adapters registered (dry-run)");
-  } catch (_e) {
+  } catch (e) {
     console.warn("[registerDefaults] registration partially failed", _e);
   }
 }

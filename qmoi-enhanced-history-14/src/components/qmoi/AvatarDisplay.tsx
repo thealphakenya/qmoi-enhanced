@@ -105,6 +105,7 @@ export function AvatarDisplay({
   };
 
   const renderDefaultAvatar = () => {
+    if (!avatar) return null;
     const expressionEmoji = {
       happy: "😊",
       neutral: "🤖",
@@ -126,6 +127,7 @@ export function AvatarDisplay({
   };
 
   const renderThreeJSAvatar = () => {
+    if (!avatar) return null;
     // Three.js rendered avatar (animal, etc.)
     const animalEmoji = {
       lion: "🦁",
@@ -152,6 +154,7 @@ export function AvatarDisplay({
   };
 
   const renderEVA3DAvatar = () => {
+    if (!avatar) return null;
     // EVA3D SadTalker avatar (human faces)
     return (
       <div
@@ -183,6 +186,7 @@ export function AvatarDisplay({
   };
 
   const renderAdvancedAvatar = () => {
+    if (!avatar) return null;
     // Advanced AI avatars (NeRF, Gaussian Splatting, Luma, Pika)
     return (
       <div

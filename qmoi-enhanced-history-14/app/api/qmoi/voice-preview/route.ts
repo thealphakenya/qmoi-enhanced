@@ -8,7 +8,7 @@ export async function POST(_req: NextRequest) {
       message: "Voice preview endpoint",
       status: "operational",
     });
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
       {
         error: "Invalid request",

@@ -11,7 +11,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -25,7 +25,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -48,7 +48,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -108,7 +108,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -122,7 +122,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -145,7 +145,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -205,7 +205,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -219,7 +219,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -242,7 +242,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -302,7 +302,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -316,7 +316,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -339,7 +339,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -399,7 +399,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -413,7 +413,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -436,7 +436,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -496,7 +496,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -510,7 +510,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -533,7 +533,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -593,7 +593,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -607,7 +607,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -630,7 +630,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -690,7 +690,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -704,7 +704,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -727,7 +727,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -787,7 +787,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -801,7 +801,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -824,7 +824,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -884,7 +884,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -898,7 +898,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -921,7 +921,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -981,7 +981,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -995,7 +995,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1018,7 +1018,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1078,7 +1078,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1092,7 +1092,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1115,7 +1115,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1175,7 +1175,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1189,7 +1189,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1212,7 +1212,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1272,7 +1272,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1286,7 +1286,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1309,7 +1309,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1369,7 +1369,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1383,7 +1383,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1406,7 +1406,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1466,7 +1466,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1480,7 +1480,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1503,7 +1503,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1563,7 +1563,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1577,7 +1577,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1600,7 +1600,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1660,7 +1660,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1674,7 +1674,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1697,7 +1697,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1757,7 +1757,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1771,7 +1771,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1794,7 +1794,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1854,7 +1854,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1868,7 +1868,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1891,7 +1891,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -1951,7 +1951,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -1965,7 +1965,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -1988,7 +1988,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2048,7 +2048,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2062,7 +2062,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2085,7 +2085,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2145,7 +2145,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2159,7 +2159,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2182,7 +2182,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2242,7 +2242,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2256,7 +2256,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2279,7 +2279,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2339,7 +2339,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2353,7 +2353,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2376,7 +2376,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2436,7 +2436,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2450,7 +2450,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2473,7 +2473,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2533,7 +2533,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2547,7 +2547,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2570,7 +2570,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2630,7 +2630,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2644,7 +2644,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2667,7 +2667,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2727,7 +2727,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2741,7 +2741,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2764,7 +2764,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2824,7 +2824,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2838,7 +2838,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2861,7 +2861,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -2921,7 +2921,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -2935,7 +2935,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -2958,7 +2958,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -3018,7 +3018,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -3032,7 +3032,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -3055,7 +3055,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -3115,7 +3115,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -3129,7 +3129,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -3152,7 +3152,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -3212,7 +3212,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -3226,7 +3226,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -3249,7 +3249,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -3309,7 +3309,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -3323,7 +3323,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -3346,7 +3346,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
@@ -3406,7 +3406,7 @@ interface DownloadQCityProps {
 export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
   const { user, hasAccess } = useAuth();
   const [downloading, setDownloading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async () => {
     try {
@@ -3420,7 +3420,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       }
 
       // Get download URL
-      const _response = await fetch("/api/qcity/download-url");
+      const response = await fetch("/api/qcity/download-url");
       if (!response.ok) {
         throw new Error("Failed to get download URL");
       }
@@ -3443,7 +3443,7 @@ export const DownloadQCity: React.FC<DownloadQCityProps> = ({ className }) => {
       link.click();
       document.body.removeChild(link);
       window.URL.revokeObjectURL(downloadUrl);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {

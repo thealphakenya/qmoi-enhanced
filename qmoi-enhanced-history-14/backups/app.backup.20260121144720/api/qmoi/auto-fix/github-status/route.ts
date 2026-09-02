@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     const r = auth.response;
     if (!r)
       return NextResponse.json(
-        { _error: "Unknown auth error" },
+        { error: "Unknown auth error" },
         { status: 500 },
       );
     return NextResponse.json(r.body, { status: r.status });
@@ -89,15 +89,15 @@ export async function GET(_request: NextRequest) {
           }
         }
       }
-    } catch (_error) {
-      console.log("Error checking logs:", _error);
+    } catch (error) {
+      console.log("Error checking logs:", error);
     }
 
     return NextResponse.json(status);
-  } catch (_error) {
-    (console as any).error("Error getting GitHub status:", _error);
+  } catch (error) {
+    (console as any).error("Error getting GitHub status:", error);
     return NextResponse.json(
-      { _error: "Failed to get GitHub status" },
+      { error: "Failed to get GitHub status" },
       { status: 500 },
     );
   }

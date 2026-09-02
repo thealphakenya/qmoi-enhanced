@@ -39,7 +39,7 @@ function applySettings(s: UISettingsState) {
   try {
     root.setAttribute("data-qmoi-high-contrast", s.highContrast ? "1" : "0");
     root.setAttribute("data-qmoi-reduce-motion", s.reduceMotion ? "1" : "0");
-  } catch (_e) {
+  } catch (e) {
     void _e; /* ignore DOM attribute failures */
   }
 }
@@ -58,7 +58,7 @@ export const UISettings: React.FC = () => {
       } else {
         applySettings(DEFAULTS);
       }
-    } catch (_e) {
+    } catch (e) {
       void _e; /* fallback to defaults */
       applySettings(DEFAULTS);
     }
@@ -72,7 +72,7 @@ export const UISettings: React.FC = () => {
         applySettings(_next);
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
-        } catch (_e) {
+        } catch (e) {
           void _e;
         }
         return _next;
@@ -85,7 +85,7 @@ export const UISettings: React.FC = () => {
         applySettings(_next);
         try {
           localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
-        } catch (_e) {
+        } catch (e) {
           void _e;
         }
         return _next;
@@ -143,7 +143,7 @@ export const UISettings: React.FC = () => {
     applySettings(_next);
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(_next));
-    } catch (_e) {
+    } catch (e) {
       void _e; /* ignore storage errors */
     }
   };
@@ -153,7 +153,7 @@ export const UISettings: React.FC = () => {
     applySettings(DEFAULTS);
     try {
       localStorage.removeItem(STORAGE_KEY);
-    } catch (_e) {
+    } catch (e) {
       void _e;
     }
   };

@@ -77,7 +77,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -270,10 +270,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -283,7 +283,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -296,7 +296,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -322,7 +322,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -341,13 +341,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -442,7 +442,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -635,10 +635,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -648,7 +648,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -661,7 +661,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -687,7 +687,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -706,13 +706,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -809,7 +809,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -1002,10 +1002,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -1015,7 +1015,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -1028,7 +1028,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -1054,7 +1054,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -1073,13 +1073,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -1174,7 +1174,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -1367,10 +1367,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -1380,7 +1380,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -1393,7 +1393,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -1419,7 +1419,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -1438,13 +1438,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -1539,7 +1539,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -1732,10 +1732,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -1745,7 +1745,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -1758,7 +1758,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -1784,7 +1784,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -1803,13 +1803,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -1904,7 +1904,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -2097,10 +2097,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -2110,7 +2110,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -2123,7 +2123,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -2149,7 +2149,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -2168,13 +2168,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -2269,7 +2269,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -2462,10 +2462,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -2475,7 +2475,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -2488,7 +2488,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -2514,7 +2514,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -2533,13 +2533,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -2634,7 +2634,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -2827,10 +2827,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -2840,7 +2840,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -2853,7 +2853,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -2879,7 +2879,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -2898,13 +2898,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -2999,7 +2999,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -3192,10 +3192,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -3205,7 +3205,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -3218,7 +3218,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -3244,7 +3244,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -3263,13 +3263,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -3364,7 +3364,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -3557,10 +3557,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -3570,7 +3570,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -3583,7 +3583,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -3609,7 +3609,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -3628,13 +3628,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -3729,7 +3729,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -3922,10 +3922,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -3935,7 +3935,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -3948,7 +3948,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -3974,7 +3974,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -3993,13 +3993,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -4094,7 +4094,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -4287,10 +4287,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -4300,7 +4300,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -4313,7 +4313,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -4339,7 +4339,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -4358,13 +4358,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -4459,7 +4459,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -4652,10 +4652,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -4665,7 +4665,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -4678,7 +4678,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -4704,7 +4704,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -4723,13 +4723,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -4824,7 +4824,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -5017,10 +5017,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -5030,7 +5030,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -5043,7 +5043,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -5069,7 +5069,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -5088,13 +5088,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -5189,7 +5189,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -5382,10 +5382,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -5395,7 +5395,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -5408,7 +5408,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -5434,7 +5434,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -5453,13 +5453,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -5554,7 +5554,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -5747,10 +5747,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -5760,7 +5760,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -5773,7 +5773,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -5799,7 +5799,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -5818,13 +5818,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -5919,7 +5919,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -6112,10 +6112,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -6125,7 +6125,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -6138,7 +6138,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -6164,7 +6164,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -6183,13 +6183,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -6284,7 +6284,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -6477,10 +6477,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -6490,7 +6490,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -6503,7 +6503,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -6529,7 +6529,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -6548,13 +6548,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -6649,7 +6649,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -6842,10 +6842,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -6855,7 +6855,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -6868,7 +6868,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -6894,7 +6894,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -6913,13 +6913,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -7014,7 +7014,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -7207,10 +7207,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -7220,7 +7220,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -7233,7 +7233,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -7259,7 +7259,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -7278,13 +7278,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -7379,7 +7379,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -7572,10 +7572,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -7585,7 +7585,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -7598,7 +7598,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -7624,7 +7624,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -7643,13 +7643,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -7744,7 +7744,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -7937,10 +7937,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -7950,7 +7950,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -7963,7 +7963,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -7989,7 +7989,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -8008,13 +8008,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -8109,7 +8109,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -8302,10 +8302,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -8315,7 +8315,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -8328,7 +8328,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -8354,7 +8354,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -8373,13 +8373,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -8474,7 +8474,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -8667,10 +8667,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -8680,7 +8680,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -8693,7 +8693,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -8719,7 +8719,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -8738,13 +8738,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -8839,7 +8839,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -9032,10 +9032,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -9045,7 +9045,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -9058,7 +9058,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -9084,7 +9084,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -9103,13 +9103,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -9204,7 +9204,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -9397,10 +9397,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -9410,7 +9410,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -9423,7 +9423,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -9449,7 +9449,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -9468,13 +9468,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -9569,7 +9569,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -9762,10 +9762,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -9775,7 +9775,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -9788,7 +9788,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -9814,7 +9814,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -9833,13 +9833,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -9934,7 +9934,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -10127,10 +10127,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -10140,7 +10140,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -10153,7 +10153,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -10179,7 +10179,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -10198,13 +10198,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -10299,7 +10299,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -10492,10 +10492,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -10505,7 +10505,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -10518,7 +10518,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -10544,7 +10544,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -10563,13 +10563,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -10664,7 +10664,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -10857,10 +10857,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -10870,7 +10870,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -10883,7 +10883,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -10909,7 +10909,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -10928,13 +10928,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -11029,7 +11029,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -11222,10 +11222,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -11235,7 +11235,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -11248,7 +11248,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -11274,7 +11274,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -11293,13 +11293,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -11394,7 +11394,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -11587,10 +11587,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -11600,7 +11600,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -11613,7 +11613,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -11639,7 +11639,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -11658,13 +11658,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -11759,7 +11759,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -11952,10 +11952,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -11965,7 +11965,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -11978,7 +11978,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -12004,7 +12004,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -12023,13 +12023,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -12124,7 +12124,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -12317,10 +12317,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -12330,7 +12330,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -12343,7 +12343,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -12369,7 +12369,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -12388,13 +12388,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -12489,7 +12489,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -12682,10 +12682,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -12695,7 +12695,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -12708,7 +12708,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -12734,7 +12734,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -12753,13 +12753,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -12854,7 +12854,7 @@ export async function GET(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -13047,10 +13047,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(healthStatus);
-  } catch (_error) {
-    (console as any).error("Error in AI health endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -13060,7 +13060,7 @@ export async function POST(_request: NextRequest) {
   const auth = requireApiKey(_request.headers as any);
   if (!auth.ok) {
     return NextResponse.json(
-      auth.response?.body || { _error: "Unauthorized" },
+      auth.response?.body || { error: "Unauthorized" },
       {
         status: auth.response?.status || 401,
       }
@@ -13073,7 +13073,7 @@ export async function POST(_request: NextRequest) {
     if (action === "check-component") {
       if (!component) {
         return NextResponse.json(
-          { _error: "Component name is required" },
+          { error: "Component name is required" },
           { status: 400 }
         );
       }
@@ -13099,7 +13099,7 @@ export async function POST(_request: NextRequest) {
     if (action === "update-settings") {
       if (!settings) {
         return NextResponse.json(
-          { _error: "Settings are required" },
+          { error: "Settings are required" },
           { status: 400 }
         );
       }
@@ -13118,13 +13118,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 }
     );
-  } catch (_error) {
-    (console as any).error("Error in AI health action endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI health action endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }

@@ -18,7 +18,7 @@ function loadPlugins() {
         plugins.push(file);
         console.log(`[PLUGIN] Loaded: ${file}`);
       }
-    } catch (_e) {
+    } catch (e) {
       (console as any).error(`[PLUGIN] Failed to load ${file}:`, _e);
     }
   }

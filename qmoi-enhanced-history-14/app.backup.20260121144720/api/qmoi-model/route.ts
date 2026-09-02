@@ -96,13 +96,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -138,13 +138,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -258,13 +258,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -300,13 +300,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -422,13 +422,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -464,13 +464,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -584,13 +584,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -626,13 +626,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -746,13 +746,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -788,13 +788,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -908,13 +908,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -950,13 +950,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1070,13 +1070,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1112,13 +1112,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1232,13 +1232,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1274,13 +1274,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1394,13 +1394,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1436,13 +1436,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1556,13 +1556,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1598,13 +1598,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1718,13 +1718,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1760,13 +1760,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1880,13 +1880,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1922,13 +1922,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2042,13 +2042,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2084,13 +2084,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2204,13 +2204,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2246,13 +2246,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2366,13 +2366,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2408,13 +2408,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2528,13 +2528,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2570,13 +2570,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2690,13 +2690,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2732,13 +2732,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2852,13 +2852,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2894,13 +2894,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3014,13 +3014,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3056,13 +3056,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3176,13 +3176,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3218,13 +3218,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3338,13 +3338,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3380,13 +3380,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3500,13 +3500,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3542,13 +3542,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3662,13 +3662,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3704,13 +3704,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3824,13 +3824,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3866,13 +3866,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3986,13 +3986,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4028,13 +4028,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4148,13 +4148,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4190,13 +4190,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4310,13 +4310,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4352,13 +4352,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4472,13 +4472,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4514,13 +4514,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4634,13 +4634,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4676,13 +4676,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4796,13 +4796,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4838,13 +4838,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4958,13 +4958,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5000,13 +5000,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5120,13 +5120,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5162,13 +5162,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5282,13 +5282,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5324,13 +5324,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5444,13 +5444,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5486,13 +5486,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5606,13 +5606,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5648,13 +5648,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5768,13 +5768,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5810,13 +5810,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QMOI model enhancement endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QMOI model enhancement endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

@@ -31,7 +31,7 @@ export async function GET(request: NextRequest) {
     if (!userId) {
       return NextResponse.json(
         {
-          _error: "Unauthorized - missing user ID",
+          error: "Unauthorized - missing user ID",
           _code: "AUTH_001",
         },
         { status: 401 },
@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
     console.error("Earning enhanced API error:", error);
     return NextResponse.json(
       {
-        _error: "Internal server error",
+        error: "Internal server error",
         _code: "INTERNAL_500",
       },
       { status: 500 },

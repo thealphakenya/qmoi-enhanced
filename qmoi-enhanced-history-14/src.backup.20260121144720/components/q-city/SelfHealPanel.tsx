@@ -12,7 +12,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -70,13 +70,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -250,7 +250,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -308,13 +308,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -490,7 +490,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -548,13 +548,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -728,7 +728,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -786,13 +786,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -966,7 +966,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -1024,13 +1024,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -1204,7 +1204,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -1262,13 +1262,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -1442,7 +1442,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -1500,13 +1500,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -1680,7 +1680,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -1738,13 +1738,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -1918,7 +1918,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -1976,13 +1976,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -2156,7 +2156,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -2214,13 +2214,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -2394,7 +2394,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -2452,13 +2452,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -2632,7 +2632,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -2690,13 +2690,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -2870,7 +2870,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -2928,13 +2928,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -3108,7 +3108,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -3166,13 +3166,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -3346,7 +3346,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -3404,13 +3404,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -3584,7 +3584,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -3642,13 +3642,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -3822,7 +3822,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -3880,13 +3880,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -4060,7 +4060,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -4118,13 +4118,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -4298,7 +4298,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -4356,13 +4356,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -4536,7 +4536,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -4594,13 +4594,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -4774,7 +4774,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -4832,13 +4832,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -5012,7 +5012,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -5070,13 +5070,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -5250,7 +5250,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -5308,13 +5308,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -5488,7 +5488,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -5546,13 +5546,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -5726,7 +5726,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -5784,13 +5784,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -5964,7 +5964,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -6022,13 +6022,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -6202,7 +6202,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -6260,13 +6260,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -6440,7 +6440,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -6498,13 +6498,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -6678,7 +6678,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -6736,13 +6736,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -6916,7 +6916,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -6974,13 +6974,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -7154,7 +7154,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -7212,13 +7212,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -7392,7 +7392,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -7450,13 +7450,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -7630,7 +7630,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -7688,13 +7688,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -7868,7 +7868,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -7926,13 +7926,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -8106,7 +8106,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -8164,13 +8164,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)
@@ -8344,7 +8344,7 @@ const SelfHealPanel: React.FC = () => {
   const { user, loading } = useAuth();
   const [running, setRunning] = useState(false);
   const [log, setLog] = useState("");
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean | null>(null);
   const [_options, setOptions] = useState({
     forceClean: false,
@@ -8402,13 +8402,13 @@ const SelfHealPanel: React.FC = () => {
         }
       };
       es.onerror = (_e: Event) => {
-        console.warn("SelfHeal event stream error", String(_e));
+        console.warn("SelfHeal event stream error", String(e));
         setError("Stream error");
         setRunning(false);
         es.close();
       };
-    } catch (_err: unknown) {
-      console.warn("SelfHeal request failed", String(_err));
+    } catch (err: unknown) {
+      console.warn("SelfHeal request failed", String(err));
       const errMsg =
         typeof _err === "object" && _err && "message" in _err
           ? String((_err as { message?: unknown }).message)

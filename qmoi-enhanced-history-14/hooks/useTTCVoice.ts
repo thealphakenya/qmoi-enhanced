@@ -39,7 +39,7 @@ export function useTTCVoice() {
     utterance.onstart = () => setIsSpeaking(true);
     utterance.onend = () => setIsSpeaking(false);
     utterance.onerror = (event) => {
-      (globalThis.console as any)?.error?.("Speech synthesis error:", event);
+      globalThis.console.error("Speech synthesis error:", event);
       setIsSpeaking(false);
     };
 

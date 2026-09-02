@@ -19,8 +19,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -32,8 +32,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -43,8 +43,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -154,8 +154,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -167,8 +167,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -178,8 +178,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -291,8 +291,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -304,8 +304,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -315,8 +315,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -426,8 +426,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -439,8 +439,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -450,8 +450,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -561,8 +561,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -574,8 +574,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -585,8 +585,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -696,8 +696,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -709,8 +709,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -720,8 +720,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -831,8 +831,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -844,8 +844,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -855,8 +855,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -966,8 +966,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -979,8 +979,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -990,8 +990,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -1101,8 +1101,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -1114,8 +1114,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -1125,8 +1125,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -1236,8 +1236,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -1249,8 +1249,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -1260,8 +1260,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -1371,8 +1371,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -1384,8 +1384,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -1395,8 +1395,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -1506,8 +1506,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -1519,8 +1519,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -1530,8 +1530,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -1641,8 +1641,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -1654,8 +1654,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -1665,8 +1665,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -1776,8 +1776,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -1789,8 +1789,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -1800,8 +1800,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -1911,8 +1911,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -1924,8 +1924,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -1935,8 +1935,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -2046,8 +2046,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -2059,8 +2059,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -2070,8 +2070,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -2181,8 +2181,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -2194,8 +2194,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -2205,8 +2205,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -2316,8 +2316,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -2329,8 +2329,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -2340,8 +2340,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -2451,8 +2451,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -2464,8 +2464,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -2475,8 +2475,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -2586,8 +2586,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -2599,8 +2599,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -2610,8 +2610,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -2721,8 +2721,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -2734,8 +2734,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -2745,8 +2745,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -2856,8 +2856,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -2869,8 +2869,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -2880,8 +2880,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -2991,8 +2991,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -3004,8 +3004,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -3015,8 +3015,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -3126,8 +3126,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -3139,8 +3139,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -3150,8 +3150,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -3261,8 +3261,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -3274,8 +3274,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -3285,8 +3285,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -3396,8 +3396,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -3409,8 +3409,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -3420,8 +3420,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -3531,8 +3531,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -3544,8 +3544,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -3555,8 +3555,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -3666,8 +3666,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -3679,8 +3679,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -3690,8 +3690,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -3801,8 +3801,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -3814,8 +3814,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -3825,8 +3825,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -3936,8 +3936,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -3949,8 +3949,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -3960,8 +3960,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -4071,8 +4071,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -4084,8 +4084,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -4095,8 +4095,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -4206,8 +4206,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -4219,8 +4219,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -4230,8 +4230,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -4341,8 +4341,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -4354,8 +4354,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -4365,8 +4365,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -4476,8 +4476,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -4489,8 +4489,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -4500,8 +4500,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -4611,8 +4611,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -4624,8 +4624,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -4635,8 +4635,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }
@@ -4746,8 +4746,8 @@ export default function QMoiMemoryPanel({
     try {
       const mem = await fetchMemoryApi();
       setMemory(mem as Record<string, unknown> | null);
-    } catch (_e: unknown) {
-      console.warn("fetchMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("fetchMemory failed", String(e));
     }
   }
 
@@ -4759,8 +4759,8 @@ export default function QMoiMemoryPanel({
       });
       setMessage("Feedback submitted!");
       fetchMemory();
-    } catch (_e: unknown) {
-      console.warn("submitFeedback failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("submitFeedback failed", String(e));
       setMessage("Error submitting feedback.");
     }
   }
@@ -4770,8 +4770,8 @@ export default function QMoiMemoryPanel({
       // Trigger server backup via memory sync API (replace semantics as needed)
       await syncMemory({ backup: true });
       setMessage("Memory backup created!");
-    } catch (_e: unknown) {
-      console.warn("backupMemory failed", String(_e));
+    } catch (e: unknown) {
+      console.warn("backupMemory failed", String(e));
       setMessage("Backup failed.");
     }
   }

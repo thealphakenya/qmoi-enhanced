@@ -44,10 +44,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(status);
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
       {
-        _error:
+        error:
           error instanceof Error
             ? error.message
             : "Failed to get automation status",

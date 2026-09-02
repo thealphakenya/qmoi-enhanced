@@ -23,9 +23,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -38,7 +38,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -74,9 +74,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -109,9 +109,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -124,7 +124,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -160,9 +160,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -195,9 +195,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -210,7 +210,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -246,9 +246,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -281,9 +281,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -296,7 +296,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -332,9 +332,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -367,9 +367,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -382,7 +382,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -418,9 +418,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -453,9 +453,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -468,7 +468,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -504,9 +504,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -539,9 +539,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -554,7 +554,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -590,9 +590,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -625,9 +625,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -640,7 +640,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -676,9 +676,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -711,9 +711,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -726,7 +726,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -762,9 +762,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -797,9 +797,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -812,7 +812,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -848,9 +848,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -883,9 +883,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -898,7 +898,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -934,9 +934,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -969,9 +969,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -984,7 +984,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1020,9 +1020,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1055,9 +1055,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1070,7 +1070,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1106,9 +1106,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1141,9 +1141,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1156,7 +1156,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1192,9 +1192,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1227,9 +1227,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1242,7 +1242,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1278,9 +1278,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1313,9 +1313,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1328,7 +1328,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1364,9 +1364,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1399,9 +1399,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1414,7 +1414,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1450,9 +1450,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1485,9 +1485,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1500,7 +1500,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1536,9 +1536,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1571,9 +1571,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1586,7 +1586,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1622,9 +1622,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1657,9 +1657,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1672,7 +1672,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1708,9 +1708,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1743,9 +1743,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1758,7 +1758,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1794,9 +1794,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1829,9 +1829,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1844,7 +1844,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1880,9 +1880,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1915,9 +1915,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1930,7 +1930,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -1966,9 +1966,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2001,9 +2001,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2016,7 +2016,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2052,9 +2052,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2087,9 +2087,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2102,7 +2102,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2138,9 +2138,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2173,9 +2173,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2188,7 +2188,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2224,9 +2224,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2259,9 +2259,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2274,7 +2274,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2310,9 +2310,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2345,9 +2345,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2360,7 +2360,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2396,9 +2396,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2431,9 +2431,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2446,7 +2446,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2482,9 +2482,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2517,9 +2517,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2532,7 +2532,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2568,9 +2568,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2603,9 +2603,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2618,7 +2618,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2654,9 +2654,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2689,9 +2689,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2704,7 +2704,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2740,9 +2740,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2775,9 +2775,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2790,7 +2790,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2826,9 +2826,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2861,9 +2861,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2876,7 +2876,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2912,9 +2912,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2947,9 +2947,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2962,7 +2962,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -2998,9 +2998,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3033,9 +3033,9 @@ export async function GET() {
       fs.readFileSync(BIOMETRIC_TEMPLATES_FILE, "utf-8"),
     );
     return NextResponse.json({ templates, total: templates.length });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -3048,7 +3048,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, type, data, quality } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const templates = JSON.parse(
@@ -3084,9 +3084,9 @@ export async function POST(_request: NextRequest) {
       quality: template.quality,
       message: `${type} biometric template stored successfully`,
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }

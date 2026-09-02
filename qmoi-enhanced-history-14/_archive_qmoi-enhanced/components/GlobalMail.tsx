@@ -19,7 +19,7 @@ export const GlobalMail: React.FC = () => {
         setTimeout(() => setSent(false), 2000);
       }
     } catch (err) {
-      (globalThis.console as any)?.error?.("sendMail failed", err);
+      globalThis.console.error("sendMail failed", err);
     }
   };
 

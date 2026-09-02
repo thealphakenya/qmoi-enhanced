@@ -132,7 +132,7 @@ export const QmoiAccessibility: React.FC = () => {
       };
 
       recognition.current.onerror = (event: unknown) => {
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           "Speech recognition error:",
           event.error,
         );

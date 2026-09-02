@@ -22,7 +22,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
 }) => {
   const [pendingRequests, setPendingRequests] = useState<WalletRequest[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [walletRequested, setWalletRequested] = useState(false);
   const { getCurrentTime, currentTimezone } = useTimezone();
   const { toast } = useToast();
@@ -36,17 +36,17 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
   const fetchPendingRequests = async () => {
     try {
       setLoading(true);
-      const _res = await fetch("/api/wallet?pending_wallets=1", {
+      const response = await fetch("/api/wallet?pending_wallets=1", {
         headers: { "x-admin-token": localStorage.getItem("adminToken") || "" },
       });
       if (!_res.ok) throw new Error("Failed to fetch pending requests");
       const data = await _res.json();
       setPendingRequests(data as WalletRequest[]);
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       console.warn(msg);
       setError(msg || "Failed to load pending requests");
       toast({
@@ -70,7 +70,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
         throw new Error("Please complete your profile first");
       }
 
-      const _res = await fetch("/api/wallet", {
+      const response = await fetch("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,11 +94,11 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to _request wallet");
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       console.warn(msg);
       setError(msg);
       toast({
@@ -115,7 +115,7 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
     try {
       setLoading(true);
       setError(null);
-      const _res = await fetch("/api/wallet", {
+      const response = await fetch("/api/wallet", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -140,11 +140,11 @@ export const WalletManager: React.FC<WalletManagerProps> = ({
       } else {
         throw new Error(data.error || "Failed to approve wallet");
       }
-    } catch (_e: unknown) {
+    } catch (e: unknown) {
       const msg =
         _e && typeof _e === "object" && "message" in _e
           ? String((_e as { message?: unknown }).message)
-          : String(_e);
+          : String(e);
       console.warn(msg);
       setError(msg);
       toast({

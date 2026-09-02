@@ -126,10 +126,10 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
           ...prevState,
           ...(parsedState as unknown as Partial<QMOIState>),
         }));
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Error loading QMOI state:",
-          _error,
+          error,
         );
       }
     }
@@ -170,7 +170,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       }));
 
       // Call API to switch avatar
-      const _response = await fetch("/api/qmoi/avatars", {
+      const response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", avatarId }),
@@ -193,10 +193,10 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       if (compatibleVoice && compatibleVoice !== state.currentVoice) {
         await updateVoice(compatibleVoice);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Error updating avatar:",
-        _error,
+        error,
       );
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
@@ -211,7 +211,7 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
       }));
 
       // Call API to switch voice
-      const _response = await fetch("/api/qmoi/voice-profiles", {
+      const response = await fetch("/api/qmoi/voice-profiles", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", voiceId }),
@@ -227,12 +227,12 @@ export function QMOIStateProvider({ children }: QMOIStateProviderProps) {
         isProcessing: false,
         currentTask: null,
       }));
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const msg =
-        error && typeof _error === "object" && "message" in error
+        error && typeof error === "object" && "message" in error
           ? String((error as { message?: unknown }).message)
-          : String(_error);
-      (globalThis.console as unknown)?.error?.("Error updating voice:", msg);
+          : String(error);
+      globalThis.console.error("Error updating voice:", msg);
       setState((prev) => ({ ...prev, isProcessing: false, currentTask: null }));
     }
   };

@@ -19,7 +19,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -29,7 +29,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -40,7 +40,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -48,7 +48,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -163,7 +163,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -173,7 +173,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -184,7 +184,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -192,7 +192,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -309,7 +309,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -319,7 +319,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -330,7 +330,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -338,7 +338,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -453,7 +453,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -463,7 +463,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -474,7 +474,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -482,7 +482,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -597,7 +597,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -607,7 +607,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -618,7 +618,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -626,7 +626,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -741,7 +741,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -751,7 +751,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -762,7 +762,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -770,7 +770,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -885,7 +885,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -895,7 +895,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -906,7 +906,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -914,7 +914,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -1029,7 +1029,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -1039,7 +1039,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1050,7 +1050,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -1058,7 +1058,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -1173,7 +1173,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -1183,7 +1183,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1194,7 +1194,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -1202,7 +1202,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -1317,7 +1317,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -1327,7 +1327,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1338,7 +1338,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -1346,7 +1346,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -1461,7 +1461,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -1471,7 +1471,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1482,7 +1482,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -1490,7 +1490,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -1605,7 +1605,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -1615,7 +1615,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1626,7 +1626,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -1634,7 +1634,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -1749,7 +1749,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -1759,7 +1759,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1770,7 +1770,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -1778,7 +1778,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -1893,7 +1893,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -1903,7 +1903,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -1914,7 +1914,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -1922,7 +1922,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -2037,7 +2037,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -2047,7 +2047,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2058,7 +2058,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -2066,7 +2066,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -2181,7 +2181,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -2191,7 +2191,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2202,7 +2202,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -2210,7 +2210,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -2325,7 +2325,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -2335,7 +2335,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2346,7 +2346,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -2354,7 +2354,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -2469,7 +2469,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -2479,7 +2479,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2490,7 +2490,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -2498,7 +2498,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -2613,7 +2613,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -2623,7 +2623,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2634,7 +2634,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -2642,7 +2642,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -2757,7 +2757,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -2767,7 +2767,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2778,7 +2778,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -2786,7 +2786,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -2901,7 +2901,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -2911,7 +2911,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -2922,7 +2922,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -2930,7 +2930,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -3045,7 +3045,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -3055,7 +3055,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3066,7 +3066,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -3074,7 +3074,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -3189,7 +3189,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -3199,7 +3199,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3210,7 +3210,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -3218,7 +3218,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -3333,7 +3333,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -3343,7 +3343,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3354,7 +3354,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -3362,7 +3362,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -3477,7 +3477,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -3487,7 +3487,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3498,7 +3498,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -3506,7 +3506,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -3621,7 +3621,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -3631,7 +3631,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3642,7 +3642,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -3650,7 +3650,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -3765,7 +3765,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -3775,7 +3775,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3786,7 +3786,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -3794,7 +3794,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -3909,7 +3909,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -3919,7 +3919,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -3930,7 +3930,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -3938,7 +3938,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -4053,7 +4053,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -4063,7 +4063,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4074,7 +4074,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -4082,7 +4082,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -4197,7 +4197,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -4207,7 +4207,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4218,7 +4218,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -4226,7 +4226,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -4341,7 +4341,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -4351,7 +4351,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4362,7 +4362,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -4370,7 +4370,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -4485,7 +4485,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -4495,7 +4495,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4506,7 +4506,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -4514,7 +4514,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -4629,7 +4629,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -4639,7 +4639,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4650,7 +4650,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -4658,7 +4658,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -4773,7 +4773,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -4783,7 +4783,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4794,7 +4794,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -4802,7 +4802,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -4917,7 +4917,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -4927,7 +4927,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -4938,7 +4938,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -4946,7 +4946,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),
@@ -5061,7 +5061,7 @@ const DocumentManagerPanel: React.FC = () => {
   const [status, setStatus] = useState("");
 
   const fetchDocuments = async () => {
-    const _res = await fetch("/api/document-backup/list");
+    const response = await fetch("/api/document-backup/list");
     const data = await _res.json();
     setDocuments(data.documents || []);
   };
@@ -5071,7 +5071,7 @@ const DocumentManagerPanel: React.FC = () => {
   }, []);
 
   const upload = async () => {
-    const _res = await fetch("/api/document-backup/upload", {
+    const response = await fetch("/api/document-backup/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -5082,7 +5082,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const searchDocs = async () => {
-    const _res = await fetch(
+    const response = await fetch(
       `/api/document-backup/search?q=${encodeURIComponent(search)}`,
     );
     const data = await _res.json();
@@ -5090,7 +5090,7 @@ const DocumentManagerPanel: React.FC = () => {
   };
 
   const restore = async (id: number) => {
-    const _res = await fetch("/api/document-backup/restore", {
+    const response = await fetch("/api/document-backup/restore", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ id }),

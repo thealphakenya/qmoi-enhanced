@@ -259,7 +259,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(healthStatus);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error in AI health endpoint:", error);
+    globalThis.console.error("Error in AI health endpoint:", error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
@@ -324,7 +324,7 @@ export async function POST(request: NextRequest) {
       { status: 400 },
     );
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error in AI health action endpoint:",
       error,
     );

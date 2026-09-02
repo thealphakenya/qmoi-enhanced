@@ -96,7 +96,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
       // Update stats
       updateMemoryStats();
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to load memory data:",
         error,
       );
@@ -158,7 +158,7 @@ export const MemoryAwareness: React.FC<MemoryAwarenessProps> = ({
 
       onMemoryOptimized?.(memoryStats);
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Memory optimization failed:",
         error,
       );

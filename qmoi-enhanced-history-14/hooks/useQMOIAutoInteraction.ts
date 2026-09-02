@@ -88,7 +88,7 @@ export function useQMOIAutoInteraction() {
         },
       ]);
     } catch (error) {
-      (globalThis.console as any)?.error?.("QMOI Auto-interaction failed:", error);
+      globalThis.console.error("QMOI Auto-interaction failed:", error);
     }
   };
 

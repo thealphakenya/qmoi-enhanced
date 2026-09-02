@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     return new Response("success", { status: 200 });
   } catch (error) {
-    (globalThis.console as any)?.error?.("MPesa callback error:", error);
+    globalThis.console.error("MPesa callback error:", error);
 
     // Log the error but still return success to M-Pesa
     // (M-Pesa will retry on failure responses)

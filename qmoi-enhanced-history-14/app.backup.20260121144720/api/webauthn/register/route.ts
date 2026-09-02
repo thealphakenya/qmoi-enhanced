@@ -23,7 +23,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -50,9 +50,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -85,7 +85,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -112,9 +112,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -147,7 +147,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -174,9 +174,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -209,7 +209,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -236,9 +236,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -271,7 +271,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -298,9 +298,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -333,7 +333,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -360,9 +360,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -395,7 +395,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -422,9 +422,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -457,7 +457,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -484,9 +484,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -519,7 +519,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -546,9 +546,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -581,7 +581,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -608,9 +608,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -643,7 +643,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -670,9 +670,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -705,7 +705,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -732,9 +732,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -767,7 +767,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -794,9 +794,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -829,7 +829,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -856,9 +856,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -891,7 +891,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -918,9 +918,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -953,7 +953,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -980,9 +980,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1015,7 +1015,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1042,9 +1042,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1077,7 +1077,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1104,9 +1104,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1139,7 +1139,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1166,9 +1166,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1201,7 +1201,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1228,9 +1228,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1263,7 +1263,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1290,9 +1290,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1325,7 +1325,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1352,9 +1352,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1387,7 +1387,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1414,9 +1414,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1449,7 +1449,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1476,9 +1476,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1511,7 +1511,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1538,9 +1538,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1573,7 +1573,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1600,9 +1600,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1635,7 +1635,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1662,9 +1662,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1697,7 +1697,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1724,9 +1724,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1759,7 +1759,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1786,9 +1786,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1821,7 +1821,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1848,9 +1848,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1883,7 +1883,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1910,9 +1910,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -1945,7 +1945,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -1972,9 +1972,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2007,7 +2007,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -2034,9 +2034,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2069,7 +2069,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -2096,9 +2096,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2131,7 +2131,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -2158,9 +2158,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }
@@ -2193,7 +2193,7 @@ export async function POST(_request: NextRequest) {
     const { userId, username, credential } = body;
 
     if (!userId || !credential) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_FILE, "utf-8"));
@@ -2220,9 +2220,9 @@ export async function POST(_request: NextRequest) {
       credentialId: credentialRecord.credentialId,
       message: "WebAuthn credential registered successfully",
     });
-  } catch (_error) {
+  } catch (error) {
     return NextResponse.json(
-      { _error: (error as Error).message },
+      { error: (error as Error).message },
       { status: 500 },
     );
   }

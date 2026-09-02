@@ -19,7 +19,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -30,10 +30,10 @@ export async function GET(_request: NextRequest) {
     const revenueData = qmoiRevenueEngine.getTotalEarnings();
 
     return NextResponse.json(revenueData);
-  } catch (_error) {
-    (console as any).error("Revenue status _error:", _error);
+  } catch (error) {
+    (console as any).error("Revenue status error:", error);
     return NextResponse.json(
-      { _error: "Failed to get revenue status" },
+      { error: "Failed to get revenue status" },
       { status: 500 },
     );
   }

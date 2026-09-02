@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(result);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Reset daily earnings error:", error);
+    globalThis.console.error("Reset daily earnings error:", error);
     return NextResponse.json(
       { error: "Failed to reset daily earnings" },
       { status: 500 },

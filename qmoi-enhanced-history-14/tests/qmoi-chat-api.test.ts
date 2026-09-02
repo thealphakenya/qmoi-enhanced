@@ -9,7 +9,7 @@ describe("QMOI /api/qmoi/chat proxy", () => {
   maybeIt(
     "should proxy a greeting and return assistant content",
     async () => {
-      const _res = await fetch(`${BASE}/api/qmoi/chat`, {
+      const response = await fetch(`${BASE}/api/qmoi/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

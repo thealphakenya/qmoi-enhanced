@@ -324,10 +324,10 @@ Time: ${new Date().toLocaleString()}`;
       if (this.shouldForwardToMaster(message)) {
         await this.forwardToMaster(message);
       }
-    } catch (_error) {
-      globalThis.console.error("Error handling incoming message:", _error);
+    } catch (error) {
+      globalThis.console.error("Error handling incoming message:", error);
       const errorMessage =
-        _error instanceof Error ? _error.message : "Unknown error";
+        error instanceof Error ? error.message : "Unknown error";
       await this.sendErrorNotification("Message handling error", errorMessage);
     }
   }
@@ -688,8 +688,8 @@ Master Commands:
       console.log("🛑 Stopping WhatsApp service...");
       await this.client.destroy();
       this.isConnected = false;
-    } catch (_error) {
-      globalThis.console.error("Error stopping WhatsApp service:", _error);
+    } catch (error) {
+      globalThis.console.error("Error stopping WhatsApp service:", error);
     }
   }
 
@@ -706,10 +706,10 @@ Master Commands:
 
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
-    } catch (_error) {
-      globalThis.console.error("Error sending WhatsApp message:", _error);
+    } catch (error) {
+      globalThis.console.error("Error sending WhatsApp message:", error);
       // Keep behavior resilient: rethrow only for critical callers
-      throw _error;
+      throw error;
     }
   }
 
@@ -733,8 +733,8 @@ Master Commands:
       try {
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
-      } catch (_error) {
-        globalThis.console.error(`Error broadcasting to ${contact}:`, _error);
+      } catch (error) {
+        globalThis.console.error(`Error broadcasting to ${contact}:`, error);
       }
     }
   }

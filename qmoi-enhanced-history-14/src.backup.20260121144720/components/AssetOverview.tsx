@@ -31,7 +31,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -49,7 +49,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -260,7 +260,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -278,7 +278,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -489,7 +489,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -507,7 +507,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -718,7 +718,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -736,7 +736,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -947,7 +947,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -965,7 +965,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -1176,7 +1176,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -1194,7 +1194,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -1405,7 +1405,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -1423,7 +1423,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -1634,7 +1634,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -1652,7 +1652,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -1863,7 +1863,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -1881,7 +1881,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -2092,7 +2092,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -2110,7 +2110,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -2321,7 +2321,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -2339,7 +2339,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -2550,7 +2550,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -2568,7 +2568,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -2779,7 +2779,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -2797,7 +2797,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -3008,7 +3008,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -3026,7 +3026,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -3237,7 +3237,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -3255,7 +3255,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -3466,7 +3466,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -3484,7 +3484,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -3695,7 +3695,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -3713,7 +3713,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -3924,7 +3924,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -3942,7 +3942,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -4153,7 +4153,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -4171,7 +4171,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -4382,7 +4382,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -4400,7 +4400,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -4611,7 +4611,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -4629,7 +4629,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -4840,7 +4840,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -4858,7 +4858,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -5069,7 +5069,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -5087,7 +5087,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -5298,7 +5298,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -5316,7 +5316,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -5527,7 +5527,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -5545,7 +5545,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -5756,7 +5756,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -5774,7 +5774,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -5985,7 +5985,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -6003,7 +6003,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -6214,7 +6214,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -6232,7 +6232,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -6443,7 +6443,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -6461,7 +6461,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -6672,7 +6672,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -6690,7 +6690,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -6901,7 +6901,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -6919,7 +6919,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -7130,7 +7130,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -7148,7 +7148,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -7359,7 +7359,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -7377,7 +7377,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -7588,7 +7588,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -7606,7 +7606,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -7817,7 +7817,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -7835,7 +7835,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",
@@ -8046,7 +8046,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
     }>
   >([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [totalBalance, setTotalBalance] = useState(0);
 
   const fetchData = async () => {
@@ -8064,7 +8064,7 @@ export const AssetOverview: React.FC<AssetOverviewProps> = ({ className }) => {
       setAssets(assetsData);
       setOpportunities(opportunitiesData);
       setTotalBalance(total);
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error ? _err.message : "Failed to fetch asset data",

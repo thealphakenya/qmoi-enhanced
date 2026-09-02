@@ -92,7 +92,7 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
         try {
           await onRefreshDetection();
         } catch (error) {
-          (globalThis.console as any)?.error?.("Auto-detection failed:", error);
+          globalThis.console.error("Auto-detection failed:", error);
         } finally {
           setIsDetecting(false);
         }
@@ -180,7 +180,7 @@ const QMOIOwnDevice: React.FC<QMOIOwnDeviceProps> = ({
     try {
       await onRefreshDetection();
     } catch (error) {
-      (globalThis.console as any)?.error?.("Manual detection failed:", error);
+      globalThis.console.error("Manual detection failed:", error);
     } finally {
       setIsDetecting(false);
     }

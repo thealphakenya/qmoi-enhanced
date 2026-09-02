@@ -63,7 +63,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -77,7 +77,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -268,7 +268,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -282,7 +282,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -475,7 +475,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -489,7 +489,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -680,7 +680,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -694,7 +694,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -885,7 +885,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -899,7 +899,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -1090,7 +1090,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -1104,7 +1104,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -1295,7 +1295,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -1309,7 +1309,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -1500,7 +1500,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -1514,7 +1514,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -1705,7 +1705,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -1719,7 +1719,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -1910,7 +1910,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -1924,7 +1924,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -2115,7 +2115,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -2129,7 +2129,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -2320,7 +2320,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -2334,7 +2334,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -2525,7 +2525,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -2539,7 +2539,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -2730,7 +2730,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -2744,7 +2744,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -2935,7 +2935,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -2949,7 +2949,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -3140,7 +3140,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -3154,7 +3154,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -3345,7 +3345,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -3359,7 +3359,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -3550,7 +3550,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -3564,7 +3564,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -3755,7 +3755,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -3769,7 +3769,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -3960,7 +3960,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -3974,7 +3974,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -4165,7 +4165,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -4179,7 +4179,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -4370,7 +4370,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -4384,7 +4384,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -4575,7 +4575,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -4589,7 +4589,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -4780,7 +4780,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -4794,7 +4794,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -4985,7 +4985,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -4999,7 +4999,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -5190,7 +5190,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -5204,7 +5204,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -5395,7 +5395,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -5409,7 +5409,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -5600,7 +5600,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -5614,7 +5614,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -5805,7 +5805,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -5819,7 +5819,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -6010,7 +6010,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -6024,7 +6024,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -6215,7 +6215,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -6229,7 +6229,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -6420,7 +6420,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -6434,7 +6434,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -6625,7 +6625,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -6639,7 +6639,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -6830,7 +6830,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -6844,7 +6844,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -7035,7 +7035,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -7049,7 +7049,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });
@@ -7240,7 +7240,7 @@ export default function CommandPanel() {
         } else setOutput((o) => o + String(ev.data));
       };
       es.onerror = (_err: Event) => {
-        console.warn(String(_err));
+        console.warn(String(err));
         es.close();
         setLoading(false);
         setOutput((o) => o + "\n[Error]");
@@ -7254,7 +7254,7 @@ export default function CommandPanel() {
           setLoading(false);
         })
         .catch((_e: unknown) => {
-          console.warn(String(_e));
+          console.warn(String(e));
           setLoading(false);
           setOutput((o) => o + "\n[Error]");
         });

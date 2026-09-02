@@ -65,7 +65,7 @@ export function useDatasetManager() {
         const data = await res.json();
         setManager(data);
       } catch (error) {
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           "Failed to fetch datasets:",
           error,
         );
@@ -94,7 +94,7 @@ export function useDatasetManager() {
       }));
       return data;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to create dataset:", error);
+      globalThis.console.error("Failed to create dataset:", error);
       throw error;
     }
   };
@@ -116,7 +116,7 @@ export function useDatasetManager() {
       }));
       return data;
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to update dataset:", error);
+      globalThis.console.error("Failed to update dataset:", error);
       throw error;
     }
   };
@@ -132,7 +132,7 @@ export function useDatasetManager() {
         datasets: prev.datasets.filter((dataset) => dataset.id !== id),
       }));
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to delete dataset:", error);
+      globalThis.console.error("Failed to delete dataset:", error);
       throw error;
     }
   };
@@ -153,7 +153,7 @@ export function useDatasetManager() {
         settings: { ...prev.settings, ...data },
       }));
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to update settings:", error);
+      globalThis.console.error("Failed to update settings:", error);
       throw error;
     }
   };

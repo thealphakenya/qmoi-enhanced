@@ -7,7 +7,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -53,7 +53,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -99,7 +99,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -145,7 +145,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -191,7 +191,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -237,7 +237,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -283,7 +283,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -329,7 +329,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -375,7 +375,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -421,7 +421,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -467,7 +467,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -513,7 +513,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -559,7 +559,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -605,7 +605,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -651,7 +651,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -697,7 +697,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -743,7 +743,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -789,7 +789,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -835,7 +835,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -881,7 +881,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -927,7 +927,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -973,7 +973,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1019,7 +1019,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1065,7 +1065,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1111,7 +1111,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1157,7 +1157,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1203,7 +1203,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1249,7 +1249,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1295,7 +1295,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1341,7 +1341,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1387,7 +1387,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1433,7 +1433,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1479,7 +1479,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1525,7 +1525,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1571,7 +1571,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }
@@ -1617,7 +1617,7 @@ export async function getHandlers() {
   } catch (e) {
     try {
       msw = require("msw");
-    } catch (_e) {
+    } catch (e) {
       msw = null;
     }
   }

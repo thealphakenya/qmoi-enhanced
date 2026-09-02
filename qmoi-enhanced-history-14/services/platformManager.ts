@@ -42,8 +42,8 @@ export function listAccounts(): AccountRecord[] {
   try {
     const raw = fs.readFileSync(ACCOUNTS_FILE, "utf-8");
     return JSON.parse(raw) as AccountRecord[];
-  } catch (_err) {
-    (globalThis.console as any)?.error?.("Failed to read accounts file:", _err);
+  } catch (err) {
+    globalThis.console.error("Failed to read accounts file:", _err);
     return [];
   }
 }

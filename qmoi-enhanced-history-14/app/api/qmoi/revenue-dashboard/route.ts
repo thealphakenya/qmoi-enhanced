@@ -29,7 +29,7 @@ export async function GET(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     if (!apiAuth.ok && !authenticateMaster(_request)) {
       return NextResponse.json(
-        { _error: "Master access required" },
+        { error: "Master access required" },
         { status: 401 },
       );
     }
@@ -47,7 +47,7 @@ export async function GET(_request: NextRequest) {
       const dashboardData = JSON.parse(dashboardContent);
 
       return NextResponse.json(dashboardData);
-    } catch (_e) {
+    } catch (e) {
       // Error reading dashboard data, return default
       return NextResponse.json({
         status: "unknown",
@@ -57,10 +57,10 @@ export async function GET(_request: NextRequest) {
         revenue_month: 0,
       });
     }
-  } catch (_error) {
-    (console as any).error("Error fetching dashboard data:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching dashboard data:", error);
     return NextResponse.json(
-      { _error: "Failed to fetch dashboard data" },
+      { error: "Failed to fetch dashboard data" },
       { status: 500 },
     );
   }
@@ -73,7 +73,7 @@ export async function POST(_request: NextRequest) {
     const apiAuth = requireApiKey(_request.headers);
     if (!apiAuth.ok && !authenticateMaster(_request)) {
       return NextResponse.json(
-        { _error: "Master access required" },
+        { error: "Master access required" },
         { status: 401 },
       );
     }
@@ -229,11 +229,11 @@ export async function POST(_request: NextRequest) {
       return response;
     }
 
-    return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
-  } catch (_error) {
-    (console as any).error("Error exporting dashboard data:", _error);
+    return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+  } catch (error) {
+    (console as any).error("Error exporting dashboard data:", error);
     return NextResponse.json(
-      { _error: "Failed to export dashboard data" },
+      { error: "Failed to export dashboard data" },
       { status: 500 },
     );
   }

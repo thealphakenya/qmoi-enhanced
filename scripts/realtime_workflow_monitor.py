@@ -152,6 +152,48 @@ class WorkflowMonitor:
         if not isinstance(data, dict):
             return {}
         return data
+
+    def get_repository_run_overview(self, limit: int = 20) -> Dict[str, Any]:
+        """Return the repository-wide status snapshot across active and recent GitHub runs."""
+        cmd = (
+            f"run list --repo {self.repo} --limit {limit} --json "
+            "databaseId,displayTitle,status,conclusion,headBranch,createdAt,updatedAt,"
+            "startedAt,url,workflowName,event,name,number"
+        )
+        data = self._run_gh_command(cmd)
+        if not isinstance(data, list):
+            return {"runs": [], "active_runs": [], "summary": {"total": 0, "active": 0, "success": 0, "failure": 0}}
+
+        active = [run for run in data if str(run.get("status", "")).lower() in {"queued", "in_progress", "requested", "waiting", "pending"}]
+        summary = {
+            "total": len(data),
+            "active": len(active),
+            "success": sum(1 for run in data if str(run.get("conclusion", "")).lower() == "success"),
+            "failure": sum(1 for run in data if str(run.get("conclusion", "")).lower() == "failure"),
+            "queued": sum(1 for run in data if str(run.get("status", "")).lower() == "queued"),
+            "in_progress": sum(1 for run in data if str(run.get("status", "")).lower() == "in_progress"),
+        }
+        return {"runs": data, "active_runs": active, "summary": summary}
+
+    def monitor_repository_once(self, limit: int = 20) -> Dict[str, Any]:
+        """Capture a repository-wide GitHub health summary and persist it to the tracker state."""
+        overview = self.get_repository_run_overview(limit=limit)
+        summary = overview.get("summary", {})
+        self._write_tracker_snapshot(
+            "repository_monitor_snapshot",
+            "Repository-wide GitHub run monitoring snapshot captured.",
+            "monitoring",
+            "github_repo",
+            {
+                "runs_total": summary.get("total", 0),
+                "active_runs": summary.get("active", 0),
+                "success_runs": summary.get("success", 0),
+                "failure_runs": summary.get("failure", 0),
+                "queued_runs": summary.get("queued", 0),
+                "in_progress_runs": summary.get("in_progress", 0),
+            },
+        )
+        return overview
     
     def get_job_logs(self, job_id: str) -> str:
         """Fetch logs for a specific job"""
@@ -699,8 +741,20 @@ Examples:
     parser.add_argument('--duration', type=int, default=3600,
                         help='Maximum monitoring duration in seconds (default: 3600)')
     parser.add_argument('--token', help='GitHub token (auto-resolved if not provided)')
+    parser.add_argument('--all', action='store_true',
+                        help='Monitor the repository-wide GitHub activity instead of a single run')
     
     args = parser.parse_args()
+
+    if args.all:
+        monitor = WorkflowMonitor(
+            run_id="repo-wide-monitor",
+            repo=args.repo,
+            token=args.token,
+            update_interval=args.interval,
+        )
+        print(json.dumps(monitor.monitor_repository_once(limit=20), indent=2))
+        raise SystemExit(0)
     
     monitor = WorkflowMonitor(
         run_id=args.run_id,

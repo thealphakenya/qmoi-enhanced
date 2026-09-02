@@ -50,7 +50,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       } else {
         throw new Error(`HTTP ${response.status}`);
       }
-    } catch (_error) {
+    } catch (error) {
       // Fallback to mock data if API not available
       const mockErrors: ErrorItem[] = [
         {
@@ -79,9 +79,9 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         },
       ];
       setErrors(mockErrors);
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         "Failed to fetch error log:",
-        _error,
+        error,
       );
     }
   };
@@ -95,7 +95,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       } else {
         throw new Error(`HTTP ${response.status}`);
       }
-    } catch (_error) {
+    } catch (error) {
       // Fallback to mock data
       const mockFixes: FixItem[] = [
         {
@@ -124,9 +124,9 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         },
       ];
       setFixes(mockFixes);
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         "Failed to fetch fix history:",
-        _error,
+        error,
       );
     }
   };
@@ -140,7 +140,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       } else {
         throw new Error(`HTTP ${response.status}`);
       }
-    } catch (_error) {
+    } catch (error) {
       // Fallback to mock data
       const mockStatus: GitHubActionStatus = {
         preCheck: "success",
@@ -151,9 +151,9 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         lastRun: new Date().toISOString(),
       };
       setGitHubStatus(mockStatus);
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         "Failed to fetch GitHub status:",
-        _error,
+        error,
       );
     }
   };
@@ -190,8 +190,8 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       } else {
         throw new Error(`HTTP ${response.status}`);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.("Auto-fix failed:", _error);
+    } catch (error) {
+      globalThis.console.error("Auto-fix failed:", error);
       // Fallback to old behavior
       setTimeout(() => {
         fetchErrorLog();
@@ -311,7 +311,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
         <div className="mb-6">
           <h4 className="font-semibold mb-2">All Errors</h4>
           <div className="space-y-2 max-h-40 overflow-y-auto">
-            {errors.map((_error) => (
+            {errors.map((error) => (
               <div
                 key={error.id}
                 className="flex items-center justify-between p-2 bg-gray-50 rounded"

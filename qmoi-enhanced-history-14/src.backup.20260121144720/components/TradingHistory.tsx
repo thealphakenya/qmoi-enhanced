@@ -45,7 +45,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -83,7 +83,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -327,7 +327,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -365,7 +365,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -609,7 +609,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -647,7 +647,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -891,7 +891,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -929,7 +929,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -1173,7 +1173,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -1211,7 +1211,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -1455,7 +1455,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -1493,7 +1493,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -1737,7 +1737,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -1775,7 +1775,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -2019,7 +2019,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -2057,7 +2057,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -2301,7 +2301,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -2339,7 +2339,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -2583,7 +2583,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -2621,7 +2621,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -2865,7 +2865,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -2903,7 +2903,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -3147,7 +3147,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -3185,7 +3185,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -3429,7 +3429,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -3467,7 +3467,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -3711,7 +3711,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -3749,7 +3749,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -3993,7 +3993,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -4031,7 +4031,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -4275,7 +4275,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -4313,7 +4313,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -4557,7 +4557,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -4595,7 +4595,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -4839,7 +4839,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -4877,7 +4877,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -5121,7 +5121,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -5159,7 +5159,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -5403,7 +5403,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -5441,7 +5441,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -5685,7 +5685,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -5723,7 +5723,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -5967,7 +5967,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -6005,7 +6005,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -6249,7 +6249,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -6287,7 +6287,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -6531,7 +6531,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -6569,7 +6569,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -6813,7 +6813,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -6851,7 +6851,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -7095,7 +7095,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -7133,7 +7133,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -7377,7 +7377,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -7415,7 +7415,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -7659,7 +7659,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -7697,7 +7697,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -7941,7 +7941,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -7979,7 +7979,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -8223,7 +8223,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -8261,7 +8261,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -8505,7 +8505,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -8543,7 +8543,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -8787,7 +8787,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -8825,7 +8825,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -9069,7 +9069,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -9107,7 +9107,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -9351,7 +9351,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -9389,7 +9389,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -9633,7 +9633,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -9671,7 +9671,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error
@@ -9915,7 +9915,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
   const { user } = useAuth();
   const [trades, setTrades] = useState<Trade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [_error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     totalTrades: 0,
     successfulTrades: 0,
@@ -9953,7 +9953,7 @@ export const TradingHistory: React.FC<TradingHistoryProps> = ({
         totalProfit,
         winRate,
       });
-    } catch (_err) {
+    } catch (err) {
       void _err;
       setError(
         _err instanceof Error

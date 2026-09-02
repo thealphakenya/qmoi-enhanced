@@ -27,7 +27,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -47,7 +47,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -69,12 +69,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -110,7 +110,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -130,7 +130,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -152,12 +152,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -193,7 +193,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -213,7 +213,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -235,12 +235,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -276,7 +276,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -296,7 +296,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -318,12 +318,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -359,7 +359,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -379,7 +379,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -401,12 +401,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -442,7 +442,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -462,7 +462,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -484,12 +484,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -525,7 +525,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -545,7 +545,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -567,12 +567,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -608,7 +608,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -628,7 +628,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -650,12 +650,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -691,7 +691,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -711,7 +711,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -733,12 +733,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -774,7 +774,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -794,7 +794,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -816,12 +816,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -857,7 +857,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -877,7 +877,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -899,12 +899,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -940,7 +940,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -960,7 +960,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -982,12 +982,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1023,7 +1023,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1043,7 +1043,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1065,12 +1065,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1106,7 +1106,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1126,7 +1126,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1148,12 +1148,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1189,7 +1189,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1209,7 +1209,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1231,12 +1231,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1272,7 +1272,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1292,7 +1292,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1314,12 +1314,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1355,7 +1355,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1375,7 +1375,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1397,12 +1397,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1438,7 +1438,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1458,7 +1458,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1480,12 +1480,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1521,7 +1521,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1541,7 +1541,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1563,12 +1563,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1604,7 +1604,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1624,7 +1624,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1646,12 +1646,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1687,7 +1687,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1707,7 +1707,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1729,12 +1729,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1770,7 +1770,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1790,7 +1790,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1812,12 +1812,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1853,7 +1853,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1873,7 +1873,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1895,12 +1895,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -1936,7 +1936,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -1956,7 +1956,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -1978,12 +1978,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2019,7 +2019,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2039,7 +2039,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2061,12 +2061,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2102,7 +2102,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2122,7 +2122,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2144,12 +2144,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2185,7 +2185,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2205,7 +2205,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2227,12 +2227,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2268,7 +2268,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2288,7 +2288,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2310,12 +2310,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2351,7 +2351,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2371,7 +2371,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2393,12 +2393,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2434,7 +2434,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2454,7 +2454,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2476,12 +2476,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2517,7 +2517,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2537,7 +2537,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2559,12 +2559,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2600,7 +2600,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2620,7 +2620,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2642,12 +2642,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2683,7 +2683,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2703,7 +2703,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2725,12 +2725,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2766,7 +2766,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2786,7 +2786,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2808,12 +2808,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2849,7 +2849,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2869,7 +2869,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2891,12 +2891,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;
@@ -2932,7 +2932,7 @@ const handler = requireRole(["admin", "master"])(async (
   if (method === "POST") {
     const { name, command, cron, deviceId, notify } = body;
     if (!name || !command || !cron)
-      return _res.status(400).json({ _error: "Missing fields" });
+      return _res.status(400).json({ error: "Missing fields" });
     const job = {
       id: `job_${Date.now()}`,
       name,
@@ -2952,7 +2952,7 @@ const handler = requireRole(["admin", "master"])(async (
     const idx = schedules.findIndex(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (idx === -1) return _res.status(404).json({ _error: "Not found" });
+    if (idx === -1) return _res.status(404).json({ error: "Not found" });
     schedules[idx] = {
       ...schedules[idx],
       ...update,
@@ -2974,12 +2974,12 @@ const handler = requireRole(["admin", "master"])(async (
     const job = schedules.find(
       (j) => String((j as Record<string, unknown>).id) === id,
     );
-    if (!job) return _res.status(404).json({ _error: "Not found" });
+    if (!job) return _res.status(404).json({ error: "Not found" });
     // For now, just log the command to be run
     console.log(`[SCHEDULED RUN]`, job);
     return _res.status(200).json({ success: true });
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 });
 
 export default handler;

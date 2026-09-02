@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(result);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Stop revenue engine error:", error);
+    globalThis.console.error("Stop revenue engine error:", error);
     return NextResponse.json(
       { error: "Failed to stop revenue engine" },
       { status: 500 },

@@ -69,7 +69,7 @@ export async function GET() {
 
     return NextResponse.json(datasets);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error in datasets endpoint:", error);
+    globalThis.console.error("Error in datasets endpoint:", error);
     return NextResponse.json(
       { error: "Failed to fetch datasets" },
       { status: 500 },
@@ -122,7 +122,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(dataset);
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Error in dataset creation endpoint:",
       error,
     );

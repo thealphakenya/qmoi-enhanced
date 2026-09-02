@@ -45,22 +45,15 @@ export class AIRequestRouter {
 
     // Sync context if provided
     if (_request.context) {
-      this.sessionManager.updateUserContext(user.id, _request.context);
+      const context = _request.context as Record<string, unknown>;
+      this.sessionManager.updateUserContext(user.id, context);
       this.contextEngine.saveUserContext({
         userId: user.id,
-        preferences:
-          ((_request.context as unknown)?.preferences as Record<
-            string,
-            unknown
-          >) || {},
-        personalityTraits:
-          ((_request.context as unknown)?.personalityTraits as string[]) || [],
+        preferences: (context.preferences as Record<string, unknown>) || {},
+        personalityTraits: (context.personalityTraits as string[]) || [],
         moodHistory:
-          ((_request.context as unknown)?.moodHistory as {
-            date: Date;
-            mood: string;
-          }[]) || [],
-        ...(_request.context ?? {}),
+          (context.moodHistory as { date: Date; mood: string }[]) || [],
+        ...context,
       });
     }
 

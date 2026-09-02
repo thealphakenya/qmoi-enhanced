@@ -57,7 +57,7 @@ export class QmoiMemory {
           }),
         }).catch(() => {});
       }
-    } catch (_e) {
+    } catch (e) {
       void _e;
     }
   }
@@ -106,7 +106,7 @@ export class QmoiMemory {
           })
           .catch(() => {});
       }
-    } catch (_e) {
+    } catch (e) {
       void _e;
     }
 

@@ -26,7 +26,7 @@ export default async function handler(
   const userId = _req.headers["x-user-id"];
   if (!userId) {
     return _res.status(401).json({
-      _error: "Unauthorized - missing user ID",
+      error: "Unauthorized - missing user ID",
       _code: "AUTH_001",
     });
   }
@@ -40,7 +40,7 @@ export default async function handler(
           const { query, type } = body;
           if (!query) {
             return _res.status(400).json({
-              _error: "Missing required field: query",
+              error: "Missing required field: query",
               _code: "VALIDATION_001",
             });
           }
@@ -60,7 +60,7 @@ export default async function handler(
           const { address, type } = body;
           if (!address || !type) {
             return _res.status(400).json({
-              _error: "Missing required fields: address, type",
+              error: "Missing required fields: address, type",
               _code: "VALIDATION_002",
             });
           }
@@ -90,14 +90,14 @@ export default async function handler(
         }
         default:
           return _res.status(400).json({
-            _error: "Unknown action",
+            error: "Unknown action",
             _code: "ACTION_001",
           });
       }
     }
     default:
       return _res.status(405).json({
-        _error: "Method not allowed",
+        error: "Method not allowed",
         _code: "METHOD_001",
       });
   }

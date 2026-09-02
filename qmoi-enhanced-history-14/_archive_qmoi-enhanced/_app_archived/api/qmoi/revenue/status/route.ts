@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(revenueData);
   } catch (error) {
-    (globalThis.console as any)?.error?.("Revenue status error:", error);
+    globalThis.console.error("Revenue status error:", error);
     return NextResponse.json(
       { error: "Failed to get revenue status" },
       { status: 500 },

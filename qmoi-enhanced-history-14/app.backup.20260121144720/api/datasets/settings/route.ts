@@ -19,14 +19,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -36,7 +36,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -56,10 +56,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -96,14 +96,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -113,7 +113,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -133,10 +133,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -175,14 +175,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -192,7 +192,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -212,10 +212,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -252,14 +252,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -269,7 +269,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -289,10 +289,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -329,14 +329,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -346,7 +346,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -366,10 +366,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -406,14 +406,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -423,7 +423,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -443,10 +443,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -483,14 +483,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -500,7 +500,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -520,10 +520,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -560,14 +560,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -577,7 +577,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -597,10 +597,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -637,14 +637,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -654,7 +654,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -674,10 +674,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -714,14 +714,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -731,7 +731,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -751,10 +751,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -791,14 +791,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -808,7 +808,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -828,10 +828,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -868,14 +868,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -885,7 +885,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -905,10 +905,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -945,14 +945,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -962,7 +962,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -982,10 +982,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1022,14 +1022,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1039,7 +1039,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1059,10 +1059,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1099,14 +1099,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1116,7 +1116,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1136,10 +1136,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1176,14 +1176,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1193,7 +1193,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1213,10 +1213,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1253,14 +1253,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1270,7 +1270,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1290,10 +1290,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1330,14 +1330,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1347,7 +1347,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1367,10 +1367,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1407,14 +1407,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1424,7 +1424,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1444,10 +1444,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1484,14 +1484,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1501,7 +1501,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1521,10 +1521,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1561,14 +1561,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1578,7 +1578,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1598,10 +1598,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1638,14 +1638,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1655,7 +1655,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1675,10 +1675,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1715,14 +1715,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1732,7 +1732,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1752,10 +1752,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1792,14 +1792,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1809,7 +1809,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1829,10 +1829,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1869,14 +1869,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1886,7 +1886,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1906,10 +1906,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -1946,14 +1946,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -1963,7 +1963,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -1983,10 +1983,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2023,14 +2023,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2040,7 +2040,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2060,10 +2060,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2100,14 +2100,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2117,7 +2117,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2137,10 +2137,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2177,14 +2177,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2194,7 +2194,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2214,10 +2214,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2254,14 +2254,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2271,7 +2271,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2291,10 +2291,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2331,14 +2331,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2348,7 +2348,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2368,10 +2368,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2408,14 +2408,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2425,7 +2425,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2445,10 +2445,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2485,14 +2485,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2502,7 +2502,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2522,10 +2522,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2562,14 +2562,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2579,7 +2579,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2599,10 +2599,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2639,14 +2639,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2656,7 +2656,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2676,10 +2676,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }
@@ -2716,14 +2716,14 @@ export async function POST(_request: Request) {
       (maxConcurrentProcessing < 1 || maxConcurrentProcessing > 10)
     ) {
       return NextResponse.json(
-        { _error: "maxConcurrentProcessing must be between 1 and 10" },
+        { error: "maxConcurrentProcessing must be between 1 and 10" },
         { status: 400 },
       );
     }
 
     if (defaultFormat && !["json", "csv", "parquet"].includes(defaultFormat)) {
       return NextResponse.json(
-        { _error: "defaultFormat must be one of: json, csv, parquet" },
+        { error: "defaultFormat must be one of: json, csv, parquet" },
         { status: 400 },
       );
     }
@@ -2733,7 +2733,7 @@ export async function POST(_request: Request) {
       !["local", "cloud", "hybrid"].includes(storageLocation)
     ) {
       return NextResponse.json(
-        { _error: "storageLocation must be one of: local, cloud, hybrid" },
+        { error: "storageLocation must be one of: local, cloud, hybrid" },
         { status: 400 },
       );
     }
@@ -2753,10 +2753,10 @@ export async function POST(_request: Request) {
     // 4. Return the updated settings
 
     return NextResponse.json(updatedSettings);
-  } catch (_error) {
-    (console as any).error("Error in dataset settings endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in dataset settings endpoint:", error);
     return NextResponse.json(
-      { _error: "Failed to update dataset settings" },
+      { error: "Failed to update dataset settings" },
       { status: 500 },
     );
   }

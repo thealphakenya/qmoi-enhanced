@@ -49,10 +49,10 @@ export async function GET(_request: NextRequest) {
     };
 
     return NextResponse.json(Result);
-  } catch (_error) {
-    (console as any).error("Error in AI scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -88,13 +88,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in AI self-heal endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in AI self-heal endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

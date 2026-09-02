@@ -29,9 +29,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -54,9 +54,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -95,9 +95,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -120,9 +120,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -161,9 +161,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -186,9 +186,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -227,9 +227,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -252,9 +252,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -293,9 +293,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -318,9 +318,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -359,9 +359,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -384,9 +384,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -425,9 +425,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -450,9 +450,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -491,9 +491,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -516,9 +516,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -557,9 +557,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -582,9 +582,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -623,9 +623,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -648,9 +648,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -689,9 +689,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -714,9 +714,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -755,9 +755,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -780,9 +780,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -821,9 +821,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -846,9 +846,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -887,9 +887,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -912,9 +912,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -953,9 +953,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -978,9 +978,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1019,9 +1019,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1044,9 +1044,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1085,9 +1085,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1110,9 +1110,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1151,9 +1151,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1176,9 +1176,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1217,9 +1217,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1242,9 +1242,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1283,9 +1283,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1308,9 +1308,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1349,9 +1349,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1374,9 +1374,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1415,9 +1415,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1440,9 +1440,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1481,9 +1481,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1506,9 +1506,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1547,9 +1547,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1572,9 +1572,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1613,9 +1613,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1638,9 +1638,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1679,9 +1679,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1704,9 +1704,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1745,9 +1745,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1770,9 +1770,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1811,9 +1811,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1836,9 +1836,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1877,9 +1877,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1902,9 +1902,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1943,9 +1943,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -1968,9 +1968,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2009,9 +2009,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2034,9 +2034,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2075,9 +2075,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2100,9 +2100,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2141,9 +2141,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2166,9 +2166,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2207,9 +2207,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2232,9 +2232,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2273,9 +2273,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2298,9 +2298,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2339,9 +2339,9 @@ export async function POST(_req: Request) {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_proxy_error", detail: String(_e) },
+      { error: "memory_proxy_error", detail: String(e) },
       { status: 500 },
     );
   }
@@ -2364,9 +2364,9 @@ export async function GET() {
       data = await resp.text();
     }
     return NextResponse.json(data);
-  } catch (_e) {
+  } catch (e) {
     return NextResponse.json(
-      { _error: "memory_fetch_error", detail: String(_e) },
+      { error: "memory_fetch_error", detail: String(e) },
       { status: 500 },
     );
   }

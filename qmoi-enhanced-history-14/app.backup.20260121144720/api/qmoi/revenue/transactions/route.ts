@@ -20,7 +20,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -36,10 +36,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -69,7 +69,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -85,10 +85,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -118,7 +118,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -134,10 +134,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -167,7 +167,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -183,10 +183,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -216,7 +216,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -232,10 +232,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -265,7 +265,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -281,10 +281,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -314,7 +314,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -330,10 +330,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -363,7 +363,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -379,10 +379,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -412,7 +412,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -428,10 +428,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -461,7 +461,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -477,10 +477,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -510,7 +510,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -526,10 +526,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -559,7 +559,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -575,10 +575,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -608,7 +608,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -624,10 +624,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -657,7 +657,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -673,10 +673,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -706,7 +706,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -722,10 +722,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -755,7 +755,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -771,10 +771,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -804,7 +804,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -820,10 +820,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -853,7 +853,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -869,10 +869,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -902,7 +902,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -918,10 +918,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -951,7 +951,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -967,10 +967,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1000,7 +1000,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1016,10 +1016,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1049,7 +1049,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1065,10 +1065,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1098,7 +1098,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1114,10 +1114,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1147,7 +1147,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1163,10 +1163,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1196,7 +1196,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1212,10 +1212,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1245,7 +1245,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1261,10 +1261,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1294,7 +1294,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1310,10 +1310,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1343,7 +1343,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1359,10 +1359,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1392,7 +1392,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1408,10 +1408,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1441,7 +1441,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1457,10 +1457,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1490,7 +1490,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1506,10 +1506,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1539,7 +1539,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1555,10 +1555,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1588,7 +1588,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1604,10 +1604,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1637,7 +1637,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1653,10 +1653,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1686,7 +1686,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1702,10 +1702,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }
@@ -1735,7 +1735,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1751,10 +1751,10 @@ export async function GET(_request: NextRequest) {
         : [];
 
     return NextResponse.json(transactions);
-  } catch (_error) {
-    (console as any).error("Get transactions _error:", _error);
+  } catch (error) {
+    (console as any).error("Get transactions error:", error);
     return NextResponse.json(
-      { _error: "Failed to get transactions" },
+      { error: "Failed to get transactions" },
       { status: 500 },
     );
   }

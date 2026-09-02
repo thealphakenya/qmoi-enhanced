@@ -75,7 +75,7 @@ export async function POST(_request: NextRequest) {
       const fresh = await userService.getByEmail(user.email);
       if (fresh && (fresh as any).createdAt)
         createdAt = (fresh as any).createdAt;
-    } catch (_e) {
+    } catch (e) {
       void _e; /* ignore */
     }
 
@@ -135,10 +135,10 @@ export async function POST(_request: NextRequest) {
           { status: 409 },
         );
       }
-    } catch (_e) {
+    } catch (e) {
       void _e; /* ignore */
     }
-    (globalThis.console as any)?.error?.("Registration error:", error);
+    globalThis.console.error("Registration error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 },

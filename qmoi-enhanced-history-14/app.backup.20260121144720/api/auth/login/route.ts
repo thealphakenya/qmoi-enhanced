@@ -19,21 +19,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -60,21 +60,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -101,21 +101,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -142,21 +142,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -183,21 +183,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -224,21 +224,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -265,21 +265,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -306,21 +306,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -347,21 +347,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -388,21 +388,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -429,21 +429,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -470,21 +470,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -511,21 +511,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -552,21 +552,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -593,21 +593,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -634,21 +634,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -675,21 +675,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -716,21 +716,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -757,21 +757,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -798,21 +798,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -839,21 +839,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -880,21 +880,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -921,21 +921,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -962,21 +962,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1003,21 +1003,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1044,21 +1044,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1085,21 +1085,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1126,21 +1126,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1167,21 +1167,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1208,21 +1208,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1249,21 +1249,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1290,21 +1290,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1331,21 +1331,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1372,21 +1372,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1413,21 +1413,21 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }
 
@@ -1454,20 +1454,20 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, password } = body;
     if (!username || !password) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     const users = loadUsers();
     const user = users.find((u: unknown) => u.username === username);
-    if (!user) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!user) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const valid = await bcrypt.compare(password, user.password);
-    if (!valid) return NextResponse.json({ _error: "Invalid credentials" }, { status: 401 });
+    if (!valid) return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
 
     const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: "8h" });
 
     return NextResponse.json({ token, user: { id: user.id, username: user.username, role: user.role } });
-  } catch (_error) {
-    return NextResponse.json({ _error: (error as Error).message || "Internal error" }, { status: 500 });
+  } catch (error) {
+    return NextResponse.json({ error: (error as Error).message || "Internal error" }, { status: 500 });
   }
 }

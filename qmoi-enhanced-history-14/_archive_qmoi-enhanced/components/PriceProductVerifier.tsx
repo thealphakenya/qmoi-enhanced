@@ -13,7 +13,7 @@ export const PriceProductVerifier: React.FC = () => {
       const res = await verifyProduct(query);
       setResult(res);
     } catch (err) {
-      (globalThis.console as any)?.error?.("verifyProduct failed", err);
+      globalThis.console.error("verifyProduct failed", err);
       setResult("Verification error");
     } finally {
       setLoading(false);

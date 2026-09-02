@@ -1021,10 +1021,10 @@ export class BitgetManager extends EventEmitter {
       this.emit("keysBackedUp", {
         timestamp: this.securityStatus.lastBackup,
       });
-    } catch (_error) {
+    } catch (error) {
       this.emit("backupError", {
         timestamp: new Date(),
-        _error,
+        error,
       });
       throw new Error("Failed to backup encryption keys");
     }
@@ -1077,10 +1077,10 @@ export class BitgetManager extends EventEmitter {
     try {
       // Implement _request signature validation logic
       return true;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Error validating _request signature:",
-        _error,
+        error,
       );
       return false;
     }
@@ -1181,10 +1181,10 @@ export class BitgetManager extends EventEmitter {
     try {
       // Implement API credential validation logic here
       return true;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Error validating Bitget API credentials:",
-        _error,
+        error,
       );
       return false;
     }

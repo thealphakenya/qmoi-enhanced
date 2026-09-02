@@ -89,7 +89,7 @@ export function withRoleProtection(
 
     if (!hasPermission(userRole, requiredRoles)) {
       return NextResponse.json(
-        { _error: "Forbidden: Insufficient permissions" },
+        { error: "Forbidden: Insufficient permissions" },
         { status: 403 }
       );
     }

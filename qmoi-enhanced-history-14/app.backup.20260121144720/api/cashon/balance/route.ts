@@ -29,7 +29,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -49,10 +49,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -66,7 +66,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -77,10 +77,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -121,7 +121,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -141,10 +141,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -158,7 +158,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -169,10 +169,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -213,7 +213,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -233,10 +233,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -250,7 +250,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -261,10 +261,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -305,7 +305,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -325,10 +325,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -342,7 +342,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -353,10 +353,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -397,7 +397,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -417,10 +417,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -434,7 +434,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -445,10 +445,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -489,7 +489,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -509,10 +509,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -526,7 +526,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -537,10 +537,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -581,7 +581,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -601,10 +601,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -618,7 +618,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -629,10 +629,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -673,7 +673,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -693,10 +693,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -710,7 +710,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -721,10 +721,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -765,7 +765,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -785,10 +785,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -802,7 +802,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -813,10 +813,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -857,7 +857,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -877,10 +877,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -894,7 +894,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -905,10 +905,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -949,7 +949,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -969,10 +969,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -986,7 +986,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -997,10 +997,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1041,7 +1041,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1061,10 +1061,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1078,7 +1078,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1089,10 +1089,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1133,7 +1133,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1153,10 +1153,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1170,7 +1170,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1181,10 +1181,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1225,7 +1225,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1245,10 +1245,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1262,7 +1262,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1273,10 +1273,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1317,7 +1317,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1337,10 +1337,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1354,7 +1354,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1365,10 +1365,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1409,7 +1409,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1429,10 +1429,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1446,7 +1446,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1457,10 +1457,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1501,7 +1501,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1521,10 +1521,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1538,7 +1538,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1549,10 +1549,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1593,7 +1593,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1613,10 +1613,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1630,7 +1630,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1641,10 +1641,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1685,7 +1685,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1705,10 +1705,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1722,7 +1722,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1733,10 +1733,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1777,7 +1777,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1797,10 +1797,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1814,7 +1814,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1825,10 +1825,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1869,7 +1869,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1889,10 +1889,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1906,7 +1906,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -1917,10 +1917,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -1961,7 +1961,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -1981,10 +1981,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1998,7 +1998,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2009,10 +2009,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2053,7 +2053,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2073,10 +2073,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2090,7 +2090,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2101,10 +2101,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2145,7 +2145,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2165,10 +2165,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2182,7 +2182,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2193,10 +2193,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2237,7 +2237,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2257,10 +2257,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2274,7 +2274,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2285,10 +2285,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2329,7 +2329,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2349,10 +2349,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2366,7 +2366,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2377,10 +2377,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2421,7 +2421,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2441,10 +2441,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2458,7 +2458,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2469,10 +2469,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2513,7 +2513,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2533,10 +2533,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2550,7 +2550,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2561,10 +2561,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2605,7 +2605,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2625,10 +2625,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2642,7 +2642,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2653,10 +2653,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2697,7 +2697,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2717,10 +2717,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2734,7 +2734,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2745,10 +2745,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2789,7 +2789,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2809,10 +2809,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2826,7 +2826,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2837,10 +2837,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2881,7 +2881,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2901,10 +2901,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2918,7 +2918,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -2929,10 +2929,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -2973,7 +2973,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -2993,10 +2993,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3010,7 +3010,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -3021,10 +3021,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -3065,7 +3065,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -3085,10 +3085,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3102,7 +3102,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -3113,10 +3113,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -3157,7 +3157,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -3177,10 +3177,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3194,7 +3194,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -3205,10 +3205,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }
@@ -3249,7 +3249,7 @@ export async function GET(_request: NextRequest) {
     if (!apiAuth.ok && !masterToken) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -3269,10 +3269,10 @@ export async function GET(_request: NextRequest) {
       return NextResponse.json({ logs });
     }
     return NextResponse.json(balance);
-  } catch (_error) {
-    (console as any).error("Balance API _error:", _error);
+  } catch (error) {
+    (console as any).error("Balance API error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3286,7 +3286,7 @@ export async function POST(_req: Request) {
     if (!mpesaNumber) {
       logEvent("mpesa_sync_failed", { reason: "Missing M-Pesa number" });
       return new Response(
-        JSON.stringify({ _error: "M-Pesa number not configured" }),
+        JSON.stringify({ error: "M-Pesa number not configured" }),
         { status: 500 },
       );
     }
@@ -3297,10 +3297,10 @@ export async function POST(_req: Request) {
       return new Response(JSON.stringify({ success: true, mpesaNumber }), {
         status: 200,
       });
-    } catch (_err) {
-      const errorMessage = _err instanceof Error ? _err.message : String(_err);
-      logEvent("mpesa_sync_failed", { _error: errorMessage });
-      return new Response(JSON.stringify({ _error: errorMessage }), {
+    } catch (err) {
+      const errorMessage = _err instanceof Error ? _err.message : String(err);
+      logEvent("mpesa_sync_failed", { error: errorMessage });
+      return new Response(JSON.stringify({ error: errorMessage }), {
         status: 500,
       });
     }

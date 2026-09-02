@@ -35,7 +35,7 @@ export function ProjectForm({ project, onSuccess }: ProjectFormProps) {
       }
       onSuccess?.();
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to save project:", error);
+      globalThis.console.error("Failed to save project:", error);
     }
   };
 

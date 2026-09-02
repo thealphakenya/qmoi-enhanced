@@ -19,7 +19,7 @@ export async function POST(_request: NextRequest) {
     if (!apiAuth.ok && masterKey !== process.env.QMOI_MASTER_API_KEY) {
       const _r = apiAuth.response;
       return NextResponse.json(
-        _r?.body ?? { _error: "Master access required" },
+        _r?.body ?? { error: "Master access required" },
         { status: _r?.status ?? 401 },
       );
     }
@@ -29,7 +29,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !amount) {
       return NextResponse.json(
-        { _error: "Type and amount are required" },
+        { error: "Type and amount are required" },
         { status: 400 },
       );
     }
@@ -50,10 +50,10 @@ export async function POST(_request: NextRequest) {
       : { success: false, message: "executeMasterCommand not implemented" };
 
     return NextResponse.json(result);
-  } catch (_error) {
-    (console as any).error("Manual transfer _error:", _error);
+  } catch (error) {
+    (console as any).error("Manual transfer error:", error);
     return NextResponse.json(
-      { _error: "Failed to process transfer" },
+      { error: "Failed to process transfer" },
       { status: 500 },
     );
   }

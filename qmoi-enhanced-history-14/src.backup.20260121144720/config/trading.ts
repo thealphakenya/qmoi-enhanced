@@ -147,10 +147,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -174,10 +174,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -194,10 +194,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -250,7 +250,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -268,10 +268,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -302,10 +302,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -354,7 +354,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -371,10 +371,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -439,14 +439,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -507,7 +507,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -529,13 +529,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -760,10 +760,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -787,10 +787,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -807,10 +807,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -863,7 +863,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -881,10 +881,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -915,10 +915,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -967,7 +967,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -984,10 +984,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -1052,14 +1052,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -1120,7 +1120,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -1142,13 +1142,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -1373,10 +1373,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -1400,10 +1400,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -1420,10 +1420,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -1476,7 +1476,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -1494,10 +1494,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -1528,10 +1528,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -1580,7 +1580,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -1597,10 +1597,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -1665,14 +1665,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -1733,7 +1733,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -1755,13 +1755,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -1986,10 +1986,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -2013,10 +2013,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -2033,10 +2033,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -2089,7 +2089,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -2107,10 +2107,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -2141,10 +2141,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -2193,7 +2193,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -2210,10 +2210,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -2278,14 +2278,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -2346,7 +2346,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -2368,13 +2368,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -2599,10 +2599,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -2626,10 +2626,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -2646,10 +2646,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -2702,7 +2702,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -2720,10 +2720,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -2754,10 +2754,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -2806,7 +2806,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -2823,10 +2823,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -2891,14 +2891,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -2959,7 +2959,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -2981,13 +2981,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -3212,10 +3212,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -3239,10 +3239,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -3259,10 +3259,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -3315,7 +3315,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -3333,10 +3333,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -3367,10 +3367,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -3419,7 +3419,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -3436,10 +3436,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -3504,14 +3504,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -3572,7 +3572,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -3594,13 +3594,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -3825,10 +3825,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -3852,10 +3852,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -3872,10 +3872,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -3928,7 +3928,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -3946,10 +3946,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -3980,10 +3980,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -4032,7 +4032,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -4049,10 +4049,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -4117,14 +4117,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -4185,7 +4185,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -4207,13 +4207,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -4438,10 +4438,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -4465,10 +4465,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -4485,10 +4485,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -4541,7 +4541,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -4559,10 +4559,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -4593,10 +4593,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -4645,7 +4645,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -4662,10 +4662,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -4730,14 +4730,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -4798,7 +4798,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -4820,13 +4820,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -5051,10 +5051,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -5078,10 +5078,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -5098,10 +5098,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -5154,7 +5154,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -5172,10 +5172,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -5206,10 +5206,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -5258,7 +5258,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -5275,10 +5275,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -5343,14 +5343,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -5411,7 +5411,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -5433,13 +5433,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -5664,10 +5664,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -5691,10 +5691,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -5711,10 +5711,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -5767,7 +5767,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -5785,10 +5785,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -5819,10 +5819,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -5871,7 +5871,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -5888,10 +5888,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -5956,14 +5956,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -6024,7 +6024,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -6046,13 +6046,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -6277,10 +6277,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -6304,10 +6304,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -6324,10 +6324,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -6380,7 +6380,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -6398,10 +6398,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -6432,10 +6432,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -6484,7 +6484,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -6501,10 +6501,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -6569,14 +6569,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -6637,7 +6637,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -6659,13 +6659,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -6890,10 +6890,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -6917,10 +6917,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -6937,10 +6937,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -6993,7 +6993,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -7011,10 +7011,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -7045,10 +7045,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -7097,7 +7097,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -7114,10 +7114,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -7182,14 +7182,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -7250,7 +7250,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -7272,13 +7272,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -7503,10 +7503,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -7530,10 +7530,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -7550,10 +7550,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -7606,7 +7606,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -7624,10 +7624,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -7658,10 +7658,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -7710,7 +7710,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -7727,10 +7727,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -7795,14 +7795,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -7863,7 +7863,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -7885,13 +7885,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -8116,10 +8116,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -8143,10 +8143,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -8163,10 +8163,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -8219,7 +8219,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -8237,10 +8237,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -8271,10 +8271,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -8323,7 +8323,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -8340,10 +8340,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -8408,14 +8408,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -8476,7 +8476,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -8498,13 +8498,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -8729,10 +8729,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -8756,10 +8756,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -8776,10 +8776,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -8832,7 +8832,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -8850,10 +8850,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -8884,10 +8884,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -8936,7 +8936,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -8953,10 +8953,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -9021,14 +9021,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -9089,7 +9089,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -9111,13 +9111,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -9342,10 +9342,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -9369,10 +9369,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -9389,10 +9389,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -9445,7 +9445,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -9463,10 +9463,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -9497,10 +9497,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -9549,7 +9549,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -9566,10 +9566,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -9634,14 +9634,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -9702,7 +9702,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -9724,13 +9724,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -9955,10 +9955,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -9982,10 +9982,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -10002,10 +10002,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -10058,7 +10058,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -10076,10 +10076,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -10110,10 +10110,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -10162,7 +10162,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -10179,10 +10179,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -10247,14 +10247,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -10315,7 +10315,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -10337,13 +10337,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -10568,10 +10568,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -10595,10 +10595,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -10615,10 +10615,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -10671,7 +10671,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -10689,10 +10689,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -10723,10 +10723,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -10775,7 +10775,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -10792,10 +10792,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -10860,14 +10860,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -10928,7 +10928,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -10950,13 +10950,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -11181,10 +11181,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -11208,10 +11208,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -11228,10 +11228,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -11284,7 +11284,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -11302,10 +11302,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -11336,10 +11336,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -11388,7 +11388,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -11405,10 +11405,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -11473,14 +11473,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -11541,7 +11541,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -11563,13 +11563,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -11794,10 +11794,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -11821,10 +11821,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -11841,10 +11841,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -11897,7 +11897,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -11915,10 +11915,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -11949,10 +11949,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -12001,7 +12001,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -12018,10 +12018,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -12086,14 +12086,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -12154,7 +12154,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -12176,13 +12176,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -12407,10 +12407,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -12434,10 +12434,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -12454,10 +12454,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -12510,7 +12510,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -12528,10 +12528,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -12562,10 +12562,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -12614,7 +12614,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -12631,10 +12631,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -12699,14 +12699,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -12767,7 +12767,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -12789,13 +12789,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -13020,10 +13020,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -13047,10 +13047,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -13067,10 +13067,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -13123,7 +13123,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -13141,10 +13141,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -13175,10 +13175,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -13227,7 +13227,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -13244,10 +13244,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -13312,14 +13312,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -13380,7 +13380,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -13402,13 +13402,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -13633,10 +13633,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -13660,10 +13660,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -13680,10 +13680,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -13736,7 +13736,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -13754,10 +13754,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -13788,10 +13788,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -13840,7 +13840,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -13857,10 +13857,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -13925,14 +13925,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -13993,7 +13993,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -14015,13 +14015,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -14246,10 +14246,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -14273,10 +14273,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -14293,10 +14293,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -14349,7 +14349,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -14367,10 +14367,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -14401,10 +14401,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -14453,7 +14453,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -14470,10 +14470,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -14538,14 +14538,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -14606,7 +14606,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -14628,13 +14628,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -14859,10 +14859,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -14886,10 +14886,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -14906,10 +14906,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -14962,7 +14962,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -14980,10 +14980,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -15014,10 +15014,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -15066,7 +15066,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -15083,10 +15083,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -15151,14 +15151,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -15219,7 +15219,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -15241,13 +15241,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -15472,10 +15472,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -15499,10 +15499,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -15519,10 +15519,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -15575,7 +15575,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -15593,10 +15593,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -15627,10 +15627,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -15679,7 +15679,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -15696,10 +15696,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -15764,14 +15764,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -15832,7 +15832,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -15854,13 +15854,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -16085,10 +16085,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -16112,10 +16112,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -16132,10 +16132,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -16188,7 +16188,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -16206,10 +16206,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -16240,10 +16240,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -16292,7 +16292,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -16309,10 +16309,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -16377,14 +16377,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -16445,7 +16445,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -16467,13 +16467,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -16698,10 +16698,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -16725,10 +16725,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -16745,10 +16745,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -16801,7 +16801,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -16819,10 +16819,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -16853,10 +16853,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -16905,7 +16905,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -16922,10 +16922,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -16990,14 +16990,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -17058,7 +17058,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -17080,13 +17080,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -17311,10 +17311,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -17338,10 +17338,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -17358,10 +17358,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -17414,7 +17414,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -17432,10 +17432,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -17466,10 +17466,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -17518,7 +17518,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -17535,10 +17535,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -17603,14 +17603,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -17671,7 +17671,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -17693,13 +17693,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -17924,10 +17924,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -17951,10 +17951,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -17971,10 +17971,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -18027,7 +18027,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -18045,10 +18045,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -18079,10 +18079,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -18131,7 +18131,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -18148,10 +18148,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -18216,14 +18216,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -18284,7 +18284,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -18306,13 +18306,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -18537,10 +18537,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -18564,10 +18564,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -18584,10 +18584,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -18640,7 +18640,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -18658,10 +18658,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -18692,10 +18692,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -18744,7 +18744,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -18761,10 +18761,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -18829,14 +18829,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -18897,7 +18897,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -18919,13 +18919,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -19150,10 +19150,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -19177,10 +19177,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -19197,10 +19197,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -19253,7 +19253,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -19271,10 +19271,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -19305,10 +19305,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -19357,7 +19357,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -19374,10 +19374,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -19442,14 +19442,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -19510,7 +19510,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -19532,13 +19532,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -19763,10 +19763,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -19790,10 +19790,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -19810,10 +19810,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -19866,7 +19866,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -19884,10 +19884,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -19918,10 +19918,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -19970,7 +19970,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -19987,10 +19987,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -20055,14 +20055,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -20123,7 +20123,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -20145,13 +20145,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -20376,10 +20376,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -20403,10 +20403,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -20423,10 +20423,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -20479,7 +20479,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -20497,10 +20497,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -20531,10 +20531,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -20583,7 +20583,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -20600,10 +20600,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -20668,14 +20668,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -20736,7 +20736,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -20758,13 +20758,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -20989,10 +20989,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -21016,10 +21016,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -21036,10 +21036,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -21092,7 +21092,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -21110,10 +21110,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -21144,10 +21144,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -21196,7 +21196,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -21213,10 +21213,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -21281,14 +21281,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -21349,7 +21349,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -21371,13 +21371,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }
@@ -21602,10 +21602,10 @@ export class TradingManager {
         this.config.bitget.connectionStatus.retryCount = 0;
         this.config.bitget.connectionStatus.lastError = undefined;
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Connection check failed:",
-        _error,
+        error,
       );
       this.config.bitget.connectionStatus.lastError =
         error instanceof Error ? error.message : "Unknown error";
@@ -21629,10 +21629,10 @@ export class TradingManager {
           console.log("Connection recovered successfully");
           return;
         }
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           "Recovery strategy failed:",
-          _error,
+          error,
         );
       }
     }
@@ -21649,10 +21649,10 @@ export class TradingManager {
       try {
         await this.connectToBitget();
         return;
-      } catch (_error) {
-        (globalThis.console as unknown)?.error?.(
+      } catch (error) {
+        globalThis.console.error(
           `Retry ${i + 1} failed:`,
-          _error,
+          error,
         );
       }
     }
@@ -21705,7 +21705,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -21723,10 +21723,10 @@ export class TradingManager {
         return true;
       }
       return false;
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to connect to Bitget:",
-        _error,
+        error,
       );
       return false;
     }
@@ -21757,10 +21757,10 @@ export class TradingManager {
           ip: this.config.bitget.bindIp,
         }),
       });
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update Bitget whitelist:",
-        _error,
+        error,
       );
     }
   }
@@ -21809,7 +21809,7 @@ export class TradingManager {
       const timestamp = Date.now();
       const signature = this.generateSignature(timestamp);
 
-      const _response = await fetch(
+      const response = await fetch(
         "https://api.bitget.com/api/v2/spot/account/assets",
         {
           method: "GET",
@@ -21826,10 +21826,10 @@ export class TradingManager {
         const data = await response.json();
         this.updateWalletBalances(data);
       }
-    } catch (_error) {
-      (globalThis.console as unknown)?.error?.(
+    } catch (error) {
+      globalThis.console.error(
         "Failed to update wallet balance:",
-        _error,
+        error,
       );
     }
   }
@@ -21894,14 +21894,14 @@ export class TradingManager {
     if (!sourceBalance) {
       return {
         isValid: false,
-        _error: "Source currency not found in wallet",
+        error: "Source currency not found in wallet",
       };
     }
 
     if (sourceBalance.balance < trade.amount) {
       return {
         isValid: false,
-        _error: "Insufficient balance for trade",
+        error: "Insufficient balance for trade",
         availableBalance: sourceBalance.balance,
         requiredBalance: trade.amount,
       };
@@ -21962,7 +21962,7 @@ export class TradingManager {
         return {
           trade: null,
           success: false,
-          _error: validation.error,
+          error: validation.error,
           timestamp: Date.now(),
         };
       }
@@ -21984,13 +21984,13 @@ export class TradingManager {
         success: true,
         timestamp: Date.now(),
       };
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error occurred";
       return {
         trade: null,
         success: false,
-        _error: errorMessage,
+        error: errorMessage,
         timestamp: Date.now(),
       };
     }

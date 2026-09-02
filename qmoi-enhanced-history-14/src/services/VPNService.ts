@@ -265,14 +265,14 @@ export class VPNService {
 
       logger.info(`VPN network ${config.name} created successfully`);
       return networkId;
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       this.isCreatingNetwork = false;
       this.eventEmitter.emit("networkCreationFailed", {
-        _error:
-          _error instanceof Error ? (_error as Error).message : "Unknown error",
+        error:
+          error instanceof Error ? (error as Error).message : "Unknown error",
       });
-      logger._error("Failed to create VPN network:", String(_error));
-      throw _error;
+      logger.error("Failed to create VPN network:", String(error));
+      throw error;
     }
   }
 
@@ -374,14 +374,14 @@ export class VPNService {
       this.startConnectionMonitoring(connectionId);
 
       logger.info(`Connected to VPN server: ${server.name}`);
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
       this.eventEmitter.emit("connectionFailed", {
         serverId,
-        _error: errorMessage,
+        error: errorMessage,
       });
-      logger._error(`Failed to connect to server ${serverId}:`, String(_error));
+      logger.error(`Failed to connect to server ${serverId}:`, String(error));
       throw error;
     }
   }
@@ -409,11 +409,11 @@ export class VPNService {
       this.currentConnection = null;
 
       logger.info("Disconnected from VPN");
-    } catch (_error: unknown) {
+    } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Unknown error";
-      this.eventEmitter.emit("disconnectionFailed", { _error: errorMessage });
-      logger._error("Failed to disconnect:", String(_error));
+      this.eventEmitter.emit("disconnectionFailed", { error: errorMessage });
+      logger.error("Failed to disconnect:", String(error));
       throw error;
     }
   }
@@ -596,7 +596,7 @@ export class VPNService {
   }
 
   public onNetworkCreationFailed(
-    callback: (data: { _error: string }) => void,
+    callback: (data: { error: string }) => void,
   ): void {
     this.eventEmitter.on("networkCreationFailed", callback);
   }
@@ -614,7 +614,7 @@ export class VPNService {
   }
 
   public onConnectionFailed(
-    callback: (data: { serverId: string; _error: string }) => void,
+    callback: (data: { serverId: string; error: string }) => void,
   ): void {
     this.eventEmitter.on("connectionFailed", callback);
   }

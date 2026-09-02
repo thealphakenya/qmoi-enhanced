@@ -44,7 +44,7 @@ export default async function handler(
       message: "Fix applied successfully",
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.("Error in AI fix endpoint:", error);
+    globalThis.console.error("Error in AI fix endpoint:", error);
     return res.status(500).json({
       success: false,
       error: error.message,

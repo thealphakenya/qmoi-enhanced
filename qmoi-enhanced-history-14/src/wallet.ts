@@ -176,7 +176,7 @@ export class CashonAdapter implements WalletAdapter {
         amount: 0,
         currency: "USD",
         status: "network_failed",
-        _error: String(err),
+        error: String(err),
       };
     }
   }
@@ -262,7 +262,7 @@ export class MegavaultAdapter implements WalletAdapter {
         amount: 0,
         currency: "USD",
         status: "network_failed",
-        _error: String(err),
+        error: String(err),
       };
     }
   }
@@ -304,9 +304,9 @@ export class WalletService {
           native: b,
           canonical,
         };
-      } catch (_err) {
+      } catch (err) {
         void _err;
-        out[name] = { _error: String(_err) };
+        out[name] = { error: String(err) };
       }
     }
     // persist snapshot
@@ -345,7 +345,7 @@ export class WalletService {
         JSON.stringify(dataObjSafe, null, 2),
         "utf8",
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
       fs.writeFileSync(
         this.stateFile,
@@ -378,7 +378,7 @@ export class WalletService {
         }
       }
       return null;
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return null;
     }

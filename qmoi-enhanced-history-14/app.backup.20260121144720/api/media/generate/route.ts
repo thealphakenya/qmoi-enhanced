@@ -140,14 +140,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -162,7 +162,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -178,7 +178,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -191,7 +191,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -224,13 +224,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -243,7 +243,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -272,13 +272,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -436,14 +436,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -458,7 +458,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -474,7 +474,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -487,7 +487,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -520,13 +520,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -539,7 +539,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -568,13 +568,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -734,14 +734,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -756,7 +756,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -772,7 +772,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -785,7 +785,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -818,13 +818,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -837,7 +837,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -866,13 +866,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -1030,14 +1030,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -1052,7 +1052,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -1068,7 +1068,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -1081,7 +1081,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -1114,13 +1114,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -1133,7 +1133,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -1162,13 +1162,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -1326,14 +1326,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -1348,7 +1348,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -1364,7 +1364,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -1377,7 +1377,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -1410,13 +1410,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -1429,7 +1429,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -1458,13 +1458,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -1622,14 +1622,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -1644,7 +1644,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -1660,7 +1660,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -1673,7 +1673,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -1706,13 +1706,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -1725,7 +1725,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -1754,13 +1754,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -1918,14 +1918,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -1940,7 +1940,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -1956,7 +1956,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -1969,7 +1969,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -2002,13 +2002,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -2021,7 +2021,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -2050,13 +2050,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -2214,14 +2214,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -2236,7 +2236,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -2252,7 +2252,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -2265,7 +2265,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -2298,13 +2298,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -2317,7 +2317,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -2346,13 +2346,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -2510,14 +2510,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -2532,7 +2532,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -2548,7 +2548,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -2561,7 +2561,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -2594,13 +2594,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -2613,7 +2613,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -2642,13 +2642,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -2806,14 +2806,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -2828,7 +2828,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -2844,7 +2844,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -2857,7 +2857,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -2890,13 +2890,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -2909,7 +2909,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -2938,13 +2938,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -3102,14 +3102,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -3124,7 +3124,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -3140,7 +3140,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -3153,7 +3153,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -3186,13 +3186,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -3205,7 +3205,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -3234,13 +3234,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -3398,14 +3398,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -3420,7 +3420,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -3436,7 +3436,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -3449,7 +3449,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -3482,13 +3482,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -3501,7 +3501,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -3530,13 +3530,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -3694,14 +3694,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -3716,7 +3716,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -3732,7 +3732,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -3745,7 +3745,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -3778,13 +3778,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -3797,7 +3797,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -3826,13 +3826,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -3990,14 +3990,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -4012,7 +4012,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -4028,7 +4028,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -4041,7 +4041,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -4074,13 +4074,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -4093,7 +4093,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -4122,13 +4122,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -4286,14 +4286,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -4308,7 +4308,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -4324,7 +4324,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -4337,7 +4337,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -4370,13 +4370,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -4389,7 +4389,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -4418,13 +4418,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -4582,14 +4582,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -4604,7 +4604,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -4620,7 +4620,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -4633,7 +4633,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -4666,13 +4666,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -4685,7 +4685,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -4714,13 +4714,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -4878,14 +4878,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -4900,7 +4900,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -4916,7 +4916,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -4929,7 +4929,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -4962,13 +4962,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -4981,7 +4981,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -5010,13 +5010,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -5174,14 +5174,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -5196,7 +5196,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -5212,7 +5212,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -5225,7 +5225,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -5258,13 +5258,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -5277,7 +5277,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -5306,13 +5306,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -5470,14 +5470,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -5492,7 +5492,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -5508,7 +5508,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -5521,7 +5521,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -5554,13 +5554,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -5573,7 +5573,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -5602,13 +5602,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -5766,14 +5766,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -5788,7 +5788,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -5804,7 +5804,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -5817,7 +5817,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -5850,13 +5850,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -5869,7 +5869,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -5898,13 +5898,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -6062,14 +6062,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -6084,7 +6084,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -6100,7 +6100,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -6113,7 +6113,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -6146,13 +6146,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -6165,7 +6165,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -6194,13 +6194,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -6358,14 +6358,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -6380,7 +6380,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -6396,7 +6396,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -6409,7 +6409,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -6442,13 +6442,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -6461,7 +6461,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -6490,13 +6490,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -6654,14 +6654,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -6676,7 +6676,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -6692,7 +6692,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -6705,7 +6705,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -6738,13 +6738,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -6757,7 +6757,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -6786,13 +6786,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -6950,14 +6950,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -6972,7 +6972,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -6988,7 +6988,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -7001,7 +7001,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -7034,13 +7034,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -7053,7 +7053,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -7082,13 +7082,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -7246,14 +7246,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -7268,7 +7268,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -7284,7 +7284,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -7297,7 +7297,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -7330,13 +7330,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -7349,7 +7349,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -7378,13 +7378,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -7542,14 +7542,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -7564,7 +7564,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -7580,7 +7580,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -7593,7 +7593,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -7626,13 +7626,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -7645,7 +7645,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -7674,13 +7674,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -7838,14 +7838,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -7860,7 +7860,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -7876,7 +7876,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -7889,7 +7889,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -7922,13 +7922,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -7941,7 +7941,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -7970,13 +7970,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -8134,14 +8134,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -8156,7 +8156,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -8172,7 +8172,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -8185,7 +8185,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -8218,13 +8218,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -8237,7 +8237,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -8266,13 +8266,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -8430,14 +8430,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -8452,7 +8452,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -8468,7 +8468,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -8481,7 +8481,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -8514,13 +8514,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -8533,7 +8533,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -8562,13 +8562,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -8726,14 +8726,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -8748,7 +8748,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -8764,7 +8764,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -8777,7 +8777,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -8810,13 +8810,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -8829,7 +8829,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -8858,13 +8858,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -9022,14 +9022,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -9044,7 +9044,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -9060,7 +9060,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -9073,7 +9073,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -9106,13 +9106,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -9125,7 +9125,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -9154,13 +9154,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -9318,14 +9318,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -9340,7 +9340,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -9356,7 +9356,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -9369,7 +9369,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -9402,13 +9402,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -9421,7 +9421,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -9450,13 +9450,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -9614,14 +9614,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -9636,7 +9636,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -9652,7 +9652,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -9665,7 +9665,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -9698,13 +9698,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -9717,7 +9717,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -9746,13 +9746,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -9910,14 +9910,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -9932,7 +9932,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -9948,7 +9948,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -9961,7 +9961,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -9994,13 +9994,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -10013,7 +10013,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -10042,13 +10042,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -10206,14 +10206,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -10228,7 +10228,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -10244,7 +10244,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -10257,7 +10257,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -10290,13 +10290,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -10309,7 +10309,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -10338,13 +10338,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }
@@ -10502,14 +10502,14 @@ async function offloadToCloud(task: CloudTask): Promise<CloudTask> {
     });
 
     return task;
-  } catch (_error) {
+  } catch (error) {
     task.status = "failed";
     task.error = error instanceof Error ? error.message : "Unknown error";
     task.updatedAt = new Date().toISOString();
 
     logToDashboard(
       "cloud-offload-error",
-      { taskId: task.id, _error: task.error },
+      { taskId: task.id, error: task.error },
       "error",
     );
 
@@ -10524,7 +10524,7 @@ export async function POST(_request: NextRequest) {
 
     if (!type || !prompt) {
       return NextResponse.json(
-        { _error: "Type and prompt are required" },
+        { error: "Type and prompt are required" },
         { status: 400 },
       );
     }
@@ -10540,7 +10540,7 @@ export async function POST(_request: NextRequest) {
       );
       return NextResponse.json(
         {
-          _error: "Pre-autotest failed",
+          error: "Pre-autotest failed",
           issues: autotestResult.issues,
           message: "Use master override to bypass autotest",
         },
@@ -10553,7 +10553,7 @@ export async function POST(_request: NextRequest) {
       const _r = apiAuth.response;
       return NextResponse.json(
         _r?.body ?? {
-          _error: "Master access required for override",
+          error: "Master access required for override",
         },
         { status: _r?.status ?? 403 },
       );
@@ -10586,13 +10586,13 @@ export async function POST(_request: NextRequest) {
       autotestResult,
       dashboardUrl: `/dashboard/media/${processedTask.id}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-generation-error", { _error: errorMessage }, "error");
+    logToDashboard("media-generation-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to generate media", details: errorMessage },
+      { error: "Failed to generate media", details: errorMessage },
       { status: 500 },
     );
   }
@@ -10605,7 +10605,7 @@ export async function GET(_request: NextRequest) {
     const taskId = searchParams.get("taskId");
 
     if (!taskId) {
-      return NextResponse.json({ _error: "Task ID required" }, { status: 400 });
+      return NextResponse.json({ error: "Task ID required" }, { status: 400 });
     }
 
     // Production: Query task status from Prisma DB or cloud job service
@@ -10634,13 +10634,13 @@ export async function GET(_request: NextRequest) {
       task: cloudTask,
       dashboardUrl: `/dashboard/media/${taskId}`,
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";
-    logToDashboard("media-status-error", { _error: errorMessage }, "error");
+    logToDashboard("media-status-error", { error: errorMessage }, "error");
 
     return NextResponse.json(
-      { _error: "Failed to fetch task status", details: errorMessage },
+      { error: "Failed to fetch task status", details: errorMessage },
       { status: 500 },
     );
   }

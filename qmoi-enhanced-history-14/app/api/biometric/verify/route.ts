@@ -20,7 +20,7 @@ export async function POST(_request: NextRequest) {
     // Check if role can access this endpoint
     if (!canAccessEndpoint(userRole, "/api/biometric/verify")) {
       return NextResponse.json(
-        { _error: "Unauthorized: Insufficient permissions" },
+        { error: "Unauthorized: Insufficient permissions" },
         { status: 403 },
       );
     }
@@ -29,12 +29,12 @@ export async function POST(_request: NextRequest) {
     const { userId, type, data } = body;
 
     if (!userId || !type || !data) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(BIOMETRIC_TEMPLATES_FILE)) {
       return NextResponse.json(
-        { _error: "No biometric templates found" },
+        { error: "No biometric templates found" },
         { status: 401 },
       );
     }
@@ -48,7 +48,7 @@ export async function POST(_request: NextRequest) {
 
     if (userTemplates.length === 0) {
       return NextResponse.json(
-        { _error: "No biometric template for verification" },
+        { error: "No biometric template for verification" },
         { status: 401 },
       );
     }
@@ -58,7 +58,7 @@ export async function POST(_request: NextRequest) {
 
     if (confidence < 0.75) {
       return NextResponse.json(
-        { _error: "Biometric verification failed" },
+        { error: "Biometric verification failed" },
         { status: 401 },
       );
     }
@@ -78,9 +78,9 @@ export async function POST(_request: NextRequest) {
       message: `${type} biometric verification successful`,
       userRole, // Include role in response for verification
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Internal error";
-    return NextResponse.json({ _error: errorMessage }, { status: 500 });
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

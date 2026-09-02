@@ -17,7 +17,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -55,12 +55,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -69,7 +69,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -124,14 +124,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -158,7 +158,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -196,12 +196,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -210,7 +210,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -265,14 +265,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -299,7 +299,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -337,12 +337,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -351,7 +351,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -406,14 +406,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -440,7 +440,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -478,12 +478,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -492,7 +492,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -547,14 +547,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -581,7 +581,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -619,12 +619,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -633,7 +633,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -688,14 +688,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -722,7 +722,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -760,12 +760,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -774,7 +774,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -829,14 +829,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -863,7 +863,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -901,12 +901,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -915,7 +915,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -970,14 +970,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1004,7 +1004,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1042,12 +1042,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1056,7 +1056,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1111,14 +1111,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1145,7 +1145,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1183,12 +1183,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1197,7 +1197,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1252,14 +1252,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1286,7 +1286,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1324,12 +1324,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1338,7 +1338,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1393,14 +1393,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1427,7 +1427,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1465,12 +1465,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1479,7 +1479,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1534,14 +1534,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1568,7 +1568,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1606,12 +1606,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1620,7 +1620,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1675,14 +1675,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1709,7 +1709,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1747,12 +1747,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1761,7 +1761,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1816,14 +1816,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1850,7 +1850,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1888,12 +1888,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1902,7 +1902,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -1957,14 +1957,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -1991,7 +1991,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2029,12 +2029,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2043,7 +2043,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2098,14 +2098,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2132,7 +2132,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2170,12 +2170,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2184,7 +2184,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2239,14 +2239,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2273,7 +2273,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2311,12 +2311,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2325,7 +2325,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2380,14 +2380,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2414,7 +2414,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2452,12 +2452,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2466,7 +2466,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2521,14 +2521,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2555,7 +2555,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2593,12 +2593,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2607,7 +2607,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2662,14 +2662,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2696,7 +2696,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2734,12 +2734,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2748,7 +2748,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2803,14 +2803,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2837,7 +2837,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2875,12 +2875,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2889,7 +2889,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -2944,14 +2944,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -2978,7 +2978,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3016,12 +3016,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3030,7 +3030,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3085,14 +3085,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3119,7 +3119,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3157,12 +3157,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3171,7 +3171,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3226,14 +3226,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3260,7 +3260,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3298,12 +3298,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3312,7 +3312,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3367,14 +3367,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3401,7 +3401,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3439,12 +3439,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3453,7 +3453,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3508,14 +3508,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3542,7 +3542,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3580,12 +3580,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3594,7 +3594,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3649,14 +3649,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3683,7 +3683,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3721,12 +3721,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3735,7 +3735,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3790,14 +3790,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3824,7 +3824,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3862,12 +3862,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3876,7 +3876,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -3931,14 +3931,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -3965,7 +3965,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4003,12 +4003,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4017,7 +4017,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4072,14 +4072,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4106,7 +4106,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4144,12 +4144,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4158,7 +4158,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4213,14 +4213,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4247,7 +4247,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4285,12 +4285,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4299,7 +4299,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4354,14 +4354,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4388,7 +4388,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4426,12 +4426,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4440,7 +4440,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4495,14 +4495,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4529,7 +4529,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4567,12 +4567,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4581,7 +4581,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4636,14 +4636,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4670,7 +4670,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4708,12 +4708,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4722,7 +4722,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4777,14 +4777,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4811,7 +4811,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4849,12 +4849,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4863,7 +4863,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4918,14 +4918,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -4952,7 +4952,7 @@ function verifyMasterToken(_req: NextRequest): boolean {
 export async function GET(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -4990,12 +4990,12 @@ export async function GET(_req: NextRequest) {
           streams: qmoiRevenueEngine.getRevenueStreams().slice(0, 3), // Top 3 streams
         });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }
@@ -5004,7 +5004,7 @@ export async function GET(_req: NextRequest) {
 export async function POST(_req: NextRequest) {
   const apiAuth = requireApiKey(_req.headers);
   if (!apiAuth.ok && !verifyMasterToken(_req)) {
-    return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
@@ -5059,14 +5059,14 @@ export async function POST(_req: NextRequest) {
         }
 
       default:
-        return NextResponse.json({ _error: "Invalid action" }, { status: 400 });
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
-  } catch (_error) {
-    (console as any).error("Revenue API POST _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    logEvent("revenue_api_post_error", { _error: errorMsg });
+  } catch (error) {
+    (console as any).error("Revenue API POST error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    logEvent("revenue_api_post_error", { error: errorMsg });
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }

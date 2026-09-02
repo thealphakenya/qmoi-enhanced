@@ -97,7 +97,7 @@ async function backupCredentialsToEmail(
       }),
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Failed to backup credentials:",
       error,
     );
@@ -195,7 +195,7 @@ async function createPlatformAccount(platform: string, accountData: unknown) {
 
     return { success: true, account };
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       `Failed to create ${platform} account:`,
       error,
     );
@@ -222,7 +222,7 @@ async function generateMicrotaskRevenue(taskData: unknown) {
       revenue: qmoiProfit,
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Microtask revenue generation failed:",
       error,
     );
@@ -252,7 +252,7 @@ async function generateAffiliateRevenue(campaignData: unknown) {
       revenue: qmoiShare,
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Affiliate revenue generation failed:",
       error,
     );
@@ -278,7 +278,7 @@ async function generateContentRevenue(projectData: unknown) {
       revenue: qmoiProfit,
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Content revenue generation failed:",
       error,
     );
@@ -306,7 +306,7 @@ async function generateReferralRevenue(referralData: unknown) {
       revenue: qmoiBonus,
     };
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Referral revenue generation failed:",
       error,
     );
@@ -351,7 +351,7 @@ async function addToMpesaAccount(amount: number, description: string) {
 
     return { success: true, reference: result.CheckoutRequestID };
   } catch (error) {
-    (globalThis.console as any)?.error?.("M-Pesa deposit failed:", error);
+    globalThis.console.error("M-Pesa deposit failed:", error);
     return { success: false, error: "M-Pesa deposit failed" };
   }
 }

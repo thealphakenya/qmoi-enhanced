@@ -13,7 +13,7 @@ export interface Schedule {
 export default function SchedulePanel() {
   const [schedules, setSchedules] = useState<Schedule[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [form, setForm] = useState<Schedule>({
     name: "",
     command: "",
@@ -34,11 +34,11 @@ export default function SchedulePanel() {
       .then((r) => r.json())
       .then((data) => setSchedules((data && data.items) || ([] as Schedule[])))
       .catch((_err: unknown) => {
-        console.warn("fetchSchedules failed", String(_err));
+        console.warn("fetchSchedules failed", String(err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
-            : String(_err),
+            : String(err),
         );
       })
       .finally(() => setLoading(false));
@@ -70,11 +70,11 @@ export default function SchedulePanel() {
         setEditing(null);
       })
       .catch((_err: unknown) => {
-        console.warn("save schedule failed", String(_err));
+        console.warn("save schedule failed", String(err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
-            : String(_err),
+            : String(err),
         );
       })
       .finally(() => setLoading(false));
@@ -92,11 +92,11 @@ export default function SchedulePanel() {
     })
       .then(fetchSchedules)
       .catch((_err: unknown) => {
-        console.warn("delete schedule failed", String(_err));
+        console.warn("delete schedule failed", String(err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
-            : String(_err),
+            : String(err),
         );
       })
       .finally(() => setLoading(false));
@@ -114,11 +114,11 @@ export default function SchedulePanel() {
     })
       .then(fetchSchedules)
       .catch((_err: unknown) => {
-        console.warn("runNow failed", String(_err));
+        console.warn("runNow failed", String(err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
-            : String(_err),
+            : String(err),
         );
       })
       .finally(() => setLoading(false));

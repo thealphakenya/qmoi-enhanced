@@ -75,7 +75,7 @@ export function useSystemMetrics() {
         setError(
           error instanceof Error ? error.message : "Failed to fetch metrics",
         );
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           "Failed to fetch system metrics:",
           error,
         );
@@ -106,7 +106,7 @@ export function useSystemMetrics() {
 
       return await response.json();
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to fetch metric history:",
         error,
       );
@@ -127,7 +127,7 @@ export function useSystemMetrics() {
 
       return await response.json();
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to fetch process details:",
         error,
       );

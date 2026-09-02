@@ -15,7 +15,7 @@ export async function POST(_request: NextRequest) {
       const r = auth.response;
       if (!r)
         return NextResponse.json(
-          { _error: "Unknown auth error" },
+          { error: "Unknown auth error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -41,10 +41,10 @@ export async function POST(_request: NextRequest) {
       success: true,
       message: "AI trading started successfully",
     });
-  } catch (_error) {
-    (console as any).error("Start trading API _error:", _error);
+  } catch (error) {
+    (console as any).error("Start trading API error:", error);
     return NextResponse.json(
-      { _error: "Failed to start trading" },
+      { error: "Failed to start trading" },
       { status: 500 },
     );
   }

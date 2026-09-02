@@ -43,8 +43,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -96,8 +96,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -149,8 +149,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -202,8 +202,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -255,8 +255,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -308,8 +308,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -361,8 +361,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -414,8 +414,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -467,8 +467,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -520,8 +520,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -573,8 +573,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -626,8 +626,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -679,8 +679,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -732,8 +732,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -785,8 +785,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -838,8 +838,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -891,8 +891,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -944,8 +944,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -997,8 +997,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1050,8 +1050,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1103,8 +1103,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1156,8 +1156,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1209,8 +1209,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1262,8 +1262,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1315,8 +1315,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1368,8 +1368,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1421,8 +1421,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1474,8 +1474,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1527,8 +1527,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1580,8 +1580,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1633,8 +1633,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1686,8 +1686,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1739,8 +1739,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1792,8 +1792,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1845,8 +1845,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }
@@ -1898,8 +1898,8 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json({ deployments });
-  } catch (_error) {
-    (console as any).error("Error fetching deployments:", _error);
+  } catch (error) {
+    (console as any).error("Error fetching deployments:", error);
     return NextResponse.json({ deployments: [] }, { status: 500 });
   }
 }

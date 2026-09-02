@@ -32,7 +32,7 @@ export default function AuditLogPanel() {
         setLoading(false);
       })
       .catch((_e: unknown) => {
-        console.warn(String(_e));
+        console.warn(String(e));
         setLoading(false);
       });
   }

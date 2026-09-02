@@ -9,7 +9,7 @@ export interface SessionItem {
 export default function SessionPanel() {
   const [sessions, setSessions] = useState<SessionItem[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const token =
     typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
@@ -25,11 +25,11 @@ export default function SessionPanel() {
         setSessions(items as SessionItem[]);
       })
       .catch((_err: unknown) => {
-        console.warn("fetch sessions failed", String(_err));
+        console.warn("fetch sessions failed", String(err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
-            : String(_err),
+            : String(err),
         );
       })
       .finally(() => setLoading(false));
@@ -51,11 +51,11 @@ export default function SessionPanel() {
     })
       .then(fetchSessions)
       .catch((_err: unknown) => {
-        console.warn("revoke session failed", String(_err));
+        console.warn("revoke session failed", String(err));
         setError(
           typeof _err === "object" && _err && "message" in _err
             ? String((_err as { message?: unknown }).message)
-            : String(_err),
+            : String(err),
         );
       })
       .finally(() => setLoading(false));

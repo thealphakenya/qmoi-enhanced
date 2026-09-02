@@ -19,25 +19,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -72,25 +72,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -127,25 +127,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -180,25 +180,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -233,25 +233,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -286,25 +286,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -339,25 +339,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -392,25 +392,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -445,25 +445,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -498,25 +498,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -551,25 +551,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -604,25 +604,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -657,25 +657,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -710,25 +710,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -763,25 +763,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -816,25 +816,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -869,25 +869,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -922,25 +922,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -975,25 +975,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1028,25 +1028,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1081,25 +1081,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1134,25 +1134,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1187,25 +1187,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1240,25 +1240,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1293,25 +1293,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1346,25 +1346,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1399,25 +1399,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1452,25 +1452,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1505,25 +1505,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1558,25 +1558,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1611,25 +1611,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1664,25 +1664,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1717,25 +1717,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1770,25 +1770,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1823,25 +1823,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 
@@ -1876,25 +1876,25 @@ export default async function handler(
         case "backup":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         case "restore":
           // [PRODUCTION IMPLEMENTATION REQUIRED]: handle restore
           return _res.status(501).json({
-            _error: "Not implemented - production integration required",
+            error: "Not implemented - production integration required",
           });
         default:
-          return _res.status(400).json({ _error: "Unknown action" });
+          return _res.status(400).json({ error: "Unknown action" });
       }
     }
     case "GET": {
       // [PRODUCTION IMPLEMENTATION REQUIRED]: handle backup status
       return _res
         .status(501)
-        .json({ _error: "Not implemented - production integration required" });
+        .json({ error: "Not implemented - production integration required" });
     }
     default:
-      return _res.status(405).json({ _error: "Method not allowed" });
+      return _res.status(405).json({ error: "Method not allowed" });
   }
 }
 

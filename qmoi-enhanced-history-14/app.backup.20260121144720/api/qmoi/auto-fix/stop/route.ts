@@ -16,7 +16,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -59,8 +59,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -76,8 +76,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -89,10 +89,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -118,7 +118,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -161,8 +161,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -178,8 +178,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -191,10 +191,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -220,7 +220,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -263,8 +263,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -280,8 +280,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -293,10 +293,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -322,7 +322,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -365,8 +365,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -382,8 +382,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -395,10 +395,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -424,7 +424,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -467,8 +467,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -484,8 +484,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -497,10 +497,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -526,7 +526,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -569,8 +569,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -586,8 +586,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -599,10 +599,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -628,7 +628,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -671,8 +671,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -688,8 +688,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -701,10 +701,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -730,7 +730,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -773,8 +773,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -790,8 +790,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -803,10 +803,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -832,7 +832,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -875,8 +875,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -892,8 +892,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -905,10 +905,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -934,7 +934,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -977,8 +977,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -994,8 +994,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1007,10 +1007,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1036,7 +1036,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1079,8 +1079,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1096,8 +1096,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1109,10 +1109,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1138,7 +1138,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1181,8 +1181,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1198,8 +1198,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1211,10 +1211,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1240,7 +1240,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1283,8 +1283,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1300,8 +1300,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1313,10 +1313,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1342,7 +1342,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1385,8 +1385,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1402,8 +1402,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1415,10 +1415,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1444,7 +1444,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1487,8 +1487,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1504,8 +1504,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1517,10 +1517,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1546,7 +1546,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1589,8 +1589,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1606,8 +1606,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1619,10 +1619,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1648,7 +1648,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1691,8 +1691,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1708,8 +1708,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1721,10 +1721,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1750,7 +1750,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1793,8 +1793,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1810,8 +1810,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1823,10 +1823,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1852,7 +1852,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1895,8 +1895,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1912,8 +1912,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -1925,10 +1925,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -1954,7 +1954,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -1997,8 +1997,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2014,8 +2014,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2027,10 +2027,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2056,7 +2056,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2099,8 +2099,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2116,8 +2116,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2129,10 +2129,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2158,7 +2158,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2201,8 +2201,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2218,8 +2218,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2231,10 +2231,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2260,7 +2260,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2303,8 +2303,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2320,8 +2320,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2333,10 +2333,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2362,7 +2362,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2405,8 +2405,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2422,8 +2422,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2435,10 +2435,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2464,7 +2464,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2507,8 +2507,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2524,8 +2524,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2537,10 +2537,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2566,7 +2566,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2609,8 +2609,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2626,8 +2626,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2639,10 +2639,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2668,7 +2668,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2711,8 +2711,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2728,8 +2728,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2741,10 +2741,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2770,7 +2770,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2813,8 +2813,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2830,8 +2830,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2843,10 +2843,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2872,7 +2872,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -2915,8 +2915,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2932,8 +2932,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -2945,10 +2945,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -2974,7 +2974,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -3017,8 +3017,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3034,8 +3034,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3047,10 +3047,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -3076,7 +3076,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -3119,8 +3119,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3136,8 +3136,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3149,10 +3149,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -3178,7 +3178,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -3221,8 +3221,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3238,8 +3238,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3251,10 +3251,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -3280,7 +3280,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -3323,8 +3323,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3340,8 +3340,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3353,10 +3353,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -3382,7 +3382,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -3425,8 +3425,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3442,8 +3442,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3455,10 +3455,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -3484,7 +3484,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -3527,8 +3527,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3544,8 +3544,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3557,10 +3557,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }
@@ -3586,7 +3586,7 @@ export async function POST(_request: NextRequest) {
     if (!auth.ok) {
       const r = auth.response;
       if (!r)
-        return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       return NextResponse.json(r.body, { status: r.status });
     }
 
@@ -3629,8 +3629,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`taskkill /PID ${pid} /F`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3646,8 +3646,8 @@ export async function POST(_request: NextRequest) {
             try {
               await execAsync(`kill -9 ${pid}`);
               killedProcesses++;
-            } catch (_error) {
-              console.log(`Failed to kill process ${pid}:`, _error);
+            } catch (error) {
+              console.log(`Failed to kill process ${pid}:`, error);
             }
           }
         }
@@ -3659,10 +3659,10 @@ export async function POST(_request: NextRequest) {
       message: `Stopped ${killedProcesses} auto-fix processes`,
       killedProcesses,
     });
-  } catch (_error) {
-    (console as any).error("Error stopping auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error stopping auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to stop auto-fix process" },
+      { error: "Failed to stop auto-fix process" },
       { status: 500 },
     );
   }

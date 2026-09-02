@@ -80,7 +80,7 @@ export const useQmoiState = (): UseQmoiStateReturn => {
           bpm: Math.floor(Math.random() * 20) + 65,
           rhythm: ["steady", "accelerating", "decelerating"][
             Math.floor(Math.random() * 3)
-          ] as unknown,
+          ] as "steady" | "accelerating" | "decelerating",
         },
         system: {
           ...prev.system,

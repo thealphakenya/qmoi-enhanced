@@ -73,7 +73,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       ];
       setErrors(mockErrors);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to fetch error log:", error);
+      globalThis.console.error("Failed to fetch error log:", error);
     }
   };
 
@@ -107,7 +107,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       ];
       setFixes(mockFixes);
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to fetch fix history:",
         error,
       );
@@ -126,7 +126,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       };
       setGitHubStatus(mockStatus);
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to fetch GitHub status:",
         error,
       );
@@ -151,7 +151,7 @@ const QMOIAutoFixDashboard: React.FC<{ isMaster: boolean }> = ({
       fetchGitHubStatus();
       setLastUpdate(new Date().toISOString());
     } catch (error) {
-      (globalThis.console as any)?.error?.("Auto-fix failed:", error);
+      globalThis.console.error("Auto-fix failed:", error);
     } finally {
       setIsRunning(false);
     }

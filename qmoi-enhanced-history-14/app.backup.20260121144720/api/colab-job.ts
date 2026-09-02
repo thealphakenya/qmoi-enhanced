@@ -109,7 +109,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -225,7 +225,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -341,7 +341,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -457,7 +457,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -573,7 +573,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -689,7 +689,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -805,7 +805,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -921,7 +921,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1037,7 +1037,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1153,7 +1153,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1269,7 +1269,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1385,7 +1385,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1501,7 +1501,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1617,7 +1617,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1733,7 +1733,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1849,7 +1849,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1965,7 +1965,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2081,7 +2081,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2197,7 +2197,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2313,7 +2313,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2429,7 +2429,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2545,7 +2545,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2661,7 +2661,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2777,7 +2777,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2893,7 +2893,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3009,7 +3009,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3125,7 +3125,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3241,7 +3241,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3357,7 +3357,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3473,7 +3473,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3589,7 +3589,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3705,7 +3705,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3821,7 +3821,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3937,7 +3937,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -4053,7 +4053,7 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -4169,5 +4169,5 @@ export default async function handler(
     }
     return _res.json([]);
   }
-  _res.status(405).json({ _error: "Method not allowed" });
+  _res.status(405).json({ error: "Method not allowed" });
 }

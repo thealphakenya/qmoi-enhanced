@@ -109,7 +109,7 @@ export class HealthCheckService {
         overallStatus = "degraded";
       }
 
-      const _response: HealthCheckResponse = {
+      const response: HealthCheckResponse = {
         timestamp: Date.now(),
         status: overallStatus,
         system: {
@@ -119,7 +119,7 @@ export class HealthCheckService {
         },
         adapters: {
           status: adapterHealth.status,
-          _error: (adapterHealth as unknown).error,
+          error: (adapterHealth as unknown).error,
           cacheStats: {
             total: cacheStats.total,
             entries: cacheStats.byEndpoint,
@@ -143,7 +143,7 @@ export class HealthCheckService {
 
       this.recordResponseTime("health-check", Date.now() - startTime);
       return response;
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         timestamp: Date.now(),
@@ -155,7 +155,7 @@ export class HealthCheckService {
         },
         adapters: {
           status: "unhealthy",
-          _error: String(_err),
+          error: String(err),
           cacheStats: { total: 0, entries: {} as Record<string, number> },
           pendingRequests: [],
         },

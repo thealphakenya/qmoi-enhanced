@@ -65,7 +65,7 @@ export async function POST_RESTORE(_req: NextRequest) {
   const doc = documents.find((d) => d.id === id);
   // Production: Restore from GDrive, S3, HuggingFace
   await restoreDocumentFromCloud(doc);
-  if (!doc) return NextResponse.json({ _error: "Not found" }, { status: 404 });
+  if (!doc) return NextResponse.json({ error: "Not found" }, { status: 404 });
   return NextResponse.json({ success: true, doc });
 }
 

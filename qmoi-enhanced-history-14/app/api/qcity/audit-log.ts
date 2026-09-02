@@ -14,7 +14,7 @@ const handler = requireRole(["admin", "master"])(async (
 ) => {
   const { method, query } = _req;
   if (method !== "GET")
-    return _res.status(405).json({ _error: "Method not allowed" });
+    return _res.status(405).json({ error: "Method not allowed" });
   if (!fs.existsSync(AUDIT_LOG_PATH))
     return _res
       .status(200)

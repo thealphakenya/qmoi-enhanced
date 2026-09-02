@@ -99,7 +99,7 @@ export default function EnhancedRevenuePanel() {
         loadRevenueData();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Master verification failed:",
         error,
       );
@@ -121,7 +121,7 @@ export default function EnhancedRevenuePanel() {
         setTransactions(txData);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to load revenue data:",
         error,
       );
@@ -144,7 +144,7 @@ export default function EnhancedRevenuePanel() {
         alert("Invalid master key");
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Master login failed:", error);
+      globalThis.console.error("Master login failed:", error);
       alert("Login failed");
     } finally {
       setLoading(false);
@@ -164,7 +164,7 @@ export default function EnhancedRevenuePanel() {
         await loadRevenueData();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to start engine:", error);
+      globalThis.console.error("Failed to start engine:", error);
     } finally {
       setLoading(false);
     }
@@ -183,7 +183,7 @@ export default function EnhancedRevenuePanel() {
         await loadRevenueData();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to stop engine:", error);
+      globalThis.console.error("Failed to stop engine:", error);
     } finally {
       setLoading(false);
     }
@@ -208,7 +208,7 @@ export default function EnhancedRevenuePanel() {
         await loadRevenueData();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to set target:", error);
+      globalThis.console.error("Failed to set target:", error);
     } finally {
       setLoading(false);
     }
@@ -233,7 +233,7 @@ export default function EnhancedRevenuePanel() {
         await loadRevenueData();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to transfer:", error);
+      globalThis.console.error("Failed to transfer:", error);
     } finally {
       setLoading(false);
     }
@@ -253,7 +253,7 @@ export default function EnhancedRevenuePanel() {
         await loadRevenueData();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Failed to reset daily earnings:",
         error,
       );

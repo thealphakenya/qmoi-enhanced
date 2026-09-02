@@ -95,8 +95,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -134,13 +134,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -204,13 +204,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -315,8 +315,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -354,13 +354,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -424,13 +424,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -535,8 +535,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -574,13 +574,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -644,13 +644,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -755,8 +755,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -794,13 +794,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -864,13 +864,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -975,8 +975,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -1014,13 +1014,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1084,13 +1084,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1195,8 +1195,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -1234,13 +1234,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1304,13 +1304,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1415,8 +1415,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -1454,13 +1454,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1524,13 +1524,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1635,8 +1635,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -1674,13 +1674,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1744,13 +1744,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1855,8 +1855,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -1894,13 +1894,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1964,13 +1964,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2075,8 +2075,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -2114,13 +2114,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2184,13 +2184,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2295,8 +2295,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -2334,13 +2334,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2404,13 +2404,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2515,8 +2515,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -2554,13 +2554,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2624,13 +2624,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2735,8 +2735,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -2774,13 +2774,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2844,13 +2844,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2955,8 +2955,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -2994,13 +2994,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3064,13 +3064,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3175,8 +3175,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -3214,13 +3214,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3284,13 +3284,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3395,8 +3395,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -3434,13 +3434,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3504,13 +3504,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3615,8 +3615,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -3654,13 +3654,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3724,13 +3724,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3835,8 +3835,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -3874,13 +3874,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3944,13 +3944,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4055,8 +4055,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -4094,13 +4094,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4164,13 +4164,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4275,8 +4275,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -4314,13 +4314,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4384,13 +4384,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4495,8 +4495,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -4534,13 +4534,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4604,13 +4604,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4715,8 +4715,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -4754,13 +4754,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4824,13 +4824,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4935,8 +4935,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -4974,13 +4974,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5044,13 +5044,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5155,8 +5155,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -5194,13 +5194,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5264,13 +5264,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5375,8 +5375,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -5414,13 +5414,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5484,13 +5484,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5595,8 +5595,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -5634,13 +5634,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5704,13 +5704,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5815,8 +5815,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -5854,13 +5854,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5924,13 +5924,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6035,8 +6035,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -6074,13 +6074,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6144,13 +6144,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6255,8 +6255,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -6294,13 +6294,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6364,13 +6364,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6475,8 +6475,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -6514,13 +6514,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6584,13 +6584,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6695,8 +6695,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -6734,13 +6734,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6804,13 +6804,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -6915,8 +6915,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -6954,13 +6954,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7024,13 +7024,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7135,8 +7135,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -7174,13 +7174,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7244,13 +7244,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7355,8 +7355,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -7394,13 +7394,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7464,13 +7464,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7575,8 +7575,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -7614,13 +7614,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7684,13 +7684,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7795,8 +7795,8 @@ async function cancelTrade(
       success: true,
       message: "Trade cancelled successfully",
     };
-  } catch (_error) {
-    (console as any).error("Error cancelling trade:", _error);
+  } catch (error) {
+    (console as any).error("Error cancelling trade:", error);
     return {
       success: false,
       message:
@@ -7834,13 +7834,13 @@ export async function GET(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid query parameter" },
+      { error: "Invalid query parameter" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -7904,13 +7904,13 @@ export async function POST(_request: NextRequest) {
     }
 
     return NextResponse.json(
-      { _error: "Invalid action specified" },
+      { error: "Invalid action specified" },
       { status: 400 },
     );
-  } catch (_error) {
-    (console as any).error("Error in QI trading execution endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in QI trading execution endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

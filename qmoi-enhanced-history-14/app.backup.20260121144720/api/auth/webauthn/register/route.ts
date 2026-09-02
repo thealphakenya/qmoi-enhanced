@@ -13,15 +13,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -42,15 +42,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -71,15 +71,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -100,15 +100,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -129,15 +129,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -158,15 +158,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -187,15 +187,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -216,15 +216,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -245,15 +245,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -274,15 +274,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -303,15 +303,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -332,15 +332,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -361,15 +361,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -390,15 +390,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -419,15 +419,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -448,15 +448,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -477,15 +477,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -506,15 +506,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -535,15 +535,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -564,15 +564,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -593,15 +593,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -622,15 +622,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -651,15 +651,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -680,15 +680,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -709,15 +709,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -738,15 +738,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -767,15 +767,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -796,15 +796,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -825,15 +825,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -854,15 +854,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -883,15 +883,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -912,15 +912,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -941,15 +941,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -970,15 +970,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -999,15 +999,15 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }
 
@@ -1028,14 +1028,14 @@ export async function POST(_request: NextRequest) {
     const body = await request.json();
     const { username, credential } = body;
     if (!username || !credential)
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
 
     const items = JSON.parse(fs.readFileSync(FILE, "utf-8"));
     items.push({ username, credential, created_at: new Date().toISOString() });
     fs.writeFileSync(FILE, JSON.stringify(items, null, 2));
 
     return NextResponse.json({ success: true, message: "Credential saved" });
-  } catch (_e) {
-    return NextResponse.json({ _error: (e as Error).message }, { status: 500 });
+  } catch (e) {
+    return NextResponse.json({ error: (e as Error).message }, { status: 500 });
   }
 }

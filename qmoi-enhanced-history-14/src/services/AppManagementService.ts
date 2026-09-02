@@ -362,14 +362,14 @@ export class AppManagementService {
       }
 
       console.log(`App ${app.displayName} installed successfully`);
-    } catch (_error) {
+    } catch (error) {
       app.status = "error";
       app.errorMessage =
         error instanceof Error ? error.message : "Unknown error";
-      this.eventEmitter.emit("appError", { appId, _error: app.errorMessage });
+      this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
       (globalThis.console).error(
         `Failed to install app ${appId}:`,
-        _error,
+        error,
       );
       throw error;
     }
@@ -463,15 +463,15 @@ export class AppManagementService {
       }
 
       console.log(`App ${app.displayName} updated to v${app.version}`);
-    } catch (_error) {
+    } catch (error) {
       app.isUpdating = false;
       app.status = "error";
       app.errorMessage =
         error instanceof Error ? error.message : "Unknown error";
-      this.eventEmitter.emit("appError", { appId, _error: app.errorMessage });
+      this.eventEmitter.emit("appError", { appId, error: app.errorMessage });
       (globalThis.console).error(
         `Failed to update app ${appId}:`,
-        _error,
+        error,
       );
       throw error;
     }
@@ -535,15 +535,15 @@ export class AppManagementService {
 
       this.eventEmitter.emit("troubleshootingCompleted", { appId, issues });
       console.log(`Troubleshooting completed for ${app.displayName}`);
-    } catch (_error) {
+    } catch (error) {
       app.troubleshooting.logs.push({
         timestamp: new Date(),
         level: "error",
-        message: `Troubleshooting failed: ${error}`,
+        message: `Troubleshooting failed: ${error instanceof Error ? error.message : String(error)}`,
       });
       (globalThis.console).error(
         `Troubleshooting failed for ${appId}:`,
-        _error,
+        error,
       );
       throw error;
     }
@@ -645,10 +645,10 @@ export class AppManagementService {
       // await exec('git push');
 
       console.log(`Auto Git commit: ${message}`);
-    } catch (_error) {
+    } catch (error) {
       (globalThis.console).error(
         "Auto Git commit failed:",
-        _error,
+        error,
       );
     }
   }
@@ -663,10 +663,10 @@ export class AppManagementService {
               if (update) {
                 this.eventEmitter.emit("updateAvailable", { app, update });
               }
-            } catch (_error) {
+            } catch (error) {
               (globalThis.console).error(
                 `Failed to check updates for ${app.id}:`,
-                _error,
+                error,
               );
             }
           }
@@ -731,7 +731,7 @@ export class AppManagementService {
   }
 
   public onAppError(
-    callback: (data: { appId: string; _error: string }) => void,
+    callback: (data: { appId: string; error: string }) => void,
   ): void {
     this.eventEmitter.on("appError", callback);
   }

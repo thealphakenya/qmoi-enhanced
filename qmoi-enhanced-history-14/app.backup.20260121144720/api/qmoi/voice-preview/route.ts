@@ -19,7 +19,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -43,10 +43,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -93,7 +93,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -103,9 +103,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -232,7 +232,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -256,10 +256,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -306,7 +306,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -316,9 +316,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -445,7 +445,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -469,10 +469,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -519,7 +519,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -529,9 +529,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -658,7 +658,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -682,10 +682,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -732,7 +732,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -742,9 +742,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -871,7 +871,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -895,10 +895,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -945,7 +945,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -955,9 +955,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -1084,7 +1084,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -1108,10 +1108,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -1158,7 +1158,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -1168,9 +1168,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -1297,7 +1297,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -1321,10 +1321,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -1371,7 +1371,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -1381,9 +1381,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -1510,7 +1510,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -1534,10 +1534,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -1584,7 +1584,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -1594,9 +1594,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -1723,7 +1723,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -1747,10 +1747,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -1797,7 +1797,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -1807,9 +1807,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -1936,7 +1936,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -1960,10 +1960,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -2010,7 +2010,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -2020,9 +2020,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -2149,7 +2149,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -2173,10 +2173,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -2223,7 +2223,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -2233,9 +2233,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -2362,7 +2362,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -2386,10 +2386,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -2436,7 +2436,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -2446,9 +2446,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -2575,7 +2575,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -2599,10 +2599,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -2649,7 +2649,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -2659,9 +2659,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -2788,7 +2788,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -2812,10 +2812,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -2862,7 +2862,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -2872,9 +2872,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -3001,7 +3001,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -3025,10 +3025,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -3075,7 +3075,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -3085,9 +3085,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -3214,7 +3214,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -3238,10 +3238,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -3288,7 +3288,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -3298,9 +3298,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -3427,7 +3427,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -3451,10 +3451,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -3501,7 +3501,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -3511,9 +3511,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -3640,7 +3640,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -3664,10 +3664,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -3714,7 +3714,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -3724,9 +3724,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -3853,7 +3853,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -3877,10 +3877,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -3927,7 +3927,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -3937,9 +3937,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -4066,7 +4066,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -4090,10 +4090,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -4140,7 +4140,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -4150,9 +4150,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -4279,7 +4279,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -4303,10 +4303,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -4353,7 +4353,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -4363,9 +4363,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -4492,7 +4492,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -4516,10 +4516,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -4566,7 +4566,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -4576,9 +4576,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -4705,7 +4705,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -4729,10 +4729,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -4779,7 +4779,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -4789,9 +4789,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -4918,7 +4918,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -4942,10 +4942,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -4992,7 +4992,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -5002,9 +5002,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -5131,7 +5131,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -5155,10 +5155,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -5205,7 +5205,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -5215,9 +5215,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -5344,7 +5344,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -5368,10 +5368,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -5418,7 +5418,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -5428,9 +5428,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -5557,7 +5557,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -5581,10 +5581,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -5631,7 +5631,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -5641,9 +5641,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -5770,7 +5770,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -5794,10 +5794,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -5844,7 +5844,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -5854,9 +5854,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -5983,7 +5983,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -6007,10 +6007,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -6057,7 +6057,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -6067,9 +6067,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -6196,7 +6196,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -6220,10 +6220,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -6270,7 +6270,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -6280,9 +6280,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -6409,7 +6409,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -6433,10 +6433,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -6483,7 +6483,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -6493,9 +6493,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -6622,7 +6622,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -6646,10 +6646,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -6696,7 +6696,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -6706,9 +6706,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -6835,7 +6835,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -6859,10 +6859,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -6909,7 +6909,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -6919,9 +6919,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -7048,7 +7048,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -7072,10 +7072,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -7122,7 +7122,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -7132,9 +7132,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -7261,7 +7261,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -7285,10 +7285,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -7335,7 +7335,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -7345,9 +7345,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }
@@ -7474,7 +7474,7 @@ export async function POST(_request: NextRequest) {
 
     if (!voiceId || !text) {
       return NextResponse.json(
-        { _error: "Voice ID and text are required" },
+        { error: "Voice ID and text are required" },
         { status: 400 }
       );
     }
@@ -7498,10 +7498,10 @@ export async function POST(_request: NextRequest) {
     headers.set("Content-Length", String(bodyArray.byteLength));
 
     return new NextResponse(new Blob([bodyArray]), { status: 200, headers });
-  } catch (_error) {
-    (console as any).error("Error generating voice preview:", _error);
+  } catch (error) {
+    (console as any).error("Error generating voice preview:", error);
     return NextResponse.json(
-      { _error: "Failed to generate voice preview" },
+      { error: "Failed to generate voice preview" },
       { status: 500 }
     );
   }
@@ -7548,7 +7548,7 @@ async function generateTTSAudio(
         if (volume !== 100) {
           try {
             return adjustVolumeWav(new Uint8Array(ab), volume / 100);
-          } catch (_err) {
+          } catch (err) {
             console.warn(
               "Volume adjust failed, returning original audio",
               _err
@@ -7558,9 +7558,9 @@ async function generateTTSAudio(
         }
         return ab;
       }
-    } catch (_err) {
+    } catch (err) {
       console.warn(
-        "ElevenLabs integration _error, falling back to silent audio",
+        "ElevenLabs integration error, falling back to silent audio",
         _err
       );
     }

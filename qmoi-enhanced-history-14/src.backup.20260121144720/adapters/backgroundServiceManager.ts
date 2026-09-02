@@ -93,9 +93,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -127,13 +127,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -149,7 +149,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -205,8 +205,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -382,9 +382,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -416,13 +416,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -438,7 +438,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -494,8 +494,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -671,9 +671,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -705,13 +705,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -727,7 +727,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -783,8 +783,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -960,9 +960,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -994,13 +994,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -1016,7 +1016,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -1072,8 +1072,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -1249,9 +1249,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -1283,13 +1283,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -1305,7 +1305,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -1361,8 +1361,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -1538,9 +1538,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -1572,13 +1572,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -1594,7 +1594,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -1650,8 +1650,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -1827,9 +1827,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -1861,13 +1861,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -1883,7 +1883,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -1939,8 +1939,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -2116,9 +2116,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -2150,13 +2150,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -2172,7 +2172,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -2228,8 +2228,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -2405,9 +2405,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -2439,13 +2439,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -2461,7 +2461,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -2517,8 +2517,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -2694,9 +2694,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -2728,13 +2728,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -2750,7 +2750,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -2806,8 +2806,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -2983,9 +2983,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -3017,13 +3017,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -3039,7 +3039,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -3095,8 +3095,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -3272,9 +3272,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -3306,13 +3306,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -3328,7 +3328,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -3384,8 +3384,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -3561,9 +3561,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -3595,13 +3595,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -3617,7 +3617,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -3673,8 +3673,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -3850,9 +3850,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -3884,13 +3884,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -3906,7 +3906,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -3962,8 +3962,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -4139,9 +4139,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -4173,13 +4173,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -4195,7 +4195,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -4251,8 +4251,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -4428,9 +4428,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -4462,13 +4462,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -4484,7 +4484,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -4540,8 +4540,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -4717,9 +4717,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -4751,13 +4751,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -4773,7 +4773,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -4829,8 +4829,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -5006,9 +5006,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -5040,13 +5040,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -5062,7 +5062,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -5118,8 +5118,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -5295,9 +5295,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -5329,13 +5329,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -5351,7 +5351,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -5407,8 +5407,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -5584,9 +5584,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -5618,13 +5618,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -5640,7 +5640,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -5696,8 +5696,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -5873,9 +5873,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -5907,13 +5907,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -5929,7 +5929,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -5985,8 +5985,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -6162,9 +6162,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -6196,13 +6196,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -6218,7 +6218,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -6274,8 +6274,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -6451,9 +6451,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -6485,13 +6485,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -6507,7 +6507,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -6563,8 +6563,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -6740,9 +6740,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -6774,13 +6774,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -6796,7 +6796,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -6852,8 +6852,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -7029,9 +7029,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -7063,13 +7063,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -7085,7 +7085,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -7141,8 +7141,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -7318,9 +7318,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -7352,13 +7352,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -7374,7 +7374,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -7430,8 +7430,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -7607,9 +7607,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -7641,13 +7641,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -7663,7 +7663,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -7719,8 +7719,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -7896,9 +7896,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -7930,13 +7930,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -7952,7 +7952,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -8008,8 +8008,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -8185,9 +8185,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -8219,13 +8219,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -8241,7 +8241,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -8297,8 +8297,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -8474,9 +8474,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -8508,13 +8508,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -8530,7 +8530,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -8586,8 +8586,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -8763,9 +8763,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -8797,13 +8797,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -8819,7 +8819,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -8875,8 +8875,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -9052,9 +9052,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -9086,13 +9086,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -9108,7 +9108,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -9164,8 +9164,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -9341,9 +9341,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -9375,13 +9375,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -9397,7 +9397,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -9453,8 +9453,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -9630,9 +9630,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -9664,13 +9664,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -9686,7 +9686,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -9742,8 +9742,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -9919,9 +9919,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -9953,13 +9953,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -9975,7 +9975,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -10031,8 +10031,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });
@@ -10208,9 +10208,9 @@ class BackgroundServiceManager {
       console.debug(
         `[Background] Task ${id} completed in ${Date.now() - startTime}ms`,
       );
-    } catch (_err) {
+    } catch (err) {
       void _err;
-      (globalThis.console as unknown)?.error?.(
+      globalThis.console.error(
         `[Background] Task ${id} failed:`,
         _err,
       );
@@ -10242,13 +10242,13 @@ class BackgroundServiceManager {
         lastCheck: Date.now(),
         uptime: Date.now() - this.startTime,
       };
-    } catch (_err) {
+    } catch (err) {
       void _err;
       return {
         name: "Backend API",
         status: "unhealthy",
         lastCheck: Date.now(),
-        _error: String(_err),
+        error: String(err),
         uptime: Date.now() - this.startTime,
       };
     }
@@ -10264,7 +10264,7 @@ class BackgroundServiceManager {
 
     service.status = status;
     service.lastCheck = Date.now();
-    if (_error) service.error = error;
+    if (error) service.error = error;
 
     console.info(
       `[Health] ${service.name}: ${status}${error ? ` (${error})` : ""}`,
@@ -10320,8 +10320,8 @@ class BackgroundServiceManager {
     // Start polling loop
     this.pollInterval = setInterval(() => {
       this.pollTasks().catch((_err) => {
-        (globalThis.console as unknown)?.error?.(
-          "[Background] Poll _error:",
+        globalThis.console.error(
+          "[Background] Poll error:",
           _err,
         );
       });

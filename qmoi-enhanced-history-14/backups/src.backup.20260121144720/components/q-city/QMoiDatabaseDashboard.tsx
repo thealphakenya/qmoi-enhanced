@@ -36,7 +36,7 @@ export default function QMoiDatabaseDashboard({
   const handleCreateTable = async () => {
     if (!newTable) return;
     const sql = `CREATE TABLE IF NOT EXISTS ${newTable} (id INTEGER PRIMARY KEY AUTOINCREMENT)`;
-    const _res = await fetch("/api/qmoi-database/route", {
+    const response = await fetch("/api/qmoi-database/route", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -69,7 +69,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -86,14 +86,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -177,7 +177,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -194,14 +194,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -285,7 +285,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -302,14 +302,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -393,7 +393,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -410,14 +410,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -501,7 +501,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -518,14 +518,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -609,7 +609,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -626,14 +626,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -717,7 +717,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -734,14 +734,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -825,7 +825,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -842,14 +842,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -933,7 +933,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -950,14 +950,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1041,7 +1041,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1058,14 +1058,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1149,7 +1149,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1166,14 +1166,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1257,7 +1257,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1274,14 +1274,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1365,7 +1365,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1382,14 +1382,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1473,7 +1473,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1490,14 +1490,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1581,7 +1581,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1598,14 +1598,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1689,7 +1689,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1706,14 +1706,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1797,7 +1797,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1814,14 +1814,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -1905,7 +1905,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -1922,14 +1922,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2013,7 +2013,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2030,14 +2030,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2121,7 +2121,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2138,14 +2138,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2229,7 +2229,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2246,14 +2246,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2337,7 +2337,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2354,14 +2354,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2445,7 +2445,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2462,14 +2462,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2553,7 +2553,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2570,14 +2570,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2661,7 +2661,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2678,14 +2678,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2769,7 +2769,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2786,14 +2786,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2877,7 +2877,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -2894,14 +2894,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -2985,7 +2985,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3002,14 +3002,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -3093,7 +3093,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3110,14 +3110,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -3201,7 +3201,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3218,14 +3218,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -3309,7 +3309,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3326,14 +3326,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -3417,7 +3417,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3434,14 +3434,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -3525,7 +3525,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3542,14 +3542,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -3633,7 +3633,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3650,14 +3650,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -3741,7 +3741,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3758,14 +3758,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }
@@ -3849,7 +3849,7 @@ export async function POST_PLAY(_req: NextRequest) {
   const { channelId } = body;
   const channel = channels.find((c) => c.id === channelId);
   if (!channel)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   currentChannel = channel;
   nowPlaying = {
     channel: channel.name,
@@ -3866,14 +3866,14 @@ export async function GET_STATUS(_req: NextRequest) {
 export async function POST_PROGRAM(_req: NextRequest) {
   const auth = requireApiKey(_req.headers);
   if (!auth.ok && !isMaster(_req))
-    return NextResponse.json(auth.response?.body || { _error: "Forbidden" }, {
+    return NextResponse.json(auth.response?.body || { error: "Forbidden" }, {
       status: auth.response?.status || 403,
     });
   const body = (await _req.json()) as any;
   const { channelId, program } = body;
   const idx = channels.findIndex((c) => c.id === channelId);
   if (idx === -1)
-    return NextResponse.json({ _error: "Not found" }, { status: 404 });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   channels[idx].programs.push(program);
   return NextResponse.json({ success: true, programs: channels[idx].programs });
 }

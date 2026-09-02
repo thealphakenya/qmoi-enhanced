@@ -49,7 +49,7 @@ class GitHubIntegrationService {
       // Send notification
       await this.sendNotification(payload, fixResults);
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error handling push event:", error);
+      globalThis.console.error("Error handling push event:", error);
       await this.sendErrorNotification(error);
     }
   }

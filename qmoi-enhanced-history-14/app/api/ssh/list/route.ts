@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
     if (!path || !host) {
       return NextResponse.json(
         {
-          _error: "Missing required fields: path, host",
+          error: "Missing required fields: path, host",
           _code: "VALIDATION_001",
         },
         { status: 400 },
@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       {
-        _error: "Internal server error",
+        error: "Internal server error",
         _code: "INTERNAL_500",
       },
       { status: 500 },

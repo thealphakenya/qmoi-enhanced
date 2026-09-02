@@ -60,7 +60,7 @@ export async function GET(request: NextRequest) {
     return response;
   } catch (error) {
     // On error, log the error
-    (globalThis.console as any)?.error?.("Error downloading report:", error);
+    globalThis.console.error("Error downloading report:", error);
     if (!fs.existsSync(logsDir)) fs.mkdirSync(logsDir, { recursive: true });
     const logEntryErr = {
       timestamp: new Date().toISOString(),

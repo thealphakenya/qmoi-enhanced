@@ -50,7 +50,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -67,7 +67,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -297,7 +297,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -314,7 +314,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -544,7 +544,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -561,7 +561,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -791,7 +791,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -808,7 +808,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -1038,7 +1038,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -1055,7 +1055,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -1285,7 +1285,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -1302,7 +1302,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -1532,7 +1532,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -1549,7 +1549,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -1779,7 +1779,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -1796,7 +1796,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -2026,7 +2026,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -2043,7 +2043,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -2273,7 +2273,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -2290,7 +2290,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -2520,7 +2520,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -2537,7 +2537,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -2767,7 +2767,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -2784,7 +2784,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -3014,7 +3014,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -3031,7 +3031,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -3261,7 +3261,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -3278,7 +3278,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -3508,7 +3508,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -3525,7 +3525,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -3755,7 +3755,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -3772,7 +3772,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -4002,7 +4002,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -4019,7 +4019,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -4249,7 +4249,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -4266,7 +4266,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -4496,7 +4496,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -4513,7 +4513,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -4743,7 +4743,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -4760,7 +4760,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -4990,7 +4990,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -5007,7 +5007,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -5237,7 +5237,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -5254,7 +5254,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -5484,7 +5484,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -5501,7 +5501,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -5731,7 +5731,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -5748,7 +5748,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -5978,7 +5978,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -5995,7 +5995,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -6225,7 +6225,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -6242,7 +6242,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -6472,7 +6472,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -6489,7 +6489,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -6719,7 +6719,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -6736,7 +6736,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -6966,7 +6966,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -6983,7 +6983,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -7213,7 +7213,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -7230,7 +7230,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -7460,7 +7460,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -7477,7 +7477,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -7707,7 +7707,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -7724,7 +7724,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -7954,7 +7954,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -7971,7 +7971,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -8201,7 +8201,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -8218,7 +8218,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -8448,7 +8448,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -8465,7 +8465,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {
@@ -8695,7 +8695,7 @@ const HelpLink: React.FC<{ href: string; label: string }> = ({
 export default function PluginPanel() {
   const [plugins, setPlugins] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
   const [removing, setRemoving] = useState<string | null>(null);
   const [configuring, setConfiguring] = useState<string | null>(null);
@@ -8712,7 +8712,7 @@ export default function PluginPanel() {
   const extractMessage = (_e: unknown) =>
     _e && typeof _e === "object" && "message" in _e
       ? String((_e as { message?: unknown }).message)
-      : String(_e);
+      : String(e);
 
   const getPluginsFromData = (d: unknown): string[] => {
     if (d && typeof d === "object" && "plugins" in d) {

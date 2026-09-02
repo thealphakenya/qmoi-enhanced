@@ -19,7 +19,7 @@ export async function POST(_request: NextRequest) {
     // Check if role can access this endpoint
     if (!canAccessEndpoint(userRole, "/api/voice/verify")) {
       return NextResponse.json(
-        { _error: "Unauthorized: Insufficient permissions" },
+        { error: "Unauthorized: Insufficient permissions" },
         { status: 403 },
       );
     }
@@ -28,12 +28,12 @@ export async function POST(_request: NextRequest) {
     const { userId, audioData } = body;
 
     if (!userId || !audioData) {
-      return NextResponse.json({ _error: "Missing fields" }, { status: 400 });
+      return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
 
     if (!fs.existsSync(VOICE_PROFILES_FILE)) {
       return NextResponse.json(
-        { _error: "No voice profile enrolled" },
+        { error: "No voice profile enrolled" },
         { status: 401 },
       );
     }
@@ -43,7 +43,7 @@ export async function POST(_request: NextRequest) {
 
     if (!profile) {
       return NextResponse.json(
-        { _error: "Voice profile not found" },
+        { error: "Voice profile not found" },
         { status: 401 },
       );
     }
@@ -61,7 +61,7 @@ export async function POST(_request: NextRequest) {
 
     if (similarity < 0.75) {
       return NextResponse.json(
-        { _error: "Voice verification failed" },
+        { error: "Voice verification failed" },
         { status: 401 },
       );
     }
@@ -74,9 +74,9 @@ export async function POST(_request: NextRequest) {
       message: "Voice verification successful",
       userRole, // Include role in response for verification
     });
-  } catch (_error) {
+  } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Internal error";
-    return NextResponse.json({ _error: errorMessage }, { status: 500 });
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

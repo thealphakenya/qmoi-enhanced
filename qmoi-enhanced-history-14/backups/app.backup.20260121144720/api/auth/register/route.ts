@@ -15,7 +15,7 @@ export async function POST(_request: NextRequest) {
     // Validate input
     if (!body.email || !body.username || !body.password) {
       return NextResponse.json(
-        { _error: "Missing required fields" },
+        { error: "Missing required fields" },
         { status: 400 },
       );
     }
@@ -23,7 +23,7 @@ export async function POST(_request: NextRequest) {
     // Validate email format
     if (!authService.validateEmail(body.email)) {
       return NextResponse.json(
-        { _error: "Invalid email format" },
+        { error: "Invalid email format" },
         { status: 400 },
       );
     }
@@ -45,7 +45,7 @@ export async function POST(_request: NextRequest) {
     if (!passwordValidationResult.isStrong) {
       return NextResponse.json(
         {
-          _error: "password too weak",
+          error: "password too weak",
           details: passwordValidationResult.errors,
         },
         { status: 400 },
@@ -57,7 +57,7 @@ export async function POST(_request: NextRequest) {
     if (existing) {
       console.warn("REGISTER: existing found for", body.email, existing);
       return NextResponse.json(
-        { _error: "Email already exists" },
+        { error: "Email already exists" },
         { status: 409 },
       );
     }
@@ -78,7 +78,7 @@ export async function POST(_request: NextRequest) {
       const fresh = await userService.getByEmail(user.email);
       if (fresh && (fresh as any).createdAt)
         createdAt = (fresh as any).createdAt;
-    } catch (_e) {
+    } catch (e) {
       void _e; /* ignore */
     }
 
@@ -124,7 +124,7 @@ export async function POST(_request: NextRequest) {
       },
       { status: 201 },
     );
-  } catch (_error) {
+  } catch (error) {
     // Handle unique constraint errors from Prisma mock or generated client
     try {
       const msg = error && (error as any).message;
@@ -134,16 +134,16 @@ export async function POST(_request: NextRequest) {
         (typeof msg === "string" && msg.toLowerCase().includes("unique"))
       ) {
         return NextResponse.json(
-          { _error: "Email already exists" },
+          { error: "Email already exists" },
           { status: 409 },
         );
       }
-    } catch (_e) {
+    } catch (e) {
       void _e; /* ignore */
     }
-    (globalThis.console as any)?.error?.("Registration _error:", _error);
+    globalThis.console.error("Registration error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 },
     );
   }

@@ -81,7 +81,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -91,10 +91,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -107,7 +107,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -125,15 +125,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -224,7 +224,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -234,10 +234,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -250,7 +250,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -268,15 +268,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -367,7 +367,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -377,10 +377,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -393,7 +393,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -411,15 +411,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -510,7 +510,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -520,10 +520,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -536,7 +536,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -554,15 +554,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -653,7 +653,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -663,10 +663,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -679,7 +679,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -697,15 +697,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -796,7 +796,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -806,10 +806,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -822,7 +822,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -840,15 +840,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -939,7 +939,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -949,10 +949,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -965,7 +965,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -983,15 +983,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1082,7 +1082,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -1092,10 +1092,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1108,7 +1108,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -1126,15 +1126,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1225,7 +1225,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -1235,10 +1235,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1251,7 +1251,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -1269,15 +1269,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1368,7 +1368,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -1378,10 +1378,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1394,7 +1394,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -1412,15 +1412,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1511,7 +1511,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -1521,10 +1521,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1537,7 +1537,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -1555,15 +1555,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1654,7 +1654,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -1664,10 +1664,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1680,7 +1680,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -1698,15 +1698,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1797,7 +1797,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -1807,10 +1807,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1823,7 +1823,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -1841,15 +1841,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1940,7 +1940,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -1950,10 +1950,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -1966,7 +1966,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -1984,15 +1984,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2083,7 +2083,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -2093,10 +2093,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2109,7 +2109,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -2127,15 +2127,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2226,7 +2226,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -2236,10 +2236,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2252,7 +2252,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -2270,15 +2270,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2369,7 +2369,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -2379,10 +2379,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2395,7 +2395,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -2413,15 +2413,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2512,7 +2512,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -2522,10 +2522,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2538,7 +2538,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -2556,15 +2556,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2655,7 +2655,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -2665,10 +2665,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2681,7 +2681,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -2699,15 +2699,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2798,7 +2798,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -2808,10 +2808,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2824,7 +2824,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -2842,15 +2842,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2941,7 +2941,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -2951,10 +2951,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -2967,7 +2967,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -2985,15 +2985,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3084,7 +3084,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -3094,10 +3094,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3110,7 +3110,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -3128,15 +3128,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3227,7 +3227,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -3237,10 +3237,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3253,7 +3253,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -3271,15 +3271,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3370,7 +3370,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -3380,10 +3380,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3396,7 +3396,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -3414,15 +3414,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3513,7 +3513,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -3523,10 +3523,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3539,7 +3539,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -3557,15 +3557,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3656,7 +3656,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -3666,10 +3666,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3682,7 +3682,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -3700,15 +3700,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3799,7 +3799,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -3809,10 +3809,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3825,7 +3825,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -3843,15 +3843,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3942,7 +3942,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -3952,10 +3952,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -3968,7 +3968,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -3986,15 +3986,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4085,7 +4085,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -4095,10 +4095,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4111,7 +4111,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -4129,15 +4129,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4228,7 +4228,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -4238,10 +4238,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4254,7 +4254,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -4272,15 +4272,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4371,7 +4371,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -4381,10 +4381,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4397,7 +4397,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -4415,15 +4415,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4514,7 +4514,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -4524,10 +4524,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4540,7 +4540,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -4558,15 +4558,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4657,7 +4657,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -4667,10 +4667,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4683,7 +4683,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -4701,15 +4701,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4800,7 +4800,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -4810,10 +4810,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4826,7 +4826,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -4844,15 +4844,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4943,7 +4943,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -4953,10 +4953,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -4969,7 +4969,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -4987,15 +4987,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5086,7 +5086,7 @@ async function connectToWiFi({
     return {
       success: false,
       message: "Failed to connect to network",
-      _error: "Invalid password or network unreachable",
+      error: "Invalid password or network unreachable",
     };
   }
 }
@@ -5096,10 +5096,10 @@ export async function GET(_request: NextRequest) {
     // Production: Scan WiFi networks using system API/service
     const networks: WiFiNetwork[] = await scanWiFiNetworks();
     return NextResponse.json({ networks });
-  } catch (_error) {
-    (console as any).error("Error in WiFi scan endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi scan endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }
@@ -5112,7 +5112,7 @@ export async function POST(_request: NextRequest) {
 
     if (!ssid || !password) {
       return NextResponse.json(
-        { _error: "SSID and password are required" },
+        { error: "SSID and password are required" },
         { status: 400 },
       );
     }
@@ -5130,15 +5130,15 @@ export async function POST(_request: NextRequest) {
         {
           status: "error",
           message: connectionResult.message,
-          _error: connectionResult.error,
+          error: connectionResult.error,
         },
         { status: 400 },
       );
     }
-  } catch (_error) {
-    (console as any).error("Error in WiFi connection endpoint:", _error);
+  } catch (error) {
+    (console as any).error("Error in WiFi connection endpoint:", error);
     return NextResponse.json(
-      { _error: error instanceof Error ? error.message : "Unknown error" },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 },
     );
   }

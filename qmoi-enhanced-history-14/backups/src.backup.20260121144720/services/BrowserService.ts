@@ -373,15 +373,15 @@ export class BrowserService {
 
       // AI features processing
       await this.processAIFeatures(tab, url);
-    } catch (_error) {
+    } catch (error) {
       tab.isLoading = false;
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       this.eventEmitter.emit("navigationError", {
         tabId,
         url,
-        _error: errMsg,
+        error: errMsg,
       });
-      logger.error(`Navigation failed for tab ${tabId}:`, _error);
+      logger.error(`Navigation failed for tab ${tabId}:`, error);
       throw error;
     }
   }
@@ -408,9 +408,9 @@ export class BrowserService {
               await this.processLiveTV(tab, url);
               break;
           }
-        } catch (_error) {
+        } catch (error) {
           const errDetails =
-            error instanceof Error ? error.message : String(_error);
+            error instanceof Error ? error.message : String(error);
           logger.error(`AI feature ${feature.id} failed: ${errDetails}`);
         }
       }
@@ -656,12 +656,12 @@ export class BrowserService {
 
       download.status = "completed";
       this.eventEmitter.emit("downloadCompleted", download);
-    } catch (_error) {
+    } catch (error) {
       download.status = "failed";
-      const errMsg = error instanceof Error ? error.message : String(_error);
+      const errMsg = error instanceof Error ? error.message : String(error);
       this.eventEmitter.emit("downloadFailed", {
         downloadId,
-        _error: errMsg,
+        error: errMsg,
       });
     }
   }
@@ -782,7 +782,7 @@ export class BrowserService {
   }
 
   public onNavigationError(
-    callback: (data: { tabId: string; url: string; _error: string }) => void,
+    callback: (data: { tabId: string; url: string; error: string }) => void,
   ): void {
     this.eventEmitter.on("navigationError", callback);
   }

@@ -14,7 +14,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -31,7 +31,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,7 +48,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -66,7 +66,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -83,7 +83,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -184,7 +184,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -201,7 +201,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -218,7 +218,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -236,7 +236,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -253,7 +253,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -354,7 +354,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -371,7 +371,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -388,7 +388,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -406,7 +406,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -423,7 +423,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -524,7 +524,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -541,7 +541,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -558,7 +558,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -576,7 +576,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -593,7 +593,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -694,7 +694,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -711,7 +711,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -728,7 +728,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -746,7 +746,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -763,7 +763,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -864,7 +864,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -881,7 +881,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -898,7 +898,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -916,7 +916,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -933,7 +933,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -1034,7 +1034,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -1051,7 +1051,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -1068,7 +1068,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -1086,7 +1086,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1103,7 +1103,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -1204,7 +1204,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -1221,7 +1221,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -1238,7 +1238,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -1256,7 +1256,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1273,7 +1273,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -1374,7 +1374,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -1391,7 +1391,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -1408,7 +1408,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -1426,7 +1426,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1443,7 +1443,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -1544,7 +1544,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -1561,7 +1561,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -1578,7 +1578,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -1596,7 +1596,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1613,7 +1613,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -1714,7 +1714,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -1731,7 +1731,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -1748,7 +1748,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -1766,7 +1766,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1783,7 +1783,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -1884,7 +1884,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -1901,7 +1901,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -1918,7 +1918,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -1936,7 +1936,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -1953,7 +1953,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -2054,7 +2054,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -2071,7 +2071,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -2088,7 +2088,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -2106,7 +2106,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -2123,7 +2123,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -2224,7 +2224,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -2241,7 +2241,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -2258,7 +2258,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -2276,7 +2276,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -2293,7 +2293,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -2394,7 +2394,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -2411,7 +2411,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -2428,7 +2428,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -2446,7 +2446,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -2463,7 +2463,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -2564,7 +2564,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -2581,7 +2581,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -2598,7 +2598,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -2616,7 +2616,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -2633,7 +2633,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -2734,7 +2734,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -2751,7 +2751,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -2768,7 +2768,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -2786,7 +2786,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -2803,7 +2803,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -2904,7 +2904,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -2921,7 +2921,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -2938,7 +2938,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -2956,7 +2956,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -2973,7 +2973,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -3074,7 +3074,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -3091,7 +3091,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -3108,7 +3108,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -3126,7 +3126,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -3143,7 +3143,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -3244,7 +3244,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -3261,7 +3261,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -3278,7 +3278,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -3296,7 +3296,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -3313,7 +3313,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -3414,7 +3414,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -3431,7 +3431,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -3448,7 +3448,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -3466,7 +3466,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -3483,7 +3483,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -3584,7 +3584,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -3601,7 +3601,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -3618,7 +3618,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -3636,7 +3636,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -3653,7 +3653,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -3754,7 +3754,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -3771,7 +3771,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -3788,7 +3788,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -3806,7 +3806,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -3823,7 +3823,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -3924,7 +3924,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -3941,7 +3941,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -3958,7 +3958,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -3976,7 +3976,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -3993,7 +3993,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -4094,7 +4094,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -4111,7 +4111,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -4128,7 +4128,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -4146,7 +4146,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -4163,7 +4163,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -4264,7 +4264,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -4281,7 +4281,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -4298,7 +4298,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -4316,7 +4316,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -4333,7 +4333,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -4434,7 +4434,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -4451,7 +4451,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -4468,7 +4468,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -4486,7 +4486,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -4503,7 +4503,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -4604,7 +4604,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -4621,7 +4621,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -4638,7 +4638,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -4656,7 +4656,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -4673,7 +4673,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -4774,7 +4774,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -4791,7 +4791,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -4808,7 +4808,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -4826,7 +4826,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -4843,7 +4843,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -4944,7 +4944,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -4961,7 +4961,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -4978,7 +4978,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -4996,7 +4996,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -5013,7 +5013,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -5114,7 +5114,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -5131,7 +5131,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -5148,7 +5148,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -5166,7 +5166,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -5183,7 +5183,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -5284,7 +5284,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -5301,7 +5301,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -5318,7 +5318,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -5336,7 +5336,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -5353,7 +5353,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -5454,7 +5454,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -5471,7 +5471,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -5488,7 +5488,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -5506,7 +5506,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -5523,7 +5523,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -5624,7 +5624,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -5641,7 +5641,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -5658,7 +5658,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -5676,7 +5676,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -5693,7 +5693,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -5794,7 +5794,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -5811,7 +5811,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -5828,7 +5828,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -5846,7 +5846,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -5863,7 +5863,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);
@@ -5964,7 +5964,7 @@ export function WalletList() {
   const router = useRouter();
   const [wallets, setWallets] = useState<Wallet[]>([]);
   const [loading, setLoading] = useState(true);
-  const [_error, setError] = useState("");
+  const [error, setError] = useState("");
   const [creatingWallet, setCreatingWallet] = useState(false);
   const [newCurrency, setNewCurrency] = useState("KES");
 
@@ -5981,7 +5981,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -5998,7 +5998,7 @@ export function WalletList() {
 
       const data = await response.json();
       setWallets(data.wallets || []);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -6016,7 +6016,7 @@ export function WalletList() {
         return;
       }
 
-      const _response = await fetch("/api/wallets", {
+      const response = await fetch("/api/wallets", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -6033,7 +6033,7 @@ export function WalletList() {
       const newWallet = await response.json();
       setWallets([...wallets, newWallet]);
       setNewCurrency("KES");
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setCreatingWallet(false);

@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
         });
     }
   } catch (error) {
-    (globalThis.console as any)?.error?.("Revenue API error:", error);
+    globalThis.console.error("Revenue API error:", error);
     logEvent("revenue_api_error", { error: error.message });
     return NextResponse.json(
       { error: "Internal server error" },
@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: "Invalid action" }, { status: 400 });
     }
   } catch (error) {
-    (globalThis.console as any)?.error?.("Revenue API POST error:", error);
+    globalThis.console.error("Revenue API POST error:", error);
     logEvent("revenue_api_post_error", { error: error.message });
     return NextResponse.json(
       { error: "Internal server error" },

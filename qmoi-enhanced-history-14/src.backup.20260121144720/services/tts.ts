@@ -29,7 +29,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -73,7 +73,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -117,7 +117,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -161,7 +161,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -205,7 +205,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -249,7 +249,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -293,7 +293,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -337,7 +337,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -381,7 +381,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -425,7 +425,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -469,7 +469,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -513,7 +513,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -557,7 +557,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -601,7 +601,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -645,7 +645,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -689,7 +689,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -733,7 +733,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -777,7 +777,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -821,7 +821,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -865,7 +865,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -909,7 +909,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -953,7 +953,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -997,7 +997,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1041,7 +1041,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1085,7 +1085,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1129,7 +1129,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1173,7 +1173,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1217,7 +1217,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1261,7 +1261,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1305,7 +1305,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1349,7 +1349,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1393,7 +1393,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1437,7 +1437,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1481,7 +1481,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1525,7 +1525,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }
@@ -1569,7 +1569,7 @@ export function playSSML(
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utter);
     return true;
-  } catch (_e) {
+  } catch (e) {
     console.warn("TTS playback failed", _e);
     return false;
   }

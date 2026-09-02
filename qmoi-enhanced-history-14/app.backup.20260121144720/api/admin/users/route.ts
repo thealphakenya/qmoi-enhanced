@@ -14,7 +14,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -23,9 +23,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -33,7 +33,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -46,7 +46,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -109,10 +109,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -129,7 +129,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -138,9 +138,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -148,7 +148,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -161,7 +161,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -172,7 +172,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -214,10 +214,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -234,7 +234,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -243,9 +243,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -254,7 +254,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -265,7 +265,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -274,7 +274,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -303,10 +303,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -330,7 +330,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -339,9 +339,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -349,7 +349,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -362,7 +362,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -425,10 +425,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -445,7 +445,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -454,9 +454,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -464,7 +464,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -477,7 +477,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -488,7 +488,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -530,10 +530,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -550,7 +550,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -559,9 +559,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -570,7 +570,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -581,7 +581,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -590,7 +590,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -619,10 +619,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -646,7 +646,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -655,9 +655,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -665,7 +665,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -678,7 +678,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -741,10 +741,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -761,7 +761,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -770,9 +770,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -780,7 +780,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -793,7 +793,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -804,7 +804,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -846,10 +846,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -866,7 +866,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -875,9 +875,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -886,7 +886,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -897,7 +897,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -906,7 +906,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -935,10 +935,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -962,7 +962,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -971,9 +971,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -981,7 +981,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -994,7 +994,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1057,10 +1057,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1077,7 +1077,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1086,9 +1086,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1096,7 +1096,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -1109,7 +1109,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1120,7 +1120,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -1162,10 +1162,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1182,7 +1182,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1191,9 +1191,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1202,7 +1202,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1213,7 +1213,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -1222,7 +1222,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -1251,10 +1251,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1278,7 +1278,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1287,9 +1287,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1297,7 +1297,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -1310,7 +1310,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1373,10 +1373,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1393,7 +1393,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1402,9 +1402,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1412,7 +1412,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -1425,7 +1425,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1436,7 +1436,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -1478,10 +1478,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1498,7 +1498,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1507,9 +1507,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1518,7 +1518,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1529,7 +1529,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -1538,7 +1538,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -1567,10 +1567,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1594,7 +1594,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1603,9 +1603,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1613,7 +1613,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -1626,7 +1626,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1689,10 +1689,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1709,7 +1709,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1718,9 +1718,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1728,7 +1728,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -1741,7 +1741,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1752,7 +1752,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -1794,10 +1794,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1814,7 +1814,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1823,9 +1823,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1834,7 +1834,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -1845,7 +1845,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -1854,7 +1854,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -1883,10 +1883,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -1910,7 +1910,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -1919,9 +1919,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -1929,7 +1929,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -1942,7 +1942,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2005,10 +2005,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2025,7 +2025,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2034,9 +2034,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2044,7 +2044,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -2057,7 +2057,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2068,7 +2068,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -2110,10 +2110,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2130,7 +2130,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2139,9 +2139,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2150,7 +2150,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2161,7 +2161,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -2170,7 +2170,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -2199,10 +2199,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2226,7 +2226,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2235,9 +2235,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2245,7 +2245,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -2258,7 +2258,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2321,10 +2321,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2341,7 +2341,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2350,9 +2350,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2360,7 +2360,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -2373,7 +2373,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2384,7 +2384,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -2426,10 +2426,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2446,7 +2446,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2455,9 +2455,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2466,7 +2466,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2477,7 +2477,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -2486,7 +2486,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -2515,10 +2515,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2542,7 +2542,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2551,9 +2551,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2561,7 +2561,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -2574,7 +2574,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2637,10 +2637,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2657,7 +2657,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2666,9 +2666,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2676,7 +2676,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -2689,7 +2689,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2700,7 +2700,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -2742,10 +2742,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2762,7 +2762,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2771,9 +2771,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2782,7 +2782,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2793,7 +2793,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -2802,7 +2802,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -2831,10 +2831,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2858,7 +2858,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2867,9 +2867,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2877,7 +2877,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -2890,7 +2890,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -2953,10 +2953,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -2973,7 +2973,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -2982,9 +2982,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -2992,7 +2992,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -3005,7 +3005,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3016,7 +3016,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -3058,10 +3058,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3078,7 +3078,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3087,9 +3087,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3098,7 +3098,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3109,7 +3109,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -3118,7 +3118,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -3147,10 +3147,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3174,7 +3174,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3183,9 +3183,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3193,7 +3193,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -3206,7 +3206,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3269,10 +3269,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3289,7 +3289,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3298,9 +3298,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3308,7 +3308,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -3321,7 +3321,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3332,7 +3332,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -3374,10 +3374,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3394,7 +3394,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3403,9 +3403,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3414,7 +3414,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3425,7 +3425,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -3434,7 +3434,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -3463,10 +3463,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3490,7 +3490,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3499,9 +3499,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3509,7 +3509,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -3522,7 +3522,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3585,10 +3585,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3605,7 +3605,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3614,9 +3614,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3624,7 +3624,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -3637,7 +3637,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3648,7 +3648,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -3690,10 +3690,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3710,7 +3710,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3719,9 +3719,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3730,7 +3730,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3741,7 +3741,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -3750,7 +3750,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -3779,10 +3779,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3806,7 +3806,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3815,9 +3815,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3825,7 +3825,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -3838,7 +3838,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3901,10 +3901,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -3921,7 +3921,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -3930,9 +3930,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -3940,7 +3940,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -3953,7 +3953,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -3964,7 +3964,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -4006,10 +4006,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4026,7 +4026,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4035,9 +4035,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4046,7 +4046,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4057,7 +4057,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -4066,7 +4066,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -4095,10 +4095,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4122,7 +4122,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4131,9 +4131,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4141,7 +4141,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -4154,7 +4154,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4217,10 +4217,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4237,7 +4237,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4246,9 +4246,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4256,7 +4256,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -4269,7 +4269,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4280,7 +4280,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -4322,10 +4322,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4342,7 +4342,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4351,9 +4351,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4362,7 +4362,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4373,7 +4373,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -4382,7 +4382,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -4411,10 +4411,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4438,7 +4438,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4447,9 +4447,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4457,7 +4457,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -4470,7 +4470,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4533,10 +4533,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4553,7 +4553,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4562,9 +4562,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4572,7 +4572,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -4585,7 +4585,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4596,7 +4596,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -4638,10 +4638,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4658,7 +4658,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4667,9 +4667,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4678,7 +4678,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4689,7 +4689,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -4698,7 +4698,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -4727,10 +4727,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4754,7 +4754,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4763,9 +4763,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4773,7 +4773,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -4786,7 +4786,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4849,10 +4849,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4869,7 +4869,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4878,9 +4878,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4888,7 +4888,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -4901,7 +4901,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -4912,7 +4912,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -4954,10 +4954,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -4974,7 +4974,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -4983,9 +4983,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -4994,7 +4994,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5005,7 +5005,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -5014,7 +5014,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -5043,10 +5043,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5070,7 +5070,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5079,9 +5079,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5089,7 +5089,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -5102,7 +5102,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5165,10 +5165,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5185,7 +5185,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5194,9 +5194,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5204,7 +5204,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -5217,7 +5217,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5228,7 +5228,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -5270,10 +5270,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5290,7 +5290,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5299,9 +5299,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5310,7 +5310,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5321,7 +5321,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -5330,7 +5330,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -5359,10 +5359,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5386,7 +5386,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5395,9 +5395,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5405,7 +5405,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -5418,7 +5418,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5481,10 +5481,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5501,7 +5501,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5510,9 +5510,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5520,7 +5520,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -5533,7 +5533,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5544,7 +5544,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -5586,10 +5586,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5606,7 +5606,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5615,9 +5615,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5626,7 +5626,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5637,7 +5637,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -5646,7 +5646,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -5675,10 +5675,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5702,7 +5702,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5711,9 +5711,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5721,7 +5721,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -5734,7 +5734,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5797,10 +5797,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5817,7 +5817,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5826,9 +5826,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5836,7 +5836,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -5849,7 +5849,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5860,7 +5860,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -5902,10 +5902,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -5922,7 +5922,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -5931,9 +5931,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -5942,7 +5942,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -5953,7 +5953,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -5962,7 +5962,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -5991,10 +5991,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6018,7 +6018,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6027,9 +6027,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6037,7 +6037,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -6050,7 +6050,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6113,10 +6113,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6133,7 +6133,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6142,9 +6142,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6152,7 +6152,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -6165,7 +6165,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6176,7 +6176,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -6218,10 +6218,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6238,7 +6238,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6247,9 +6247,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6258,7 +6258,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6269,7 +6269,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -6278,7 +6278,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -6307,10 +6307,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6334,7 +6334,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6343,9 +6343,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6353,7 +6353,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -6366,7 +6366,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6429,10 +6429,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6449,7 +6449,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6458,9 +6458,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6468,7 +6468,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -6481,7 +6481,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6492,7 +6492,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -6534,10 +6534,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6554,7 +6554,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6563,9 +6563,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6574,7 +6574,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6585,7 +6585,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -6594,7 +6594,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -6623,10 +6623,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6650,7 +6650,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6659,9 +6659,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6669,7 +6669,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -6682,7 +6682,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6745,10 +6745,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6765,7 +6765,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6774,9 +6774,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6784,7 +6784,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -6797,7 +6797,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6808,7 +6808,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -6850,10 +6850,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6870,7 +6870,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6879,9 +6879,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6890,7 +6890,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -6901,7 +6901,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -6910,7 +6910,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -6939,10 +6939,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -6966,7 +6966,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -6975,9 +6975,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -6985,7 +6985,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -6998,7 +6998,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7061,10 +7061,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7081,7 +7081,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7090,9 +7090,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7100,7 +7100,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -7113,7 +7113,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7124,7 +7124,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -7166,10 +7166,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7186,7 +7186,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7195,9 +7195,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7206,7 +7206,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7217,7 +7217,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -7226,7 +7226,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -7255,10 +7255,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7282,7 +7282,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7291,9 +7291,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7301,7 +7301,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -7314,7 +7314,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7377,10 +7377,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7397,7 +7397,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7406,9 +7406,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7416,7 +7416,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -7429,7 +7429,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7440,7 +7440,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -7482,10 +7482,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7502,7 +7502,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7511,9 +7511,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7522,7 +7522,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7533,7 +7533,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -7542,7 +7542,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -7571,10 +7571,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7598,7 +7598,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7607,9 +7607,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7617,7 +7617,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -7630,7 +7630,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7693,10 +7693,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7713,7 +7713,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7722,9 +7722,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7732,7 +7732,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -7745,7 +7745,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7756,7 +7756,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -7798,10 +7798,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7818,7 +7818,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7827,9 +7827,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7838,7 +7838,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -7849,7 +7849,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -7858,7 +7858,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -7887,10 +7887,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -7914,7 +7914,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -7923,9 +7923,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -7933,7 +7933,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -7946,7 +7946,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8009,10 +8009,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8029,7 +8029,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8038,9 +8038,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8048,7 +8048,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -8061,7 +8061,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8072,7 +8072,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -8114,10 +8114,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8134,7 +8134,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8143,9 +8143,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8154,7 +8154,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8165,7 +8165,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -8174,7 +8174,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -8203,10 +8203,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8230,7 +8230,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8239,9 +8239,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8249,7 +8249,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -8262,7 +8262,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8325,10 +8325,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8345,7 +8345,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8354,9 +8354,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8364,7 +8364,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -8377,7 +8377,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8388,7 +8388,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -8430,10 +8430,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8450,7 +8450,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8459,9 +8459,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8470,7 +8470,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8481,7 +8481,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -8490,7 +8490,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -8519,10 +8519,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8546,7 +8546,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8555,9 +8555,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8565,7 +8565,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -8578,7 +8578,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8641,10 +8641,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8661,7 +8661,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8670,9 +8670,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8680,7 +8680,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -8693,7 +8693,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8704,7 +8704,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -8746,10 +8746,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8766,7 +8766,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8775,9 +8775,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8786,7 +8786,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8797,7 +8797,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -8806,7 +8806,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -8835,10 +8835,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8862,7 +8862,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8871,9 +8871,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8881,7 +8881,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -8894,7 +8894,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -8957,10 +8957,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -8977,7 +8977,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -8986,9 +8986,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -8996,7 +8996,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -9009,7 +9009,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9020,7 +9020,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -9062,10 +9062,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9082,7 +9082,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9091,9 +9091,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9102,7 +9102,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9113,7 +9113,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -9122,7 +9122,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -9151,10 +9151,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9178,7 +9178,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9187,9 +9187,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9197,7 +9197,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -9210,7 +9210,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9273,10 +9273,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9293,7 +9293,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9302,9 +9302,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9312,7 +9312,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -9325,7 +9325,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9336,7 +9336,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -9378,10 +9378,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9398,7 +9398,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9407,9 +9407,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9418,7 +9418,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9429,7 +9429,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -9438,7 +9438,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -9467,10 +9467,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9494,7 +9494,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9503,9 +9503,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9513,7 +9513,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -9526,7 +9526,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9589,10 +9589,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9609,7 +9609,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9618,9 +9618,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9628,7 +9628,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -9641,7 +9641,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9652,7 +9652,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -9694,10 +9694,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9714,7 +9714,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9723,9 +9723,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9734,7 +9734,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9745,7 +9745,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -9754,7 +9754,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -9783,10 +9783,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9810,7 +9810,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9819,9 +9819,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9829,7 +9829,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -9842,7 +9842,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9905,10 +9905,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -9925,7 +9925,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -9934,9 +9934,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -9944,7 +9944,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -9957,7 +9957,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -9968,7 +9968,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -10010,10 +10010,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10030,7 +10030,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10039,9 +10039,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10050,7 +10050,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10061,7 +10061,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -10070,7 +10070,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -10099,10 +10099,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10126,7 +10126,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10135,9 +10135,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10145,7 +10145,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -10158,7 +10158,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10221,10 +10221,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10241,7 +10241,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10250,9 +10250,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10260,7 +10260,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -10273,7 +10273,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10284,7 +10284,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -10326,10 +10326,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10346,7 +10346,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10355,9 +10355,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10366,7 +10366,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10377,7 +10377,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -10386,7 +10386,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -10415,10 +10415,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10442,7 +10442,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10451,9 +10451,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10461,7 +10461,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -10474,7 +10474,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10537,10 +10537,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10557,7 +10557,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10566,9 +10566,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10576,7 +10576,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -10589,7 +10589,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10600,7 +10600,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -10642,10 +10642,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10662,7 +10662,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10671,9 +10671,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10682,7 +10682,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10693,7 +10693,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -10702,7 +10702,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -10731,10 +10731,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10758,7 +10758,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10767,9 +10767,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10777,7 +10777,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -10790,7 +10790,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10853,10 +10853,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10873,7 +10873,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10882,9 +10882,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10892,7 +10892,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -10905,7 +10905,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -10916,7 +10916,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -10958,10 +10958,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -10978,7 +10978,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -10987,9 +10987,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -10998,7 +10998,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -11009,7 +11009,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -11018,7 +11018,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -11047,10 +11047,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -11074,7 +11074,7 @@ export async function GET(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -11083,9 +11083,9 @@ export async function GET(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -11093,7 +11093,7 @@ export async function GET(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -11106,7 +11106,7 @@ export async function GET(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -11169,10 +11169,10 @@ export async function GET(_request: NextRequest) {
       },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Admin users _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Admin users error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -11189,7 +11189,7 @@ export async function PUT(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -11198,9 +11198,9 @@ export async function PUT(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -11208,7 +11208,7 @@ export async function PUT(_request: NextRequest) {
     if (!decoded || !decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Invalid token (missing userId)",
             code: "INVALID_TOKEN",
           },
@@ -11221,7 +11221,7 @@ export async function PUT(_request: NextRequest) {
     const user = await db.userService.findById(String(decoded.userId));
     if (!user || user.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -11232,7 +11232,7 @@ export async function PUT(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -11274,10 +11274,10 @@ export async function PUT(_request: NextRequest) {
       { message: "User updated successfully", user: updatedUser },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Update user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Update user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }
@@ -11294,7 +11294,7 @@ export async function DELETE(_request: NextRequest) {
     if (!token) {
       return NextResponse.json(
         {
-          _error: { message: "Missing authorization token", code: "NO_TOKEN" },
+          error: { message: "Missing authorization token", code: "NO_TOKEN" },
         },
         { status: 401 },
       );
@@ -11303,9 +11303,9 @@ export async function DELETE(_request: NextRequest) {
     let decoded;
     try {
       decoded = authService.verifyToken(token);
-    } catch (_error) {
+    } catch (error) {
       return NextResponse.json(
-        { _error: { message: "Invalid token", code: "INVALID_TOKEN" } },
+        { error: { message: "Invalid token", code: "INVALID_TOKEN" } },
         { status: 401 },
       );
     }
@@ -11314,7 +11314,7 @@ export async function DELETE(_request: NextRequest) {
     const admin = await db.userService.findById(decoded.userId);
     if (!admin || admin.role !== "admin") {
       return NextResponse.json(
-        { _error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
+        { error: { message: "Insufficient permissions", code: "FORBIDDEN" } },
         { status: 403 },
       );
     }
@@ -11325,7 +11325,7 @@ export async function DELETE(_request: NextRequest) {
 
     if (!userId) {
       return NextResponse.json(
-        { _error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
+        { error: { message: "Missing user ID", code: "INVALID_REQUEST" } },
         { status: 400 },
       );
     }
@@ -11334,7 +11334,7 @@ export async function DELETE(_request: NextRequest) {
     if (userId === decoded.userId) {
       return NextResponse.json(
         {
-          _error: {
+          error: {
             message: "Cannot delete your own account",
             code: "INVALID_REQUEST",
           },
@@ -11363,10 +11363,10 @@ export async function DELETE(_request: NextRequest) {
       { message: "User deleted successfully" },
       { status: 200 },
     );
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Delete user _error:", _error);
+  } catch (error) {
+    globalThis.console.error("Delete user error:", error);
     return NextResponse.json(
-      { _error: { message: "Internal server error", code: "SERVER_ERROR" } },
+      { error: { message: "Internal server error", code: "SERVER_ERROR" } },
       { status: 500 },
     );
   }

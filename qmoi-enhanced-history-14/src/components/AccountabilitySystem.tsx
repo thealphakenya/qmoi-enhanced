@@ -94,7 +94,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
   const safeParse = (s: unknown) => {
     try {
       return typeof s === "string" ? JSON.parse(s || "{}") : s || {};
-    } catch (_e) {
+    } catch (e) {
       return {};
     }
   };
@@ -130,7 +130,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         generateSampleLogs();
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Failed to load audit logs:", error);
+      globalThis.console.error("Failed to load audit logs:", error);
       generateSampleLogs();
     }
   }, []);
@@ -205,7 +205,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           }),
         });
       } catch (error) {
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           "Failed to save sample log:",
           error,
         );
@@ -309,7 +309,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
           detectAnomalies(newLog);
         }
       } else {
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           "Failed to log action to database",
         );
         // Fallback to local state update
@@ -327,7 +327,7 @@ export const AccountabilitySystem: React.FC<AccountabilitySystemProps> = ({
         setAuditLogs((prev) => [newLog, ...prev]);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.("Error logging action:", error);
+      globalThis.console.error("Error logging action:", error);
       // Fallback to local state
       const newLog: AuditLog = {
         id: `log-${Date.now()}`,

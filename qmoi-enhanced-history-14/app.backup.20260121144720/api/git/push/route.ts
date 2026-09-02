@@ -18,11 +18,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -51,11 +51,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -84,11 +84,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -117,11 +117,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -150,11 +150,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -183,11 +183,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -216,11 +216,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -249,11 +249,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -282,11 +282,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -315,11 +315,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -348,11 +348,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -381,11 +381,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -414,11 +414,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -447,11 +447,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -480,11 +480,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -513,11 +513,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -546,11 +546,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -579,11 +579,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -612,11 +612,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -645,11 +645,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -678,11 +678,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -711,11 +711,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -744,11 +744,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -777,11 +777,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -810,11 +810,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -843,11 +843,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -876,11 +876,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -909,11 +909,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -942,11 +942,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -975,11 +975,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1008,11 +1008,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1041,11 +1041,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1074,11 +1074,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1107,11 +1107,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1140,11 +1140,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );
@@ -1173,11 +1173,11 @@ export async function POST(_req: NextRequest) {
       branch,
       output: pushOutput,
     });
-  } catch (_error: unknown) {
+  } catch (error: unknown) {
     return NextResponse.json(
       {
-        _error: "Failed to push changes",
-        details: error instanceof Error ? error.message : String(_error),
+        error: "Failed to push changes",
+        details: error instanceof Error ? error.message : String(error),
       },
       { status: 500 },
     );

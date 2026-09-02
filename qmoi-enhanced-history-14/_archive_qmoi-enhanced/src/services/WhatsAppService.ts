@@ -140,7 +140,7 @@ export class WhatsAppService {
 
     // Authentication failure
     this.client.on("auth_failure", async (message: string) => {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "❌ WhatsApp authentication failed:",
         message,
       );
@@ -242,7 +242,7 @@ Time: ${this.qrCodeStatus.timestamp.toLocaleString()}`;
       // Send backup verification
       await this.sendBackupVerification();
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Error sending QR code notifications:",
         error,
       );
@@ -297,7 +297,7 @@ Time: ${new Date().toLocaleString()}`;
         await this.forwardToMaster(message);
       }
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Error handling incoming message:",
         error,
       );
@@ -614,7 +614,7 @@ Master Commands:
       console.log("🚀 Starting WhatsApp service...");
       await this.client.initialize();
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Error starting WhatsApp service:",
         error,
       );
@@ -628,7 +628,7 @@ Master Commands:
       await this.client.destroy();
       this.isConnected = false;
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Error stopping WhatsApp service:",
         error,
       );
@@ -645,7 +645,7 @@ Master Commands:
       await this.client.sendMessage(chatId, message);
       console.log(`📤 Message sent to ${to}`);
     } catch (error) {
-      (globalThis.console as any)?.error?.(
+      globalThis.console.error(
         "Error sending WhatsApp message:",
         error,
       );
@@ -674,7 +674,7 @@ Master Commands:
         await this.sendMessage(contact, message);
         await this.sleep(1000); // Delay between messages
       } catch (error) {
-        (globalThis.console as any)?.error?.(
+        globalThis.console.error(
           `Error broadcasting to ${contact}:`,
           error,
         );

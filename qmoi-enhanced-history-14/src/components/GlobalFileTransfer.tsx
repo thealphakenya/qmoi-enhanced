@@ -27,7 +27,7 @@ export const GlobalFileTransfer: React.FC = () => {
         setStatus(`Transfer failed: ${result?.error || "unknown"}`);
       }
     } catch (err) {
-      (globalThis.console as any)?.error?.("uploadFile failed", err);
+      globalThis.console.error("uploadFile failed", err);
       setStatus("Transfer error");
     }
   };

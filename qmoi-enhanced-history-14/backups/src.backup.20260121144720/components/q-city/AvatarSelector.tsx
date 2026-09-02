@@ -81,7 +81,7 @@ export function AvatarSelector({
       setSelectedAvatar(avatarId);
 
       // Call API to switch avatar
-      const _response = await fetch("/api/qmoi/avatars", {
+      const response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "switch", avatarId }),
@@ -98,8 +98,8 @@ export function AvatarSelector({
           avatarsConfig.find((a) => a.id === avatarId)?.name
         } avatar.`,
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Error",
         description: "Failed to switch avatar. Please try again.",
@@ -113,7 +113,7 @@ export function AvatarSelector({
   const handleUpgrade = async (avatarId: string) => {
     setIsLoading(true);
     try {
-      const _response = await fetch("/api/qmoi/avatars", {
+      const response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({ action: "upgrade", avatarId }),
@@ -125,8 +125,8 @@ export function AvatarSelector({
         title: "Avatar Upgraded",
         description: "Avatar has been successfully upgraded with new features.",
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Upgrade Error",
         description: "Failed to upgrade avatar. Please try again.",
@@ -141,7 +141,7 @@ export function AvatarSelector({
     setIsLoading(true);
     try {
       const avatar = avatarsConfig.find((a) => a.id === avatarId);
-      const _response = await fetch("/api/qmoi/avatars", {
+      const response = await fetch("/api/qmoi/avatars", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...getSessionHeaders() },
         body: JSON.stringify({
@@ -159,8 +159,8 @@ export function AvatarSelector({
         description:
           "Avatar has been enhanced with improved quality and features.",
       });
-    } catch (_e: unknown) {
-      console.warn(String(_e));
+    } catch (e: unknown) {
+      console.warn(String(e));
       toast({
         title: "Enhancement Error",
         description: "Failed to enhance avatar. Please try again.",

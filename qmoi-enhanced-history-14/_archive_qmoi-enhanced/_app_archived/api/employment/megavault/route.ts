@@ -65,7 +65,7 @@ async function backupCredentialsSafe(credentials: unknown, platform: string) {
     console.log(`Safe backup for ${platform}:`, masked);
     // Intentionally do not send raw credentials anywhere.
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Failed to create safe backup for megavault credentials:",
       error,
     );
@@ -89,7 +89,7 @@ async function initializePayPalAccount() {
 
     return { success: true, account: accountData };
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Failed to initialize PayPal account:",
       error,
     );
@@ -128,7 +128,7 @@ async function processPayPalTransaction(transactionData: unknown) {
     const result = await response.text();
     return { success: true, transactionId: result, provider: "paypal" };
   } catch (error) {
-    (globalThis.console as any)?.error?.("PayPal transaction failed:", error);
+    globalThis.console.error("PayPal transaction failed:", error);
     return { success: false, error: "PayPal transaction failed" };
   }
 }
@@ -208,7 +208,7 @@ async function distributeDividends(distributionData: unknown) {
 
     return { success: true, distributions, totalAmount };
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "Dividend distribution failed:",
       error,
     );

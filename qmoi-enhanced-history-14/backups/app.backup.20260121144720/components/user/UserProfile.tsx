@@ -43,7 +43,7 @@ export function UserProfile() {
         return;
       }
 
-      const _response = await fetch("/api/users/profile", {
+      const response = await fetch("/api/users/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -67,7 +67,7 @@ export function UserProfile() {
         dateOfBirth: data.dateOfBirth || "",
         bio: data.bio || "",
       });
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setLoading(false);
@@ -95,7 +95,7 @@ export function UserProfile() {
         return;
       }
 
-      const _response = await fetch("/api/users/profile", {
+      const response = await fetch("/api/users/profile", {
         method: "PUT",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -112,7 +112,7 @@ export function UserProfile() {
       const updatedProfile = await response.json();
       setProfile(updatedProfile);
       setEditing(false);
-    } catch (_err) {
+    } catch (err) {
       setError(_err instanceof Error ? _err.message : "An error occurred");
     } finally {
       setSaving(false);

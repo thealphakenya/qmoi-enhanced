@@ -9,7 +9,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -17,11 +17,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -43,10 +43,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -57,7 +57,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -65,11 +65,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -87,10 +87,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -109,7 +109,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -117,11 +117,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -143,10 +143,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -157,7 +157,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -165,11 +165,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -187,10 +187,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -209,7 +209,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -217,11 +217,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -243,10 +243,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -257,7 +257,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -265,11 +265,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -287,10 +287,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -309,7 +309,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -317,11 +317,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -343,10 +343,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -357,7 +357,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -365,11 +365,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -387,10 +387,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -409,7 +409,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -417,11 +417,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -443,10 +443,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -457,7 +457,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -465,11 +465,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -487,10 +487,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -509,7 +509,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -517,11 +517,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -543,10 +543,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -557,7 +557,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -565,11 +565,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -587,10 +587,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -609,7 +609,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -617,11 +617,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -643,10 +643,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -657,7 +657,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -665,11 +665,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -687,10 +687,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -709,7 +709,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -717,11 +717,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -743,10 +743,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -757,7 +757,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -765,11 +765,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -787,10 +787,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -809,7 +809,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -817,11 +817,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -843,10 +843,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -857,7 +857,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -865,11 +865,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -887,10 +887,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -909,7 +909,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -917,11 +917,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -943,10 +943,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -957,7 +957,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -965,11 +965,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -987,10 +987,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1009,7 +1009,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1017,11 +1017,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1043,10 +1043,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1057,7 +1057,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1065,11 +1065,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1087,10 +1087,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1109,7 +1109,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1117,11 +1117,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1143,10 +1143,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1157,7 +1157,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1165,11 +1165,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1187,10 +1187,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1209,7 +1209,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1217,11 +1217,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1243,10 +1243,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1257,7 +1257,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1265,11 +1265,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1287,10 +1287,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1309,7 +1309,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1317,11 +1317,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1343,10 +1343,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1357,7 +1357,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1365,11 +1365,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1387,10 +1387,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1409,7 +1409,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1417,11 +1417,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1443,10 +1443,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1457,7 +1457,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1465,11 +1465,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1487,10 +1487,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1509,7 +1509,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1517,11 +1517,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1543,10 +1543,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1557,7 +1557,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1565,11 +1565,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1587,10 +1587,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1609,7 +1609,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1617,11 +1617,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1643,10 +1643,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1657,7 +1657,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1665,11 +1665,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1687,10 +1687,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1709,7 +1709,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1717,11 +1717,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1743,10 +1743,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1757,7 +1757,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1765,11 +1765,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1787,10 +1787,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1809,7 +1809,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1817,11 +1817,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1843,10 +1843,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1857,7 +1857,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1865,11 +1865,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1887,10 +1887,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1909,7 +1909,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1917,11 +1917,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -1943,10 +1943,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -1957,7 +1957,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -1965,11 +1965,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -1987,10 +1987,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2009,7 +2009,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2017,11 +2017,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2043,10 +2043,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2057,7 +2057,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2065,11 +2065,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2087,10 +2087,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2109,7 +2109,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2117,11 +2117,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2143,10 +2143,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2157,7 +2157,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2165,11 +2165,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2187,10 +2187,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2209,7 +2209,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2217,11 +2217,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2243,10 +2243,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2257,7 +2257,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2265,11 +2265,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2287,10 +2287,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2309,7 +2309,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2317,11 +2317,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2343,10 +2343,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2357,7 +2357,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2365,11 +2365,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2387,10 +2387,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2409,7 +2409,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2417,11 +2417,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2443,10 +2443,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2457,7 +2457,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2465,11 +2465,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2487,10 +2487,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2509,7 +2509,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2517,11 +2517,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2543,10 +2543,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2557,7 +2557,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2565,11 +2565,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2587,10 +2587,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2609,7 +2609,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2617,11 +2617,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2643,10 +2643,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2657,7 +2657,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2665,11 +2665,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2687,10 +2687,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2709,7 +2709,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2717,11 +2717,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2743,10 +2743,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2757,7 +2757,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2765,11 +2765,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2787,10 +2787,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2809,7 +2809,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2817,11 +2817,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2843,10 +2843,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2857,7 +2857,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2865,11 +2865,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2887,10 +2887,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2909,7 +2909,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2917,11 +2917,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -2943,10 +2943,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -2957,7 +2957,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -2965,11 +2965,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -2987,10 +2987,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3009,7 +3009,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3017,11 +3017,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -3043,10 +3043,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3057,7 +3057,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3065,11 +3065,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -3087,10 +3087,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3109,7 +3109,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3117,11 +3117,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -3143,10 +3143,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3157,7 +3157,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3165,11 +3165,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -3187,10 +3187,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3209,7 +3209,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3217,11 +3217,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -3243,10 +3243,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3257,7 +3257,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3265,11 +3265,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -3287,10 +3287,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3309,7 +3309,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3317,11 +3317,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -3343,10 +3343,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3357,7 +3357,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3365,11 +3365,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -3387,10 +3387,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3409,7 +3409,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3417,11 +3417,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -3443,10 +3443,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3457,7 +3457,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3465,11 +3465,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -3487,10 +3487,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3509,7 +3509,7 @@ export async function GET(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3517,11 +3517,11 @@ export async function GET(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     // Get wallets for the user
@@ -3543,10 +3543,10 @@ export async function GET(_request: NextRequest) {
       wallets,
       pagination: { skip, take, total: allWallets.length },
     });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("GET /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("GET /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
@@ -3557,7 +3557,7 @@ export async function POST(_request: NextRequest) {
   try {
     const authHeader = _request.headers.get("authorization");
     if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ _error: "Unauthorized" }, { status: 401 });
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     const token = authHeader.substring(7);
@@ -3565,11 +3565,11 @@ export async function POST(_request: NextRequest) {
     try {
       decoded = authService.verifyToken(token) as { userId?: string };
     } catch (e) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     if (!decoded?.userId) {
-      return NextResponse.json({ _error: "Invalid token" }, { status: 401 });
+      return NextResponse.json({ error: "Invalid token" }, { status: 401 });
     }
 
     const body = (await _request.json()) as {
@@ -3587,10 +3587,10 @@ export async function POST(_request: NextRequest) {
     });
 
     return NextResponse.json(wallet, { status: 201 });
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("POST /api/wallets _error:", _error);
+  } catch (error) {
+    globalThis.console.error("POST /api/wallets error:", error);
     return NextResponse.json(
-      { _error: "Internal server error" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

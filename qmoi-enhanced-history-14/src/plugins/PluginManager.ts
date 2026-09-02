@@ -77,7 +77,8 @@ export class PluginManager {
   }
 
   emit(_event: PluginEvent) {
-    (this.eventListeners[event.type] || []).forEach((fn) => fn(event.payload));
+    const listeners = this.eventListeners[_event.type] || [];
+    listeners.forEach((fn) => fn(_event.payload));
     this.automationRules.forEach((rule) => {
       if (rule.trigger(_event)) rule.action();
     });

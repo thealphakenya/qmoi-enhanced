@@ -146,12 +146,12 @@ export async function POST(_req: NextRequest) {
       message: ResultDesc || "payment_failed",
     });
   } catch (error) {
-    (globalThis.console as any)?.error?.(
+    globalThis.console.error(
       "M-Pesa callback processing failed:",
       error,
     );
     const errorMessage = error instanceof Error ? error.message : String(error);
-    logEvent("mpesa_callback_error", { _error: errorMessage });
+    logEvent("mpesa_callback_error", { error: errorMessage });
 
     return NextResponse.json(
       { success: false, message: "Callback processing failed" },

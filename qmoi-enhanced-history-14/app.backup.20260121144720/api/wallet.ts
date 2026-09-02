@@ -58,8 +58,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -77,8 +77,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -98,10 +98,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -138,10 +138,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -265,10 +265,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -377,10 +377,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -430,14 +430,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -489,14 +489,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -531,16 +531,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -551,7 +551,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -562,7 +562,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -757,7 +757,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -822,8 +822,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -841,8 +841,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -862,10 +862,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -902,10 +902,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -1029,10 +1029,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -1141,10 +1141,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -1194,14 +1194,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -1253,14 +1253,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -1295,16 +1295,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -1315,7 +1315,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -1326,7 +1326,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -1521,7 +1521,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -1586,8 +1586,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -1605,8 +1605,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -1626,10 +1626,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -1666,10 +1666,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -1793,10 +1793,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -1905,10 +1905,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -1958,14 +1958,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -2017,14 +2017,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -2059,16 +2059,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -2079,7 +2079,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -2090,7 +2090,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -2285,7 +2285,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -2350,8 +2350,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -2369,8 +2369,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -2390,10 +2390,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -2430,10 +2430,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -2557,10 +2557,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -2669,10 +2669,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -2722,14 +2722,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -2781,14 +2781,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -2823,16 +2823,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -2843,7 +2843,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -2854,7 +2854,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -3049,7 +3049,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3114,8 +3114,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -3133,8 +3133,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -3154,10 +3154,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -3194,10 +3194,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -3321,10 +3321,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -3433,10 +3433,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -3486,14 +3486,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -3545,14 +3545,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -3587,16 +3587,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -3607,7 +3607,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -3618,7 +3618,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -3813,7 +3813,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -3878,8 +3878,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -3897,8 +3897,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -3918,10 +3918,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -3958,10 +3958,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -4085,10 +4085,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -4197,10 +4197,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -4250,14 +4250,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -4309,14 +4309,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -4351,16 +4351,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -4371,7 +4371,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -4382,7 +4382,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -4577,7 +4577,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -4642,8 +4642,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -4661,8 +4661,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -4682,10 +4682,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -4722,10 +4722,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -4849,10 +4849,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -4961,10 +4961,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -5014,14 +5014,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -5073,14 +5073,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -5115,16 +5115,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -5135,7 +5135,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -5146,7 +5146,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -5341,7 +5341,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -5406,8 +5406,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -5425,8 +5425,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -5446,10 +5446,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -5486,10 +5486,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -5613,10 +5613,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -5725,10 +5725,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -5778,14 +5778,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -5837,14 +5837,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -5879,16 +5879,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -5899,7 +5899,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -5910,7 +5910,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -6105,7 +6105,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -6170,8 +6170,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -6189,8 +6189,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -6210,10 +6210,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -6250,10 +6250,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -6377,10 +6377,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -6489,10 +6489,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -6542,14 +6542,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -6601,14 +6601,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -6643,16 +6643,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -6663,7 +6663,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -6674,7 +6674,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -6869,7 +6869,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -6934,8 +6934,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -6953,8 +6953,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -6974,10 +6974,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -7014,10 +7014,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -7141,10 +7141,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -7253,10 +7253,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -7306,14 +7306,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -7365,14 +7365,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -7407,16 +7407,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -7427,7 +7427,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -7438,7 +7438,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -7633,7 +7633,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -7698,8 +7698,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -7717,8 +7717,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -7738,10 +7738,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -7778,10 +7778,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -7905,10 +7905,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -8017,10 +8017,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -8070,14 +8070,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -8129,14 +8129,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -8171,16 +8171,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -8191,7 +8191,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -8202,7 +8202,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -8397,7 +8397,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -8462,8 +8462,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -8481,8 +8481,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -8502,10 +8502,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -8542,10 +8542,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -8669,10 +8669,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -8781,10 +8781,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -8834,14 +8834,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -8893,14 +8893,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -8935,16 +8935,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -8955,7 +8955,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -8966,7 +8966,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -9161,7 +9161,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -9226,8 +9226,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -9245,8 +9245,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -9266,10 +9266,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -9306,10 +9306,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -9433,10 +9433,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -9545,10 +9545,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -9598,14 +9598,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -9657,14 +9657,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -9699,16 +9699,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -9719,7 +9719,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -9730,7 +9730,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -9925,7 +9925,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -9990,8 +9990,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -10009,8 +10009,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -10030,10 +10030,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -10070,10 +10070,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -10197,10 +10197,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -10309,10 +10309,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -10362,14 +10362,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -10421,14 +10421,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -10463,16 +10463,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -10483,7 +10483,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -10494,7 +10494,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -10689,7 +10689,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -10754,8 +10754,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -10773,8 +10773,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -10794,10 +10794,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -10834,10 +10834,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -10961,10 +10961,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -11073,10 +11073,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -11126,14 +11126,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -11185,14 +11185,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -11227,16 +11227,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -11247,7 +11247,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -11258,7 +11258,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -11453,7 +11453,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -11518,8 +11518,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -11537,8 +11537,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -11558,10 +11558,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -11598,10 +11598,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -11725,10 +11725,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -11837,10 +11837,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -11890,14 +11890,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -11949,14 +11949,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -11991,16 +11991,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -12011,7 +12011,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -12022,7 +12022,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -12217,7 +12217,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -12282,8 +12282,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -12301,8 +12301,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -12322,10 +12322,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -12362,10 +12362,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -12489,10 +12489,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -12601,10 +12601,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -12654,14 +12654,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -12713,14 +12713,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -12755,16 +12755,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -12775,7 +12775,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -12786,7 +12786,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -12981,7 +12981,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -13046,8 +13046,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -13065,8 +13065,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -13086,10 +13086,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -13126,10 +13126,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -13253,10 +13253,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -13365,10 +13365,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -13418,14 +13418,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -13477,14 +13477,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -13519,16 +13519,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -13539,7 +13539,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -13550,7 +13550,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -13745,7 +13745,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -13810,8 +13810,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -13829,8 +13829,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -13850,10 +13850,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -13890,10 +13890,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -14017,10 +14017,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -14129,10 +14129,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -14182,14 +14182,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -14241,14 +14241,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -14283,16 +14283,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -14303,7 +14303,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -14314,7 +14314,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -14509,7 +14509,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -14574,8 +14574,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -14593,8 +14593,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -14614,10 +14614,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -14654,10 +14654,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -14781,10 +14781,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -14893,10 +14893,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -14946,14 +14946,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -15005,14 +15005,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -15047,16 +15047,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -15067,7 +15067,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -15078,7 +15078,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -15273,7 +15273,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -15338,8 +15338,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -15357,8 +15357,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -15378,10 +15378,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -15418,10 +15418,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -15545,10 +15545,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -15657,10 +15657,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -15710,14 +15710,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -15769,14 +15769,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -15811,16 +15811,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -15831,7 +15831,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -15842,7 +15842,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -16037,7 +16037,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -16102,8 +16102,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -16121,8 +16121,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -16142,10 +16142,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -16182,10 +16182,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -16309,10 +16309,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -16421,10 +16421,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -16474,14 +16474,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -16533,14 +16533,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -16575,16 +16575,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -16595,7 +16595,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -16606,7 +16606,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -16801,7 +16801,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -16866,8 +16866,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -16885,8 +16885,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -16906,10 +16906,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -16946,10 +16946,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -17073,10 +17073,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -17185,10 +17185,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -17238,14 +17238,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -17297,14 +17297,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -17339,16 +17339,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -17359,7 +17359,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -17370,7 +17370,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -17565,7 +17565,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -17630,8 +17630,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -17649,8 +17649,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -17670,10 +17670,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -17710,10 +17710,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -17837,10 +17837,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -17949,10 +17949,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -18002,14 +18002,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -18061,14 +18061,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -18103,16 +18103,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -18123,7 +18123,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -18134,7 +18134,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -18329,7 +18329,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -18394,8 +18394,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -18413,8 +18413,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -18434,10 +18434,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -18474,10 +18474,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -18601,10 +18601,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -18713,10 +18713,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -18766,14 +18766,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -18825,14 +18825,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -18867,16 +18867,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -18887,7 +18887,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -18898,7 +18898,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -19093,7 +19093,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -19158,8 +19158,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -19177,8 +19177,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -19198,10 +19198,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -19238,10 +19238,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -19365,10 +19365,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -19477,10 +19477,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -19530,14 +19530,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -19589,14 +19589,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -19631,16 +19631,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -19651,7 +19651,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -19662,7 +19662,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -19857,7 +19857,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -19922,8 +19922,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -19941,8 +19941,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -19962,10 +19962,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -20002,10 +20002,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -20129,10 +20129,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -20241,10 +20241,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -20294,14 +20294,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -20353,14 +20353,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -20395,16 +20395,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -20415,7 +20415,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -20426,7 +20426,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -20621,7 +20621,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -20686,8 +20686,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -20705,8 +20705,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -20726,10 +20726,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -20766,10 +20766,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -20893,10 +20893,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -21005,10 +21005,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -21058,14 +21058,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -21117,14 +21117,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -21159,16 +21159,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -21179,7 +21179,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -21190,7 +21190,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -21385,7 +21385,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -21450,8 +21450,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -21469,8 +21469,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -21490,10 +21490,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -21530,10 +21530,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -21657,10 +21657,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -21769,10 +21769,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -21822,14 +21822,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -21881,14 +21881,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -21923,16 +21923,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -21943,7 +21943,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -21954,7 +21954,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -22149,7 +22149,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -22214,8 +22214,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -22233,8 +22233,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -22254,10 +22254,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -22294,10 +22294,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -22421,10 +22421,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -22533,10 +22533,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -22586,14 +22586,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -22645,14 +22645,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -22687,16 +22687,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -22707,7 +22707,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -22718,7 +22718,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -22913,7 +22913,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -22978,8 +22978,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -22997,8 +22997,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -23018,10 +23018,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -23058,10 +23058,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -23185,10 +23185,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -23297,10 +23297,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -23350,14 +23350,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -23409,14 +23409,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -23451,16 +23451,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -23471,7 +23471,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -23482,7 +23482,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -23677,7 +23677,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -23742,8 +23742,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -23761,8 +23761,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -23782,10 +23782,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -23822,10 +23822,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -23949,10 +23949,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -24061,10 +24061,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -24114,14 +24114,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -24173,14 +24173,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -24215,16 +24215,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -24235,7 +24235,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -24246,7 +24246,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -24441,7 +24441,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -24506,8 +24506,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -24525,8 +24525,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -24546,10 +24546,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -24586,10 +24586,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -24713,10 +24713,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -24825,10 +24825,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -24878,14 +24878,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -24937,14 +24937,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -24979,16 +24979,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -24999,7 +24999,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -25010,7 +25010,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -25205,7 +25205,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -25270,8 +25270,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -25289,8 +25289,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -25310,10 +25310,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -25350,10 +25350,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -25477,10 +25477,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -25589,10 +25589,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -25642,14 +25642,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -25701,14 +25701,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -25743,16 +25743,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -25763,7 +25763,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -25774,7 +25774,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -25969,7 +25969,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -26034,8 +26034,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -26053,8 +26053,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -26074,10 +26074,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -26114,10 +26114,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -26241,10 +26241,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -26353,10 +26353,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -26406,14 +26406,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -26465,14 +26465,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -26507,16 +26507,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -26527,7 +26527,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -26538,7 +26538,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -26733,7 +26733,7 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }
 
 
@@ -26798,8 +26798,8 @@ function writeWalletRequests(_requests: WalletRequest[]) {
 let whatsappService: WhatsAppService;
 try {
   whatsappService = WhatsAppService.getInstance();
-} catch (_e) {
-  (globalThis.console as any)?.error?.(
+} catch (e) {
+  globalThis.console.error(
     "Failed to initialize WhatsApp service:",
     _e,
   );
@@ -26817,8 +26817,8 @@ function logAction(action: string, details: Record<string, any>) {
       details,
     });
     fs.writeFileSync(LOGS_FILE, JSON.stringify(logs, null, 2));
-  } catch (_e) {
-    (globalThis.console as any)?.error?.("Failed to log action:", _e);
+  } catch (e) {
+    globalThis.console.error("Failed to log action:", _e);
   }
 }
 
@@ -26838,10 +26838,10 @@ async function getOrCreateWallet(userId: string) {
     }
 
     return wallet;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to get/create wallet:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -26878,10 +26878,10 @@ async function createTransaction(
     });
 
     return transaction;
-  } catch (_error) {
-    (globalThis.console as any)?.error?.(
+  } catch (error) {
+    globalThis.console.error(
       "Failed to create transaction:",
-      _error,
+      error,
     );
     throw error;
   }
@@ -27005,10 +27005,10 @@ async function processMpesa(
         message: "Withdrawal queued for processing",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Mpesa processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Mpesa", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Mpesa processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Mpesa", amount, error: errorMsg };
   }
 }
 
@@ -27117,10 +27117,10 @@ async function processBinance(
         message: "Withdrawal order created successfully",
       };
     }
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Binance processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
-    return { status: "error", platform: "Binance", amount, _error: errorMsg };
+  } catch (error) {
+    globalThis.console.error("Binance processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
+    return { status: "error", platform: "Binance", amount, error: errorMsg };
   }
 }
 
@@ -27170,14 +27170,14 @@ async function processPayPal(amount: number, type: string) {
           ? "Payment _request created"
           : "Withdrawal initiated",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("PayPal processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("PayPal processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "PayPal",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -27229,14 +27229,14 @@ async function processBitget(amount: number, type: string) {
           ? "Deposit address generated"
           : "Withdrawal order created",
     };
-  } catch (_error) {
-    (globalThis.console as any)?.error?.("Bitget processing _error:", _error);
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error) {
+    globalThis.console.error("Bitget processing error:", error);
+    const errorMsg = error instanceof Error ? error.message : String(error);
     return {
       status: "error",
       platform: "Bitget",
       amount,
-      _error: errorMsg,
+      error: errorMsg,
     };
   }
 }
@@ -27271,16 +27271,16 @@ const handleApiRequest = async (
   try {
     const result = await handler();
     return _res.json(result);
-  } catch (_error: unknown) {
-    const errorMsg = error instanceof Error ? error.message : String(_error);
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : String(error);
     logAction("error", {
-      _error: errorMsg,
+      error: errorMsg,
       path: _req.url,
       method: _req.method,
     });
     return _res
       .status(500)
-      .json({ _error: errorMsg || "Internal server error" });
+      .json({ error: errorMsg || "Internal server error" });
   }
 };
 
@@ -27291,7 +27291,7 @@ export default async function handler(
   const adminToken = _req.headers["x-admin-token"];
   if (adminToken !== process.env.ADMIN_TOKEN) {
     logAction("unauthorized_access", { path: _req.url, method: _req.method });
-    return _res.status(403).json({ _error: "Forbidden" });
+    return _res.status(403).json({ error: "Forbidden" });
   }
 
   // Check if Prisma is available and database is configured
@@ -27302,7 +27302,7 @@ export default async function handler(
     !process.env.DATABASE_URL.includes("your_database_url_here");
   if (!isPrismaAvailable) {
     return _res.status(503).json({
-      _error: "Database not configured",
+      error: "Database not configured",
       message: "Using mock data - database not configured",
     });
   }
@@ -27497,5 +27497,5 @@ export default async function handler(
     });
   }
 
-  return _res.status(405).json({ _error: "Method not allowed" });
+  return _res.status(405).json({ error: "Method not allowed" });
 }

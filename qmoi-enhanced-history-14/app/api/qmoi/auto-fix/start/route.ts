@@ -16,7 +16,7 @@ export async function POST(_request: NextRequest) {
       const r = auth.response;
       if (!r)
         return NextResponse.json(
-          { _error: "Unknown auth error" },
+          { error: "Unknown auth error" },
           { status: 500 },
         );
       return NextResponse.json(r.body, { status: r.status });
@@ -30,7 +30,7 @@ export async function POST(_request: NextRequest) {
 
     if (!fs.existsSync(scriptPath)) {
       return NextResponse.json(
-        { _error: "Auto-fix script not found" },
+        { error: "Auto-fix script not found" },
         { status: 404 },
       );
     }
@@ -73,10 +73,10 @@ export async function POST(_request: NextRequest) {
       message: "Auto-fix process started",
       pid: child.pid,
     });
-  } catch (_error) {
-    (console as any).error("Error starting auto-fix process:", _error);
+  } catch (error) {
+    (console as any).error("Error starting auto-fix process:", error);
     return NextResponse.json(
-      { _error: "Failed to start auto-fix process" },
+      { error: "Failed to start auto-fix process" },
       { status: 500 },
     );
   }

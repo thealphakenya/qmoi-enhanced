@@ -36,7 +36,7 @@ export default async function handler(
   const userId = _req.headers["x-user-id"];
   if (!userId) {
     return _res.status(401).json({
-      _error: "Unauthorized - missing user ID",
+      error: "Unauthorized - missing user ID",
       _code: "AUTH_001",
     });
   }
@@ -67,7 +67,7 @@ export default async function handler(
 
           if (!backupId && !timestamp) {
             return _res.status(400).json({
-              _error: "Missing required fields: backupId or timestamp",
+              error: "Missing required fields: backupId or timestamp",
               _code: "VALIDATION_001",
             });
           }
@@ -87,7 +87,7 @@ export default async function handler(
         }
         default:
           return _res.status(400).json({
-            _error: "Unknown action",
+            error: "Unknown action",
             _code: "ACTION_001",
           });
       }
@@ -107,7 +107,7 @@ export default async function handler(
     }
     default:
       return _res.status(405).json({
-        _error: "Method not allowed",
+        error: "Method not allowed",
         _code: "METHOD_001",
       });
   }

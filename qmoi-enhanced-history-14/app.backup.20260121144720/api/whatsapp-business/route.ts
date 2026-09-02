@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -29,7 +29,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -54,7 +54,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -77,7 +77,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -100,7 +100,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -123,7 +123,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -146,7 +146,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -169,7 +169,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -192,7 +192,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -215,7 +215,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -238,7 +238,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -261,7 +261,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -284,7 +284,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -307,7 +307,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -330,7 +330,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -353,7 +353,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -376,7 +376,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -399,7 +399,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -422,7 +422,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -445,7 +445,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -468,7 +468,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -491,7 +491,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -514,7 +514,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -537,7 +537,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -560,7 +560,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -583,7 +583,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -606,7 +606,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -629,7 +629,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -652,7 +652,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -675,7 +675,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -698,7 +698,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -721,7 +721,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -744,7 +744,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -767,7 +767,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -790,7 +790,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
@@ -813,7 +813,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   // Placeholder endpoint: production integration required
   return NextResponse.json(
-    { _error: "WhatsApp Business integration not implemented" },
+    { error: "WhatsApp Business integration not implemented" },
     { status: 501 },
   );
 }
