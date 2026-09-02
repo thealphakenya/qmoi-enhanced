@@ -3099,7 +3099,17 @@ All timestamps use UTC ISO-8601 format.
             if response == previous_response:
                 break
             previous_response = response
-            plan = parse_repair_plan(response, self.root_dir)
+            try:
+                plan = parse_repair_plan(response, self.root_dir)
+            except OllamaRuntimeError as exc:
+                self.record_tracker_event(
+                    "llm_repair_plan_rejected",
+                    f"Rejected model repair proposal without mutating the repository: {exc}",
+                    status="warning",
+                    phase="autonomous",
+                    details={"error": str(exc)},
+                )
+                break
             changes = plan.get("changes", [])
             if os.getenv("OLLAMA_APPLY_REPAIRS", "false").lower() != "true":
                 break

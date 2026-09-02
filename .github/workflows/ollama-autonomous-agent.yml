@@ -554,7 +554,7 @@ jobs:
         run: |
           set -Eeuo pipefail
           mkdir -p "$TRACK_DIR"
-          python scripts/realtime_workflow_monitor.py --repo "$GITHUB_REPOSITORY" --all > "$TRACK_DIR/repository_monitor_snapshot.json" 2>&1 || true
+          python scripts/realtime_workflow_monitor.py "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --all > "$TRACK_DIR/repository_monitor_snapshot.json" 2>&1 || true
           python - <<'PY'
           import json, os
           from pathlib import Path
