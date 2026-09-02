@@ -266,14 +266,19 @@ def parse_repair_plan(response: str, root: Path | str) -> Dict[str, Any]:
     return dict(plan)
 
 
-def build_success_contract(root: Path | str, health: OllamaHealth, **fields: Any) -> Dict[str, Any]:
+def build_success_contract(
+    root: Path | str,
+    health: OllamaHealth | Mapping[str, Any],
+    **fields: Any,
+) -> Dict[str, Any]:
     """Build a truthful contract; callers must set validation fields explicitly."""
+    health_data = health.as_dict() if isinstance(health, OllamaHealth) else dict(health)
     contract: Dict[str, Any] = {
         "workflow_run_id": os.getenv("GITHUB_RUN_ID"),
         "repository": os.getenv("GITHUB_REPOSITORY"),
         "commit": os.getenv("GITHUB_SHA"),
         "agent_started": True,
-        **health.as_dict(),
+        **health_data,
         "llm_coding_started": bool(fields.get("llm_coding_started", False)),
         "llm_iterations": int(fields.get("llm_iterations", 0)),
         "files_analyzed": list(fields.get("files_analyzed", [])),

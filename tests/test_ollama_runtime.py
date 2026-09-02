@@ -139,6 +139,23 @@ def test_success_contract_cannot_report_success_without_validation(tmp_path: Pat
     assert contract["final_status"] == "FAILED"
 
 
+def test_success_contract_accepts_agent_health_mapping(tmp_path: Path):
+    health = {
+        "ollama_started": True,
+        "ollama_healthy": True,
+        "model_available": True,
+        "inference_verified": True,
+    }
+    contract = build_success_contract(
+        tmp_path,
+        health,
+        llm_coding_started=True,
+        validation_passed=True,
+        checkpoint_created=True,
+    )
+    assert contract["final_status"] == "SUCCESS"
+
+
 def test_agent_rejects_non_github_hosted_runtime(monkeypatch, tmp_path):
     monkeypatch.setenv("QMOI_RUNTIME_MODE", "github-hosted")
     monkeypatch.setenv("QMOI_GITHUB_HOSTED", "true")
