@@ -92,13 +92,22 @@ from typing import (
     Sequence,
 )
 
-from ollama_runtime import (
-    OllamaClient,
-    OllamaBootstrap,
-    OllamaRuntimeError,
-    build_success_contract,
-    parse_repair_plan,
-)
+try:
+    from scripts.ollama_runtime import (
+        OllamaClient,
+        OllamaBootstrap,
+        OllamaRuntimeError,
+        build_success_contract,
+        parse_repair_plan,
+    )
+except ModuleNotFoundError:  # pragma: no cover - direct script execution path
+    from ollama_runtime import (
+        OllamaClient,
+        OllamaBootstrap,
+        OllamaRuntimeError,
+        build_success_contract,
+        parse_repair_plan,
+    )
 
 
 # ============================================================================

@@ -545,6 +545,33 @@ jobs:
             sleep 5
           done
 
+      - name: Repository-wide GitHub monitoring snapshot
+        id: github_monitoring
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN || github.token }}
+        run: |
+          set -Eeuo pipefail
+          mkdir -p "$TRACK_DIR"
+          python scripts/realtime_workflow_monitor.py --repo "$GITHUB_REPOSITORY" --all > "$TRACK_DIR/repository_monitor_snapshot.json" 2>&1 || true
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('ollamatracks/repository_monitor_snapshot.json')
+          if path.exists():
+              try:
+                  data = json.loads(path.read_text(encoding='utf-8'))
+                  if isinstance(data, dict):
+                      print(f"Repository active runs: {data.get('summary', {}).get('active', 0)}")
+                      print(f"Repository success runs: {data.get('summary', {}).get('success', 0)}")
+                      print(f"Repository failure runs: {data.get('summary', {}).get('failure', 0)}")
+              except json.JSONDecodeError:
+                  print('Repository monitoring snapshot not yet valid JSON; raw output captured.')
+          else:
+              print('Repository monitoring snapshot was not produced.')
+          PY
+
       - name: Final lightweight validation
         id: final_validation
         if: always()

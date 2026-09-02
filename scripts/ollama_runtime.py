@@ -36,11 +36,13 @@ class OllamaBootstrap:
         """Reuse a healthy server or start the installed Ollama binary."""
         try:
             self.client._request("GET", "/api/tags")
-            return False
+            return True
         except (OllamaRuntimeError, requests.RequestException, OSError):
             pass
 
         binary = self._find_binary()
+        if binary is None:
+            binary = self._install_binary()
         if binary is None:
             raise OllamaRuntimeError(
                 "Ollama is not installed and automatic installation is unavailable; "
@@ -77,6 +79,22 @@ class OllamaBootstrap:
         raise OllamaRuntimeError(
             f"Ollama did not become healthy within {self.startup_timeout:.0f} seconds"
         )
+
+    @staticmethod
+    def _install_binary() -> Optional[str]:
+        install_script = os.getenv("OLLAMA_INSTALL_SCRIPT")
+        if install_script and Path(install_script).is_file():
+            install_cmd = ["bash", install_script]
+        else:
+            install_cmd = ["bash", "-lc", "curl --fail --silent --show-error --location https://ollama.com/install.sh | sh"]
+
+        try:
+            subprocess.run(install_cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+        except (OSError, subprocess.CalledProcessError):
+            return None
+
+        binary = OllamaBootstrap._find_binary()
+        return binary
 
     @staticmethod
     def _find_binary() -> Optional[str]:

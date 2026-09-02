@@ -57,7 +57,7 @@ def test_verify_proves_model_and_inference():
 def test_bootstrap_reuses_healthy_server():
     session = FakeSession([{"models": []}])
     client = OllamaClient(session=session, retries=1)
-    assert OllamaBootstrap(client).ensure_server() is False
+    assert OllamaBootstrap(client).ensure_server() is True
 
 
 def test_bootstrap_reports_missing_binary(monkeypatch):
@@ -66,6 +66,23 @@ def test_bootstrap_reports_missing_binary(monkeypatch):
     monkeypatch.setattr(OllamaBootstrap, "_find_binary", staticmethod(lambda: None))
     with pytest.raises(OllamaRuntimeError, match="not installed"):
         OllamaBootstrap(client).ensure_server()
+
+
+def test_bootstrap_installs_missing_binary(monkeypatch):
+    session = FakeSession([ConnectionError("offline"), {"models": []}])
+    client = OllamaClient(session=session, retries=1)
+
+    class StubProcess:
+        stderr = None
+
+        def poll(self):
+            return None
+
+    monkeypatch.setattr(OllamaBootstrap, "_find_binary", staticmethod(lambda: None))
+    monkeypatch.setattr(OllamaBootstrap, "_install_binary", staticmethod(lambda: "/usr/local/bin/ollama"))
+    monkeypatch.setattr("scripts.ollama_runtime.subprocess.Popen", lambda *args, **kwargs: StubProcess())
+
+    assert OllamaBootstrap(client).ensure_server() is True
 
 
 def test_verify_fails_when_server_is_unavailable():

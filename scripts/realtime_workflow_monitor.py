@@ -162,9 +162,30 @@ class WorkflowMonitor:
         )
         data = self._run_gh_command(cmd)
         if not isinstance(data, list):
-            return {"runs": [], "active_runs": [], "summary": {"total": 0, "active": 0, "success": 0, "failure": 0}}
+            return {
+                "runs": [],
+                "active_runs": [],
+                "summary": {"total": 0, "active": 0, "success": 0, "failure": 0},
+                "workflow_health": {},
+            }
 
-        active = [run for run in data if str(run.get("status", "")).lower() in {"queued", "in_progress", "requested", "waiting", "pending"}]
+        active_statuses = {"queued", "in_progress", "requested", "waiting", "pending"}
+        active = [run for run in data if str(run.get("status", "")).lower() in active_statuses]
+
+        workflow_counts: Dict[str, int] = {}
+        workflow_states: Dict[str, Dict[str, int]] = {}
+        for run in data:
+            name = str(run.get("workflowName") or run.get("name") or "unknown")
+            workflow_counts[name] = workflow_counts.get(name, 0) + 1
+            state = workflow_states.setdefault(name, {"total": 0, "active": 0, "success": 0, "failure": 0})
+            state["total"] += 1
+            if str(run.get("status", "")).lower() in active_statuses:
+                state["active"] += 1
+            if str(run.get("conclusion", "")).lower() == "success":
+                state["success"] += 1
+            if str(run.get("conclusion", "")).lower() == "failure":
+                state["failure"] += 1
+
         summary = {
             "total": len(data),
             "active": len(active),
@@ -172,13 +193,22 @@ class WorkflowMonitor:
             "failure": sum(1 for run in data if str(run.get("conclusion", "")).lower() == "failure"),
             "queued": sum(1 for run in data if str(run.get("status", "")).lower() == "queued"),
             "in_progress": sum(1 for run in data if str(run.get("status", "")).lower() == "in_progress"),
+            "requested": sum(1 for run in data if str(run.get("status", "")).lower() == "requested"),
+            "waiting": sum(1 for run in data if str(run.get("status", "")).lower() == "waiting"),
         }
-        return {"runs": data, "active_runs": active, "summary": summary}
+        return {
+            "runs": data,
+            "active_runs": active,
+            "summary": summary,
+            "workflow_health": workflow_states,
+            "workflow_counts": workflow_counts,
+        }
 
     def monitor_repository_once(self, limit: int = 20) -> Dict[str, Any]:
         """Capture a repository-wide GitHub health summary and persist it to the tracker state."""
         overview = self.get_repository_run_overview(limit=limit)
         summary = overview.get("summary", {})
+        workflow_health = overview.get("workflow_health", {})
         self._write_tracker_snapshot(
             "repository_monitor_snapshot",
             "Repository-wide GitHub run monitoring snapshot captured.",
@@ -191,6 +221,9 @@ class WorkflowMonitor:
                 "failure_runs": summary.get("failure", 0),
                 "queued_runs": summary.get("queued", 0),
                 "in_progress_runs": summary.get("in_progress", 0),
+                "requested_runs": summary.get("requested", 0),
+                "waiting_runs": summary.get("waiting", 0),
+                "workflow_health": workflow_health,
             },
         )
         return overview
