@@ -514,6 +514,11 @@ class TestResumeCheckpoint:
         assert "platform validation" in content.lower()
         assert "feature validation" in content.lower()
         assert "github monitoring" in content.lower()
+        assert "## feature coverage" in content.lower()
+        assert "qmoiaiui" in content.lower()
+        assert "## runtime evidence" in content.lower()
+        assert "## pending work" in content.lower()
+        assert "## agent instructions" in content.lower()
         checkpoint = tmp_path / "ollamatracks" / "checkpoint.json"
         assert checkpoint.exists()
         data = json.loads(checkpoint.read_text())

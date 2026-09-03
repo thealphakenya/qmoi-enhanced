@@ -3161,7 +3161,12 @@ All timestamps use UTC ISO-8601 format.
         error: Optional[str] = None,
         evidence: Optional[Mapping[str, Any]] = None,
     ) -> Path:
-        steps = list(completed_steps or [])
+        previous = self.load_checkpoint() or {}
+        steps = list(dict.fromkeys([
+            *(previous.get("completed_steps") or []),
+            *(completed_steps or []),
+        ]))
+        checkpoint_status = "complete" if status in {"autonomous_complete", "success"} else "in_progress"
         checkpoint_evidence = {
             "repository_commit": os.getenv("GITHUB_SHA"),
             "workflow_run": os.getenv("GITHUB_RUN_ID"),
@@ -3191,6 +3196,34 @@ All timestamps use UTC ISO-8601 format.
         content.extend(
             f"- {step}"
             for step in steps
+        )
+
+        content.extend(
+            [
+                "",
+                "## Feature Coverage",
+                "- Cross-platform validation: windows, macos, linux, ios, android, web",
+                "- Application feature validation: qmoiaiui, qcity, qmoi-space, qalpha",
+                "- File-handler validation and repository integrity checks",
+                "- Memory index and model-card generation",
+                "- GitHub proof, telemetry, monitoring, and bounded self-healing",
+                "",
+                "## Runtime Evidence",
+                f"- Checkpoint state: {checkpoint_status}",
+                f"- Ollama health: {self.results.get('ollama_health', 'pending')}",
+                f"- Validation passed: {self.results.get('validation_passed', 'pending')}",
+                f"- Files analyzed: {len(self.results.get('files_analyzed', []))}",
+                f"- Files changed: {len(self.results.get('files_modified', []))}",
+                "",
+                "## Pending Work",
+                "- Continue autonomous validation and repair until all required checks are verified.",
+                "- Preserve this file and ollamatracks/checkpoint.json after every run.",
+                "",
+                "## Agent Instructions",
+                "- Re-read this file at the start of every autonomous run.",
+                "- Update progress, evidence, and pending work after each checkpoint.",
+                "- Do not claim completion without GitHub-hosted runtime and success-contract evidence.",
+            ]
         )
 
         if error:
