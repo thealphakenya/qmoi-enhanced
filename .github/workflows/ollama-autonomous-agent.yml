@@ -602,7 +602,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ollama-autonomous-agent-${{ github.run_id }}-${{ github.run_attempt }}
-          path: ${{ env.TRACK_DIR }}/
+          path: |
+            ${{ env.TRACK_DIR }}/
+            resumefromhere.txt
           retention-days: 30
 
       - name: Enforce final health gate
