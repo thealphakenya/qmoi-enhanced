@@ -1,8 +1,26 @@
 OLLAMA PR STATUS
 ================
 
-Timestamp UTC: 2026-09-04T01:09:09.279Z
+Timestamp UTC: 2026-09-04T05:55:04.263Z
 Repository: thealphakenya/qmoi-enhanced
+
+PR #2101: chore(deps): update beautifulsoup4 requirement from >=4.9.3 to >=4.15.0
+  head: dependabot/pip/beautifulsoup4-gte-4.15.0
+  head_sha: e6837f98f071e5420bb24eba52f7452be4527dfe
+  base: main
+  draft: false
+  mergeable: unknown
+  checks: 14
+  combined_status: failure
+
+PR #2102: chore(deps): update transformers requirement from >=4.30.0 to >=5.16.1
+  head: dependabot/pip/transformers-gte-5.16.1
+  head_sha: eaca472b91e0a561049bfb9e952743a97e7bbd92
+  base: main
+  draft: false
+  mergeable: unknown
+  checks: 13
+  combined_status: failure
 
 PR #2100: build(deps): bump the npm_and_yarn group across 2 directories with 10 updates
   head: dependabot/npm_and_yarn/qmoi-enhanced-history-14/npm_and_yarn-36f0a19845
