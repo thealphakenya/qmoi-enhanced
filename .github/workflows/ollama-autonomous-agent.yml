@@ -143,6 +143,8 @@ env:
   QMOI_RETRY_ATTEMPTS: "5"
   QMOI_RETRY_DELAY: "10"
   QMOI_TIMEOUT_SECONDS: "300"
+  OLLAMA_TIMEOUT_SECONDS: "300"
+  OLLAMA_RETRY_COUNT: "3"
   OLLAMA_HOST: "http://127.0.0.1:11434"
   OLLAMA_MODEL: "qwen2.5-coder:3b"
   OLLAMA_APPLY_REPAIRS: ${{ github.event.inputs.auto_fix || 'true' }}
