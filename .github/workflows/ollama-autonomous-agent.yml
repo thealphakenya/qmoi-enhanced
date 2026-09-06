@@ -597,6 +597,56 @@ jobs:
             echo "- Validation: ${{ steps.final_validation.outcome || 'unknown' }}"
           } >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Finalize successful resume evidence
+        if: always() && steps.agent_execution.outcome == 'success'
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -Eeuo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from scripts.ollama_autonomous_agent import OllamaAutonomousAgent
+
+          success_path = "ollamatracks/OLLAMA_SUCCESS.json"
+          with open(success_path, encoding="utf-8") as handle:
+              success = json.load(handle)
+
+          agent = OllamaAutonomousAgent()
+          agent.results.update(
+              {
+                  "ollama_health": success.get("ollama_healthy", False),
+                  "validation_passed": success.get("validation_passed", False),
+                  "files_analyzed": success.get("files_analyzed", []),
+                  "files_modified": success.get("files_modified", []),
+                  "llm_iterations": success.get("llm_iterations", 0),
+                  "tests_after": success.get("tests_after"),
+              }
+          )
+          agent.update_resume_checkpoint(
+              status="success",
+              completed_steps=[
+                  "Ollama health",
+                  "LLM coding loop",
+                  "post-agent validation",
+                  "success contract",
+                  "final hosted evidence",
+              ],
+              evidence={
+                  "repository_commit": success.get("commit") or os.getenv("GITHUB_SHA"),
+                  "workflow_run": success.get("workflow_run_id") or os.getenv("GITHUB_RUN_ID"),
+                  "model": success.get("model"),
+                  "ollama_health": success.get("ollama_healthy", False),
+                  "files_inspected": success.get("files_analyzed", []),
+                  "files_changed": success.get("files_modified", []),
+                  "test_result": success.get("validation_passed", False),
+                  "validation_passed": success.get("validation_passed", False),
+              },
+          )
+          print("Final success resume evidence written.")
+          PY
+
       - name: Upload autonomous-agent diagnostics
         if: always()
         uses: actions/upload-artifact@v4
