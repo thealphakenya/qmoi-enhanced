@@ -649,6 +649,21 @@ jobs:
           print("Final success resume evidence written.")
           PY
 
+      - name: Persist final resume evidence
+        if: always() && steps.agent_execution.outcome == 'success'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          branch="${{ github.event.repository.default_branch }}"
+          git add resumefromhere.txt ollamatracks/checkpoint.json
+          if git diff --cached --quiet; then
+            echo "Resume evidence is already persisted."
+            exit 0
+          fi
+          git commit -m "chore: persist autonomous resume evidence [skip ci]"
+          git pull origin "$branch" --rebase --autostash
+          git push origin "HEAD:$branch"
+
       - name: Upload autonomous-agent diagnostics
         if: always()
         uses: actions/upload-artifact@v4
