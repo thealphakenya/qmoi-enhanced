@@ -3077,7 +3077,9 @@ All timestamps use UTC ISO-8601 format.
     def run_autonomous_loop(self) -> Dict[str, Any]:
         """Ask Ollama for bounded repair plans and validate the repository."""
         health = self.verify_ollama()
+        self.results["ollama_health"] = health.get("ollama_healthy", False)
         files = self._repository_context()
+        self.results["files_analyzed"] = files
         iterations = 0
         modified: List[str] = []
         previous_response = ""
@@ -3124,6 +3126,9 @@ All timestamps use UTC ISO-8601 format.
             if not changes:
                 break
         validation_passed = self.run_full_validation_suite()
+        self.results["llm_iterations"] = iterations
+        self.results["files_modified"] = modified
+        self.results["validation_passed"] = validation_passed
         checkpoint = self.update_resume_checkpoint(
             status="autonomous_complete" if validation_passed else "autonomous_failed",
             completed_steps=["Ollama health", "LLM coding loop", "post-agent validation"],
@@ -3139,6 +3144,16 @@ All timestamps use UTC ISO-8601 format.
             checkpoint_created=checkpoint.exists(),
         )
         safe_json_write(self.tracker_dir / "OLLAMA_SUCCESS.json", contract)
+        if contract["final_status"] == "SUCCESS":
+            self.update_resume_checkpoint(
+                status="success",
+                completed_steps=["success contract"],
+                evidence={
+                    "validation_passed": True,
+                    "ollama_health": health.get("ollama_healthy", False),
+                    "workflow_run": os.getenv("GITHUB_RUN_ID"),
+                },
+            )
         self.record_tracker_event(
             "success_contract",
             f"Autonomous contract completed: {contract['final_status']}.",
