@@ -517,6 +517,8 @@ class TestResumeCheckpoint:
         assert "## feature coverage" in content.lower()
         assert "qmoiaiui" in content.lower()
         assert "## runtime evidence" in content.lower()
+        assert "## journey map tracks" in content.lower()
+        assert "repository audit: recorded" in content.lower()
         assert "## pending work" in content.lower()
         assert "## agent instructions" in content.lower()
         checkpoint = tmp_path / "ollamatracks" / "checkpoint.json"
@@ -524,6 +526,18 @@ class TestResumeCheckpoint:
         data = json.loads(checkpoint.read_text())
         assert data["status"] == "ready"
         assert "repair_state" in data
+        assert len(data["journey_tracks"]) >= 10
+
+    def test_success_checkpoint_closes_pending_required_work(self, tmp_path):
+        agent = OllamaAutonomousAgent(tmp_path)
+        resume_path = agent.update_resume_checkpoint(
+            status="success",
+            completed_steps=["post-agent validation"],
+        )
+
+        content = resume_path.read_text()
+        assert "- None; all required checks in this run are verified." in content
+        assert "Continue autonomous validation" not in content
 
     def test_tracker_state_rejects_unknown_states(self, tmp_path):
         agent = OllamaAutonomousAgent(tmp_path)

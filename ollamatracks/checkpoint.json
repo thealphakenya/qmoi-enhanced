@@ -15,6 +15,18 @@
   "error": null,
   "failure_fingerprint": null,
   "files_changed": [],
+  "journey_tracks": [
+    "repository audit",
+    "platform validation",
+    "feature validation",
+    "file-handler validation",
+    "memory index and model card generation",
+    "Ollama health and real inference",
+    "bounded LLM coding loop",
+    "post-agent validation",
+    "GitHub monitoring snapshot",
+    "resume and checkpoint persistence"
+  ],
   "files_inspected": [
     ".env.example",
     ".github/workflows/auto-merge-automated-pr.yml",

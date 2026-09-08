@@ -1,0 +1,47 @@
+# Outstanding Execution Items
+
+Updated: 2026-09-08
+
+This file records work that was not completed during the current session. It is intentionally limited to verified gaps and access blockers.
+
+## Security Follow-Up
+
+- [ ] Rotate/revoke the GitHub PAT that was previously committed in `.env.example`; it must not be reused.
+- [ ] Confirm the replacement token is stored only in the local shell or ignored `.env` file and never in tracked files, logs, artifacts, or chat.
+- [ ] Re-scan tracked files and repository history for real credentials after rotation. Placeholder examples are not credentials.
+
+## GitHub-Hosted Verification
+
+- [ ] Authenticate `gh` with the replacement token directly through stdin, without printing it.
+- [ ] Confirm `gh auth status` shows the intended account.
+- [ ] Confirm `/repos/thealphakenya/qmoi-enhanced/actions/permissions` succeeds; the current session returns HTTP 403 `Resource not accessible by integration`.
+- [ ] Confirm authenticated `gh run list` can read `ollama-autonomous-agent.yml` runs.
+- [ ] Download and inspect the newest successful autonomous-agent artifact, currently public metadata run `34185694383`; the unauthenticated download currently returns HTTP 401.
+- [ ] Validate `ollamatracks/OLLAMA_SUCCESS.json` from that run against every required success field and the expected commit.
+- [ ] Verify the hosted run persisted the final `resumefromhere.txt` and `ollamatracks/checkpoint.json`.
+- [ ] If dispatching is required, grant Actions write permission, trigger the validation/orchestrator chain once, and monitor it to a terminal result.
+
+## Local Validation
+
+- [ ] Install the repository test dependencies in the development environment.
+- [ ] Run `python -m pytest tests/test_ollama_autonomous_agent.py -q`.
+- [ ] Run the full test suite with `python -m pytest tests -q`.
+- [x] Source syntax validation passed.
+- [x] `ollamatracks/checkpoint.json` JSON validation passed.
+- [x] `git diff --check` passed.
+- [x] Resume/journey checkpoint smoke test passed.
+
+## Repository Reconciliation
+
+- [ ] Complete the repository-wide read-only audit required by `oe.md`, including source refs, tree counts, markdown inventory, ownership decisions, missing paths, and conflicts.
+- [ ] Compare all source trees again after any authorized changes.
+- [ ] Update `oe.md`, `MERGE.md`, and `ALLMDFILESREFS.md` with the final audit evidence.
+- [ ] Reconcile any remaining duplicated or historical Ollama implementations without deleting useful functionality.
+- [ ] Verify all workflow triggers, monitoring paths, bounded retry loops, and success gates against the current GitHub-hosted implementation.
+
+## Change Publication
+
+- [ ] Review the local diff with the user-owned changes preserved.
+- [ ] Commit and push only after review and after the replacement credential is secured.
+- [ ] Re-run hosted verification against the pushed commit.
+- [ ] Replace this ledger's completed items with dated evidence as each blocker is resolved.

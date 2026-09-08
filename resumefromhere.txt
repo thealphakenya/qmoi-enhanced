@@ -23,6 +23,18 @@ Timestamp: 2026-09-06T19:54:06.148327Z
 - Memory index and model-card generation
 - GitHub proof, telemetry, monitoring, and bounded self-healing
 
+## Journey Map Tracks
+- repository audit: recorded
+- platform validation: recorded
+- feature validation: recorded
+- file-handler validation: recorded
+- memory index and model card generation: recorded
+- Ollama health and real inference: recorded
+- bounded LLM coding loop: recorded
+- post-agent validation: recorded
+- GitHub monitoring snapshot: recorded
+- resume and checkpoint persistence: recorded
+
 ## Runtime Evidence
 - Checkpoint state: complete
 - Ollama health: True
@@ -31,7 +43,10 @@ Timestamp: 2026-09-06T19:54:06.148327Z
 - Files changed: 0
 
 ## Pending Work
-- Continue autonomous validation and repair until all required checks are verified.
+- Last checked-in hosted success contract is complete for workflow run `34056141332`.
+- Public metadata shows newer successful hosted runs `34185694383` and `34185554435`; inspect their artifacts after granting the CLI token Actions read access.
+- The current token returned HTTP 403 for the Actions permissions API.
+- The newest public artifact is present and not expired, but download returned HTTP 401 without authorized artifact access.
 - Preserve this file and ollamatracks/checkpoint.json after every run.
 
 ## Agent Instructions

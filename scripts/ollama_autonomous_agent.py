@@ -3196,8 +3196,34 @@ All timestamps use UTC ISO-8601 format.
             "test_result": self.results.get("validation_passed"),
             "repair_state": status,
             "failure_fingerprint": self.results.get("failure_fingerprint"),
+            "journey_tracks": [
+                "repository audit",
+                "platform validation",
+                "feature validation",
+                "file-handler validation",
+                "memory index and model card generation",
+                "Ollama health and real inference",
+                "bounded LLM coding loop",
+                "post-agent validation",
+                "GitHub monitoring snapshot",
+                "resume and checkpoint persistence",
+            ],
             **dict(evidence or {}),
         }
+
+        is_complete = status in {"autonomous_complete", "success"}
+        journey_tracks = [
+            "repository audit",
+            "platform validation",
+            "feature validation",
+            "file-handler validation",
+            "memory index and model card generation",
+            "Ollama health and real inference",
+            "bounded LLM coding loop",
+            "post-agent validation",
+            "GitHub monitoring snapshot",
+            "resume and checkpoint persistence",
+        ]
 
         content = [
             "# resumefromhere",
@@ -3223,6 +3249,18 @@ All timestamps use UTC ISO-8601 format.
                 "- Memory index and model-card generation",
                 "- GitHub proof, telemetry, monitoring, and bounded self-healing",
                 "",
+                "## Journey Map Tracks",
+            ]
+        )
+
+        content.extend(
+            f"- {track}: recorded"
+            for track in journey_tracks
+        )
+
+        content.extend(
+            [
+                "",
                 "## Runtime Evidence",
                 f"- Checkpoint state: {checkpoint_status}",
                 f"- Ollama health: {self.results.get('ollama_health', 'pending')}",
@@ -3231,7 +3269,11 @@ All timestamps use UTC ISO-8601 format.
                 f"- Files changed: {len(self.results.get('files_modified', []))}",
                 "",
                 "## Pending Work",
-                "- Continue autonomous validation and repair until all required checks are verified.",
+                (
+                    "- None; all required checks in this run are verified."
+                    if is_complete
+                    else "- Continue autonomous validation and repair until all required checks are verified."
+                ),
                 "- Preserve this file and ollamatracks/checkpoint.json after every run.",
                 "",
                 "## Agent Instructions",

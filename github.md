@@ -41,6 +41,52 @@ blindly copied into `main`; missing files and conflicts require a reviewable
 sync change. `Alpha-Q-ai` synchronization follows `SYNC.md`, `MERGE.md`, and
 the setup key in `zx.txt`.
 
+## Verification State (2026-09-08)
+
+The repository contains a previously proven hosted success checkpoint from
+workflow run `34056141332`, including Ollama health, model availability, real
+inference, the bounded coding loop, post-agent validation, monitoring, and
+resume/checkpoint persistence. The current Codespaces CLI session is
+authenticated, but its active `GITHUB_TOKEN` is not authorized to read Actions
+permissions; that check returned HTTP 403 (`Resource not accessible by
+integration`). Public workflow metadata also shows successful hosted runs
+`34185694383` and `34185554435` on 2026-09-08, but their success artifacts have
+not been inspected from this restricted session: the latest artifact is
+published and not expired, but its download returned HTTP 401. Authentication
+therefore must not be reported as artifact-level hosted verification until the
+token permissions are corrected.
+
+The autonomous agent now records these journey tracks in both
+`resumefromhere.txt` and `ollamatracks/checkpoint.json`: repository audit,
+platform validation, feature validation, file-handler validation, memory/model
+artifact generation, Ollama health and real inference, bounded LLM coding,
+post-agent validation, GitHub monitoring, and resume/checkpoint persistence.
+Successful checkpoints close required pending work; failed or in-progress
+checkpoints retain recovery instructions.
+
+### Safe CLI Verification Commands
+
+Use a replacement token with repository access and **Actions: Read** (and
+**Actions: Read and write** only when dispatching). Do not paste a real token
+into chat or commit it. The `--with-token` command reads the token from stdin:
+
+```bash
+export GH_TOKEN='<github_token>'
+printf '%s\n' "$GH_TOKEN" | gh auth login --hostname github.com --with-token
+gh auth status
+gh api -H 'Accept: application/vnd.github+json' \
+   /repos/thealphakenya/qmoi-enhanced/actions/permissions \
+   --jq '{enabled,allowed_actions}'
+gh run list -R thealphakenya/qmoi-enhanced \
+   -w ollama-autonomous-agent.yml -L 5
+```
+
+`gh auth status` only proves that a credential exists. The Actions API and run
+list must also succeed. A 403 means the token is valid but lacks access; grant
+the required repository permission or use an authorized account, then repeat
+the commands. Never work around this by weakening workflow permissions or
+printing the token.
+
 ## Real-Time Execution Status (2026-08-30 06:00 UTC)
 
 ### Latest Workflow Run Results
