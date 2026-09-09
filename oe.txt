@@ -178,3 +178,10 @@ Commands run in the terminal during this session, with secrets omitted:
 - `git restore --worktree -- ... && rm -rf scripts/__pycache__ tests/__pycache__`; removed only test-generated local state and caches.
 - `git restore --source=HEAD -- scripts/__pycache__ tests/__pycache__ && git status --short --branch`; final worktree is clean and synchronized.
 - `gh run list --repo thealphakenya/qmoi-enhanced --limit 6 --json workflowName,status,conclusion,headSha,databaseId,url ...`; confirmed hosted validation is pending/in progress for final commit `9aed9e2e1878`.
+
+## Tracker Push Race Repair (2026-09-09)
+
+- `git pull --ff-only origin main`; fast-forwarded local state to `677da3dade` with the latest hosted resume evidence.
+- `gh run view 34399970170 --repo thealphakenya/qmoi-enhanced --log-failed`; confirmed the realtime tracker generated its telemetry commit but failed only because `git push` was rejected after another writer advanced `main`.
+- Updated `.github/workflows/ollama-autonomous-agent-realtime-monitor.yml` to retry tracking pushes after fetching and rebasing, and to preserve the uploaded artifact when a bounded rebase conflict remains.
+- `python scripts/validate_workflows.py && git diff --check -- .github/workflows/ollama-autonomous-agent-realtime-monitor.yml`; all workflow, false-success, critical-step, success-contract, and CLI checks passed.

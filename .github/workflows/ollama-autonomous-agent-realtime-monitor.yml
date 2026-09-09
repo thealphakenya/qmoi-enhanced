@@ -2016,9 +2016,22 @@ jobs:
 
           echo "Pushing tracking commit to: $target_branch"
 
-          git push \
-            origin \
-            "HEAD:${target_branch}"
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:${target_branch}"; then
+              echo "Tracking state published on attempt $attempt."
+              exit 0
+            fi
+
+            echo "::warning::Tracking push raced with another writer; rebasing before retry $attempt."
+            git fetch --prune origin "$target_branch"
+            if ! git rebase "origin/${target_branch}"; then
+              echo "::warning::Tracking rebase conflicted; preserving the artifact and leaving the remote state for the next tracker run."
+              git rebase --abort || true
+              exit 0
+            fi
+          done
+
+          echo "::warning::Tracking state could not be pushed after bounded retries; the uploaded artifact remains available."
 
 
       # ======================================================================
