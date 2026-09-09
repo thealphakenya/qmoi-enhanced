@@ -185,3 +185,14 @@ Commands run in the terminal during this session, with secrets omitted:
 - `gh run view 34399970170 --repo thealphakenya/qmoi-enhanced --log-failed`; confirmed the realtime tracker generated its telemetry commit but failed only because `git push` was rejected after another writer advanced `main`.
 - Updated `.github/workflows/ollama-autonomous-agent-realtime-monitor.yml` to retry tracking pushes after fetching and rebasing, and to preserve the uploaded artifact when a bounded rebase conflict remains.
 - `python scripts/validate_workflows.py && git diff --check -- .github/workflows/ollama-autonomous-agent-realtime-monitor.yml`; all workflow, false-success, critical-step, success-contract, and CLI checks passed.
+
+## Final Hosted Verification (2026-09-09)
+
+- `gh run view 34400850849 --repo thealphakenya/qmoi-enhanced ...`; confirmed the active hosted agent completed successfully through bootstrap, autonomous execution, validation, resume persistence, artifact upload, and final health gate.
+- `gh run download 34400850849 --repo thealphakenya/qmoi-enhanced --dir /tmp/qmoi-agent-eb8d-proof`; verified an earlier successful artifact on commit `eb8d1ab78f` with Ollama healthy, inference verified, validation passed, and checkpoint created.
+- `gh run view 34401206619 --repo thealphakenya/qmoi-enhanced ...`; confirmed the repaired realtime tracker completed successfully.
+- `gh run view 34401206619 --repo thealphakenya/qmoi-enhanced --log | grep -E 'Tracking push|Tracking state published|rebase|Persist tracking state|Process completed'`; confirmed the tracker handled a concurrent push race by fetching/rebasing and publishing on attempt 2.
+- `gh run view 34401199425 --repo thealphakenya/qmoi-enhanced ...`; confirmed the new hosted agent run completed every required job step successfully on commit `c2b803d6a5b3`.
+- `gh run download 34401199425 --repo thealphakenya/qmoi-enhanced --dir /tmp/qmoi-agent-c2b-proof`; success contract verified: `final_status=SUCCESS`, Ollama `0.33.3` healthy, model `qwen2.5-coder:3b` available, inference verified with latency `2.999`, LLM coding started, one iteration completed, validation passed, and checkpoint created.
+- Hosted artifact inspection confirmed `resumefromhere.txt` status `success`, checkpoint state `complete`, iteration `1`, Ollama health `True`, validation `True`, 100 files analyzed, 0 files changed, and no pending work.
+- `git pull --ff-only origin main`; synchronized local state through hosted telemetry commit `1c8d95afc9`.
