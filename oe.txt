@@ -169,3 +169,11 @@ Commands run in the terminal during this session, with secrets omitted:
 - `python -m pytest tests/test_ollama_autonomous_agent.py -q`; `74 passed`.
 - `python -m py_compile scripts/ollama_autonomous_agent.py scripts/ollama_runtime.py scripts/realtime_workflow_monitor.py`; passed.
 - The generated Python cache files were excluded from publication.
+
+## Post-Publication Verification (2026-09-09)
+
+- `git add oe.txt && git diff --cached --check && git diff --cached --name-status && git commit -m "chore: publish reconciled agent evidence" && git push origin main`; published commit `943378832d8d423ef2e488d4c0816e622ecdb80a` to `main`.
+- `git status --short --branch && git rev-parse HEAD && git rev-parse origin/main && git diff --quiet origin/main...HEAD`; confirmed local and remote both point to `943378832d8d423ef2e488d4c0816e622ecdb80a`.
+- `gh run list --repo thealphakenya/qmoi-enhanced --limit 8 ...`; confirmed new validation and branch-sync runs started for the pushed commit.
+- `git restore --worktree -- ... && rm -rf scripts/__pycache__ tests/__pycache__`; removed only test-generated local state and caches.
+- `git restore --source=HEAD -- scripts/__pycache__ tests/__pycache__ && git status --short --branch`; final worktree is clean and synchronized.
