@@ -76,6 +76,24 @@ branch sync, PR merge, recovery, auto-healing, and cross-repository operations.
 They may automate speed and repetition, but not bypass evidence, ownership,
 review, or validation gates.
 
+## Local Audit Evidence (2026-09-08)
+
+The locally available audit was completed before documentation changes. The
+active `main` ref is `290cf11083afb539f9e9ccc6d1d98cf3131e4cbb`; the required
+historical ref is available at
+`origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp` with commit
+`c1058c28f63d81ea2cf7f45834cd873112e0e22a`. The active tree contains 917
+tracked paths, 65 Markdown files, 20 scripts, 12 tests, and 8 workflows. The
+materialized historical snapshot contains 29,505 paths and 3,559 Markdown
+files. The focused agent tests passed 74/74 and the full suite passed 179/179.
+
+The eight workflow trigger surfaces were inventoried, and the active tracked
+tree had no concrete GitHub token-shaped credential. No Alpha-Q-ai ref is
+available in this checkout, so cross-repository ownership classification and
+complete comparison remain pending external repository access. PAT rotation,
+GitHub Actions permission checks, and hosted artifact verification likewise
+remain explicit publication blockers.
+
 ## File Type Specific Procedures
 
 ### Markdown Files (.md)

@@ -44,7 +44,7 @@ on:
   workflow_run:
     workflows:
       - "Ollama PR Validation - 293+ Platform Features"
-      - "Ollama Autonomous Agent Trigger & Live Tracker"
+      - "Ollama Autonomous Agent & Live Tracker"
     types:
       - requested
       - in_progress
@@ -116,7 +116,7 @@ env:
   TRACK_DIR: ollamatracks
   TRACK_SCHEMA_VERSION: "4.0"
   VALIDATION_WORKFLOW_NAME: "Ollama PR Validation - 293+ Platform Features"
-  AGENT_WORKFLOW_NAME: "Ollama Autonomous Agent Trigger & Live Tracker"
+  AGENT_WORKFLOW_NAME: "Ollama Autonomous Agent & Live Tracker"
   MAX_RUNS: "20"
   MAX_JOBS_PER_RUN: "100"
   MAX_CHECKS: "100"
@@ -354,7 +354,7 @@ jobs:
 
             const agentWorkflowName =
               process.env.AGENT_WORKFLOW_NAME ||
-              "Ollama Autonomous Agent Trigger & Live Tracker";
+              "Ollama Autonomous Agent & Live Tracker";
 
             const maxRuns = Math.max(
               1,

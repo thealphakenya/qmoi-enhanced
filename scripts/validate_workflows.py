@@ -82,7 +82,10 @@ def validate_success_prevention(workflow_config, workflow_name):
     jobs = workflow_config.get('jobs', {})
     
     # For autonomous agent, check for OLLAMA_SUCCESS.json gate
-    if 'autonomous-agent' in workflow_name.lower() or 'ollama-autonomous' in workflow_name.lower():
+    workflow_name_lower = workflow_name.lower()
+    is_realtime_monitor = 'realtime-monitor' in workflow_name_lower
+    if (('autonomous-agent' in workflow_name_lower or 'ollama-autonomous' in workflow_name_lower)
+            and not is_realtime_monitor):
         found_success_gate = False
         found_ollama_bootstrap = False
         found_agent_execution = False

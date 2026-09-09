@@ -464,6 +464,7 @@ jobs:
           MAX_RETRIES: ${{ github.event.inputs.max_recovery_attempts || env.DEFAULT_MAX_RECOVERY_ATTEMPTS }}
           MAX_ITERATIONS: ${{ github.event.inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}
           MAX_TASKS_PER_ITERATION: ${{ github.event.inputs.max_per_iteration || env.DEFAULT_MAX_PER_ITERATION }}
+          QMOI_AGENT_COMMAND: "python ${{ env.AGENT_SCRIPT }} ${{ steps.execution_mode.outputs.command }}"
         run: |
           set -Eeuo pipefail
           command="${{ steps.execution_mode.outputs.command }}"

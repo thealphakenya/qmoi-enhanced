@@ -318,6 +318,25 @@ def mask_github_token(
     return value[:4] + "..." + value[-4:]
 
 
+def sanitize_command_metadata(
+    command: str,
+) -> str:
+    """Remove common credential values from recorded command metadata."""
+    value = str(command).strip()
+    for name in ("GH_TOKEN", "GITHUB_TOKEN", "MY_CUSTOM_TOKEN", "MY_CUTOM_TOKEN"):
+        value = re.sub(
+            rf"({name}\s*=\s*)([^\s;&|]+)",
+            r"\1<redacted>",
+            value,
+            flags=re.IGNORECASE,
+        )
+    return re.sub(
+        r"\b(?:github_pat_|ghp_|gho_|ghs_|ghu_)[A-Za-z0-9_]+",
+        "<redacted>",
+        value,
+    )
+
+
 # ============================================================================
 # SELF-HEALING COMMAND MANAGER
 # ============================================================================
@@ -3182,6 +3201,14 @@ All timestamps use UTC ISO-8601 format.
             *(completed_steps or []),
         ]))
         checkpoint_status = "complete" if status in {"autonomous_complete", "success"} else "in_progress"
+        commands_run = [
+            sanitize_command_metadata(value)
+            for value in (
+                os.getenv("QMOI_AGENT_COMMAND"),
+                os.getenv("QMOI_TERMINAL_COMMAND"),
+            )
+            if value
+        ]
         checkpoint_evidence = {
             "repository_commit": os.getenv("GITHUB_SHA"),
             "workflow_run": os.getenv("GITHUB_RUN_ID"),
@@ -3196,6 +3223,7 @@ All timestamps use UTC ISO-8601 format.
             "test_result": self.results.get("validation_passed"),
             "repair_state": status,
             "failure_fingerprint": self.results.get("failure_fingerprint"),
+            "commands_run": commands_run,
             "journey_tracks": [
                 "repository audit",
                 "platform validation",
@@ -3261,6 +3289,13 @@ All timestamps use UTC ISO-8601 format.
         content.extend(
             [
                 "",
+                "## Commands Recorded",
+                *(
+                    [f"- {command}" for command in commands_run]
+                    if commands_run
+                    else ["- No command metadata was supplied for this checkpoint."]
+                ),
+                "",
                 "## Runtime Evidence",
                 f"- Checkpoint state: {checkpoint_status}",
                 f"- Ollama health: {self.results.get('ollama_health', 'pending')}",
@@ -3279,6 +3314,7 @@ All timestamps use UTC ISO-8601 format.
                 "## Agent Instructions",
                 "- Re-read this file at the start of every autonomous run.",
                 "- Update progress, evidence, and pending work after each checkpoint.",
+                "- Record safe agent or terminal command metadata with QMOI_AGENT_COMMAND or QMOI_TERMINAL_COMMAND; never record secrets.",
                 "- Do not claim completion without GitHub-hosted runtime and success-contract evidence.",
             ]
         )

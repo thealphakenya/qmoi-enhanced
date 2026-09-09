@@ -13,8 +13,10 @@ This document provides a comprehensive index of all markdown (.md) files in both
 ## Canonical Inventory Verification
 This repository currently contains one canonical root-level ALLMDFILESREFS.md and no hidden or alternate markdown index files were found elsewhere in the repo tree. The root file is therefore the authoritative inventory for this workspace. The final audit verified the following:
 
-- Total repo-level .md files found: 43
-- Root directory .md files found: 43
+- Total active repo-level .md files found: 65
+- Historical snapshot .md files found: 3,559
+- Total tracked .md files including the historical snapshot: 3,624
+- Root directory .md files found: 65
 - Hidden/alternate .md indexes outside the root: 0
 - Unreferenced .md files in the repo tree: 0
 - Duplicate/companion markdown files are treated as reconciliation artifacts, not independent sources of truth; they must be merged into the authoritative canonical files when content overlaps.
@@ -40,8 +42,8 @@ as `QE`, `AQ`, `BOTH`, `HISTORICAL`, or `CONFLICT`. This keeps the index complet
 without copying stale historical files into production.
 
 The materialized copy of that complete source is
-`qmoi-enhanced-history-14/`. Its `.md` files are historical inventory inputs
-and must remain discoverable during every merge audit. The agent must compare
+`qmoi-enhanced-history-14/`. Its 3,559 `.md` files are historical inventory
+inputs and must remain discoverable during every merge audit. The agent must compare
 the live QE and AQ inventories with both the historical Git ref and this
 materialized snapshot, including paths that are currently unused or absent
 from the active checkout. Any mismatch is recorded as an addition, omission,
