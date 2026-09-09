@@ -377,10 +377,10 @@ jobs:
 
           case "$EVENT_NAME" in
             workflow_run)
-              if [ "$VALIDATION_CONCLUSION" = "success" ]; then
+              if [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ] && [ "$VALIDATION_CONCLUSION" != "cancelled" ]; then
                 run_agent="true"
                 command="autonomous"
-                reason="Trusted default-branch validation succeeded."
+                reason="Trusted default-branch validation completed; run the bounded autonomous repair and validation loop even when upstream checks fail."
               fi
               ;;
             workflow_dispatch)
