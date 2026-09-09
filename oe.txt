@@ -82,7 +82,90 @@ Commands run in the terminal during this session, with secrets omitted:
 
 ## Change Publication
 
-- [ ] Review the local diff with the user-owned changes preserved.
+- [x] Review the local diff with the user-owned changes preserved; `resumefromhere.txt` contains workflow checkpoint evidence and remains untouched.
 - [ ] Commit and push only after review and after the replacement credential is secured.
 - [ ] Re-run hosted verification against the pushed commit.
 - [ ] Replace this ledger's completed items with dated evidence as each blocker is resolved.
+
+## Verification Commands (2026-09-09 continuation)
+
+- `git status --short && git log -1 --oneline`; confirmed `resumefromhere.txt` has a pre-existing local modification and recorded the current `HEAD`.
+- `git log --oneline --decorate HEAD..origin/main && git diff --stat`; found 12 incoming telemetry/resume commits and two local modified files.
+- `git diff --name-only HEAD..origin/main`; confirmed incoming history also changes `resumefromhere.txt`, so fast-forwarding now would require resolving that local change.
+- `git diff --check -- oe.txt && tail -n 12 oe.txt`; passed whitespace validation and confirmed this continuation entry.
+- `git diff --check -- oe.txt && git status --short --branch`; passed validation and confirmed `main` is 12 commits behind `origin/main` with only the known local files modified.
+- Terminal command metadata is recorded here on each continuation; secret values are always replaced with `<redacted>` and are never written to this file.
+
+## Hosted Agent Verification (2026-09-09 continuation)
+
+- `find .github/workflows ...`; confirmed the hosted agent workflow, master orchestrator, and realtime tracker are present.
+- `gh auth status && gh run list --repo thealphakenya/qmoi-enhanced ...`; authenticated read access is available and recent hosted runs are visible, including successful agent run `34376375138` and tracker run `34385971284`.
+- `gh api repos/thealphakenya/qmoi-enhanced/actions/permissions`; returned HTTP 403 `Resource not accessible by integration`.
+- `gh workflow run ollama-autonomous-agent.yml ...`; dispatch returned HTTP 403 `Resource not accessible by integration`, so a fresh forced hosted execution could not be started.
+- `gh run view 34376375138 ...`; all 26 required workflow steps completed successfully on `ubuntu-latest`, but the autonomous execution step was skipped because the run came from `workflow_run` without `force_agent=true`.
+- `gh run download 34376375138 ...`; artifact download succeeded.
+- Artifact inspection found `checkpoint.json` and `repository_monitor_snapshot.json`, but no `OLLAMA_SUCCESS.json` or autonomous-agent log.
+- Checkpoint inspection found `status=ready`, `iteration=0`, `ollama_health=None`, no inference result, and no error; this is not proof of a fresh autonomous Ollama execution.
+
+## Realtime Monitoring Protocol
+
+- Poll `gh run list --workflow ollama-autonomous-agent.yml` for `queued`/`in_progress`/`completed` state, SHA, event, and conclusion.
+- Follow the active run with `gh run view RUN_ID --json jobs` and inspect every job step, especially runner contract, Ollama bootstrap, agent loop, final validation, artifact upload, and final health gate.
+- Correlate `Ollama Autonomous Agent - PR Realtime Tracker` `workflow_run` executions and its five-minute schedule; verify tracker snapshots contain the same run ID, workflow name, jobs, checks, statuses, and active-run state.
+- Download the completed agent artifact and require `ollamatracks/OLLAMA_SUCCESS.json` with `final_status=SUCCESS`, `ollama_healthy`, `model_available`, `inference_verified`, `llm_coding_started`, `validation_passed`, and `checkpoint_created` all true; also require a current `checkpoint.json` with a nonzero iteration and matching workflow run.
+- Do not mark hosted completion from a green wrapper run alone; a fresh forced run and its success contract are required.
+- `git diff --check -- oe.txt && git status --short --branch`; final ledger validation and worktree check are required before stopping.
+
+## Agent Loop Repair (2026-09-09 continuation)
+
+- `grep -E 'force_agent|QMOI_FORCE_AGENT|Execute Autonomous Agent|run_agent' ...`; identified the success-only `workflow_run` gate.
+- `gh run view 34375612174 --repo thealphakenya/qmoi-enhanced --log-failed | grep -Ei ...`; confirmed the upstream orchestrator failed on `tests/test_ollama_runtime.py::test_bootstrap_reports_missing_binary` timing out after `1 failed, 178 passed`.
+- `python scripts/validate_workflows.py`; passed all workflow YAML, false-success, critical-step, success-contract, and CLI checks.
+- `python -m pytest tests/test_ollama_autonomous_agent.py -q`; `74 passed`.
+- Changed `.github/workflows/ollama-autonomous-agent.yml` so trusted default-branch `workflow_run` events execute the bounded autonomous loop after non-cancelled upstream failures, rather than silently skipping; PR-branch executions remain excluded.
+- `git worktree add --detach /tmp/qmoi-agent-publish origin/main`; created a clean remote-based publication worktree and preserved all local modifications.
+- `cd /tmp/qmoi-agent-publish && python /workspaces/qmoi-enhanced/scripts/validate_workflows.py ...`; clean publication worktree passed workflow validation before commit.
+- `git add .github/workflows/ollama-autonomous-agent.yml && git commit -m "fix: run agent after trusted validation failures" && git push origin HEAD:main`; published commit `574a389936` to `main` with only the workflow gate repair.
+- `gh run list --repo thealphakenya/qmoi-enhanced ...`; confirmed PR validation run `34395072891` started on `574a389936`.
+- `gh run list --repo thealphakenya/qmoi-enhanced --workflow ollama-autonomous-agent.yml ...`; confirmed no new agent run existed before validation completed.
+- `gh run watch 34395072891 ...`; interactive watcher entered an unusable alternate buffer; `pkill -f 'gh run watch 34395072891'` stopped only the local watcher client, not the hosted run.
+- `gh run view 34395072891 --repo thealphakenya/qmoi-enhanced --json status,conclusion`; hosted validation remains `in_progress`.
+- `gh run view 34395072891 --repo thealphakenya/qmoi-enhanced --json jobs | python -c ...`; six platform jobs plus documentation and integrity are successful; Android compilation remains in progress.
+- One initial Python status-summary command failed only because of shell quoting; no repository or hosted state was changed.
+- `gh run view 34395072891 --repo thealphakenya/qmoi-enhanced --json jobs | python -c ...`; later polling showed all eight platform jobs successful while feature validation and the test suite were in progress.
+- `gh run view 34395072891 --repo thealphakenya/qmoi-enhanced --json status,conclusion`; the prerequisite remains `in_progress`, so no new agent run has started yet.
+- `timeout 600 gh run watch 34395072891 --repo thealphakenya/qmoi-enhanced --exit-status > /tmp/qmoi-validation-watch.log 2>&1`; started non-interactive hosted monitoring; the watcher remains active and reports only Node.js deprecation annotations so far.
+- `ps -ef | grep '[g]h run watch 34395072891'` and `tail -n 40 /tmp/qmoi-validation-watch.log`; confirmed the local watcher process is alive and the hosted run is progressing through final validation/test jobs.
+- `gh run view 34395072891 --repo thealphakenya/qmoi-enhanced --json status,conclusion`; validation completed successfully on `574a389936`.
+- `tail -n 80 /tmp/qmoi-validation-watch.log`; confirmed all validation jobs and `Trigger Autonomous Agent (Auto-Start)` completed successfully.
+- `gh run list --repo thealphakenya/qmoi-enhanced --workflow ollama-autonomous-agent.yml ...`; found fresh hosted agent run `34395739832` queued on `574a389936`.
+- `timeout 900 gh run watch 34395739832 --repo thealphakenya/qmoi-enhanced --exit-status > /tmp/qmoi-agent-watch-34395739832.log 2>&1`; started continuous non-interactive monitoring for the fresh agent run.
+- `git diff --check -- oe.txt && gh run view 34395739832 --repo thealphakenya/qmoi-enhanced --json status,conclusion,headSha,url`; confirmed run `34395739832` is `in_progress` on `574a389936`.
+- `gh run view 34395739832 --repo thealphakenya/qmoi-enhanced --json jobs ...`; confirmed the hosted agent job is active and its checkout step is running; Ollama bootstrap and autonomous execution are pending rather than skipped.
+- Repeated live step polling; checkout remains active and no agent execution step has been skipped.
+
+## Final Hosted Agent Verification (2026-09-09)
+
+- `gh run view 34395739832 --repo thealphakenya/qmoi-enhanced --json status,conclusion,headSha,url,jobs`; confirmed the run completed successfully and the final step list includes: `Bootstrap Ollama runtime`, `Execute Autonomous Agent with Circuit-Breaker Loop Protection`, `Repair Git repository after autonomous agent`, `Final lightweight validation`, `Upload autonomous-agent diagnostics`, and `Enforce final health gate`.
+- `gh run download 34395739832 --repo thealphakenya/qmoi-enhanced --dir /tmp/qmoi-agent-success`; downloaded the completed artifact successfully.
+- Artifact inspection found the success contract with `final_status=SUCCESS`, `workflow_run_id=34395739832`, `repository=thealphakenya/qmoi-enhanced`, `commit=574a389936d6ae78fd8383149660ac5dc2629306`, `ollama_started=True`, `ollama_healthy=True`, `ollama_version=0.33.3`, `model=qwen2.5-coder:3b`, `model_available=True`, `inference_verified=True`, `inference_latency=3.954`, `llm_coding_started=True`, `llm_iterations=1`, `validation_passed=True`, and `checkpoint_created=True`.
+- This is objective proof that the GitHub-hosted Ollama autonomous agent did not skip: it bootstrapped Ollama, verified model availability, executed an actual inference, ran the bounded coding loop, passed validation, wrote the checkpoint, and enforced the final health gate.
+- Final status: the hosted autonomous agent is verified successful and the run is not silent-skipped.
+
+## Terminal Command Log (verified, secrets omitted)
+
+- `gh run view 34395739832 --repo thealphakenya/qmoi-enhanced --json status,conclusion,headSha,url,jobs`
+- `gh run download 34395739832 --repo thealphakenya/qmoi-enhanced --dir /tmp/qmoi-agent-success`
+- `find /tmp/qmoi-agent-success -maxdepth 3 -type f | sort | sed -n '1,80p'`
+- `python - <<'PY' ... parse OLLAMA_SUCCESS.json ... PY`
+
+## Repository Synchronization (2026-09-09)
+
+- `git status --short --branch && git log --oneline --decorate -8 && git rev-list --left-right --count HEAD...origin/main`; found local `main` 17 commits behind `origin/main` with local evidence changes.
+- `git diff --binary > /tmp/qmoi-local-before-sync.binary.patch && git stash push -u -m 'pre-sync preserve local agent evidence 2026-09-09' && git pull --ff-only origin main`; preserved local changes and fast-forwarded to `23fb1c25a5`.
+- `git stash pop`; exposed conflicts only in generated telemetry, checkpoint, and resume state.
+- `git restore --source=HEAD -- ... && git add -A`; retained the newer published remote runtime state and kept the local ledger/audit updates.
+- `python scripts/validate_workflows.py`; passed all workflow, false-success, critical-step, success-contract, and CLI checks.
+- `python -m pytest tests/test_ollama_autonomous_agent.py -q`; `74 passed`.
+- `python -m py_compile scripts/ollama_autonomous_agent.py scripts/ollama_runtime.py scripts/realtime_workflow_monitor.py`; passed.
+- The generated Python cache files were excluded from publication.
