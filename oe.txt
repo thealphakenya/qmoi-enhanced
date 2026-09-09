@@ -177,3 +177,4 @@ Commands run in the terminal during this session, with secrets omitted:
 - `gh run list --repo thealphakenya/qmoi-enhanced --limit 8 ...`; confirmed new validation and branch-sync runs started for the pushed commit.
 - `git restore --worktree -- ... && rm -rf scripts/__pycache__ tests/__pycache__`; removed only test-generated local state and caches.
 - `git restore --source=HEAD -- scripts/__pycache__ tests/__pycache__ && git status --short --branch`; final worktree is clean and synchronized.
+- `gh run list --repo thealphakenya/qmoi-enhanced --limit 6 --json workflowName,status,conclusion,headSha,databaseId,url ...`; confirmed hosted validation is pending/in progress for final commit `9aed9e2e1878`.
