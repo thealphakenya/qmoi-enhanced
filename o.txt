@@ -1,0 +1,840 @@
+TASK: Make the GitHub-hosted Ollama Autonomous Agent Truly Autonomous Until Completion
+
+You are modifying the repository's GitHub Actions implementation of the Ollama Autonomous Agent.
+
+Your objective is NOT merely to make the workflow green.
+
+Your objective is to guarantee that, whenever a trusted GitHub-hosted autonomous-agent run starts, it continues through every required stage and does not pause, silently skip, falsely succeed, or declare completion until the complete autonomous-agent success contract has actually been satisfied.
+
+The implementation must remain bounded, safe, auditable, and GitHub-hosted.
+
+---
+
+1. PRIMARY REQUIREMENT
+
+Treat the autonomous-agent workflow as a state machine with an explicit completion contract.
+
+A run may terminate as successful ONLY when ALL required states have been objectively verified.
+
+At minimum:
+
+1. GitHub-hosted runner initialized.
+2. Correct repository and target branch checked out.
+3. Required source files/workflows/scripts available.
+4. Python runtime initialized.
+5. Ollama installed/started successfully.
+6. Ollama health endpoint responds successfully.
+7. Required model is available.
+8. A real Ollama inference has been executed successfully.
+9. The autonomous coding loop has actually started.
+10. The agent has performed its required work rather than merely initializing.
+11. The bounded iteration/circuit-breaker policy has been respected.
+12. Repository changes, if required, have actually been applied.
+13. Required tests/validation have actually run.
+14. Validation has passed.
+15. Repository state has been checked after agent execution.
+16. Resume/checkpoint state has been persisted.
+17. Required telemetry/evidence has been persisted.
+18. The final success contract has been generated.
+19. The success contract independently verifies every required condition.
+20. The final health gate refuses success if any required condition is false, missing, skipped, or unknown.
+21. The workflow artifact contains sufficient evidence to independently reconstruct what happened.
+22. The final workflow conclusion is SUCCESS only after all of the above are true.
+
+Do NOT use a green preceding job, successful checkout, successful Ollama installation, or successful wrapper script as proof of autonomous completion.
+
+---
+
+2. NEVER SILENTLY SKIP THE AUTONOMOUS AGENT
+
+Audit every workflow trigger and conditional surrounding the autonomous-agent execution.
+
+Search for:
+
+- "if:"
+- "workflow_run"
+- "workflow_dispatch"
+- "schedule"
+- "needs:"
+- "force_agent"
+- "QMOI_FORCE_AGENT"
+- "continue-on-error"
+- "|| true"
+- "exit 0"
+- skipped jobs
+- skipped steps
+- success-only gates
+- failure-only gates
+- conditions based solely on upstream conclusion
+
+The agent must NOT silently skip because an upstream workflow failed, succeeded, was triggered by "workflow_run", or lacks an optional flag.
+
+For trusted default-branch execution, determine explicitly whether the agent is required to run.
+
+If the agent is required, make the workflow execute it.
+
+If the agent cannot execute, the workflow must fail with an explicit reason.
+
+Never convert:
+
+"agent not executed"
+
+into:
+
+"agent successful".
+
+---
+
+3. DISTINGUISH INITIALIZATION FROM EXECUTION
+
+The workflow must explicitly distinguish:
+
+- "initialized"
+- "ollama_started"
+- "ollama_healthy"
+- "model_available"
+- "inference_verified"
+- "llm_coding_started"
+- "llm_iterations > 0"
+- "validation_passed"
+- "checkpoint_created"
+- "final_status=SUCCESS"
+
+A checkpoint such as:
+
+status=ready
+iteration=0
+
+must NEVER be interpreted as autonomous success.
+
+Likewise, the presence of:
+
+checkpoint.json
+resumefromhere.txt
+
+alone is not evidence that autonomous coding occurred.
+
+---
+
+4. REAL OLLAMA EXECUTION IS REQUIRED
+
+Do not merely verify that the "ollama" binary exists.
+
+The workflow must:
+
+1. Start Ollama.
+2. Wait for readiness using a bounded retry loop.
+3. Verify the Ollama health/API endpoint.
+4. Verify the expected model exists.
+5. Execute a real inference request.
+6. Verify that a non-empty valid response was returned.
+7. Record the inference result metadata.
+8. Record latency.
+9. Set "inference_verified=true" only after the real request succeeds.
+
+If any of these fail:
+
+ollama_healthy=false
+model_available=false
+inference_verified=false
+
+as appropriate, and the final health gate MUST fail.
+
+Do not fabricate, infer, or default these values to true.
+
+---
+
+5. THE CODING LOOP MUST ACTUALLY RUN
+
+The workflow must prove that the LLM coding phase executed.
+
+Require evidence such as:
+
+{
+  "llm_coding_started": true,
+  "llm_iterations": 1
+}
+
+or a greater iteration count.
+
+Do not treat model availability as coding execution.
+
+Do not treat an empty/no-op response as a coding iteration.
+
+Do not allow:
+
+llm_iterations = 0
+
+to produce autonomous-agent SUCCESS.
+
+If the agent determines that no code change is necessary, it must still explicitly execute the required analysis/validation path and record why no modification was necessary.
+
+---
+
+6. NO UNBOUNDED INFINITE LOOP
+
+"Do not pause until complete" does NOT mean create an infinite GitHub Actions loop.
+
+Implement a bounded circuit breaker.
+
+The agent should continue through retries/iterations until:
+
+SUCCESS
+
+All required completion conditions are true.
+
+RECOVERABLE FAILURE
+
+A bounded retry is available.
+
+Retry and continue.
+
+TERMINAL FAILURE
+
+No safe retry remains or an unrecoverable condition exists.
+
+Fail explicitly with diagnostic evidence.
+
+The agent must NEVER remain indefinitely:
+
+queued
+in_progress
+waiting
+sleeping
+retrying
+
+without making progress or reaching a terminal state.
+
+Every retry must have:
+
+- attempt number
+- reason
+- timestamp
+- action
+- result
+- next action
+
+---
+
+7. "PAUSE" MUST HAVE A STRICT DEFINITION
+
+The autonomous agent must not voluntarily pause simply because:
+
+- one iteration completed;
+- the repository appears unchanged;
+- an upstream workflow was successful;
+- the workflow was triggered by "workflow_run";
+- a checkpoint exists;
+- Ollama is healthy;
+- one test passed;
+- the model returned an answer;
+- an intermediate step succeeded.
+
+A pause/wait is permitted ONLY when it is an intentional bounded wait for an external GitHub-hosted condition such as:
+
+- Ollama startup/readiness;
+- GitHub workflow dependency completion;
+- retry backoff;
+- GitHub API propagation.
+
+Every wait must have:
+
+- explicit timeout;
+- bounded polling;
+- observable progress;
+- terminal failure if timeout expires.
+
+---
+
+8. RESUME CHECKPOINT MUST BE REAL
+
+Use:
+
+resumefromhere.txt
+
+and:
+
+ollamatracks/checkpoint.json
+
+as persistent resume/evidence mechanisms where the existing architecture requires them.
+
+The checkpoint must contain enough information to resume safely, including at minimum:
+
+- repository
+- branch
+- commit/SHA
+- workflow run ID
+- current phase
+- iteration
+- timestamp
+- Ollama health
+- model availability
+- inference status
+- coding-loop status
+- validation status
+- final status
+- error/recovery information when applicable
+
+A successful checkpoint must correspond to actual completed work.
+
+Do not write a fake success checkpoint before the work is finished.
+
+---
+
+9. RESUME MUST NOT CREATE FALSE COMPLETION
+
+When a fresh GitHub-hosted runner starts:
+
+1. Restore repository state.
+2. Read "resumefromhere.txt".
+3. Read "checkpoint.json".
+4. Determine the last verified phase.
+5. Re-verify state that cannot safely be trusted across runners.
+6. Continue from the appropriate phase.
+7. Do not reset completed work to an artificial "success" state.
+8. Do not assume an iteration occurred merely because a previous checkpoint file exists.
+
+If the checkpoint is inconsistent, stale, malformed, or belongs to another run/commit, mark it as stale and recover safely.
+
+---
+
+10. VALIDATION MUST OCCUR AFTER AUTONOMOUS EXECUTION
+
+The workflow must perform final validation AFTER the autonomous agent has run.
+
+At minimum validate:
+
+python scripts/validate_workflows.py
+python -m pytest tests -q
+python -m py_compile ...
+git diff --check
+
+Use the repository's actual validation requirements rather than blindly assuming these exact commands if the repository has evolved.
+
+The important rule is:
+
+«Validation must validate the resulting repository state, not merely the state that existed before the agent started.»
+
+---
+
+11. POST-AGENT REPOSITORY INTEGRITY
+
+After the autonomous loop:
+
+1. Inspect Git status.
+2. Detect unintended changes.
+3. Detect merge conflicts.
+4. Detect corrupted Git state.
+5. Validate modified files.
+6. Validate workflow YAML.
+7. Validate Python syntax.
+8. Run required tests.
+9. Verify checkpoint/evidence files.
+10. Verify no credentials were introduced.
+
+If autonomous execution corrupts Git state, invoke the repository's existing bounded repair mechanism.
+
+Never hide repository corruption with:
+
+git reset --hard
+
+unless the repository's explicit recovery policy authorizes it.
+
+Never destroy user-owned changes merely to obtain a green workflow.
+
+---
+
+12. SECURITY REQUIREMENT
+
+The agent must never expose credentials.
+
+Never print:
+
+- "GH_TOKEN"
+- GitHub PATs
+- API keys
+- secrets
+- authorization headers
+- ".env" secrets
+
+Do not put credentials into:
+
+- logs
+- artifacts
+- checkpoints
+- telemetry
+- "resumefromhere.txt"
+- generated reports
+- commit messages
+
+Use GitHub Actions secrets/environment variables appropriately.
+
+Credential scans must distinguish placeholders from actual credentials.
+
+---
+
+13. SUCCESS CONTRACT
+
+Create or strengthen:
+
+ollamatracks/OLLAMA_SUCCESS.json
+
+The contract must be generated only after the agent completes.
+
+It should contain fields equivalent to:
+
+{
+  "final_status": "SUCCESS",
+  "workflow_run_id": "...",
+  "repository": "...",
+  "commit": "...",
+  "ollama_started": true,
+  "ollama_healthy": true,
+  "ollama_version": "...",
+  "model": "qwen2.5-coder:3b",
+  "model_available": true,
+  "inference_verified": true,
+  "inference_latency": 0,
+  "llm_coding_started": true,
+  "llm_iterations": 1,
+  "validation_passed": true,
+  "checkpoint_created": true
+}
+
+Add additional fields where useful.
+
+The contract must be generated from actual observed state.
+
+Never construct it with unconditional:
+
+True
+
+values.
+
+---
+
+14. FINAL HEALTH GATE
+
+The final health gate must independently verify the success contract.
+
+Conceptually:
+
+required = [
+    "ollama_started",
+    "ollama_healthy",
+    "model_available",
+    "inference_verified",
+    "llm_coding_started",
+    "validation_passed",
+    "checkpoint_created",
+]
+
+for field in required:
+    if contract.get(field) is not True:
+        fail()
+
+if contract.get("llm_iterations", 0) < 1:
+    fail()
+
+if contract.get("final_status") != "SUCCESS":
+    fail()
+
+Also verify that:
+
+- workflow run ID matches the current run;
+- repository matches;
+- commit SHA matches;
+- checkpoint is current;
+- artifacts exist;
+- required validation actually executed;
+- no required job/step was skipped;
+- no required condition is "unknown".
+
+Only then may the workflow finish successfully.
+
+---
+
+15. FAILURE MUST BE LOUD AND ACTIONABLE
+
+If completion cannot be proven, fail.
+
+The final output should identify:
+
+PHASE
+ATTEMPT
+FAILURE_REASON
+LAST_SUCCESSFUL_PHASE
+RETRY_COUNT
+CHECKPOINT
+WORKFLOW_RUN_ID
+COMMIT
+NEXT_RECOVERY_ACTION
+
+Do not replace an uncertain state with SUCCESS.
+
+Use explicit statuses such as:
+
+READY
+RUNNING
+RETRYING
+RECOVERING
+SUCCESS
+FAILED
+
+Never use SUCCESS for "READY", "UNKNOWN", or "SKIPPED".
+
+---
+
+16. GITHUB-HOSTED REQUIREMENT
+
+The implementation must work on a fresh GitHub-hosted "ubuntu-latest" runner.
+
+Do not rely on:
+
+- a developer's local Ollama installation;
+- a local daemon;
+- a local filesystem surviving between runners;
+- an interactive terminal;
+- a Codespace remaining open;
+- manual user intervention;
+- a local process started outside Actions.
+
+Every required dependency must be installed, initialized, verified, or restored by the workflow itself.
+
+---
+
+17. WORKFLOW DEPENDENCY CHAIN
+
+Audit the complete chain:
+
+trigger
+  ↓
+trusted-run determination
+  ↓
+checkout
+  ↓
+runtime bootstrap
+  ↓
+Ollama bootstrap
+  ↓
+Ollama health
+  ↓
+model verification
+  ↓
+real inference
+  ↓
+autonomous coding loop
+  ↓
+checkpoint/resume update
+  ↓
+repository repair/integrity
+  ↓
+final validation
+  ↓
+evidence generation
+  ↓
+artifact upload
+  ↓
+final health gate
+  ↓
+SUCCESS / FAILURE
+
+Every transition must have an observable success/failure condition.
+
+No transition may silently disappear because of a GitHub Actions conditional.
+
+---
+
+18. WORKFLOW-RUN BEHAVIOR
+
+Pay particular attention to "workflow_run".
+
+A workflow triggered through "workflow_run" must not assume that because the upstream workflow completed, the autonomous agent itself completed.
+
+If upstream validation is required before agent execution:
+
+1. Explicitly verify the upstream result.
+2. Determine whether the agent is authorized to start.
+3. Start the agent.
+4. Prove that the agent actually ran.
+5. Wait for the autonomous execution to reach a terminal state.
+6. Verify its success contract.
+
+Avoid success-only logic that accidentally prevents recovery after an upstream failure when recovery is part of the design.
+
+Do not execute untrusted PR code merely because a workflow event occurred.
+
+Preserve the existing protection against executing autonomous code from untrusted PR branches.
+
+---
+
+19. MONITORING
+
+Ensure the realtime tracker observes the actual autonomous run.
+
+It should record:
+
+- run ID
+- workflow
+- commit
+- event
+- status
+- conclusion
+- current job
+- current step
+- active phase
+- iteration
+- checkpoint
+- Ollama health
+- model state
+- last progress timestamp
+- timeout/retry state
+
+A monitor must not declare completion from a wrapper job alone.
+
+It should recognize the difference between:
+
+wrapper_success
+
+and:
+
+autonomous_success_contract_verified
+
+---
+
+20. TEST THE FAILURE PATHS
+
+Add or strengthen tests for at least:
+
+1. Ollama binary missing.
+2. Ollama fails to start.
+3. Ollama health timeout.
+4. Model unavailable.
+5. Inference failure.
+6. Empty inference response.
+7. Coding loop never starts.
+8. "llm_iterations == 0".
+9. Validation failure.
+10. Checkpoint failure.
+11. Stale checkpoint.
+12. Wrong workflow run ID.
+13. Wrong commit SHA.
+14. Missing success contract.
+15. Invalid success contract.
+16. False success fields.
+17. Skipped autonomous-agent step.
+18. Upstream workflow failure.
+19. "workflow_run" invocation.
+20. Circuit breaker exhaustion.
+21. Git corruption.
+22. Credential detection.
+23. Artifact upload failure.
+24. Final health-gate failure.
+
+Most importantly, write a regression test proving that:
+
+«A green GitHub Actions wrapper cannot produce autonomous-agent SUCCESS unless real Ollama inference and at least one autonomous coding iteration occurred.»
+
+---
+
+21. DO NOT OVERFIT TO CURRENT RUN IDs
+
+Do not hard-code:
+
+34395739832
+574a389936
+943378832d8d...
+
+Those are historical evidence only.
+
+The implementation must dynamically use:
+
+github.run_id
+github.sha
+github.repository
+github.ref
+
+or the appropriate runtime equivalents.
+
+---
+
+22. DO NOT REMOVE USEFUL EXISTING FUNCTIONALITY
+
+Before modifying the implementation:
+
+1. Inspect all relevant workflows.
+2. Inspect the autonomous-agent Python implementation.
+3. Inspect Ollama runtime/bootstrap code.
+4. Inspect checkpoint/resume code.
+5. Inspect realtime monitoring.
+6. Inspect tests.
+7. Identify duplicate/historical implementations.
+8. Preserve useful functionality.
+9. Make the smallest coherent changes necessary.
+10. Do not delete functionality merely to simplify the workflow.
+
+---
+
+23. REQUIRED AUDIT BEFORE FINISHING
+
+Run a repository-wide search for false-success patterns:
+
+continue-on-error
+|| true
+exit 0
+if: always()
+if: success()
+if: failure()
+workflow_run
+force_agent
+QMOI_FORCE_AGENT
+skipped
+success
+checkpoint
+OLLAMA_SUCCESS
+llm_iterations
+inference_verified
+
+Inspect every relevant occurrence.
+
+Then verify that no path exists where:
+
+agent skipped
+      ↓
+wrapper green
+      ↓
+final SUCCESS
+
+The only acceptable path is:
+
+agent executed
+      ↓
+real Ollama inference
+      ↓
+real coding loop
+      ↓
+validation
+      ↓
+checkpoint/evidence
+      ↓
+success contract verified
+      ↓
+final health gate
+      ↓
+SUCCESS
+
+---
+
+24. REQUIRED VALIDATION BEFORE COMMIT
+
+Run:
+
+python scripts/validate_workflows.py
+python -m pytest tests/test_ollama_autonomous_agent.py -q
+python -m pytest tests -q
+python -m py_compile scripts/ollama_autonomous_agent.py scripts/ollama_runtime.py scripts/realtime_workflow_monitor.py
+git diff --check
+
+Use the repository's current scripts/tests if filenames have changed.
+
+Do not commit if validation fails unless the failure is itself part of the intentional repair and is clearly documented.
+
+---
+
+25. REQUIRED GITHUB-HOSTED VERIFICATION
+
+After publication:
+
+1. Wait for the validation workflow.
+2. Confirm the autonomous-agent workflow is actually triggered.
+3. Confirm it is not skipped.
+4. Confirm "Bootstrap Ollama runtime" executes.
+5. Confirm Ollama becomes healthy.
+6. Confirm the model is available.
+7. Confirm real inference executes.
+8. Confirm the autonomous coding loop executes.
+9. Confirm "llm_iterations >= 1".
+10. Confirm final validation executes.
+11. Confirm checkpoint creation.
+12. Download the artifact.
+13. Inspect "OLLAMA_SUCCESS.json".
+14. Verify every success field.
+15. Verify workflow run ID and commit SHA.
+16. Verify final health gate succeeded.
+17. Verify the workflow's actual conclusion is SUCCESS.
+
+Do not mark the task complete based solely on:
+
+Actions page = green
+
+The artifact and success contract must independently prove autonomous execution.
+
+---
+
+26. FINAL COMPLETION RULE
+
+The autonomous agent is considered COMPLETE only if the evidence proves:
+
+GitHub-hosted runner
+        +
+Ollama started
+        +
+Ollama healthy
+        +
+required model available
+        +
+real inference verified
+        +
+autonomous coding started
+        +
+at least one real iteration
+        +
+validation passed
+        +
+checkpoint persisted
+        +
+evidence persisted
+        +
+final health gate passed
+        +
+no required step skipped
+        =
+AUTONOMOUS AGENT SUCCESS
+
+If any component is missing:
+
+DO NOT PAUSE AS SUCCESS.
+DO NOT DECLARE COMPLETE.
+DO NOT FABRICATE EVIDENCE.
+DO NOT SILENTLY SKIP.
+DO NOT TURN UNKNOWN INTO TRUE.
+
+Instead, continue through the appropriate bounded recovery/retry path or terminate explicitly as FAILED with enough evidence to resume safely.
+
+---
+
+COPILOT EXECUTION INSTRUCTIONS
+
+Do not merely explain what should be changed.
+
+Inspect the repository and implement the required changes.
+
+Before modifying anything, report the relevant workflow/files and the execution path you found.
+
+Then:
+
+1. Implement the completion-contract/state-machine behavior.
+2. Strengthen the success gate.
+3. Remove false-success/skip paths.
+4. Strengthen resume/checkpoint handling.
+5. Strengthen GitHub-hosted Ollama verification.
+6. Strengthen monitoring.
+7. Add/update regression tests.
+8. Run all applicable validation.
+9. Review the resulting diff.
+10. Report exactly what changed.
+11. Report every test result.
+12. Report any remaining blocker.
+13. Do not claim GitHub-hosted success until an actual hosted run has produced and passed the complete success contract.
+
+The definition of done is verified autonomous execution, not merely modified code or a green wrapper workflow.
