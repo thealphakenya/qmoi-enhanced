@@ -80,30 +80,23 @@ import os
 import re
 import subprocess
 import sys
+from collections.abc import Iterable, Mapping, Sequence
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import (
-    Any,
-    Dict,
-    Iterable,
-    List,
-    Mapping,
-    Optional,
-    Sequence,
-)
+from typing import Any, ClassVar
 
 try:
     from scripts.ollama_runtime import (
-        OllamaClient,
         OllamaBootstrap,
+        OllamaClient,
         OllamaRuntimeError,
         build_success_contract,
         parse_repair_plan,
     )
 except ModuleNotFoundError:  # pragma: no cover - direct script execution path
     from ollama_runtime import (
-        OllamaClient,
         OllamaBootstrap,
+        OllamaClient,
         OllamaRuntimeError,
         build_success_contract,
         parse_repair_plan,
@@ -114,7 +107,7 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution path
 # CONSTANTS
 # ============================================================================
 
-PLATFORMS: List[str] = [
+PLATFORMS: list[str] = [
     "windows",
     "macos",
     "linux",
@@ -140,7 +133,7 @@ SUPPORTED_PLATFORMS = list(PLATFORMS)
 # Do not change this to a list or tuple.
 # ============================================================================
 
-QMOI_APPS: Dict[str, Dict[str, Any]] = {
+QMOI_APPS: dict[str, dict[str, Any]] = {
     "qmoiaiui": {
         "name": "QMOIAIUI",
         "description": "Conversational AI interface",
@@ -163,7 +156,7 @@ QMOI_APPS: Dict[str, Dict[str, Any]] = {
     },
 }
 
-SUPPORTED_APPS: List[str] = list(QMOI_APPS.keys())
+SUPPORTED_APPS: list[str] = list(QMOI_APPS.keys())
 
 
 # ============================================================================
@@ -180,7 +173,7 @@ HISTORICAL_BRANCH = (
 )
 HISTORY_SNAPSHOT_DIRECTORY = "qmoi-enhanced-history-14"
 
-MASTER_FILES: List[str] = [
+MASTER_FILES: list[str] = [
     "API.md",
     "ENDPOINTS.md",
     "ROUTES.md",
@@ -254,7 +247,7 @@ def flatten_feature_count(features: Mapping[str, Any]) -> int:
 
 def unique_preserve_order(
     values: Iterable[str],
-) -> List[str]:
+) -> list[str]:
     """Return unique strings while preserving their original order."""
     return list(dict.fromkeys(str(value) for value in values))
 
@@ -263,7 +256,7 @@ def unique_preserve_order(
 # GITHUB TOKEN HELPERS
 # ============================================================================
 
-def resolve_github_token() -> Optional[str]:
+def resolve_github_token() -> str | None:
     """
     Resolve a GitHub token.
 
@@ -291,7 +284,7 @@ def resolve_github_token() -> Optional[str]:
 
 
 def mask_github_token(
-    token: Optional[str],
+    token: str | None,
 ) -> str:
     """Return a safe display representation of a GitHub token."""
     if not token:
@@ -344,7 +337,7 @@ def sanitize_command_metadata(
 class SelfHealingManager:
     """Normalize historical CLI command names."""
 
-    COMMAND_ALIASES = {
+    COMMAND_ALIASES: ClassVar[dict[str, str]] = {
         "validate-all-features": "validate-features",
         "features-validate": "validate-features",
         "platforms-validate": "validate-platforms",
@@ -378,7 +371,7 @@ class SelfHealingManager:
 # COMMON FEATURES
 # ============================================================================
 
-_COMMON_FEATURES: Dict[str, List[str]] = {
+_COMMON_FEATURES: dict[str, list[str]] = {
     "qmoiaiui": [
         "conversation_creation",
         "message_history",
@@ -442,9 +435,9 @@ _COMMON_FEATURES: Dict[str, List[str]] = {
 # EXACT PLATFORM FEATURE CONTRACT
 # ============================================================================
 
-_REQUIRED_PLATFORM_FEATURES: Dict[
+_REQUIRED_PLATFORM_FEATURES: dict[
     str,
-    Dict[str, List[str]],
+    dict[str, list[str]],
 ] = {
     "windows": {
         "qmoiaiui": [
@@ -604,9 +597,9 @@ _REQUIRED_PLATFORM_FEATURES: Dict[
 # FEATURE REGISTRY
 # ============================================================================
 
-def _build_platform_feature_matrix() -> Dict[
+def _build_platform_feature_matrix() -> dict[
     str,
-    Dict[str, List[str]],
+    dict[str, list[str]],
 ]:
     """
     Build the canonical feature registry.
@@ -625,15 +618,15 @@ def _build_platform_feature_matrix() -> Dict[
     Every feature value is a string and every application/platform pair has
     at least 13 features.
     """
-    matrix: Dict[
+    matrix: dict[
         str,
-        Dict[str, List[str]],
+        dict[str, list[str]],
     ] = {}
 
     for platform in PLATFORMS:
         matrix[platform] = {}
 
-        for app in QMOI_APPS.keys():
+        for app in QMOI_APPS:
             common = list(
                 _COMMON_FEATURES.get(app, [])
             )
@@ -671,9 +664,9 @@ def _build_platform_feature_matrix() -> Dict[
     return matrix
 
 
-FEATURE_REGISTRY: Dict[
+FEATURE_REGISTRY: dict[
     str,
-    Dict[str, List[str]],
+    dict[str, list[str]],
 ] = _build_platform_feature_matrix()
 
 PLATFORM_SPECIFIC_FEATURES = FEATURE_REGISTRY
@@ -682,9 +675,9 @@ QMOI_FEATURE_REGISTRY = FEATURE_REGISTRY
 SUPPORTED_FEATURES = FEATURE_REGISTRY
 
 
-def get_feature_registry() -> Dict[
+def get_feature_registry() -> dict[
     str,
-    Dict[str, List[str]],
+    dict[str, list[str]],
 ]:
     """Return the canonical feature registry."""
     return FEATURE_REGISTRY
@@ -728,12 +721,12 @@ class PlatformValidator:
             workspace_dir or "."
         ).resolve()
 
-        self.diagnostics: Dict[
+        self.diagnostics: dict[
             str,
             Any,
         ] = {}
 
-        self.compile_cache: Dict[
+        self.compile_cache: dict[
             str,
             bool,
         ] = {}
@@ -743,7 +736,7 @@ class PlatformValidator:
         key: str,
         message: str,
         *,
-        app: Optional[str] = None,
+        app: str | None = None,
         passed: bool = False,
     ) -> None:
         self.diagnostics[key] = {
@@ -757,7 +750,7 @@ class PlatformValidator:
     def _resolve_app_path(
         self,
         app_name: str,
-    ) -> Optional[Path]:
+    ) -> Path | None:
         normalized = str(
             app_name
         ).strip()
@@ -780,7 +773,7 @@ class PlatformValidator:
 
     def validate_code_compiles(
         self,
-        app_name: Optional[str] = None,
+        app_name: str | None = None,
         *,
         with_diagnostics: bool = False,
     ) -> bool:
@@ -854,7 +847,7 @@ class PlatformValidator:
 
     def validate_dependencies_resolve(
         self,
-        app_name: Optional[str] = None,
+        app_name: str | None = None,
     ) -> bool:
         if app_name is None:
             return True
@@ -884,7 +877,7 @@ class PlatformValidator:
 
     def validate_manifests_present(
         self,
-        app_name: Optional[str] = None,
+        app_name: str | None = None,
     ) -> bool:
         if app_name is None:
             return True
@@ -914,7 +907,7 @@ class PlatformValidator:
 
     def validate_signatures(
         self,
-        app_name: Optional[str] = None,
+        app_name: str | None = None,
     ) -> bool:
         if app_name is None:
             return True
@@ -942,7 +935,7 @@ class PlatformValidator:
 
         return True
 
-    def validate(self) -> Dict[str, Any]:
+    def validate(self) -> dict[str, Any]:
         started = utc_now()
 
         code = self.validate_code_compiles()
@@ -986,8 +979,8 @@ class PlatformSpecificFeatureValidator:
 
     def __init__(
         self,
-        app: Optional[str] = None,
-        platform: Optional[str] = None,
+        app: str | None = None,
+        platform: str | None = None,
         workspace_dir: Path | str | None = None,
     ):
         # Backwards-compatible workspace-only constructor.
@@ -1022,7 +1015,7 @@ class PlatformSpecificFeatureValidator:
 
     def validate_all_features(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         # Single app/platform mode.
         if (
             self.app is not None
@@ -1047,15 +1040,15 @@ class PlatformSpecificFeatureValidator:
             }
 
         # Complete registry mode.
-        results: Dict[
+        results: dict[
             str,
-            Dict[str, Dict[str, bool]],
+            dict[str, dict[str, bool]],
         ] = {}
 
         for platform in PLATFORMS:
             results[platform] = {}
 
-            for app in QMOI_APPS.keys():
+            for app in QMOI_APPS:
                 results[platform][app] = {
                     feature: True
                     for feature in FEATURE_REGISTRY[
@@ -1067,7 +1060,7 @@ class PlatformSpecificFeatureValidator:
 
     def validate_platforms(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return self.validate_all_features()
 
 
@@ -1095,7 +1088,7 @@ class FeatureTester:
     def _build_feature_result(
         self,
         features: Iterable[str],
-    ) -> Dict[str, Dict[str, Any]]:
+    ) -> dict[str, dict[str, Any]]:
         return {
             feature: {
                 "app": self.app,
@@ -1108,35 +1101,35 @@ class FeatureTester:
 
     def test_qmoiaiui_features(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return self._build_feature_result(
             self.QMOIAIUI_FEATURES
         )
 
     def test_qcity_features(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return self._build_feature_result(
             self.QCITY_FEATURES
         )
 
     def test_qmoi_space_features(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return self._build_feature_result(
             self.QMOI_SPACE_FEATURES
         )
 
     def test_qalpha_features(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return self._build_feature_result(
             self.QALPHA_FEATURES
         )
 
     def test_features(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         mapping = {
             "qmoiaiui": self.test_qmoiaiui_features,
             "qcity": self.test_qcity_features,
@@ -1157,7 +1150,7 @@ class FeatureTester:
 # ============================================================================
 
 class FileHandlerValidator:
-    FILE_TYPE_MAPPING = {
+    FILE_TYPE_MAPPING: ClassVar[dict[str, str]] = {
         ".pdf": "qcity",
         ".doc": "qcity",
         ".docx": "qcity",
@@ -1229,7 +1222,7 @@ class FileHandlerValidator:
     def validate_handler_registration(
         self,
         platform: str,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         normalized_platform = str(platform).lower()
 
         return {
@@ -1262,7 +1255,7 @@ class MemoryIndexGenerator:
             self.root_dir / "memory_index.json"
         )
 
-    def _tracked_files(self) -> List[str]:
+    def _tracked_files(self) -> list[str]:
         ignored = {
             ".git",
             "__pycache__",
@@ -1274,7 +1267,7 @@ class MemoryIndexGenerator:
             "venv",
         }
 
-        files: List[str] = []
+        files: list[str] = []
 
         if not self.root_dir.exists():
             return files
@@ -1441,7 +1434,7 @@ class WorkflowNormalizer:
 
         lines = text.split("\n")
 
-        normalized: List[str] = []
+        normalized: list[str] = []
 
         for line in lines:
             normalized.append(
@@ -1464,7 +1457,7 @@ class WorkflowMonitor:
     def __init__(
         self,
         run_id: str,
-        token: Optional[str] = None,
+        token: str | None = None,
     ):
         self.run_id = str(run_id)
 
@@ -1474,14 +1467,14 @@ class WorkflowMonitor:
             else resolve_github_token()
         )
 
-        self.jobs_snapshot: List[
-            Dict[str, Any]
+        self.jobs_snapshot: list[
+            dict[str, Any]
         ] = []
 
     def _run_gh_command(
         self,
         command: Sequence[str],
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         try:
             result = subprocess.run(
                 list(command),
@@ -1518,7 +1511,7 @@ class WorkflowMonitor:
 
     def get_run_status(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         command = [
             "gh",
             "run",
@@ -1538,7 +1531,7 @@ class WorkflowMonitor:
 
     def build_health_summary(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         jobs = self.jobs_snapshot
 
         passed = [
@@ -1595,7 +1588,7 @@ class WorkflowMonitor:
 
     def get_alerts(
         self,
-    ) -> List[str]:
+    ) -> list[str]:
         return [
             (
                 "Workflow job failed: "
@@ -1607,7 +1600,7 @@ class WorkflowMonitor:
 
     def build_test_monitor_summary(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         completed = [
             job
             for job in self.jobs_snapshot
@@ -1625,7 +1618,7 @@ class WorkflowMonitor:
 
     def get_phase_summary(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         active = [
             job.get("name", "unknown")
             for job in self.jobs_snapshot
@@ -1676,7 +1669,7 @@ class WorkflowMonitor:
 
     def build_validation_summary(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         failed = [
             job.get("name", "unknown")
             for job in self.jobs_snapshot
@@ -1693,7 +1686,7 @@ class WorkflowMonitor:
 
     def build_recovery_plan(
         self,
-    ) -> List[str]:
+    ) -> list[str]:
         if not self.get_alerts():
             return [
                 "Continue monitoring validation jobs.",
@@ -1726,12 +1719,12 @@ class WorkflowMonitor:
 class BranchSyncManager:
     OWNER = "thealphakenya"
 
-    REPOSITORIES = [
+    REPOSITORIES: ClassVar[list[str]] = [
         QMOI_REPOSITORY,
         ALPHA_Q_AI_REPOSITORY,
     ]
 
-    REQUIRED_BRANCHES = [
+    REQUIRED_BRANCHES: ClassVar[list[str]] = [
         DEFAULT_BRANCH,
         BACKUP_BRANCH,
         HISTORICAL_BRANCH,
@@ -1740,19 +1733,19 @@ class BranchSyncManager:
     @classmethod
     def required_branches(
         cls,
-    ) -> List[str]:
+    ) -> list[str]:
         return list(cls.REQUIRED_BRANCHES)
 
     @classmethod
     def sync_targets(
         cls,
-    ) -> List[str]:
+    ) -> list[str]:
         return list(cls.REPOSITORIES)
 
     @classmethod
     def build_sync_plan(
         cls,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return {
             "owner": cls.OWNER,
             "default_branch": DEFAULT_BRANCH,
@@ -1781,7 +1774,7 @@ class CrossRepositoryAutonomyManager:
 
     def build_autonomy_plan(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return {
             "owner": self.owner,
             "alpha_q_ai_included": True,
@@ -1822,7 +1815,7 @@ class CrossRepositoryAutonomyManager:
     def _git_output(
         repo_path: Path,
         *arguments: str,
-    ) -> List[str]:
+    ) -> list[str]:
         """Run a read-only Git query and return non-empty output lines."""
         result = subprocess.run(
             ["git", "-C", str(repo_path), *arguments],
@@ -1839,7 +1832,7 @@ class CrossRepositoryAutonomyManager:
         repo_path: Path | str,
         *,
         recent_pushes: int = 4,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Capture auditable Git state without mutating the repository."""
         repo = Path(repo_path).resolve()
         commit_limit = max(1, int(recent_pushes))
@@ -1894,7 +1887,7 @@ class CrossRepositoryAutonomyManager:
         self,
         repo_path: Path | str,
         git_ref: str,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """Read a complete tracked-file inventory for a branch or remote ref."""
         if not re.fullmatch(r"[A-Za-z0-9._/@-]+", git_ref):
             raise ValueError("Unsafe Git reference")
@@ -1910,7 +1903,7 @@ class CrossRepositoryAutonomyManager:
             "read_only": True,
         }
 
-    def build_merge_audit_plan(self) -> Dict[str, Any]:
+    def build_merge_audit_plan(self) -> dict[str, Any]:
         """Describe the history and structure evidence required before merges."""
         return {
             "repositories": list(self.build_autonomy_plan()["repos"]),
@@ -1971,7 +1964,7 @@ class CrossRepositoryAutonomyManager:
         self,
         name: str,
         repo_path: Path | str,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         repo = Path(repo_path)
 
         repo.mkdir(
@@ -1979,7 +1972,7 @@ class CrossRepositoryAutonomyManager:
             exist_ok=True,
         )
 
-        changed_files: List[str] = []
+        changed_files: list[str] = []
 
         for path in repo.rglob("*"):
             if not path.is_file():
@@ -2046,7 +2039,7 @@ class AvatarIdentityValidator:
 
     def generate_identity_report(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         valid = self.validate_identity()
 
         return {
@@ -2068,7 +2061,7 @@ class AvatarWindowMonitor:
 
     def generate_animation_snapshot(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return {
             "status": "live",
             "timestamp": utc_iso(),
@@ -2094,7 +2087,7 @@ class AvatarSelectionNavigator:
 
     def get_catalog(
         self,
-    ) -> List[Dict[str, Any]]:
+    ) -> list[dict[str, Any]]:
         return [
             {
                 "id": "qmoi",
@@ -2132,7 +2125,7 @@ class VoiceProfileSelector:
 
     def available_voice_profiles(
         self,
-    ) -> List[str]:
+    ) -> list[str]:
         return [
             "qmoi-default",
             "qmoi-guardian",
@@ -2143,7 +2136,7 @@ class VoiceProfileSelector:
     def select_voice(
         self,
         profile: str,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         available = self.available_voice_profiles()
 
         return {
@@ -2162,7 +2155,7 @@ class QMOIAvatarWindowStyle:
 
     def build_style_spec(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return {
             "window_title": "QMOI Avatar",
             "mode": self.mode,
@@ -2206,7 +2199,7 @@ class OllamaAutonomousAgent:
 
     SUPPORTED_APPS = SUPPORTED_APPS
 
-    TRACKER_STATES = {
+    TRACKER_STATES: ClassVar[set[str]] = {
         "QUEUED", "INITIALIZING", "OLLAMA_STARTING", "OLLAMA_HEALTHY",
         "MODEL_LOADING", "MODEL_READY", "INFERENCE_TESTING", "LLM_CODING",
         "VALIDATING", "REPAIRING", "CHECKPOINTING", "SUCCESS", "FAILED",
@@ -2241,7 +2234,7 @@ class OllamaAutonomousAgent:
                 app,
                 "web",
             )
-            for app in QMOI_APPS.keys()
+            for app in QMOI_APPS
         }
 
         self.file_handler_validator = (
@@ -2264,7 +2257,7 @@ class OllamaAutonomousAgent:
             CrossRepositoryAutonomyManager()
         )
 
-        self.results: Dict[
+        self.results: dict[
             str,
             Any,
         ] = {}
@@ -2441,10 +2434,8 @@ All timestamps use UTC ISO-8601 format.
     def _append_telemetry(
         self,
         event: str,
-        payload: Optional[
-            Dict[str, Any]
-        ] = None,
-    ) -> Dict[str, Any]:
+        payload: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         timestamp = utc_iso()
 
         record = {
@@ -2474,10 +2465,8 @@ All timestamps use UTC ISO-8601 format.
         message: str,
         status: str = "active",
         phase: str = "tracking",
-        details: Optional[
-            Dict[str, Any]
-        ] = None,
-    ) -> Dict[str, Any]:
+        details: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         timestamp = utc_iso()
 
         record = {
@@ -2582,8 +2571,8 @@ All timestamps use UTC ISO-8601 format.
         self,
         state: str,
         message: str,
-        details: Optional[Dict[str, Any]] = None,
-    ) -> Dict[str, Any]:
+        details: dict[str, Any] | None = None,
+    ) -> dict[str, Any]:
         """Record one of the documented lifecycle states."""
         normalized = str(state).upper()
         if normalized not in self.TRACKER_STATES:
@@ -2602,7 +2591,7 @@ All timestamps use UTC ISO-8601 format.
 
     def validate_all_platforms(
         self,
-    ) -> Dict[str, Dict[str, Any]]:
+    ) -> dict[str, dict[str, Any]]:
         """
         Validate platform-level infrastructure.
 
@@ -2666,7 +2655,7 @@ All timestamps use UTC ISO-8601 format.
     def _validate_platform_feature_apps(
         self,
         platform: str,
-    ) -> Dict[str, Dict[str, bool]]:
+    ) -> dict[str, dict[str, bool]]:
         """
         Return the canonical four-application feature result for one platform.
 
@@ -2691,14 +2680,14 @@ All timestamps use UTC ISO-8601 format.
             {},
         )
 
-        results: Dict[
+        results: dict[
             str,
-            Dict[str, bool],
+            dict[str, bool],
         ] = {}
 
         # Iterate over QMOI_APPS rather than the registry so the public
         # contract always contains exactly the four canonical applications.
-        for app in QMOI_APPS.keys():
+        for app in QMOI_APPS:
             features = platform_registry.get(
                 app,
                 [],
@@ -2729,8 +2718,8 @@ All timestamps use UTC ISO-8601 format.
 
     def validate_platform_features(
         self,
-        platform: Optional[str] = None,
-    ) -> Dict[str, Any]:
+        platform: str | None = None,
+    ) -> dict[str, Any]:
         """
         Validate platform-specific features.
 
@@ -2783,9 +2772,9 @@ All timestamps use UTC ISO-8601 format.
 
             return result
 
-        results: Dict[
+        results: dict[
             str,
-            Dict[str, Dict[str, bool]],
+            dict[str, dict[str, bool]],
         ] = {}
 
         for supported_platform in PLATFORMS:
@@ -2826,7 +2815,7 @@ All timestamps use UTC ISO-8601 format.
 
     def validate_all_platform_features(
         self,
-    ) -> Dict[str, Dict[str, Dict[str, bool]]]:
+    ) -> dict[str, dict[str, dict[str, bool]]]:
         """
         Public compatibility alias for the complete platform feature suite.
 
@@ -2846,9 +2835,9 @@ All timestamps use UTC ISO-8601 format.
 
     def validate_all_features(
         self,
-    ) -> Dict[
+    ) -> dict[
         str,
-        Dict[str, Dict[str, Dict[str, bool]]],
+        dict[str, dict[str, dict[str, bool]]],
     ]:
         """
         Backwards-compatible complete feature validation API.
@@ -2866,7 +2855,7 @@ All timestamps use UTC ISO-8601 format.
 
         # The current contract is platform -> app -> feature -> bool. Add
         # app-first aliases for clients that predate that contract.
-        results: Dict[str, Any] = dict(platform_results)
+        results: dict[str, Any] = dict(platform_results)
         for app in QMOI_APPS:
             results[app] = {
                 platform: platform_results[platform][app]
@@ -2883,9 +2872,9 @@ All timestamps use UTC ISO-8601 format.
 
     def validate_file_handlers(
         self,
-    ) -> Dict[
+    ) -> dict[
         str,
-        Dict[str, Any],
+        dict[str, Any],
     ]:
         results = {
             platform:
@@ -3020,7 +3009,7 @@ All timestamps use UTC ISO-8601 format.
 
             return bool(success)
 
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001 - validation must persist failure evidence
             self.record_tracker_event(
                 "validation_error",
                 f"Validation failed: {exc}",
@@ -3031,6 +3020,40 @@ All timestamps use UTC ISO-8601 format.
                 },
             )
 
+            return False
+
+    def run_lint_suite(self) -> bool:
+        """Run the bounded lint contract for the agent-owned Python surface."""
+        targets = [
+            "scripts/ollama_autonomous_agent.py",
+            "scripts/ollama_runtime.py",
+            "scripts/validate_workflows.py",
+        ]
+        try:
+            result = subprocess.run(
+                [sys.executable, "-m", "ruff", "check", *targets],
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            passed = result.returncode == 0
+            self.results["lint_passed"] = passed
+            self.record_tracker_event(
+                "lint_complete",
+                "Agent-owned lint suite completed.",
+                status="passed" if passed else "failed",
+                phase="validation",
+                details={"targets": targets, "returncode": result.returncode},
+            )
+            return passed
+        except (OSError, subprocess.SubprocessError) as exc:
+            self.results["lint_passed"] = False
+            self.record_tracker_event(
+                "lint_error",
+                f"Agent-owned lint suite could not run: {exc}",
+                status="failed",
+                phase="validation",
+            )
             return False
 
     # ------------------------------------------------------------------------
@@ -3064,7 +3087,7 @@ All timestamps use UTC ISO-8601 format.
             },
         )
 
-    def verify_ollama(self) -> Dict[str, Any]:
+    def verify_ollama(self) -> dict[str, Any]:
         """Perform health, model, and real inference checks."""
         self.enforce_github_runtime()
         self.record_tracker_event(
@@ -3085,22 +3108,22 @@ All timestamps use UTC ISO-8601 format.
         )
         return result
 
-    def _repository_context(self) -> List[str]:
+    def _repository_context(self) -> list[str]:
         ignored = {".git", ".venv", "venv", "node_modules", "__pycache__"}
-        files: List[str] = []
+        files: list[str] = []
         for path in self.root_dir.rglob("*"):
             if path.is_file() and not any(part in ignored for part in path.relative_to(self.root_dir).parts):
                 files.append(str(path.relative_to(self.root_dir)).replace("\\", "/"))
         return sorted(files)[:100]
 
-    def run_autonomous_loop(self) -> Dict[str, Any]:
+    def run_autonomous_loop(self) -> dict[str, Any]:
         """Ask Ollama for bounded repair plans and validate the repository."""
         health = self.verify_ollama()
         self.results["ollama_health"] = health.get("ollama_healthy", False)
         files = self._repository_context()
         self.results["files_analyzed"] = files
         iterations = 0
-        modified: List[str] = []
+        modified: list[str] = []
         previous_response = ""
         self.record_tracker_event(
             "llm_coding",
@@ -3144,7 +3167,8 @@ All timestamps use UTC ISO-8601 format.
                 modified.append(str(path.relative_to(self.root_dir)).replace("\\", "/"))
             if not changes:
                 break
-        validation_passed = self.run_full_validation_suite()
+        lint_passed = self.run_lint_suite()
+        validation_passed = self.run_full_validation_suite() and lint_passed
         self.results["llm_iterations"] = iterations
         self.results["files_modified"] = modified
         self.results["validation_passed"] = validation_passed
@@ -3160,6 +3184,7 @@ All timestamps use UTC ISO-8601 format.
             files_analyzed=files,
             files_modified=modified,
             validation_passed=validation_passed,
+            lint_passed=lint_passed,
             checkpoint_created=checkpoint.exists(),
         )
         safe_json_write(self.tracker_dir / "OLLAMA_SUCCESS.json", contract)
@@ -3189,11 +3214,9 @@ All timestamps use UTC ISO-8601 format.
     def update_resume_checkpoint(
         self,
         status: str,
-        completed_steps: Optional[
-            Sequence[str]
-        ] = None,
-        error: Optional[str] = None,
-        evidence: Optional[Mapping[str, Any]] = None,
+        completed_steps: Sequence[str] | None = None,
+        error: str | None = None,
+        evidence: Mapping[str, Any] | None = None,
     ) -> Path:
         previous = self.load_checkpoint() or {}
         steps = list(dict.fromkeys([
@@ -3300,6 +3323,7 @@ All timestamps use UTC ISO-8601 format.
                 f"- Checkpoint state: {checkpoint_status}",
                 f"- Ollama health: {self.results.get('ollama_health', 'pending')}",
                 f"- Validation passed: {self.results.get('validation_passed', 'pending')}",
+                f"- Lint passed: {self.results.get('lint_passed', 'pending')}",
                 f"- Files analyzed: {len(self.results.get('files_analyzed', []))}",
                 f"- Files changed: {len(self.results.get('files_modified', []))}",
                 "",
@@ -3365,7 +3389,7 @@ All timestamps use UTC ISO-8601 format.
 
     def load_checkpoint(
         self,
-    ) -> Optional[Dict[str, Any]]:
+    ) -> dict[str, Any] | None:
         if not self.resume_path.exists():
             return None
 
@@ -3379,7 +3403,7 @@ All timestamps use UTC ISO-8601 format.
             re.MULTILINE,
         )
 
-        steps: List[str] = []
+        steps: list[str] = []
         reading_steps = False
 
         for line in content.splitlines():
@@ -3415,7 +3439,7 @@ All timestamps use UTC ISO-8601 format.
 
     def detect_missing_files(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         essential = self.get_essential_file_list()
 
         missing = [
@@ -3438,7 +3462,7 @@ All timestamps use UTC ISO-8601 format.
     def handle_corrupted_file(
         self,
         path: Path | str,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         file_path = Path(path)
 
         try:
@@ -3478,7 +3502,7 @@ All timestamps use UTC ISO-8601 format.
     def auto_heal_file(
         self,
         path: Path | str,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         """
         Conservative automatic repair for text workflow/configuration files.
         """
@@ -3496,7 +3520,7 @@ All timestamps use UTC ISO-8601 format.
                 encoding="utf-8"
             )
 
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001 - recovery reports readable-file failures
             return {
                 "healed": False,
                 "action": (
@@ -3520,7 +3544,7 @@ All timestamps use UTC ISO-8601 format.
                 keepends=True
             )
 
-            repaired_lines: List[str] = []
+            repaired_lines: list[str] = []
 
             for line in lines:
                 stripped = line.strip()
@@ -3588,7 +3612,7 @@ All timestamps use UTC ISO-8601 format.
 
     def handle_network_error(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         self.record_tracker_event(
             "network_error_recovery",
             "Network recovery requested.",
@@ -3603,7 +3627,7 @@ All timestamps use UTC ISO-8601 format.
 
     def handle_api_error(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         self.record_tracker_event(
             "api_error_recovery",
             "API recovery requested.",
@@ -3622,7 +3646,7 @@ All timestamps use UTC ISO-8601 format.
 
     def get_essential_file_list(
         self,
-    ) -> List[str]:
+    ) -> list[str]:
         return [
             "API.md",
             "ENDPOINTS.md",
@@ -3635,12 +3659,12 @@ All timestamps use UTC ISO-8601 format.
 
     def get_log_file(
         self,
-    ) -> Optional[Path]:
+    ) -> Path | None:
         return self.log_path
 
     def get_model_evolution_stages(
         self,
-    ) -> List[Dict[str, Any]]:
+    ) -> list[dict[str, Any]]:
         return [
             {
                 "stage": 1,
@@ -3678,7 +3702,7 @@ All timestamps use UTC ISO-8601 format.
 
     def get_master_datetime_config(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return {
             "timezone": "UTC",
             "target_date": "2026-12-31",
@@ -3689,7 +3713,7 @@ All timestamps use UTC ISO-8601 format.
     def can_sync_files(
         self,
         master_files: Sequence[str],
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         return {
             "can_sync": True,
             "files": list(master_files),
@@ -3705,7 +3729,7 @@ All timestamps use UTC ISO-8601 format.
 
     def generate_validation_report(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         platforms = self.validate_all_platforms()
 
         features = self.validate_all_platform_features()
@@ -3755,7 +3779,7 @@ All timestamps use UTC ISO-8601 format.
 
     def build_github_proof_contract(
         self,
-    ) -> Dict[str, Any]:
+    ) -> dict[str, Any]:
         platform_results = self.validate_all_platforms()
 
         feature_results = self.validate_all_platform_features()
@@ -3992,7 +4016,7 @@ All timestamps use UTC ISO-8601 format.
 
             return 0 if success else 1
 
-        except Exception as exc:
+        except Exception as exc:  # noqa: BLE001 - CLI must persist any pipeline failure
             self.update_resume_checkpoint(
                 status="error",
                 completed_steps=[],
@@ -4022,7 +4046,7 @@ All timestamps use UTC ISO-8601 format.
 # ============================================================================
 
 def main(
-    argv: Optional[Sequence[str]] = None,
+    argv: Sequence[str] | None = None,
 ) -> int:
     raw_argv = (
         list(argv)

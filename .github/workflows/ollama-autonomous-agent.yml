@@ -284,7 +284,7 @@ jobs:
         shell: bash
         run: |
           set -Eeuo pipefail
-          python -m pip install --upgrade pip setuptools wheel pytest PyYAML
+          python -m pip install --upgrade pip setuptools wheel pytest PyYAML ruff
           if [ -f requirements.txt ]; then
             python -m pip install -r requirements.txt
           fi
@@ -433,6 +433,16 @@ jobs:
         run: |
           set -Eeuo pipefail
           python -m compileall -q scripts tests
+
+      - name: Validate agent-owned lint contract
+        id: lint
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python -m ruff check \
+            scripts/ollama_autonomous_agent.py \
+            scripts/ollama_runtime.py \
+            scripts/validate_workflows.py
 
       - name: Execute repository test suite
         id: tests
@@ -621,6 +631,7 @@ jobs:
               {
                   "ollama_health": success.get("ollama_healthy", False),
                   "validation_passed": success.get("validation_passed", False),
+                  "lint_passed": success.get("lint_passed", False),
                   "files_analyzed": success.get("files_analyzed", []),
                   "files_modified": success.get("files_modified", []),
                   "llm_iterations": success.get("llm_iterations", 0),
@@ -687,7 +698,7 @@ jobs:
             exit 0
           fi
           if [ "$agent" = "success" ] && [ -f "$TRACK_DIR/OLLAMA_SUCCESS.json" ] && \
-            python -c 'import json,sys; data=json.load(open(sys.argv[1])); required=("ollama_healthy","model_available","inference_verified","llm_coding_started","validation_passed","checkpoint_created"); raise SystemExit(0 if data.get("final_status") == "SUCCESS" and all(data.get(key) for key in required) else 1)' "$TRACK_DIR/OLLAMA_SUCCESS.json"; then
+            python -c 'import json,sys; data=json.load(open(sys.argv[1])); required=("ollama_healthy","model_available","inference_verified","llm_coding_started","validation_passed","lint_passed","checkpoint_created"); raise SystemExit(0 if data.get("final_status") == "SUCCESS" and all(data.get(key) for key in required) else 1)' "$TRACK_DIR/OLLAMA_SUCCESS.json"; then
             exit 0
           fi
           exit 1

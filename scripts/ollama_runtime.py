@@ -7,9 +7,10 @@ import os
 import re
 import subprocess
 import time
+from collections.abc import Callable, Iterable, Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Callable, Dict, Iterable, List, Mapping, Optional
+from typing import Any
 
 import requests
 
@@ -28,9 +29,9 @@ class OllamaRuntimeError(RuntimeError):
 class OllamaBootstrap:
     """Bounded local Ollama process bootstrap state."""
 
-    client: "OllamaClient"
+    client: OllamaClient
     startup_timeout: float = 90.0
-    process: Optional[subprocess.Popen[str]] = field(default=None, init=False)
+    process: subprocess.Popen[str] | None = field(default=None, init=False)
 
     def ensure_server(self) -> bool:
         """Reuse a healthy server or start the installed Ollama binary."""
@@ -81,7 +82,7 @@ class OllamaBootstrap:
         )
 
     @staticmethod
-    def _install_binary() -> Optional[str]:
+    def _install_binary() -> str | None:
         install_script = os.getenv("OLLAMA_INSTALL_SCRIPT")
         if install_script and Path(install_script).is_file():
             install_cmd = ["bash", install_script]
@@ -97,7 +98,7 @@ class OllamaBootstrap:
         return binary
 
     @staticmethod
-    def _find_binary() -> Optional[str]:
+    def _find_binary() -> str | None:
         configured = os.getenv("OLLAMA_BINARY")
         if configured and Path(configured).is_file():
             return configured
@@ -114,13 +115,13 @@ class OllamaHealth:
     model: str
     ollama_started: bool = False
     ollama_healthy: bool = False
-    ollama_version: Optional[str] = None
+    ollama_version: str | None = None
     model_available: bool = False
     inference_verified: bool = False
-    inference_latency: Optional[float] = None
-    error: Optional[str] = None
+    inference_latency: float | None = None
+    error: str | None = None
 
-    def as_dict(self) -> Dict[str, Any]:
+    def as_dict(self) -> dict[str, Any]:
         return {
             "ollama_host": self.host,
             "model": self.model,
@@ -140,11 +141,11 @@ class OllamaClient:
 
     def __init__(
         self,
-        host: Optional[str] = None,
-        model: Optional[str] = None,
-        timeout: Optional[float] = None,
-        retries: Optional[int] = None,
-        session: Optional[Any] = None,
+        host: str | None = None,
+        model: str | None = None,
+        timeout: float | None = None,
+        retries: int | None = None,
+        session: Any | None = None,
         sleep: Callable[[float], None] = time.sleep,
     ) -> None:
         self.host = (host or os.getenv("OLLAMA_HOST", DEFAULT_OLLAMA_HOST)).rstrip("/")
@@ -155,7 +156,7 @@ class OllamaClient:
         self.sleep = sleep
 
     def _request(self, method: str, path: str, **kwargs: Any) -> requests.Response:
-        last_error: Optional[Exception] = None
+        last_error: Exception | None = None
         for attempt in range(self.retries):
             try:
                 response = self.session.request(
@@ -176,7 +177,7 @@ class OllamaClient:
         data = self._request("GET", "/api/version").json()
         return str(data.get("version", "unknown"))
 
-    def tags(self) -> List[Mapping[str, Any]]:
+    def tags(self) -> list[Mapping[str, Any]]:
         data = self._request("GET", "/api/tags").json()
         models = data.get("models", [])
         if not isinstance(models, list):
@@ -200,7 +201,7 @@ class OllamaClient:
             raise OllamaRuntimeError("Ollama returned no generated response")
         return response.strip()
 
-    def verify(self, bootstrap: Optional[OllamaBootstrap] = None) -> OllamaHealth:
+    def verify(self, bootstrap: OllamaBootstrap | None = None) -> OllamaHealth:
         health = OllamaHealth(self.host, self.model)
         try:
             if bootstrap is not None:
@@ -228,10 +229,10 @@ class OllamaClient:
             raise
 
 
-def validate_repair_paths(root: Path | str, paths: Iterable[str]) -> List[Path]:
+def validate_repair_paths(root: Path | str, paths: Iterable[str]) -> list[Path]:
     """Resolve model-proposed paths while rejecting traversal and secrets."""
     base = Path(root).resolve()
-    resolved: List[Path] = []
+    resolved: list[Path] = []
     for raw_path in paths:
         value = str(raw_path)
         if not _SAFE_RELATIVE_PATH.fullmatch(value) or value.startswith(("/", "\\")):
@@ -245,7 +246,7 @@ def validate_repair_paths(root: Path | str, paths: Iterable[str]) -> List[Path]:
     return resolved
 
 
-def parse_repair_plan(response: str, root: Path | str) -> Dict[str, Any]:
+def parse_repair_plan(response: str, root: Path | str) -> dict[str, Any]:
     """Accept only JSON plans with bounded, non-sensitive file operations."""
     try:
         plan = json.loads(response)
@@ -270,10 +271,10 @@ def build_success_contract(
     root: Path | str,
     health: OllamaHealth | Mapping[str, Any],
     **fields: Any,
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """Build a truthful contract; callers must set validation fields explicitly."""
     health_data = health.as_dict() if isinstance(health, OllamaHealth) else dict(health)
-    contract: Dict[str, Any] = {
+    contract: dict[str, Any] = {
         "workflow_run_id": os.getenv("GITHUB_RUN_ID"),
         "repository": os.getenv("GITHUB_REPOSITORY"),
         "commit": os.getenv("GITHUB_SHA"),
@@ -286,13 +287,14 @@ def build_success_contract(
         "tests_before": fields.get("tests_before"),
         "tests_after": fields.get("tests_after"),
         "validation_passed": bool(fields.get("validation_passed", False)),
+        "lint_passed": bool(fields.get("lint_passed", False)),
         "checkpoint_created": bool(fields.get("checkpoint_created", False)),
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
     required = (
         contract["agent_started"], contract["ollama_started"], contract["ollama_healthy"],
         contract["model_available"], contract["inference_verified"], contract["llm_coding_started"],
-        contract["validation_passed"], contract["checkpoint_created"],
+        contract["validation_passed"], contract["lint_passed"], contract["checkpoint_created"],
     )
     contract["final_status"] = "SUCCESS" if all(required) else "FAILED"
     return contract

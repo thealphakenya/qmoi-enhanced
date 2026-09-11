@@ -9,18 +9,19 @@ Validates all 8 GitHub workflows to ensure:
 4. Agent doesn't claim success without proof
 """
 
-import json
 import subprocess
 import sys
 from pathlib import Path
+
 import yaml
+
 
 def load_workflow(path):
     """Load and parse a workflow YAML file."""
     try:
         with open(path) as f:
             return yaml.safe_load(f)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 - report malformed workflow input
         return None, f"Failed to parse {path}: {e}"
 
 def validate_workflow_yaml(workflows_dir=".github/workflows"):
@@ -90,7 +91,7 @@ def validate_success_prevention(workflow_config, workflow_name):
         found_ollama_bootstrap = False
         found_agent_execution = False
         
-        for job_name, job in jobs.items():
+        for job in jobs.values():
             if not isinstance(job, dict):
                 continue
             
@@ -104,18 +105,22 @@ def validate_success_prevention(workflow_config, workflow_name):
                 step_name = step.get('name', '')
                 
                 # Check for Ollama bootstrap
-                if 'Bootstrap Ollama' in step_name or 'ollama' in run_script.lower():
-                    if 'curl' in run_script or 'ollama' in run_script.lower():
-                        found_ollama_bootstrap = True
+                if (
+                    ('Bootstrap Ollama' in step_name or 'ollama' in run_script.lower())
+                    and ('curl' in run_script or 'ollama' in run_script.lower())
+                ):
+                    found_ollama_bootstrap = True
                 
                 # Check for agent execution
                 if 'Execute Autonomous Agent' in step_name or 'autonomous' in run_script.lower():
                     found_agent_execution = True
                 
                 # Check for success contract gate
-                if 'OLLAMA_SUCCESS' in run_script or 'final_status' in run_script:
-                    if 'SUCCESS' in run_script:
-                        found_success_gate = True
+                if (
+                    ('OLLAMA_SUCCESS' in run_script or 'final_status' in run_script)
+                    and 'SUCCESS' in run_script
+                ):
+                    found_success_gate = True
         
         if not found_ollama_bootstrap:
             issues.append(f"{workflow_name}: No Ollama bootstrap found")
@@ -153,11 +158,11 @@ def check_critical_workflows():
             jobs = config.get('jobs', {})
             if 'workflow-integrity' in jobs:
                 print("   ✅ workflow-integrity job present")
-            if 'validate-platforms' in jobs or any('platform' in k.lower() for k in jobs.keys()):
+            if 'validate-platforms' in jobs or any('platform' in k.lower() for k in jobs):
                 print("   ✅ Platform validation job present")
-            if 'test-suite' in jobs or any('test' in k.lower() for k in jobs.keys()):
+            if 'test-suite' in jobs or any('test' in k.lower() for k in jobs):
                 print("   ✅ Test suite job present")
-            if 'final-validation' in jobs or any('final' in k.lower() for k in jobs.keys()):
+            if 'final-validation' in jobs or any('final' in k.lower() for k in jobs):
                 print("   ✅ Final validation job present")
     else:
         print("   ❌ PR Validation workflow not found")
@@ -173,7 +178,7 @@ def check_critical_workflows():
                 print("   ✅ Preflight checks job present")
             if 'comprehensive-validation' in jobs:
                 print("   ✅ Validation job present")
-            if 'dispatch-autonomous-agent' in jobs or any('dispatch' in k.lower() for k in jobs.keys()):
+            if 'dispatch-autonomous-agent' in jobs or any('dispatch' in k.lower() for k in jobs):
                 print("   ✅ Agent dispatch job present")
     else:
         print("   ❌ Master Orchestrator workflow not found")
@@ -246,6 +251,7 @@ def validate_success_contract_schema():
         'files_analyzed',
         'files_modified',
         'validation_passed',
+        'lint_passed',
         'checkpoint_created',
         'timestamp',
     ]
@@ -261,6 +267,7 @@ def validate_success_contract_schema():
     print("  ✅ inference_verified must be true")
     print("  ✅ llm_coding_started must be true")
     print("  ✅ validation_passed must be true")
+    print("  ✅ lint_passed must be true")
     print("  ✅ checkpoint_created must be true")
     
     print("\nFalse-Success Prevention:")
@@ -298,7 +305,8 @@ def validate_agent_cli():
                 [sys.executable, str(agent_script), '--help'],
                 capture_output=True,
                 text=True,
-                timeout=5
+                timeout=5,
+                check=False,
             )
             
             if result.returncode == 0:
@@ -312,7 +320,7 @@ def validate_agent_cli():
                 print("❌ Agent CLI failed")
         except subprocess.TimeoutExpired:
             print("⚠️  Agent CLI help timed out")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 - CLI validation reports unexpected tool failures
             print(f"❌ Error testing agent CLI: {e}")
 
 def main():
