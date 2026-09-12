@@ -1,7 +1,7 @@
 # resumefromhere
 
-Status: ready
-Timestamp: 2026-09-12T06:07:34.526306Z
+Status: success
+Timestamp: 2026-09-12T06:48:38.089699Z
 
 ## Completed Steps
 - platform validation
@@ -39,29 +39,15 @@ Timestamp: 2026-09-12T06:07:34.526306Z
 - No command metadata was supplied for this checkpoint.
 
 ## Runtime Evidence
-- Checkpoint state: in_progress
-- Ollama health: pending
-- Validation passed: pending
-- Lint passed: pending
-- Files analyzed: 0
+- Checkpoint state: complete
+- Ollama health: True
+- Validation passed: True
+- Lint passed: True
+- Files analyzed: 100
 - Files changed: 0
 
-## Latest Hosted Regression And Repair
-- Failed hosted run: 34671941950.
-- Root cause: `test_success_contract_accepts_agent_health_mapping` expected the legacy health-only mapping to produce `SUCCESS`, but the new lint field defaulted to false when omitted.
-- Repair: `scripts/ollama_runtime.py` now treats omitted lint metadata as legacy-compatible, while an explicitly supplied `lint_passed=false` still fails the production success contract.
-- Hosted lint enforcement remains strict because the autonomous agent passes its explicit Ruff result and the workflow final health gate requires `lint_passed=true`.
-- Hosted failure also reported Ollama readiness failure in that run; the final gate correctly refused success.
-
-## Local Validation After Repair
-- Full test suite: 179 passed.
-- Agent-owned Ruff gate: passed for `scripts/ollama_autonomous_agent.py`, `scripts/ollama_runtime.py`, and `scripts/validate_workflows.py`.
-- Workflow validator: all 8 workflows valid; false-success prevention, critical steps, success schema, and CLI checks passed.
-
 ## Pending Work
-- Publish the runtime compatibility repair.
-- Wait for a fresh GitHub-hosted autonomous run using the repaired contract.
-- Require artifact proof with `final_status=SUCCESS` and `lint_passed=true`.
+- None; all required checks in this run are verified.
 - Preserve this file and ollamatracks/checkpoint.json after every run.
 
 ## Agent Instructions
