@@ -49,10 +49,10 @@ Timestamp: 2026-09-12T09:56:39.484548Z
 ## Link Validation
 - Link validator: `scripts/link_validator.py`
 - Coverage: repository, workflow, Ollama source/download, hosted-run, and critical referenced URLs
-- Local evidence: 272 links examined; 259 accessible; 0 blocking operational failures
+- Local evidence: 290 links and local targets examined; 277 accessible; 0 blocking operational failures
 - Nonblocking findings: 13 stale/template documentation references retained in `ollamatracks/link_validation_report.json`
 - Hosted enforcement: link validation runs before the final health gate; any repository, workflow, Ollama, or hosted-run link failure blocks SUCCESS
-- Bounded execution: concurrent checks with per-request timeouts; dependency manifests and archived history excluded from operational scan
+- Coverage includes relative Markdown/HTML targets and local download files; concurrent checks use per-request timeouts; dependency manifests and archived history are excluded from the operational scan
 
 ## Pending Work
 - Await next GitHub-hosted run to produce link-validation artifact evidence

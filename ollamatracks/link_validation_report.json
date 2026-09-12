@@ -1,8 +1,8 @@
 {
-  "total_links_validated": 272,
-  "accessible": 259,
+  "total_links_validated": 290,
+  "accessible": 277,
   "inaccessible": 13,
-  "success_rate": "95.2%",
+  "success_rate": "95.5%",
   "results": [
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced",
@@ -165,7 +165,7 @@
       "link_type": "template"
     },
     {
-      "url": "https://github.com/${owner\\n",
+      "url": "https://github.com/${owner\\\\n",
       "accessible": true,
       "status_code": null,
       "error": null,
@@ -173,7 +173,7 @@
       "link_type": "template"
     },
     {
-      "url": "https://github.com/{owner\\n",
+      "url": "https://github.com/{owner\\\\n",
       "accessible": true,
       "status_code": null,
       "error": null,
@@ -181,7 +181,7 @@
       "link_type": "template"
     },
     {
-      "url": "https://github.com/{repo_path\\n",
+      "url": "https://github.com/{repo_path\\\\n",
       "accessible": true,
       "status_code": null,
       "error": null,
@@ -189,7 +189,7 @@
       "link_type": "template"
     },
     {
-      "url": "https://github.com/{self.github_repo\\n",
+      "url": "https://github.com/{self.github_repo\\\\n",
       "accessible": true,
       "status_code": null,
       "error": null,
@@ -197,7 +197,7 @@
       "link_type": "template"
     },
     {
-      "url": "https://raw.githubusercontent.com/{self.github_repo\\n",
+      "url": "https://raw.githubusercontent.com/{self.github_repo\\\\n",
       "accessible": true,
       "status_code": null,
       "error": null,
@@ -2179,6 +2179,150 @@
       "error": null,
       "source_file": "ollamatracks/link_validation_report.json",
       "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529571291",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529623310",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529623377",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529623385",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529623411",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529623423",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529623445",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529623463",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529871146",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103529871151",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103530125921",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34684709304/job/103530336443",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34685000912",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34685000912/job/103530349561",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34686995628/job/103535601527",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34687150049",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34687150049/job/103536098465",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "ollamatracks/github-state.json",
+      "link_type": "reference"
     }
   ],
   "inaccessible_links": [
@@ -2289,5 +2433,5 @@
   ],
   "blocking_inaccessible": 0,
   "nonblocking_inaccessible": 13,
-  "timestamp": "2026-09-12T10:09:23.868239+00:00"
+  "timestamp": "2026-09-12T10:13:49.206279+00:00"
 }

@@ -64,6 +64,13 @@ class LinkValidator:
         matches = re.findall(r"https?://[^\s'\"`<>)}\]]+", text)
         return sorted({url.rstrip(".,;:") for url in matches})
 
+    @staticmethod
+    def extract_local_targets(text: str) -> list[str]:
+        """Extract relative Markdown and HTML link targets."""
+        markdown = re.findall(r"\[[^\]]*\]\(([^)\s]+)", text)
+        html = re.findall(r"(?:href|src)=[\"']([^\"']+)[\"']", text)
+        return sorted(set(markdown + html))
+
     def find_urls(self) -> dict[str, list[str]]:
         """Find URLs in supported repository files."""
         found: dict[str, list[str]] = {}
@@ -168,6 +175,36 @@ class LinkValidator:
         with ThreadPoolExecutor(max_workers=16) as executor:
             self.results.extend(executor.map(check, candidates.items()))
 
+    def validate_local_links(self) -> None:
+        """Check relative documentation links and local download targets."""
+        for source in self.find_urls():
+            source_path = self.repo_path / source
+            try:
+                content = source_path.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
+            for target in self.extract_local_targets(content):
+                if (
+                    target.startswith(("http://", "https://", "mailto:", "#", "/"))
+                    or "{" in target
+                ):
+                    continue
+                target_path = (source_path.parent / target.split("#", 1)[0]).resolve()
+                inside_repo = target_path == self.repo_path or self.repo_path in target_path.parents
+                if not inside_repo:
+                    continue
+                exists = target_path.exists()
+                self.results.append(
+                    LinkResult(
+                        target,
+                        exists,
+                        200 if exists else None,
+                        None if exists else "Local target does not exist",
+                        source,
+                        "local_reference",
+                    )
+                )
+
     def validate_workflows(self) -> None:
         """Check every tracked workflow's canonical GitHub URL."""
         workflow_dir = self.repo_path / ".github" / "workflows"
@@ -236,6 +273,8 @@ class LinkValidator:
         self.validate_workflows()
         print("Validating critical URLs referenced by files...")
         self.validate_file_urls()
+        print("Validating local documentation and download targets...")
+        self.validate_local_links()
         print("Validating latest hosted autonomous run...")
         self.validate_latest_run()
         self.results = list({result.url: result for result in self.results}.values())
