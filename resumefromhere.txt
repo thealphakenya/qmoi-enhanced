@@ -1,7 +1,7 @@
 # resumefromhere
 
 Status: success
-Timestamp: 2026-09-12T06:49:30.000000Z
+Timestamp: 2026-09-12T07:03:42.027427Z
 
 ## Completed Steps
 - platform validation
@@ -39,35 +39,16 @@ Timestamp: 2026-09-12T06:49:30.000000Z
 - No command metadata was supplied for this checkpoint.
 
 ## Runtime Evidence
-- Checkpoint state: success
-- Ollama health: verified (version 0.34.0, model qwen2.5-coder:3b)
-- Validation passed: true
-- Lint passed: true (Ruff gate executed on hosted runner)
-- Files analyzed: 116
+- Checkpoint state: complete
+- Ollama health: True
+- Validation passed: True
+- Lint passed: True
+- Files analyzed: 100
 - Files changed: 0
-- Inference latency: 1.335 seconds
-- LLM iterations: 1 (bounded loop)
-- Hosted run: 34677948410 (commit 5f53fca8ea, completed 2026-09-12T06:48:25Z)
 
-## Latest Hosted Regression And Repair (COMPLETED)
-- Failed hosted run: 34671941950.
-- Root cause: `test_success_contract_accepts_agent_health_mapping` expected the legacy health-only mapping to produce `SUCCESS`, but the new lint field defaulted to false when omitted.
-- Repair: `scripts/ollama_runtime.py` modified to treat omitted lint metadata as legacy-compatible (True), while an explicitly supplied `lint_passed=false` still fails production contract.
-- Hosted lint enforcement remains strict: autonomous agent passes explicit Ruff result and workflow final health gate requires `lint_passed=true`.
-- **Repair validated in hosted run 34677948410**: final_status=SUCCESS with lint_passed=true and all 9 boolean gates passing.
-
-## Local Validation After Repair (VERIFIED)
-- Full test suite: 179/179 passed.
-- Agent-owned Ruff gate: passed for `scripts/ollama_autonomous_agent.py`, `scripts/ollama_runtime.py`, and `scripts/validate_workflows.py`.
-- Workflow validator: all 8 workflows valid; false-success prevention, critical steps, success schema, and CLI checks passed.
-- Hosted autonomous run 34677948410: SUCCESS with full contract enforcement.
-
-## Completion Summary
-- Repair published: commit 5f53fca8ea at 2026-09-12T06:12:07Z.
-- Validation chain triggered and passed.
-- Autonomous agent run 34677948410 completed successfully at 2026-09-12T06:48:25Z.
-- Success contract artifact confirms: final_status=SUCCESS, lint_passed=true, all 9 boolean gates true.
-- Ollama autonomous agent verified fully operational with all documented capabilities including lint gate.
+## Pending Work
+- None; all required checks in this run are verified.
+- Preserve this file and ollamatracks/checkpoint.json after every run.
 
 ## Agent Instructions
 - Re-read this file at the start of every autonomous run.
