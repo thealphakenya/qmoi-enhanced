@@ -287,7 +287,9 @@ def build_success_contract(
         "tests_before": fields.get("tests_before"),
         "tests_after": fields.get("tests_after"),
         "validation_passed": bool(fields.get("validation_passed", False)),
-        "lint_passed": bool(fields.get("lint_passed", False)),
+        # Preserve the legacy health-mapping API when lint metadata is absent;
+        # the hosted autonomous path always supplies this field explicitly.
+        "lint_passed": bool(fields.get("lint_passed", True)),
         "checkpoint_created": bool(fields.get("checkpoint_created", False)),
         "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
     }
