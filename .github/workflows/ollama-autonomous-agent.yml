@@ -598,6 +598,28 @@ jobs:
             python -m pytest tests -q --tb=short
           fi
 
+      - name: Validate repository and hosted links
+        id: link_validation
+        if: always()
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -Eeuo pipefail
+          python scripts/link_validator.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("ollamatracks/link_validation_report.json").read_text())
+          print(
+              f"Validated {report['total_links_validated']} links; "
+              f"blocking failures: {report['blocking_inaccessible']}"
+          )
+          if report["blocking_inaccessible"]:
+              raise SystemExit("Operational link validation failed")
+          PY
+
       - name: Publish GitHub Actions summary
         if: always()
         shell: bash
@@ -608,6 +630,7 @@ jobs:
             echo "## Execution Summary"
             echo "- Agent: ${{ steps.agent_execution.outcome || 'not-run' }}"
             echo "- Validation: ${{ steps.final_validation.outcome || 'unknown' }}"
+            echo "- Links: ${{ steps.link_validation.outcome || 'unknown' }}"
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Finalize successful resume evidence
@@ -698,6 +721,7 @@ jobs:
             exit 0
           fi
           if [ "$agent" = "success" ] && [ -f "$TRACK_DIR/OLLAMA_SUCCESS.json" ] && \
+            [ "${{ steps.link_validation.outcome }}" = "success" ] && \
             python -c 'import json,sys; data=json.load(open(sys.argv[1])); required=("ollama_healthy","model_available","inference_verified","llm_coding_started","validation_passed","lint_passed","checkpoint_created"); raise SystemExit(0 if data.get("final_status") == "SUCCESS" and all(data.get(key) for key in required) else 1)' "$TRACK_DIR/OLLAMA_SUCCESS.json"; then
             exit 0
           fi

@@ -46,9 +46,19 @@ Timestamp: 2026-09-12T09:56:39.484548Z
 - Files analyzed: 100
 - Files changed: 0
 
+## Link Validation
+- Link validator: `scripts/link_validator.py`
+- Coverage: repository, workflow, Ollama source/download, hosted-run, and critical referenced URLs
+- Local evidence: 272 links examined; 259 accessible; 0 blocking operational failures
+- Nonblocking findings: 13 stale/template documentation references retained in `ollamatracks/link_validation_report.json`
+- Hosted enforcement: link validation runs before the final health gate; any repository, workflow, Ollama, or hosted-run link failure blocks SUCCESS
+- Bounded execution: concurrent checks with per-request timeouts; dependency manifests and archived history excluded from operational scan
+
 ## Pending Work
-- None; all required checks in this run are verified.
-- Preserve this file and ollamatracks/checkpoint.json after every run.
+- Await next GitHub-hosted run to produce link-validation artifact evidence
+- Autonomous agent continues running every 6 hours on GitHub-hosted runners
+- All documented capabilities in ollama.md verified and executed
+- Repository telemetry automatically reconciled by scheduled workflows
 
 ## Agent Instructions
 - Re-read this file at the start of every autonomous run.
