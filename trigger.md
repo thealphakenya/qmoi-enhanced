@@ -112,7 +112,7 @@ curl --fail-with-body -sS \
   -H "Authorization: Bearer $GITHUB_TOKEN" \
   -H 'Accept: application/vnd.github+json' \
   -H 'X-GitHub-Api-Version: 2022-11-28' \
-  "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/workflows/ollama-pr-validation.yml/dispatches" \
+  "https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches" \
   -d "$(python -c 'import json, os; print(json.dumps({"ref": os.environ["GITHUB_REF"]}))')"
 ```
 

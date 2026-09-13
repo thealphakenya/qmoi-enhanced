@@ -90,7 +90,7 @@ The QMOI Enhanced project includes a sophisticated **Ollama Autonomous Agent** t
 ### Installation
 ```bash
 # Clone repository
-git clone https://github.com/qmoi/qmoi-enhanced.git
+git clone https://github.com/thealphakenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Install dependencies

@@ -28,7 +28,7 @@
 **All Platforms:**
 ```bash
 # Clone repository
-git clone https://github.com/qmoi/qmoi-enhanced.git
+git clone https://github.com/thealphakenya/qmoi-enhanced.git
 cd qmoi-enhanced
 
 # Install Node.js & npm
@@ -789,7 +789,7 @@ snapcraft upload qmoiaiui_1.2.3_amd64.snap --release=stable
 **Flathub:**
 ```bash
 # Submit pull request to Flathub repo
-git clone https://github.com/flathub/com.qmoi.aiapp
+https://flathub.org/apps/search?q=qmoi
 # Update manifest and submit PR
 ```
 

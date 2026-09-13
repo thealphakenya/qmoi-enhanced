@@ -47,6 +47,13 @@ Timestamp: 2026-09-13T04:21:31.642062Z
 - Files changed: 0
 
 ## Link Validation Evidence
+- Hosted validation run 34687912892: success with link validation enabled.
+- Hosted autonomous run 34688214918: `final_status=SUCCESS`, `lint_passed=true`, and 333 links checked with 0 blocking failures.
+- Current source scan: 62 operational links checked; 62 accessible; 0 inaccessible.
+- Coverage includes repository, workflow, Ollama download/source, hosted-run, Markdown/HTML, and local download targets.
+- Authenticated dispatch endpoints and generic setup placeholders are structurally validated; generated telemetry and historical CI logs are excluded from live-source scanning.
+
+## Link Validation Evidence
 - Hosted validation run: 34687912892 completed successfully for link-gate integration.
 - Hosted autonomous run: 34688214918 completed with `final_status=SUCCESS`, `lint_passed=true`, and `validation_passed=true`.
 - Hosted link report: 333 links checked; 320 accessible; 0 blocking operational failures.

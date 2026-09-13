@@ -262,7 +262,7 @@ if: |
 ```yaml
 - name: Notify qmoi-enhanced
   run: |
-    curl -X POST https://github.com/thealphakenya/qmoi-enhanced/dispatches \
+    curl -X POST https://api.github.com/repos/thealphakenya/qmoi-enhanced/dispatches \
       -H "Authorization: Bearer ${{ secrets.MY_CUSTOM_TOKEN }}" \
       -d '{"event_type":"alpha-q-ai-sync"}'
 ```

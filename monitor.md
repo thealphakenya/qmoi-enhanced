@@ -228,6 +228,6 @@ For the autonomous-agent run, preserve these files when available:
 
 - [Repository Actions](https://github.com/thealphakenya/qmoi-enhanced/actions)
 - [Repository](https://github.com/thealphakenya/qmoi-enhanced)
-- [Dependabot security alerts](https://github.com/thealphakenya/qmoi-enhanced/security/dependabot)
+- [Repository security](https://github.com/thealphakenya/qmoi-enhanced/security)
 
 Last updated: 2026-08-29

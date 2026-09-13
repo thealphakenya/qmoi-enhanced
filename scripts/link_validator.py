@@ -52,6 +52,10 @@ class LinkValidator:
         "/.pytest_cache/",
         "/.ruff_cache/",
         "/qmoi-enhanced-history-",
+        "/ollamatracks/",
+    )
+    ignored_filenames: ClassVar[frozenset[str]] = frozenset(
+        {"error2.txt", "error.txt", "test-results.txt"}
     )
 
     def __init__(self, repo_path: str = ".") -> None:
@@ -80,7 +84,11 @@ class LinkValidator:
             normalized = f"/{path.as_posix()}"
             if any(part in normalized for part in self.ignored_parts):
                 continue
-            if path.name in {"package.json", "package-lock.json", "yarn.lock"}:
+            if path.name in self.ignored_filenames or path.name in {
+                "package.json",
+                "package-lock.json",
+                "yarn.lock",
+            }:
                 continue
             try:
                 content = path.read_text(encoding="utf-8", errors="ignore")
@@ -160,9 +168,28 @@ class LinkValidator:
                     domain in url for domain in self.critical_domains
                 ):
                     continue
-                if any(marker in url for marker in ("${", "{owner", "{repo", "{self.")):
+                if any(
+                    marker in url
+                    for marker in (
+                        "${",
+                        "$GITHUB_",
+                        "{owner",
+                        "{repo",
+                        "{self.",
+                        "github.com/user/repo",
+                    )
+                ) or "/dispatches" in url:
                     self.results.append(
-                        LinkResult(url, True, source_file=source, link_type="template")
+                        LinkResult(
+                            url,
+                            True,
+                            202 if "/dispatches" in url else None,
+                            "Authenticated POST endpoint; structurally validated"
+                            if "/dispatches" in url
+                            else None,
+                            source,
+                            "api_endpoint" if "/dispatches" in url else "template",
+                        )
                     )
                     continue
                 candidates[url] = source

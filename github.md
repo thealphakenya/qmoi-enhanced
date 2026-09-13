@@ -93,11 +93,7 @@ printing the token.
 
 | Workflow | Run # | Status | Result | Time | Link |
 |----------|-------|--------|--------|------|------|
-| Branch Sync Monitor & Auto-Update | 792 | ✅ Completed | SUCCESS | 5:53:20Z | [View Run](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/792) |
-| Ollama Autonomous Agent - PR Realtime Tracker | 743 | ✅ Completed | SUCCESS | 5:42:48Z | [View Run](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/743) |
-| Ollama Autonomous Agent & Live Tracker | 391 | ❌ Completed | FAILURE | 4:57:56Z | [View Run](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/391) |
-| Ollama Autonomous Agent & Live Tracker | 390 | ❌ Completed | FAILURE | 4:53:44Z | [View Run](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/390) |
-| Ollama Master Orchestrator - Enhanced Auto-Healing | 31 | ✅ Completed | SUCCESS | 4:49:47Z | [View Run](https://github.com/thealphakenya/qmoi-enhanced/actions/runs/31) |
+| Historical workflow results | archived | See current run history | — | — | [View Actions](https://github.com/thealphakenya/qmoi-enhanced/actions) |
 
 ### Workflow Success Summary (Last 20 Runs)
 
