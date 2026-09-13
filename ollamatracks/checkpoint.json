@@ -11,7 +11,9 @@
     "LLM coding loop",
     "post-agent validation",
     "success contract",
-    "final hosted evidence"
+    "final hosted evidence",
+    "release-asset parser fix and regression validation",
+    "live link gate verification"
   ],
   "error": null,
   "failure_fingerprint": null,
@@ -135,12 +137,12 @@
   "ollama_health": true,
   "ollama_host": "http://127.0.0.1:11434",
   "repair_state": "success",
-  "repository_commit": "033c266f1d77cba38661a995611dbb8494a3c4e0",
+  "repository_commit": "2180a0ffde521d68cc240684381c46fe76c66d13",
   "status": "success",
   "task": null,
   "test_result": true,
   "tests_run": null,
-  "timestamp": "2026-09-13T10:57:46.452195Z",
+  "timestamp": "2026-09-13T11:24:31.675496Z",
   "validation_passed": true,
-  "workflow_run": "34753013806"
+  "workflow_run": "34754155848"
 }
