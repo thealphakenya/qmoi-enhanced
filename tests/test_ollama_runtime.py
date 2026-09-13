@@ -173,7 +173,7 @@ def test_validate_release_assets_handles_full_release_list(monkeypatch):
     captured = []
 
     def fake_run(*args, **kwargs):
-        return type("Result", (), {"stdout": '[{"tag_name":"v1.2.5","assets":["https://example.com/app.zip"]}]', "returncode": 0})()
+        return type("Result", (), {"stdout": '{"tag_name":"v1.2.5","assets":["https://example.com/app.zip"]}', "returncode": 0})()
 
     monkeypatch.setattr("scripts.link_validator.subprocess.run", fake_run)
     monkeypatch.setattr(

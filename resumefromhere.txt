@@ -47,9 +47,12 @@ Timestamp: 2026-09-13T11:34:25.837520Z
 - Lint passed: True
 - Files analyzed: 100
 - Files changed: 0
+- Link validation: 92/92 accessible; 0 inaccessible
+- Release asset validation: latest GitHub release API plus public API fallback
+- Runtime regression tests: 12 passed
 
 ## Pending Work
-- None; all required checks in this run are verified.
+- Await the next GitHub-hosted run after the release-API fallback repair.
 - Preserve this file and ollamatracks/checkpoint.json after every run.
 
 ## Agent Instructions

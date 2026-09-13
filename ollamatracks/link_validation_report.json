@@ -1,6 +1,6 @@
 {
-  "total_links_validated": 91,
-  "accessible": 91,
+  "total_links_validated": 92,
+  "accessible": 92,
   "inaccessible": 0,
   "success_rate": "100.0%",
   "results": [
@@ -389,6 +389,14 @@
       "link_type": "template"
     },
     {
+      "url": "https://api.github.com/repos/{self.github_repo",
+      "accessible": true,
+      "status_code": null,
+      "error": null,
+      "source_file": "scripts/link_validator.py",
+      "link_type": "template"
+    },
+    {
       "url": "https://github.com/{self.github_repo",
       "accessible": true,
       "status_code": null,
@@ -736,5 +744,5 @@
   "inaccessible_links": [],
   "blocking_inaccessible": 0,
   "nonblocking_inaccessible": 0,
-  "timestamp": "2026-09-13T12:36:22.415782+00:00"
+  "timestamp": "2026-09-13T14:20:49.987628+00:00"
 }

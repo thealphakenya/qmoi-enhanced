@@ -206,10 +206,9 @@ class LinkValidator:
                 [
                     "gh",
                     "api",
-                    f"repos/{self.github_repo}/releases",
-                    "--paginate",
+                    f"repos/{self.github_repo}/releases/latest",
                     "--jq",
-                    '[.[] | select(.draft == false) | {tag_name, assets: [.assets[].browser_download_url]}]',
+                    '{tag_name, assets: [.assets[].browser_download_url]}',
                 ],
                 capture_output=True,
                 text=True,
@@ -217,6 +216,21 @@ class LinkValidator:
                 check=False,
             )
             payload = result.stdout.strip()
+            if result.returncode != 0 or not payload:
+                fallback = subprocess.run(
+                    [
+                        "curl",
+                        "-fsSL",
+                        "--max-time",
+                        "15",
+                        f"https://api.github.com/repos/{self.github_repo}/releases/latest",
+                    ],
+                    capture_output=True,
+                    text=True,
+                    timeout=20,
+                    check=False,
+                )
+                payload = fallback.stdout.strip()
             if not payload:
                 self.results.append(
                     LinkResult(
@@ -229,23 +243,8 @@ class LinkValidator:
                 )
                 return
 
-            try:
-                releases = json.loads(payload)
-            except json.JSONDecodeError:
-                releases = []
-                for line in payload.splitlines():
-                    line = line.strip()
-                    if not line:
-                        continue
-                    try:
-                        releases.extend(json.loads(line))
-                    except json.JSONDecodeError:
-                        continue
-
-            if not isinstance(releases, list):
-                releases = [releases]
-            latest = next((entry for entry in releases if isinstance(entry, dict)), None)
-            if latest is None:
+            latest = json.loads(payload)
+            if not isinstance(latest, dict):
                 raise TypeError("Release payload did not contain a valid release object")
 
             for url in latest.get("assets", []):
