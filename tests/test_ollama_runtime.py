@@ -167,3 +167,22 @@ def test_agent_rejects_non_github_hosted_runtime(monkeypatch, tmp_path):
     agent = OllamaAutonomousAgent(tmp_path)
     with pytest.raises(RuntimeError, match="GitHub-hosted"):
         agent.enforce_github_runtime()
+
+
+def test_validate_release_assets_handles_full_release_list(monkeypatch):
+    captured = []
+
+    def fake_run(*args, **kwargs):
+        return type("Result", (), {"stdout": '[{"tag_name":"v1.2.5","assets":["https://example.com/app.zip"]}]', "returncode": 0})()
+
+    monkeypatch.setattr("scripts.link_validator.subprocess.run", fake_run)
+    monkeypatch.setattr(
+        "scripts.link_validator.LinkValidator.add_checked",
+        lambda self, url, source, link_type: captured.append((url, source, link_type)),
+    )
+
+    LinkValidator = __import__("scripts.link_validator", fromlist=["LinkValidator"]).LinkValidator
+    validator = LinkValidator()
+    validator.validate_release_assets()
+
+    assert captured == [("https://example.com/app.zip", "release:v1.2.5", "release_asset")]

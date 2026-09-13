@@ -40,11 +40,18 @@ class LinkValidator:
         "github.com",
         "ollama.ai",
         "ollama.com",
+        "qmoi.com",
         "raw.githubusercontent.com",
         "github.blog",
     )
     blocking_types: ClassVar[frozenset[str]] = frozenset(
-        {"repository", "external_resource", "workflow", "github_run"}
+        {
+            "repository",
+            "external_resource",
+            "workflow",
+            "github_run",
+            "release_asset",
+        }
     )
     ignored_parts: ClassVar[tuple[str, ...]] = (
         "/.git/",
@@ -124,6 +131,27 @@ class LinkValidator:
             )
             code_text = result.stdout.strip()[-3:]
             status = int(code_text) if code_text.isdigit() else None
+            if status == 405:
+                result = subprocess.run(
+                    [
+                        "curl",
+                        "-L",
+                        "-sS",
+                        "--max-time",
+                        "8",
+                        "-o",
+                        "/dev/null",
+                        "-w",
+                        "%{http_code}",
+                        url,
+                    ],
+                    capture_output=True,
+                    text=True,
+                    timeout=12,
+                    check=False,
+                )
+                code_text = result.stdout.strip()[-3:]
+                status = int(code_text) if code_text.isdigit() else None
             if status and 200 <= status < 400:
                 return True, status, None
             return False, status, result.stderr.strip() or "HTTP request failed"
@@ -158,6 +186,81 @@ class LinkValidator:
             "https://github.com/ollama/ollama/releases",
         ):
             self.add_checked(url, "Ollama", "external_resource")
+
+    def validate_qmoi_domains(self) -> None:
+        """Check the public QMOI site and each documented app route."""
+        for url in (
+            "https://qmoi.com",
+            "https://qmoi.com/ai",
+            "https://qmoi.com/space",
+            "https://qmoi.com/files",
+            "https://qmoi.com/ide",
+            "https://qmoi.com/help/faq",
+        ):
+            self.add_checked(url, "QMOI domains", "domain")
+
+    def validate_release_assets(self) -> None:
+        """Validate every asset in the latest published GitHub release."""
+        try:
+            result = subprocess.run(
+                [
+                    "gh",
+                    "api",
+                    f"repos/{self.github_repo}/releases",
+                    "--paginate",
+                    "--jq",
+                    '[.[] | select(.draft == false) | {tag_name, assets: [.assets[].browser_download_url]}]',
+                ],
+                capture_output=True,
+                text=True,
+                timeout=30,
+                check=False,
+            )
+            payload = result.stdout.strip()
+            if not payload:
+                self.results.append(
+                    LinkResult(
+                        f"https://github.com/{self.github_repo}/releases",
+                        False,
+                        error="No published release found",
+                        source_file="GitHub Releases",
+                        link_type="release_asset",
+                    )
+                )
+                return
+
+            try:
+                releases = json.loads(payload)
+            except json.JSONDecodeError:
+                releases = []
+                for line in payload.splitlines():
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        releases.extend(json.loads(line))
+                    except json.JSONDecodeError:
+                        continue
+
+            if not isinstance(releases, list):
+                releases = [releases]
+            latest = next((entry for entry in releases if isinstance(entry, dict)), None)
+            if latest is None:
+                raise TypeError("Release payload did not contain a valid release object")
+
+            for url in latest.get("assets", []):
+                if isinstance(url, str):
+                    self.add_checked(url, f"release:{latest.get('tag_name', 'unknown')}", "release_asset")
+        except (OSError, json.JSONDecodeError, TypeError) as exc:
+            self.results.append(
+                LinkResult(
+                    f"https://github.com/{self.github_repo}/releases",
+                    False,
+                    error=str(exc),
+                    source_file="GitHub Releases",
+                    link_type="release_asset",
+                )
+            )
 
     def validate_file_urls(self) -> None:
         """Check unique critical-domain URLs referenced by repository files."""
@@ -296,6 +399,10 @@ class LinkValidator:
         self.validate_repository_links()
         print("Validating Ollama download and source links...")
         self.validate_ollama_links()
+        print("Validating QMOI domains and app routes...")
+        self.validate_qmoi_domains()
+        print("Validating published QMOI release assets...")
+        self.validate_release_assets()
         print("Validating workflow links...")
         self.validate_workflows()
         print("Validating critical URLs referenced by files...")

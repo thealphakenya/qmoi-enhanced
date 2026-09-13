@@ -1,8 +1,10 @@
 # QMOI Apps: Download & Installation Guide
 
-**Last Updated:** 2026-08-13  
+**Last Updated:** 2026-09-13  
 **Status:** Multi-Platform Download Instructions  
 **Supported Apps:** QMOIAIUI, QMOI Space, QCity, QALPHA
+
+**Authoritative source:** [QMOI v1.2.5 published release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5). The autonomous agent verifies every published release asset on GitHub-hosted runners. Store listings and custom `downloads.qmoi.com` URLs are not used until they have a real published listing.
 
 ---
 
@@ -15,24 +17,19 @@ Choose your platform and app to get started immediately.
 ## Windows Desktop
 
 ### QMOIAIUI (Conversational AI)
-- **Installer (.MSI):** [Download v1.2.3](https://downloads.qmoi.com/qmoiaiui-1.2.3.msi) (45 MB)
-- **Portable (.EXE):** [Download v1.2.3](https://downloads.qmoi.com/qmoiaiui-1.2.3-portable.exe) (48 MB)
-- **Windows Store:** [Get from Microsoft Store](https://www.microsoft.com/store/apps/qmoiaiui)
+- **Windows asset:** [Download v1.2.5 EXE](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe)
 - **Winget:** `winget install qmoiaiui`
 
 ### QMOI Space (Media Player)
-- **Installer (.MSI):** [Download v1.2.3](https://downloads.qmoi.com/qmoi-space-1.2.3.msi) (65 MB)
-- **Windows Store:** [Get from Microsoft Store](https://www.microsoft.com/store/apps/qmoi-space)
+- **Windows package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-space.zip)
 - **Winget:** `winget install qmoi-space`
 
 ### QCity (File Manager)
-- **Installer (.MSI):** [Download v1.2.3](https://downloads.qmoi.com/qcity-1.2.3.msi) (52 MB)
-- **Windows Store:** [Get from Microsoft Store](https://www.microsoft.com/store/apps/qcity)
+- **Windows package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qcity_package.zip)
 - **Winget:** `winget install qcity`
 
 ### QALPHA (IDE)
-- **Installer (.MSI):** [Download v1.2.3](https://downloads.qmoi.com/qalpha-1.2.3.msi) (180 MB)
-- **Windows Store:** [Get from Microsoft Store](https://www.microsoft.com/store/apps/qalpha)
+- **Windows package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/q-alpha.zip)
 - **Winget:** `winget install qalpha`
 
 **System Requirements:**
@@ -46,23 +43,19 @@ Choose your platform and app to get started immediately.
 ## macOS Desktop
 
 ### QMOIAIUI (Conversational AI)
-- **DMG Installer:** [Download v1.2.3](https://downloads.qmoi.com/qmoiaiui-1.2.3.dmg) (42 MB)
-- **Mac App Store:** [Get from App Store](https://apps.apple.com/app/qmoiaiui)
+- **DMG Installer:** [Download v1.2.5](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.dmg)
 - **Homebrew:** `brew install qmoiaiui`
 
 ### QMOI Space (Media Player)
-- **DMG Installer:** [Download v1.2.3](https://downloads.qmoi.com/qmoi-space-1.2.3.dmg) (60 MB)
-- **Mac App Store:** [Get from App Store](https://apps.apple.com/app/qmoi-space)
+- **macOS package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-space.zip)
 - **Homebrew:** `brew install qmoi-space`
 
 ### QCity (File Manager)
-- **DMG Installer:** [Download v1.2.3](https://downloads.qmoi.com/qcity-1.2.3.dmg) (50 MB)
-- **Mac App Store:** [Get from App Store](https://apps.apple.com/app/qcity)
+- **macOS package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qcity_package.zip)
 - **Homebrew:** `brew install qcity`
 
 ### QALPHA (IDE)
-- **DMG Installer:** [Download v1.2.3](https://downloads.qmoi.com/qalpha-1.2.3.dmg) (175 MB)
-- **Mac App Store:** [Get from App Store](https://apps.apple.com/app/qalpha)
+- **macOS package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/q-alpha.zip)
 - **Homebrew:** `brew install qalpha`
 
 **System Requirements:**
@@ -78,7 +71,7 @@ Choose your platform and app to get started immediately.
 ## Linux Desktop
 
 ### QMOIAIUI (Conversational AI)
-- **AppImage:** [Download v1.2.3](https://downloads.qmoi.com/qmoiaiui-1.2.3.AppImage) (55 MB)
+- **AppImage:** [Download v1.2.5](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.AppImage)
 - **Snap:** `snap install qmoiaiui`
 - **Flatpak:** `flatpak install flathub com.qmoi.aiapp`
 - **Ubuntu PPA:** 
@@ -95,21 +88,21 @@ Choose your platform and app to get started immediately.
 - **Arch AUR:** `yay -S qmoiaiui`
 
 ### QMOI Space (Media Player)
-- **AppImage:** [Download v1.2.3](https://downloads.qmoi.com/qmoi-space-1.2.3.AppImage) (70 MB)
+- **Linux package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-space.zip)
 - **Snap:** `snap install qmoi-space`
 - **Flatpak:** `flatpak install flathub com.qmoi.space`
 - **Ubuntu PPA:** `sudo apt-get install qmoi-space`
 - **Fedora COPR:** `sudo dnf install qmoi-space`
 
 ### QCity (File Manager)
-- **AppImage:** [Download v1.2.3](https://downloads.qmoi.com/qcity-1.2.3.AppImage) (58 MB)
+- **Linux package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qcity_package.zip)
 - **Snap:** `snap install qcity`
 - **Flatpak:** `flatpak install flathub com.qcity.filemanager`
 - **Ubuntu PPA:** `sudo apt-get install qcity`
 - **Fedora COPR:** `sudo dnf install qcity`
 
 ### QALPHA (IDE)
-- **AppImage:** [Download v1.2.3](https://downloads.qmoi.com/qalpha-1.2.3.AppImage) (195 MB)
+- **Linux package:** [Download v1.2.5 package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/q-alpha.zip)
 - **Snap:** `snap install qalpha`
 - **Flatpak:** `flatpak install flathub com.qalpha.ide`
 - **Ubuntu PPA:** `sudo apt-get install qalpha`
@@ -131,22 +124,22 @@ Choose your platform and app to get started immediately.
 ### Download from App Store
 All QMOI apps are available exclusively through the Apple App Store.
 
-**QMOIAIUI:** [View on App Store](https://apps.apple.com/app/qmoiaiui)
+**QMOIAIUI:** [Download verified iOS package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.ipa)
 - Minimum: iOS 14+
 - Size: ~38 MB (downloads on first launch)
 - Requires: iPhone XS or newer, iPad (5th gen or newer)
 
-**QMOI Space:** [View on App Store](https://apps.apple.com/app/qmoi-space)
+**QMOI Space:** [View published packages](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5) (no native iOS asset published)
 - Minimum: iOS 14+
 - Size: ~52 MB
 - Requires: iPhone XS or newer
 
-**QCity:** [View on App Store](https://apps.apple.com/app/qcity)
+**QCity:** [View published packages](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5) (no native iOS asset published)
 - Minimum: iOS 14+
 - Size: ~45 MB
 - Requires: iPhone XS or newer
 
-**QALPHA:** [View on App Store](https://apps.apple.com/app/qalpha)
+**QALPHA:** [View published packages](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5) (no native iOS asset published)
 - Minimum: iOS 15+
 - Size: ~160 MB (including IDE assets)
 - Requires: iPad (6th gen or newer)
@@ -160,7 +153,7 @@ All QMOI apps are available exclusively through the Apple App Store.
 6. Tap "Open" to launch the app
 
 **Alternative: TestFlight Beta**
-- Join beta testing: [QMOI TestFlight](https://testflight.apple.com/join/qmoi)
+- Join beta testing: no public TestFlight listing is currently published; use the [v1.2.5 release](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5)
 - Test new features before release
 - Provide feedback to improve the app
 
@@ -171,22 +164,22 @@ All QMOI apps are available exclusively through the Apple App Store.
 ### Download from Google Play Store
 All QMOI apps are available exclusively through Google Play.
 
-**QMOIAIUI:** [View on Play Store](https://play.google.com/store/apps/details?id=com.qmoi.aiapp)
+**QMOIAIUI:** [Download verified Android package](https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.apk)
 - Minimum: Android 11 (API 30+)
 - Size: ~42 MB (downloads on first launch)
 - Requires: ARM64 processor, 2GB RAM
 
-**QMOI Space:** [View on Play Store](https://play.google.com/store/apps/details?id=com.qmoi.space)
+**QMOI Space:** [View published packages](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5) (no native Android asset published)
 - Minimum: Android 11 (API 30+)
 - Size: ~58 MB
 - Requires: ARM64 processor, 2GB RAM
 
-**QCity:** [View on Play Store](https://play.google.com/store/apps/details?id=com.qcity.filemanager)
+**QCity:** [View published packages](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5) (no native Android asset published)
 - Minimum: Android 11 (API 30+)
 - Size: ~48 MB
 - Requires: ARM64 processor, 2GB RAM
 
-**QALPHA:** [View on Play Store](https://play.google.com/store/apps/details?id=com.qalpha.ide)
+**QALPHA:** [View published packages](https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5) (no native Android asset published)
 - Minimum: Android 12 (API 31+)
 - Size: ~170 MB (including IDE assets)
 - Requires: ARM64 processor, 3GB RAM

@@ -1,8 +1,8 @@
 {
-  "total_links_validated": 62,
-  "accessible": 62,
-  "inaccessible": 0,
-  "success_rate": "100.0%",
+  "total_links_validated": 92,
+  "accessible": 91,
+  "inaccessible": 1,
+  "success_rate": "98.9%",
   "results": [
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced",
@@ -67,6 +67,230 @@
       "error": null,
       "source_file": "scripts/link_validator.py",
       "link_type": "reference"
+    },
+    {
+      "url": "https://qmoi.com",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "QMOI_MODEL_CARD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://qmoi.com/ai",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://qmoi.com/space",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://qmoi.com/files",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://qmoi.com/ide",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://qmoi.com/help/faq",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/admin.zip",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/app-release.apk",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/checksums.txt",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/deals.zip",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/q-alpha.zip",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qcity_package.zip",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-ai.zip",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-release.exe",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-release.ipa",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-space.zip",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi.zip",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.apk",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.AppImage",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.deb",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.dmg",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe.sha256",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.ipa",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_chromebook.zip",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "release:v1.2.5",
+      "link_type": "release_asset"
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/auto-merge-automated-pr.yml",
@@ -453,7 +677,23 @@
       "link_type": "reference"
     },
     {
+      "url": "https://forum.qmoi.com",
+      "accessible": false,
+      "status_code": 0,
+      "error": "curl: (35) OpenSSL/3.0.13: error:0A000458:SSL routines::tlsv1 unrecognized name",
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/issues",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5",
       "accessible": true,
       "status_code": 200,
       "error": null,
@@ -493,7 +733,7 @@
       "link_type": "reference"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34737463800",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34753013806",
       "accessible": true,
       "status_code": 200,
       "error": null,
@@ -501,8 +741,17 @@
       "link_type": "github_run"
     }
   ],
-  "inaccessible_links": [],
+  "inaccessible_links": [
+    {
+      "url": "https://forum.qmoi.com",
+      "accessible": false,
+      "status_code": 0,
+      "error": "curl: (35) OpenSSL/3.0.13: error:0A000458:SSL routines::tlsv1 unrecognized name",
+      "source_file": "DOWNLOAD.md",
+      "link_type": "reference"
+    }
+  ],
   "blocking_inaccessible": 0,
-  "nonblocking_inaccessible": 0,
-  "timestamp": "2026-09-13T10:11:44.466783+00:00"
+  "nonblocking_inaccessible": 1,
+  "timestamp": "2026-09-13T11:05:36.935748+00:00"
 }

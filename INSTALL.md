@@ -62,7 +62,7 @@ winget list qmoi
 ### Method 3: Direct Download (.MSI Installer)
 Manual installation with full control.
 
-1. Download QMOIAIUI-1.2.3.msi from https://downloads.qmoi.com
+1. Download the verified Windows asset from https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe
 2. Double-click the .MSI file
 3. Click "Next" through installation wizard
 4. Choose installation location (default: C:\Program Files\QMOI\)
@@ -150,7 +150,7 @@ brew list | grep qmoi
 ### Method 3: Direct Download (.DMG)
 Manual installation from disk image.
 
-1. Download QMOIAIUI-1.2.3.dmg from https://downloads.qmoi.com
+1. Download the verified macOS asset from https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.dmg
 2. Double-click the .DMG file (mounts as virtual disk)
 3. In the Finder window that opens, drag QMOIAIUI.app to Applications folder
 4. Wait for copy to complete
@@ -318,7 +318,7 @@ No installation required, runs directly.
 
 ```bash
 # Download AppImage
-wget https://downloads.qmoi.com/qmoiaiui-1.2.3.AppImage
+wget https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.AppImage
 
 # Make executable
 chmod +x qmoiaiui-1.2.3.AppImage

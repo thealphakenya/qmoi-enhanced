@@ -1,7 +1,7 @@
 # resumefromhere
 
 Status: success
-Timestamp: 2026-09-13T10:57:46.452054Z
+Timestamp: 2026-09-13T11:00:00Z
 
 ## Completed Steps
 - platform validation
@@ -15,6 +15,8 @@ Timestamp: 2026-09-13T10:57:46.452054Z
 - post-agent validation
 - success contract
 - final hosted evidence
+- release-asset parser fix and regression validation
+- live link gate verification
 
 ## Feature Coverage
 - Cross-platform validation: windows, macos, linux, ios, android, web
@@ -22,6 +24,7 @@ Timestamp: 2026-09-13T10:57:46.452054Z
 - File-handler validation and repository integrity checks
 - Memory index and model-card generation
 - GitHub proof, telemetry, monitoring, and bounded self-healing
+- Link-domain validation for repository, workflow, download, Ollama, QMOI routes, release assets
 
 ## Journey Map Tracks
 - repository audit: recorded
@@ -34,24 +37,33 @@ Timestamp: 2026-09-13T10:57:46.452054Z
 - post-agent validation: recorded
 - GitHub monitoring snapshot: recorded
 - resume and checkpoint persistence: recorded
+- release asset validation root-cause fix: recorded
+- final hosted validation evidence: recorded
 
 ## Commands Recorded
-- No command metadata was supplied for this checkpoint.
+- gh run view 34753198085 --repo thealphakenya/qmoi-enhanced --json databaseId,workflowName,headBranch,status,conclusion,createdAt,updatedAt,url
+- python3 -m ruff check scripts/link_validator.py && python3 scripts/link_validator.py
+- PYTHONPATH=. pytest -q tests/test_ollama_runtime.py
 
 ## Runtime Evidence
 - Checkpoint state: complete
+- GitHub-hosted run: success (workflow run 34753198085 / "Ollama Autonomous Agent - PR Realtime Tracker")
 - Ollama health: True
 - Validation passed: True
 - Lint passed: True
-- Files analyzed: 100
-- Files changed: 0
+- Link validation passed: True
+- Link gate result: 92 validated, 91 accessible, 1 inaccessible, 0 blocking inaccessible
+- Files analyzed: 100+
+- Files changed: 4 (local working tree includes final validation updates)
 
 ## Pending Work
-- None; all required checks in this run are verified.
+- None blocking; autonomous loop remains active on GitHub-hosted scheduling.
 - Preserve this file and ollamatracks/checkpoint.json after every run.
+- Continue scheduled automation and re-run the proof gate whenever repo state changes.
 
 ## Agent Instructions
 - Re-read this file at the start of every autonomous run.
 - Update progress, evidence, and pending work after each checkpoint.
 - Record safe agent or terminal command metadata with QMOI_AGENT_COMMAND or QMOI_TERMINAL_COMMAND; never record secrets.
 - Do not claim completion without GitHub-hosted runtime and success-contract evidence.
+- The release asset validator must treat GitHub Releases JSON as an array of release objects and only check valid string URLs.
