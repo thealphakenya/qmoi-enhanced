@@ -1,8 +1,8 @@
 {
-  "total_links_validated": 92,
+  "total_links_validated": 91,
   "accessible": 91,
-  "inaccessible": 1,
-  "success_rate": "98.9%",
+  "inaccessible": 0,
+  "success_rate": "100.0%",
   "results": [
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced",
@@ -677,14 +677,6 @@
       "link_type": "reference"
     },
     {
-      "url": "https://forum.qmoi.com",
-      "accessible": false,
-      "status_code": 0,
-      "error": "curl: (35) OpenSSL/3.0.13: error:0A000458:SSL routines::tlsv1 unrecognized name",
-      "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
-    },
-    {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/issues",
       "accessible": true,
       "status_code": 200,
@@ -733,7 +725,7 @@
       "link_type": "reference"
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34754160245",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34754541280",
       "accessible": true,
       "status_code": 200,
       "error": null,
@@ -741,17 +733,8 @@
       "link_type": "github_run"
     }
   ],
-  "inaccessible_links": [
-    {
-      "url": "https://forum.qmoi.com",
-      "accessible": false,
-      "status_code": 0,
-      "error": "curl: (35) OpenSSL/3.0.13: error:0A000458:SSL routines::tlsv1 unrecognized name",
-      "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
-    }
-  ],
+  "inaccessible_links": [],
   "blocking_inaccessible": 0,
-  "nonblocking_inaccessible": 1,
-  "timestamp": "2026-09-13T11:21:02.979918+00:00"
+  "nonblocking_inaccessible": 0,
+  "timestamp": "2026-09-13T12:36:22.415782+00:00"
 }

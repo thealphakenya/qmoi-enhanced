@@ -291,8 +291,7 @@ Visit any of these URLs to access QMOI apps via your web browser:
 
 - **FAQ:** https://qmoi.com/help/faq
 - **Support:** support@qmoi.com
-- **Community Forum:** https://forum.qmoi.com
-- **GitHub Issues:** https://github.com/thealphakenya/qmoi-enhanced/issues
+- **Community Support:** https://github.com/thealphakenya/qmoi-enhanced/issues
 - **Discord Server:** https://discord.gg/qmoi
 
 ---
