@@ -11,6 +11,9 @@ This document lists the endpoint families used by the QMOI system and the reposi
 - /ready
 - /metrics
 - /version
+- /repo/inventory
+- /repo/history
+- /repo/structure
 
 ### GitHub / PR
 - /github/pull-requests
@@ -18,6 +21,9 @@ This document lists the endpoint families used by the QMOI system and the reposi
 - /github/branches
 - /github/trigger
 - /github/validate
+- /github/proof-contract
+- /github/dispatch
+- /github/trigger-workflow
 
 ### Sync & Repo Ops
 - /sync/branches
@@ -25,19 +31,47 @@ This document lists the endpoint families used by the QMOI system and the reposi
 - /sync/backup
 - /sync/reconcile
 - /sync/monitor
+- /sync/reconcile-history
+- /sync/qmoi-enhanced
+- /sync/alpha-q-ai
+- /sync/merge
 
 ### Agent & Automation
 - /agent/run
 - /agent/validate
+- /agent/validate-all
+- /agent/validate-platforms
+- /agent/validate-features
 - /agent/repair
 - /agent/recover
 - /agent/checkpoint
+- /agent/health
+- /agent/summary
 
 ### Model & Evolution
 - /model/evolution
 - /model/stages
 - /model/countdown
 - /model/status
+- /model/files
+- /model/memory
+
+### File and History Inventory
+- /files/index
+- /files/markdown
+- /files/repo-tree
+- /files/archive-scan
+- /history/all-repos
+- /history/branches
+- /history/refs
+- /history/clones
+
+### Historical / Clone Coverage
+- /history/qmoi-enhanced
+- /history/alpha-q-ai
+- /history/qmoi-enhanced-history-14
+- /history/archives
+- /history/snapshots
 
 ## Notes
-This document is the operational endpoint registry for the repository and should remain aligned with the live automation and agent implementation.
+This document is the canonical operational endpoint registry for the repository and its historical snapshots, and it must remain aligned with the live automation, GitHub dispatchers, and cross-repo agent implementation.

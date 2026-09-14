@@ -10,6 +10,16 @@ This file documents the expected port and service layout for the QMOI project an
 - 5000: API or local automation service
 - 5432: PostgreSQL or local DB service (if present)
 - 6379: cache / queue service (if present)
+- 11434: Ollama local runtime API/default host
+- 8081: alternate health/telemetry service
+- 9000: local automation or self-healing gateway
+- 9090: metrics or observability endpoint
+
+## QMOI Runtime Port Usage
+- Local dev and validation flows: 8000, 8080, 5000
+- Ollama runtime: 11434
+- GitHub-hosted automation: dynamic ephemeral runner ports, not permanent repo ports
+- Historical repo snapshots: use repo-local config, not fixed service ports
 
 ## Notes
-Ports are documented as operational defaults and may vary by environment, but the names and roles remain stable across the repo stack.
+Ports are documented as operational defaults and may vary by environment, but the names and roles remain stable across the repo stack, the autonomous runtime, and the historical archive inventory.

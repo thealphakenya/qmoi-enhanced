@@ -177,8 +177,27 @@ MASTER_FILES: list[str] = [
     "API.md",
     "ENDPOINTS.md",
     "ROUTES.md",
+    "ALLROUTES.md",
+    "ALLPORTS.md",
     "MODELEVOLUTIONO.md",
     "ALLMDFILESREFS.md",
+    "ALLAUTO.md",
+    "ALLBACKEND.md",
+    "ALLFRONTEND.md",
+    "ALLPLATFORMSDEVICE.md",
+    "GITHUBCLONED.md",
+    "GITHUB_SETUP_COMPLETE.md",
+    "MERGE.md",
+    "SYNC.md",
+    "WORKFLOWS.md",
+    "WORKFLOWSO.md",
+    "BUILD.md",
+    "INSTALL.md",
+    "DOWNLOAD.md",
+    "MONITORING_INDEX.md",
+    "MONITORING_SUMMARY.md",
+    "REAL_TIME_MONITORING_README.md",
+    "QMOI_REALTIME_MEMORY_INDEX.md",
 ]
 
 
@@ -1757,11 +1776,25 @@ class BranchSyncManager:
             "history_snapshot": HISTORY_SNAPSHOT_DIRECTORY,
             "inventory_scope": (
                 "all reachable refs, all tracked paths, symlinks, and the "
-                "materialized historical snapshot"
+                "materialized historical snapshot; include all repo histories "
+                "and every API/endpoint/route/port/clone inventory file"
             ),
             "sync_strategy": (
-                "main -> autosync-backup -> cross-repository"
+                "main -> autosync-backup -> cross-repository -> historical inventory sync"
             ),
+            "required_doc_sets": [
+                "API.md",
+                "ENDPOINTS.md",
+                "ROUTES.md",
+                "ALLROUTES.md",
+                "ALLPORTS.md",
+                "ALLMDFILESREFS.md",
+                "GITHUBCLONED.md",
+                "MERGE.md",
+                "SYNC.md",
+                "WORKFLOWS.md",
+                "MONITORING_INDEX.md",
+            ],
         }
 
 
@@ -1808,7 +1841,14 @@ class CrossRepositoryAutonomyManager:
                 "sync",
                 "verify",
                 "recover",
+                "audit-history",
+                "inventory-all-files",
             ],
+            "history_scope": (
+                "include all reachable refs, all tracked files, and every "
+                "historical QMOI/Alpha-Q-ai repo snapshot including the "
+                "qmoi-enhanced-history-14 archive and cloned repo inventory"
+            ),
         }
 
     @staticmethod

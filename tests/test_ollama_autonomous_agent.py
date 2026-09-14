@@ -583,6 +583,17 @@ class TestBranchSyncManager:
         assert "autosync-backup" in plan["branches"]
         assert "thealphakenya/qmoi-enhanced" in plan["repositories"]
 
+    def test_sync_plan_covers_api_route_port_and_history_inventory(self):
+        """The sync plan must include the API, route, port, clone, and historical inventory master docs."""
+        manager = BranchSyncManager()
+        plan = manager.build_sync_plan()
+        assert "API.md" in plan["master_files"]
+        assert "ENDPOINTS.md" in plan["master_files"]
+        assert "ROUTES.md" in plan["master_files"]
+        assert "ALLPORTS.md" in plan["master_files"]
+        assert "ALLROUTES.md" in plan["master_files"]
+        assert "GITHUBCLONED.md" in plan["master_files"]
+
     def test_reference_inventory_is_read_only_and_lists_markdown(self):
         manager = CrossRepositoryAutonomyManager()
         inventory = manager.collect_reference_inventory(
