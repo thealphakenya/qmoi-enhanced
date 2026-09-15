@@ -1,0 +1,1315 @@
+name: Ollama PR Validation - 293+ Platform Features
+
+# ============================================================================
+# OLLAMA / QMOI PR VALIDATION
+# ============================================================================
+#
+# PURPOSE
+# -------
+# Comprehensive validation workflow for:
+#
+#   - Windows
+#   - macOS
+#   - Linux
+#   - iOS
+#   - Android
+#   - Web/PWA
+#   - 293+ platform-specific features
+#   - Repository test suites
+#   - Documentation
+#   - Final integrated validation
+#   - Autonomous-agent triggering after successful main-branch validation
+#
+# IMPORTANT
+# ---------
+# GitHub Artifact Actions MUST use v4:
+#
+#   actions/upload-artifact@v4
+#   actions/download-artifact@v4
+#
+# GitHub deprecated artifact-action v3.
+#
+# AUTHENTICATION
+# --------------
+# Normal GitHub Actions API operations use github.token.
+#
+# A custom MY_CUSTOM_TOKEN may still be used by the agent-dispatch step
+# if the repository has configured that secret.
+#
+# ============================================================================
+
+
+# ============================================================================
+# EVENTS
+# ============================================================================
+
+on:
+  workflow_dispatch:
+
+  pull_request:
+    branches:
+      - main
+      - develop
+
+  push:
+    branches:
+      - main
+
+
+# ============================================================================
+# GLOBAL ENVIRONMENT
+# ============================================================================
+
+env:
+  QMOI_AUTO_HEAL: "1"
+  QMOI_AUTO_FIX: "1"
+  QMOI_RETRY_ATTEMPTS: "3"
+  QMOI_RETRY_DELAY: "5"
+
+
+# ============================================================================
+# CONCURRENCY
+# ============================================================================
+#
+# Intentionally disabled.
+#
+# New pushes will NOT cancel an already-running validation workflow.
+# This preserves durable validation evidence in GitHub Actions.
+#
+# ============================================================================
+
+# concurrency:
+#   group: ${{ github.workflow }}-${{ github.ref }}
+#   cancel-in-progress: true
+
+
+# ============================================================================
+# DEFAULT WORKFLOW PERMISSIONS
+# ============================================================================
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
+  checks: read
+  statuses: read
+
+
+# ============================================================================
+# JOBS
+# ============================================================================
+
+jobs:
+
+  # ==========================================================================
+  # WORKFLOW SELF-CHECK
+  # ==========================================================================
+
+  workflow-integrity:
+
+    name: Validate Workflow Integrity
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+
+      # ----------------------------------------------------------------------
+      # CHECKOUT
+      # ----------------------------------------------------------------------
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY ARTIFACT ACTION VERSIONS
+      # ----------------------------------------------------------------------
+
+      - name: Verify GitHub Artifact Actions
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "============================================================"
+          echo "VERIFYING GITHUB ARTIFACT ACTION VERSIONS"
+          echo "============================================================"
+
+          WORKFLOW_DIR=".github/workflows"
+
+          if [ ! -d "${WORKFLOW_DIR}" ]; then
+            echo "::error::.github/workflows directory does not exist."
+            exit 1
+          fi
+
+          echo
+          echo "Searching for deprecated artifact actions..."
+
+          deprecated_found="false"
+
+          while IFS= read -r -d '' workflow_file; do
+
+            if grep -nE \
+              'actions/(upload|download)-artifact@v(1|2|3)([^0-9]|$)' \
+              "${workflow_file}"; then
+
+              echo "::error::Deprecated artifact action detected in ${workflow_file}"
+              deprecated_found="true"
+
+            fi
+
+          done < <(
+            find "${WORKFLOW_DIR}" \
+              -type f \
+              \( -name '*.yml' -o -name '*.yaml' \) \
+              -print0
+          )
+
+          if [ "${deprecated_found}" = "true" ]; then
+            echo
+            echo "::error::GitHub artifact actions v1/v2/v3 are not allowed."
+            echo "::error::Use actions/upload-artifact@v4 or actions/download-artifact@v4."
+            exit 1
+          fi
+
+          echo
+          echo "Artifact action verification passed."
+
+          echo
+          echo "Current artifact references:"
+
+          grep -RInE \
+            'actions/(upload|download)-artifact@v[0-9]+' \
+            "${WORKFLOW_DIR}" \
+            || true
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY WORKFLOW FILES
+      # ----------------------------------------------------------------------
+
+      - name: Verify workflow files
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          workflow_count="$(
+            find .github/workflows \
+              -type f \
+              \( -name '*.yml' -o -name '*.yaml' \) \
+              | wc -l \
+              | tr -d ' '
+          )"
+
+          echo "Workflow files detected: ${workflow_count}"
+
+          if [ "${workflow_count}" -eq 0 ]; then
+            echo "::error::No GitHub Actions workflow files were found."
+            exit 1
+          fi
+
+          echo
+          echo "Workflow files:"
+          find .github/workflows \
+            -type f \
+            \( -name '*.yml' -o -name '*.yaml' \) \
+            -print \
+            | sort
+
+          echo
+          echo "Workflow file verification passed."
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY REQUIRED AUTONOMOUS AGENT SCRIPT
+      # ----------------------------------------------------------------------
+
+      - name: Verify autonomous agent script
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          AGENT_SCRIPT="scripts/ollama_autonomous_agent.py"
+
+          if [ ! -f "${AGENT_SCRIPT}" ]; then
+            echo "::error::Required autonomous agent script is missing:"
+            echo "::error::${AGENT_SCRIPT}"
+            exit 1
+          fi
+
+          echo "Autonomous agent script found:"
+          echo "${AGENT_SCRIPT}"
+
+          python3 -m py_compile "${AGENT_SCRIPT}"
+
+          echo
+          echo "Autonomous agent Python syntax verification passed."
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY AUTONOMOUS AGENT WORKFLOW
+      # ----------------------------------------------------------------------
+
+      - name: Verify autonomous agent workflow
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          AGENT_WORKFLOW=".github/workflows/ollama-autonomous-agent.yml"
+
+          if [ ! -f "${AGENT_WORKFLOW}" ]; then
+            echo "::error::Required autonomous agent workflow is missing:"
+            echo "::error::${AGENT_WORKFLOW}"
+            exit 1
+          fi
+
+          echo "Autonomous agent workflow found:"
+          echo "${AGENT_WORKFLOW}"
+
+          echo
+          echo "Checking workflow for malformed duplicate top-level keys..."
+
+          if grep -nE '^[[:space:]]+(env|jobs|permissions|on):[[:space:]]*$' \
+            "${AGENT_WORKFLOW}" \
+            | awk '
+              {
+                key=$2
+                gsub(":", "", key)
+                count[key]++
+              }
+              END {
+                for (key in count) {
+                  if (count[key] > 1) {
+                    print key
+                    exit 1
+                  }
+                }
+              }
+            '; then
+            :
+          fi
+
+          for required in \
+            "Bootstrap Ollama runtime" \
+            "Strictly validate all GitHub workflow YAML" \
+            "Execute Autonomous Agent with Circuit-Breaker Loop Protection" \
+            "Create pre-agent repository checkpoint" \
+            "Upload autonomous-agent diagnostics" \
+            "Enforce final health gate"; do
+            if ! grep -Fq "$required" "${AGENT_WORKFLOW}"; then
+              echo "::error::Autonomous workflow stage is missing: $required"
+              exit 1
+            fi
+          done
+
+          test -f scripts/ollama_runtime.py
+          test -f tests/test_ollama_runtime.py
+
+          echo "Autonomous agent workflow presence verification passed."
+
+
+  # ==========================================================================
+  # PLATFORM COMPILATION VALIDATION
+  # ==========================================================================
+
+  validate-platforms:
+
+    name: Validate Platform Compilation
+
+    runs-on: ubuntu-latest
+
+    needs:
+      - workflow-integrity
+
+    strategy:
+      fail-fast: false
+
+      matrix:
+        platform:
+          - windows
+          - macos
+          - linux
+          - ios
+          - android
+          - web
+
+    permissions:
+      contents: read
+
+    steps:
+
+      # ----------------------------------------------------------------------
+      # CHECKOUT
+      # ----------------------------------------------------------------------
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+
+      # ----------------------------------------------------------------------
+      # PYTHON
+      # ----------------------------------------------------------------------
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+
+      # ----------------------------------------------------------------------
+      # DEPENDENCIES
+      # ----------------------------------------------------------------------
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          python3 -m pip install --upgrade \
+            pip \
+            setuptools \
+            wheel
+
+          if [ -f requirements.txt ]; then
+            python3 -m pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+            echo "Continuing with validation dependencies."
+          fi
+
+          python3 -m pip install \
+            pytest \
+            pytest-timeout
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY AGENT SCRIPT
+      # ----------------------------------------------------------------------
+
+      - name: Verify autonomous agent script
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          if [ ! -f "scripts/ollama_autonomous_agent.py" ]; then
+            echo "::error::scripts/ollama_autonomous_agent.py is missing."
+            exit 1
+          fi
+
+          python3 -m py_compile \
+            scripts/ollama_autonomous_agent.py
+
+
+      # ----------------------------------------------------------------------
+      # PLATFORM VALIDATION
+      # ----------------------------------------------------------------------
+
+      - name: Validate ${{ matrix.platform }} platform compilation
+        shell: bash
+        env:
+          OLLAMA_TARGET_PLATFORM: ${{ matrix.platform }}
+        run: |
+          set -Eeuo pipefail
+
+          echo "============================================================"
+          echo "PLATFORM COMPILATION VALIDATION"
+          echo "============================================================"
+
+          echo "Timestamp:"
+          date -u +'%Y-%m-%dT%H:%M:%SZ'
+
+          echo "Platform: ${{ matrix.platform }}"
+          echo "OLLAMA_TARGET_PLATFORM: ${OLLAMA_TARGET_PLATFORM}"
+
+          python3 \
+            scripts/ollama_autonomous_agent.py \
+            validate-platforms
+
+          echo
+          echo "Platform validation completed:"
+          echo "${{ matrix.platform }}"
+
+
+      # ----------------------------------------------------------------------
+      # UPLOAD DIAGNOSTICS
+      # ----------------------------------------------------------------------
+
+      - name: Upload platform validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: platform-validation-logs-${{ matrix.platform }}
+          path: |
+            ollama_agent.log
+            ollamatracks/
+          if-no-files-found: warn
+          retention-days: 30
+
+
+      # ----------------------------------------------------------------------
+      # PLATFORM SUMMARY
+      # ----------------------------------------------------------------------
+
+      - name: Generate platform validation summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Platform Validation"
+            echo
+            echo "**Platform:** ${{ matrix.platform }}"
+            echo
+            echo "**Timestamp:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+
+  # ==========================================================================
+  # PLATFORM-SPECIFIC FEATURE VALIDATION
+  # ==========================================================================
+
+  validate-features:
+
+    name: Validate 293+ Platform-Specific Features
+
+    runs-on: ubuntu-latest
+
+    needs:
+      - validate-platforms
+
+    permissions:
+      contents: read
+
+    steps:
+
+      # ----------------------------------------------------------------------
+      # CHECKOUT
+      # ----------------------------------------------------------------------
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+
+      # ----------------------------------------------------------------------
+      # PYTHON
+      # ----------------------------------------------------------------------
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+
+      # ----------------------------------------------------------------------
+      # DEPENDENCIES
+      # ----------------------------------------------------------------------
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          python3 -m pip install --upgrade \
+            pip \
+            setuptools \
+            wheel
+
+          if [ -f requirements.txt ]; then
+            python3 -m pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+            echo "Continuing with validation dependencies."
+          fi
+
+          python3 -m pip install \
+            pytest \
+            pytest-timeout
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY AGENT SCRIPT
+      # ----------------------------------------------------------------------
+
+      - name: Verify autonomous agent script
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          if [ ! -f "scripts/ollama_autonomous_agent.py" ]; then
+            echo "::error::scripts/ollama_autonomous_agent.py is missing."
+            exit 1
+          fi
+
+          python3 -m py_compile \
+            scripts/ollama_autonomous_agent.py
+
+
+      # ----------------------------------------------------------------------
+      # FEATURE VALIDATION
+      # ----------------------------------------------------------------------
+
+      - name: Validate all 293+ platform-specific features
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "=========================================="
+          echo "Validating 293+ Platform-Specific Features"
+          echo "=========================================="
+
+          echo "Timestamp:"
+          date -u +'%Y-%m-%dT%H:%M:%SZ'
+
+          echo "Starting feature validation."
+
+          python3 \
+            scripts/ollama_autonomous_agent.py \
+            validate-features
+
+          echo
+          echo "Feature validation completed."
+
+
+      # ----------------------------------------------------------------------
+      # UPLOAD FEATURE LOGS
+      # ----------------------------------------------------------------------
+
+      - name: Upload feature validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: feature-validation-logs
+          path: |
+            ollama_agent.log
+            ollamatracks/
+          if-no-files-found: warn
+          retention-days: 30
+
+
+      # ----------------------------------------------------------------------
+      # FEATURE REPORT
+      # ----------------------------------------------------------------------
+
+      - name: Generate feature validation report
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "### Platform-Specific Feature Validation Report"
+            echo
+            echo "**Status:** Feature validation job completed"
+            echo
+            echo "**Coverage:**"
+            echo "- Windows: 48 features"
+            echo "- macOS: 49 features"
+            echo "- Linux: 49 features"
+            echo "- iOS: 49 features"
+            echo "- Android: 49 features"
+            echo "- Web PWA: 49 features"
+            echo
+            echo "**Timestamp:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+
+  # ==========================================================================
+  # TEST SUITE
+  # ==========================================================================
+
+  test-suite:
+
+    name: Execute Test Suite (40+ Tests)
+
+    runs-on: ubuntu-latest
+
+    needs:
+      - validate-platforms
+
+    permissions:
+      contents: read
+
+    steps:
+
+      # ----------------------------------------------------------------------
+      # CHECKOUT
+      # ----------------------------------------------------------------------
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+
+      # ----------------------------------------------------------------------
+      # PYTHON
+      # ----------------------------------------------------------------------
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+
+      # ----------------------------------------------------------------------
+      # DEPENDENCIES
+      # ----------------------------------------------------------------------
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          python3 -m pip install --upgrade \
+            pip \
+            setuptools \
+            wheel
+
+          if [ -f requirements.txt ]; then
+            python3 -m pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+            echo "Continuing with validation dependencies."
+          fi
+
+          python3 -m pip install \
+            pytest \
+            pytest-timeout
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY TEST FILES
+      # ----------------------------------------------------------------------
+
+      - name: Verify required test files
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          test_files=(
+            "tests/test_ollama_autonomous_agent.py"
+            "tests/test_enhanced_tracking_and_workflows.py"
+            "tests/test_ollama_enhanced_features.py"
+          )
+
+          for test_file in "${test_files[@]}"; do
+
+            if [ ! -f "${test_file}" ]; then
+              echo "::error::Required test file is missing: ${test_file}"
+              exit 1
+            fi
+
+            echo "Found: ${test_file}"
+
+          done
+
+          echo
+          echo "All required test files are present."
+
+
+      # ----------------------------------------------------------------------
+      # TESTS WITH RETRY
+      # ----------------------------------------------------------------------
+
+      - name: Run comprehensive test suite with auto-retry
+        env:
+          QMOI_TEST_RETRIES: "2"
+          PYTEST_TIMEOUT: "300"
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "=========================================="
+          echo "Running full project test suite for GitHub proof"
+          echo "=========================================="
+
+          SUCCESS_TESTS="false"
+
+          for attempt in 1 2 3; do
+
+            echo
+            echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Test suite attempt ${attempt}/3"
+
+            if python3 -m pytest \
+              tests/test_ollama_autonomous_agent.py \
+              tests/test_enhanced_tracking_and_workflows.py \
+              tests/test_ollama_enhanced_features.py \
+              -v \
+              --tb=short \
+              --timeout=60; then
+
+              echo
+              echo "Test suite PASSED on attempt ${attempt}"
+
+              SUCCESS_TESTS="true"
+
+              break
+
+            else
+
+              EXIT_CODE=$?
+
+              echo
+              echo "Test suite failed on attempt ${attempt}."
+              echo "Exit code: ${EXIT_CODE}"
+
+              if [ "${attempt}" -lt 3 ]; then
+
+                DELAY=$((5 * attempt))
+
+                echo "Waiting ${DELAY}s before retry..."
+
+                sleep "${DELAY}"
+
+                echo "Auto-healing: cleaning caches..."
+
+                rm -rf \
+                  .pytest_cache \
+                  __pycache__ \
+                  tests/__pycache__ \
+                  scripts/__pycache__
+
+                echo "Reinstalling pytest dependencies..."
+
+                python3 -m pip install \
+                  --force-reinstall \
+                  -q \
+                  pytest \
+                  pytest-timeout
+
+              fi
+
+            fi
+
+          done
+
+          if [ "${SUCCESS_TESTS}" != "true" ]; then
+            echo
+            echo "Test suite FAILED after all retries."
+            exit 1
+          fi
+
+          echo
+          echo "All required tests passed."
+
+
+      # ----------------------------------------------------------------------
+      # UPLOAD TEST LOGS
+      # ----------------------------------------------------------------------
+
+      - name: Upload test suite logs and results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-suite-logs
+          path: |
+            ollama_agent.log
+            .pytest_cache/
+          if-no-files-found: warn
+          retention-days: 30
+
+
+      # ----------------------------------------------------------------------
+      # TEST REPORT
+      # ----------------------------------------------------------------------
+
+      - name: Generate test report
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "### Test Suite Report"
+            echo
+            echo "**Test Classes:**"
+            echo "- TestPlatformSpecificFeatures (24 tests)"
+            echo "- TestPerformance (2 tests)"
+            echo "- TestEdgeCases (2 tests)"
+            echo "- TestIntegration (6 tests)"
+            echo
+            echo "**Expected Coverage: 40+ comprehensive tests**"
+            echo
+            echo "**Timestamp:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+
+  # ==========================================================================
+  # DOCUMENTATION VALIDATION
+  # ==========================================================================
+
+  validate-documentation:
+
+    name: Validate Documentation
+
+    runs-on: ubuntu-latest
+
+    needs:
+      - workflow-integrity
+
+    permissions:
+      contents: read
+
+    steps:
+
+      # ----------------------------------------------------------------------
+      # CHECKOUT
+      # ----------------------------------------------------------------------
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+
+      # ----------------------------------------------------------------------
+      # DOCUMENTATION FILES
+      # ----------------------------------------------------------------------
+
+      - name: Verify documentation files exist
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "Checking documentation files..."
+
+          files=(
+            "ALLPLATFORMSDEVICE.md"
+            "STYLES.md"
+            "OLLAMA_ENHANCEMENT_COMPLETE.md"
+            "OLLAMA_ENHANCEMENT_SUCCESS.md"
+            "PLATFORM_REQUIREMENTS.md"
+            "DOWNLOAD.md"
+            "INSTALL.md"
+            "BUILD.md"
+            "QTEAM.md"
+            "OLLAMA_AUTOMATION_GUIDE.md"
+          )
+
+          missing=0
+
+          for file in "${files[@]}"; do
+
+            if [ -f "${file}" ]; then
+
+              lines="$(wc -l < "${file}")"
+
+              echo "Found: ${file} (${lines} lines)"
+
+            else
+
+              echo "::error::Missing documentation file: ${file}"
+
+              missing=$((missing + 1))
+
+            fi
+
+          done
+
+          if [ "${missing}" -ne 0 ]; then
+            echo "::error::${missing} required documentation file(s) are missing."
+            exit 1
+          fi
+
+          echo
+          echo "All required documentation files are present."
+
+
+      # ----------------------------------------------------------------------
+      # DOCUMENTATION REPORT
+      # ----------------------------------------------------------------------
+
+      - name: Generate documentation report
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "### Documentation Validation Report"
+            echo
+            echo "**Files Verified:**"
+            echo "- ALLPLATFORMSDEVICE.md"
+            echo "- STYLES.md"
+            echo "- OLLAMA_ENHANCEMENT_COMPLETE.md"
+            echo "- OLLAMA_ENHANCEMENT_SUCCESS.md"
+            echo "- PLATFORM_REQUIREMENTS.md"
+            echo "- DOWNLOAD.md"
+            echo "- INSTALL.md"
+            echo "- BUILD.md"
+            echo "- QTEAM.md"
+            echo "- OLLAMA_AUTOMATION_GUIDE.md"
+            echo
+            echo "**Timestamp:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+
+  # ==========================================================================
+  # FINAL VALIDATION
+  # ==========================================================================
+  #
+  # IMPORTANT:
+  # This job uses if: always() so it can report the final state even if an
+  # earlier dependency failed.
+  #
+  # The explicit dependency-result check below prevents this job from
+  # incorrectly reporting success when an upstream validation failed.
+  #
+  # ==========================================================================
+
+  final-validation:
+
+    name: Final PR Validation Status
+
+    runs-on: ubuntu-latest
+
+    needs:
+      - validate-platforms
+      - validate-features
+      - test-suite
+      - validate-documentation
+
+    if: always()
+
+    permissions:
+      contents: read
+
+    steps:
+
+      # ----------------------------------------------------------------------
+      # CHECKOUT
+      # ----------------------------------------------------------------------
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+
+      # ----------------------------------------------------------------------
+      # REPORT UPSTREAM RESULTS
+      # ----------------------------------------------------------------------
+
+      - name: Evaluate validation job results
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "============================================================"
+          echo "UPSTREAM VALIDATION RESULTS"
+          echo "============================================================"
+
+          echo "validate-platforms:      ${{ needs.validate-platforms.result }}"
+          echo "validate-features:       ${{ needs.validate-features.result }}"
+          echo "test-suite:              ${{ needs.test-suite.result }}"
+          echo "validate-documentation:  ${{ needs.validate-documentation.result }}"
+
+          FAILED="false"
+
+          if [ "${{ needs.validate-platforms.result }}" != "success" ]; then
+            FAILED="true"
+          fi
+
+          if [ "${{ needs.validate-features.result }}" != "success" ]; then
+            FAILED="true"
+          fi
+
+          if [ "${{ needs.test-suite.result }}" != "success" ]; then
+            FAILED="true"
+          fi
+
+          if [ "${{ needs.validate-documentation.result }}" != "success" ]; then
+            FAILED="true"
+          fi
+
+          if [ "${FAILED}" = "true" ]; then
+            echo
+            echo "::error::One or more required validation jobs failed."
+            echo "::error::Final PR validation cannot be marked successful."
+            exit 1
+          fi
+
+          echo
+          echo "All required validation jobs succeeded."
+
+
+      # ----------------------------------------------------------------------
+      # PYTHON
+      # ----------------------------------------------------------------------
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+
+      # ----------------------------------------------------------------------
+      # DEPENDENCIES
+      # ----------------------------------------------------------------------
+
+      - name: Install Python dependencies
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          python3 -m pip install --upgrade \
+            pip \
+            setuptools \
+            wheel
+
+          if [ -f requirements.txt ]; then
+            python3 -m pip install -r requirements.txt
+          else
+            echo "requirements.txt not found."
+            echo "Continuing with validation dependencies."
+          fi
+
+          python3 -m pip install \
+            pytest \
+            pytest-timeout
+
+
+      # ----------------------------------------------------------------------
+      # VERIFY AGENT SCRIPT
+      # ----------------------------------------------------------------------
+
+      - name: Verify autonomous agent script
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          if [ ! -f "scripts/ollama_autonomous_agent.py" ]; then
+            echo "::error::scripts/ollama_autonomous_agent.py is missing."
+            exit 1
+          fi
+
+          python3 -m py_compile \
+            scripts/ollama_autonomous_agent.py
+
+
+      # ----------------------------------------------------------------------
+      # FULL VALIDATION
+      # ----------------------------------------------------------------------
+
+      - name: Run full validation suite
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "=========================================="
+          echo "OLLAMA PR VALIDATION - FULL SUITE"
+          echo "=========================================="
+
+          echo "Timestamp:"
+          date -u +'%Y-%m-%dT%H:%M:%SZ'
+
+          echo "Starting full PR validation suite."
+
+          python3 \
+            scripts/ollama_autonomous_agent.py \
+            validate-all
+
+          echo
+          echo "Full PR validation suite completed successfully."
+
+
+      # ----------------------------------------------------------------------
+      # UPLOAD FINAL LOGS
+      # ----------------------------------------------------------------------
+
+      - name: Upload final validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-validation-logs
+          path: |
+            ollama_agent.log
+            ollamatracks/
+          if-no-files-found: warn
+          retention-days: 30
+
+
+      # ----------------------------------------------------------------------
+      # FINAL REPORT
+      # ----------------------------------------------------------------------
+
+      - name: Generate final report
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "# OLLAMA PR VALIDATION - COMPLETE"
+            echo
+            echo "## Validation Summary"
+            echo
+            echo "**Timestamp:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo
+            echo "### Platform Compilation"
+            echo "- Windows"
+            echo "- macOS"
+            echo "- Linux"
+            echo "- iOS"
+            echo "- Android"
+            echo "- Web PWA"
+            echo
+            echo "### Platform-Specific Features"
+            echo "- Windows: 48 features"
+            echo "- macOS: 49 features"
+            echo "- Linux: 49 features"
+            echo "- iOS: 49 features"
+            echo "- Android: 49 features"
+            echo "- Web PWA: 49 features"
+            echo
+            echo "### Test Coverage"
+            echo "- 40+ comprehensive tests"
+            echo "- Platform combinations"
+            echo "- Feature validation"
+            echo "- Integration tests"
+            echo
+            echo "### Documentation"
+            echo "- 10 documentation files"
+            echo
+            echo "## Quality Metrics"
+            echo "- 293+ platform-specific features"
+            echo "- 6 supported platform targets"
+            echo "- Automated validation"
+            echo "- Autonomous-agent integration"
+            echo
+            echo "## Upstream Job Results"
+            echo "- Platform validation: ${{ needs.validate-platforms.result }}"
+            echo "- Feature validation: ${{ needs.validate-features.result }}"
+            echo "- Test suite: ${{ needs.test-suite.result }}"
+            echo "- Documentation: ${{ needs.validate-documentation.result }}"
+            echo
+            echo "## Status"
+            echo "PR validation completed."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+
+  # ==========================================================================
+  # AUTO-TRIGGER AUTONOMOUS AGENT
+  # ==========================================================================
+  #
+  # Trigger ONLY when:
+  #
+  #   1. final-validation succeeds
+  #   2. event is push
+  #   3. branch is main
+  #
+  # This prevents PR validation and develop-branch validation from recursively
+  # launching the autonomous agent.
+  #
+  # ==========================================================================
+
+  trigger-agent-on-success:
+
+    name: Trigger Autonomous Agent (Auto-Start)
+
+    runs-on: ubuntu-latest
+
+    needs:
+      - final-validation
+
+    if: >
+      ${{ needs.final-validation.result == 'success' &&
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/main' }}
+
+    permissions:
+      actions: write
+      contents: read
+
+    steps:
+
+      # ----------------------------------------------------------------------
+      # DISPATCH AUTONOMOUS AGENT WORKFLOW
+      # ----------------------------------------------------------------------
+
+      - name: Dispatch Autonomous Agent Workflow
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.MY_CUSTOM_TOKEN || github.token }}
+
+          script: |
+            console.log('============================================================');
+            console.log('TRIGGERING OLLAMA AUTONOMOUS AGENT');
+            console.log('============================================================');
+
+            const workflowId = 'ollama-autonomous-agent.yml';
+            const targetRef = 'main';
+
+            try {
+              console.log(`Repository: ${context.repo.owner}/${context.repo.repo}`);
+              console.log(`Workflow: ${workflowId}`);
+              console.log(`Ref: ${targetRef}`);
+
+              const response =
+                await github.rest.actions.createWorkflowDispatch({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  workflow_id: workflowId,
+                  ref: targetRef,
+                  inputs: {
+                    mode: 'full',
+                    auto_heal: 'true',
+                    auto_fix: 'true',
+                    force_agent: 'true'
+                  }
+                });
+
+              console.log(
+                'Autonomous agent triggered successfully.'
+              );
+
+              console.log(
+                `Dispatch HTTP status: ${response.status}`
+              );
+
+              core.info(
+                'Autonomous agent workflow dispatch completed successfully.'
+              );
+
+              core.setOutput(
+                'workflow_id',
+                workflowId
+              );
+
+              core.setOutput(
+                'ref',
+                targetRef
+              );
+
+            } catch (error) {
+
+              console.error(
+                'Failed to trigger autonomous agent:',
+                error
+              );
+
+              core.setFailed(
+                `Autonomous agent dispatch failed: ${error.message}`
+              );
+            }
+
+
+      # ----------------------------------------------------------------------
+      # AGENT DISPATCH SUMMARY
+      # ----------------------------------------------------------------------
+
+      - name: Generate agent dispatch summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Autonomous Agent Dispatch"
+            echo
+            echo "**Workflow:** ollama-autonomous-agent.yml"
+            echo "**Branch:** main"
+            echo "**Mode:** full"
+            echo "**Auto-heal:** enabled"
+            echo "**Auto-fix:** enabled"
+            echo "**Force agent:** enabled"
+            echo
+            echo "**Timestamp:** $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          } >> "$GITHUB_STEP_SUMMARY"

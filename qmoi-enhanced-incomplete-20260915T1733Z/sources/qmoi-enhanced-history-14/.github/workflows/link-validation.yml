@@ -1,0 +1,25 @@
+name: Link Validation (dry-run)
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - "scripts/**"
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Run link validator (dry-run)
+        run: |
+          python3 scripts/link_validator.py
+      - name: Upload validation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: links-report
+          path: .qmoi_validation/links_report.json

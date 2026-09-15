@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qmoi-orchestrator
+  labels:
+    app: qmoi
+    component: orchestrator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qmoi
+      component: orchestrator
+  template:
+    metadata:
+      labels:
+        app: qmoi
+        component: orchestrator
+    spec:
+      containers:
+        - name: qmoi-orchestrator
+          image: qmoi/orchestrator:latest
+          imagePullPolicy: IfNotPresent
+          args: ["--use-queue", "--limit", "100"]
+          env:
+            - name: QMOIN_VALIDATION_DIR
+              value: "/data/.qmoi_validation"
+          ports:
+            - containerPort: 9187
+              name: metrics
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          emptyDir: {}

@@ -1,0 +1,26 @@
+---
+title: "Issue draft for qmoi-enhanced/.npm-cache/_cacache/content-v2/sha512/f9/35/fb273a438f2929ae94775169d9d36f6e2bf1a63c202caba80df6fabad76a1ddfb6e03dd9215081d1dfab1c0346e2b8a7d1903032451e7fc3c659bb239dea"
+generated: 2025-11-08T16:06:38.531964Z
+---
+
+# Review needed: qmoi-enhanced/.npm-cache/_cacache/content-v2/sha512/f9/35/fb273a438f2929ae94775169d9d36f6e2bf1a63c202caba80df6fabad76a1ddfb6e03dd9215081d1dfab1c0346e2b8a7d1903032451e7fc3c659bb239dea
+
+Status: AUTOMATED_REMOVAL_FROM_DONEREFS
+
+Suggested next steps:
+
+- Inspect the file and its placeholder markers or TODOs.
+- If the file is safe for production, remove the placeholder and add tests / small PR.
+- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
+- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
+
+Excerpt (first 2KB):
+
+```
+{"name":"colorette","dist-tags":{"latest":"2.0.20"},"versions":{"0.1.0":{"name":"colorette","version":"0.1.0","devDependencies":{"nyc":"12.0.2","testmatrix":"0.1.2"},"dist":{"integrity":"sha512-lmGFYjFqC0KYkTr1J4h6b3x5dZ2QUS2NKlBZInFsGUhRPFdVSzQ2JZdN5P0HdhjXGtO+Xbz5IrLpehllIthfAw==","shasum":"e7cec51fe5ec60f2d287ccb7c827a967708ba02f","tarball":"https://registry.npmjs.org/colorette/-/colorette-0.1.0.tgz","fileCount":5,"unpackedSize":11408,"npm-signature":"-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJbfgoPCRA9TVsSAnZWagAA5CsP/1R10An2ObwjSy/aStUI\na15mhdchxiJ385Cq8/ptlBKpywdj2XXGCntj7XlgDdAGLjzor44ur5WuspMA\nkUwhtcyBS7fyRjvLtbvqaHjWqVnE0b2hFHr1r8fw6eiAHBEbXzEwBgJDL0B4\nBGPEDB3kQPx5ISath3g2O6juw/r0lIoqOgdBzAK2CxOq4fCnT459oil4Pvy0\n687Mlm5RMwRAYgDbWWhWZOWhX80kif7eccCP9kFGcK3PxaFX01wemsiYla0c\n3Qh7ZSkCbR+j1c4yCBahCoIeNCyLEID5LYrz3RtWIUcHMsEi9kgm6EF1ZqV7\n1yQkAhCAJFfyHqLck9MJ2GSWJpC6DTLCzibeZLJBJ1ZEEctbratGgvjTUNNp\n7lzzXNbKDSj5CNfWKsTh5yvdMMg41AZEHVmYJfSHfb7OOevykf1fqnx1LNI+\n8gLCpsiDOw+zdX0tqNFnIvHm5WZIRus4LC6exWd6vgocx37I9hgZDa+CtlZm\nL4uhADH/OZGv0eH8FJrrSxJvDJkO37XbjwZcCrdAXxGvFbFWhIjKG1XW3AY4\nHY/ePV4JuM+/bdfzxic6aFu6dIrEy+aOG4Y9sxIBBWY3Tclc7ubnQtWrLsCp\nUvrECmWVFXQYNOFhHyCcWllV7XpBfOs63wXVvEJoSqu9Oepf8aR+iOMPp84b\nbOUf\r\n=J0gz\r\n-----END PGP SIGNATURE-----\r\n","signatures":[{"keyid":"SHA256:jl3bwswu80PjjokCgh0o2w5c2U4LhQAE57gj9cz1kzA","sig":"MEUCIQDN5PyBe354oAbOQhMu1CXOARxii2bWFBga5UE5EY9YRgIgc4V7ggTnoJinpKfPcl6XC8JUp6KUCzs+htddOORVTsY="}]}},"1.0.0":{"name":"colorette","version":"1.0.0","devDependencies":{"nyc":"12.0.2","testmatrix":"0.1.2"},"dist":{"integrity":"sha512-92Fwo7yVVO1fb2VcuhLdF3dhNC4RJieDyyCYd796iimSCV+0We1r/KZf3IrmnHfHYZq2BY2sClLWJ6VJCOD/tA==","shasum":"bcc99e898549bb2ef5fcfe0f397b9a891223b8c5","tarball":"https://registry.npmjs.org/colorette/-/colorette-1.0.0.tgz","fileCount":5,"unpackedSize":10784,"npm-signature":"-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQB
+```
+
+Notes:
+
+- This draft was generated automatically to help triage files removed from `donerefs.txt`.
+- Backups and previous runs may exist under `.qmoi_validation`.

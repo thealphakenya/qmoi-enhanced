@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QMOI Wallets Dashboard (Sample)</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f4f4f4; }
+  </style>
+  <script>
+    async function loadWallets(){
+      try{
+        const r = await fetch('/api/wallets');
+        if(!r.ok){ document.getElementById('status').textContent = 'Failed to fetch: '+r.status; return }
+        const data = await r.json();
+        const tbody = document.getElementById('wallets');
+        tbody.innerHTML = '';
+        for(const [k,v] of Object.entries(data.results || {})){
+          const tr = document.createElement('tr');
+          const native = v.balance_native ?? 'N/A';
+          const native_cur = v.currency_native || v.currency || 'USD';
+          const canon = v.balance_canonical ?? 'N/A';
+          tr.innerHTML = `<td>${k}</td><td>${native} ${native_cur}</td><td>${canon} ${v.canonical_currency || ''}</td><td>${v.status||''}</td>`;
+          tbody.appendChild(tr);
+        }
+        document.getElementById('status').textContent = 'Loaded at '+new Date().toLocaleString();
+      }catch(e){ document.getElementById('status').textContent = 'Error: '+e }
+    }
+    window.addEventListener('load', ()=>{ loadWallets(); setInterval(loadWallets, 30000); });
+  </script>
+</head>
+<body>
+  <h1>QMOI Wallets (Sample Dashboard)</h1>
+  <p id="status">Loading…</p>
+  <table>
+    <thead><tr><th>Wallet</th><th>Native Balance</th><th>Canonical</th><th>Status</th></tr></thead>
+    <tbody id="wallets"></tbody>
+  </table>
+</body>
+</html>

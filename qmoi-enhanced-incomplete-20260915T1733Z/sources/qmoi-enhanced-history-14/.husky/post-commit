@@ -1,0 +1,3 @@
+#!/bin/sh
+# Recreated post-commit hook
+echo "post-commit hook triggered"

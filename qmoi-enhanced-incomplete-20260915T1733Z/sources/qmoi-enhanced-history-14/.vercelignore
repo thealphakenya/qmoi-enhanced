@@ -1,0 +1,24 @@
+# Ignore unnecessary files for Vercel deployment
+
+node_modules
+.git
+.gitignore
+_.log
+.env
+.env.local
+.env._.local
+coverage
+logs/_.log
+scripts/_.log
+_.backup
+.DS_Store
+**pycache**
+_.pyc
+.venv
+.idea
+.vscode/settings.json
+mobile/node_modules
+mobile/ios
+mobile/android
+.github/workflows
+.circleci

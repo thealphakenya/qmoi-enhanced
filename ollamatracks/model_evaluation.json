@@ -1,0 +1,25 @@
+{
+  "claim": "QMOI is evaluated on reproducible repository/runtime contracts; no universal superiority claim is made without comparable benchmark evidence.",
+  "evaluations": [
+    {
+      "details": "runtime metadata collected",
+      "name": "runtime_integrity",
+      "passed": true,
+      "score": 0.9934879309998905
+    },
+    {
+      "details": "seed_bytes=3831",
+      "name": "portable_seed",
+      "passed": true,
+      "score": 1.0
+    },
+    {
+      "details": "missing=[]",
+      "name": "model_documentation",
+      "passed": true,
+      "score": 1.0
+    }
+  ],
+  "score": 0.9978293103332968,
+  "status": "passed"
+}

@@ -1,0 +1,27 @@
+---
+title: "Issue draft for qmoi-enhanced/.npm-cache/_cacache/index-v5/c5/39/1d26498054c07107bca5dec3e4c244be0003d52ac2eebc92797ebafba65f"
+generated: 2025-11-08T16:06:38.694963Z
+---
+
+# Review needed: qmoi-enhanced/.npm-cache/\_cacache/index-v5/c5/39/1d26498054c07107bca5dec3e4c244be0003d52ac2eebc92797ebafba65f
+
+Status: AUTOMATED_REMOVAL_FROM_DONEREFS
+
+Suggested next steps:
+
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:41.939328Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:41.939328Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:41.939328Z] and add tests / small PR.
+- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
+- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
+
+Excerpt (first 2KB):
+
+```
+
+2e1ad760d66637a35ff90df44ec3a68072c517d3	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz","integrity":"sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==","time":1760365069395,"size":7090,"metadata":{"time":1760365068266,"url":"https://registry.npmjs.org/@humanwhocodes/module-importer/-/module-importer-1.0.1.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:48 GMT","etag":"\"084f6b20b67c20bcf831224c208aa654\"","last-modified":"Thu, 18 Aug 2022 17:55:52 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
+```
+
+Notes:
+
+- This draft was generated automatically to help triage files removed from `donerefs.txt`.
+- Backups and previous runs may exist under `.qmoi_validation`.

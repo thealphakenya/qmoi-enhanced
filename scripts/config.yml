@@ -1,0 +1,17 @@
+# Auto-generated resilient configuration file
+agent:
+  name: "QMOI-Enhanced-Autonomous-Agent"
+  version: "5.0.0"
+  max_retries: 5
+  timeout: 60
+  model: "qwen2.5-coder:3b"
+  fallback_model: "mistral"
+
+logging:
+  level: "INFO"
+  file: "agent_execution.log"
+
+execution:
+  auto_heal: true
+  continuous_loop: true
+  interval_seconds: 30

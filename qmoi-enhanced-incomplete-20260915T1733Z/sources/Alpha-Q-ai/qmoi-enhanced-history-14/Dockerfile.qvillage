@@ -1,0 +1,31 @@
+# Lightweight Dockerfile for qvillage standalone sync
+FROM python:3.11-slim
+
+ENV PYTHONUNBUFFERED=1
+WORKDIR /app
+
+# Copy project files
+COPY . /app
+
+
+# Install minimal runtime deps
+RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
+
+# Install all required Python packages for production reliability
+RUN pip install --no-cache-dir httpx pydantic python-dotenv huggingface-hub gradio
+RUN if [ -f hf_space_qvillage/requirements.txt ]; then pip install --no-cache-dir -r hf_space_qvillage/requirements.txt; fi
+
+# Expose a working dir for mounted repo
+VOLUME ["/opt/qvillage"]
+
+# Ensure the scripts are executable
+RUN chmod +x /app/tools/autoclone_and_run.sh || true
+
+# Default environment variables (can be overridden at runtime)
+ENV REPO_URL="https://github.com/thealphakenya/qmoi-enhanced.git"
+ENV REPO_DIR="/opt/qvillage"
+ENV REPO_BRANCH=main
+ENV RUN_INTERVAL_SECONDS=3600
+
+# Entrypoint: autoclone and run the standalone runner
+CMD ["/app/tools/autoclone_and_run.sh"]

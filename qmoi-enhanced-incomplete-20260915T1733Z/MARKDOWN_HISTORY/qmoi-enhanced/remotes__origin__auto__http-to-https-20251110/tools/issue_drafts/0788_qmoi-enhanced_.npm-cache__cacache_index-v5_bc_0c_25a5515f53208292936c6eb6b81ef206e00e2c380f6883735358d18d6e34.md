@@ -1,0 +1,27 @@
+---
+title: "Issue draft for qmoi-enhanced/.npm-cache/_cacache/index-v5/bc/0c/25a5515f53208292936c6eb6b81ef206e00e2c380f6883735358d18d6e34"
+generated: 2025-11-08T16:06:38.690997Z
+---
+
+# Review needed: qmoi-enhanced/.npm-cache/_cacache/index-v5/bc/0c/25a5515f53208292936c6eb6b81ef206e00e2c380f6883735358d18d6e34
+
+Status: AUTOMATED_REMOVAL_FROM_DONEREFS
+
+Suggested next steps:
+
+- Inspect the file and its placeholder markers or TODOs.
+- If the file is safe for production, remove the placeholder and add tests / small PR.
+- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
+- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
+
+Excerpt (first 2KB):
+
+```
+
+aade4ac75561fd13aebcb005cb2d4aa5a711b52c	{"key":"make-fetch-happen:request-cache:https://registry.npmjs.org/@npmcli/fs/-/fs-2.1.2.tgz","integrity":"sha512-yOJKRvohFOaLqipNtwYB9WugyZKhC/DZC4VYPmpaCzDBrA8YpK3qHZ8/HGscMnE4GqbkLNuVcCnxkeQEdGt6LQ==","time":1760365060824,"size":11433,"metadata":{"time":1760365058913,"url":"https://registry.npmjs.org/@npmcli/fs/-/fs-2.1.2.tgz","reqHeaders":{},"resHeaders":{"cache-control":"public, must-revalidate, max-age=31557600","content-type":"application/octet-stream","date":"Mon, 13 Oct 2025 14:17:38 GMT","etag":"\"aa9de2fc6377b0945ff0a6ef745308d2\"","last-modified":"Mon, 15 Aug 2022 19:54:44 GMT","vary":"Accept-Encoding"},"options":{"compress":true}}}
+```
+
+Notes:
+
+- This draft was generated automatically to help triage files removed from `donerefs.txt`.
+- Backups and previous runs may exist under `.qmoi_validation`.

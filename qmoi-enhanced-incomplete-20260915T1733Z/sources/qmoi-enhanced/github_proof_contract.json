@@ -1,0 +1,113 @@
+{
+  "alpha_q_ai": {
+    "included": true,
+    "repo": "thealphakenya/Alpha-Q-ai"
+  },
+  "autonomy_plan": {
+    "alpha_q_ai_included": true,
+    "history_scope": "include all reachable refs, all tracked files, and every historical QMOI/Alpha-Q-ai repo snapshot including the qmoi-enhanced-history-14 archive and cloned repo inventory",
+    "operations": [
+      "validate",
+      "checkpoint",
+      "sync",
+      "verify",
+      "recover",
+      "audit-history",
+      "inventory-all-files"
+    ],
+    "owner": "thealphakenya",
+    "repos": [
+      {
+        "branches": [
+          "main",
+          "autosync-backup",
+          "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp"
+        ],
+        "history_snapshot": "qmoi-enhanced-history-14",
+        "ownership": "QE primary and shared implementation source",
+        "repo": "thealphakenya/qmoi-enhanced",
+        "role": "source-and-primary"
+      },
+      {
+        "branches": [
+          "main",
+          "autosync-backup",
+          "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp"
+        ],
+        "history_snapshot": "qmoi-enhanced-history-14",
+        "ownership": "AQ-specific backend and integration target",
+        "repo": "thealphakenya/Alpha-Q-ai",
+        "role": "cross-repository-target"
+      }
+    ]
+  },
+  "branch_sync": {
+    "branches": [
+      "main",
+      "autosync-backup",
+      "origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp"
+    ],
+    "default_branch": "main",
+    "history_snapshot": "qmoi-enhanced-history-14",
+    "inventory_scope": "all reachable refs, all tracked paths, symlinks, and the materialized historical snapshot; include all repo histories and every API/endpoint/route/port/clone inventory file",
+    "master_files": [
+      "API.md",
+      "ENDPOINTS.md",
+      "ROUTES.md",
+      "ALLROUTES.md",
+      "ALLPORTS.md",
+      "MODELEVOLUTIONO.md",
+      "ALLMDFILESREFS.md",
+      "ALLAUTO.md",
+      "ALLBACKEND.md",
+      "ALLFRONTEND.md",
+      "ALLPLATFORMSDEVICE.md",
+      "GITHUBCLONED.md",
+      "GITHUB_SETUP_COMPLETE.md",
+      "MERGE.md",
+      "SYNC.md",
+      "WORKFLOWS.md",
+      "WORKFLOWSO.md",
+      "BUILD.md",
+      "INSTALL.md",
+      "DOWNLOAD.md",
+      "MONITORING_INDEX.md",
+      "MONITORING_SUMMARY.md",
+      "REAL_TIME_MONITORING_README.md",
+      "QMOI_REALTIME_MEMORY_INDEX.md"
+    ],
+    "owner": "thealphakenya",
+    "repositories": [
+      "thealphakenya/qmoi-enhanced",
+      "thealphakenya/Alpha-Q-ai"
+    ],
+    "required_doc_sets": [
+      "API.md",
+      "ENDPOINTS.md",
+      "ROUTES.md",
+      "ALLROUTES.md",
+      "ALLPORTS.md",
+      "ALLMDFILESREFS.md",
+      "GITHUBCLONED.md",
+      "MERGE.md",
+      "SYNC.md",
+      "WORKFLOWS.md",
+      "MONITORING_INDEX.md"
+    ],
+    "source_repository": "thealphakenya/qmoi-enhanced",
+    "sync_strategy": "main -> autosync-backup -> cross-repository -> historical inventory sync",
+    "target_repository": "thealphakenya/Alpha-Q-ai"
+  },
+  "generated": "2026-09-15T17:30:14.641912Z",
+  "proof": {
+    "alpha_q_ai_included": true,
+    "applications_per_platform": 4,
+    "feature_count": 374,
+    "feature_registry_valid": true,
+    "feature_validation_passed": true,
+    "file_handler_validation_passed": true,
+    "platform_feature_contract_valid": true,
+    "platform_validation_passed": true
+  },
+  "status": "ready_for_github"
+}

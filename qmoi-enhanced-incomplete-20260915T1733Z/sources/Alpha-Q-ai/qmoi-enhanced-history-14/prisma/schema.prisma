@@ -1,0 +1,194 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String   @id @default(cuid())
+  email             String   @unique
+  username          String   @unique
+  name              String?
+  avatar            String?
+  role              String   @default("user")
+  permissions       String   @default("[]") // JSON string array of permissions
+  biometricEnabled  Boolean  @default(false)
+  accountStatus     String   @default("active")
+  trustScore        Float    @default(0.5)
+  lastLogin         DateTime?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Relations
+  discussions      Discussion[]
+  knowledgeEntries KnowledgeBaseEntry[]
+  notifications    Notification[]
+  news            News[]
+  wallets         Wallet[]
+  auditLogs       AuditLog[]
+
+  @@map("users")
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  timestamp   DateTime @default(now())
+  userId      String
+  username    String
+  action      String
+  resource    String
+  details     String   // JSON string
+  ipAddress   String?
+  userAgent   String?
+  riskLevel   String   @default("low")
+  status      String   @default("success")
+  sessionId   String?
+
+  // Relations
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("audit_logs")
+}
+
+model Discussion {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  replies     Int      @default(0)
+  views       Int      @default(0)
+  lastActivity DateTime @default(now())
+  tags        String   @default("[]") // JSON string array of tags
+  relevanceScore Float    @default(0.0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("discussions")
+}
+
+model KnowledgeBaseEntry {
+  id             String   @id @default(cuid())
+  title          String
+  content        String
+  authorId       String
+  author         User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  tags           String   @default("[]") // JSON string array of tags
+  relevanceScore Float    @default(0.0)
+  viewCount      Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("knowledge_base_entries")
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      String   // 'web', 'email', 'push'
+  event     String   // 'paper_update', 'kb_entry', 'discussion'
+  title     String
+  message   String
+  data      Json?    // Additional data
+  read      Boolean  @default(false)
+  sentAt    DateTime?
+  createdAt DateTime @default(now())
+
+  @@map("notifications")
+}
+
+model Dataset {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  type        String   // 'text', 'image', 'mixed', etc.
+  size        Int      // Size in bytes
+  itemCount   Int
+  status      String   @default("processing") // 'processing', 'ready', 'failed'
+  metadata    Json?    // Additional metadata
+  stats       Json?    // Processing statistics
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("datasets")
+}
+
+model MediaTask {
+  id          String   @id @default(cuid())
+  type        String   // 'image', 'video', 'audio'
+  status      String   @default("processing") // 'processing', 'completed', 'failed'
+  progress    Int      @default(0) // 0-100
+  result      Json?    // Result data (URL, metadata, etc.)
+  error       String?  // Error message if failed
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("media_tasks")
+}
+
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  summary     String?
+  category    String   @default("general")
+  status      String   @default("pending") // 'pending', 'approved', 'scheduled', 'published'
+  authorId    String?
+  author      User?    @relation(fields: [authorId], references: [id])
+  media       Json?   // JSON object array of media objects: [{type: 'image', url: '', alt: ''}, ...]
+  analytics   String   @default("{\"views\": 0, \"shares\": 0, \"engagement\": 0}") // JSON string analytics data
+  scheduledAt DateTime?
+  publishedAt DateTime?
+  tags        String   @default("[]") // JSON string array of tags
+  source      String?  // Source of the news (RSS, API, manual, etc.)
+  externalId  String?  // External ID for aggregated news
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("news")
+}
+
+model Wallet {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  balance     Float    @default(0.0)
+  currency    String   @default("KES")
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  transactions Transaction[]
+
+  @@map("wallets")
+}
+
+model Transaction {
+  id            String   @id @default(cuid())
+  walletId      String
+  wallet        Wallet   @relation(fields: [walletId], references: [id], onDelete: Cascade)
+  type          String   // 'deposit', 'withdraw', 'transfer'
+  amount        Float
+  currency      String   @default("KES")
+  platform      String   // 'Mpesa', 'Binance', 'PesaPal', 'Bitget'
+  status        String   @default("pending") // 'pending', 'processing', 'completed', 'failed'
+  transactionId String?  // External transaction ID
+  description   String?
+  metadata      Json?    // Additional transaction data
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@map("transactions")
+}

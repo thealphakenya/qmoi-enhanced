@@ -1,0 +1,12 @@
+{
+  "error": null,
+  "health_timestamp": "2026-09-15T17:30:00Z",
+  "inference_latency": 0.925,
+  "inference_verified": true,
+  "model": "qwen2.5-coder:3b",
+  "model_available": true,
+  "ollama_healthy": true,
+  "ollama_host": "http://127.0.0.1:11434",
+  "ollama_started": true,
+  "ollama_version": "0.34.0"
+}

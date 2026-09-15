@@ -1,0 +1,8 @@
+6252612188674ccb184551334d029c7437be1908326bec10705c1020a410fa5d  /workspaces/qmoi-enhanced/downloads/windows/latest/qmoi_ai.exe
+b560e42d907446eee9d7921dc3457c5b968e288a2deb126af634e73d879b21fd  /workspaces/qmoi-enhanced/downloads/mac/latest/qmoi_ai.dmg
+8f8c3befa3370823f3920f8fa9b64d59a058c50c5e526473cc2028c6538d5452  /workspaces/qmoi-enhanced/downloads/linux/latest/qmoi_ai.AppImage
+ed6d927b731c202576ec3a7f6ea3f718a281c8d9a9abea54054154e453b1f73f  /workspaces/qmoi-enhanced/downloads/android/qmoi_ai.apk
+87ca2221812226753019a3ec29d49909505d9573e290ae0b32a439e0b24d5de1  /workspaces/qmoi-enhanced/downloads/ios/qmoi_ai.ipa
+052ed59331d95feebf23bed354000adf338fdbdfc2ac23aa6a7811b7b687c7be  /workspaces/qmoi-enhanced/downloads/chromebook/qmoi_ai.deb
+e99066b6b4f7874e104c045737a850bda73095d659bf6e58f4f1712718d570f5  /workspaces/qmoi-enhanced/downloads/raspberrypi/qmoi_ai_arm.tar.gz
+7ce5af4a8937cd4eaeee3874445f87f5fec9a8ef8b9fd777482f2096a88b2af5  /workspaces/qmoi-enhanced/downloads/smarttv/qmoi_ai.pkg

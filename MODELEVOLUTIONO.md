@@ -88,3 +88,14 @@ This section updates automatically when:
 This document is automatically maintained by QMOI Ollama Autonomous Agent.
 Countdown calculations are UTC-based and timezone-aware.
 All timestamps are in ISO 8601 format for consistency.
+
+<!-- QMOI_EVOLUTION_RUNTIME_STATUS -->
+## QMOI Runtime Transition Status
+
+Generated: 2026-09-15T22:01:51Z
+Milestone: 2026-12-31T23:59:59Z
+Countdown: 107 days, 1 hours, 58 minutes, 7 seconds
+Status: countdown_active
+
+QMOI-native execution is primary immediately. Ollama remains a compatibility fallback until the milestone; retirement requires QMOI health, regression, link, hosted-runtime, and success-contract evidence.
+<!-- QMOI_EVOLUTION_RUNTIME_STATUS -->

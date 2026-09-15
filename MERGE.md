@@ -25,6 +25,13 @@ The audit is evidence collection only: it must not fetch, merge, reset, or push
 implicitly. Network synchronization and publication remain explicit workflow
 steps, followed by validation and a recorded result.
 
+The two live repositories use the same owner-scoped GitHub credential through
+environment-managed authentication. The credential is verified for both
+repositories but is never recorded. Safe command evidence may include
+`gh auth status`, `git fetch --all --prune`, `git ls-remote`, audit, sync, and
+validation commands; it must redact `GH_TOKEN`, `GITHUB_TOKEN`,
+`MY_CUSTOM_TOKEN`, and every secret value.
+
 ## Required History Source And Complete Coverage
 
 The ref `origin/codespace-potential-space-happiness-wrv69x5j6qjq2g7wp` is a
@@ -75,6 +82,67 @@ The Ollama autonomous agent and QMOI automation must use this procedure for
 branch sync, PR merge, recovery, auto-healing, and cross-repository operations.
 They may automate speed and repetition, but not bypass evidence, ownership,
 review, or validation gates.
+
+## Post-Merge Materialization Contract
+
+After the source audits, merge plan, conflict review, and validation gates have
+completed, materialize the consolidated workspace with:
+
+```bash
+python3 scripts/materialize_merged_repo.py \
+    --workspace /workspaces/qmoi-enhanced \
+    --alpha-repo /path/to/Alpha-Q-ai
+```
+
+The command creates `qmoi-enhanced/` only after both Git repositories and the
+historical snapshot are available. It preserves each source under
+`qmoi-enhanced/sources/` instead of flattening conflicting paths, records all
+source branches and commits in `MERGE_AUDIT.json`, and writes
+`MATERIALIZATION_STATUS.json`. `ALLMDFILESREFS.md` in the materialized output
+contains one row per Markdown file with source, ref, commit, creation/update
+evidence, and SHA-256. Snapshot files without Git metadata explicitly retain
+unknown creation and commit fields rather than receiving invented provenance.
+
+The `--allow-incomplete` option is for audit rehearsal only; its output is
+marked incomplete and must not be treated as production merge evidence.
+
+## Production Replacement Evidence
+
+Materialization preserves source and branch history before any production
+replacement work. The generated `PRODUCTION_READINESS.json` scans active,
+Alpha-Q-ai, historical, and branch Markdown materials for actionable markers
+such as `TODO`, `FIXME`, `PLACEHOLDER`, `STUB`, `MOCK`, and explicit
+nonproduction language. Findings are never rewritten by pattern substitution.
+
+Each finding must be resolved by a real implementation with targeted tests,
+integration or contract validation, link/workflow checks where applicable, and
+source/ref provenance. A reviewed exception must include its rationale and
+validation evidence. The materializer therefore reports `review_required`
+until every finding is either replaced and validated or explicitly exempted;
+it never claims that historical or archived code is production-ready merely
+because it was copied into the merged workspace.
+
+## Dated Full-Tree History Snapshots
+
+The materializer also creates full tracked-tree snapshots from real commits:
+
+- `qmoi-enhanced/qmoi-enhanced-history-14/<date-time>/`
+- `qmoi-enhanced/Alpha-Q-ai-history-14/<date-time>/`
+
+It selects up to four chronological commits per repository, including the
+oldest reachable history, an approximately one-year point, and the latest
+reachable commit. The source histories currently span June 2025 through
+September 2026, which supports four snapshots with at least six months between
+planned periods. Each directory is accompanied by
+`PERIOD_SNAPSHOT_MANIFEST.json`, which records the exact commit, ISO timestamp,
+publisher, publisher email, source repository, and the six-month spacing rule.
+No snapshot is created for a period that does not exist in reachable Git
+history; missing periods remain explicit gaps in the manifest.
+
+`MARKDOWN_HISTORY/` separately preserves Markdown versions from every
+discovered branch/ref. `ALLMDFILESREFS.md` records current and historical
+Markdown provenance, while `oe2.txt` receives the materialization counts and
+production-readiness state after every successful build.
 
 ## Local Audit Evidence (2026-09-08)
 
