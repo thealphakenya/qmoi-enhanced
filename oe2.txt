@@ -700,3 +700,16 @@ qmoi-enhanced-history-14/tools/placeholder_actions.md
 qmoi-enhanced-history-14/tools/placeholder_artifacts/readme.md
 qmoi-enhanced-history-14/tools/validation_report.md
 trigger.md
+FINAL CONTINUITY UPDATE — 2026-09-16
+
+Verified state:
+- Durable local wallet persistence is implemented in scripts/qmoi_wallet_manager.py and survives reloads.
+- Markdown/local link validation is hardened in scripts/link_validator.py to capture relative doc paths and wallet references.
+- Python repair resilience strips stray orphan tokens so damaged files are rewritten cleanly.
+- Regression coverage for wallet persistence, local link extraction, and stray-token repair is in tests/test_wallet_and_links.py.
+- Fresh validation command: pytest -q tests/test_ollama_runtime.py tests/test_wallet_and_links.py
+- Result: 14 passed in 43.90s.
+
+Operational note:
+- This repo remains aligned to safe local wallet-state logic rather than claiming live external PayPal/Pesapal/Cashon settlement without real provider credentials, compliance review, and approved integration.
+- The branch has been kept current with push updates after validation, and this log is updated so the continuity chain remains reproducible.
