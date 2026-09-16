@@ -21,6 +21,22 @@ The seed is portable orchestration, not a claim that one binary can provide ever
 - Source/ref/commit provenance across repositories and histories
 - Production-readiness findings and tested replacement evidence
 
+## Wallet and Provider Boundary
+
+The local wallet contract is implemented by `scripts/qmoi_wallet_manager.py` and
+persists balances and transaction history atomically beneath the runtime
+`.qmoi_state` directory.
+Credits and debits must use positive amounts; insufficient funds and invalid
+amounts fail without writing a transaction. Regression coverage lives in
+`tests/test_wallet_and_links.py`.
+
+Cashon is the wallet workflow name used by QMOI, not proof of a live payment
+account. PayPal, Pesapal, Cashon, or another provider may be connected only
+through a separately approved adapter with credentials, webhook verification,
+reconciliation, and compliance controls. Without that adapter, the local ledger
+is the source of truth for development and must not be described as settled
+external funds.
+
 ## Security and Resource Claims
 
 QMOI cannot guarantee being unhackable, virus-proof, or having physically unlimited resources. Production QVS instead enforces least privilege, dependency and artifact hashes, secret redaction, sandboxed extraction, resource quotas, health thresholds, circuit breakers, backups, and explicit failure/recovery evidence.

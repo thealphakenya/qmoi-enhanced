@@ -8,6 +8,8 @@
 4. Cross-platform feature registry and application validation.
 5. API, endpoint, route, port, link, workflow, and Markdown checks.
 6. QVS, mask, memory, parallel, trading, account, wallet, Cashon, and financial-manager safety checks.
+	Wallet checks include persistence across reloads, positive-amount enforcement,
+	insufficient-funds rejection, and no-provider fallback behavior.
 7. GitHub-hosted workflow status, local keepalive status, checkpoint, telemetry, and success-contract evidence.
 8. Comparative benchmark reproducibility with pinned model/provider versions and task-specific scores.
 

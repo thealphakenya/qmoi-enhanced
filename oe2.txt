@@ -721,3 +721,10 @@ Follow-through completed:
 - Added regression coverage for non-positive wallet transactions in tests/test_wallet_and_links.py.
 - Focused validation result: pytest -q tests/test_wallet_and_links.py -> 4 passed in 0.05s.
 - Python cache artifacts are ignored and are being removed from version control so test runs do not create branch noise.
+
+DOCUMENTATION CONTINUATION UPDATE — 2026-09-16
+
+- QVS.md now documents the durable local wallet contract, positive-amount rules, atomic persistence, and the boundary between local ledger state and live Cashon/PayPal/Pesapal adapters.
+- QMOIMODEL.md and QMOIMODELTESTS.md now point to the wallet/provider boundary and enumerate the corresponding safety checks.
+- No live provider integration was claimed or enabled; external settlement still requires approved credentials, webhook verification, reconciliation, and compliance controls.
+- Bounded local-reference validation passed for QVS.md, QMOIMODEL.md, and QMOIMODELTESTS.md with zero missing targets; the repository-wide scan was intentionally not used because historical snapshots make it exceed the command timeout.

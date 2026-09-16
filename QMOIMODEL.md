@@ -11,6 +11,7 @@ QMOI is the primary orchestration/runtime layer. Ollama is a compatibility provi
 - QVillage model-card and realtime memory synchronization
 - QVS seed verification, mask/QVS state handling, and parallel task coordination
 - Trading, account, wallet, Cashon, and financial-manager safety contracts
+- Durable local wallet state and explicit external-provider boundaries (QVS.md)
 - GitHub-hosted automation, local keepalive, checkpoints, telemetry, and recovery
 
 ## Model Comparison
