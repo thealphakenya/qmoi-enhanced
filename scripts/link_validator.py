@@ -77,14 +77,18 @@ class LinkValidator:
 
     @staticmethod
     def extract_local_targets(text: str) -> list[str]:
-        """Extract relative Markdown and HTML link targets."""
+        """Extract Markdown, HTML, and plain relative file targets."""
         markdown = re.findall(r"\[[^\]]*\]\(([^)\s]+)", text)
         html = re.findall(r"(?:href|src)=[\"']([^\"']+)[\"']", text)
-        return sorted(set(markdown + html))
+        bare = re.findall(
+            r"(?<![A-Za-z0-9/])((?:\./|\.\./)?(?:[A-Za-z0-9_.-]+/)*[A-Za-z0-9_.-]+\.[A-Za-z0-9_.-]+)",
+            text,
+        )
+        return sorted(set(markdown + html + bare))
 
-    def find_urls(self) -> dict[str, list[str]]:
-        """Find URLs in supported repository files."""
-        found: dict[str, list[str]] = {}
+    def find_supported_files(self) -> list[Path]:
+        """Return supported repository files eligible for local validation."""
+        files: list[Path] = []
         for path in self.repo_path.rglob("*"):
             if not path.is_file() or path.suffix.lower() not in self.extensions:
                 continue
@@ -97,6 +101,13 @@ class LinkValidator:
                 "yarn.lock",
             }:
                 continue
+            files.append(path)
+        return sorted(files)
+
+    def find_urls(self) -> dict[str, list[str]]:
+        """Find URLs in supported repository files."""
+        found: dict[str, list[str]] = {}
+        for path in self.find_supported_files():
             try:
                 content = path.read_text(encoding="utf-8", errors="ignore")
             except OSError:
@@ -306,8 +317,8 @@ class LinkValidator:
 
     def validate_local_links(self) -> None:
         """Check relative documentation links and local download targets."""
-        for source in self.find_urls():
-            source_path = self.repo_path / source
+        for source_path in self.find_supported_files():
+            source = str(source_path.relative_to(self.repo_path))
             try:
                 content = source_path.read_text(encoding="utf-8", errors="ignore")
             except OSError:
