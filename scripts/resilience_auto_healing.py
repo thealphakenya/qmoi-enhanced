@@ -201,10 +201,14 @@ class PythonRepairManager:
             
             for pattern, replacement in repairs:
                 content = re.sub(pattern, replacement, content)
-            
+
+            # Strip orphaned tokens accidentally left behind in a damaged file.
+            content = re.sub(r"(?m)^\s*cc\s*$", "", content)
+            content = re.sub(r"(?m)^\s*#\s*cc\s*$", "", content)
+
             # Verify repair
             compile(content, str(file_path), 'exec')
-            
+
             # Write repaired content
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(content)

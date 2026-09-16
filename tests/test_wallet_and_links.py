@@ -1,7 +1,10 @@
 from pathlib import Path
 
+import pytest
+
 from scripts.link_validator import LinkValidator
 from scripts.qmoi_wallet_manager import QMOIWalletManager
+from scripts.resilience_auto_healing import PythonRepairManager
 
 
 def test_extract_local_targets_captures_bare_relative_paths():
@@ -32,3 +35,25 @@ def test_qmoi_wallet_manager_persists_balance_and_history(tmp_path: Path):
         assert False, "expected insufficient funds error"
     except ValueError:
         pass
+
+
+def test_qmoi_wallet_manager_rejects_non_positive_transactions(tmp_path: Path):
+    manager = QMOIWalletManager(state_path=tmp_path / "wallets.json")
+    manager.create_wallet("cashon")
+
+    with pytest.raises(ValueError):
+        manager.credit("cashon", -1.0)
+    with pytest.raises(ValueError):
+        manager.debit("cashon", 0.0)
+
+
+def test_python_repair_manager_removes_stray_tokens_from_repaired_content(tmp_path: Path):
+    bad_file = tmp_path / "broken.py"
+    bad_file.write_text("def demo():\n    print('ok')\ncc\n", encoding="utf-8")
+
+    repaired, message = PythonRepairManager.auto_repair_python(bad_file)
+
+    assert repaired is True
+    assert "cc" not in bad_file.read_text(encoding="utf-8")
+    assert "demo" in bad_file.read_text(encoding="utf-8")
+    assert "Python syntax corrected" in message

@@ -713,3 +713,11 @@ Verified state:
 Operational note:
 - This repo remains aligned to safe local wallet-state logic rather than claiming live external PayPal/Pesapal/Cashon settlement without real provider credentials, compliance review, and approved integration.
 - The branch has been kept current with push updates after validation, and this log is updated so the continuity chain remains reproducible.
+
+AUTOMATIC CONTINUATION UPDATE — 2026-09-16
+
+Follow-through completed:
+- Wallet transaction validation now rejects negative amounts and zero-value debits, preventing invalid ledger mutations.
+- Added regression coverage for non-positive wallet transactions in tests/test_wallet_and_links.py.
+- Focused validation result: pytest -q tests/test_wallet_and_links.py -> 4 passed in 0.05s.
+- Python cache artifacts are ignored and are being removed from version control so test runs do not create branch noise.

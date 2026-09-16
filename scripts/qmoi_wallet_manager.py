@@ -53,6 +53,7 @@ class QMOIWalletManager:
         starting_balance: float = 0.0,
         **metadata: Any,
     ) -> dict[str, Any]:
+        starting_balance = self._validate_amount(starting_balance, "starting_balance", allow_zero=True)
         wallets = self._state.setdefault("wallets", {})
         if wallet_id in wallets:
             raise ValueError(f"wallet already exists: {wallet_id}")
@@ -84,6 +85,13 @@ class QMOIWalletManager:
             }
         )
 
+    @staticmethod
+    def _validate_amount(amount: float, name: str = "amount", allow_zero: bool = False) -> float:
+        value = float(amount)
+        if value < 0 or (value == 0 and not allow_zero):
+            raise ValueError(f"{name} must be {'non-negative' if allow_zero else 'positive'}")
+        return value
+
     def _get_wallet(self, wallet_id: str) -> dict[str, Any]:
         wallets = self._state.setdefault("wallets", {})
         if wallet_id not in wallets:
@@ -95,7 +103,8 @@ class QMOIWalletManager:
 
     def credit(self, wallet_id: str, amount: float, description: str = "credit") -> dict[str, Any]:
         wallet = self._get_wallet(wallet_id)
-        wallet["balance"] = float(wallet.get("balance", 0.0)) + float(amount)
+        amount = self._validate_amount(amount)
+        wallet["balance"] = float(wallet.get("balance", 0.0)) + amount
         self._append_transaction(wallet, "credit", amount, description)
         self._write_state()
         return wallet
@@ -103,7 +112,7 @@ class QMOIWalletManager:
     def debit(self, wallet_id: str, amount: float, description: str = "debit") -> dict[str, Any]:
         wallet = self._get_wallet(wallet_id)
         current = float(wallet.get("balance", 0.0))
-        amount = float(amount)
+        amount = self._validate_amount(amount)
         if current < amount:
             raise ValueError(f"insufficient funds in wallet '{wallet_id}'")
         wallet["balance"] = current - amount
