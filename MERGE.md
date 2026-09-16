@@ -76,6 +76,27 @@ branch sync, PR merge, recovery, auto-healing, and cross-repository operations.
 They may automate speed and repetition, but not bypass evidence, ownership,
 review, or validation gates.
 
+## Autonomous Default-Branch Merge Gate
+
+For every automated remediation or merge, QMOI must verify the target default
+branch from the GitHub API rather than assuming `main`, compare the source and
+target heads, and preserve a machine-readable pre-merge inventory. It must
+query all required checks, including GitHub Actions and Vercel, after the final
+commit. A missing, cancelled, stale, or permission-blocked check is
+`review_required`, not success.
+
+Dependency updates are applied to every tracked manifest and lockfile that can
+be scanned by the dependency graph, including materialized historical sources.
+After merging, QMOI re-runs the audit against the default branch and keeps the
+PR open or creates a follow-up remediation PR when alerts remain. Conflicts are
+resolved by a fresh branch from the current default branch; no force push or
+blind archive overwrite is allowed.
+
+Cross-repository and historical merges must retain source refs, commit hashes,
+path inventories, conflict decisions, validation output, and unresolved
+provider limitations. `ALLMDFILESREFS.md`, checkpoints, telemetry, and the
+continuity log are updated only from observed results.
+
 ## Local Audit Evidence (2026-09-08)
 
 The locally available audit was completed before documentation changes. The

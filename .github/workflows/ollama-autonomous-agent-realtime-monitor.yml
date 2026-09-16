@@ -148,7 +148,7 @@ jobs:
       - name: Checkout repository default branch
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0
+          fetch-depth: 1
           persist-credentials: true
           ref: ${{ github.event.repository.default_branch }}
 
@@ -1974,7 +1974,7 @@ jobs:
           name: ollama-pr-realtime-tracker-${{ github.run_id }}-${{ github.run_attempt }}
           path: ollamatracks/
           if-no-files-found: warn
-          retention-days: 30
+          retention-days: 7
 
 
       # ======================================================================

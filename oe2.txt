@@ -1,0 +1,44 @@
+QMOI continuation log
+======================
+
+AUTODEV AND SECURITY CONTINUATION — 2026-09-16
+
+Current branch: automated/requests-security-fix
+Target default branch: main
+
+Completed in this continuation:
+- Confirmed the branch is based on origin/main and contains the requests security floor update: requests>=2.34.2, pytest>=9.1.1, and PyYAML>=6.0.3.
+- Expanded AUTODEV.md with deterministic remediation, tracked-manifest auditing, source validation, bounded restartable cycles, default-branch verification, PR evidence, Vercel/CI check gates, and explicit limits against false success.
+- Expanded MERGE.md with default-branch discovery, complete dependency-manifest coverage, post-merge re-audit, Vercel/GitHub check gates, conflict handling, and provenance requirements.
+- Expanded GITHUBCLONED.md with idempotent clone/reconciliation, source-ref and hash evidence, complete history coverage, checkpoint resume, and explicit unavailable-remote blockers.
+- Created this oe2.txt continuity record because it was not present on the current main-based branch.
+
+Operational contract:
+- AutoDev may automatically apply deterministic dependency, formatting, syntax, documentation, and generated-artifact repairs after validation.
+- Arbitrary application defects, ambiguous merge conflicts, unavailable credentials, failing external providers, and inaccessible GitHub/Vercel checks remain review_required; QMOI must preserve evidence rather than claim success.
+- Permanent operation means scheduled, bounded, idempotent, restartable cycles with checkpoints and re-querying, not a guarantee against outages or upstream incompatibility.
+
+Required next verification:
+- Validate Markdown/local references and workflow YAML.
+- Run the full available test suite.
+- Push the requests fix and documentation changes to the remote branch.
+- Re-query default-branch checks and Dependabot state after merge access is available.
+
+TEST CONFIGURATION REPAIR — 2026-09-16
+
+- Full pytest initially failed during collection because this main-based branch lacked `pythonpath = .` in pytest.ini.
+- Added the root import path and preserved scripts/__init__.py so the scripts package is importable consistently in local and hosted runners.
+
+REMOTE PR CONTINUATION — 2026-09-16
+
+- Published pull request #2103: https://github.com/thealphakenya/qmoi-enhanced/pull/2103.
+- Updated the branch from the latest origin/main and resolved generated-artifact merge conflicts in favor of the current default branch.
+- Post-merge validation passed: 181 tests and workflow YAML validation.
+- PR state is OPEN and MERGEABLE; workflow-integrity validation is IN_PROGRESS, Vercel checks are pending, and the repository auto-merge helper check is FAILURE.
+- The remote default branch reports 15 remaining Dependabot vulnerabilities (8 high, 7 moderate). The branch contains the requests remediation, but those alerts are not claimed cleared until the PR merges and GitHub re-reports the default-branch state.
+
+REMOTE RESOURCE CONTINUATION UPDATE — 2026-09-16
+
+- Realtime workflow telemetry is bounded by QMOI_MAX_TELEMETRY_LINES (default 2,000) and in-memory metric history by QMOI_MAX_METRICS_SAMPLES (default 600).
+- The remote realtime monitor now uses shallow checkout depth 1 and seven-day artifact retention to reduce storage, memory, and browser data usage while preserving recent evidence.
+- Resource-bound validation passed with telemetry capped at 100 lines in a temporary monitor run; modified monitor Python syntax also compiled successfully.

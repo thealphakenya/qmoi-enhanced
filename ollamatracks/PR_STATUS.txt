@@ -1,23 +1,2 @@
-OLLAMA PR STATUS
-================
-
-Timestamp UTC: 2026-09-16T18:01:04.174Z
-Repository: thealphakenya/qmoi-enhanced
-
-PR #2099: chore(deps): update requests requirement from >=2.31.0 to >=2.34.2
-  head: dependabot/pip/requests-gte-2.34.2
-  head_sha: e317fedb64c4c353c2a51d433693be3cd34469a3
-  base: main
-  draft: false
-  mergeable: unknown
-  checks: 14
-  combined_status: failure
-
-PR #2096: feat: centralize hosted workflow step management
-  head: copilot/hosted-step-manager
-  head_sha: 5d61750be5adb62667cc21d0932cb29687cf0d07
-  base: main
-  draft: false
-  mergeable: unknown
-  checks: 13
-  combined_status: failure
+PR_STATUS: monitoring
+Timestamp: 2026-09-16T18:41:19.968895Z

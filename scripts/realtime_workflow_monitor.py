@@ -80,6 +80,8 @@ class WorkflowMonitor:
         self.repo = repo
         self.token = token or self._resolve_token()
         self.update_interval = update_interval
+        self.max_telemetry_lines = max(100, int(os.getenv("QMOI_MAX_TELEMETRY_LINES", "2000")))
+        self.max_metrics_samples = max(100, int(os.getenv("QMOI_MAX_METRICS_SAMPLES", "600")))
         self.track_dir = Path(__file__).resolve().parent.parent / "ollamatracks"
         self.track_dir.mkdir(parents=True, exist_ok=True)
         
@@ -283,6 +285,8 @@ class WorkflowMonitor:
         )
         
         self.metrics_history.append(snapshot)
+        if len(self.metrics_history) > self.max_metrics_samples:
+            del self.metrics_history[:-self.max_metrics_samples]
         return snapshot
     
     def format_duration(self, seconds: int) -> str:
@@ -721,6 +725,13 @@ class WorkflowMonitor:
         }
         with (self.track_dir / 'telemetry.jsonl').open('a', encoding='utf-8') as handle:
             handle.write(json.dumps(telemetry_line, default=str, sort_keys=True) + '\n')
+        telemetry_path = self.track_dir / 'telemetry.jsonl'
+        lines = telemetry_path.read_text(encoding='utf-8').splitlines()
+        if len(lines) > self.max_telemetry_lines:
+            telemetry_path.write_text(
+                '\n'.join(lines[-self.max_telemetry_lines:]) + '\n',
+                encoding='utf-8',
+            )
 
     def _save_report(self):
         """Save monitoring report to JSON file"""
