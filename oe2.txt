@@ -736,3 +736,9 @@ FINAL VALIDATION CONTINUATION — 2026-09-16
 - Full repository validation passed: pytest -q -> 196 passed in 43.01s.
 - No additional failing implementation path was found in the current workspace; the branch remains aligned with the documented local-wallet and external-provider boundaries.
 - The full validation refresh also regenerated memory, proof, checkpoint, monitoring, telemetry, and reconciliation artifacts; changed JSON files parse successfully and `git diff --check` is clean.
+
+DEPENDENCY REMEDIATION UPDATE — 2026-09-16
+
+- Raised the active Python dependency floors to patched releases: requests>=2.32.4 and PyYAML>=6.0.2.
+- npm audit reports zero vulnerabilities for the active Node dependency tree.
+- GitHub Dependabot alert details could not be fetched from this environment because the API returned HTTP 403; no claim is made that inaccessible remote alerts are fully cleared until GitHub access is available.
