@@ -38,3 +38,23 @@ This file records the canonical inventory of cloned repository state, snapshot c
 
 ## Notes
 This file is an operational contract for the self-healing autonomous agent. It must remain aligned with the repository audit, branch-synchronization strategy, and archived history inventory produced by QMOI automation.
+
+## Autonomous Clone and Reconciliation Cycle
+
+QMOI treats cloned repositories and historical directories as evidence, not as
+an implicit merge source. Each cycle records the remote URL, default branch,
+fetch timestamp, source ref, commit SHA, tracked-file count, Markdown count,
+dependency-manifest count, and working-tree status for both `qmoi-enhanced` and
+`Alpha-Q-ai` when access is available.
+
+The cycle then compares live trees, reachable refs, and preserved histories by
+path and content hash. It classifies additions, updates, deletions, and
+conflicts before applying changes. Missing or inaccessible repository history is
+reported as a blocker; it is never silently represented as complete coverage.
+
+Autoclone updates are idempotent and restartable. A failed fetch, build,
+workflow, Vercel deployment, or dependency audit retains its logs and resumes
+from the last checkpoint. Publication occurs through a dedicated branch and PR,
+with default-branch checks re-queried after merge. This keeps clone, GitHub Dev,
+AutoDev, merge, model-card, and validation evidence synchronized without
+claiming that an unavailable remote was fully merged.
