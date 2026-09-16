@@ -12,6 +12,12 @@ This document maps ALL platform-specific features that each QMOI app must implem
 
 **Total Features to Validate: 240+ (4 apps × 6 platforms × 10+ features)**
 
+## Cross-platform QMOI trading bot contract
+
+The QMOI trading layer uses the same six-platform device contract described below: Windows, macOS, Linux, iOS, Android, and web/PWA. Binance and Bitget have explicit adapters in the live autopilot; CashOn covers wallet reconciliation; additional providers can be discovered through `QMOI_ADDITIONAL_PLATFORMS` as sandbox-only generic adapters.
+
+Discovery and device capability reporting may run automatically, but live account creation, credential use, OS permission grants, exchange orders, and fund transfers remain separately gated. No adapter may claim connectivity or successful execution without provider proof, wallet reconciliation, telemetry, and the production safety gate.
+
 ---
 
 ## QMOIAIUI: Conversational AI Interface

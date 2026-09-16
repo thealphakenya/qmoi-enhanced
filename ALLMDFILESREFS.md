@@ -13,10 +13,10 @@ This document provides a comprehensive index of all markdown (.md) files in both
 ## Canonical Inventory Verification
 This repository currently contains one canonical root-level ALLMDFILESREFS.md and no hidden or alternate markdown index files were found elsewhere in the repo tree. The root file is therefore the authoritative inventory for this workspace. The final audit verified the following:
 
-- Total active repo-level .md files found: 65
+- Total active repo-level .md files found: 69
 - Historical snapshot .md files found: 3,559
 - Total tracked .md files including the historical snapshot: 3,624
-- Root directory .md files found: 65
+- Root directory .md files found: 69
 - Hidden/alternate .md indexes outside the root: 0
 - Unreferenced .md files in the repo tree: 0
 - Duplicate/companion markdown files are treated as reconciliation artifacts, not independent sources of truth; they must be merged into the authoritative canonical files when content overlaps.
@@ -50,7 +50,7 @@ from the active checkout. Any mismatch is recorded as an addition, omission,
 duplicate, or conflict before merge authorization.
 
 ## Current root inventory and canonical ownership
-- Root docs: README.md, BUILD.md, INSTALL.md, DOWNLOAD.md, PLATFORM_REQUIREMENTS.md, ALLPLATFORMSDEVICE.md, ACCOUNTABILITY.md, SYNC.md, MERGE.md, MODELEVOLUTIONO.md, QMOI_MODEL_CARD.md, QMOI_REALTIME_MEMORY_INDEX.md, STYLES.md, MONITORING_GUIDE.md, OLLAMA_AUTOMATION_GUIDE.md, OLLAMA_ENHANCEMENT_COMPLETE.md, OLLAMA_ENHANCEMENT_SUCCESS.md, GITHUB_SETUP_COMPLETE.md, IMPLEMENTATION_COMPLETE.md, SESSION_COMPLETION_REPORT.md, PHASE_1_4_COMPLETION_SUMMARY.md, RESILIENCE_AUTO_HEALING.md, TEST_ENHANCEMENTS.md, TREE_FULL_STRUCTURE.md, ALLMDFILESREFS.md, oe.md, or.md, ollama.md, github.md, zx.txt, QTEAM.md, API.md, ENDPOINTS.md, ROUTES.md, ALLAUTO.md, AUTODEV.md, UNIVERSALS.md, QMOIAI.md, QCITY.md, QMOISPACE.md, QALPHA.md, QMOIAIUI.md, QCITYUI.md, QMOISPACEUI.md, QALPHAUI.md, ALLFRONTEND.md, ALLBACKEND.md, ALLPORTS.md
+- Root docs: README.md, BUILD.md, INSTALL.md, DOWNLOAD.md, PLATFORM_REQUIREMENTS.md, ALLPLATFORMSDEVICE.md, ACCOUNTABILITY.md, SYNC.md, MERGE.md, MODELEVOLUTIONO.md, QMOI_MODEL_CARD.md, QMOI_REALTIME_MEMORY_INDEX.md, STYLES.md, MONITORING_GUIDE.md, OLLAMA_AUTOMATION_GUIDE.md, OLLAMA_ENHANCEMENT_COMPLETE.md, OLLAMA_ENHANCEMENT_SUCCESS.md, GITHUB_SETUP_COMPLETE.md, IMPLEMENTATION_COMPLETE.md, SESSION_COMPLETION_REPORT.md, PHASE_1_4_COMPLETION_SUMMARY.md, RESILIENCE_AUTO_HEALING.md, TEST_ENHANCEMENTS.md, TREE_FULL_STRUCTURE.md, ALLMDFILESREFS.md, FINANCIALMANAGER.md, TRADINGREADME.md, WORKFLOWS.md, WORKFLOWSO.md, WORKFLOW_EXECUTION_PLAN.md, WORKFLOW_STATUS_DASHBOARD.md, GITHUB_ACTIONS_EXECUTION_GUIDE.md, REAL_TIME_MONITORING_GUIDE.md, REAL_TIME_MONITORING_README.md, oe.md, or.md, ollama.md, github.md, monitor.md, trigger.md, QTEAM.md, API.md, ENDPOINTS.md, ROUTES.md, ALLAUTO.md, AUTODEV.md, UNIVERSALS.md, QMOIAI.md, QCITY.md, QMOISPACE.md, QALPHA.md, QMOIAIUI.md, QCITYUI.md, QMOISPACEUI.md, QALPHAUI.md, ALLFRONTEND.md, ALLBACKEND.md, ALLPORTS.md, ALLROUTES.md, ADVANCEMENT.md, ENHANCEMENT_SESSION_2026_08_18.md, FINAL_SESSION_COMPLETION_REPORT.md, FINAL_VALIDATION_EVIDENCE_2026_08_29.md, GITHUBCLONED.md, MEMORY_INDEX.md, MONITORING_INDEX.md, MONITORING_SUMMARY.md, MODEL_CARD.md, SESSION_COMPLETION_REPORT_2025_01_10.md
 - Directories: .github, scripts, tests, ollamatracks, and the repo root itself
 - Generated/runtime files: `ollama_agent.log`, `resumefromhere.txt`, and memory index artifacts must remain present but are considered runtime outputs rather than authoritative source files
 
@@ -123,29 +123,305 @@ the expanded operational reference. Both are maintained together.
 
 ## SECTION 2: Documentation Files by Category
 
-### Application Documentation
+The repository-wide category model below is the authoritative map for the live root-level markdown set. Every active markdown file in the working tree is assigned to at least one category, and selected files support multiple categories when they speak to operations, automation, trading, finance, or platform integration at the same time.
 
-| File | Repo | Purpose | Location |
-|------|------|---------|----------|
-| QMOIAI.md | QE | QMOI AI Conversational Interface specs | ROOT |
-| QMOIAIUI.md | QE | QMOI AI UI/UX details | ROOT |
-| QCITY.md | QE | QCITY File Manager specifications | ROOT |
-| QCITYUI.md | QE | QCITY UI/UX details | ROOT |
-| QMOI-SPACE.md | QE | QMOI Space Media Player specs | ROOT |
-| QMOISPACEUI.md | QE | QMOI Space UI/UX details | ROOT |
-| QALPHA.md | QE | QALPHA IDE specifications | ROOT |
-| QALPHAUI.md | QE | QALPHA IDE UI/UX details | ROOT |
+### Category A — Governance, repo continuity, and documentation integrity
 
-### Feature & Capability Documentation
+Files:
+- ACCOUNTABILITY.md
+- ADVANCEMENT.md
+- ALLMDFILESREFS.md
+- ENHANCEMENT_SESSION_2026_08_18.md
+- FINAL_SESSION_COMPLETION_REPORT.md
+- FINAL_VALIDATION_EVIDENCE_2026_08_29.md
+- GITHUBCLONED.md
+- GITHUB_SETUP_COMPLETE.md
+- IMPLEMENTATION_COMPLETE.md
+- MEMORY_INDEX.md
+- MERGE.md
+- MODELEVOLUTIONO.md
+- MONITORING_INDEX.md
+- MONITORING_SUMMARY.md
+- PHASE_1_4_COMPLETION_SUMMARY.md
+- QTEAM.md
+- README.md
+- SESSION_COMPLETION_REPORT.md
+- SESSION_COMPLETION_REPORT_2025_01_10.md
+- SYNC.md
+- TREE_FULL_STRUCTURE.md
+- MODEL_CARD.md
+- QMOI_MODEL_CARD.md
 
-| File | Repo | Purpose | Location |
-|------|------|---------|----------|
-| ALLAUTO.md | BOTH | All automation features | ROOT |
-| AUTODEV.md | BOTH | Auto-development capabilities | ROOT |
-| ALLFRONTEND.md | QE | Frontend features across apps | ROOT |
-| ALLBACKEND.md | AQ | Backend features and services | ROOT |
-| ALLPORTS.md | BOTH | All ports and networking | ROOT |
-| UNIVERSALS.md | BOTH | Universal features | ROOT |
+Supporting references:
+- .github/workflows/* for automation triggers and validation gates
+- scripts/ollama_autonomous_agent.py, scripts/realtime_workflow_monitor.py, scripts/resilience_auto_healing.py
+- tests/test_ollama_autonomous_agent.py and tests/test_ollama_enhanced_features.py
+- ollamatracks/checkpoint.json and resumefromhere.txt
+
+Purpose:
+- Keep repository ownership, merge policy, implementation status, memory state, and workflow proof aligned.
+
+### Category B — Platform, build, install, deployment, and workflow execution
+
+Files:
+- BUILD.md
+- DOWNLOAD.md
+- INSTALL.md
+- PLATFORM_REQUIREMENTS.md
+- ALLPLATFORMSDEVICE.md
+- GITHUB_ACTIONS_EXECUTION_GUIDE.md
+- WORKFLOWS.md
+- WORKFLOWSO.md
+- WORKFLOW_EXECUTION_PLAN.md
+- WORKFLOW_STATUS_DASHBOARD.md
+
+Supporting references:
+- package.json, requirements.txt, pytest.ini
+- .github/workflows/*.yml
+- scripts/monitor.sh, scripts/create-pr.sh, scripts/autonomous_runner.py
+- .env.example
+
+Purpose:
+- Define production platform readiness, environment prerequisites, GitHub automation execution, and workflow health.
+
+### Category C — Automation, monitoring, autonomous operations, and self-healing
+
+Files:
+- ALLAUTO.md
+- AUTODEV.md
+- MONITORING_GUIDE.md
+- OLLAMA_AUTOMATION_GUIDE.md
+- OLLAMA_ENHANCEMENT_COMPLETE.md
+- OLLAMA_ENHANCEMENT_SUCCESS.md
+- REAL_TIME_MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_README.md
+- RESILIENCE_AUTO_HEALING.md
+- TEST_ENHANCEMENTS.md
+- monitor.md
+- trigger.md
+
+Supporting references:
+- scripts/ollama_autonomous_agent.py
+- scripts/resilience_auto_healing.py
+- scripts/realtime_workflow_monitor.py
+- scripts/autonomous_runner.py
+- scripts/monitor.sh
+- tests/test_ollama_autonomous_agent.py
+- ollamatracks/
+
+Purpose:
+- Keep QMOI autonomous execution, monitoring loops, recovery, validation, and checkpointing operational without silent false-greens.
+
+### Category D — Product applications, feature surfaces, and UI experience
+
+Files:
+- ALLBACKEND.md
+- ALLFRONTEND.md
+- ALLPORTS.md
+- QALPHA.md
+- QALPHAUI.md
+- QCITY.md
+- QCITYUI.md
+- QMOIAI.md
+- QMOIAIUI.md
+- QMOISPACE.md
+- QMOISPACEUI.md
+- STYLES.md
+- UNIVERSALS.md
+
+Supporting references:
+- app/*, src/*, components/*, hooks/*, and UI code that powers the application surfaces
+- API.md, ENDPOINTS.md, ROUTES.md, ALLROUTES.md for product contract integration
+- docs and design references in the historical repo snapshot
+
+Purpose:
+- Describe the end-user experience and product surfaces so UI, backend, and platform logic stay aligned with the same architecture.
+
+### Category E — Trading, finance, wallets, and real-funds lifecycle
+
+Files:
+- FINANCIALMANAGER.md
+- API.md
+- ENDPOINTS.md
+- ROUTES.md
+- ALLROUTES.md
+- QMOI_REALTIME_MEMORY_INDEX.md
+- ALLBACKEND.md
+- ADVANCEMENT.md
+- AUTODEV.md
+- FINAL_VALIDATION_EVIDENCE_2026_08_29.md
+- GITHUB_ACTIONS_EXECUTION_GUIDE.md
+- IMPLEMENTATION_COMPLETE.md
+- MEMORY_INDEX.md
+- MERGE.md
+- MODEL_CARD.md
+- MONITORING_GUIDE.md
+- MONITORING_INDEX.md
+- MONITORING_SUMMARY.md
+- OLLAMA_AUTOMATION_GUIDE.md
+- OLLAMA_ENHANCEMENT_COMPLETE.md
+- OLLAMA_ENHANCEMENT_SUCCESS.md
+- PHASE_1_4_COMPLETION_SUMMARY.md
+- QALPHA.md
+- QMOIAI.md
+- QMOI_MODEL_CARD.md
+- QTEAM.md
+- README.md
+- monitor.md (when tracking live status)
+- REAL_TIME_MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_README.md
+- STYLES.md
+- TEST_ENHANCEMENTS.md
+- UNIVERSALS.md
+- WORKFLOWS.md
+- WORKFLOWSO.md
+- WORKFLOW_EXECUTION_PLAN.md
+- WORKFLOW_STATUS_DASHBOARD.md
+- github.md
+- oe.md
+- ollama.md
+- or.md
+- trigger.md
+- historical trading finance documents under qmoi-enhanced-history-14, especially FINANCIALMANAGER.md, TRADINGREADME.md, QMOITRADER.md, CASHONTRADINGREADME.md, ALLWALLETSQVS.md, QMOIMASKS.md, and QVS/ENHANCEDQVS.md
+- historical deal and payment documents under qmoi-enhanced-history-14, especially DEALS.md, PAYMENTS.md, and docs/REVENUE_SPEC.md
+
+Supporting references:
+- qmoi-enhanced-history-14/FINANCIALMANAGER.md
+- qmoi-enhanced-history-14/TRADINGREADME.md
+- qmoi-enhanced-history-14/CASHONTRADINGREADME.md
+- qmoi-enhanced-history-14/ALLWALLETSQVS.md
+- qmoi-enhanced-history-14/QMOIMASKS.md
+- qmoi-enhanced-history-14/QVS/ENHANCEDQVS.md
+- scripts/trading/* and backend/trading-engine.ts where present in the live repo or archived worktree
+- any exchange adapter, wallet, and account management modules discovered in the repo history
+
+Purpose:
+- Tie the trading and cash flow system to real account, wallet, and funds logic; it is a production-critical category that must stay monetization-aware and risk-controlled.
+
+### Category F — Security, privacy, masks, memory, and cross-system awareness
+
+Files:
+- github.md
+- oe.md
+- ollama.md
+- or.md
+- QMOI_MODEL_CARD.md
+- QMOI_REALTIME_MEMORY_INDEX.md
+- MEMORY_INDEX.md
+- monitor.md
+
+Supporting references:
+- qmoi-enhanced-history-14/QMOIMASKS.md
+- qmoi-enhanced-history-14/QVS/ENHANCEDQVS.md
+- scripts/ollama_autonomous_agent.py and realtime monitoring scripts
+- repository memory artifacts under ollamatracks and .qmoi_memory_index.json
+
+Purpose:
+- Ensure QMOI maintains secure, masked, privacy-aware, and memory-synced operations across GitHub, trading, monitoring, and autonomous execution.
+
+### Category G — GitHub, Vercel, and developer platform operating model
+
+Files:
+- GITHUBCLONED.md
+- GITHUB_SETUP_COMPLETE.md
+- GITHUB_ACTIONS_EXECUTION_GUIDE.md
+- MERGE.md
+- README.md
+- SYNC.md
+- WORKFLOWS.md
+- WORKFLOWSO.md
+- WORKFLOW_EXECUTION_PLAN.md
+- WORKFLOW_STATUS_DASHBOARD.md
+- github.md
+
+Supporting references:
+- .github/workflows/*.yml
+- scripts/create-pr.sh
+- scripts/github_auto_setup.py if present in the repo snapshot
+- GitHub CLI usage, branch sync, and automation monitor files
+- deployment and platform docs in the historical repo snapshot
+
+Purpose:
+- Keep the developer workflow, branch synchronization, hosting, and PR automation production-safe and verifiable.
+
+### Category H — Historical/archival references that remain relevant to live production planning
+
+Files:
+- qmoi-enhanced-history-14/FINANCIALMANAGER.md
+- qmoi-enhanced-history-14/TRADINGREADME.md
+- qmoi-enhanced-history-14/CASHONTRADINGREADME.md
+- qmoi-enhanced-history-14/ALLWALLETSQVS.md
+- qmoi-enhanced-history-14/QMOIMASKS.md
+- qmoi-enhanced-history-14/QVS/ENHANCEDQVS.md
+- qmoi-enhanced-history-14/QMOITRADER.md
+- additional historical markdown documents required for reconciliation and implementation comparison
+
+Supporting references:
+- historical workflow files, app directories, and archived trading modules under qmoi-enhanced-history-14/
+- root-level live docs that supersede stale closed-loop historical references
+
+Purpose:
+- Preserve valuable implementation history while ensuring current live docs remain authoritative and production-oriented.
+
+### Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations
+
+Files:
+- FINANCIALMANAGER.md
+- TRADINGREADME.md
+- API.md
+- ENDPOINTS.md
+- ROUTES.md
+- ALLROUTES.md
+- QMOI_REALTIME_MEMORY_INDEX.md
+- monitor.md
+- trigger.md
+- WORKFLOW_STATUS_DASHBOARD.md
+- REAL_TIME_MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_README.md
+- MONITORING_GUIDE.md
+- ALLAUTO.md
+- AUTODEV.md
+- QTEAM.md
+- STYLES.md
+- QMOIAI.md
+- QMOIAIUI.md
+- QCITY.md
+- QCITYUI.md
+- QMOISPACE.md
+- QMOISPACEUI.md
+- QALPHA.md
+- QALPHAUI.md
+- historical finance, wallet, and revenue docs under qmoi-enhanced-history-14 such as FINANCIALMANAGER.md, TRADINGREADME.md, CASHONTRADINGREADME.md, ALLWALLETSQVS.md, QMOI-REVENUE-README.md, QMOIAUTOREVENUEEARN.md, QMOIREVENUEGENERATION.md, REVENUEGENERATING.md, LEAHWALLET.md, QMOI_WALLET_FINANCIAL_SYSTEMS.md, and related reporting documents
+
+Supporting references:
+- scripts/trading/production_trading_autopilot.py
+- scripts/monitor_workflows.py
+- scripts/monitor.sh
+- scripts/realtime_workflow_monitor.py
+- scripts/ollama_autonomous_agent.py
+- scripts/resilience_auto_healing.py
+- ollamatracks/trading_dashboard.html
+- ollamatracks/checkpoint.json
+- ollamatracks/telemetry.jsonl
+- qmoi-enhanced-history-14/ALLWALLETSQVS.md
+- qmoi-enhanced-history-14/QMOITRADER.md
+- qmoi-enhanced-history-14/CASHON.md
+- qmoi-enhanced-history-14/CASHONTRADINGREADME.md
+- qmoi-enhanced-history-14/QMOI_FRIENDSHIP_ENHANCEMENT.md
+- qmoi-enhanced-history-14/QGLOBAL.md
+- qmoi-enhanced-history-14/QMOI_COMPLETE_SYSTEM_OVERVIEW.md
+- qmoi-enhanced-history-14/FEATURESREADME.md
+- docs and UI components for wallet, revenue, trading panels, and financial dashboards in the historical app tree
+
+Purpose:
+- Keep QMOI's financial engine, wallet awareness, global revenue generation, trading automation, account confidence, balance health, and real-money operational logic synchronized with monitoring, memory, automation, and UI. This category is the authoritative center for real-funds-aware decisioning and money-making execution across Binance, Bitget, CashOn, wallet flows, revenue systems, and individualized user experience design.
+
+### Active root file coverage checklist
+
+Every active markdown file in the repo root is represented across the categories above:
+- ACCOUNTABILITY.md, ADVANCEMENT.md, ALLAUTO.md, ALLBACKEND.md, ALLFRONTEND.md, ALLMDFILESREFS.md, ALLPLATFORMSDEVICE.md, ALLPORTS.md, ALLROUTES.md, API.md, AUTODEV.md, BUILD.md, DOWNLOAD.md, ENDPOINTS.md, ENHANCEMENT_SESSION_2026_08_18.md, FINAL_SESSION_COMPLETION_REPORT.md, FINAL_VALIDATION_EVIDENCE_2026_08_29.md, FINANCIALMANAGER.md, GITHUBCLONED.md, GITHUB_ACTIONS_EXECUTION_GUIDE.md, GITHUB_SETUP_COMPLETE.md, IMPLEMENTATION_COMPLETE.md, INSTALL.md, MEMORY_INDEX.md, MERGE.md, MODELEVOLUTIONO.md, MODEL_CARD.md, MONITORING_GUIDE.md, MONITORING_INDEX.md, MONITORING_SUMMARY.md, OLLAMA_AUTOMATION_GUIDE.md, OLLAMA_ENHANCEMENT_COMPLETE.md, OLLAMA_ENHANCEMENT_SUCCESS.md, PHASE_1_4_COMPLETION_SUMMARY.md, PLATFORM_REQUIREMENTS.md, QALPHA.md, QALPHAUI.md, QCITY.md, QCITYUI.md, QMOIAI.md, QMOIAIUI.md, QMOISPACE.md, QMOISPACEUI.md, QMOI_MODEL_CARD.md, QMOI_REALTIME_MEMORY_INDEX.md, QTEAM.md, README.md, REAL_TIME_MONITORING_GUIDE.md, REAL_TIME_MONITORING_README.md, RESILIENCE_AUTO_HEALING.md, ROUTES.md, SESSION_COMPLETION_REPORT.md, SESSION_COMPLETION_REPORT_2025_01_10.md, STYLES.md, SYNC.md, TEST_ENHANCEMENTS.md, TRADINGREADME.md, TREE_FULL_STRUCTURE.md, UNIVERSALS.md, WORKFLOWS.md, WORKFLOWSO.md, WORKFLOW_EXECUTION_PLAN.md, WORKFLOW_STATUS_DASHBOARD.md, github.md, monitor.md, oe.md, ollama.md, or.md, trigger.md.
+
+This checklist is the minimum required mapping. It is intentionally cross-referenced to the live automation, monitoring, trading, finance, UI, and GitHub/Vercel operational docs rather than a flat list of filenames.
 
 ---
 

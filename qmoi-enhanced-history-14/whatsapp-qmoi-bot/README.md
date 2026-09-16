@@ -23,7 +23,20 @@ A WhatsApp automation bot powered by Qmoi AI, using Baileys for WhatsApp Web int
 - AI-powered replies, media, and group actions
 - Broadcast and scheduled campaigns
 - Secure, encrypted data handling
+- Built-in help, health, privacy, finance, deal, and trading commands
+- Timeout-aware QMOI API fallback for natural-language messages
 - Runs 24/7 in Colab, Docker, or cloud
+
+## Commands
+
+- `/help` or `/start` - show supported bot commands
+- `/health` - show API configuration, timeout, and production-safety state
+- `/finance` - start a wallet, account, revenue, or payout conversation
+- `/deals` - review counterparty, proof, settlement, and reconciliation requirements
+- `/trade` - review platform readiness and risk gates
+- `/privacy` - show secret-handling guidance
+
+Commands provide status and guidance only. WhatsApp messages do not directly authorize fund movement, exchange orders, or deal settlement. Those actions require separately validated integrations, wallet checks, and explicit production gates.
 
 ## Setup
 1. Install dependencies: `npm install @whiskeysockets/baileys @hapi/boom axios`

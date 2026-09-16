@@ -301,6 +301,51 @@ jobs:
 class TestWorkflowMonitor:
     """Tests for real-time GitHub workflow monitoring behavior."""
 
+    def test_workflow_monitor_reports_fresh_tracker_health(self, tmp_path):
+        """A recent telemetry heartbeat should make the monitor healthy."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.track_dir = tmp_path / "ollamatracks"
+        monitor.track_dir.mkdir()
+        monitor._write_tracker_snapshot(
+            "heartbeat",
+            "Realtime monitor heartbeat",
+            "monitoring",
+            "health",
+            {},
+        )
+
+        health = monitor.build_tracker_health(max_age_seconds=120)
+
+        assert health["healthy"] is True
+        assert health["status"] == "healthy"
+        assert health["latest_event"] == "heartbeat"
+        assert health["heartbeat_age_seconds"] is not None
+        assert health["issues"] == []
+
+    def test_workflow_monitor_detects_stale_tracker_health(self, tmp_path):
+        """An old telemetry heartbeat must be visible as degraded monitor state."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.track_dir = tmp_path / "ollamatracks"
+        monitor.track_dir.mkdir()
+        monitor._write_tracker_snapshot(
+            "old-heartbeat",
+            "Old realtime monitor heartbeat",
+            "monitoring",
+            "health",
+            {},
+        )
+        telemetry_path = monitor.track_dir / "telemetry.jsonl"
+        telemetry_path.write_text(
+            '{"event":"old-heartbeat","timestamp_utc":"2020-01-01T00:00:00Z"}\n',
+            encoding="utf-8",
+        )
+
+        health = monitor.build_tracker_health(max_age_seconds=120)
+
+        assert health["healthy"] is False
+        assert health["status"] == "degraded"
+        assert any("stale" in issue for issue in health["issues"])
+
     def test_workflow_monitor_builds_health_summary(self):
         """The monitor should compute a reliable health summary from live job data."""
         monitor = WorkflowMonitor("123456", token="test-token")

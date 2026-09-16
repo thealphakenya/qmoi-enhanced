@@ -11,7 +11,7 @@ import sys
 import json
 import time
 import subprocess
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, asdict
@@ -433,6 +433,55 @@ class WorkflowMonitor:
             "job_names": [j.get('name') for j in test_jobs],
         }
         return test_summary
+
+    def build_tracker_health(self, max_age_seconds: int = 120) -> Dict[str, Any]:
+        """Report whether the persisted realtime monitor heartbeat is fresh and valid."""
+        required_files = [
+            self.track_dir / 'CURRENT_STATUS.txt',
+            self.track_dir / 'STATE.txt',
+            self.track_dir / 'telemetry.jsonl',
+        ]
+        missing = [str(path.relative_to(self.track_dir)) for path in required_files if not path.exists()]
+        issues: List[str] = []
+        latest_event = None
+        heartbeat_age_seconds: Optional[float] = None
+
+        telemetry_path = self.track_dir / 'telemetry.jsonl'
+        if telemetry_path.exists():
+            lines = [line for line in telemetry_path.read_text(encoding='utf-8').splitlines() if line.strip()]
+            if not lines:
+                issues.append('telemetry.jsonl is empty')
+            else:
+                try:
+                    latest = json.loads(lines[-1])
+                    latest_event = latest.get('event')
+                    timestamp = latest.get('timestamp_utc')
+                    if not timestamp:
+                        issues.append('latest telemetry event has no timestamp_utc')
+                    else:
+                        event_time = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                        heartbeat_age_seconds = max(
+                            0.0,
+                            (datetime.now(timezone.utc) - event_time).total_seconds(),
+                        )
+                except (json.JSONDecodeError, ValueError, TypeError) as error:
+                    issues.append(f'latest telemetry event is invalid: {error}')
+
+        if missing:
+            issues.extend(f'missing tracker file: {name}' for name in missing)
+        if heartbeat_age_seconds is not None and heartbeat_age_seconds > max_age_seconds:
+            issues.append(f'tracker heartbeat is stale: {heartbeat_age_seconds:.1f}s old')
+
+        return {
+            'healthy': not issues,
+            'status': 'healthy' if not issues else 'degraded',
+            'max_age_seconds': max_age_seconds,
+            'heartbeat_age_seconds': heartbeat_age_seconds,
+            'latest_event': latest_event,
+            'missing_files': missing,
+            'issues': issues,
+            'checked_at_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+        }
 
     def print_header(self):
         """Print monitor header"""

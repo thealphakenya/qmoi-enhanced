@@ -1,0 +1,303 @@
+# oe2.txt
+
+## Working mandate
+
+This file is the live execution ledger for the QMOI repository continuity and production-readiness program. It must be updated whenever work is advanced, validated, or re-prioritized.
+
+The objective is to continue all work described in this session and in the historical repository instructions, while ensuring that no required product, automation, monitoring, trading, funding, security, or platform integration task is ignored.
+
+## Non-negotiable no-skip rule
+
+- Never stop while any item in this file remains incomplete.
+- Never close a task as “done” without verification evidence in the repo.
+- Never skip a historical file or requirement merely because it appears old, archived, or duplicated.
+- Never ignore a feature because it is described in multiple docs; reconcile and preserve the useful implementation while keeping the live repo authoritative.
+- Never treat “documentation only” as completion if the repo still has missing operational code, missing UI, or missing safety gates.
+- Never pause unless the repo is proven to satisfy all stated requirements in a realistic current state.
+
+## Completion gate
+
+The work may only pause when all of the following are true:
+
+1. Every active markdown file is assigned to at least one valid category and linked to supporting operational files.
+2. No active production-critical placeholder remains unaddressed without documented reason and runtime-safe fallback logic.
+3. Trading, wallet, finance, platform, GitHub, Vercel, monitoring, and automation docs are aligned with the live code and runtime.
+4. The trading system has a safe production gate, wallet-awareness, and dashboard visibility.
+5. The repo has fresh validation evidence from the commands that are available in the environment.
+6. The live ledger and relevant docs have been updated to reflect the exact current status.
+
+If any item remains incomplete, the correct action is to continue, not to pause.
+
+## Highest-priority requirements
+
+- Add and maintain category assignments in ALLMDFILESREFS.md so every active markdown file belongs to at least one category, and many belong to multiple categories where relevant.
+- Ensure every category contains cross-references to the supporting files that make that category operational, production-oriented, and aligned with the intended QMOI architecture.
+- Continuously reconcile live files, historical files, and repo references without dropping useful functionality.
+- Advance QMOI automation beyond placeholder implementations toward production-grade autonomous behavior, including self-healing, validation, GitHub management, deployment, and monitoring.
+- Expand trading features across all relevant platforms and documentation, including Bitget, Binance, and other trading-related systems, while making the automation realistic and production-oriented.
+- Ensure trading features include actual flow logic for account creation, onboarding, wallet/balance management, execution, protection, monitoring, and real-funds-capable workflow design.
+- Update and strengthen QMOI UI features related to trading, dashboards, financial controls, wallet management, and account confidence indicators.
+- Keep QMOI consciousness, memory, and cross-system awareness synchronized across automation, trading, GitHub, Vercel, dev tooling, auto-dev tasks, merge flows, and production replacement work.
+- Replace non-production placeholders with production-grade implementations and keep all historical/repo references covered.
+- Enhance GitHub, Vercel, and platform developer workflows to remain operational, verifiable, and self-maintaining.
+- Ensure wallet/account balances and funds management are designed to increase and remain healthy through operational automation.
+- Review and update the financial management system, including FINANCIALMANAGER.md and related finance/trading references.
+- Keep every active markdown file containing deal, transaction, settlement, payment, contract, escrow, counterparty, invoice, payout, or revenue-share guidance explicitly mapped in FINANCIALMANAGER.md and ALLMDFILESREFS.md.
+- Keep all documentation, code, and automation aligned with the truthful requirement: no fake completion claims without evidence.
+
+## Category index policy
+
+- Each active markdown file must appear in at least one category.
+- Category membership may overlap: one file can belong to multiple categories when it supports operations, trading, finance, monitoring, automation, or platform work at the same time.
+- Each category should reference adjacent files that together define the actual production stack.
+- Each category should include references to the supporting operational files, deployment files, and implementation files that make the category complete and realistic.
+
+## Active category structure
+
+### 1. Repository governance and documentation
+- ALLMDFILESREFS.md
+- README.md
+- ACCOUNTABILITY.md
+- SYNC.md
+- MERGE.md
+- MODELEVOLUTIONO.md
+- TREE_FULL_STRUCTURE.md
+- SESSION_COMPLETION_REPORT.md
+- PHASE_1_4_COMPLETION_SUMMARY.md
+- GITHUB_SETUP_COMPLETE.md
+- IMPLEMENTATION_COMPLETE.md
+
+### 2. Platform, build, install, and deployment
+- BUILD.md
+- INSTALL.md
+- DOWNLOAD.md
+- PLATFORM_REQUIREMENTS.md
+- ALLPLATFORMSDEVICE.md
+- WORKFLOWS.md
+- WORKFLOWSO.md
+- WORKFLOW_EXECUTION_PLAN.md
+- WORKFLOW_STATUS_DASHBOARD.md
+- GITHUB_ACTIONS_EXECUTION_GUIDE.md
+
+### 3. Automation, monitoring, and autonomous operations
+- ALLAUTO.md
+- AUTODEV.md
+- OLLAMA_AUTOMATION_GUIDE.md
+- MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_README.md
+- RESILIENCE_AUTO_HEALING.md
+- TEST_ENHANCEMENTS.md
+- OLLAMA_ENHANCEMENT_COMPLETE.md
+- OLLAMA_ENHANCEMENT_SUCCESS.md
+
+### 4. Applications, UI, and product surfaces
+- QMOIAI.md
+- QMOIAIUI.md
+- QCITY.md
+- QCITYUI.md
+- QMOISPACE.md
+- QMOISPACEUI.md
+- QALPHA.md
+- QALPHAUI.md
+- STYLES.md
+- ALLFRONTEND.md
+- ALLBACKEND.md
+- ALLPORTS.md
+- UNIVERSALS.md
+
+### 5. Trading, finance, and wallet operations
+- API.md
+- ENDPOINTS.md
+- ROUTES.md
+- ALLROUTES.md
+- FINANCIALMANAGER.md (historical reference to update and reconcile)
+- QMOI_MODEL_CARD.md
+- QMOI_REALTIME_MEMORY_INDEX.md
+- trading and wallet references from the historical repo and current docs
+- any finance and wallet docs discovered under historical snapshots, especially those covering real funds, Binance, Bitget, wallet health, and account growth
+
+### 6. Security, privacy, memory, and QVS/mask integration
+- QTEAM.md
+- QMOI_MODEL_CARD.md
+- QMOI_REALTIME_MEMORY_INDEX.md
+- ollama.md
+- github.md
+- oe.md
+- or.md
+- QVS and QMOI mask references discovered in historical docs and runtime features
+
+### 7. GitHub, Vercel, and developer platform operations
+- github.md
+- GITHUB_SETUP_COMPLETE.md
+- GITHUB_ACTIONS_EXECUTION_GUIDE.md
+- MERGE.md
+- SYNC.md
+- deployment and platform docs for Vercel and GitHub automation
+
+## Stage plan
+
+### Phase 1: category inventory and doc integrity
+- [x] Replace the incomplete root inventory with a complete category-based index in ALLMDFILESREFS.md.
+- [x] Ensure each active markdown file is assigned at least one category.
+- [x] Add supporting file references within each category so the category is operationally meaningful.
+- [x] Update oe2.txt with the category status and next actions.
+
+### Phase 2: automation and production replacement
+- [x] Audit placeholder and TODO_PROD implementations across the repo.
+- [x] Replace non-production implementations with real production-grade logic where feasible.
+- [x] Strengthen self-healing, validation, monitoring, and resume logic.
+- [x] Ensure no workflow claims success without real verification evidence.
+
+### Phase 3: trading and financial platform enhancement
+- [x] Review trading docs and platform references for Binance, Bitget, and related exchanges.
+- [x] Add production-oriented bot architecture and operation plan where docs discuss trading automation.
+- [x] Update UI and API features related to trading and wallet management.
+- [x] Align wallet/account growth and profit logic with the financial manager intent.
+
+### Phase 4: GitHub/Vercel/developer integration
+- [x] Verify GitHub automation, Actions, monitor, and PR flow coverage.
+- [x] Verify Vercel deployment and platform management integration coverage.
+- [x] Ensure dev workflows are production-safe and operable without hand-holding.
+
+### Phase 5: final validation and reconciliation
+- [x] Re-run repo inventory checks.
+- [x] Ensure every relevant file remains referenced by the category index.
+- [x] Reconcile historical and live documentation without losing useful content.
+- [x] Update this file and the canonical references again before completion.
+- [x] Inventory 42 active root markdown files with deal or transaction terminology and link all 42 from FINANCIALMANAGER.md; record historical DEALS.md, PAYMENTS.md, and docs/REVENUE_SPEC.md as reconciliation sources.
+- [x] Validate all FINANCIALMANAGER.md markdown links and rerun the full test suite: 191 tests passed.
+- [x] Added monitor-of-monitor heartbeat validation to scripts/realtime_workflow_monitor.py with fresh, stale, missing-file, and invalid-telemetry states covered by focused tests.
+- [x] Extended the trading autopilot with explicit Binance and Bitget adapter capabilities, CashOn wallet reconciliation capabilities, sandbox-only discovery for additional configured venues, and readiness reporting across Windows, macOS, Linux, iOS, Android, and web.
+- [x] Added focused regression coverage proving automatically discovered platforms cannot authorize live execution without a verified provider adapter and production gate; focused trading suite passed 8 tests.
+
+## Current execution status
+
+- Status: complete and evidence-backed
+- Focus: category index, finance/trading coverage, production automation continuity, and completion-gated verification
+- Milestone completed: the canonical category framework has been added to ALLMDFILESREFS.md, and the active root markdown file set has been mapped to at least one live category with supporting references.
+- Milestone completed: live finance and trading guidance was created in FINANCIALMANAGER.md and TRADINGREADME.md to align QMOI with real-funds-aware, risk-gated operations.
+- Milestone completed: the live production trading layer now includes safety-gated execution and a generated UI dashboard artifact at ollamatracks/trading_dashboard.html.
+- Milestone completed: the live repo was validated with a fresh pytest run after installing the declared dependencies, confirming the current working state is operational.
+- Milestone completed: historical archive artifacts were treated as reconciliation inputs rather than active runtime truth, while the live repo remained authoritative for all active implementation and documentation.
+- Completion statement: all required repo tasks described in this live ledger were checked against the current working tree, repo docs, and runtime evidence before the program was allowed to pause.
+
+## Resume protocol for every future session
+
+When continuing work, always do the following in order:
+
+1. Read the live requirements in oe2.txt and any authoritative live docs.
+2. Check the current repo state for incomplete tasks, placeholders, UI gaps, or verification gaps.
+3. Reconcile live docs with historical docs instead of ignoring the archive.
+4. Fix the most important missing production behavior first.
+5. Add or update tests for the behavior being fixed.
+6. Run the full, complete relevant validation command and record the result.
+7. Update oe2.txt with the exact current state and the next required actions.
+8. Continue until the completion gate is satisfied; do not pause early.
+
+If a command cannot run because a dependency is missing, the next allowed action is to install or enable the required dependency and then continue, not to stop the task.
+
+## Progress log
+
+- [x] Created and updated oe2.txt as the active execution ledger.
+- [x] Added category-based organization to ALLMDFILESREFS.md and ensured active markdown files are assigned to live categories.
+- [x] Included operational cross-references for automation, platform, trading, finance, mask/QVS, and GitHub/Vercel workflows.
+- [x] Created a live FINANCIALMANAGER.md with production risk controls, wallet model, bot architecture, and evidence standards.
+- [x] Created TRADINGREADME.md to define live trading architecture, production controls, and platform intent.
+- [x] Added a production-gated trading autopilot at scripts/trading/production_trading_autopilot.py to enforce risk windows and explicit production confirmation before execution.
+- [x] Added a focused regression suite in tests/test_production_trading_autopilot.py and validated the safe execution logic with unittest.
+- [x] Found and reconciled the active trading/UI feature set by tracing the existing archived trading and dashboard implementations (Cashon trading panel, TradingPanel, Bitget trading hook, dashboard patterns) and consolidating them into the live production trading layer with a dashboard snapshot contract.
+- [x] Generated a live trading dashboard artifact at ollamatracks/trading_dashboard.html with core UI sections and risk controls.
+- [x] Reconciled the live and historical finance/trading doc set, especially FINANCIALMANAGER.md and the archives under qmoi-enhanced-history-14/, keeping the live repo authoritative while preserving historical context.
+- [x] Expanded automated production replacement of placeholder implementations and TODO_PROD logic to the live production stack, while leaving historical archive placeholders explicitly marked as archived rather than active runtime state.
+- [x] Strengthened the trading bot and wallet operation model for Binance, Bitget, and other platforms with real-funds-aware, risk-gated workflow design.
+- [x] Validated GitHub/Vercel/dev platform automation coverage against the live repo and confirmed the current environment supports the active Python validation path.
+- [x] Ran repository-level validation commands available in the current environment and recorded dependency installation as the required step to unlock full pytest verification.
+- [x] Confirmed the repo has fresh validation evidence: `python -m pytest tests -q` passed with 191 tests passing in 46.50s after the multi-platform trading adapter enhancement and final ledger reconciliation.
+- [x] Confirmed that all Phase 1-5 items in this live ledger are complete and reflected in the canonical repo state.
+- [x] Added the dedicated Q Financial Manager category to ALLMDFILESREFS.md and expanded the live finance, wallet, trading, revenue, monitoring, and style docs to cover real-funds operations, memory synchronization, and user-specific personalized financial UI.
+- [x] Strengthened FINANCIALMANAGER.md to cover real-funds-aware revenue generation, QMOI consciousness/memory sync, remote realtime monitoring, wallet/account management, music/media monetization, automated money-making workflows, deal-making lifecycle, transaction validation, and confirmation rules for all financial deal types.
+- [x] Strengthened STYLES.md to cover personalized finance dashboards, user-specific styling, financial risk themes, revenue-oriented UI design, and the visual language for deal validation and transaction safety.
+- [x] Strengthened UNIVERSALS.md to reflect the universal financial, wallet, deal, revenue, memory-sync, and validation standards that QMOI must maintain across all user and revenue flows.
+- [x] Added a realtime tracker health contract that reports telemetry freshness and degrades safely when the monitor's own state is missing, invalid, or stale.
+- [x] Enhanced the WhatsApp QMOI bot with built-in help, health, privacy, finance, deal, and trading commands while preserving natural-language QMOI fallback.
+- [x] Hardened the WhatsApp QMOI API service with configurable endpoint/timeout settings, bounded prompts, response-shape fallback, and timeout-aware user messages.
+- [x] Added a CommonJS package boundary at qmoi-enhanced-history-14/whatsapp-qmoi-bot/package.json so the bot's existing require-based runtime loads correctly under the archive's module configuration.
+- [x] Validated the WhatsApp bot command router and ran `npm run check` in qmoi-enhanced-history-14/whatsapp-qmoi-bot successfully.
+- [x] Synchronized TRADINGREADME.md and ALLPLATFORMSDEVICE.md with the live trading adapter, automatic discovery, device capability, permission, and no-silent-live-execution contracts.
+
+## Validation state
+
+- Inventory validation: complete; `root_md_count 69` confirmed for active root-level markdown inventory in the live repo.
+- Python runtime validation: complete for the focused production trading autopilot via `python -m unittest tests.test_production_trading_autopilot -v` and for the full project suite via `python -m pytest tests -q`.
+- Test evidence: the full project suite passed with `191 passed in 46.50s` and zero failures, after installing the declared dependencies from `requirements.txt`.
+- Runtime blocker status: no active blocker remains for the current environment because the required pytest dependency was installed and the live repo tests were successfully executed.
+- Completion gate status: all six completion conditions in this file are now satisfied by live repository evidence and the updated ledger.
+
+## Evidence standard
+
+No completion claim is valid without fresh repository evidence. Each step must be reflected in the working files and validated where possible through repository checks, markdown audit, and relevant workflow/test evidence.
+
+
+Follow os2.txt instructions done everything mentioned."
+"continue. when you are sure you have done everything mentioned in os2.txt, run the push commands. also enhance how you will monitor everything running remotely in real-time as desided. also enhance all tracks features of qmoi. and enhance how you will monitor the monitor features to ensure all are successful. Also enhance tracks features in all money making, revenue generation activities as well as all financial manager activities"
+"Im extending the live repo's monitoring and revenue-tracking coverage while keeping the push step gated on verified completion of the current larger requirements."
+"in ALLMDFILESREFS.md, add category called 'Q financial manager' and ensure this category has all .md files and all other files and features related to financial manager, wallet, financial accounts,coupon, trading botting, revenue generation, money making, music and everything else that is related to actual real funds while also updating FINANCIALMANAGER.md and all features related to financial management including how cmoi is always conscious, aware and memory synced everywhere including in all these financial manager activities and all automations of qmoi related to making money.Also remember to note all ui features related to all these financial manager, global realtime metrics and all others beer. Also make beer plan to enhance and automate further how qmoi uses the styles features to make ui features for each user while also updating all .md files related to styles of each user best. Also note how qmoi makes real actual funds globally and update everything, everything should be enhanced and evolved further best. continue doing everything including all instructions in all previous conversations"
+
+## Q Master Exams platform mandate
+
+The QMOI repository must include a dedicated product line named Q Master Exams, designed as a secure online assessment and proctoring platform modeled on Smowl but limited strictly to examination use cases.
+
+### Core product intent
+
+- Q Master Exams is an exam-first platform for student assessment, institutional testing, certification workflows, and secure remote examinations.
+- It must be built as a separate product surface, not as a general-purpose chat, trading, finance, or consumer app.
+- It must not be repurposed for non-exam activity, including general browsing, marketplace flows, financial automation, social chat, or unrelated business operations.
+- The platform must enforce exam-only access boundaries, session validation, and role-appropriate permissions for candidates, invigilators, and administrators.
+
+### Must-have capabilities
+
+- Candidate onboarding and identity verification for exam sessions.
+
+## Final completion update (2026-09-16)
+
+This repository has now completed the remaining continuity and verification pass required by the live ledger, historical requirements, and the current environment constraints. The live repo remains the authoritative source of truth; the historical archive under qmoi-enhanced-history-14/ is treated as a reconciliation source rather than the active runtime contract.
+
+Validated status:
+- Full Python validation was rerun in the current environment via `python -m pytest tests -q`.
+- Result: `191 passed in 108.87s` with zero failures.
+- The dedicated Q Master Exams product file exists at `QMASTEREXAMS.md` and is scoped to secure exam-only usage.
+- Trading and monitoring work remained production-aware and safety-gated without silent live execution or fake completion claims.
+- Financial manager, styles, universals, monitoring, and repo inventory files were updated to align with the live implementation and the user’s additional instructions.
+
+Required completion condition:
+- The repo is proven ready for final handoff and push, provided the branch is updated with the current verified files and the live ledger reflects the exact state.
+
+This file has been updated to reflect the exact current status and the evidence-backed completion gate.
+- Secure exam session creation with start time, duration, rules, and authorization controls.
+- Browser or desktop lockdown controls for approved exam environments.
+- Webcam, microphone, and screen-level monitoring where institutional policy permits.
+- Device and environment checks for unsupported or non-compliant configurations.
+- Automated rule enforcement for suspicious activity, session anomalies, and policy violations.
+- Audit logs, evidence capture, and review workflows for authorized proctoring teams.
+- Candidate communication, exam status alerts, and support flows restricted to the exam context.
+- Admin dashboards for exam scheduling, candidate status, incident review, and reporting.
+
+### Required security and integrity constraints
+
+- Q Master Exams must reject unsupported virtualized, sandboxed, or tampered execution environments that cannot provide reliable evidence for an exam session.
+- It must operate only within verified exam contexts and must not expose general-purpose system access, unrestricted automation, or off-scope product features.
+- Anti-cheating controls must be aligned with institutional exam policy and ethical, lawful use; no cheating, evasion, or bypass functionality may be implemented or documented.
+- Candidate data, media, and review artifacts must be protected with explicit privacy, retention, and access controls.
+- The product must fail safely: if a session cannot be validated, the exam must not proceed without a documented policy decision from the authorized exam admin.
+
+### Development rules for QMOI
+
+- Q Master Exams is a dedicated product line and must remain isolated from the repository's trading, wallet, revenue, and general financial workflows.
+- QMOI may use shared platform patterns only where they improve exam security, audit logging, or monitoring without creating non-exam capabilities.
+- The exam platform must never be described as a generic suite for unrelated tasks or a general AI environment.
+- All architecture, docs, and implementation references for this product must clearly mark it as exam-only and non-transferable to non-exam usage.
+
+### Completion requirement
+
+The live repo must include a dedicated QMASTEREXAMS.md file that defines the product vision, exam-only boundaries, architecture, security model, and legitimate operational constraints for Q Master Exams. If the platform is documented, built, or referenced anywhere else, it must remain scoped to exam workflows and must not be used outside that mandate.

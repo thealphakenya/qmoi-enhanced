@@ -106,6 +106,8 @@ The script reports:
 - Completed success or failure
 - A final count of passed, failed, and pending workflows
 
+The lower-level `scripts/realtime_workflow_monitor.py` also exposes a monitor-of-monitor health contract through `build_tracker_health()`. It checks that `CURRENT_STATUS.txt`, `STATE.txt`, and `telemetry.jsonl` exist, parses the newest telemetry heartbeat, reports its age, and marks the tracker `degraded` when telemetry is missing, invalid, or older than the configured freshness window. This prevents a silent stale monitor from being treated as live health.
+
 Use a token with the minimum read permissions needed for Actions and repository
 metadata. Never place a token in a file, workflow log, issue, or artifact.
 

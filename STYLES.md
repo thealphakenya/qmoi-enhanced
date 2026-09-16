@@ -34,6 +34,53 @@ QMOI is also treated as an active avatar persona in the interface layer. The aut
 - Voice selection should be tied to the selected avatar and should expose the enhanced QMOI voice presets.
 - The avatar window style should apply immersive glass, glow, and motion treatments to show QMOI as a full live presence in the interface.
 
+## Personalized financial and user style system
+
+QMOI should personalize the user style experience while preserving a consistent financial-control layer. Every user, wallet owner, or revenue stream should be able to receive a tailored visual experience without creating unsafe or ambiguous financial state.
+
+### User-specific style model
+
+- Identity-aware theme: each user or group gets a consistent QMOI presence pattern.
+- Financial-risk theme: the UI changes visual emphasis based on account confidence, wallet health, and execution risk.
+- Revenue focus theme: a premium-growth mode highlights earnings, revenue streams, and account health.
+- Trust and audit theme: a security-first mode emphasizes proof, compliance, and monitoring state.
+- Music and creator theme: for creative monetization paths, the UI emphasizes media, licensing, and revenue flow.
+
+### QMOI dashboard personalization rules
+
+- User profile must be visible and memory-synced before style personalization is applied.
+- The financial dashboard must preserve critical operational information even in more aesthetic modes.
+- High-risk situations must override generic visual themes with safety-first UI.
+- Style presets must not hide wallet balances, platform status, or action gating.
+- Personalization should support both aesthetic identity and operational clarity.
+
+## Financial deal and transaction UI styling
+
+Financial UI should visually communicate trust, urgency, and clarity. The interface should use a distinct style language for deal-making and transaction validation while still fitting into the QMOI system design.
+
+### Deal-management visual language
+
+- High-confidence deals: green, stable, low-noise presentation
+- Pending confirmation: amber or warm accent with explicit action states
+- Risk or failed validation: red with emphasis on blocking action and audit detail
+- Revenue and growth views: blue / purple accent with high-clarity summaries
+- Creative or media deals: flexible brand styling while preserving risk and proof metadata
+
+### Financial panel layout expectations
+
+- Top summary row: balance, exposure, revenue, active deals, pending validations
+- Middle risk strip: wallet health, transaction confidence, exchange status
+- Lower activity stream: deal lifecycle events, proofs, confirmations, and settlements
+- Alert rail: blocked or suspicious actions visible without burying the main data
+- Personalized mode: user-specific color or branding support without removing safety cues
+
+### Style rules for multi-user financial UX
+
+- The system must retain operational readability even in premium or branded themes.
+- Confidence and risk indicators must remain visible at all times.
+- Personalization must not hide executable actions, wallet data, or transaction proof states.
+- The same deal and transaction patterns should look consistent across web, mobile, and dashboard surfaces.
+
 ## Design Systems by Platform
 
 ### Windows: Fluent Design System 2.0
