@@ -746,3 +746,11 @@ DEPENDENCY REMEDIATION UPDATE — 2026-09-16
 - Archived Node remediation is now complete in the canonical tree: PM2 is aligned to ^7.0.4, js-yaml is overridden to 4.3.2, and npm audit reports zero vulnerabilities; the two incomplete snapshot manifests are aligned to the same contract for lockfile regeneration.
 - The two mirrored archived manifests were also aligned to Next ^16.3.5 to remove their stale Next/PostCSS advisory range.
 - Final dependency verification: all six tracked non-node_modules package-lock.json files report 0 vulnerabilities; npm audit reports 0 vulnerabilities for the active root tree; no stale requests/PyYAML floors remain; full pytest validation remains 196 passed.
+
+AUTONOMOUS REMEDIATION ENHANCEMENT — 2026-09-16
+
+- Consolidated the trusted-branch automation in scripts/qmoi_autonomous_remediator.py and .github/workflows/qmoi-autonomous-remediation.yml.
+- The remediator scans tracked package-lock/npm-shrinkwrap files, applies npm audit fixes, updates stale tracked Python dependency floors, validates JSON/Python/YAML/JavaScript, and reports TS/TSX/text files without destructive guessing.
+- Scheduled runs now enable major package-manager security fixes automatically; manual runs retain an explicit allow-major control.
+- Focused remediator tests: 3 passed. Full repository suite: 199 passed in 62.53s.
+- This automation can safely remediate deterministic dependency and syntax issues; arbitrary application defects, unavailable credentials, and GitHub permission failures remain reported for review rather than falsely marked fixed.

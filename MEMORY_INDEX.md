@@ -1,8 +1,8 @@
 # QMOI Realtime Memory Index
 
-Generated: 2026-09-16T16:55:04.201614Z
+Generated: 2026-09-16T17:13:59.574726Z
 
-Files Tracked: 65211
+Files Tracked: 65214
 
 ## Files
 
@@ -14,6 +14,7 @@ Files Tracked: 65211
 - `.github/workflows/ollama-master-orchestrator.yml`
 - `.github/workflows/ollama-pr-validation.yml`
 - `.github/workflows/pr-monitor.yml`
+- `.github/workflows/qmoi-autonomous-remediation.yml`
 - `.github/workflows/workflow-tracker.yml`
 - `.gitignore`
 - `.qmoi_memory_index.json`
@@ -65199,6 +65200,7 @@ Files Tracked: 65211
 - `scripts/monitor_workflows.py`
 - `scripts/ollama_autonomous_agent.py`
 - `scripts/ollama_runtime.py`
+- `scripts/qmoi_autonomous_remediator.py`
 - `scripts/qmoi_model_evaluation.py`
 - `scripts/qmoi_seed.py`
 - `scripts/qmoi_wallet_manager.py`
@@ -65207,6 +65209,7 @@ Files Tracked: 65211
 - `scripts/validate_workflows.py`
 - `scripts/workflow_status_dashboard.py`
 - `test-results.txt`
+- `tests/test_autonomous_remediator.py`
 - `tests/test_enhanced_tracking_and_workflows.py`
 - `tests/test_materialize_merged_repo.py`
 - `tests/test_ollama_autonomous_agent.py`
