@@ -36,3 +36,9 @@ REMOTE PR CONTINUATION — 2026-09-16
 - Post-merge validation passed: 181 tests and workflow YAML validation.
 - PR state is OPEN and MERGEABLE; workflow-integrity validation is IN_PROGRESS, Vercel checks are pending, and the repository auto-merge helper check is FAILURE.
 - The remote default branch reports 15 remaining Dependabot vulnerabilities (8 high, 7 moderate). The branch contains the requests remediation, but those alerts are not claimed cleared until the PR merges and GitHub re-reports the default-branch state.
+
+REMOTE RESOURCE CONTINUATION UPDATE — 2026-09-16
+
+- Realtime workflow telemetry is bounded by QMOI_MAX_TELEMETRY_LINES (default 2,000) and in-memory metric history by QMOI_MAX_METRICS_SAMPLES (default 600).
+- The remote realtime monitor now uses shallow checkout depth 1 and seven-day artifact retention to reduce storage, memory, and browser data usage while preserving recent evidence.
+- Resource-bound validation passed with telemetry capped at 100 lines in a temporary monitor run; modified monitor Python syntax also compiled successfully.
