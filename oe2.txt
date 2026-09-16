@@ -742,3 +742,7 @@ DEPENDENCY REMEDIATION UPDATE — 2026-09-16
 - Raised the active Python dependency floors to patched releases: requests>=2.32.4 and PyYAML>=6.0.2.
 - npm audit reports zero vulnerabilities for the active Node dependency tree.
 - GitHub Dependabot alert details could not be fetched from this environment because the API returned HTTP 403; no claim is made that inaccessible remote alerts are fully cleared until GitHub access is available.
+- Updated every tracked requirements manifest containing the stale requests>=2.31.0 floor, including archived and incomplete source snapshots, and updated the two mirrored PyYAML>=6.0.0 declarations.
+- Archived Node remediation is now complete in the canonical tree: PM2 is aligned to ^7.0.4, js-yaml is overridden to 4.3.2, and npm audit reports zero vulnerabilities; the two incomplete snapshot manifests are aligned to the same contract for lockfile regeneration.
+- The two mirrored archived manifests were also aligned to Next ^16.3.5 to remove their stale Next/PostCSS advisory range.
+- Final dependency verification: all six tracked non-node_modules package-lock.json files report 0 vulnerabilities; npm audit reports 0 vulnerabilities for the active root tree; no stale requests/PyYAML floors remain; full pytest validation remains 196 passed.

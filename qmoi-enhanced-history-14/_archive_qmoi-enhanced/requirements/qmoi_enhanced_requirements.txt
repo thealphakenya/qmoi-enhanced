@@ -1,7 +1,7 @@
 # QMOI Enhanced System Requirements
 
 # Core Python packages
-requests>=2.31.0
+requests>=2.32.4
 psutil>=5.9.0
 uuid
 datetime
