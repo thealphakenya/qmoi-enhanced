@@ -1,6 +1,6 @@
 # QMOI Realtime Memory Index
 
-Generated: 2026-09-15T22:03:08.597659Z
+Generated: 2026-09-16T16:32:44.227497Z
 
 Files Tracked: 63370
 
@@ -54291,7 +54291,6 @@ Files Tracked: 63370
 - `qmoi-enhanced-incomplete-20260915T1733Z/sources/qmoi-enhanced/pytest.ini`
 - `qmoi-enhanced-incomplete-20260915T1733Z/sources/qmoi-enhanced/requirements.txt`
 - `qmoi-enhanced-incomplete-20260915T1733Z/sources/qmoi-enhanced/resumefromhere.txt`
-- `qmoi-enhanced-incomplete-20260915T1733Z/sources/qmoi-enhanced/scripts/.env`
 - `qmoi-enhanced-incomplete-20260915T1733Z/sources/qmoi-enhanced/scripts/advanced_agent_healer.py`
 - `qmoi-enhanced-incomplete-20260915T1733Z/sources/qmoi-enhanced/scripts/agent_core.py`
 - `qmoi-enhanced-incomplete-20260915T1733Z/sources/qmoi-enhanced/scripts/autonomous_runner.py`
@@ -63346,7 +63345,6 @@ Files Tracked: 63370
 - `qmoi-enhanced/MARKDOWN_HISTORY/qmoi-enhanced/remotes__origin__auto__placeholders__pr-patch-730e13874a1c207ea2a3a2ca71d1a929ea46dd6a/docs/lion_variations/lion-embedded.md`
 - `requirements.txt`
 - `resumefromhere.txt`
-- `scripts/.env`
 - `scripts/advanced_agent_healer.py`
 - `scripts/agent_core.py`
 - `scripts/autonomous_runner.py`
@@ -63362,6 +63360,7 @@ Files Tracked: 63370
 - `scripts/ollama_runtime.py`
 - `scripts/qmoi_model_evaluation.py`
 - `scripts/qmoi_seed.py`
+- `scripts/qmoi_wallet_manager.py`
 - `scripts/realtime_workflow_monitor.py`
 - `scripts/resilience_auto_healing.py`
 - `scripts/validate_workflows.py`
@@ -63373,6 +63372,7 @@ Files Tracked: 63370
 - `tests/test_ollama_enhanced_features.py`
 - `tests/test_ollama_runtime.py`
 - `tests/test_qmoi_seed_and_model.py`
+- `tests/test_wallet_and_links.py`
 - `trigger.md`
 - `validation_report.json`
 - `zx.txt`
