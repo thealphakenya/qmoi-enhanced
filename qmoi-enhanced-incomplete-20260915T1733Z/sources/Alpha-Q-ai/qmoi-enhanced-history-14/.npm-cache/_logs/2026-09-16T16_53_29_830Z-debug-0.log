@@ -1,0 +1,22 @@
+0 verbose cli /usr/local/share/nvm/versions/node/v24.20.0/bin/node /home/codespace/nvm/current/bin/npm
+1 info using npm@11.19.0
+2 info using node@v24.20.0
+3 silly config load:file:/usr/local/share/nvm/versions/node/v24.20.0/lib/node_modules/npm/npmrc
+4 silly config load:file:/workspaces/qmoi-enhanced/qmoi-enhanced-incomplete-20260915T1733Z/sources/Alpha-Q-ai/qmoi-enhanced-history-14/.npmrc
+5 silly config load:file:/home/codespace/.npmrc
+6 silly config load:file:/usr/local/share/nvm/versions/node/v24.20.0/etc/npmrc
+7 verbose title npm ls next postcss
+8 verbose argv "ls" "next" "postcss" "--all" "--depth" "2"
+9 verbose logfile logs-max:10 dir:/workspaces/qmoi-enhanced/qmoi-enhanced-incomplete-20260915T1733Z/sources/Alpha-Q-ai/qmoi-enhanced-history-14/.npm-cache/_logs/2026-09-16T16_53_29_830Z-
+10 verbose logfile /workspaces/qmoi-enhanced/qmoi-enhanced-incomplete-20260915T1733Z/sources/Alpha-Q-ai/qmoi-enhanced-history-14/.npm-cache/_logs/2026-09-16T16_53_29_830Z-debug-0.log
+11 warn Unknown project config "continue". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+12 warn Unknown project config "msvs_version". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+13 warn Unknown project config "scripts-prepend-node-path". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+14 silly logfile done cleaning log files
+15 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+16 verbose cwd /workspaces/qmoi-enhanced/qmoi-enhanced-incomplete-20260915T1733Z/sources/Alpha-Q-ai/qmoi-enhanced-history-14
+17 verbose os Linux 6.8.0-1064-azure
+18 verbose node v24.20.0
+19 verbose npm  v11.19.0
+20 verbose exit 1
+21 verbose code 1

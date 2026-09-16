@@ -1,0 +1,84 @@
+0 verbose cli /usr/local/share/nvm/versions/node/v24.20.0/bin/node /home/codespace/nvm/current/bin/npm
+1 info using npm@11.19.0
+2 info using node@v24.20.0
+3 silly config load:file:/usr/local/share/nvm/versions/node/v24.20.0/lib/node_modules/npm/npmrc
+4 silly config load:file:/workspaces/qmoi-enhanced/qmoi-enhanced-incomplete-20260915T1733Z/sources/Alpha-Q-ai/qmoi-enhanced-history-14/.npmrc
+5 silly config load:file:/home/codespace/.npmrc
+6 silly config load:file:/usr/local/share/nvm/versions/node/v24.20.0/etc/npmrc
+7 verbose title npm install
+8 verbose argv "install" "--package-lock-only" "--ignore-scripts" "--force"
+9 verbose logfile logs-max:10 dir:/workspaces/qmoi-enhanced/qmoi-enhanced-incomplete-20260915T1733Z/sources/Alpha-Q-ai/qmoi-enhanced-history-14/.npm-cache/_logs/2026-09-16T16_54_32_617Z-
+10 verbose logfile /workspaces/qmoi-enhanced/qmoi-enhanced-incomplete-20260915T1733Z/sources/Alpha-Q-ai/qmoi-enhanced-history-14/.npm-cache/_logs/2026-09-16T16_54_32_617Z-debug-0.log
+11 warn using --force Recommended protections disabled.
+12 warn Unknown project config "continue". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+13 warn Unknown project config "msvs_version". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+14 warn Unknown project config "scripts-prepend-node-path". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.
+15 silly logfile done cleaning log files
+16 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+17 silly idealTree buildDeps
+18 silly fetch manifest next@^16.3.5
+19 silly packumentCache full:https://registry.npmjs.org/next cache-miss
+20 http cache https://registry.npmjs.org/next 83ms (cache hit)
+21 silly packumentCache full:https://registry.npmjs.org/next set size:31257270 disposed:false
+22 silly placeDep ROOT next@16.3.5 REPLACE for: qmoi-enhanced-system@2.0.0 want: ^16.3.5
+23 silly fetch manifest postcss@8.5.23
+24 silly packumentCache full:https://registry.npmjs.org/postcss cache-miss
+25 silly fetch manifest @next/env@16.3.5
+26 silly packumentCache full:https://registry.npmjs.org/@next%2fenv cache-miss
+27 silly fetch manifest @swc/helpers@0.5.23
+28 silly packumentCache full:https://registry.npmjs.org/@swc%2fhelpers cache-miss
+29 http cache https://registry.npmjs.org/postcss 36ms (cache hit)
+30 silly packumentCache full:https://registry.npmjs.org/postcss set size:766699 disposed:false
+31 silly fetch manifest @next/swc-darwin-x64@16.3.5
+32 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-x64 cache-miss
+33 http cache https://registry.npmjs.org/@next%2fenv 53ms (cache hit)
+34 silly packumentCache full:https://registry.npmjs.org/@next%2fenv set size:7684893 disposed:false
+35 silly fetch manifest @next/swc-darwin-arm64@16.3.5
+36 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-arm64 cache-miss
+37 http cache https://registry.npmjs.org/@next%2fswc-darwin-x64 71ms (cache hit)
+38 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-x64 set size:5569594 disposed:false
+39 silly fetch manifest @next/swc-linux-x64-gnu@16.3.5
+40 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-gnu cache-miss
+41 http cache https://registry.npmjs.org/@next%2fswc-darwin-arm64 48ms (cache hit)
+42 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-darwin-arm64 set size:5630217 disposed:false
+43 silly fetch manifest @next/swc-linux-x64-musl@16.3.5
+44 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-musl cache-miss
+45 http cache https://registry.npmjs.org/@next%2fswc-linux-x64-gnu 55ms (cache hit)
+46 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-gnu set size:5684200 disposed:false
+47 silly fetch manifest @next/swc-win32-x64-msvc@16.3.5
+48 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-x64-msvc cache-miss
+49 http cache https://registry.npmjs.org/@next%2fswc-linux-x64-musl 70ms (cache hit)
+50 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-x64-musl set size:5439806 disposed:false
+51 silly fetch manifest @next/swc-linux-arm64-gnu@16.3.5
+52 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu cache-miss
+53 http cache https://registry.npmjs.org/@next%2fswc-win32-x64-msvc 45ms (cache hit)
+54 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-x64-msvc set size:5654653 disposed:false
+55 silly fetch manifest @next/swc-linux-arm64-musl@16.3.5
+56 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-musl cache-miss
+57 http cache https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu 39ms (cache hit)
+58 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-gnu set size:5489286 disposed:false
+59 silly fetch manifest @next/swc-win32-arm64-msvc@16.3.5
+60 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc cache-miss
+61 http cache https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc 22ms (cache hit)
+62 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-win32-arm64-msvc set size:5470328 disposed:false
+63 http cache https://registry.npmjs.org/@next%2fswc-linux-arm64-musl 78ms (cache hit)
+64 silly packumentCache full:https://registry.npmjs.org/@next%2fswc-linux-arm64-musl set size:5508971 disposed:false
+65 http fetch GET 200 https://registry.npmjs.org/@swc%2fhelpers 416ms (cache miss)
+66 silly packumentCache full:https://registry.npmjs.org/@swc%2fhelpers set size:undefined disposed:false
+67 silly placeDep ROOT @next/env@16.3.5 OK for: next@16.3.5 want: 16.3.5
+68 silly placeDep ROOT @next/swc-darwin-arm64@16.3.5 OK for: next@16.3.5 want: 16.3.5
+69 silly placeDep ROOT @next/swc-darwin-x64@16.3.5 OK for: next@16.3.5 want: 16.3.5
+70 silly placeDep ROOT @next/swc-linux-arm64-gnu@16.3.5 OK for: next@16.3.5 want: 16.3.5
+71 silly placeDep ROOT @next/swc-linux-arm64-musl@16.3.5 OK for: next@16.3.5 want: 16.3.5
+72 silly placeDep ROOT @next/swc-linux-x64-gnu@16.3.5 OK for: next@16.3.5 want: 16.3.5
+73 silly placeDep ROOT @next/swc-linux-x64-musl@16.3.5 OK for: next@16.3.5 want: 16.3.5
+74 silly placeDep ROOT @next/swc-win32-arm64-msvc@16.3.5 OK for: next@16.3.5 want: 16.3.5
+75 silly placeDep ROOT @next/swc-win32-x64-msvc@16.3.5 OK for: next@16.3.5 want: 16.3.5
+76 silly placeDep ROOT @swc/helpers@0.5.23 OK for: next@16.3.5 want: 0.5.23
+77 silly placeDep node_modules/next postcss@8.5.23 OK for: next@16.3.5 want: 8.5.23
+78 verbose cwd /workspaces/qmoi-enhanced/qmoi-enhanced-incomplete-20260915T1733Z/sources/Alpha-Q-ai/qmoi-enhanced-history-14
+79 verbose os Linux 6.8.0-1064-azure
+80 verbose node v24.20.0
+81 verbose npm  v11.19.0
+82 verbose exit 0
+83 info ok
