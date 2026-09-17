@@ -1,1 +1,12 @@
-{"name": "qmoi", "version": "1.0.0", "dependencies": {}}
+{
+  "name": "qmoi",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "python -m pytest tests -q",
+    "security:check": "python -m pip_audit -r requirements.txt",
+    "release:check": "python scripts/qmoi_release_autofix.py --check",
+    "deploy:vercel": "python scripts/qmoi_release_autofix.py --deploy-check"
+  },
+  "dependencies": {}
+}
