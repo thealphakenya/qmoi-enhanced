@@ -358,6 +358,23 @@ The live branch remains ready for the next required continuity step without paus
 
 The repository was brought up to a stronger dependency baseline to reduce the remaining known vulnerability and Dependabot exposure. The live git branch now includes security-hardened minimum versions for the Python dependency set and a root Dependabot configuration that keeps automated dependency updates aligned with the current repo.
 
+## Continuation verification (2026-09-17)
+
+The interrupted branch reconciliation was completed against the latest remote `main`. Newer remote telemetry reconciliation commits were preserved for generated tracker files, while the live repository changes were replayed without unresolved Git conflicts.
+
+Fresh evidence:
+- `python -m pip_audit -r requirements.txt --format columns`: no known vulnerabilities found.
+- `npm audit --omit=dev --audit-level=high`: found 0 vulnerabilities.
+- `PYTHONPATH=. python -m pytest tests -q`: `191 passed in 45.64s`.
+- The live merge-marker check passed after excluding the historical archive and the gate's own pattern definition.
+- Generated Python caches are now ignored by the root `.gitignore`.
+
+Hardening added:
+- `.github/workflows/security-merge-gates.yml` now runs Python and npm dependency audits, the full test suite, and a live merge-marker check on pull requests and `main` pushes.
+- `.gitignore` now prevents Python cache and local coverage artifacts from creating validation noise.
+
+The remaining action is to commit this verified hardening update and push it after confirming the final branch status.
+
 Current hardening actions:
 - updated `requests` to a secure minimum baseline
 - added `urllib3` as an explicit secure runtime dependency

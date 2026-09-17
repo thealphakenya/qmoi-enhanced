@@ -1,8 +1,8 @@
 # QMOI Realtime Memory Index
 
-Generated: 2026-09-17T00:11:57.528221Z
+Generated: 2026-09-17T00:19:36.151214Z
 
-Files Tracked: 8363
+Files Tracked: 8364
 
 ## Files
 
@@ -15,6 +15,7 @@ Files Tracked: 8363
 - `.github/workflows/ollama-master-orchestrator.yml`
 - `.github/workflows/ollama-pr-validation.yml`
 - `.github/workflows/pr-monitor.yml`
+- `.github/workflows/security-merge-gates.yml`
 - `.github/workflows/workflow-tracker.yml`
 - `.gitignore`
 - `.qmoi_memory_index.json`

@@ -9,6 +9,7 @@
     ".github/workflows/ollama-master-orchestrator.yml",
     ".github/workflows/ollama-pr-validation.yml",
     ".github/workflows/pr-monitor.yml",
+    ".github/workflows/security-merge-gates.yml",
     ".github/workflows/workflow-tracker.yml",
     ".gitignore",
     ".qmoi_memory_index.json",
@@ -8364,6 +8365,6 @@
     "validation_report.json",
     "zx.txt"
   ],
-  "files_tracked": 8363,
-  "generated": "2026-09-17T00:11:57.528221Z"
+  "files_tracked": 8364,
+  "generated": "2026-09-17T00:19:36.151214Z"
 }
