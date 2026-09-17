@@ -442,7 +442,7 @@ jobs:
 
       - name: Upload platform validation logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: platform-validation-logs-${{ matrix.platform }}
           path: |
@@ -583,7 +583,7 @@ jobs:
 
       - name: Upload feature validation logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: feature-validation-logs
           path: |
@@ -804,7 +804,7 @@ jobs:
 
       - name: Upload test suite logs and results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-suite-logs
           path: |
@@ -1120,7 +1120,7 @@ jobs:
 
       - name: Upload final validation logs
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: final-validation-logs
           path: |
