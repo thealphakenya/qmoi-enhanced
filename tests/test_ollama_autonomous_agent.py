@@ -427,6 +427,28 @@ class TestWorkflowMonitor:
         assert "Validate Platform Compilation (windows)" in validation["failed_jobs"]
         assert any("retry" in item.lower() or "investigate" in item.lower() for item in recovery)
 
+    def test_workflow_monitor_builds_validation_system_summary(self):
+        """The monitor should aggregate the platform, tests, workflow, security, and agent domains into a single health summary."""
+        monitor = WorkflowMonitor("123456", token="test-token")
+        monitor.jobs_snapshot = [
+            {"name": "Validate Documentation", "status": "completed", "conclusion": "success"},
+            {"name": "Validate Platform Compilation (windows)", "status": "completed", "conclusion": "success"},
+            {"name": "Validate Platform Compilation (linux)", "status": "in_progress", "conclusion": None},
+            {"name": "Validate 293+ Platform Features", "status": "in_progress", "conclusion": None},
+            {"name": "Execute Test Suite (40+ Tests)", "status": "completed", "conclusion": "success"},
+            {"name": "Check Dependency Security", "status": "completed", "conclusion": "success"},
+            {"name": "Check GitHub Workflow Integrity", "status": "completed", "conclusion": "failure"},
+            {"name": "Trigger Ollama Autonomous Agent after proof validation", "status": "queued", "conclusion": None},
+        ]
+
+        summary = monitor.build_validation_system_summary()
+
+        assert summary["systems_total"] >= 6
+        assert 0 <= summary["overall_progress_percent"] <= 100
+        assert "platform" in summary["system_health"]
+        assert "tests" in summary["system_health"]
+        assert "agent" in summary["system_health"]
+
     def test_workflow_monitor_keeps_monitoring_queued_runs(self, monkeypatch):
         """Queued GitHub runs should be treated as active work rather than a completed workflow."""
         monitor = WorkflowMonitor("123456", token="test-token")

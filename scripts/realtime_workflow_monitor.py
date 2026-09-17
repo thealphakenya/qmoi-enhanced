@@ -380,6 +380,64 @@ class WorkflowMonitor:
 
         return alerts
 
+    def build_validation_system_summary(self) -> Dict[str, Any]:
+        """Aggregate all validation domains into one live status view across platform, tests, docs, workflow, security, and agent states."""
+        jobs = self.jobs_snapshot or []
+
+        domain_groups = {
+            "platform": [j for j in jobs if "platform" in (j.get("name", "")).lower() or "feature" in (j.get("name", "")).lower()],
+            "tests": [j for j in jobs if "test" in (j.get("name", "")).lower() or "pytest" in (j.get("name", "")).lower()],
+            "docs": [j for j in jobs if "document" in (j.get("name", "")).lower() or "markdown" in (j.get("name", "")).lower()],
+            "security": [j for j in jobs if "security" in (j.get("name", "")).lower() or "depend" in (j.get("name", "")).lower() or "audit" in (j.get("name", "")).lower()],
+            "workflows": [j for j in jobs if "workflow" in (j.get("name", "")).lower() or "integrity" in (j.get("name", "")).lower()],
+            "agent": [j for j in jobs if "agent" in (j.get("name", "")).lower() or "trigger" in (j.get("name", "")).lower()],
+        }
+
+        def summarize(items: List[Dict[str, Any]]) -> Dict[str, Any]:
+            if not items:
+                return {"total": 0, "passed": 0, "failed": 0, "active": 0, "progress_percent": 0.0, "status": "idle"}
+            total = len(items)
+            passed = sum(1 for j in items if j.get("conclusion") == "success")
+            failed = sum(1 for j in items if j.get("conclusion") == "failure")
+            active = sum(1 for j in items if str(j.get("status", "")).lower() in {"in_progress", "queued", "requested", "waiting", "pending"})
+            progress = (sum(1 for j in items if j.get("status") == "completed") / total) * 100.0 if total else 0.0
+            if failed:
+                status = "failed"
+            elif active:
+                status = "running"
+            elif passed == total:
+                status = "healthy"
+            else:
+                status = "idle"
+            return {
+                "total": total,
+                "passed": passed,
+                "failed": failed,
+                "active": active,
+                "progress_percent": round(progress, 1),
+                "status": status,
+            }
+
+        system_health = {name: summarize(items) for name, items in domain_groups.items()}
+        systems_total = sum(entry["total"] for entry in system_health.values())
+        completed = sum(1 for j in jobs if j.get("status") == "completed")
+        overall_progress_percent = round((completed / systems_total * 100.0) if systems_total else 0.0, 1)
+        failed_any = any(entry["failed"] > 0 for entry in system_health.values())
+        active_any = any(entry["active"] > 0 for entry in system_health.values())
+        overall_status = "failed" if failed_any else "running" if active_any else "healthy" if systems_total else "idle"
+
+        return {
+            "systems_total": systems_total,
+            "overall_progress_percent": overall_progress_percent,
+            "status": overall_status,
+            "jobs_total": len(jobs),
+            "jobs_completed": completed,
+            "jobs_failed": sum(1 for j in jobs if j.get("conclusion") == "failure"),
+            "jobs_in_progress": sum(1 for j in jobs if str(j.get("status", "")).lower() in {"in_progress", "queued", "requested", "waiting", "pending"}),
+            "system_health": system_health,
+            "last_updated_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        }
+
     def get_phase_summary(self) -> Dict[str, Any]:
         """Return the current live phase: tests still running or autonomous agent triggered."""
         jobs = self.jobs_snapshot or []
