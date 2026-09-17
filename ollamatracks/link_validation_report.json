@@ -1,6 +1,6 @@
 {
-  "total_links_validated": 92,
-  "accessible": 92,
+  "total_links_validated": 93,
+  "accessible": 93,
   "inaccessible": 0,
   "success_rate": "100.0%",
   "results": [
@@ -10,7 +10,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions",
@@ -18,7 +19,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "zx.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/main/README.md",
@@ -26,7 +28,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "repository",
-      "link_type": "repository"
+      "link_type": "repository",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/ollama-autonomous-agent.yml",
@@ -34,7 +37,8 @@
       "status_code": 200,
       "error": null,
       "source_file": ".github/workflows/ollama-autonomous-agent.yml",
-      "link_type": "workflow"
+      "link_type": "workflow",
+      "rendered_ok": null
     },
     {
       "url": "https://ollama.com",
@@ -42,7 +46,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "scripts/link_validator.py",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://ollama.com/download",
@@ -50,7 +55,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "scripts/link_validator.py",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/ollama/ollama",
@@ -58,7 +64,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "scripts/link_validator.py",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/ollama/ollama/releases",
@@ -66,7 +73,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "scripts/link_validator.py",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://qmoi.com",
@@ -74,7 +82,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "QMOI_MODEL_CARD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://qmoi.com/ai",
@@ -82,7 +91,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://qmoi.com/space",
@@ -90,7 +100,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://qmoi.com/files",
@@ -98,7 +109,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://qmoi.com/ide",
@@ -106,7 +118,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://qmoi.com/help/faq",
@@ -114,7 +127,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/admin.zip",
@@ -122,7 +136,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/app-release.apk",
@@ -130,7 +145,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/checksums.txt",
@@ -138,7 +154,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/deals.zip",
@@ -146,7 +163,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/q-alpha.zip",
@@ -154,7 +172,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qcity_package.zip",
@@ -162,7 +181,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-ai.zip",
@@ -170,7 +190,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-release.exe",
@@ -178,7 +199,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-release.ipa",
@@ -186,7 +208,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi-space.zip",
@@ -194,7 +217,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi.zip",
@@ -202,7 +226,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.apk",
@@ -210,7 +235,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.AppImage",
@@ -218,7 +244,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.deb",
@@ -226,7 +253,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.dmg",
@@ -234,7 +262,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe",
@@ -242,7 +271,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.exe.sha256",
@@ -250,7 +280,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.img",
@@ -258,7 +289,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai.ipa",
@@ -266,7 +298,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_chromebook.zip",
@@ -274,7 +307,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/qmoi_ai_smarttv.apk",
@@ -282,7 +316,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/download/v1.2.5/SHA256SUMS.txt",
@@ -290,7 +325,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "release:v1.2.5",
-      "link_type": "release_asset"
+      "link_type": "release_asset",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/auto-merge-automated-pr.yml",
@@ -298,7 +334,8 @@
       "status_code": 200,
       "error": null,
       "source_file": ".github/workflows/auto-merge-automated-pr.yml",
-      "link_type": "workflow"
+      "link_type": "workflow",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/branch-sync.yml",
@@ -306,7 +343,8 @@
       "status_code": 200,
       "error": null,
       "source_file": ".github/workflows/branch-sync.yml",
-      "link_type": "workflow"
+      "link_type": "workflow",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/ollama-autonomous-agent-realtime-monitor.yml",
@@ -314,7 +352,8 @@
       "status_code": 200,
       "error": null,
       "source_file": ".github/workflows/ollama-autonomous-agent-realtime-monitor.yml",
-      "link_type": "workflow"
+      "link_type": "workflow",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/ollama-master-orchestrator.yml",
@@ -322,7 +361,8 @@
       "status_code": 200,
       "error": null,
       "source_file": ".github/workflows/ollama-master-orchestrator.yml",
-      "link_type": "workflow"
+      "link_type": "workflow",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/ollama-pr-validation.yml",
@@ -330,7 +370,8 @@
       "status_code": 200,
       "error": null,
       "source_file": ".github/workflows/ollama-pr-validation.yml",
-      "link_type": "workflow"
+      "link_type": "workflow",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/pr-monitor.yml",
@@ -338,7 +379,17 @@
       "status_code": 200,
       "error": null,
       "source_file": ".github/workflows/pr-monitor.yml",
-      "link_type": "workflow"
+      "link_type": "workflow",
+      "rendered_ok": null
+    },
+    {
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/security-merge-gates.yml",
+      "accessible": true,
+      "status_code": 200,
+      "error": null,
+      "source_file": ".github/workflows/security-merge-gates.yml",
+      "link_type": "workflow",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/blob/main/.github/workflows/workflow-tracker.yml",
@@ -346,7 +397,8 @@
       "status_code": 200,
       "error": null,
       "source_file": ".github/workflows/workflow-tracker.yml",
-      "link_type": "workflow"
+      "link_type": "workflow",
+      "rendered_ok": null
     },
     {
       "url": "https://api.github.com/repos/thealphakenya/qmoi-enhanced/dispatches",
@@ -354,7 +406,8 @@
       "status_code": 202,
       "error": "Authenticated POST endpoint; structurally validated",
       "source_file": "zx.txt",
-      "link_type": "api_endpoint"
+      "link_type": "api_endpoint",
+      "rendered_ok": null
     },
     {
       "url": "https://api.github.com/repos/$GITHUB_REPOSITORY/dispatches",
@@ -362,7 +415,8 @@
       "status_code": 202,
       "error": "Authenticated POST endpoint; structurally validated",
       "source_file": "trigger.md",
-      "link_type": "api_endpoint"
+      "link_type": "api_endpoint",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/user/repo.git",
@@ -370,7 +424,8 @@
       "status_code": null,
       "error": null,
       "source_file": "scripts/github_auto_setup.py",
-      "link_type": "template"
+      "link_type": "template",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/{owner",
@@ -378,7 +433,8 @@
       "status_code": null,
       "error": null,
       "source_file": "scripts/github_auto_setup.py",
-      "link_type": "template"
+      "link_type": "template",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/{repo_path",
@@ -386,7 +442,8 @@
       "status_code": null,
       "error": null,
       "source_file": "scripts/github_auto_setup.py",
-      "link_type": "template"
+      "link_type": "template",
+      "rendered_ok": null
     },
     {
       "url": "https://api.github.com/repos/{self.github_repo",
@@ -394,7 +451,8 @@
       "status_code": null,
       "error": null,
       "source_file": "scripts/link_validator.py",
-      "link_type": "template"
+      "link_type": "template",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/{self.github_repo",
@@ -402,7 +460,8 @@
       "status_code": null,
       "error": null,
       "source_file": "scripts/link_validator.py",
-      "link_type": "template"
+      "link_type": "template",
+      "rendered_ok": null
     },
     {
       "url": "https://raw.githubusercontent.com/{self.github_repo",
@@ -410,7 +469,8 @@
       "status_code": null,
       "error": null,
       "source_file": "scripts/link_validator.py",
-      "link_type": "template"
+      "link_type": "template",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/${owner",
@@ -418,7 +478,8 @@
       "status_code": null,
       "error": null,
       "source_file": ".github/workflows/workflow-tracker.yml",
-      "link_type": "template"
+      "link_type": "template",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced.git",
@@ -426,7 +487,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "zx.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/branch-sync.yml/badge.svg",
@@ -434,7 +496,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "zx.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ollama-autonomous-agent.yml/badge.svg",
@@ -442,7 +505,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "zx.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ollama-pr-validation.yml/badge.svg",
@@ -450,7 +514,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "zx.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/main/ollamatracks/STATE.txt",
@@ -458,7 +523,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "zx.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://raw.githubusercontent.com/thealphakenya/qmoi-enhanced/main/scripts/ollama_autonomous_agent.py",
@@ -466,7 +532,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "zx.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/auto-merge-automated-pr.yml",
@@ -474,7 +541,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/branch-sync.yml",
@@ -482,7 +550,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ollama-autonomous-agent-realtime-monitor.yml",
@@ -490,7 +559,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ollama-autonomous-agent.yml",
@@ -498,7 +568,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ollama-master-orchestrator.yml",
@@ -506,7 +577,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/ollama-pr-validation.yml",
@@ -514,7 +586,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/pr-monitor.yml",
@@ -522,7 +595,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/workflows/workflow-tracker.yml",
@@ -530,7 +604,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/security",
@@ -538,7 +613,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "monitor.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34436370494",
@@ -546,7 +622,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34436541392",
@@ -554,7 +631,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34441086987",
@@ -562,7 +640,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34443528432",
@@ -570,7 +649,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34443708092",
@@ -578,7 +658,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34448672392",
@@ -586,7 +667,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34448676026",
@@ -594,7 +676,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34448679660",
@@ -602,7 +685,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34449527195",
@@ -610,7 +694,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34458841692",
@@ -618,7 +703,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34458841775",
@@ -626,7 +712,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34459017721",
@@ -634,7 +721,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34459702332",
@@ -642,7 +730,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34459705166",
@@ -650,7 +739,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34459763632",
@@ -658,7 +748,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "oe.txt",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/31844735339",
@@ -666,7 +757,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "ollama.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/31844735360",
@@ -674,7 +766,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "ollama.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/pulls",
@@ -682,7 +775,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "GITHUB_SETUP_COMPLETE.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/issues",
@@ -690,7 +784,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/releases/tag/v1.2.5",
@@ -698,7 +793,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "DOWNLOAD.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/settings/tokens",
@@ -706,7 +802,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "MONITORING_SUMMARY.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/Alpha-Q-ai",
@@ -714,7 +811,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "SYNC.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/33779113244",
@@ -722,7 +820,8 @@
       "status_code": 200,
       "error": null,
       "source_file": "github.md",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
       "url": "https://ollama.com/install.sh",
@@ -730,19 +829,21 @@
       "status_code": 200,
       "error": null,
       "source_file": "scripts/autonomous_runner.py",
-      "link_type": "reference"
+      "link_type": "reference",
+      "rendered_ok": null
     },
     {
-      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/34754541280",
+      "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/35212193142",
       "accessible": true,
       "status_code": 200,
       "error": null,
       "source_file": "GitHub Actions",
-      "link_type": "github_run"
+      "link_type": "github_run",
+      "rendered_ok": null
     }
   ],
   "inaccessible_links": [],
   "blocking_inaccessible": 0,
   "nonblocking_inaccessible": 0,
-  "timestamp": "2026-09-13T14:20:49.987628+00:00"
+  "timestamp": "2026-09-17T15:16:06.173568+00:00"
 }
