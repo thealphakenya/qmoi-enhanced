@@ -116,7 +116,14 @@ python3 scripts/ollama_autonomous_agent.py validate-all-platforms
 
 # 293+ feature validation
 python3 scripts/ollama_autonomous_agent.py validate-all-features
+
+# Link and route validation with rendered-page content checks
+python3 scripts/link_validator.py
 ```
+
+### Link sanity checks
+
+The live repository validator now confirms that critical URLs are reachable and that rendered pages still contain the expected QMOI markers, not just an HTTP 200 response. This adds a browser-like content confirmation step for domain pages and hosted routes so stale or misleading landing pages are surfaced as validation failures.
 
 ### Running Tests
 

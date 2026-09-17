@@ -14,7 +14,7 @@ from typing import Any, ClassVar
 
 @dataclass
 class LinkResult:
-    """Result of validating one link."""
+    """Result of validating one link or rendered page."""
 
     url: str
     accessible: bool
@@ -22,6 +22,7 @@ class LinkResult:
     error: str | None = None
     source_file: str | None = None
     link_type: str = "unknown"
+    rendered_ok: bool | None = None
 
 
 class LinkValidator:
@@ -187,17 +188,98 @@ class LinkValidator:
         ):
             self.add_checked(url, "Ollama", "external_resource")
 
+    def fetch_rendered_html(self, url: str) -> str:
+        """Fetch the rendered HTML with a browser-like user-agent for content checks."""
+        try:
+            result = subprocess.run(
+                [
+                    "curl",
+                    "-L",
+                    "-A",
+                    "Mozilla/5.0 (compatible; QMOI/1.0; +https://qmoi.com)",
+                    "-sS",
+                    "--max-time",
+                    "12",
+                    url,
+                ],
+                capture_output=True,
+                text=True,
+                timeout=16,
+                check=False,
+            )
+            if result.returncode != 0:
+                return ""
+            return result.stdout or ""
+        except (OSError, subprocess.TimeoutExpired):
+            return ""
+
+    def validate_rendered_page(
+        self,
+        url: str,
+        required_markers: tuple[str, ...] | list[str] | None = None,
+        source: str = "rendered_page",
+        link_type: str = "rendered_page",
+    ) -> LinkResult:
+        """Verify that a page is reachable and contains expected HTML text markers."""
+        accessible, status, error = self.check_url(url)
+        if not accessible:
+            return LinkResult(
+                url,
+                False,
+                status,
+                error or "HTTP request failed",
+                source,
+                link_type,
+                rendered_ok=False,
+            )
+
+        markers = tuple(required_markers) if required_markers else ("QMOI", "AI")
+        html = self.fetch_rendered_html(url)
+        if not html:
+            return LinkResult(
+                url,
+                True,
+                status,
+                "Rendered page content could not be fetched for content validation",
+                source,
+                link_type,
+                rendered_ok=False,
+            )
+
+        haystack = " ".join(
+            [
+                html,
+                re.sub(r"<[^>]+>", " ", html),
+            ]
+        ).lower()
+        missing = [
+            marker for marker in markers if marker.lower() not in haystack
+        ]
+        rendered_ok = not missing
+        return LinkResult(
+            url,
+            True,
+            status,
+            None if rendered_ok else f"Missing rendered-page marker(s): {', '.join(sorted(set(missing), key=lambda item: item.lower()))}",
+            source,
+            link_type,
+            rendered_ok,
+        )
+
     def validate_qmoi_domains(self) -> None:
         """Check the public QMOI site and each documented app route."""
-        for url in (
-            "https://qmoi.com",
-            "https://qmoi.com/ai",
-            "https://qmoi.com/space",
-            "https://qmoi.com/files",
-            "https://qmoi.com/ide",
-            "https://qmoi.com/help/faq",
-        ):
-            self.add_checked(url, "QMOI domains", "domain")
+        pages = {
+            "https://qmoi.com": ("QMOI", "AI"),
+            "https://qmoi.com/ai": ("QMOI", "AI"),
+            "https://qmoi.com/space": ("QMOI", "SPACE"),
+            "https://qmoi.com/files": ("QMOI", "FILES"),
+            "https://qmoi.com/ide": ("QMOI", "IDE"),
+            "https://qmoi.com/help/faq": ("FAQ", "QMOI"),
+        }
+        for url, markers in pages.items():
+            self.results.append(
+                self.validate_rendered_page(url, markers, source="QMOI domains", link_type="domain")
+            )
 
     def validate_release_assets(self) -> None:
         """Validate every asset in the latest published GitHub release."""

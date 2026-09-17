@@ -186,3 +186,39 @@ def test_validate_release_assets_handles_full_release_list(monkeypatch):
     validator.validate_release_assets()
 
     assert captured == [("https://example.com/app.zip", "release:v1.2.5", "release_asset")]
+
+
+def test_validate_rendered_page_detects_expected_markers(monkeypatch):
+    LinkValidator = __import__("scripts.link_validator", fromlist=["LinkValidator"]).LinkValidator
+    validator = LinkValidator()
+
+    monkeypatch.setattr(validator, "check_url", lambda url: (True, 200, None))
+    monkeypatch.setattr(
+        validator,
+        "fetch_rendered_html",
+        lambda url: "<html><head><title>QMOI AI</title></head><body><h1>QMOI AI</h1></body></html>",
+    )
+
+    result = validator.validate_rendered_page("https://qmoi.com", ("QMOI", "AI"))
+
+    assert result.accessible is True
+    assert result.status_code == 200
+    assert result.rendered_ok is True
+
+
+def test_validate_rendered_page_flags_missing_content(monkeypatch):
+    LinkValidator = __import__("scripts.link_validator", fromlist=["LinkValidator"]).LinkValidator
+    validator = LinkValidator()
+
+    monkeypatch.setattr(validator, "check_url", lambda url: (True, 200, None))
+    monkeypatch.setattr(
+        validator,
+        "fetch_rendered_html",
+        lambda url: "<html><body><h1>Something else</h1></body></html>",
+    )
+
+    result = validator.validate_rendered_page("https://qmoi.com", ("QMOI", "AI"))
+
+    assert result.accessible is True
+    assert result.rendered_ok is False
+    assert "QMOI" in (result.error or "")
