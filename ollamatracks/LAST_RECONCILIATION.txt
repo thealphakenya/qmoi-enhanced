@@ -1,2 +1,12 @@
-LAST_RECONCILIATION: initialized
-Timestamp: 2026-09-17T02:38:25.108446Z
+{
+  "timestamp_utc": "2026-09-17T02:50:15.584Z",
+  "snapshot_hash": "758d3e9017bb2eb0ac82ca560ff2969e8a89dfd06b299669b52927190d09e14a",
+  "validation_workflow_id": 333901991,
+  "agent_workflow_id": 316417903,
+  "latest_validation_run_id": 35175476742,
+  "latest_agent_run_id": 35175901673,
+  "discovered_active_run_count": 4,
+  "active_run_count": 4,
+  "open_pr_count": 17,
+  "force_snapshot": true
+}
