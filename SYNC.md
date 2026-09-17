@@ -187,6 +187,35 @@ QMOI Ollama Agent maintains awareness of:
 - Special handling requirements
 - Manual intervention needs
 
+## Autonomous Merge Completion Contract
+
+The current workspace contains `qmoi-enhanced` and the materialized historical
+snapshot, but it does not contain a local `Alpha-Q-ai` checkout. The agent must
+therefore treat cross-repository completion as blocked until it can authenticate
+and inventory the actual Alpha-Q-ai repository. Documentation or a remote URL is
+not evidence that the second repository was merged.
+
+Before claiming a complete merge, the agent must:
+
+1. Inventory every reachable branch, commit, tracked path, symlink, dependency
+	manifest, workflow, and historical snapshot in both repositories.
+2. Record path ownership as `QE`, `AQ`, `BOTH`, `HISTORICAL`, or `CONFLICT` and
+	stop automatic mutation for unknown ownership or unresolved conflicts.
+3. Scan active code and workflows for placeholders, TODO/FIXME/TBD markers,
+	simulated success, stubbed handlers, unsafe fallback behavior, and disabled
+	production paths. Each finding must be replaced by a tested implementation or
+	recorded as an explicit, non-production historical exception.
+4. Run dependency audits for every discovered manifest, syntax and workflow
+	validation, targeted tests, full tests, and post-merge tree comparison.
+5. Publish only from a reviewable sync branch after both repositories pass the
+	same evidence contract. Never force-update a production branch as a shortcut.
+
+The agent records sanitized command metadata in checkpoint evidence and
+`ollamatracks/TERMINAL_COMMANDS.log`. Secrets, tokens, passwords, private keys,
+and authenticated URLs are always redacted. A missing Alpha-Q-ai checkout,
+inaccessible Dependabot alerts, or an upstream advisory without a fix remains a
+visible blocker; it must never be reported as successful completion.
+
 ## Emergency Procedures
 
 ### If Sync Fails
@@ -210,4 +239,4 @@ QMOI Ollama Agent maintains awareness of:
 
 ## Notes
 This document is automatically maintained and updated by QMOI Ollama Autonomous Agent.
-Last Updated: 2026-08-17T21:30:00Z
+Last Updated: 2026-09-17T00:30:00Z

@@ -227,7 +227,20 @@ jobs:
             "$TRACK_DIR/LAST_RECONCILIATION.txt" \
             "$TRACK_DIR/LAST_TEST_RESULT.txt" \
             "$TRACK_DIR/REPAIR_LOG.txt" \
-            "$TRACK_DIR/error_fingerprints.log"
+            "$TRACK_DIR/error_fingerprints.log" \
+            "$TRACK_DIR/TERMINAL_COMMANDS.log"
+
+            printf '# Sanitized autonomous command evidence\n' > "$TRACK_DIR/TERMINAL_COMMANDS.log"
+            printf '# Secrets and credential values are never recorded.\n' >> "$TRACK_DIR/TERMINAL_COMMANDS.log"
+            for command in "${QMOI_AGENT_COMMAND:-}" "${QMOI_TERMINAL_COMMAND:-}"; do
+              if [ -n "$command" ]; then
+                sanitized="$command"
+                sanitized="$(printf '%s' "$sanitized" | sed -E \
+                  -e 's/(GH_TOKEN|GITHUB_TOKEN|MY_CUSTOM_TOKEN|MY_CUTOM_TOKEN)[[:space:]]*=[[:space:]]*[^[:space:];&|]+/\1=<redacted>/Ig' \
+                  -e 's/(github_pat_|ghp_|gho_|ghs_|ghu_)[A-Za-z0-9_]+/<redacted>/g')"
+                printf '%s | command=%s\n' "$now" "$sanitized" >> "$TRACK_DIR/TERMINAL_COMMANDS.log"
+              fi
+            done
 
           cat > "$TRACK_DIR/TRACKING_PROTOCOL.txt" <<EOF
           OLLAMA AUTONOMOUS TRACKING PROTOCOL

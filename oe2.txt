@@ -383,6 +383,35 @@ The archived Python requirements audit still reports `ecdsa 0.19.2` (`PYSEC-2026
 
 GitHub Dependabot alert details could not be retrieved from the current token because the API returned HTTP 403 (`Resource not accessible by integration`). The local evidence and limitations are now recorded for the next authorized security review.
 
+## Cross-repository autonomous-agent hardening (2026-09-17)
+
+The local workspace was checked for a second repository checkout. Only
+`/workspaces/qmoi-enhanced/.git` is present; no local Alpha-Q-ai checkout or
+additional repository worktree was found. The agent must not claim that all
+Alpha-Q-ai branches, histories, directories, or implementations were merged
+until an authorized checkout or complete remote inventory is available.
+
+Updated contracts:
+- `SYNC.md` now requires complete QE/AQ/HISTORICAL path classification,
+	production-placeholder scans, dependency audits for every discovered
+	manifest, post-merge tree comparison, and explicit blocking on uncertain
+	ownership.
+- `ollamatracks/TERMINAL_COMMANDS.log` records sanitized command intent and
+	results without secrets.
+- `.github/workflows/ollama-autonomous-agent.yml` persists sanitized agent and
+	terminal command metadata for each hosted run.
+- `.github/workflows/branch-sync.yml` now uses the supported
+	`actions/checkout@v4` action.
+
+Fresh evidence:
+- all edited workflows parse as YAML
+- `PYTHONPATH=. python -m pytest tests -q`: `191 passed in 46.62s`
+- `git diff --check` passed
+
+The GitHub credential shown in terminal context must be revoked and replaced
+outside the repository; no credential value has been written to files or
+included in command evidence.
+
 Current hardening actions:
 - updated `requests` to a secure minimum baseline
 - added `urllib3` as an explicit secure runtime dependency
