@@ -375,6 +375,14 @@ Hardening added:
 
 The remaining action is to commit this verified hardening update and push it after confirming the final branch status.
 
+## Security follow-up (2026-09-17)
+
+GitHub's push-time vulnerability summary was investigated against every dependency manifest in the repository. The root Python requirements and root npm project are clean, and the historical archive's main lockfile was remediated with `npm audit fix --package-lock-only --omit=dev`; the archive npm audit now reports `found 0 vulnerabilities`.
+
+The archived Python requirements audit still reports `ecdsa 0.19.2` (`PYSEC-2026-1325` / `CVE-2024-23342`) and `nltk 3.10.3` (`PYSEC-2026-3740`). Both advisories currently expose no fix versions in the audit database, and neither package is directly declared in the archived requirements. This residual is documented rather than falsely marked resolved; the archived Python dependency path must remain non-production until upstream fixes or safe replacements are available.
+
+GitHub Dependabot alert details could not be retrieved from the current token because the API returned HTTP 403 (`Resource not accessible by integration`). The local evidence and limitations are now recorded for the next authorized security review.
+
 Current hardening actions:
 - updated `requests` to a secure minimum baseline
 - added `urllib3` as an explicit secure runtime dependency
