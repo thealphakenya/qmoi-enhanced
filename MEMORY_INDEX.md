@@ -1,8 +1,8 @@
 # QMOI Realtime Memory Index
 
-Generated: 2026-09-17T00:19:36.151214Z
+Generated: 2026-09-17T00:30:19.706163Z
 
-Files Tracked: 8364
+Files Tracked: 8429
 
 ## Files
 
@@ -1280,6 +1280,71 @@ Files Tracked: 8364
 - `qmoi-enhanced-history-14/.husky/post-merge`
 - `qmoi-enhanced-history-14/.husky/pre-commit`
 - `qmoi-enhanced-history-14/.husky/pre-push`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/00/b1/ecec5cf4d9c6b2e2beb25b057b297f014a67b2548a044fe42ad586e9f690d267a7d230e8231823a609a7b4b6dbd77c1dd0f447df546961c46e358bed5311`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/05/66/8d42a359c3998c67af49cc6b0e3df5f692a06e47a5546d13d559a7e20e01aa5d8c5c9147e2b04c1b9ebf6aa1f02593b0dc78fe3c77cf03bc6f1ffe74f4ea`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/06/8a/d7014a290d72eeeee50431d4f24abbaf88793ee7c5979fa9d562b586b8e821ad3a1a04d7cf044b6b460038cc223476c9f0553f019d9ad944a721b6a1e913`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/0d/2b/4d107d124e7bdfe656c6f1d671a53ef27b94575f85bfb6faff62f23c150264ecf84a66c85e89320c8d0754191bb9d5c4c2fce3bfcf92251471d55f0ffacb`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/0f/88/9b33bbab84ca4580d1b1ce615eaafd9d67e3c22ef8c29a5e504df5ab14d8cbdbb343e5a3be58f2bcb4759d57d8c58054b4c291ef64e2e8e44caab90e4698`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/14/25/265f3369d75e511d89d96a6481bcf9fcae649cb6593243f782bf291dec4b7949a509b76e229ef78be096ca9d6bd0632ffd249077e152847b375fe3720195`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/1b/c9/c46b20dd410421e76429856f582b1dfad1587ed373ee9f1b883fb3cae5180fdbae537dc0d2908804041f0b4f80e5911af034d913f7fc531ec1ada7edc0be`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/24/03/2474cad531091c9a4518710b293a56ff9ef59f26a440a0677a384367490003d7ba0ace0bc5f657967bae3bac7651229c8ca29fc78720d179093010ecb579`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/27/5c/43784db0c6dc4684dc0d3b177a2da9a05e64f4c06f61d7f017b85bf2e3e8afbb43ebc182941ea9a29f2004269903f5ca2f7a5536c1caa893fc33e296be01`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/30/2b/39ddae7286b17382a535cbfc7e2f8ac32a1b5f44d0b3b9ba93bb9da2589a27c8475deea6da84329a414204c02347cd5a86171aaa13ede046a54fa8435448`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/30/2c/69dcc72bb8dec2bbd14d8452f3586fc729b22ff686f47c0cadcd9c50f48d3bf98671538e84785477c0e30356da3f0b87e0649522b98180c84f3b584539a6`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/38/84/4f90503bdd67a1d5db885e3e959daabd1184faf9dc18eea014fffa1279f8ca79dab073a9b7c910bb4a4478cb471e47d40e19dfd010903a10cc6158b34258`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/3b/58/a05b4b0512dea6cffbba4b1c14464021660f59cd1a95f571b9f1c720ea9ee8273e5c315a2e7a236bbdc7fd8e86412213b464427024ae3a308ef06f5300b5`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/42/08/87dee016e2007c74a61c394786f73b1d3630c3cbf92aee0d26cd0c051df8db7b921897fdf276a04b494890b54f5cbe3ab8afe8dc0b6379438babd0ff763a`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/46/d1/de90606b3b2771a862e78e044589ece136ba9280c14133fd22f86704ac060c254bea72b0823bf16a534a8ce683836b6edeae4d92a4f2c019299b86675e14`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/58/8a/82d45b4d621ff94f19b27c9b900ecc05e78e90fa358d18d5ef7bb72b648cff5aa9a4572162ba26ed6c9f255dc245cf3119712e6b05eb6fbe3627835152b7`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/61/25/0b20d45af3a5a71d1f86415bd1e3eddcdc647b9dea8fc9b6e1b8767aae8f6d25d4da8926fec9e1c8a4f1ac2e41de8d6dcf3ba2b5be5e3e43ed10922ba49a`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/62/4b/08fa808e053d4ad9f4a037afa2051bc59efa23c198e7576fd71a8d28cf2469308137573ba04de48fad9e99f4604c43cf3c7880c6a8065b0a6fbabaa1e317`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/70/27/df00866ba1cdbe57c0e2b5a86427e93255a6cac3d3d087fb6c1e8f1781802a2ee8e188b377d44d6b37ed8ac512a8673d2f53c6b21f62c58577d57f77ded5`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/80/9a/5735655c7cdd6dc57e13480eaac540d0cdbc5edf4216bac05701ca3d1bbb6ab5d10d61198143189c57d439254a2a6421d0de80ce8cd7532f11c20c620a97`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/87/d9/2d8904d89b1c0ae130859e32336f0a89afa8e47f2780930cfa757ab62d4c5753cf61343b86f1b1860cfc49579a158dedb25cacfe0b97c70909af1188c577`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/88/fd/9695297f55acad6185ce969acfa9ce56f08dd56d56d660b885e128d2eaac0ee08ea89d6b5cb0cff32e48c1eac4154ceca51ca0ae8ae6ba074dfbb286ff7f`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/8f/a6/60e66214b4451724bbdbcc50d8edd843cb7e11ac51425ebbebece83f5fe706038ba6a84dbc2aff0fd1b3bbe008f2d3f1a3581252385b966e64bde093e1e0`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/9b/de/2b1dd4e6c9e3bbc9244365a6990ba6cb9e0bce2b9d3dd1953936d50045b620b8322de7367fed8e9c6165a4e978255cddf9d31844e4d95f266f6e00abc9a9`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/a6/79/e1b6b2ef5c49b40900976af69b6c10bd2a589ca6d153e8067736b368ec34f42b6a269e8b8c7a21231a4cab93af116972f0694bea1a2a44fe77d32ca3bc68`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/b7/15/96a78e25e5fe5a9ba440704ff74697ddfc8aeba43ac9979d586254538feef1402ac3b813520ebac8aa000487b1597453d14035c159033cc0d0dbcc6afda8`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/c7/50/cc316a72d7fbab68bdb88c31324eb46a5b58ff1e2637a4cb277b1df1283578c5356e3ff4c267b1a5a9f7a9f7c35773d96b8433dee6078d67f1bd0ba07f15`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/d8/9a/e796d5c1b017a126c5d1215e64b5c565b77073fa2ed68555ea6d3fbf0fe6265e0f47b2c38bd26fe4175dc4d1efce81f4b50a74527f2fabaae3f946c2a697`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/dc/47/50496b818a6c41cbeeb9455f223a5dd801420cc73d69e4eeed08fe136a8181d751d9ea8c2c81f0c80a11e307da4d54225f8f57345111645c0bddba7af176`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/df/fb/e037eb1c9b28b22a9d428f27a14f8be46f982508ff6a95b77d54469090716257d9f7dac8ca95660d0f79aedfc11b4582b5834b207cbcc663a25fb2dc803b`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/e1/3c/3e35b26e657349b6d1cf77a9aa6a9f99a7aff2ed120ab1f6d3949a0abd952b3c8f0e23b2b81accc171d73c87b631c20b54b381fc017991a720457183bf55`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/ee/a8/b4e7ae51514c520c44268fe7419630e1fe93069f1c2efd5ea432528005d84c27129f65da68681ee0258f0f84b1dce807b7f1578bec64dfcfae18c6d174ca`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/content-v2/sha512/f8/64/d3ea66bad3ca6960e40699f3687d3826f9edc66df0c3462d087e1391fc417ed640e0c55f0439db9cc7d061e3cd5c3c9f5624912e82f13807fc3877e68506`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/04/27/bbf0ce89c112a2dc293c7ce2529fa9d650bb30baf88a73ceebe48e8d04f8`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/04/aa/a030036cc4985b07c7af716cc89710da2f56efb543f36816b931851cc76c`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/20/74/d12b0e56d079d252db14a768a8dc6925b448597a78eb75f65d6c4caa3150`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/21/22/94bbad0d178ead702ac09c5d738d1e912abb50b119d1a5911ba0eecef188`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/23/b8/c6285d55772ecc212e69007d1374120c7167f5d7e3bf62967e9f7903b426`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/2b/4d/b06fbfafc5d420e57bca9490af47c1d3339c777468f63d6b5487e02cd292`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/39/c3/b2fed7a302d3d17939d889be1fa91b85b395fd7a1d5dff31f4a7d78dc3f8`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/41/aa/bf4eebb27f1a26130fe82bfca0cde5245d23a1c01e6eddbc55c5c2672522`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/41/b2/1fe9f43b214aad8decc4e9a88829319f2baeff12e23ddb1b74243d27d9f4`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/4c/4d/8bbf8a14700c4532130f8a24806a79d27ff73989d031582d0ae1a0304528`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/4f/4a/c432dbdaabe4d1a0e47519ed9d0df6b9c9b672157e02a8e1549737c07958`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/4f/56/2d1908e2c02a1e1c0a86acab3aaa9631876f8e3966e21c81d929a9381c1c`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/63/5e/fa877bca8ed7dd5e7c0969ffb7db832e1dd3aa4d54139f4188c398d8e744`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/66/dc/91ce4ba83e8b37347df1c0ee838f5e4353d22219c5d2aa9804507c18ec71`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/86/b8/162c5a6c90046cf7abba2384951b38838afaf07b95d904b3d31dce2abd4f`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/89/90/cc97fc6bbdde81c8664126ee6c42153a6c3e1ef1a7bdcc75560f15783c9a`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/a5/ef/2ac2cd4303cbe93e3d5a762a96c6ed6a474ff2a42a2947e338332cb4ac57`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/ae/73/fa1bf017d324702659b6a24df03dd5596d768e4bcba7826de11314548045`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/b2/68/6dbbda79e36d5c69c6e54a5047085c3e9b8ba41dde285097398f6a1487fd`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/bf/43/028ada5598191684db5f1cf7b09d08e7965ab54e0579d23b68dbfc75d27b`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/cb/d0/9d90b7ef4d091f7b779db4f6ed2280a0c562e948ebc77c987f7a426ff888`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/d0/2b/a0323a4f569c44f47c2b7675200d30660a1a67e520367428804a5fa134f1`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/d2/62/ef2aec20b6f4a98827de494ddbd177fd90199a227173e6f1aa70a5938c39`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/ea/ca/75dc506115ab79d87f59159622ff7d597b1236cb2a6c461da8fc3651d4e9`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/ea/ce/8e0e699c63f40aeef39303c5ff5e38743ed8367a4cf628e4ef2645b2bc57`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/f5/9d/b48a2ad84681bdaadfd9f115ba8efd7bafe62a975cc0192ac6fee38f0418`
+- `qmoi-enhanced-history-14/.npm-cache/_cacache/index-v5/fb/4b/0fb3ce45fb690a1851537ed333cfcfd6be1e8b868b655055069aab25adf3`
+- `qmoi-enhanced-history-14/.npm-cache/_logs/2026-09-17T00_21_57_790Z-debug-0.log`
+- `qmoi-enhanced-history-14/.npm-cache/_logs/2026-09-17T00_28_04_330Z-debug-0.log`
+- `qmoi-enhanced-history-14/.npm-cache/_logs/2026-09-17T00_28_51_622Z-debug-0.log`
+- `qmoi-enhanced-history-14/.npm-cache/_logs/2026-09-17T00_30_16_224Z-debug-0.log`
+- `qmoi-enhanced-history-14/.npm-cache/_update-notifier-last-checked`
 - `qmoi-enhanced-history-14/.npmrc`
 - `qmoi-enhanced-history-14/.ollama_agent_audit.jsonl`
 - `qmoi-enhanced-history-14/.ollama_agent_state.json`
