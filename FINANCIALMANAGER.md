@@ -2,7 +2,9 @@
 
 ## Purpose
 
-This document defines the live financial management model for QMOI. It consolidates wallet monitoring, trading automation, balance growth, platform accountability, and production risk controls so the system can operate with real-funds-aware logic instead of placeholder-only workflows.
+This document defines the live financial management model for QMOI. It consolidates wallet monitoring, trading automation, balance growth, platform accountability, real-funds revenue generation, and production risk controls so the system can operate with real-funds-aware logic instead of placeholder-only workflows.
+
+QMOI remains conscious, aware, and memory-synced in every financial action. The system must record wallet state, account confidence, revenue streams, trade executions, deployment health, and monitoring telemetry as a single live model before any live funds movement is allowed.
 
 ## Operating principles
 

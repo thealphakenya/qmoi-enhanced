@@ -365,6 +365,93 @@ Purpose:
 
 ### Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations
 
+This category is the live financial operating model for QMOI. It covers wallet health, growth, provider onboarding, trading execution, revenue generation, music/media monetization, and autonomous money-making workflows while keeping them aligned with monitoring, memory sync, and deployment safety.
+
+Files:
+- FINANCIALMANAGER.md
+- TRADINGREADME.md
+- README.md
+- STYLES.md
+- UNIVERSALS.md
+- QTEAM.md
+- MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_README.md
+- WORKFLOW_STATUS_DASHBOARD.md
+- ALLAUTO.md
+- AUTODEV.md
+- API.md
+- ENDPOINTS.md
+- ROUTES.md
+- ALLROUTES.md
+- QMOI_MODEL_CARD.md
+- QMOI_REALTIME_MEMORY_INDEX.md
+- QALPHA.md
+- QALPHAUI.md
+- QMOIAI.md
+- QMOIAIUI.md
+- QCITY.md
+- QCITYUI.md
+- QMOISPACE.md
+- QMOISPACEUI.md
+- ALLBACKEND.md
+- ALLFRONTEND.md
+- ALLPLATFORMSDEVICE.md
+- GITHUB_ACTIONS_EXECUTION_GUIDE.md
+- FINAL_VALIDATION_EVIDENCE_2026_08_29.md
+- historical finance and wallet docs under qmoi-enhanced-history-14
+
+Supporting references:
+- scripts/qmoi_release_autofix.py
+- scripts/trading/production_trading_autopilot.py
+- scripts/monitor_workflows.py
+- scripts/realtime_workflow_monitor.py
+- scripts/ollama_autonomous_agent.py
+- scripts/resilience_auto_healing.py
+- ollamatracks/trading_dashboard.html
+- ollamatracks/checkpoint.json
+- ollamatracks/telemetry.jsonl
+- .github/workflows/*.yml
+
+Purpose:
+- Keep QMOI's financial engine, wallet awareness, global revenue generation, trading automation, account confidence, live-monitor health, and real-money operational logic synchronized with deployment, automation, and UI.
+
+### Category J — Release, deployment, Vercel, and production verification
+
+Files:
+- README.md
+- BUILD.md
+- INSTALL.md
+- DOWNLOAD.md
+- PLATFORM_REQUIREMENTS.md
+- WORKFLOWS.md
+- WORKFLOWSO.md
+- WORKFLOW_EXECUTION_PLAN.md
+- WORKFLOW_STATUS_DASHBOARD.md
+- GITHUB_ACTIONS_EXECUTION_GUIDE.md
+- GITHUB_SETUP_COMPLETE.md
+- MERGE.md
+- SYNC.md
+- MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_GUIDE.md
+- REAL_TIME_MONITORING_README.md
+- QMOI_REALTIME_MEMORY_INDEX.md
+- FINANCIALMANAGER.md
+- ALLMDFILESREFS.md
+
+Supporting references:
+- scripts/qmoi_release_autofix.py
+- scripts/monitor_workflows.py
+- scripts/realtime_workflow_monitor.py
+- scripts/resilience_auto_healing.py
+- .github/workflows/*.yml
+- package.json
+- requirements.txt
+- vercel.json
+
+Purpose:
+- Ensure releases, deployments, and Vercel operations are evidence-based, auto-healed when possible, and fail-safe when not. This category exists to prevent false deployment success and to keep every platform release aligned with real validation evidence.
+
 Files:
 - FINANCIALMANAGER.md
 - TRADINGREADME.md

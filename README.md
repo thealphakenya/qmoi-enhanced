@@ -1,6 +1,14 @@
 # QMOI Enhanced - Ollama Autonomous Agent v2
 
-Enterprise-grade platform-specific feature validation system for comprehensive cross-platform development.
+Enterprise-grade platform-specific feature validation system for comprehensive cross-platform development, autonomous problem resolution, release readiness, Vercel deployment safety, and real-time monitoring.
+
+## 🚀 Production goals
+
+- Keep QMOI autonomous, self-healing, and deployment-safe across GitHub, Vercel, release pipelines, and real-time monitors.
+- Automatically detect and repair errors in workflows, code, config, and deployment contracts before false-success claims are allowed.
+- Keep releases and downloads evidence-based, versioned, and linked to verified GitHub release assets instead of placeholder URLs.
+- Maintain finance, wallet, trading, revenue, and money-making automation under explicit safety gates and memory synchronization.
+- Ensure all monitoring and tracker systems validate freshness, stale-state handling, and failure-safe behavior.
 
 ## 🎯 Overview
 
