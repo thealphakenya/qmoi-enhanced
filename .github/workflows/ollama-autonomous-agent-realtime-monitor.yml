@@ -313,7 +313,7 @@ jobs:
 
       - name: Collect GitHub workflow, job, PR and check state
         id: collect
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           TRACK_DIR: ${{ env.TRACK_DIR }}
           TRACK_SCHEMA_VERSION: ${{ env.TRACK_SCHEMA_VERSION }}
