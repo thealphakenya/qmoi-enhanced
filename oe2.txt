@@ -220,6 +220,10 @@ If a command cannot run because a dependency is missing, the next allowed action
 - [x] Expanded the live Q Financial Manager category in ALLMDFILESREFS.md to include cash-on, Megavault, wallet, employment, payment, deal, revenue, trading, autoproject, and money-making markdown references across both the live repo and the historical snapshot.
 - [x] Ensured the Ollama autonomous agent keeps a live financial-manager inventory and includes the finance catalog in runtime status reporting so the money-making and revenue loops remain tracked and up-to-date.
 - [x] Updated the execution ledger to reflect the current finance and revenue automation completion state without skipping the remaining GitHub advisory closure item.
+- [x] Added an automatic markdown inventory and category sync path so the Ollama autonomous agent scans every markdown file in the live repo, history snapshots, and archive surfaces, and then assigns or creates the required category block in ALLMDFILESREFS.md without missing files.
+- [x] Extended the runtime status to include the markdown inventory count and auto-generated category coverage so the live repo continuously verifies that all markdown files remain mapped in the canonical inventory.
+- [x] Hardened the remaining security remediation path so the autofix runs against every requirement manifest in the repository tree, including nested and historical requirement files, rather than only the root requirements.txt, ensuring the GitHub advisory scan is addressed at the actual repo-wide source.
+- [x] Tightened the GitHub security workflows to audit all requirement manifests recursively and fail the final gate if any advisory remains after the autofix pass.
 
 ## Resume protocol for every future session
 

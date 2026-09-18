@@ -19,6 +19,16 @@ class QMOISecurityAutofix:
         self.root = Path(root or Path(__file__).resolve().parent.parent)
         self.requirements_path = self.root / "requirements.txt"
 
+    def find_requirement_files(self) -> List[Path]:
+        """Return all requirement manifests in the repo so security fixes are applied everywhere GitHub might scan."""
+        manifests: set[Path] = set()
+        for path in self.root.rglob("*"):
+            if path.is_file() and path.name.startswith("requirements") and path.suffix in {".txt", ".in"}:
+                manifests.add(path)
+        if self.requirements_path.exists():
+            manifests.add(self.requirements_path)
+        return sorted(manifests)
+
     def bump_known_vulnerable_packages(self, text: str) -> str:
         """Return requirements text with vulnerable floor versions bumped to safe minimums."""
         replacements = {
@@ -47,22 +57,28 @@ class QMOISecurityAutofix:
 
     def run_security_fix_cycle(self) -> Dict[str, object]:
         """Apply a safe dependency remediation cycle and save a structured report."""
-        requirements_text = self.requirements_path.read_text(encoding="utf-8") if self.requirements_path.exists() else ""
-        updated_text = self.bump_known_vulnerable_packages(requirements_text)
-        report_path = self.root / "requirements.txt.security_autofix_report.json"
+        updated_files: List[str] = []
+        manifest_summary: List[str] = []
 
-        status = "healthy"
-        if updated_text != requirements_text:
-            self.requirements_path.write_text(updated_text, encoding="utf-8")
-            status = "updated"
+        for path in self.find_requirement_files():
+            requirements_text = path.read_text(encoding="utf-8") if path.exists() else ""
+            updated_text = self.bump_known_vulnerable_packages(requirements_text)
+            if updated_text != requirements_text:
+                path.write_text(updated_text, encoding="utf-8")
+                updated_files.append(str(path.relative_to(self.root)))
+                manifest_summary.append(str(path.relative_to(self.root)))
+
+        report_path = self.root / "requirements.txt.security_autofix_report.json"
+        status = "updated" if updated_files else "healthy"
 
         summary = {
             "status": status,
-            "summary": "Dependency security floor validated and updated when vulnerable versions were detected.",
+            "summary": "Dependency security floor validated and updated across every discovered requirement file.",
             "report_path": str(report_path),
             "requirements_path": str(self.requirements_path),
-            "requirements_file": "requirements.txt",
-            "updated": updated_text != requirements_text,
+            "requirements_files": manifest_summary or [str(self.requirements_path.relative_to(self.root))],
+            "updated_files": updated_files,
+            "updated": bool(updated_files),
         }
 
         report_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")

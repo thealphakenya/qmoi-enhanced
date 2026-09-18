@@ -31,11 +31,34 @@ jobs:
       - name: Run dependency audit and autofix if needed
         run: |
           set -euxo pipefail
-          python -m pip_audit -r requirements.txt --progress-spinner off || true
+          python - <<'PY'
+          from pathlib import Path
+          manifests = sorted(p for p in Path('.').rglob('*') if p.is_file() and p.name.startswith('requirements') and p.suffix in {'.txt', '.in'})
+          if not manifests:
+              raise SystemExit('No requirement manifests found for audit.')
+          for path in manifests:
+              print(f'## Auditing {path}')
+              import subprocess, sys
+              proc = subprocess.run([sys.executable, '-m', 'pip_audit', '-r', str(path), '--progress-spinner', 'off'], check=False)
+              if proc.returncode not in (0, 1):
+                  raise SystemExit(proc.returncode)
+          PY
           python scripts/qmoi_security_autofix.py
 
       - name: Re-run security audit
-        run: python -m pip_audit -r requirements.txt --progress-spinner off
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          manifests = sorted(p for p in Path('.').rglob('*') if p.is_file() and p.name.startswith('requirements') and p.suffix in {'.txt', '.in'})
+          if not manifests:
+              raise SystemExit('No requirement manifests found for audit.')
+          import subprocess, sys
+          for path in manifests:
+              print(f'## Verifying {path}')
+              proc = subprocess.run([sys.executable, '-m', 'pip_audit', '-r', str(path), '--progress-spinner', 'off'], check=False)
+              if proc.returncode != 0:
+                  raise SystemExit(proc.returncode)
+          PY
 
       - name: Create or update remediation PR
         uses: peter-evans/create-pull-request@v7

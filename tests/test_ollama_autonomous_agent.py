@@ -206,6 +206,31 @@ class TestFinancialManagerCatalog:
         assert "money_making" in result["coverage"]
 
 
+class TestMarkdownCategoryIndex:
+    def test_refresh_markdown_category_index_captures_every_md_file_and_creates_missing_category(self, tmp_path):
+        repo = tmp_path / "repo"
+        history = repo / "qmoi-enhanced-history-14"
+        repo.mkdir()
+        history.mkdir()
+
+        (repo / "README.md").write_text("# root\n", encoding="utf-8")
+        (repo / "FINANCIALMANAGER.md").write_text("# finance\n", encoding="utf-8")
+        (repo / "QMOIAUTOPROJECTS.md").write_text("# autoproject\n", encoding="utf-8")
+        (repo / "docs").mkdir()
+        (repo / "docs" / "CUSTOM_RELEASE_NOTES.md").write_text("# release\n", encoding="utf-8")
+        (history / "LEGACY_WALLET_NOTE.md").write_text("# legacy wallet\n", encoding="utf-8")
+
+        agent = OllamaAutonomousAgent(base_path=repo)
+        result = agent.refresh_markdown_category_index(repo)
+
+        assert result["status"] == "ready"
+        assert "README.md" in result["all_markdown_files"]
+        assert "FINANCIALMANAGER.md" in result["all_markdown_files"]
+        assert "LEGACY_WALLET_NOTE.md" in result["all_markdown_files"]
+        assert result["generated_categories"]
+        assert "ALLMDFILESREFS.md" in result["updated_files"]
+
+
 class TestPlatformValidator:
     """Tests for PlatformValidator class."""
     

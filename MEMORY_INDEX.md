@@ -1,8 +1,8 @@
 # QMOI Realtime Memory Index
 
-Generated: 2026-09-18T09:34:07.574892Z
+Generated: 2026-09-18T09:58:42.158882Z
 
-Files Tracked: 8542
+Files Tracked: 8544
 
 ## Files
 
@@ -1274,6 +1274,8 @@ Files Tracked: 8542
 - `or.md`
 - `package-lock.json`
 - `package.json`
+- `production.md`
+- `productionenhanced.md`
 - `pytest.ini`
 - `qmoi-enhanced-history-14/.autopush_sequence`
 - `qmoi-enhanced-history-14/.cspell.json`

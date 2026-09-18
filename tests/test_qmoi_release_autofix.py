@@ -92,3 +92,19 @@ def test_security_autofix_emits_report_for_auto_healing(tmp_path: Path):
     assert result["status"] in {"healthy", "updated"}
     assert "requirements.txt" in str(result["report_path"])
     assert "summary" in result
+
+
+def test_security_autofix_scans_nested_requirements_files(tmp_path: Path):
+    nested_dir = tmp_path / "nested" / "service"
+    nested_dir.mkdir(parents=True)
+    (tmp_path / "requirements.txt").write_text("requests==2.31.0\n", encoding="utf-8")
+    (nested_dir / "requirements.txt").write_text("urllib3==1.26.0\n", encoding="utf-8")
+
+    from scripts.qmoi_security_autofix import QMOISecurityAutofix
+
+    fix = QMOISecurityAutofix(root=tmp_path)
+    result = fix.run_security_fix_cycle()
+
+    assert result["status"] == "updated"
+    assert "requests>=2.32.4" in (tmp_path / "requirements.txt").read_text(encoding="utf-8")
+    assert "urllib3>=2.8.0" in (nested_dir / "requirements.txt").read_text(encoding="utf-8")

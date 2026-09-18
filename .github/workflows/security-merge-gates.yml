@@ -31,7 +31,19 @@ jobs:
           python -m pip install -r requirements.txt pytest pip-audit
 
       - name: Audit Python dependencies
-        run: python -m pip_audit -r requirements.txt --progress-spinner off
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          manifests = sorted(p for p in Path('.').rglob('*') if p.is_file() and p.name.startswith('requirements') and p.suffix in {'.txt', '.in'})
+          if not manifests:
+              raise SystemExit('No requirement manifests found for audit.')
+          import subprocess, sys
+          for path in manifests:
+              print(f'## Auditing {path}')
+              proc = subprocess.run([sys.executable, '-m', 'pip_audit', '-r', str(path), '--progress-spinner', 'off'], check=False)
+              if proc.returncode != 0:
+                  raise SystemExit(proc.returncode)
+          PY
 
       - name: Audit npm dependencies
         run: npm audit --omit=dev --audit-level=high || true

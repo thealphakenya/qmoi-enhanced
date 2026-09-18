@@ -4781,6 +4781,14 @@ All timestamps use UTC ISO-8601 format.
             "source_of_truth": "github",
         }
 
+        markdown_inventory = self.refresh_markdown_category_index(self.root_dir)
+
+        agent_status["markdown_inventory"] = {
+            "status": markdown_inventory["status"],
+            "count": markdown_inventory["count"],
+            "generated_categories": markdown_inventory["generated_categories"],
+        }
+
         return {
             "generated": utc_iso(),
             "agent": agent_status,
@@ -5079,6 +5087,127 @@ All timestamps use UTC ISO-8601 format.
             "coverage": coverage,
             "root": str(target),
             "updated_catalog": str(allmd),
+        }
+
+    def refresh_markdown_category_index(
+        self,
+        root: Path | str | None = None,
+    ) -> dict[str, Any]:
+        """Auto-discover every markdown file, assign it to a live category, and create missing sections in ALLMDFILESREFS.md."""
+        target = Path(root) if root is not None else self.root_dir
+        target.mkdir(parents=True, exist_ok=True)
+
+        search_roots = [target]
+        history_root = target / "qmoi-enhanced-history-14"
+        if history_root.exists():
+            search_roots.append(history_root)
+
+        discovered: set[str] = set()
+        for root_path in search_roots:
+            if not root_path.exists():
+                continue
+            for path in root_path.rglob("*.md"):
+                if path.is_file():
+                    discovered.add(path.relative_to(target).as_posix())
+
+        ordered_files = sorted({Path(relative).name for relative in discovered})
+        full_relative_files = sorted(discovered)
+
+        category_rules = [
+            ("Category A — Governance, repo continuity, and documentation integrity", [
+                "README.md", "ACCOUNTABILITY.md", "SYNC.md", "MERGE.md", "MODELEVOLUTIONO.md", "SESSION_COMPLETION_REPORT.md",
+                "PHASE_1_4_COMPLETION_SUMMARY.md", "GITHUB_SETUP_COMPLETE.md", "IMPLEMENTATION_COMPLETE.md", "ALLMDFILESREFS.md",
+                "MODEL_CARD.md", "QMOI_MODEL_CARD.md", "MONITORING_INDEX.md", "MONITORING_SUMMARY.md", "TREE_FULL_STRUCTURE.md",
+                "MEMORY_INDEX.md", "QTEAM.md", "MEMORY_INDEX.md", "FINAL_SESSION_COMPLETION_REPORT.md",
+            ]),
+            ("Category B — Platform, build, install, deployment, and workflow execution", [
+                "BUILD.md", "INSTALL.md", "DOWNLOAD.md", "PLATFORM_REQUIREMENTS.md", "ALLPLATFORMSDEVICE.md", "WORKFLOWS.md",
+                "WORKFLOWSO.md", "WORKFLOW_EXECUTION_PLAN.md", "WORKFLOW_STATUS_DASHBOARD.md", "GITHUB_ACTIONS_EXECUTION_GUIDE.md",
+                "GITHUBCLONED.md", "NETLIFYPAYED.md", "VERCELPAYED.md", "VERCELLINKS.md", "GITPODPAYED.md",
+            ]),
+            ("Category C — Automation, monitoring, autonomous operations, and self-healing", [
+                "ALLAUTO.md", "AUTODEV.md", "OLLAMA_AUTOMATION_GUIDE.md", "MONITORING_GUIDE.md", "REAL_TIME_MONITORING_GUIDE.md",
+                "REAL_TIME_MONITORING_README.md", "RESILIENCE_AUTO_HEALING.md", "TEST_ENHANCEMENTS.md", "TRIGGER.md", "monitor.md",
+                "OLLAMA_ENHANCEMENT_COMPLETE.md", "OLLAMA_ENHANCEMENT_SUCCESS.md",
+            ]),
+            ("Category D — Product applications, feature surfaces, and UI experience", [
+                "QMOIAI.md", "QMOIAIUI.md", "QALPHA.md", "QALPHAUI.md", "QCITY.md", "QCITYUI.md", "QMOISPACE.md", "QMOISPACEUI.md",
+                "STYLES.md", "UNIVERSALS.md", "ALLBACKEND.md", "ALLFRONTEND.md", "ALLPORTS.md", "ALLROUTES.md",
+            ]),
+            ("Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations", [
+                "FINANCIALMANAGER.md", "TRADINGREADME.md", "CASHON.md", "MEGAVAULT.md", "LEAHWALLET.md", "QMOITRADER.md",
+                "QMOIAUTOPROJECTS.md", "QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md", "QMOIAUTOMAKESMONEY.md", "QMOIREVENUEGENERATION.md",
+                "REVENUEGENERATING.md", "PAYMENTS.md", "DEALS.md", "QMOI_WALLET_FINANCIAL_SYSTEMS.md", "PROJECT_COMPLETE.md",
+                "QMOI_PROJECT_MANAGEMENT_SYSTEMS.md",
+            ]),
+            ("Category F — Security, privacy, masks, memory, and cross-system awareness", [
+                "QMOIMASKS.md", "QVS.md", "ENHANCEDQVS.md", "QMOI_REALTIME_MEMORY_INDEX.md", "QMOI_MODEL_CARD.md",
+                "QMOI_MEMORY_AWARENESS_SYSTEM.md", "oe.md", "or.md", "ollama.md", "github.md",
+            ]),
+            ("Category G1 — Clone, autoclone, and hosted platform parity", [
+                "AUTOCLONE_STANDALONE.md", "GITHUBPAYED.md", "GITPODPAYED.md", "HUGGINGFACEPAYED.md", "HUGGINGFACEHFPAYED.md",
+                "NETLIFYPAYED.md", "QVILLAGE.md", "QUANTUM.md", "VERCELLINKS.md", "VERCELPAYED.md", "QMOIGITHUBAPP.md",
+                "QMOIHUGGINGFACESPACES.md", "QMOIHUGGINGFACESPACESSETUPINST.md", "QMOINETWORK.md", "QMOICLONEGITLAB.md",
+                "QMOICLONEGITHUB.md", "QMOICLONEGITPOD.md", "QMOICLONEHF.md", "QMOICLONEHUGGINGFACE.md", "QMOICLONEQUANTUM.md",
+                "QMOICLONEDAGSHUB.md", "QMOIDATABASE.md",
+            ]),
+        ]
+
+        assignments: dict[str, list[str]] = {label: [] for label, _ in category_rules}
+        generated: list[str] = []
+
+        for relative_path in full_relative_files:
+            name = Path(relative_path).name
+            lower_name = name.lower()
+            bucket = None
+            for label, tokens in category_rules:
+                if any(token.lower() == lower_name or token.lower() in lower_name.replace("-", "_") for token in tokens):
+                    bucket = label
+                    break
+                if any(token.lower() in lower_name.replace("-", "_") for token in tokens):
+                    bucket = label
+                    break
+            if bucket is None:
+                generated.append(relative_path)
+                bucket = "Category K — Auto-generated markdown coverage"
+            if bucket not in assignments:
+                assignments[bucket] = []
+            assignments[bucket].append(relative_path)
+
+        allmd_path = target / "ALLMDFILESREFS.md"
+        index_text = allmd_path.read_text(encoding="utf-8") if allmd_path.exists() else "# ALLMDFILESREFS.md - Complete Reference of All .md Files in Both Repositories\n\n"
+
+        for label, files in assignments.items():
+            if not files:
+                continue
+            files = sorted(set(files))
+            header = f"### {label}"
+            if header not in index_text:
+                block = (
+                    f"\n{header}\n\n"
+                    f"Files:\n" + "\n".join(f"- {item}" for item in files) + "\n\n"
+                    "Supporting references:\n- scripts/ollama_autonomous_agent.py\n- scripts/realtime_workflow_monitor.py\n- scripts/resilience_auto_healing.py\n- .github/workflows/*.yml\n\n"
+                    "Purpose:\n- Keep the live repository inventory complete and automatically synchronized with every markdown file discovered in the active repo and historical archive.\n"
+                )
+                index_text = index_text.rstrip() + block
+            else:
+                match = re.search(rf"{re.escape(header)}\n.*?(?=\n### Category |\n### Category [A-Z]|\Z)", index_text, re.S)
+                if match:
+                    section = match.group(0)
+                    for item in files:
+                        if f"- {item}" not in section:
+                            section = section.rstrip() + f"\n- {item}"
+                            index_text = index_text.replace(match.group(0), section, 1)
+
+        allmd_path.write_text(index_text.rstrip() + "\n", encoding="utf-8")
+
+        return {
+            "status": "ready",
+            "all_markdown_files": ordered_files,
+            "generated_categories": sorted(set(generated)),
+            "updated_files": [allmd_path.name],
+            "category_map": {label: sorted(set(files)) for label, files in assignments.items() if files},
+            "count": len(ordered_files),
         }
 
     def refresh_production_manifests(

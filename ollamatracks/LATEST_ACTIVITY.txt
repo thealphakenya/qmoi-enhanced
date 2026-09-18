@@ -1,2 +1,5 @@
-Agent startup / monitor initialized
-Timestamp: 2026-09-18T09:34:19.351937Z
+SOURCE: ollama_autonomous_agent
+EVENT: workflow_run
+STATUS: failure
+MESSAGE: Ollama autonomous agent workflow status is completed.
+TIMESTAMP_UTC: 2026-09-18T10:10:19Z
