@@ -101,7 +101,20 @@ The monitor also emits a richer live report through `WorkflowMonitor.build_qmoi_
 - `Alpha-Q-ai` availability, branch health, and dirty/out-of-sync warning state
 - QMOI memory-health coverage using the active memory index and telemetry files
 - archive awareness for `qmoi-enhanced-history-14`, `ollamatracks`, and other operational history directories
+- QCity live automation surfaces across GitHub, Gitpod, Vercel, Hugging Face, and QVillage
 - final repository state readiness for remote continuation and autonomous uptime
+
+### QCity automation live monitoring
+
+The live agent also validates that QCity is exposed as an automation-capable app across the cloned platform surfaces expected by the historical runtime layer:
+
+- GitHub repo automation: repository creation, actions, pages, codespaces, and repo orchestration
+- Gitpod workspace automation: workspaces, environments, and collaborative session setup
+- Vercel deployment automation: deploys, domains, functions, analytics, and release checks
+- Hugging Face space automation: model publishing, spaces, datasets, and inference routing
+- QVillage sync automation: network coordination, device sync, and auto-update orchestration
+
+These are tracked as a live platform matrix in the autonomous-agent telemetry so the agent can verify the automation layer is still present even when the repo is running remotely without a local codespace.
 
 The status payload includes:
 

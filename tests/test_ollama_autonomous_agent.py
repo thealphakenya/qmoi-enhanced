@@ -102,6 +102,29 @@ class TestFeatureTester:
         
         for feature in required_features:
             assert feature in features, f"Missing feature: {feature}"
+
+    def test_qcity_clone_platform_automation_is_exposed(self):
+        """QCity should advertise the GitHub, Gitpod, Vercel, and Hugging Face automation surfaces."""
+        tester = FeatureTester("qcity", "web")
+        features = tester.test_qcity_features()
+
+        for feature in [
+            "github_repo_automation",
+            "gitpod_workspace_automation",
+            "vercel_deployment_automation",
+            "huggingface_space_automation",
+            "qvillage_sync_automation",
+        ]:
+            assert feature in features, f"Missing QCity automation feature: {feature}"
+
+        agent = OllamaAutonomousAgent()
+        automation = agent.build_qcity_platform_automation()
+
+        assert set(automation.keys()) >= {"github", "gitpod", "vercel", "huggingface", "qvillage"}
+        assert automation["github"]["automated"] is True
+        assert automation["gitpod"]["automated"] is True
+        assert automation["vercel"]["automated"] is True
+        assert automation["huggingface"]["automated"] is True
     
     def test_qmoi_space_features_complete(self):
         """Test QMOI Space has all required features."""
