@@ -526,13 +526,13 @@ def _load_migration_plan(
         if not stripped:
             continue
         upper = stripped.upper()
-        if upper.startswith("TASK:") or upper.startswith("COMMAND:"):
+        if upper.startswith(("TASK:", "COMMAND:")):
             _, _, rest = stripped.partition(":")
             task = rest.strip()
             if task:
                 tasks.append(task)
                 continue
-        if stripped.startswith("- TASK:") or stripped.startswith("- COMMAND:"):
+        if stripped.startswith(("- TASK:", "- COMMAND:")):
             _, _, rest = stripped.partition(":")
             task = rest.strip()
             if task:
@@ -5028,9 +5028,7 @@ All timestamps use UTC ISO-8601 format.
         for doc in finance_files:
             doc_name = doc.split("/")[-1]
             normalized_name = doc_name.lower()
-            if normalized_name in md_index:
-                present.append(doc_name)
-            elif (target / doc).exists():
+            if normalized_name in md_index or (target / doc).exists():
                 present.append(doc_name)
 
         present = sorted(set(present))
@@ -5109,7 +5107,7 @@ All timestamps use UTC ISO-8601 format.
                 "- Keep QMOI's financial engine, wallet awareness, global revenue generation, trading automation, account confidence, live-monitor health, employment and Megavault flows, CashOn reconciliation, autoproject revenue loops, and real-money operational logic synchronized with deployment, automation, and UI.\n"
             )
             if category_header in content:
-                pattern = re.compile(r"### Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations\n.*?(?=\n### Category J — Release, deployment, Vercel, and production verification)", re.S)
+                pattern = re.compile(r"### Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations\n.*?(?=\n### Category J — Release, deployment, Vercel, and production verification)", re.DOTALL)
                 content = pattern.sub(category_block.rstrip() + "\n\n", content, count=1)
             else:
                 content += "\n\n" + category_block
@@ -5225,7 +5223,7 @@ All timestamps use UTC ISO-8601 format.
                 )
                 index_text = index_text.rstrip() + block
             else:
-                match = re.search(rf"{re.escape(header)}\n.*?(?=\n### Category |\n### Category [A-Z]|\Z)", index_text, re.S)
+                match = re.search(rf"{re.escape(header)}\n.*?(?=\n### Category |\n### Category [A-Z]|\Z)", index_text, re.DOTALL)
                 if match:
                     section = match.group(0)
                     for item in files:

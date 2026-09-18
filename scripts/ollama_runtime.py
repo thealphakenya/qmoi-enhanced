@@ -209,7 +209,7 @@ class OllamaClient:
                 if not isinstance(response, str) or not response.strip():
                     raise OllamaRuntimeError("Ollama returned no generated response")
                 return response.strip()
-            except Exception as exc:  # pragma: no cover - exercised in real runtime only
+            except (OllamaRuntimeError, requests.RequestException, ValueError) as exc:
                 last_error = exc
 
         raise OllamaRuntimeError(f"Ollama request failed while generating: {last_error}")
