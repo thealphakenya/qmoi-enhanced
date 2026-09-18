@@ -50,21 +50,21 @@ jobs:
           python3 scripts/live_activity_stream.py --source combined
           python3 scripts/live_activity_stream.py --source ollama_autonomous_agent
           python3 - <<'PY'
-import json
-from pathlib import Path
-for path in [
-    Path('ollamatracks/live_activity_stream.json'),
-    Path('ollamatracks/ollama_autonomous_agent_live_activity.json'),
-]:
-    if not path.exists():
-        raise SystemExit(f'Missing activity stream artifact: {path}')
-    data = json.loads(path.read_text())
-    print(json.dumps({
-        'path': str(path),
-        'source': data.get('source'),
-        'count': len(data.get('stream', [])),
-    }, indent=2))
-PY
+          import json
+          from pathlib import Path
+          for path in [
+              Path('ollamatracks/live_activity_stream.json'),
+              Path('ollamatracks/ollama_autonomous_agent_live_activity.json'),
+          ]:
+              if not path.exists():
+                  raise SystemExit(f'Missing activity stream artifact: {path}')
+              data = json.loads(path.read_text())
+              print(json.dumps({
+                  'path': str(path),
+                  'source': data.get('source'),
+                  'count': len(data.get('stream', [])),
+              }, indent=2))
+          PY
 
       - name: Upload live activity artifact
         uses: actions/upload-artifact@v4
