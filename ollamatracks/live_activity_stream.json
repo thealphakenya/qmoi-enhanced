@@ -6,25 +6,26 @@
         "behind": false,
         "branch": "main",
         "dirty": true,
-        "raw_status": "## main...origin/main\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/STATE.txt\n M ollamatracks/live_activity_stream.json\n M ollamatracks/ollama_autonomous_agent_live_activity.json\n M ollamatracks/qmoi_live_activity.json"
+        "raw_status": "## main...origin/main\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LAST_RECONCILIATION.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/PR_STATUS.txt\n M ollamatracks/STATE.txt\n M ollamatracks/live_activity_stream.json\n M ollamatracks/ollama_autonomous_agent_live_activity.json\n M ollamatracks/qmoi_live_activity.json\n M ollamatracks/telemetry.jsonl"
       },
       "entity": "qmoi",
       "event": "repo_health",
       "message": "QMOI repo health on main is warning.",
       "source": "qmoi",
       "status": "warning",
-      "timestamp_utc": "2026-09-18T13:37:44Z"
+      "timestamp_utc": "2026-09-18T13:44:36Z"
     },
     {
       "details": {
+        "auth_status": "invalid",
         "source": "local_tracker"
       },
       "entity": "ollama-autonomous-agent",
-      "event": "tracker_heartbeat",
-      "message": "No recent Ollama run was available from GitHub, so the tracker heartbeat is being monitored locally.",
+      "event": "github_auth_status",
+      "message": "GitHub auth is invalid; remote Ollama workflow data is unavailable. Local tracker heartbeat is active.",
       "source": "ollama_autonomous_agent",
-      "status": "idle",
-      "timestamp_utc": "2026-09-18T13:37:44Z"
+      "status": "warning",
+      "timestamp_utc": "2026-09-18T13:44:37Z"
     }
   ]
 }
