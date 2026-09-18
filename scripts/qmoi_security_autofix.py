@@ -56,8 +56,10 @@ class QMOISecurityAutofix:
             ("requests", ">=2.32.4"),
             ("urllib3", ">=2.8.0"),
             ("PyYAML", ">=6.0.3"),
-            ("pytest", ">=9.1.1"),
+            ("pyyaml", ">=6.0.3"),
+            ("pytest", ">=8.3.3"),
             ("flask", ">=3.0.3"),
+            ("flask-cors", ">=4.0.0"),
             ("werkzeug", ">=3.0.1"),
             ("jinja2", ">=3.1.6"),
             ("itsdangerous", ">=2.3.0"),
@@ -70,11 +72,22 @@ class QMOISecurityAutofix:
             ("django", ">=4.2.16"),
             ("numpy", ">=2.0.2"),
             ("pandas", ">=2.2.3"),
+            ("aiohttp", ">=3.9.5"),
+            ("fastapi", ">=0.111.0"),
+            ("starlette", ">=0.37.2"),
+            ("gunicorn", ">=23.2.0"),
+            ("prometheus-client", ">=0.20.0"),
+            ("sentry-sdk", ">=2.10.0"),
+            ("psycopg2-binary", ">=2.9.10"),
+            ("bcrypt", ">=4.1.2"),
+            ("PyJWT", ">=2.8.0"),
+            ("python-dotenv", ">=1.1.0"),
+            ("aiofiles", ">=24.1.0"),
         ]
 
         updated = text
         for package, floor in replacement_rules:
-            pattern = rf"(?im)^(?P<pkg>{re.escape(package)})\s*==\s*(?P<version>[^\s#]+)"
+            pattern = rf"(?im)^(?P<pkg>{re.escape(package)})\s*(?:==|>=|~=)?\s*(?P<version>[^\s#]+)"
             updated = re.sub(pattern, rf"\g<pkg>{floor}", updated)
         return updated
 
