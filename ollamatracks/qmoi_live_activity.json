@@ -6,14 +6,14 @@
         "behind": false,
         "branch": "main",
         "dirty": true,
-        "raw_status": "## main...origin/main\n M MEMORY_INDEX.md\n M github_proof_contract.json\n M memory_index.json\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LAST_RECONCILIATION.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/PR_STATUS.txt\n M ollamatracks/STATE.txt\n M ollamatracks/agent.log\n M ollamatracks/checkpoint.json\n M ollamatracks/monitoring_summary.json\n M ollamatracks/telemetry.jsonl\n M resumefromhere.txt\n M validation_report.json"
+        "raw_status": "## main...origin/main\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/STATE.txt\n M ollamatracks/live_activity_stream.json\n M ollamatracks/ollama_autonomous_agent_live_activity.json\n M ollamatracks/qmoi_live_activity.json"
       },
       "entity": "qmoi",
       "event": "repo_health",
       "message": "QMOI repo health on main is warning.",
       "source": "qmoi",
       "status": "warning",
-      "timestamp_utc": "2026-09-18T10:22:18Z"
+      "timestamp_utc": "2026-09-18T13:37:44Z"
     }
   ]
 }

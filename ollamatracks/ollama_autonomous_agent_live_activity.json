@@ -3,48 +3,14 @@
   "stream": [
     {
       "details": {
-        "branch": "main",
-        "conclusion": "running",
-        "status": "in_progress",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/35334270459",
-        "workflow": "Ollama Autonomous Agent & Live Tracker"
+        "source": "local_tracker"
       },
       "entity": "ollama-autonomous-agent",
-      "event": "workflow_run",
-      "message": "Ollama autonomous agent workflow status is in_progress.",
+      "event": "tracker_heartbeat",
+      "message": "No recent Ollama run was available from GitHub, so the tracker heartbeat is being monitored locally.",
       "source": "ollama_autonomous_agent",
-      "status": "running",
-      "timestamp_utc": "2026-09-18T10:22:19Z"
-    },
-    {
-      "details": {
-        "branch": "main",
-        "conclusion": "failure",
-        "status": "completed",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/35325202634",
-        "workflow": "Ollama Autonomous Agent & Live Tracker"
-      },
-      "entity": "ollama-autonomous-agent",
-      "event": "workflow_run",
-      "message": "Ollama autonomous agent workflow status is completed.",
-      "source": "ollama_autonomous_agent",
-      "status": "failure",
-      "timestamp_utc": "2026-09-18T10:22:19Z"
-    },
-    {
-      "details": {
-        "branch": "main",
-        "conclusion": "failure",
-        "status": "completed",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/35322911269",
-        "workflow": "Ollama Autonomous Agent & Live Tracker"
-      },
-      "entity": "ollama-autonomous-agent",
-      "event": "workflow_run",
-      "message": "Ollama autonomous agent workflow status is completed.",
-      "source": "ollama_autonomous_agent",
-      "status": "failure",
-      "timestamp_utc": "2026-09-18T10:22:19Z"
+      "status": "idle",
+      "timestamp_utc": "2026-09-18T13:37:44Z"
     }
   ]
 }
