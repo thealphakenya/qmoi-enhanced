@@ -344,6 +344,51 @@ Supporting references:
 Purpose:
 - Keep the developer workflow, branch synchronization, hosting, and PR automation production-safe and verifiable.
 
+### Category G1 — Clone, autoclone, and hosted platform parity
+
+Files:
+- AUTOCLONE_STANDALONE.md
+- GITHUBCLONED.md
+- GITHUBPAYED.md
+- GITPODPAYED.md
+- HUGGINGFACEPAYED.md
+- HUGGINGFACEHFPAYED.md
+- NETLIFYPAYED.md
+- QVILLAGE.md
+- QUANTUM.md
+- VERCELLINKS.md
+- VERCELPAYED.md
+- QCITY.md
+- QMOIGITHUBAPP.md
+- QMOIHUGGINGFACESPACES.md
+- QMOIHUGGINGFACESPACESSETUPINST.md
+- QMOINETWORK.md
+- QMOICLONEGITLAB.md
+- QMOICLONEGITHUB.md
+- QMOICLONEGITPOD.md
+- QMOICLONEHF.md
+- QMOICLONEHUGGINGFACE.md
+- QMOICLONEQUANTUM.md
+- QMOICLONEDAGSHUB.md
+- QMOIDATABASE.md
+- QMOICLONE.md
+- QMOICLONEVERCEL.md
+- QMOIGITPODDEV.md
+- QMOIVERCELDEV.md
+- QMOIALLPLATFORMS.md
+- QMOIAPPS.md
+- QMOI_FREE.md
+- QMOIFREE.md
+
+Supporting references:
+- netlify.toml, vercel.json, .github/workflows/*.yml
+- scripts/ollama_autonomous_agent.py and scripts/github_auto_setup.py
+- historical clone docs under qmoi-enhanced-history-14/ for GitHub, GitLab, Gitpod, Netlify, Vercel, Quantum, Hugging Face, QVillage, and Dagshub
+- runtime memory state in ollamatracks and resumefromhere.txt
+
+Purpose:
+- Keep the entire clone/autoclone ecosystem synchronized across GitHub, GitLab, Gitpod, Netlify, Vercel, Quantum, Hugging Face, QVillage, and Dagshub while preserving the live repo as the source of truth.
+
 ### Category H — Historical/archival references that remain relevant to live production planning
 
 Files:

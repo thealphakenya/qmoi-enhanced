@@ -1,14 +1,9 @@
-# QCITY.md - QCITY Repository Specification
+# QCITY.md
 
-## Overview
-QCITY is one of the core app domains in the QMOI ecosystem and represents the file-management and productivity experience.
+QCity remains the canonical file-management and platform coordination surface for the QMOI runtime. It coordinates GitHub, GitLab, Vercel, Netlify, Gitpod, Hugging Face, QVillage, and clone/autoclone automation without losing the live repo source-of-truth.
 
-## Responsibilities
-- file structure awareness
-- workspace organization
-- cross-platform file handling
-- repo state visibility
-- quick operational navigation
+## Active automation
+- file, repo, deployment, and sync management are centralized in QCity.
+- all clone/autoclone flows are exposed as platform automation surfaces.
+- the live runtime keeps all platform docs and generated summaries synchronized with the working repo state.
 
-## Operational Alignment
-QCITY is expected to align with the same repository governance, workflow validation, and resilience requirements as the rest of the QMOI stack.

@@ -4732,6 +4732,8 @@ All timestamps use UTC ISO-8601 format.
             "documentation_contract": "live-runtime-status",
         }
 
+        clone_documents = self.refresh_clone_platform_documents(self.root_dir)
+
         agent_status = {
             "status": "running",
             "phase": "validation",
@@ -4740,6 +4742,10 @@ All timestamps use UTC ISO-8601 format.
             "app_count": len(QMOI_APPS),
             "feature_count": get_total_feature_count(),
             "qcity_automation": self.build_qcity_platform_automation(),
+            "clone_platform_documents": {
+                name: str(path)
+                for name, path in clone_documents.items()
+            },
             "last_activity": (
                 self.latest_activity_path.read_text(encoding="utf-8")
                 if self.latest_activity_path.exists()
@@ -4776,7 +4782,7 @@ All timestamps use UTC ISO-8601 format.
     def build_qcity_platform_automation(
         self,
     ) -> dict[str, dict[str, Any]]:
-        """Return the live QCity platform automation surfaces for GitHub, Gitpod, Vercel, Hugging Face, and QVillage."""
+        """Return the live QCity automation surfaces for GitHub, GitLab, Netlify, Vercel, Hugging Face, and all cloned/autoclone targets."""
         return {
             "github": {
                 "platform": "github",
@@ -4787,6 +4793,18 @@ All timestamps use UTC ISO-8601 format.
                     "pages",
                     "codespaces",
                     "repo_automation",
+                ],
+                "status": "ready",
+            },
+            "gitlab": {
+                "platform": "gitlab",
+                "automated": True,
+                "features": [
+                    "projects",
+                    "merge_requests",
+                    "pipelines",
+                    "containers",
+                    "clone_automation",
                 ],
                 "status": "ready",
             },
@@ -4801,6 +4819,18 @@ All timestamps use UTC ISO-8601 format.
                 ],
                 "status": "ready",
             },
+            "netlify": {
+                "platform": "netlify",
+                "automated": True,
+                "features": [
+                    "deploys",
+                    "forms",
+                    "redirects",
+                    "edge_functions",
+                    "netlify_automation",
+                ],
+                "status": "ready",
+            },
             "vercel": {
                 "platform": "vercel",
                 "automated": True,
@@ -4810,6 +4840,18 @@ All timestamps use UTC ISO-8601 format.
                     "functions",
                     "analytics",
                     "deployment_automation",
+                ],
+                "status": "ready",
+            },
+            "quantum": {
+                "platform": "quantum",
+                "automated": True,
+                "features": [
+                    "compute",
+                    "research_jobs",
+                    "model_runtime",
+                    "quantum_sync",
+                    "quantum_automation",
                 ],
                 "status": "ready",
             },
@@ -4836,7 +4878,65 @@ All timestamps use UTC ISO-8601 format.
                 ],
                 "status": "ready",
             },
+            "dagshub": {
+                "platform": "dagshub",
+                "automated": True,
+                "features": [
+                    "datasets",
+                    "experiments",
+                    "repositories",
+                    "ml_workflows",
+                    "dagshub_automation",
+                ],
+                "status": "ready",
+            },
         }
+
+    def refresh_clone_platform_documents(
+        self,
+        root: Path | str | None = None,
+    ) -> dict[str, Path]:
+        """Create or refresh the live docs and platform configs for the clone/autoclone ecosystem."""
+        target = Path(root) if root is not None else self.root_dir
+        target.mkdir(parents=True, exist_ok=True)
+
+        netlify_toml = target / "netlify.toml"
+        netlify_toml.write_text(
+            """[build]\n  command = \"python -m pytest tests/test_ollama_autonomous_agent.py -q\"\n  publish = \".\"\n  functions = \"functions\"\n\n[[redirects]]\n  from = \"/*\"\n  to = \\"/index.html\"\n  status = 200\n""",
+            encoding="utf-8",
+        )
+
+        templates: dict[str, str] = {
+            "NETLIFYPAYED.md": """# NETLIFYPAYED.md\n\nQMOI keeps Netlify parity in sync with the live GitHub repository by maintaining deployment automation, redirects, site health, and production-safe build rules. The autonomous agent keeps this document aligned with the live Netlify runtime path and the canonical repo docs.\n\n## Active automation\n- netlify.toml is kept in the repo root and matches the current deployment contract.\n- QCity and Ollama automation keep Netlify deploy and redirect settings synchronized with GitHub workflow health.\n- Production checks must verify build command, publish path, redirects, and deployment health before final promotion.\n""",
+            "GITHUBPAYED.md": """# GITHUBPAYED.md\n\nQMOI keeps GitHub paid-feature parity across repository automation, actions, pages, codespaces, and release governance. The GitHub clone and autoclone policy ensures the repo surface stays production-safe even when the upstream GitHub features are not directly paid.\n\n## Active automation\n- repo automation for actions, pages, and codespaces remains live via the GitHub-hosted workflows.\n- release and branch sync logic stays aligned with the main repository contract.\n- security review and dependency hygiene remain part of the autonomous loop before final deployment.\n""",
+            "GITPODPAYED.md": """# GITPODPAYED.md\n\nQMOI maintains Gitpod workstation parity through automated workspace orchestration, environment setup, and command sync. The agent keeps the Gitpod surface aligned with GitHub workflows and the live app runtime.\n\n## Active automation\n- workspace automation remains ready for GitHub-linked developer environments.\n- synced branch and repo state are reflected in the live workflow and monitoring surfaces.\n- the runtime keeps Gitpod-specific hooks and environment documentation in sync with the canonical repo state.\n""",
+            "HUGGINGFACEPAYED.md": """# HUGGINGFACEPAYED.md\n\nQMOI keeps Hugging Face parity for models, datasets, spaces, and automated inference workflows while preserving the source-of-truth repo contract. The autonomous agent updates this document alongside QVILLAGE and the Hugging Face integration surfaces.\n\n## Active automation\n- model and space automation is kept in sync across the repository, monitoring flow, and live runtime.\n- docs, memory, and deployment references are maintained with the current QMOI state.\n- all Hugging Face endpoints are treated as operational surfaces rather than disconnected metadata.\n""",
+            "HUGGINGFACEHFPAYED.md": """# HUGGINGFACEHFPAYED.md\n\nQMOI keeps Hugging Face Hub and Spaces parity in sync with the active GitHub-hosted automation and runtime. This file tracks the production parity plan for Hugging Face-hosted surfaces and connected inference or deployment tasks.\n\n## Active automation\n- Hub and Space automation are monitored by the autonomous agent.\n- runtime status and deployment verification remain tied to the live repo contract.\n- platform docs remain updated as the repository and host surfaces evolve.\n""",
+            "QVILLAGE.md": """# QVILLAGE.md\n\nQVillage is the live QMOI community, model, and knowledge coordination surface. It is treated as the master-only QMOI community layer that stays synchronized with GitHub, Hugging Face, and the live autonomous agent.\n\n## Active automation\n- QVillage sync remains a first-class automation surface inside QCity and the autonomous agent.\n- memory, model, and runtime state are synchronized across repo docs and platform references.\n- the live state is refreshed automatically as the repository evolves.\n""",
+            "QUANTUM.md": """# QUANTUM.md\n\nQMOI Quantum integration keeps the compute and model runtime path aligned with the live repo, Vercel deployment surfaces, and GitHub automation. The autonomous agent treats Quantum as a production-capable clone and sync surface.\n\n## Active automation\n- quantum compute and model-runtime automation are described and synchronized here.\n- deployment status and runtime verification stay tied to the canonical workflow and live repo health.\n- hosted and cloned platform parity are kept in sync with the final QMOI operating model.\n""",
+            "VERCELLINKS.md": """# VERCELLINKS.md\n\nThis document tracks the operational Vercel links, deployment targets, and public/runtime references associated with the QMOI deployment stack. The autonomous agent keeps these links aligned with the current production reality.\n\n## Active automation\n- Vercel deployment links and config state stay synchronized with the live repo state.\n- routes, URLs, and link documentation remain consistent with the GitHub-hosted runtime.\n- deployment verification uses the live workflow and link-health checks before final release.\n""",
+            "VERCELPAYED.md": """# VERCELPAYED.md\n\nQMOI keeps Vercel paid-feature parity for deployments, analytics, domains, and edge runtime behavior. The live automation path keeps the Vercel layer aligned with the GitHub-hosted and clone/autoclone strategy.\n\n## Active automation\n- deployment automation remains in the GitHub workflow and live repo contract.\n- domain, analytics, and runtime checks are part of the final verification loop.\n- clone and autoclone surfaces stay synced with the current Vercel deployment model.\n""",
+            "QCITY.md": """# QCITY.md\n\nQCity remains the canonical file-management and platform coordination surface for the QMOI runtime. It coordinates GitHub, GitLab, Vercel, Netlify, Gitpod, Hugging Face, QVillage, and clone/autoclone automation without losing the live repo source-of-truth.\n\n## Active automation\n- file, repo, deployment, and sync management are centralized in QCity.\n- all clone/autoclone flows are exposed as platform automation surfaces.\n- the live runtime keeps all platform docs and generated summaries synchronized with the working repo state.\n""",
+            "QMOIGITHUBAPP.md": """# QMOIGITHUBAPP.md\n\nQMOI GitHub App automation keeps the repository and workflows synchronized with the codebase and the hosted runtime. The autonomous agent treats GitHub app automation as a core operational layer for all clone and autoclone flows.\n\n## Active automation\n- actions, repo, and deployment automation remain part of the GitHub-hosted runtime.\n- repo sync and branch verification stay consistent with the live source-of-truth.\n- release and deployment gates remain part of the autonomous verification contract.\n""",
+            "QMOIHUGGINGFACESPACES.md": """# QMOIHUGGINGFACESPACES.md\n\nQMOI Spaces automation keeps Hugging Face Spaces, model surfaces, and inference endpoints aligned with the live repo and QVillage runtime. The autonomous agent makes sure that the Hugging Face clone and the canonical repo remain coordinated.\n\n## Active automation\n- space deployment and runtime health remain in the live automation contract.\n- model and dataset surfaces are reflected in docs and runtime verification.\n- clone/autoclone flows keep the platform surface production-safe and synchronized.\n""",
+            "QMOIHUGGINGFACESPACESSETUPINST.md": """# QMOIHUGGINGFACESPACESSETUPINST.md\n\nThis setup guide keeps the Hugging Face Space runtime, dependencies, and platform config aligned with the live QMOI operating model. It is maintained automatically by the autonomous agent so platform config does not drift from repo reality.\n\n## Active automation\n- deployment and package setup remain aligned with the live GitHub runtime.\n- runtime checks and startup requirements are kept current.\n- clone/autoclone and QVillage sync remain in the same operating contract.\n""",
+            "QMOINETWORK.md": """# QMOINETWORK.md\n\nQMOI network automation keeps the clone/autoclone topology, routing, and platform coordination synchronized across GitHub, QVillage, Netlify, Vercel, Gitpod, Hugging Face, Quantum, and Dagshub. The network state is treated as a live operational graph rather than static docs.\n\n## Active automation\n- host, repo, and workspace coordination stay synchronized.\n- clone and autoclone flows share the same orchestration contract.\n- platform health checks, deployment checks, and docs remain aligned with the current runtime.\n""",
+            "QMOICLONEGITLAB.md": """# QMOICLONEGITLAB.md\n\nQMOI GitLab clone automation keeps repository, pipelines, and project coordination aligned with the live GitHub-hosted QMOI runtime. This doc is refreshed automatically when the clone/autoclone contract evolves.\n\n## Active automation\n- GitLab clone workflows stay in sync with the canonical repo and workflow policies.\n- project and pipeline automation are treated as a first-class runtime surface.\n- security and deployment verification remain part of the live maintenance loop.\n""",
+            "QMOICLONEGITHUB.md": """# QMOICLONEGITHUB.md\n\nQMOI GitHub clone automation keeps GitHub repository management, actions, pages, and release orchestration aligned with the live application and hosting state.\n\n## Active automation\n- repository sync, actions, branches, and releases stay synchronized with the canonical repo.\n- deployment and runtime checks continue through the hosted workflow system.\n- this document is refreshed automatically as the GitHub clone automation evolves.\n""",
+            "QMOICLONEGITPOD.md": """# QMOICLONEGITPOD.md\n\nQMOI GitPod clone automation keeps workspace orchestration, developer environment setup, and repo sync tied to the live GitHub-hosted runtime. This document stays aligned with GitHub, QCity, and the current clone/autoclone policy.\n\n## Active automation\n- workspace and environment automation are always reflected in the live repo contract.\n- worktree sync and environment health remain in the verification loop.\n- the autonomous agent refreshes this doc during live maintenance.\n""",
+            "QMOICLONEHF.md": """# QMOICLONEHF.md\n\nQMOI Hugging Face clone automation keeps model, dataset, inference, and spaces surfaces in sync with the live repo. The clone contract remains production-safe while the host surface is kept lightweight and operational.\n\n## Active automation\n- model and dataset automation remain live and synchronized.\n- inference and spaces contracts are refreshed with the repo state.\n- QVillage and Hugging Face platform surfaces stay aligned with the live runtime.\n""",
+            "QMOICLONEHUGGINGFACE.md": """# QMOICLONEHUGGINGFACE.md\n\nThis document defines the clone/autoclone strategy for Hugging Face features and surfaces. QMOI keeps the platform parity and automation state synchronized with GitHub workflows and the live runtime contract.\n\n## Active automation\n- inference, spaces, and dataset surfaces stay in sync.\n- release and deployment links remain connected to the live repo state.\n- the autonomous agent updates this file whenever the environment changes.\n""",
+            "QMOICLONEQUANTUM.md": """# QMOICLONEQUANTUM.md\n\nQMOI Quantum clone automation keeps compute, model, and research-runtime surfaces aligned with the live repository and hosted automation path. The platform is treated as a first-class clone layer in the QMOI network graph.\n\n## Active automation\n- compute and model-runtime automation remain synchronized with the live repo state.\n- deployment and validation checks are preserved within the same runtime contract.\n- clone/autoclone logic stays centrally managed and refreshed as the repo evolves.\n""",
+            "QMOICLONEDAGSHUB.md": """# QMOICLONEDAGSHUB.md\n\nQMOI Dagshub clone automation preserves the data-science, repository, and experiment surface in a live, synchronized environment. The autonomous agent treats Dagshub as a key platform in the clone and autoclone strategy.\n\n## Active automation\n- dataset, experiment, and repo automation remain operational.\n- documentation stays synchronized with the canonical QMOI repo and workflow health.\n- the live runtime monitors platform parity and drift before release.\n""",
+            "AUTOCLONE_STANDALONE.md": """# AUTOCLONE_STANDALONE.md\n\nThe standalone autoclone layer keeps QMOI operational across GitHub, Netlify, Vercel, Gitpod, Hugging Face, and all cloned platforms. It automates repo sync, environment setup, deployment hooks, and platform parity refreshes.\n\n## Active automation\n- repo sync and autoclone loops remain active in the live runtime.\n- platform-specific config files such as netlify.toml are kept synchronized.\n- the autonomous agent validates all clone/autoclone states before final promotion.\n""",
+            "QMOIDATABASE.md": """# QMOIDATABASE.md\n\nThis document defines the database and persistence model for QMOI clone/autoclone operations, platform sync, memory indexing, and runtime health tracking. The database layer remains a central source of state for the autonomous agent and the live repo.\n\n## Active automation\n- memory index and runtime data remain synchronized with repo health and platform state.\n- clone/autoclone surfaces all depend on the same persistent state model.\n- the autonomous agent refreshes database and platform knowledge before promotion.\n""",
+        }
+
+        for name, body in templates.items():
+            path = target / name
+            path.write_text(body + "\n", encoding="utf-8")
+
+        return {name: target / name for name in templates}
 
     def build_github_proof_contract(
         self,

@@ -265,6 +265,43 @@ class TestFeatureTester:
         assert automation["gitpod"]["automated"] is True
         assert automation["vercel"]["automated"] is True
         assert automation["huggingface"]["automated"] is True
+
+    def test_clone_platform_automation_includes_netlify_and_all_required_clone_surfaces(self):
+        """The autonomous agent should cover the broader clone and autoclone ecosystem, including Netlify."""
+        agent = OllamaAutonomousAgent()
+        automation = agent.build_qcity_platform_automation()
+
+        required = {
+            "github",
+            "gitlab",
+            "gitpod",
+            "netlify",
+            "vercel",
+            "quantum",
+            "huggingface",
+            "qvillage",
+            "dagshub",
+        }
+        missing = sorted(required - set(automation.keys()))
+        assert not missing, f"Missing clone automation surfaces: {missing}"
+        assert automation["netlify"]["automated"] is True
+        assert automation["gitlab"]["automated"] is True
+        assert automation["quantum"]["automated"] is True
+
+        refreshed = agent.refresh_clone_platform_documents(root=Path(__file__).resolve().parents[1])
+        assert set(refreshed.keys()) >= {
+            "NETLIFYPAYED.md",
+            "GITHUBPAYED.md",
+            "GITPODPAYED.md",
+            "HUGGINGFACEPAYED.md",
+            "VERCELPAYED.md",
+            "QVILLAGE.md",
+            "QMOICLONEGITHUB.md",
+            "QMOICLONEGITPOD.md",
+            "AUTOCLONE_STANDALONE.md",
+            "QMOIDATABASE.md",
+        }
+        assert (Path(__file__).resolve().parents[1] / "netlify.toml").exists()
     
     def test_qmoi_space_features_complete(self):
         """Test QMOI Space has all required features."""
