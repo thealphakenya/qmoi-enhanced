@@ -1,1 +1,12 @@
-2026-09-18T07:55:35Z | monitor_initialized | initializing | startup | Realtime workflow monitor initialized
+{
+  "timestamp_utc": "2026-09-18T08:05:42.375Z",
+  "snapshot_hash": "784d6b8972ca6b9ac1564d6753c6099f1b9d1c7734e09a09656a49281238e88e",
+  "validation_workflow_id": 333901991,
+  "agent_workflow_id": 316417903,
+  "latest_validation_run_id": 35322337040,
+  "latest_agent_run_id": 35322504869,
+  "discovered_active_run_count": 5,
+  "active_run_count": 5,
+  "open_pr_count": 17,
+  "force_snapshot": true
+}
