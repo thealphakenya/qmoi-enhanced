@@ -2,7 +2,7 @@
 # This file intentionally removes legacy transitive packages that were being
 # picked up by GitHub dependency scanning and triggering false positives from
 # historical archive requirements.
-requests>=2.32.4
+requests>=2.34.2
 aiohttp>=3.11.0
 boto3>=1.40.0
 numpy>=2.2.0

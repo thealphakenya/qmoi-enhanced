@@ -3,7 +3,7 @@
 # the legacy xmlrunner release is incompatible with the Python version used here.
 flake8>=7.1.0
 pytest>=9.1.1
-requests>=2.32.4
+requests>=2.34.2
 Flask>=3.1.0
 PyYAML>=6.0.3
 aiohttp>=3.11.0

@@ -1,6 +1,6 @@
 # Hardened dependency set for local validation and remote security readiness.
 pytest>=9.1.1
-requests>=2.32.4
+requests>=2.34.2
 urllib3>=2.8.0
 PyYAML>=6.0.3
 pip-audit>=2.10.1
