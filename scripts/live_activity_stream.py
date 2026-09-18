@@ -38,9 +38,27 @@ def safe_write_text(path: Path, content: str) -> None:
 def run_command(command: list[str]) -> str:
     try:
         result = subprocess.run(command, cwd=str(ROOT), capture_output=True, text=True, check=False)
-        return result.stdout.strip()
+        combined = (result.stdout + "\n" + result.stderr).strip()
+        return combined
     except Exception:
         return ""
+
+
+def get_github_auth_status() -> dict[str, Any]:
+    output = run_command(["gh", "auth", "status", "-h", "github.com"])
+    lower = output.lower()
+    invalid_markers = [
+        "failed to log in",
+        "bad credentials",
+        "http 401",
+        "token is invalid",
+        "try authenticating with",
+    ]
+    if any(marker in lower for marker in invalid_markers):
+        return {"valid": False, "message": "GitHub auth is invalid; remote workflow data is unavailable."}
+    if "active account" in lower or "logged in" in lower:
+        return {"valid": True, "message": "GitHub auth is valid."}
+    return {"valid": None, "message": "GitHub auth status is unknown."}
 
 
 def get_git_status() -> dict[str, Any]:
@@ -68,6 +86,10 @@ def get_recent_ollama_runs() -> list[dict[str, Any]]:
     if not gh_token:
         return []
 
+    auth_status = get_github_auth_status()
+    if auth_status.get("valid") is False:
+        return []
+
     command = [
         "gh",
         "run",
@@ -83,6 +105,16 @@ def get_recent_ollama_runs() -> list[dict[str, Any]]:
     ]
     output = run_command(command)
     if not output:
+        return []
+
+    auth_error = any(marker in output.lower() for marker in [
+        "failed to log in",
+        "bad credentials",
+        "http 401",
+        "token is invalid",
+        "try authenticating with",
+    ])
+    if auth_error:
         return []
 
     try:
@@ -153,6 +185,17 @@ def build_dual_stream() -> list[dict[str, Any]]:
                     },
                 )
             )
+    elif get_github_auth_status().get("valid") is False:
+        stream.append(
+            build_entry(
+                "ollama_autonomous_agent",
+                "ollama-autonomous-agent",
+                "github_auth_status",
+                "warning",
+                "GitHub auth is invalid; remote Ollama workflow data is unavailable. Local tracker heartbeat is active.",
+                {"source": "local_tracker", "auth_status": "invalid"},
+            )
+        )
     else:
         stream.append(
             build_entry(

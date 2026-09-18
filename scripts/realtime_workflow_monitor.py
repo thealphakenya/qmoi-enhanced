@@ -677,6 +677,38 @@ class WorkflowMonitor:
             'last_checked_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
         }
 
+    def _is_gh_auth_error(self, output: Any) -> bool:
+        """Return True when GitHub CLI output indicates the token or auth state is invalid."""
+        if output is None:
+            return False
+        text = str(output).lower()
+        markers = [
+            'failed to log in',
+            'bad credentials',
+            'http 401',
+            'token is invalid',
+            'try authenticating with',
+            'not logged in',
+            'authentication required',
+        ]
+        return any(marker in text for marker in markers)
+
+    def get_gh_auth_status(self) -> Dict[str, Any]:
+        """Check the GitHub auth status through gh and report the real reason if it is invalid."""
+        try:
+            result = self._run_gh_command("auth status -h github.com")
+        except Exception:
+            result = {}
+
+        if isinstance(result, dict):
+            text = str(result).lower()
+            if self._is_gh_auth_error(text):
+                return {"valid": False, "message": "GitHub auth is invalid; remote workflow data is unavailable."}
+            if 'active account' in text or 'logged in' in text:
+                return {"valid": True, "message": "GitHub auth is valid."}
+
+        return {"valid": None, "message": "GitHub auth status is unknown."}
+
     def build_live_activity_stream(self) -> List[Dict[str, Any]]:
         """Return a unified, source-labeled live activity stream for both QMOI and the Ollama agent."""
         now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
@@ -708,6 +740,8 @@ class WorkflowMonitor:
             )
         except Exception:
             recent_runs = []
+
+        auth_status = self.get_gh_auth_status()
 
         if not isinstance(recent_runs, list):
             recent_runs = []
@@ -741,6 +775,16 @@ class WorkflowMonitor:
                         "url": run.get('url'),
                     },
                 })
+        elif auth_status.get('valid') is False:
+            stream.append({
+                "source": "ollama_autonomous_agent",
+                "entity": "ollama-autonomous-agent",
+                "event": "github_auth_status",
+                "status": "warning",
+                "message": "GitHub auth is invalid; remote Ollama workflow data is unavailable. Local tracker heartbeat is active.",
+                "timestamp_utc": now,
+                "details": {"auth_status": "invalid", "note": auth_status.get('message', 'GitHub auth status unknown.')},
+            })
         else:
             stream.append({
                 "source": "ollama_autonomous_agent",

@@ -199,6 +199,26 @@ class TestEnhancedTracking:
         assert all("message" in entry for entry in stream)
         assert all("timestamp_utc" in entry for entry in stream)
 
+    def test_live_activity_stream_marks_invalid_github_auth(self, tmp_path, monkeypatch):
+        """The stream should report a real invalid-auth condition instead of a generic idle state."""
+        from scripts.realtime_workflow_monitor import WorkflowMonitor
+
+        monitor = WorkflowMonitor(run_id="auth-check", repo="thealphakenya/qmoi-enhanced", token="test-token")
+        monitor.track_dir = tmp_path / "ollamatracks"
+        monitor.track_dir.mkdir(parents=True, exist_ok=True)
+        (monitor.track_dir / "CURRENT_STATUS.txt").write_text("STATUS: running\n")
+        (monitor.track_dir / "STATE.txt").write_text("status: running\nphase: active\n")
+        (monitor.track_dir / "LATEST_ACTIVITY.txt").write_text("EVENT: validation\nSTATUS: running\n")
+        (monitor.track_dir / "telemetry.jsonl").write_text(
+            json.dumps({"timestamp_utc": "2026-09-18T00:00:00Z", "event": "agent_start", "status": "running", "phase": "startup"}) + "\n"
+        )
+
+        monkeypatch.setattr(monitor, "get_repo_git_status", lambda: {"branch": "main", "dirty": False, "behind": False, "raw": "## main"})
+        monkeypatch.setattr(monitor, "_run_gh_command", lambda cmd: {} if "run list" in cmd else {"auth": "invalid", "message": "Failed to log in to github.com using token"})
+
+        stream = monitor.build_live_activity_stream()
+        assert any(entry["source"] == "ollama_autonomous_agent" and "GitHub auth" in entry["message"] for entry in stream)
+
     def test_latest_activity_updated(self, tmp_path):
         """LATEST_ACTIVITY.txt should track latest activity."""
         agent = OllamaAutonomousAgent(tmp_path)
