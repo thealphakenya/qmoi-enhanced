@@ -302,6 +302,21 @@ class TestFeatureTester:
             "QMOIDATABASE.md",
         }
         assert (Path(__file__).resolve().parents[1] / "netlify.toml").exists()
+
+    def test_agent_refreshes_productionenhanced_manifest_for_nonproduction_markers(self, tmp_path):
+        """The autonomous agent should scan for shallow or non-production implementations and update productionenhanced.md."""
+        agent = OllamaAutonomousAgent(base_path=tmp_path)
+        (tmp_path / "README.md").write_text("TODO: placeholder implementation\n", encoding="utf-8")
+        (tmp_path / "app.py").write_text("raise Exception('stub')\n", encoding="utf-8")
+
+        refreshed = agent.refresh_production_manifests(root=tmp_path)
+
+        assert refreshed["productionenhanced"].exists()
+        production_text = refreshed["productionenhanced"].read_text(encoding="utf-8")
+        assert "production replacement" in production_text.lower()
+        assert "README.md" in production_text
+        assert (tmp_path / "production.md").exists()
+        assert "TODO" in (tmp_path / "production.md").read_text(encoding="utf-8")
     
     def test_qmoi_space_features_complete(self):
         """Test QMOI Space has all required features."""
