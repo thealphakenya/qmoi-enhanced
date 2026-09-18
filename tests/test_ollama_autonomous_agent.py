@@ -61,6 +61,63 @@ class TestResumeFileTracking:
         assert origin["changed"] is True
 
 
+class TestCrossRepositoryAutonomyManager:
+    def test_build_unified_markdown_inventory_deduplicates_same_names(self, tmp_path):
+        repo_qe = tmp_path / "qmoi-enhanced"
+        repo_aq = tmp_path / "Alpha-Q-ai"
+        history = tmp_path / "qmoi-enhanced-history-14"
+
+        (repo_qe / "docs").mkdir(parents=True)
+        (repo_aq / "docs").mkdir(parents=True)
+        (history / "docs").mkdir(parents=True)
+
+        (repo_qe / "docs" / "README.md").write_text("# QE README\n", encoding="utf-8")
+        (repo_aq / "docs" / "README.md").write_text("# AQ README\n", encoding="utf-8")
+        (history / "docs" / "README.md").write_text("# historical README\n", encoding="utf-8")
+        (repo_qe / "notes.md").write_text("# unique QE\n", encoding="utf-8")
+
+        manager = CrossRepositoryAutonomyManager()
+        inventory = manager.build_unified_markdown_inventory(
+            [repo_qe, repo_aq, history],
+            include_history=True,
+            include_memory=True,
+        )
+
+        assert "README.md" in inventory["by_basename"]
+        assert len(inventory["by_basename"]["README.md"]) >= 3
+        assert inventory["duplicate_basenames"]
+        assert inventory["unique_markdown_files"] >= 2
+        assert inventory["canonical_targets"]["README.md"] in {
+            str(repo_qe / "docs" / "README.md"),
+            str(repo_aq / "docs" / "README.md"),
+            str(history / "docs" / "README.md"),
+        }
+
+    def test_merge_duplicate_markdown_files_combines_history_and_repo_content(self, tmp_path):
+        repo_qe = tmp_path / "qmoi-enhanced"
+        repo_aq = tmp_path / "Alpha-Q-ai"
+        history = tmp_path / "qmoi-enhanced-history-14"
+
+        for root in [repo_qe, repo_aq, history]:
+            (root / "docs").mkdir(parents=True)
+
+        (repo_qe / "docs" / "README.md").write_text("# QE README\n\nQE section.\n", encoding="utf-8")
+        (repo_aq / "docs" / "README.md").write_text("# AQ README\n\nAQ section.\n", encoding="utf-8")
+        (history / "docs" / "README.md").write_text("# Historical README\n\nHistory section.\n", encoding="utf-8")
+
+        manager = CrossRepositoryAutonomyManager()
+        result = manager.merge_duplicate_markdown_files([repo_qe, repo_aq, history], target_root=repo_qe)
+
+        merged_path = repo_qe / "docs" / "README.md"
+        assert merged_path.exists()
+        merged_text = merged_path.read_text(encoding="utf-8")
+        assert "QE section" in merged_text
+        assert "AQ section" in merged_text
+        assert "History section" in merged_text
+        assert result["merged_count"] >= 1
+        assert result["duplicate_basenames"][0] == "README.md"
+
+
 class TestPlatformValidator:
     """Tests for PlatformValidator class."""
     

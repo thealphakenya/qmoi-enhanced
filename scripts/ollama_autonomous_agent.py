@@ -2256,6 +2256,285 @@ class CrossRepositoryAutonomyManager:
             "read_only": True,
         }
 
+    def _candidate_merge_roots(
+        self,
+        roots: Sequence[Path | str] | None = None,
+        *,
+        include_history: bool = True,
+        include_memory: bool = True,
+    ) -> list[Path]:
+        """Collect all candidate roots that participate in the final repo merge audit."""
+        repo_root = Path(__file__).resolve().parent.parent
+        defaults = [
+            repo_root,
+            repo_root / "qmoi-enhanced-history-14",
+            repo_root / "qmoi-enhanced-history-14" / "_archive_qmoi-enhanced",
+            repo_root / "ollamatracks",
+        ]
+        if (repo_root / "Alpha-Q-ai").exists():
+            defaults.append(repo_root / "Alpha-Q-ai")
+
+        root_sources = list(roots) if roots is not None else list(defaults)
+        candidates = [Path(item).resolve() for item in root_sources]
+        filtered: list[Path] = []
+        seen: set[str] = set()
+        for candidate in candidates:
+            if not candidate.exists() or not candidate.is_dir():
+                continue
+            key = str(candidate)
+            if key in seen:
+                continue
+            filtered.append(candidate)
+            seen.add(key)
+
+        if roots is None:
+            if include_history:
+                archive = repo_root / "qmoi-enhanced-history-14"
+                if archive.exists():
+                    filtered.append(archive)
+            if include_memory:
+                memory_dir = repo_root / "ollamatracks"
+                if memory_dir.exists():
+                    filtered.append(memory_dir)
+        return filtered
+
+    def build_unified_markdown_inventory(
+        self,
+        roots: Sequence[Path | str] | None = None,
+        *,
+        include_history: bool = True,
+        include_memory: bool = True,
+    ) -> dict[str, Any]:
+        """Return a full markdown inventory across all repo histories, snapshots, and memory stores."""
+        roots_list = self._candidate_merge_roots(roots, include_history=include_history, include_memory=include_memory)
+        by_basename: dict[str, list[str]] = {}
+        duplicate_basenames: list[str] = []
+        canonical_targets: dict[str, str] = {}
+        seen_names: dict[str, str] = {}
+
+        for root in roots_list:
+            if not root.exists():
+                continue
+            for path in sorted(root.rglob("*")):
+                if not path.is_file() or path.suffix.lower() != ".md":
+                    continue
+                basename = path.name
+                key = seen_names.setdefault(basename.lower(), basename)
+                by_basename.setdefault(key, []).append(str(path.resolve()))
+
+        for basename, files in sorted(by_basename.items()):
+            if len(files) > 1:
+                duplicate_basenames.append(basename)
+            ranked = sorted(
+                files,
+                key=lambda item: (
+                    0 if "qmoi-enhanced" in item and "history" not in item.lower() and "ollamatracks" not in item.lower() else 1,
+                    0 if "Alpha-Q-ai" in item else 1,
+                    0 if "history" not in item.lower() else 1,
+                    0 if "archive" not in item.lower() else 1,
+                    item,
+                ),
+            )
+            canonical_targets[basename] = ranked[0]
+
+        unique_markdown_files = len(by_basename)
+        total_markdown_files = sum(len(files) for files in by_basename.values())
+        return {
+            "roots": [str(path.resolve()) for path in roots_list],
+            "by_basename": {basename: files for basename, files in sorted(by_basename.items())},
+            "duplicate_basenames": sorted(duplicate_basenames),
+            "canonical_targets": canonical_targets,
+            "unique_markdown_files": unique_markdown_files,
+            "total_markdown_files": total_markdown_files,
+            "merge_priority": {
+                "live_qmoi": "prefer qmoi-enhanced root files first",
+                "live_alpha_q_ai": "prefer Alpha-Q-ai root files next",
+                "history_snapshot": "preserve historical copies as fallback/merge source",
+                "memory_directory": "treat tracker and memory outputs as runtime evidence, not primary source",
+            },
+        }
+
+    def assemble_repo_merge_plan(
+        self,
+        roots: Sequence[Path | str] | None = None,
+        *,
+        include_history: bool = True,
+        include_memory: bool = True,
+    ) -> dict[str, Any]:
+        """Create a canonical merge plan for all markdown files across repo histories and snapshots."""
+        inventory = self.build_unified_markdown_inventory(
+            roots,
+            include_history=include_history,
+            include_memory=include_memory,
+        )
+        duplicates = {
+            basename: [path for path in inventory["by_basename"].get(basename, [])]
+            for basename in inventory["duplicate_basenames"]
+        }
+
+        merge_plan = {
+            "inventory": inventory,
+            "duplicates": duplicates,
+            "merge_decision": {
+                "mode": "canonicalize-by-basename",
+                "rule": "keep one canonical live file per basename and record historical duplicates as reconciliation sources",
+            },
+        }
+        return merge_plan
+
+    def merge_duplicate_markdown_files(
+        self,
+        roots: Sequence[Path | str] | None = None,
+        *,
+        target_root: Path | str | None = None,
+        include_history: bool = True,
+        include_memory: bool = True,
+    ) -> dict[str, Any]:
+        """Canonicalize duplicate markdown files by basename and merge their contents into one live target.
+
+        This is the real merge execution step: same-named markdown files from the live repo,
+        Alpha-Q-ai, historical snapshots, and tracker memory are combined into a single canonical
+        file, with source provenance preserved in each appended section.
+        """
+        inventory = self.build_unified_markdown_inventory(
+            roots,
+            include_history=include_history,
+            include_memory=include_memory,
+        )
+        candidate_roots = [Path(item).resolve() for item in inventory["roots"]]
+        if target_root is not None:
+            target_root_path = Path(target_root).resolve()
+        elif candidate_roots:
+            target_root_path = candidate_roots[0]
+        else:
+            target_root_path = Path.cwd().resolve()
+
+        duplicated_names = sorted(inventory["duplicate_basenames"])
+        merged_targets: dict[str, str] = {}
+        duplicate_dirs: dict[str, list[str]] = {}
+
+        dir_names: dict[str, list[str]] = {}
+        for root in candidate_roots:
+            if not root.exists():
+                continue
+            for path in sorted(root.rglob("*")):
+                if path.is_dir():
+                    dir_names.setdefault(path.name, []).append(str(path.resolve()))
+                if path.is_file() and path.suffix.lower() == ".md":
+                    continue
+        for directory_name, occurrences in sorted(dir_names.items()):
+            if len(occurrences) > 1:
+                duplicate_dirs[directory_name] = occurrences
+
+        for basename in duplicated_names:
+            files = inventory["by_basename"].get(basename, [])
+            if not files:
+                continue
+            canonical = inventory["canonical_targets"].get(basename)
+            if not canonical:
+                continue
+
+            canonical_path = Path(canonical).resolve()
+            canonical_path.parent.mkdir(parents=True, exist_ok=True)
+            canonical_text = canonical_path.read_text(encoding="utf-8", errors="ignore") if canonical_path.exists() else ""
+            sections: list[str] = []
+            seen_sources: set[str] = set()
+
+            for source_path in sorted(files, key=lambda item: (item.lower() != canonical.lower(), item)):
+                source_file = Path(source_path).resolve()
+                if source_file == canonical_path:
+                    continue
+                source_key = str(source_file)
+                if source_key in seen_sources:
+                    continue
+                seen_sources.add(source_key)
+                try:
+                    source_text = source_file.read_text(encoding="utf-8", errors="ignore")
+                except OSError:
+                    continue
+                if not source_text.strip():
+                    continue
+                rel_source = os.path.relpath(source_file, target_root_path)
+                sections.append(
+                    "\n---\n\n"
+                    + f"## Merged source: {rel_source}\n\n"
+                    + source_text.rstrip()
+                    + "\n"
+                )
+
+            if not sections:
+                continue
+
+            merged_text = canonical_text.rstrip() + "\n\n" + "\n".join(sections).rstrip() + "\n"
+            canonical_path.write_text(merged_text, encoding="utf-8")
+            merged_targets[basename] = str(canonical_path)
+
+        merge_path = target_root_path / "MERGE.md"
+        merge_path.parent.mkdir(parents=True, exist_ok=True)
+        existing = merge_path.read_text(encoding="utf-8") if merge_path.exists() else "# MERGE.md\n\n"
+        merge_section = [
+            "\n## Autonomous markdown merge execution",
+            "",
+            f"- target_root: {target_root_path}",
+            f"- merged_files: {len(merged_targets)}",
+            f"- duplicate_basenames: {', '.join(duplicated_names) if duplicated_names else 'none'}",
+            "",
+            "```json",
+            json.dumps(
+                {
+                    "merged_count": len(merged_targets),
+                    "duplicate_basenames": duplicated_names,
+                    "duplicate_directories": sorted(duplicate_dirs),
+                    "merged_targets": merged_targets,
+                },
+                indent=2,
+                sort_keys=True,
+            ),
+            "```",
+            "",
+        ]
+        merge_path.write_text(existing.rstrip() + "\n".join(merge_section) + "\n", encoding="utf-8")
+
+        return {
+            "target_root": str(target_root_path),
+            "merged_count": len(merged_targets),
+            "duplicate_basenames": duplicated_names,
+            "duplicate_directories": sorted(duplicate_dirs),
+            "merged_targets": merged_targets,
+            "inventory": inventory,
+        }
+
+    def record_merge_audit(self, repo_path: Path | str, plan: Mapping[str, Any]) -> Path:
+        """Write a merge audit record to MERGE.md and the canonical markdown inventory log."""
+        repo = Path(repo_path).resolve()
+        merge_path = repo / "MERGE.md"
+        merge_path.parent.mkdir(parents=True, exist_ok=True)
+        section = [
+            "\n## Autonomous History Merge Audit",
+            "",
+            "```json",
+            json.dumps(plan, indent=2, sort_keys=True),
+            "```",
+            "",
+        ]
+        existing = merge_path.read_text(encoding="utf-8") if merge_path.exists() else "# MERGE.md\n"
+        merge_path.write_text(existing.rstrip() + "\n".join(section), encoding="utf-8")
+
+        inventory_path = repo / "ALLMDFILESREFS.md"
+        if inventory_path.exists():
+            duplicates = ", ".join(plan["inventory"]["duplicate_basenames"][:12]) if plan["inventory"]["duplicate_basenames"] else "none"
+            inventory_summary = (
+                "\n\n## Autonomous Markdown Merge Audit\n\n"
+                f"- Total markdown files inventoried: {plan['inventory']['total_markdown_files']}\n"
+                f"- Duplicate basenames detected: {duplicates}\n"
+                "- Canonical merge targets are chosen from live repo roots before historical snapshots and memory artifacts.\n"
+            )
+            inventory_path.write_text(
+                inventory_path.read_text(encoding="utf-8") + inventory_summary,
+                encoding="utf-8",
+            )
+        return merge_path
+
     def build_merge_audit_plan(self) -> dict[str, Any]:
         """Describe the history and structure evidence required before merges."""
         return {
