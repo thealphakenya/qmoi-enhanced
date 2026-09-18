@@ -75,6 +75,7 @@ is intentionally kept separate from the application feature contract.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -347,6 +348,198 @@ def sanitize_command_metadata(
         "<redacted>",
         value,
     )
+
+
+def _hash_text(text: str) -> str:
+    """Return a stable SHA-256 fingerprint for a text value."""
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _resume_file_changed(root: Path | str | None = None) -> bool:
+    """Detect whether resumefromhere.txt has changed since the last recorded state."""
+    target = Path(root) if root is not None else Path.cwd()
+    resume_path = target / "resumefromhere.txt"
+    state_path = target / ".ollama_agent_state.json"
+
+    if not resume_path.exists():
+        return False
+
+    current_hash = _hash_text(resume_path.read_text(encoding="utf-8", errors="ignore"))
+    previous_hash = None
+
+    if state_path.exists():
+        try:
+            previous_state = json.loads(state_path.read_text(encoding="utf-8"))
+            previous_hash = previous_state.get("resume_checksum")
+        except (json.JSONDecodeError, OSError, TypeError):
+            previous_hash = None
+
+    if previous_hash != current_hash:
+        state = {"resume_checksum": current_hash}
+        if state_path.exists():
+            try:
+                state.update(json.loads(state_path.read_text(encoding="utf-8")))
+            except (json.JSONDecodeError, OSError, TypeError):
+                pass
+        state["resume_checksum"] = current_hash
+        state["resume_last_checked"] = utc_iso()
+        safe_json_write(state_path, state)
+        return True
+
+    return False
+
+
+def _load_migration_plan(
+    root: Path | str | None = None,
+    filename: str = "COMPONENTS_MIGRATION_PLAN.md",
+) -> list[str]:
+    """Load task-style migration instructions from a markdown plan file."""
+    target = Path(root) if root is not None else Path.cwd()
+    plan_path = target / filename
+
+    if not plan_path.exists():
+        return []
+
+    try:
+        text = plan_path.read_text(encoding="utf-8", errors="ignore")
+    except OSError:
+        return []
+
+    tasks: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        upper = stripped.upper()
+        if upper.startswith("TASK:") or upper.startswith("COMMAND:"):
+            _, _, rest = stripped.partition(":")
+            task = rest.strip()
+            if task:
+                tasks.append(task)
+                continue
+        if stripped.startswith("- TASK:") or stripped.startswith("- COMMAND:"):
+            _, _, rest = stripped.partition(":")
+            task = rest.strip()
+            if task:
+                tasks.append(task)
+                continue
+    return tasks
+
+
+def collect_official_deployment_references(root: Path | str | None = None) -> list[dict[str, Any]]:
+    """Return authoritative deployment references used by the autonomous agent."""
+    target = Path(root) if root is not None else Path.cwd()
+    refs = [
+        {"platform": "Vercel", "docs_url": "https://vercel.com/docs", "notes": "Use official Vercel docs for build/runtime config."},
+        {"platform": "GitHub Actions", "docs_url": "https://docs.github.com/actions", "notes": "Use GitHub Actions docs for workflow reliability and secrets."},
+        {"platform": "Netlify", "docs_url": "https://docs.netlify.com/", "notes": "Use Netlify docs for deployment configuration."},
+        {"platform": "Render", "docs_url": "https://render.com/docs", "notes": "Use Render docs for runtime and health checks."},
+    ]
+
+    config_names = ["vercel.json", "netlify.toml", "render.yaml", "railway.json", "fly.toml"]
+    detected = [name for name in config_names if (target / name).exists()]
+    for item in refs:
+        item["detected_configs"] = detected
+        break
+
+    return refs
+
+
+def collect_feature_and_percentage_inventory(root: Path | str | None = None) -> list[dict[str, Any]]:
+    """Collect feature and percentage references to keep the agent aware of coverage and thresholds."""
+    target = Path(root) if root is not None else Path.cwd()
+    inventory: list[dict[str, Any]] = []
+
+    if not target.exists():
+        return inventory
+
+    for path in sorted(target.rglob("*")):
+        if not path.is_file():
+            continue
+        try:
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except OSError:
+            continue
+        lower = text.lower()
+        if "percentage" in lower or "percent" in lower or ("confidence" in lower and "%" in text):
+            inventory.append({
+                "path": str(path.relative_to(target)).replace("\\", "/"),
+                "category": "percentage",
+                "preview": text[:180],
+            })
+        if "feature" in lower or "feature_flag" in lower:
+            inventory.append({
+                "path": str(path.relative_to(target)).replace("\\", "/"),
+                "category": "feature",
+                "preview": text[:180],
+            })
+
+    return inventory
+
+
+def update_deployment_verification_manifest(root: Path | str | None = None) -> Path:
+    """Write the deployment verification manifest that the autonomous agent should keep current."""
+    target = Path(root) if root is not None else Path.cwd()
+    target.mkdir(parents=True, exist_ok=True)
+
+    refs = collect_official_deployment_references(target)
+    detected = sorted({item for entry in refs for item in entry.get("detected_configs", [])})
+
+    manifest_path = target / "DEPLOYMENT_VERIFICATION.md"
+    lines = [
+        "# Deployment verification manifest",
+        "",
+        "## Policy",
+        "- The autonomous agent must verify deployment configuration, environment variables, and official platform docs before making fixes.",
+        "- Prefer the repository's own workflow files and the official deployment guide over guessed config changes.",
+        "- Apply the smallest verified fix and re-check deployment health immediately after each change.",
+        "",
+        "## Detected deployment surfaces",
+    ]
+
+    if detected:
+        for item in detected:
+            lines.append(f"- {item}")
+    else:
+        lines.append("- No deployment config files were detected in the repository scan.")
+
+    lines.extend([
+        "",
+        "## Official references",
+    ])
+    for ref in refs:
+        lines.append(f"- {ref['platform']}: {ref['docs_url']} ({ref.get('notes', 'official documentation')})")
+
+    manifest_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return manifest_path
+
+
+def update_feature_and_percentage_manifest(root: Path | str | None = None) -> Path:
+    """Write the feature/percentage manifest used by the historical autonomous-agent workflow."""
+    target = Path(root) if root is not None else Path.cwd()
+    target.mkdir(parents=True, exist_ok=True)
+
+    inventory = collect_feature_and_percentage_inventory(target)
+    manifest_path = target / "FEATURES_AND_PERCENTAGES.md"
+
+    lines = [
+        "# Features and percentages manifest",
+        "",
+        "## Policy",
+        "- Keep feature coverage and percentage-based rules synchronized with the app behavior and docs.",
+        "- When a threshold or confidence value changes, update the relevant manifest and runtime guidance in the same change.",
+        "",
+        "## Inventory",
+    ]
+
+    if inventory:
+        for item in inventory[:25]:
+            lines.append(f"- [{item['path']}]({item['path']}): {item['category']}")
+    else:
+        lines.append("- No feature or percentage-related inventory was detected in the repository scan.")
+
+    manifest_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return manifest_path
 
 
 # ============================================================================

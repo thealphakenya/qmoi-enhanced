@@ -541,6 +541,244 @@ class WorkflowMonitor:
             'checked_at_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
         }
 
+    def get_repo_git_status(self) -> Dict[str, Any]:
+        """Return the current Git repository status for the local repo."""
+        try:
+            repo_root = Path(__file__).resolve().parent.parent
+            status = subprocess.run(
+                ['git', '-C', str(repo_root), 'status', '--short', '--branch'],
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            branch_raw = subprocess.run(
+                ['git', '-C', str(repo_root), 'branch', '--show-current'],
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            branch = (branch_raw.stdout or '').strip() or 'unknown'
+            output = (status.stdout or '').strip()
+            behind = 'behind' in output.lower() or 'diverged' in output.lower()
+            dirty = bool(output and any(line.strip() for line in output.splitlines() if line and line[0] in {'?', 'M', 'A', 'D', 'U', 'R', 'C'}))
+            return {
+                'branch': branch,
+                'dirty': dirty,
+                'behind': behind,
+                'raw': output,
+                'status': 'dirty' if dirty else 'clean',
+            }
+        except (OSError, subprocess.SubprocessError):
+            return {'branch': 'unknown', 'dirty': False, 'behind': False, 'raw': '', 'status': 'unknown'}
+
+    def get_alpha_q_ai_status(self) -> Dict[str, Any]:
+        """Return the cross-repository health state for the Alpha-Q-ai repo, if it is reachable from this workspace."""
+        candidates = [
+            Path(__file__).resolve().parent.parent.parent / 'Alpha-Q-ai',
+            Path(__file__).resolve().parent.parent / 'Alpha-Q-ai',
+            Path('/workspaces/Alpha-Q-ai'),
+            Path('/workspaces/qmoi-enhanced/../Alpha-Q-ai'),
+        ]
+        repo_path = next((path for path in candidates if path.exists()), None)
+        if repo_path is None:
+            return {
+                'repo': 'thealphakenya/Alpha-Q-ai',
+                'available': False,
+                'healthy': False,
+                'synced': False,
+                'branch': 'unknown',
+                'dirty': False,
+                'behind': False,
+                'status': 'missing',
+                'raw_status': 'Alpha-Q-ai repo not present in the active workspace.',
+            }
+
+        try:
+            status = subprocess.run(
+                ['git', '-C', str(repo_path), 'status', '--short', '--branch'],
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            branch_raw = subprocess.run(
+                ['git', '-C', str(repo_path), 'branch', '--show-current'],
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            branch = (branch_raw.stdout or '').strip() or 'unknown'
+            output = (status.stdout or '').strip()
+            behind = 'behind' in output.lower() or 'diverged' in output.lower()
+            dirty = bool(output and any(line.strip() for line in output.splitlines() if line and line[0] in {'?', 'M', 'A', 'D', 'U', 'R', 'C'}))
+            healthy = not dirty and not behind
+            return {
+                'repo': 'thealphakenya/Alpha-Q-ai',
+                'path': str(repo_path),
+                'available': True,
+                'healthy': healthy,
+                'synced': healthy,
+                'branch': branch,
+                'dirty': dirty,
+                'behind': behind,
+                'status': 'clean' if healthy else 'dirty' if dirty else 'out_of_sync',
+                'raw_status': output,
+            }
+        except (OSError, subprocess.SubprocessError):
+            return {
+                'repo': 'thealphakenya/Alpha-Q-ai',
+                'available': True,
+                'healthy': False,
+                'synced': False,
+                'branch': 'unknown',
+                'dirty': False,
+                'behind': False,
+                'status': 'unreachable',
+                'raw_status': 'Alpha-Q-ai git status could not be read.',
+            }
+
+    def get_memory_sync_status(self) -> Dict[str, Any]:
+        """Return the local memory-sync health of the repo and the tracked memory indexes."""
+        repo_root = Path(__file__).resolve().parent.parent
+        required_memory_files = [
+            repo_root / 'memory_index.json',
+            repo_root / 'QMOI_REALTIME_MEMORY_INDEX.md',
+            repo_root / 'ollamatracks' / 'telemetry.jsonl',
+        ]
+        existing = [str(path.relative_to(repo_root)) for path in required_memory_files if path.exists()]
+        healthy = len(existing) >= 2
+        return {
+            'healthy': healthy,
+            'status': 'synced' if healthy else 'warning',
+            'tracked_repos': ['qmoi-enhanced', 'Alpha-Q-ai'],
+            'memory_files': existing,
+            'required_files': [str(path.relative_to(repo_root)) for path in required_memory_files],
+            'last_checked_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+        }
+
+    def get_archive_inventory(self) -> Dict[str, Any]:
+        """Return the known archive and tracker inventory that QMOI must remain aware of."""
+        repo_root = Path(__file__).resolve().parent.parent
+        candidates = [
+            repo_root / 'qmoi-enhanced-history-14',
+            repo_root / 'ollamatracks',
+            repo_root / '.git',
+        ]
+        history_dirs = [str(path.relative_to(repo_root)) for path in candidates if path.exists()]
+        aware = bool(history_dirs)
+        return {
+            'aware': aware,
+            'history_dirs': history_dirs,
+            'archive_count': len(history_dirs),
+            'status': 'aware' if aware else 'missing',
+            'last_checked_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+        }
+
+    def build_qmoi_ollama_status_report(self) -> Dict[str, Any]:
+        """Build a unified status snapshot for QMOI, Alpha-Q-ai, the Ollama autonomous agent, and the remote repo memory/archive awareness."""
+        git_status = self.get_repo_git_status()
+        alpha_status = self.get_alpha_q_ai_status()
+        memory_status = self.get_memory_sync_status()
+        archive_status = self.get_archive_inventory()
+        tracker_health = self.build_tracker_health(max_age_seconds=300)
+
+        try:
+            recent_runs = self._run_gh_command(
+                f"run list --repo {self.repo} --workflow 'ollama-autonomous-agent.yml' --limit 5 --json "
+                "status,conclusion,displayTitle,headBranch,createdAt,updatedAt,url"
+            )
+        except Exception:
+            recent_runs = []
+
+        if not isinstance(recent_runs, list):
+            recent_runs = []
+
+        ollama_status = {
+            "workflow_name": "Ollama Autonomous Agent & Live Tracker",
+            "recent_runs": recent_runs,
+            "active_run": next((run for run in recent_runs if str(run.get('status', '')).lower() in {'in_progress', 'queued', 'requested', 'waiting', 'pending'}), None),
+            "healthy": any(str(run.get('conclusion', '')).lower() == 'success' for run in recent_runs) if recent_runs else False,
+            "latest_status": recent_runs[0].get('status') if recent_runs else 'unknown',
+            "latest_conclusion": recent_runs[0].get('conclusion') if recent_runs else 'unknown',
+            "tracker_health": tracker_health,
+        }
+
+        qmoi_status = {
+            "repo": self.repo,
+            "branch": git_status.get('branch', 'unknown'),
+            "dirty": git_status.get('dirty', False),
+            "behind": git_status.get('behind', False),
+            "raw_status": git_status.get('raw', ''),
+            "status": 'healthy' if not git_status.get('dirty', False) else 'dirty',
+            "tracker_health": tracker_health,
+        }
+
+        pr_success = bool(recent_runs) and any(str(run.get('conclusion', '')).lower() == 'success' for run in recent_runs)
+        final_repo_state = 'ready'
+        if git_status.get('dirty', False) or git_status.get('behind', False):
+            final_repo_state = 'warning'
+        if not alpha_status.get('healthy', False) or not memory_status.get('healthy', False) or not archive_status.get('aware', False):
+            final_repo_state = 'warning'
+        if not pr_success and not tracker_health.get('healthy', False):
+            final_repo_state = 'warning'
+
+        health_gates = {
+            'pr_success': pr_success,
+            'final_repo_state': final_repo_state,
+            'repo_clean': not git_status.get('dirty', False) and not git_status.get('behind', False),
+            'alpha_q_ai_healthy': bool(alpha_status.get('healthy', False)),
+            'memory_sync_healthy': bool(memory_status.get('healthy', False)),
+            'archive_aware': bool(archive_status.get('aware', False)),
+        }
+
+        history_summary = {
+            "local_tracker": {
+                "current_status": self._read_tracker_text(self.track_dir / 'CURRENT_STATUS.txt'),
+                "latest_activity": self._read_tracker_text(self.track_dir / 'LATEST_ACTIVITY.txt'),
+                "state": self._read_tracker_text(self.track_dir / 'STATE.txt'),
+                "last_reconciliation": self._read_tracker_text(self.track_dir / 'LAST_RECONCILIATION.txt'),
+            },
+            "recent_gh_runs": recent_runs,
+            "timestamp_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+        }
+
+        merge_status = {
+            "status": 'synced' if not git_status.get('behind', False) and not git_status.get('dirty', False) else 'warning',
+            "behind": git_status.get('behind', False),
+            "dirty": git_status.get('dirty', False),
+            "summary": 'Local repo is synced enough to continue; remote GitHub automation is still active.' if not git_status.get('behind', False) else 'Local repo is behind the remote branch; sync is required before final branch state is considered complete.',
+        }
+
+        report = {
+            "qmoi": qmoi_status,
+            "alpha_q_ai": alpha_status,
+            "memory_sync": memory_status,
+            "archive_awareness": archive_status,
+            "ollama_autonomous_agent": ollama_status,
+            "merge_status": merge_status,
+            "health_gates": health_gates,
+            "history": history_summary,
+            "timestamp_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+            "report_name": "qmoi_and_ollama_live_status",
+        }
+        self._write_tracker_snapshot(
+            'qmoi_ollama_live_status_report',
+            'Combined QMOI, Alpha-Q-ai, memory, archive, and Ollama status report generated',
+            'healthy' if (not git_status.get('dirty', False) and ollama_status.get('healthy', False) and alpha_status.get('healthy', False) and memory_status.get('healthy', False) and archive_status.get('aware', False)) else 'warning',
+            'monitoring',
+            {'qmoi_branch': git_status.get('branch', 'unknown'), 'alpha_branch': alpha_status.get('branch', 'unknown'), 'ollama_runs': len(recent_runs)},
+        )
+        return report
+
+    def _read_tracker_text(self, path: Path) -> str:
+        try:
+            return path.read_text(encoding='utf-8', errors='ignore').strip()
+        except OSError:
+            return ''
+
     def print_header(self):
         """Print monitor header"""
         print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*70}")

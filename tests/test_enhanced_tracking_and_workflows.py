@@ -108,6 +108,70 @@ class TestEnhancedTracking:
         summary = json.loads(summary_file.read_text())
         assert "event" in summary
         assert "timestamp_utc" in summary
+
+    def test_monitor_builds_qmoi_and_ollama_status_report(self, tmp_path, monkeypatch):
+        """Monitor should expose both QMOI and Ollama agent state and recent history."""
+        from scripts.realtime_workflow_monitor import WorkflowMonitor
+
+        monitor = WorkflowMonitor(run_id="123", repo="thealphakenya/qmoi-enhanced", token="test-token")
+        monitor.track_dir = tmp_path / "ollamatracks"
+        monitor.track_dir.mkdir(parents=True, exist_ok=True)
+        (monitor.track_dir / "CURRENT_STATUS.txt").write_text("STATUS: running\n")
+        (monitor.track_dir / "STATE.txt").write_text("status: running\nphase: active\n")
+        (monitor.track_dir / "LATEST_ACTIVITY.txt").write_text("EVENT: validation\nSTATUS: running\n")
+        (monitor.track_dir / "telemetry.jsonl").write_text(
+            json.dumps({"timestamp_utc": "2026-09-18T00:00:00Z", "event": "agent_start", "status": "running", "phase": "startup"}) + "\n"
+        )
+
+        monkeypatch.setattr(
+            monitor,
+            "_run_gh_command",
+            lambda cmd: [
+                {"status": "completed", "conclusion": "success", "displayTitle": "Ollama Autonomous Agent & Live Tracker", "workflowName": "Ollama Autonomous Agent & Live Tracker"},
+                {"status": "completed", "conclusion": "success", "displayTitle": "QMOI Enhanced CI/CD", "workflowName": "QMOI Enhanced CI/CD"},
+            ],
+        )
+        monkeypatch.setattr(
+            monitor,
+            "get_repo_git_status",
+            lambda: {"branch": "main", "dirty": False, "behind": False, "raw": "## main...origin/main"},
+        )
+
+        report = monitor.build_qmoi_ollama_status_report()
+
+        assert report["qmoi"]["branch"] == "main"
+        assert report["ollama_autonomous_agent"]["recent_runs"]
+        assert report["history"]
+        assert report["merge_status"]["status"] in {"synced", "warning"}
+
+    def test_status_report_tracks_alpha_q_ai_memory_and_archives(self, tmp_path, monkeypatch):
+        """Status report should include cross-repo sync, memory awareness, and archive inventory health."""
+        from scripts.realtime_workflow_monitor import WorkflowMonitor
+
+        monitor = WorkflowMonitor(run_id="456", repo="thealphakenya/qmoi-enhanced", token="test-token")
+        monitor.track_dir = tmp_path / "ollamatracks"
+        monitor.track_dir.mkdir(parents=True, exist_ok=True)
+        (monitor.track_dir / "CURRENT_STATUS.txt").write_text("STATUS: running\n")
+        (monitor.track_dir / "STATE.txt").write_text("status: running\nphase: active\n")
+        (monitor.track_dir / "LATEST_ACTIVITY.txt").write_text("EVENT: validation\nSTATUS: running\n")
+        (monitor.track_dir / "telemetry.jsonl").write_text(
+            json.dumps({"timestamp_utc": "2026-09-18T00:00:00Z", "event": "agent_start", "status": "running", "phase": "startup"}) + "\n"
+        )
+
+        monkeypatch.setattr(monitor, "get_repo_git_status", lambda: {"branch": "main", "dirty": False, "behind": False, "raw": "## main"})
+        monkeypatch.setattr(monitor, "get_alpha_q_ai_status", lambda: {"repo": "thealphakenya/Alpha-Q-ai", "branch": "main", "healthy": True, "synced": True, "dirty": False, "behind": False})
+        monkeypatch.setattr(monitor, "get_memory_sync_status", lambda: {"healthy": True, "status": "synced", "tracked_repos": ["qmoi-enhanced", "Alpha-Q-ai"], "memory_files": ["memory_index.json", "QMOI_REALTIME_MEMORY_INDEX.md"]})
+        monkeypatch.setattr(monitor, "get_archive_inventory", lambda: {"aware": True, "history_dirs": ["qmoi-enhanced-history-14", "ollamatracks"], "archive_count": 2})
+        monkeypatch.setattr(monitor, "_run_gh_command", lambda cmd: [{"status": "completed", "conclusion": "success", "displayTitle": "Autonomous Agent Validation", "workflowName": "ollama-autonomous-agent.yml"}])
+
+        report = monitor.build_qmoi_ollama_status_report()
+
+        assert report["alpha_q_ai"]["healthy"] is True
+        assert report["alpha_q_ai"]["synced"] is True
+        assert report["memory_sync"]["healthy"] is True
+        assert report["archive_awareness"]["aware"] is True
+        assert report["health_gates"]["pr_success"] is True
+        assert report["health_gates"]["final_repo_state"] in {"ready", "healthy", "warning"}
     
     def test_latest_activity_updated(self, tmp_path):
         """LATEST_ACTIVITY.txt should track latest activity."""

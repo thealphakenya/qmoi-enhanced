@@ -271,6 +271,31 @@ class TestRealtimeTracker:
         assert "agent_startup" in telemetry or "validation_started" in telemetry or "monitor_initialized" in telemetry
 
 
+def test_historical_autonomous_agent_utils_are_available(tmp_path):
+    from scripts.ollama_autonomous_agent import (
+        _load_migration_plan,
+        _resume_file_changed,
+        update_deployment_verification_manifest,
+        update_feature_and_percentage_manifest,
+    )
+
+    (tmp_path / "resumefromhere.txt").write_text("- run validation\n- verify build\n", encoding="utf-8")
+    assert _resume_file_changed(tmp_path) is True
+    assert _load_migration_plan(tmp_path) == []
+
+    (tmp_path / "COMPONENTS_MIGRATION_PLAN.md").write_text("TASK: Validate rollout\n", encoding="utf-8")
+    assert _load_migration_plan(tmp_path) == ["Validate rollout"]
+
+    (tmp_path / "vercel.json").write_text('{"version": 2}', encoding="utf-8")
+    verification = update_deployment_verification_manifest(tmp_path)
+    assert verification.exists()
+    assert "Deployment verification manifest" in verification.read_text(encoding="utf-8")
+
+    feature_manifest = update_feature_and_percentage_manifest(tmp_path)
+    assert feature_manifest.exists()
+    assert "Features and percentages manifest" in feature_manifest.read_text(encoding="utf-8")
+
+
 class TestWorkflowNormalizer:
     """Tests for WorkflowNormalizer class."""
     

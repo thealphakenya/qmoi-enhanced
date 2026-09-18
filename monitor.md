@@ -94,6 +94,67 @@ The repository monitor polls the latest run for each of the eight workflows and
 waits for active runs to finish. It needs GitHub CLI access through
 `GITHUB_TOKEN` or an authenticated `gh` installation.
 
+The monitor also emits a richer live report through `WorkflowMonitor.build_qmoi_ollama_status_report()`. This report now checks the following remote and repo-health gates in real time:
+
+- PR success status from the last successful autonomous-agent workflow run
+- current `qmoi-enhanced` branch cleanliness and sync state
+- `Alpha-Q-ai` availability, branch health, and dirty/out-of-sync warning state
+- QMOI memory-health coverage using the active memory index and telemetry files
+- archive awareness for `qmoi-enhanced-history-14`, `ollamatracks`, and other operational history directories
+- final repository state readiness for remote continuation and autonomous uptime
+
+The status payload includes:
+
+```python
+{
+  "qmoi": {...},
+  "alpha_q_ai": {...},
+  "memory_sync": {...},
+  "archive_awareness": {...},
+  "ollama_autonomous_agent": {...},
+  "health_gates": {
+    "pr_success": True,
+    "final_repo_state": "ready",
+    "repo_clean": True,
+    "alpha_q_ai_healthy": True,
+    "memory_sync_healthy": True,
+    "archive_aware": True,
+  },
+}
+```
+
+This is the same contract used to answer whether the autonomous agent is truly running, whether the final repo is healthy, whether the memory is synchronized, and whether the archived QMOI state is still visible and recoverable.
+
+## Remote health gates for autonomous continuity
+
+The monitor now treats the following as required operational gates before the repo is considered in a healthy autonomous state:
+
+1. the latest Ollama autonomous-agent workflow has a successful outcome
+2. the `qmoi-enhanced` local repo is not dirty or behind its tracked branch
+3. the `Alpha-Q-ai` repo is reachable and not dirty or behind
+4. the active memory indexes and tracking telemetry are present and readable
+5. the archive inventory is present so the agent remains aware of all historical versions and state data
+6. the final repo state is not in warning mode before remote continuation is declared
+
+If any gate is degraded, the monitor reports a `warning` state instead of claiming final health.
+
+## Automated monitoring checklist
+
+Use this checklist for `GitHub-hosted` monitoring and remote continuity:
+
+- [ ] `CURRENT_STATUS.txt` and `LATEST_ACTIVITY.txt` are fresh
+- [ ] `STATE.txt` and `PR_STATUS.txt` match the active phase and status
+- [ ] `telemetry.jsonl` has recent heartbeat entries
+- [ ] the latest autonomous-agent workflow shows success or a safe in-progress state
+- [ ] `Alpha-Q-ai` is healthy and synced
+- [ ] memory indexes are present and readable
+- [ ] archive inventory is visible to the agent
+- [ ] the final repo state is `ready` or `healthy`
+
+## Option 4: Terminal Watch Commands
+
+Refresh the latest runs every minute:
+
 ```bash
 export GITHUB_TOKEN=<token>
 python scripts/monitor_workflows.py
@@ -232,4 +293,4 @@ For the autonomous-agent run, preserve these files when available:
 - [Repository](https://github.com/thealphakenya/qmoi-enhanced)
 - [Repository security](https://github.com/thealphakenya/qmoi-enhanced/security)
 
-Last updated: 2026-08-29
+Last updated: 2026-09-18
