@@ -4,6 +4,21 @@
     {
       "details": {
         "branch": "main",
+        "conclusion": "running",
+        "status": "in_progress",
+        "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/35334270459",
+        "workflow": "Ollama Autonomous Agent & Live Tracker"
+      },
+      "entity": "ollama-autonomous-agent",
+      "event": "workflow_run",
+      "message": "Ollama autonomous agent workflow status is in_progress.",
+      "source": "ollama_autonomous_agent",
+      "status": "running",
+      "timestamp_utc": "2026-09-18T10:22:19Z"
+    },
+    {
+      "details": {
+        "branch": "main",
         "conclusion": "failure",
         "status": "completed",
         "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/35325202634",
@@ -14,7 +29,7 @@
       "message": "Ollama autonomous agent workflow status is completed.",
       "source": "ollama_autonomous_agent",
       "status": "failure",
-      "timestamp_utc": "2026-09-18T10:10:19Z"
+      "timestamp_utc": "2026-09-18T10:22:19Z"
     },
     {
       "details": {
@@ -29,22 +44,7 @@
       "message": "Ollama autonomous agent workflow status is completed.",
       "source": "ollama_autonomous_agent",
       "status": "failure",
-      "timestamp_utc": "2026-09-18T10:10:19Z"
-    },
-    {
-      "details": {
-        "branch": "main",
-        "conclusion": "failure",
-        "status": "completed",
-        "url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/35322504869",
-        "workflow": "Ollama Autonomous Agent & Live Tracker"
-      },
-      "entity": "ollama-autonomous-agent",
-      "event": "workflow_run",
-      "message": "Ollama autonomous agent workflow status is completed.",
-      "source": "ollama_autonomous_agent",
-      "status": "failure",
-      "timestamp_utc": "2026-09-18T10:10:19Z"
+      "timestamp_utc": "2026-09-18T10:22:19Z"
     }
   ]
 }
