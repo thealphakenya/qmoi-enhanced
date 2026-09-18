@@ -5,6 +5,7 @@
   "scripts": {
     "test": "python -m pytest tests -q",
     "security:check": "python -m pip_audit -r requirements.txt",
+    "security:fix": "python scripts/qmoi_security_autofix.py",
     "release:check": "python scripts/qmoi_release_autofix.py --check",
     "deploy:vercel": "python scripts/qmoi_release_autofix.py --deploy-check"
   },

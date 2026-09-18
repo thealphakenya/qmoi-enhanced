@@ -1,0 +1,49 @@
+name: Dependency Security Autofix
+
+on:
+  schedule:
+    - cron: '0 3 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  security-autofix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies and security toolchain
+        run: |
+          set -euxo pipefail
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements.txt pip-audit
+
+      - name: Run dependency audit and autofix if needed
+        run: |
+          set -euxo pipefail
+          python -m pip_audit -r requirements.txt --progress-spinner off || true
+          python scripts/qmoi_security_autofix.py
+
+      - name: Re-run security audit
+        run: python -m pip_audit -r requirements.txt --progress-spinner off
+
+      - name: Create or update remediation PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: 'chore: apply dependency security autofix'
+          title: 'chore: dependency security autofix'
+          body: |
+            This PR applies the QMOI dependency security autofix for known vulnerable minimum versions and keeps the baseline dependency set aligned with the current security gates.
+          branch: 'chore/security-autofix'
+          delete-branch: true
+          base: main

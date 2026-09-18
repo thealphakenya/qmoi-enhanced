@@ -196,7 +196,25 @@ Assesses system functionality degradation.
 
 ---
 
-### 6. ResilienceCoordinator
+### 6. Dependency Security Auto-Healing
+QMOI now includes a direct security remediation loop to handle vulnerable dependency floors before they become a production blocker.
+
+#### Active automation
+- `scripts/qmoi_security_autofix.py` bumps known vulnerable Python dependency floors to secure minimums.
+- `package.json` exposes the `security:fix` script for local and CI execution.
+- `.github/dependabot.yml` keeps dependency updates and GitHub Actions updates flowing on a schedule.
+- `.github/workflows/security-merge-gates.yml` fails the build if critical dependency floors are missing or audit checks regress.
+- `.github/workflows/security-autofix.yml` can automatically patch vulnerable dependency floors and open a pull request when changes are required.
+
+#### Security remediation protocol
+1. Run the audit gate (`python -m pip_audit -r requirements.txt`).
+2. If vulnerable floors are detected, run `python scripts/qmoi_security_autofix.py`.
+3. Re-run the audit to confirm the repository is clean.
+4. Keep the PR reviewable and minimal so the dependency change is easy to audit.
+
+This keeps the repo aligned with the GitHub security model instead of merely documenting the issue.
+
+### 7. ResilienceCoordinator
 Master orchestrator for all resilience operations.
 
 #### Key Methods
