@@ -4,6 +4,8 @@ import sys
 import logging
 from pathlib import Path
 
+import pytest
+
 # Add project root to path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
@@ -33,7 +35,6 @@ def pytest_configure(config):
 def pytest_collection_modifyitems(config, items):
     """Modify test collection"""
     for item in items:
-        # Add markers based on test path or name
         if "integration" in str(item.fspath):
             item.add_marker("integration")
         elif "slow" in item.keywords:
