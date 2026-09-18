@@ -123,6 +123,7 @@ class TestCrossRepositoryAutonomyManager:
         subprocess.run(["git", "init", str(repo)], check=True, stdout=subprocess.DEVNULL)
         subprocess.run(["git", "-C", str(repo), "config", "user.name", "QMOI Test"], check=True)
         subprocess.run(["git", "-C", str(repo), "config", "user.email", "test@example.com"], check=True)
+        subprocess.run(["git", "-C", str(repo), "branch", "-M", "main"], check=True)
 
         (repo / "docs").mkdir()
         (repo / "docs" / "README.md").write_text("# main\n", encoding="utf-8")
