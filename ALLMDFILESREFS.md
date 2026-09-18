@@ -13,10 +13,10 @@ This document provides a comprehensive index of all markdown (.md) files in both
 ## Canonical Inventory Verification
 This repository currently contains one canonical root-level ALLMDFILESREFS.md and no hidden or alternate markdown index files were found elsewhere in the repo tree. The root file is therefore the authoritative inventory for this workspace. The final audit verified the following:
 
-- Total active repo-level .md files found: 69
+- Total active repo-level .md files found: 71
 - Historical snapshot .md files found: 3,559
-- Total tracked .md files including the historical snapshot: 3,624
-- Root directory .md files found: 69
+- Total tracked .md files including the historical snapshot: 3,626
+- Root directory .md files found: 71
 - Hidden/alternate .md indexes outside the root: 0
 - Unreferenced .md files in the repo tree: 0
 - Duplicate/companion markdown files are treated as reconciliation artifacts, not independent sources of truth; they must be merged into the authoritative canonical files when content overlaps.
@@ -50,7 +50,7 @@ from the active checkout. Any mismatch is recorded as an addition, omission,
 duplicate, or conflict before merge authorization.
 
 ## Current root inventory and canonical ownership
-- Root docs: README.md, BUILD.md, INSTALL.md, DOWNLOAD.md, PLATFORM_REQUIREMENTS.md, ALLPLATFORMSDEVICE.md, ACCOUNTABILITY.md, SYNC.md, MERGE.md, MODELEVOLUTIONO.md, QMOI_MODEL_CARD.md, QMOI_REALTIME_MEMORY_INDEX.md, STYLES.md, MONITORING_GUIDE.md, OLLAMA_AUTOMATION_GUIDE.md, OLLAMA_ENHANCEMENT_COMPLETE.md, OLLAMA_ENHANCEMENT_SUCCESS.md, GITHUB_SETUP_COMPLETE.md, IMPLEMENTATION_COMPLETE.md, SESSION_COMPLETION_REPORT.md, PHASE_1_4_COMPLETION_SUMMARY.md, RESILIENCE_AUTO_HEALING.md, TEST_ENHANCEMENTS.md, TREE_FULL_STRUCTURE.md, ALLMDFILESREFS.md, FINANCIALMANAGER.md, TRADINGREADME.md, WORKFLOWS.md, WORKFLOWSO.md, WORKFLOW_EXECUTION_PLAN.md, WORKFLOW_STATUS_DASHBOARD.md, GITHUB_ACTIONS_EXECUTION_GUIDE.md, REAL_TIME_MONITORING_GUIDE.md, REAL_TIME_MONITORING_README.md, oe.md, or.md, ollama.md, github.md, monitor.md, trigger.md, QTEAM.md, API.md, ENDPOINTS.md, ROUTES.md, ALLAUTO.md, AUTODEV.md, UNIVERSALS.md, QMOIAI.md, QCITY.md, QMOISPACE.md, QALPHA.md, QMOIAIUI.md, QCITYUI.md, QMOISPACEUI.md, QALPHAUI.md, ALLFRONTEND.md, ALLBACKEND.md, ALLPORTS.md, ALLROUTES.md, ADVANCEMENT.md, ENHANCEMENT_SESSION_2026_08_18.md, FINAL_SESSION_COMPLETION_REPORT.md, FINAL_VALIDATION_EVIDENCE_2026_08_29.md, GITHUBCLONED.md, MEMORY_INDEX.md, MONITORING_INDEX.md, MONITORING_SUMMARY.md, MODEL_CARD.md, SESSION_COMPLETION_REPORT_2025_01_10.md
+- Root docs: README.md, BUILD.md, INSTALL.md, DOWNLOAD.md, PLATFORM_REQUIREMENTS.md, ALLPLATFORMSDEVICE.md, ACCOUNTABILITY.md, SYNC.md, MERGE.md, MODELEVOLUTIONO.md, QMOI_MODEL_CARD.md, QMOI_REALTIME_MEMORY_INDEX.md, STYLES.md, MONITORING_GUIDE.md, OLLAMA_AUTOMATION_GUIDE.md, OLLAMA_ENHANCEMENT_COMPLETE.md, OLLAMA_ENHANCEMENT_SUCCESS.md, GITHUB_SETUP_COMPLETE.md, IMPLEMENTATION_COMPLETE.md, SESSION_COMPLETION_REPORT.md, PHASE_1_4_COMPLETION_SUMMARY.md, RESILIENCE_AUTO_HEALING.md, TEST_ENHANCEMENTS.md, TREE_FULL_STRUCTURE.md, ALLMDFILESREFS.md, FINANCIALMANAGER.md, TRADINGREADME.md, WORKFLOWS.md, WORKFLOWSO.md, WORKFLOW_EXECUTION_PLAN.md, WORKFLOW_STATUS_DASHBOARD.md, GITHUB_ACTIONS_EXECUTION_GUIDE.md, REAL_TIME_MONITORING_GUIDE.md, REAL_TIME_MONITORING_README.md, oe.md, or.md, ollama.md, github.md, monitor.md, trigger.md, QTEAM.md, API.md, ENDPOINTS.md, ROUTES.md, ALLAUTO.md, AUTODEV.md, UNIVERSALS.md, QMOIAI.md, QCITY.md, QMOISPACE.md, QALPHA.md, QMOIAIUI.md, QCITYUI.md, QMOISPACEUI.md, QALPHAUI.md, ALLFRONTEND.md, ALLBACKEND.md, ALLPORTS.md, ALLROUTES.md, ADVANCEMENT.md, ENHANCEMENT_SESSION_2026_08_18.md, FINAL_SESSION_COMPLETION_REPORT.md, FINAL_VALIDATION_EVIDENCE_2026_08_29.md, GITHUBCLONED.md, MEMORY_INDEX.md, MONITORING_INDEX.md, MONITORING_SUMMARY.md, MODEL_CARD.md, SESSION_COMPLETION_REPORT_2025_01_10.md, QMOIORCHESTRATOR.md, QMOIMASKS.md, QMOINETWORK.md
 - Directories: .github, scripts, tests, ollamatracks, and the repo root itself
 - Generated/runtime files: `ollama_agent.log`, `resumefromhere.txt`, and memory index artifacts must remain present but are considered runtime outputs rather than authoritative source files
 
@@ -309,11 +309,15 @@ Files:
 - QMOI_REALTIME_MEMORY_INDEX.md
 - MEMORY_INDEX.md
 - monitor.md
+- QMOIMASKS.md
+- QMOIORCHESTRATOR.md
+- QMOINETWORK.md
 
 Supporting references:
 - qmoi-enhanced-history-14/QMOIMASKS.md
 - qmoi-enhanced-history-14/QVS/ENHANCEDQVS.md
 - scripts/ollama_autonomous_agent.py and realtime monitoring scripts
+- scripts/qmoi_orchestrator_service.py
 - repository memory artifacts under ollamatracks and .qmoi_memory_index.json
 
 Purpose:

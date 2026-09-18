@@ -20,6 +20,29 @@
 
 QMOI is also treated as an active avatar persona in the interface layer. The autonomous agent validates the selected persona before it is rendered and continuously checks that the avatar remains QMOI in realtime across motion, windowing, and theme state.
 
+## Orchestration-aware styling and live stream UX
+
+The UI layer is part of the same orchestration model as network, security, and release workflows. Styling should never obscure operational risk or runtime state.
+
+- live activity streams must remain readable in light and dark themes.
+- operational status, failing validation, and security state must override cosmetic themes.
+- user personalization should not hide critical wallet, security, or deployment data.
+- GitHub-hosted activity stream cards should follow the same visual hierarchy across QMOI and Ollama agent surfaces.
+- QMOI personas should present live status, source, and confidence without breaking accessibility.
+
+The styling system should also support agent-aware states:
+
+- idle
+- monitoring
+- validating
+- fixing
+- deploying
+- synced
+- blocked
+- degraded
+
+Each state must map to a consistent visual treatment and remain visible in all platform surfaces.
+
 **Avatar validation rules:**
 - Must be identified as QMOI before live rendering is allowed.
 - Real-time window state must be visible and anchored correctly.

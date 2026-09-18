@@ -218,6 +218,17 @@ If a command cannot run because a dependency is missing, the next allowed action
 - [x] Recorded implementation-gap and similar-file merge metrics in the live MERGE.md audit output and the source-aware merge decision payload.
 - [x] Kept the repository branch-history inventory and live monitoring contract aligned with the current repo state and historical snapshot evidence.
 - [x] Re-ran the relevant merge and monitoring test suite and kept the live repo in a verified, push-ready state.
+
+## Central orchestrator enhancement status
+
+- [x] Added the central orchestrator runtime contract in QMOIORCHESTRATOR.md and aligned it with the existing historical orchestrator references.
+- [x] Added the active mask integration guidance in QMOIMASKS.md so privacy and security layers coordinate with the orchestrator, VPN, and QVS decisions.
+- [x] Updated QMOINETWORK.md to include the central orchestration-aware networking model and link it to route, mask, VPN, and live activity stream readiness.
+- [x] Updated STYLES.md to include the orchestration-aware styling contract and live status visibility across QMOI and Ollama streams.
+- [x] Updated UNIVERSALS.md to enforce orchestrator interoperability, validation-before-action policy, and resilient remote execution rules.
+- [x] Implemented scripts/qmoi_orchestrator_service.py as the runtime registry and backlog generator for the repo and archive orchestrators.
+- [x] Kept the live GitHub-hosted workflow stack in place with the Ollama and QMOI stream workflows already present as the visible GitHub activity surfaces.
+- [x] Continued the live repo cycle by ensuring the remote runtime remains the source of truth while local validation remains green.
 - [x] Expanded the live Q Financial Manager category in ALLMDFILESREFS.md to include cash-on, Megavault, wallet, employment, payment, deal, revenue, trading, autoproject, and money-making markdown references across both the live repo and the historical snapshot.
 - [x] Ensured the Ollama autonomous agent keeps a live financial-manager inventory and includes the finance catalog in runtime status reporting so the money-making and revenue loops remain tracked and up-to-date.
 - [x] Updated the execution ledger to reflect the current finance and revenue automation completion state without skipping the remaining GitHub advisory closure item.

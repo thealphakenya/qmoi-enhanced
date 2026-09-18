@@ -38,3 +38,23 @@ Every QMOI financial workflow must preserve the same universal standards regardl
 Any implementation that enters the QMOI repo is expected to preserve the universal standards above and remain operable even when partial state loss occurs.
 
 QMOI must keep every financial action, deal, wallet flow, trading operation, and user-facing revenue dashboard aligned with the same live memory, validation, and automation model so real-funds operations remain transparent, recoverable, and reliable.
+
+## Orchestration interoperability
+
+The central QMOI orchestrator is part of the universal model. It must be able to discover, rank, and coordinate all workflow, deployment, security, network, style, and autonomous-agent subsystems.
+
+- every orchestrator must declare capability and health metadata
+- every automation path must respect validation-before-action rules
+- network, VPN, and mask systems are operational dependencies, not optional extras
+- live streams and monitoring outputs must share the same source-of-truth state
+- historical archive components remain visible to the orchestrator but cannot bypass active safety rules
+
+## Universal policy for live automation
+
+QMOI automation must remain resilient, readable, and auditable at every layer. That means:
+
+- automation decisions are reproducible
+- failures produce traceable evidence
+- user-visible interfaces preserve safety decisions
+- security and privacy remain active even when the system is in a self-healing state
+- the repo can continue operating reliably even when local state is unavailable and remote GitHub state remains authoritative
