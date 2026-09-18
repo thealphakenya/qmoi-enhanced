@@ -117,6 +117,45 @@ class TestCrossRepositoryAutonomyManager:
         assert result["merged_count"] >= 1
         assert result["duplicate_basenames"][0] == "README.md"
 
+    def test_build_branch_history_inventory_counts_all_refs_and_directory_duplicates(self, tmp_path):
+        repo = tmp_path / "qmoi-enhanced"
+        repo.mkdir()
+        subprocess.run(["git", "init", str(repo)], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run(["git", "-C", str(repo), "config", "user.name", "QMOI Test"], check=True)
+        subprocess.run(["git", "-C", str(repo), "config", "user.email", "test@example.com"], check=True)
+
+        (repo / "docs").mkdir()
+        (repo / "docs" / "README.md").write_text("# main\n", encoding="utf-8")
+        (repo / "api").mkdir()
+        (repo / "api" / "routes.md").write_text("# routes\n", encoding="utf-8")
+        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-m", "init"], check=True, stdout=subprocess.DEVNULL)
+
+        subprocess.run(["git", "-C", str(repo), "branch", "feature/merge"], check=True)
+        (repo / "docs" / "README.md").write_text("# feature\n", encoding="utf-8")
+        (repo / "docs" / "duplicate").mkdir()
+        subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+        subprocess.run(["git", "-C", str(repo), "commit", "-m", "add feature docs"], check=True, stdout=subprocess.DEVNULL)
+
+        manager = CrossRepositoryAutonomyManager()
+        report = manager.build_branch_history_inventory(repo)
+
+        assert report["repo"] == str(repo)
+        assert "main" in report["branches"]
+        assert "feature/merge" in report["branches"]
+        assert report["ref_counts"] >= 2
+        assert report["total_files"] >= 2
+        assert report["total_directories"] >= 2
+        assert report["duplicate_file_basenames"]
+
+    def test_route_file_to_target_prefers_qmoi_for_core_runtime_paths(self):
+        manager = CrossRepositoryAutonomyManager()
+
+        assert manager.route_file_to_repository("API.md") == "qmoi-enhanced"
+        assert manager.route_file_to_repository("routes/README.md") == "qmoi-enhanced"
+        assert manager.route_file_to_repository("alpha/agent/integration.md") == "Alpha-Q-ai"
+        assert manager.route_to_repo_for_root("docs/shared.md") == "qmoi-enhanced"
+
 
 class TestPlatformValidator:
     """Tests for PlatformValidator class."""

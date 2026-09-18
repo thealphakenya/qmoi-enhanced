@@ -2256,6 +2256,187 @@ class CrossRepositoryAutonomyManager:
             "read_only": True,
         }
 
+    @staticmethod
+    def route_file_to_repository(file_path: str | os.PathLike[str]) -> str:
+        """Route a file or path into the canonical repo for merged ownership."""
+        normalized = str(file_path).replace("\\", "/").lower()
+        if "alpha-q-ai" in normalized or normalized.startswith("alpha/"):
+            return "Alpha-Q-ai"
+        qmoi_keywords = {
+            "api",
+            "endpoint",
+            "route",
+            "routes",
+            "port",
+            "monitor",
+            "workflow",
+            "merge",
+            "docs",
+            "readme",
+            "qcity",
+            "qalpha",
+            "qmoi",
+            "build",
+            "install",
+            "download",
+            "memory",
+            "model",
+            "validation",
+            "proof",
+            "github",
+        }
+        alpha_keywords = {
+            "agent",
+            "integration",
+            "sync",
+            "clone",
+            "platform",
+            "backend",
+            "service",
+            "alpha",
+        }
+        if any(token in normalized for token in qmoi_keywords):
+            return "qmoi-enhanced"
+        if any(token in normalized for token in alpha_keywords):
+            return "Alpha-Q-ai"
+        return "qmoi-enhanced"
+
+    @staticmethod
+    def route_to_repo_for_root(root_path: str | os.PathLike[str]) -> str:
+        """Compatibility helper used by merge routing summaries and decision logs."""
+        return CrossRepositoryAutonomyManager.route_file_to_repository(root_path)
+
+    def build_branch_history_inventory(
+        self,
+        repo_path: Path | str,
+    ) -> dict[str, Any]:
+        """Inventory every local and remote branch in a repo and aggregate file/directory dup counts."""
+        repo = Path(repo_path).resolve()
+        refs = self._git_output(repo, "for-each-ref", "--format=%(refname:short)", "refs/heads", "refs/remotes")
+        refs = sorted(set(refs))
+        files_by_ref: dict[str, list[str]] = {}
+        file_name_counts: dict[str, int] = {}
+        dir_name_counts: dict[str, int] = {}
+        dir_path_counts: dict[str, int] = {}
+        api_route_names: set[str] = set()
+        duplicate_file_basenames: set[str] = set()
+        duplicate_directory_names: set[str] = set()
+        total_files = 0
+        total_directories = 0
+
+        for ref in refs:
+            file_list = self._git_output(repo, "ls-tree", "-r", "--name-only", ref)
+            files_by_ref[ref] = file_list
+            ref_dir_paths: set[str] = set()
+            for path in file_list:
+                total_files += 1
+                file_name = Path(path).name
+                file_name_counts[file_name] = file_name_counts.get(file_name, 0) + 1
+                if any(keyword in path.lower() for keyword in ("api", "endpoint", "route", "routes", "port", "workflow", "monitor")):
+                    api_route_names.add(path)
+                if "feature" in path.lower():
+                    api_route_names.add(path)
+                current = Path(path).parent
+                while str(current) not in ("", "."):
+                    current_path = current.as_posix()
+                    ref_dir_paths.add(current_path)
+                    dir_path_counts[current_path] = dir_path_counts.get(current_path, 0) + 1
+                    dir_name_counts[current.name] = dir_name_counts.get(current.name, 0) + 1
+                    current = current.parent
+            total_directories += len(ref_dir_paths)
+
+        for name, count in file_name_counts.items():
+            if count > 1:
+                duplicate_file_basenames.add(name)
+        for name, count in dir_name_counts.items():
+            if count > 1:
+                duplicate_directory_names.add(name)
+
+        report = {
+            "repo": str(repo),
+            "branches": refs,
+            "ref_counts": len(refs),
+            "branches_with_inventory": list(files_by_ref.keys()),
+            "total_files": total_files,
+            "total_directories": total_directories,
+            "duplicate_file_basenames": sorted(duplicate_file_basenames),
+            "duplicate_directory_names": sorted(duplicate_directory_names),
+            "duplicate_file_count": len(duplicate_file_basenames),
+            "duplicate_directory_count": len(duplicate_directory_names),
+            "api_route_related_files": sorted(api_route_names),
+            "api_route_count": len(api_route_names),
+            "file_name_counts": dict(sorted(file_name_counts.items())),
+            "directory_name_counts": dict(sorted(dir_name_counts.items())),
+            "paths_by_ref": {ref: file_list for ref, file_list in sorted(files_by_ref.items())},
+        }
+        return report
+
+    def collect_full_merge_metrics(
+        self,
+        roots: Sequence[Path | str] | None = None,
+        *,
+        include_history: bool = True,
+        include_memory: bool = True,
+    ) -> dict[str, Any]:
+        """Aggregate repository, branch, history, and directory metrics for final MERGE.md reporting."""
+        roots_list = self._candidate_merge_roots(roots, include_history=include_history, include_memory=include_memory)
+        branch_reports: list[dict[str, Any]] = []
+        total_files = 0
+        total_directories = 0
+        total_branches = 0
+        duplicate_basenames: dict[str, int] = {}
+        duplicate_directories: dict[str, int] = {}
+        api_route_related_files: set[str] = set()
+        feature_related_files: set[str] = set()
+
+        for root in roots_list:
+            if not root.exists():
+                continue
+            if (root / ".git").exists() or self._git_output(root, "rev-parse", "--git-dir"):
+                report = self.build_branch_history_inventory(root)
+                branch_reports.append(report)
+                total_files += report["total_files"]
+                total_directories += report["total_directories"]
+                total_branches += report["ref_counts"]
+                for name, count in report["file_name_counts"].items():
+                    duplicate_basenames[name] = max(duplicate_basenames.get(name, 0), count)
+                for name, count in report["directory_name_counts"].items():
+                    duplicate_directories[name] = max(duplicate_directories.get(name, 0), count)
+                api_route_related_files.update(report["api_route_related_files"])
+                feature_related_files.update(
+                    path for path in report["file_name_counts"] if "feature" in path.lower()
+                )
+            else:
+                for path in sorted(root.rglob("*")):
+                    if path.is_dir():
+                        total_directories += 1
+                    elif path.is_file():
+                        total_files += 1
+                        has_feature = "feature" in path.name.lower() or "feature" in str(path).lower()
+                        if has_feature:
+                            feature_related_files.add(str(path.resolve()))
+                        if any(keyword in str(path).lower() for keyword in ("api", "endpoint", "route", "port", "workflow", "monitor")):
+                            api_route_related_files.add(str(path.resolve()))
+
+        duplicate_file_names = sorted(name for name, count in duplicate_basenames.items() if count > 1)
+        duplicate_directory_names = sorted(name for name, count in duplicate_directories.items() if count > 1)
+        return {
+            "roots": [str(path.resolve()) for path in roots_list],
+            "branch_reports": branch_reports,
+            "total_files": total_files,
+            "total_directories": total_directories,
+            "total_branches": total_branches,
+            "duplicate_file_names": duplicate_file_names,
+            "duplicate_file_count": len(duplicate_file_names),
+            "duplicate_directory_names": duplicate_directory_names,
+            "duplicate_directory_count": len(duplicate_directory_names),
+            "api_route_related_files": sorted(api_route_related_files),
+            "api_route_count": len(api_route_related_files),
+            "feature_related_files": sorted(feature_related_files),
+            "feature_count": len(feature_related_files),
+            "captured_at": utc_iso(),
+        }
+
     def _candidate_merge_roots(
         self,
         roots: Sequence[Path | str] | None = None,
@@ -2469,6 +2650,12 @@ class CrossRepositoryAutonomyManager:
             canonical_path.write_text(merged_text, encoding="utf-8")
             merged_targets[basename] = str(canonical_path)
 
+        merge_metrics = self.collect_full_merge_metrics(
+            candidate_roots,
+            include_history=include_history,
+            include_memory=include_memory,
+        )
+
         merge_path = target_root_path / "MERGE.md"
         merge_path.parent.mkdir(parents=True, exist_ok=True)
         existing = merge_path.read_text(encoding="utf-8") if merge_path.exists() else "# MERGE.md\n\n"
@@ -2478,6 +2665,13 @@ class CrossRepositoryAutonomyManager:
             f"- target_root: {target_root_path}",
             f"- merged_files: {len(merged_targets)}",
             f"- duplicate_basenames: {', '.join(duplicated_names) if duplicated_names else 'none'}",
+            f"- total_branches_in_scope: {merge_metrics['total_branches']}",
+            f"- total_files_in_scope: {merge_metrics['total_files']}",
+            f"- total_directories_in_scope: {merge_metrics['total_directories']}",
+            f"- duplicate_file_count: {merge_metrics['duplicate_file_count']}",
+            f"- duplicate_directory_count: {merge_metrics['duplicate_directory_count']}",
+            f"- api_route_count: {merge_metrics['api_route_count']}",
+            f"- feature_count: {merge_metrics['feature_count']}",
             "",
             "```json",
             json.dumps(
@@ -2486,6 +2680,7 @@ class CrossRepositoryAutonomyManager:
                     "duplicate_basenames": duplicated_names,
                     "duplicate_directories": sorted(duplicate_dirs),
                     "merged_targets": merged_targets,
+                    "merge_metrics": merge_metrics,
                 },
                 indent=2,
                 sort_keys=True,
@@ -2502,6 +2697,7 @@ class CrossRepositoryAutonomyManager:
             "duplicate_directories": sorted(duplicate_dirs),
             "merged_targets": merged_targets,
             "inventory": inventory,
+            "merge_metrics": merge_metrics,
         }
 
     def record_merge_audit(self, repo_path: Path | str, plan: Mapping[str, Any]) -> Path:
@@ -2509,8 +2705,26 @@ class CrossRepositoryAutonomyManager:
         repo = Path(repo_path).resolve()
         merge_path = repo / "MERGE.md"
         merge_path.parent.mkdir(parents=True, exist_ok=True)
+        merge_metrics = plan.get("merge_metrics") or self.collect_full_merge_metrics([repo])
+        metrics_summary = { 
+            "total_branches": merge_metrics.get("total_branches", 0),
+            "total_files": merge_metrics.get("total_files", 0),
+            "total_directories": merge_metrics.get("total_directories", 0),
+            "duplicate_file_count": merge_metrics.get("duplicate_file_count", 0),
+            "duplicate_directory_count": merge_metrics.get("duplicate_directory_count", 0),
+            "api_route_count": merge_metrics.get("api_route_count", 0),
+            "feature_count": merge_metrics.get("feature_count", 0),
+            "duplicate_file_names": merge_metrics.get("duplicate_file_names", []),
+            "duplicate_directory_names": merge_metrics.get("duplicate_directory_names", []),
+        }
         section = [
             "\n## Autonomous History Merge Audit",
+            "",
+            "### Merge metrics",
+            "",
+            "```json",
+            json.dumps(metrics_summary, indent=2, sort_keys=True),
+            "```",
             "",
             "```json",
             json.dumps(plan, indent=2, sort_keys=True),
@@ -2522,11 +2736,14 @@ class CrossRepositoryAutonomyManager:
 
         inventory_path = repo / "ALLMDFILESREFS.md"
         if inventory_path.exists():
-            duplicates = ", ".join(plan["inventory"]["duplicate_basenames"][:12]) if plan["inventory"]["duplicate_basenames"] else "none"
+            duplicates = ", ".join(plan["inventory"]["duplicate_basenames"][:12]) if plan.get("inventory", {}).get("duplicate_basenames") else "none"
             inventory_summary = (
                 "\n\n## Autonomous Markdown Merge Audit\n\n"
-                f"- Total markdown files inventoried: {plan['inventory']['total_markdown_files']}\n"
+                f"- Total markdown files inventoried: {plan.get('inventory', {}).get('total_markdown_files', 0)}\n"
                 f"- Duplicate basenames detected: {duplicates}\n"
+                f"- Full branch inventory count: {metrics_summary['total_branches']}\n"
+                f"- Full file count in scope: {metrics_summary['total_files']}\n"
+                f"- Full directory count in scope: {metrics_summary['total_directories']}\n"
                 "- Canonical merge targets are chosen from live repo roots before historical snapshots and memory artifacts.\n"
             )
             inventory_path.write_text(
