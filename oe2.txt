@@ -217,6 +217,9 @@ If a command cannot run because a dependency is missing, the next allowed action
 - [x] Recorded implementation-gap and similar-file merge metrics in the live MERGE.md audit output and the source-aware merge decision payload.
 - [x] Kept the repository branch-history inventory and live monitoring contract aligned with the current repo state and historical snapshot evidence.
 - [x] Re-ran the relevant merge and monitoring test suite and kept the live repo in a verified, push-ready state.
+- [x] Expanded the live Q Financial Manager category in ALLMDFILESREFS.md to include cash-on, Megavault, wallet, employment, payment, deal, revenue, trading, autoproject, and money-making markdown references across both the live repo and the historical snapshot.
+- [x] Ensured the Ollama autonomous agent keeps a live financial-manager inventory and includes the finance catalog in runtime status reporting so the money-making and revenue loops remain tracked and up-to-date.
+- [x] Updated the execution ledger to reflect the current finance and revenue automation completion state without skipping the remaining GitHub advisory closure item.
 
 ## Resume protocol for every future session
 

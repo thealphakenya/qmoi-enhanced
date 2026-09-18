@@ -176,6 +176,36 @@ class TestCrossRepositoryAutonomyManager:
         assert any(len(group["files"]) >= 2 for group in groups)
 
 
+class TestFinancialManagerCatalog:
+    def test_refresh_financial_manager_catalog_includes_money_making_docs(self, tmp_path):
+        repo = tmp_path / "repo"
+        repo.mkdir()
+
+        for name in [
+            "FINANCIALMANAGER.md",
+            "TRADINGREADME.md",
+            "MEGAVAULT.md",
+            "CASHON.md",
+            "QMOIAUTOPROJECTS.md",
+            "QMOI_REALTIME_MEMORY_INDEX.md",
+            "ALLMDFILESREFS.md",
+        ]:
+            (repo / name).write_text(f"# {name}\n", encoding="utf-8")
+
+        agent = OllamaAutonomousAgent(base_path=repo)
+        result = agent.refresh_financial_manager_catalog(repo)
+
+        assert result["status"] == "ready"
+        assert "FINANCIALMANAGER.md" in result["files"]
+        assert "TRADINGREADME.md" in result["files"]
+        assert "MEGAVAULT.md" in result["files"]
+        assert "CASHON.md" in result["files"]
+        assert "QMOIAUTOPROJECTS.md" in result["files"]
+        assert "QMOI_REALTIME_MEMORY_INDEX.md" in result["files"]
+        assert "ALLMDFILESREFS.md" in result["files"]
+        assert "money_making" in result["coverage"]
+
+
 class TestPlatformValidator:
     """Tests for PlatformValidator class."""
     

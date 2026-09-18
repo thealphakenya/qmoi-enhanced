@@ -4735,6 +4735,8 @@ All timestamps use UTC ISO-8601 format.
         clone_documents = self.refresh_clone_platform_documents(self.root_dir)
         production_documents = self.refresh_production_manifests(self.root_dir)
 
+        financial_documents = self.refresh_financial_manager_catalog(self.root_dir)
+
         agent_status = {
             "status": "running",
             "phase": "validation",
@@ -4750,6 +4752,11 @@ All timestamps use UTC ISO-8601 format.
             "production_manifests": {
                 name: str(path)
                 for name, path in production_documents.items()
+            },
+            "financial_manager_catalog": {
+                "status": financial_documents["status"],
+                "files": financial_documents["files"],
+                "coverage": financial_documents["coverage"],
             },
             "last_activity": (
                 self.latest_activity_path.read_text(encoding="utf-8")
@@ -4895,6 +4902,183 @@ All timestamps use UTC ISO-8601 format.
                 ],
                 "status": "ready",
             },
+        }
+
+    def refresh_financial_manager_catalog(
+        self,
+        root: Path | str | None = None,
+    ) -> dict[str, Any]:
+        """Refresh the live finance and money-making markdown inventory used by the autonomous agent."""
+        target = Path(root) if root is not None else self.root_dir
+        target.mkdir(parents=True, exist_ok=True)
+
+        finance_files = [
+            "ALLMDFILESREFS.md",
+            "FINANCIALMANAGER.md",
+            "TRADINGREADME.md",
+            "README.md",
+            "STYLES.md",
+            "UNIVERSALS.md",
+            "QTEAM.md",
+            "MONITORING_GUIDE.md",
+            "REAL_TIME_MONITORING_GUIDE.md",
+            "REAL_TIME_MONITORING_README.md",
+            "WORKFLOW_STATUS_DASHBOARD.md",
+            "ALLAUTO.md",
+            "AUTODEV.md",
+            "API.md",
+            "ENDPOINTS.md",
+            "ROUTES.md",
+            "ALLROUTES.md",
+            "QMOI_MODEL_CARD.md",
+            "QMOI_REALTIME_MEMORY_INDEX.md",
+            "QALPHA.md",
+            "QALPHAUI.md",
+            "QMOIAI.md",
+            "QMOIAIUI.md",
+            "QCITY.md",
+            "QCITYUI.md",
+            "QMOISPACE.md",
+            "QMOISPACEUI.md",
+            "ALLBACKEND.md",
+            "ALLFRONTEND.md",
+            "ALLPLATFORMSDEVICE.md",
+            "GITHUB_ACTIONS_EXECUTION_GUIDE.md",
+            "FINAL_VALIDATION_EVIDENCE_2026_08_29.md",
+            "qmoi-enhanced-history-14/ALLWALLETSQVS.md",
+            "qmoi-enhanced-history-14/CASHON.md",
+            "qmoi-enhanced-history-14/CASHONTRADINGREADME.md",
+            "qmoi-enhanced-history-14/DEALS.md",
+            "qmoi-enhanced-history-14/FINANCIALMANAGER.md",
+            "qmoi-enhanced-history-14/LEAHWALLET.md",
+            "qmoi-enhanced-history-14/MEGAVAULT.md",
+            "qmoi-enhanced-history-14/PAYMENTS.md",
+            "qmoi-enhanced-history-14/QMOIAUTOMAKESMONEY.md",
+            "qmoi-enhanced-history-14/QMOIAUTOPROJECTS.md",
+            "qmoi-enhanced-history-14/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md",
+            "qmoi-enhanced-history-14/QMOIAUTOREVENUEEARN.md",
+            "qmoi-enhanced-history-14/QMOIREVENUEGENERATION.md",
+            "qmoi-enhanced-history-14/QMOITRADER.md",
+            "qmoi-enhanced-history-14/QMOI_PROJECT_MANAGEMENT_SYSTEMS.md",
+            "qmoi-enhanced-history-14/QMOI_WALLET_FINANCIAL_SYSTEMS.md",
+            "qmoi-enhanced-history-14/REVENUEGENERATING.md",
+            "qmoi-enhanced-history-14/Trade.md",
+            "qmoi-enhanced-history-14/PROJECT_COMPLETE.md",
+            "qmoi-enhanced-history-14/PROJECT_FILE_INDEX.md",
+        ]
+
+        coverage = {
+            "wallets": ["ALLWALLETSQVS.md", "LEAHWALLET.md", "CASHON.md", "QMOI_WALLET_FINANCIAL_SYSTEMS.md"],
+            "trading": ["TRADINGREADME.md", "QMOITRADER.md", "CASHONTRADINGREADME.md"],
+            "revenue": ["QMOIREVENUEGENERATION.md", "REVENUEGENERATING.md", "QMOIAUTOREVENUEEARN.md", "QMOIAUTOMAKESMONEY.md"],
+            "employment": ["MEGAVAULT.md", "PAYMENTS.md", "DEALS.md"],
+            "autoprojects": ["QMOIAUTOPROJECTS.md", "QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md", "PROJECT_COMPLETE.md"],
+            "money_making": ["QMOIAUTOMAKESMONEY.md", "QMOIAUTOREVENUEEARN.md", "QMOIREVENUEGENERATION.md", "REVENUEGENERATING.md"],
+        }
+
+        md_index: dict[str, str] = {}
+        for path in sorted(target.rglob("*.md")):
+            if not path.is_file():
+                continue
+            md_index.setdefault(path.name.lower(), path.relative_to(target).as_posix())
+
+        present = []
+        for doc in finance_files:
+            doc_name = doc.split("/")[-1]
+            normalized_name = doc_name.lower()
+            if normalized_name in md_index:
+                present.append(doc_name)
+            elif (target / doc).exists():
+                present.append(doc_name)
+
+        present = sorted(set(present))
+
+        allmd = target / "ALLMDFILESREFS.md"
+        if allmd.exists():
+            content = allmd.read_text(encoding="utf-8")
+            category_header = "### Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations"
+            category_block = (
+                "### Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations\n\n"
+                "This category is the live financial operating model for QMOI. It covers wallet health, growth, provider onboarding, trading execution, revenue generation, music/media monetization, employment, Megavault flows, CashOn reconciliation, and autonomous money-making workflows while keeping them aligned with monitoring, memory sync, and deployment safety.\n\n"
+                "Files:\n"
+                "- FINANCIALMANAGER.md\n"
+                "- TRADINGREADME.md\n"
+                "- README.md\n"
+                "- STYLES.md\n"
+                "- UNIVERSALS.md\n"
+                "- QTEAM.md\n"
+                "- MONITORING_GUIDE.md\n"
+                "- REAL_TIME_MONITORING_GUIDE.md\n"
+                "- REAL_TIME_MONITORING_README.md\n"
+                "- WORKFLOW_STATUS_DASHBOARD.md\n"
+                "- ALLAUTO.md\n"
+                "- AUTODEV.md\n"
+                "- API.md\n"
+                "- ENDPOINTS.md\n"
+                "- ROUTES.md\n"
+                "- ALLROUTES.md\n"
+                "- QMOI_MODEL_CARD.md\n"
+                "- QMOI_REALTIME_MEMORY_INDEX.md\n"
+                "- QALPHA.md\n"
+                "- QALPHAUI.md\n"
+                "- QMOIAI.md\n"
+                "- QMOIAIUI.md\n"
+                "- QCITY.md\n"
+                "- QCITYUI.md\n"
+                "- QMOISPACE.md\n"
+                "- QMOISPACEUI.md\n"
+                "- ALLBACKEND.md\n"
+                "- ALLFRONTEND.md\n"
+                "- ALLPLATFORMSDEVICE.md\n"
+                "- GITHUB_ACTIONS_EXECUTION_GUIDE.md\n"
+                "- FINAL_VALIDATION_EVIDENCE_2026_08_29.md\n"
+                "- qmoi-enhanced-history-14/ALLWALLETSQVS.md\n"
+                "- qmoi-enhanced-history-14/CASHON.md\n"
+                "- qmoi-enhanced-history-14/CASHONTRADINGREADME.md\n"
+                "- qmoi-enhanced-history-14/DEALS.md\n"
+                "- qmoi-enhanced-history-14/FINANCIALMANAGER.md\n"
+                "- qmoi-enhanced-history-14/LEAHWALLET.md\n"
+                "- qmoi-enhanced-history-14/MEGAVAULT.md\n"
+                "- qmoi-enhanced-history-14/PAYMENTS.md\n"
+                "- qmoi-enhanced-history-14/QMOIAUTOMAKESMONEY.md\n"
+                "- qmoi-enhanced-history-14/QMOIAUTOPROJECTS.md\n"
+                "- qmoi-enhanced-history-14/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md\n"
+                "- qmoi-enhanced-history-14/QMOIAUTOREVENUEEARN.md\n"
+                "- qmoi-enhanced-history-14/QMOIREVENUEGENERATION.md\n"
+                "- qmoi-enhanced-history-14/QMOITRADER.md\n"
+                "- qmoi-enhanced-history-14/QMOI_PROJECT_MANAGEMENT_SYSTEMS.md\n"
+                "- qmoi-enhanced-history-14/QMOI_WALLET_FINANCIAL_SYSTEMS.md\n"
+                "- qmoi-enhanced-history-14/REVENUEGENERATING.md\n"
+                "- qmoi-enhanced-history-14/Trade.md\n"
+                "- qmoi-enhanced-history-14/PROJECT_COMPLETE.md\n"
+                "- qmoi-enhanced-history-14/PROJECT_FILE_INDEX.md\n\n"
+                "Supporting references:\n"
+                "- scripts/qmoi_release_autofix.py\n"
+                "- scripts/trading/production_trading_autopilot.py\n"
+                "- scripts/monitor_workflows.py\n"
+                "- scripts/realtime_workflow_monitor.py\n"
+                "- scripts/ollama_autonomous_agent.py\n"
+                "- scripts/resilience_auto_healing.py\n"
+                "- ollamatracks/trading_dashboard.html\n"
+                "- ollamatracks/checkpoint.json\n"
+                "- ollamatracks/telemetry.jsonl\n"
+                "- .github/workflows/*.yml\n\n"
+                "Purpose:\n"
+                "- Keep QMOI's financial engine, wallet awareness, global revenue generation, trading automation, account confidence, live-monitor health, employment and Megavault flows, CashOn reconciliation, autoproject revenue loops, and real-money operational logic synchronized with deployment, automation, and UI.\n"
+            )
+            if category_header in content:
+                pattern = re.compile(r"### Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations\n.*?(?=\n### Category J — Release, deployment, Vercel, and production verification)", re.S)
+                content = pattern.sub(category_block.rstrip() + "\n\n", content, count=1)
+            else:
+                content += "\n\n" + category_block
+            allmd.write_text(content, encoding="utf-8")
+
+        return {
+            "status": "ready",
+            "files": present,
+            "coverage": coverage,
+            "root": str(target),
+            "updated_catalog": str(allmd),
         }
 
     def refresh_production_manifests(

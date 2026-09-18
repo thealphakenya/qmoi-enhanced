@@ -410,7 +410,7 @@ Purpose:
 
 ### Category I — Q Financial Manager, wallets, accounts, trading, revenue, and money-making operations
 
-This category is the live financial operating model for QMOI. It covers wallet health, growth, provider onboarding, trading execution, revenue generation, music/media monetization, and autonomous money-making workflows while keeping them aligned with monitoring, memory sync, and deployment safety.
+This category is the live financial operating model for QMOI. It covers wallet health, growth, provider onboarding, trading execution, revenue generation, music/media monetization, employment, Megavault flows, CashOn reconciliation, autoproject revenue loops, and autonomous money-making workflows while keeping them aligned with monitoring, memory sync, and deployment safety.
 
 Files:
 - FINANCIALMANAGER.md
@@ -444,7 +444,38 @@ Files:
 - ALLPLATFORMSDEVICE.md
 - GITHUB_ACTIONS_EXECUTION_GUIDE.md
 - FINAL_VALIDATION_EVIDENCE_2026_08_29.md
-- historical finance and wallet docs under qmoi-enhanced-history-14
+- qmoi-enhanced-history-14/ALLWALLETSQVS.md
+- qmoi-enhanced-history-14/CASHON.md
+- qmoi-enhanced-history-14/CASHONTRADINGREADME.md
+- qmoi-enhanced-history-14/DEALS.md
+- qmoi-enhanced-history-14/FINANCIALMANAGER.md
+- qmoi-enhanced-history-14/LEAHWALLET.md
+- qmoi-enhanced-history-14/MEGAVAULT.md
+- qmoi-enhanced-history-14/PAYMENTS.md
+- qmoi-enhanced-history-14/QMOIAUTOMAKESMONEY.md
+- qmoi-enhanced-history-14/QMOIAUTOPROJECTS.md
+- qmoi-enhanced-history-14/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md
+- qmoi-enhanced-history-14/QMOIAUTOREVENUEEARN.md
+- qmoi-enhanced-history-14/QMOIREVENUEGENERATION.md
+- qmoi-enhanced-history-14/QMOITRADER.md
+- qmoi-enhanced-history-14/QMOI_PROJECT_MANAGEMENT_SYSTEMS.md
+- qmoi-enhanced-history-14/QMOI_WALLET_FINANCIAL_SYSTEMS.md
+- qmoi-enhanced-history-14/REVENUEGENERATING.md
+- qmoi-enhanced-history-14/Trade.md
+- qmoi-enhanced-history-14/PROJECT_COMPLETE.md
+- qmoi-enhanced-history-14/PROJECT_FILE_INDEX.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/CASHON.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/MEGAVAULT.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOPROJECTS.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOMAKESMONEY.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOREVENUEEARN.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIREVENUEGENERATION.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOITRADER.md
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/REVENUEGENERATING.md
+- qmoi-enhanced-history-14/docs/REVENUE_SPEC.md
+- qmoi-enhanced-history-14/docs/WALLET_RUNBOOK.md
+- qmoi-enhanced-history-14/docs/WALLET_SECURITY_PLAYBOOK.md
 
 Supporting references:
 - scripts/qmoi_release_autofix.py
@@ -459,7 +490,7 @@ Supporting references:
 - .github/workflows/*.yml
 
 Purpose:
-- Keep QMOI's financial engine, wallet awareness, global revenue generation, trading automation, account confidence, live-monitor health, and real-money operational logic synchronized with deployment, automation, and UI.
+- Keep QMOI's financial engine, wallet awareness, global revenue generation, trading automation, account confidence, live-monitor health, employment and Megavault flows, CashOn reconciliation, autoproject revenue loops, and real-money operational logic synchronized with deployment, automation, and UI.
 
 ### Category J — Release, deployment, Vercel, and production verification
 
