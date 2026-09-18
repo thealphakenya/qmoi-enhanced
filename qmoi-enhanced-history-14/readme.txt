@@ -1,1 +1,0 @@
-QMOI AI Launcher 

@@ -4075,7 +4075,41 @@ All timestamps use UTC ISO-8601 format.
                 "Do not propose workflow, secret, git, or credential changes. "
                 f"Repository files: {json.dumps(files[:self.max_tasks_per_iteration])}"
             )
-            response = self.ollama.generate(prompt)
+            response = ""
+            generation_attempts = 0
+            while generation_attempts < 3:
+                try:
+                    response = self.ollama.generate(prompt)
+                    break
+                except OllamaRuntimeError as exc:
+                    generation_attempts += 1
+                    if generation_attempts >= 3:
+                        raise
+                    try:
+                        self.ollama_bootstrap.ensure_server()
+                    except OllamaRuntimeError as bootstrap_exc:
+                        self.record_tracker_event(
+                            "ollama_server_restart_failed",
+                            f"Ollama server restart failed: {bootstrap_exc}",
+                            status="warning",
+                            phase="autonomous",
+                            details={
+                                "attempt": generation_attempts,
+                                "error": str(bootstrap_exc),
+                            },
+                        )
+                    self.record_tracker_event(
+                        "llm_generation_retry",
+                        "Transient Ollama generation failure; retrying with bounded backoff.",
+                        status="warning",
+                        phase="autonomous",
+                        details={
+                            "attempt": generation_attempts,
+                            "max_attempts": 3,
+                            "error": str(exc),
+                        },
+                    )
+                    self.ollama.sleep(min(2 ** (generation_attempts - 1), 4))
             if response == previous_response:
                 break
             previous_response = response

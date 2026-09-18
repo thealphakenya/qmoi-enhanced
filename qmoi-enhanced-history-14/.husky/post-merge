@@ -1,3 +1,0 @@
-#!/bin/sh
-# Recreated post-merge hook
-echo "post-merge hook triggered"

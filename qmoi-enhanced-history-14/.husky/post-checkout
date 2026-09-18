@@ -1,3 +1,0 @@
-#!/bin/sh
-# Recreated post-checkout hook
-echo "post-checkout hook triggered"

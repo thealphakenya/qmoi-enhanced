@@ -16,6 +16,7 @@ import requests
 
 DEFAULT_OLLAMA_HOST = "http://127.0.0.1:11434"
 DEFAULT_OLLAMA_MODEL = "qwen2.5-coder:3b"
+FALLBACK_OLLAMA_MODEL = os.getenv("OLLAMA_FALLBACK_MODEL", "qwen2.5-coder:1.5b")
 HEALTH_SENTINEL = "OLLAMA_QMOI_HEALTH_OK"
 _SAFE_RELATIVE_PATH = re.compile(r"^[^/\\][^:]*$")
 _FORBIDDEN_PATCH_TEXT = (".github/workflows", "secrets.", "GITHUB_TOKEN", "GH_TOKEN")
@@ -191,15 +192,27 @@ class OllamaClient:
         self._request("POST", "/api/pull", json={"name": self.model, "stream": False})
 
     def generate(self, prompt: str) -> str:
-        data = self._request(
-            "POST",
-            "/api/generate",
-            json={"model": self.model, "prompt": prompt, "stream": False},
-        ).json()
-        response = data.get("response")
-        if not isinstance(response, str) or not response.strip():
-            raise OllamaRuntimeError("Ollama returned no generated response")
-        return response.strip()
+        candidates = [self.model]
+        if (not os.getenv("OLLAMA_MODEL")) and self.model == DEFAULT_OLLAMA_MODEL and FALLBACK_OLLAMA_MODEL != self.model:
+            candidates.append(FALLBACK_OLLAMA_MODEL)
+
+        last_error: Exception | None = None
+        for candidate in candidates:
+            self.model = candidate
+            try:
+                data = self._request(
+                    "POST",
+                    "/api/generate",
+                    json={"model": self.model, "prompt": prompt, "stream": False},
+                ).json()
+                response = data.get("response")
+                if not isinstance(response, str) or not response.strip():
+                    raise OllamaRuntimeError("Ollama returned no generated response")
+                return response.strip()
+            except Exception as exc:  # pragma: no cover - exercised in real runtime only
+                last_error = exc
+
+        raise OllamaRuntimeError(f"Ollama request failed while generating: {last_error}")
 
     def verify(self, bootstrap: OllamaBootstrap | None = None) -> OllamaHealth:
         health = OllamaHealth(self.host, self.model)
@@ -213,6 +226,11 @@ class OllamaClient:
             health.ollama_version = self.version()
             health.model_available = self.model_available()
             if not health.model_available:
+                self.pull_model()
+                health.model_available = self.model_available()
+            if not health.model_available and not os.getenv("OLLAMA_MODEL") and self.model == DEFAULT_OLLAMA_MODEL:
+                self.model = FALLBACK_OLLAMA_MODEL
+                health.model = self.model
                 self.pull_model()
                 health.model_available = self.model_available()
             if not health.model_available:

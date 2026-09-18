@@ -156,6 +156,53 @@ def test_success_contract_accepts_agent_health_mapping(tmp_path: Path):
     assert contract["final_status"] == "SUCCESS"
 
 
+def test_run_autonomous_loop_recovers_from_transient_model_500(monkeypatch, tmp_path: Path):
+    from scripts.ollama_autonomous_agent import OllamaAutonomousAgent
+
+    agent = OllamaAutonomousAgent(tmp_path)
+    attempts = {"count": 0}
+
+    monkeypatch.setattr(
+        agent,
+        "verify_ollama",
+        lambda: {
+            "ollama_host": "http://127.0.0.1:11434",
+            "model": "qwen2.5-coder:3b",
+            "ollama_started": True,
+            "ollama_healthy": True,
+            "ollama_version": "0.34.2",
+            "model_available": True,
+            "inference_verified": True,
+            "inference_latency": 0.1,
+            "health_timestamp": "2026-09-18T00:00:00Z",
+            "error": None,
+        },
+    )
+    monkeypatch.setattr(agent, "_repository_context", lambda: ["README.md"])
+    monkeypatch.setattr(agent, "run_lint_suite", lambda: True)
+    monkeypatch.setattr(agent, "run_full_validation_suite", lambda: True)
+    monkeypatch.setattr(agent, "record_tracker_event", lambda *args, **kwargs: None)
+
+    def fake_checkpoint(*args, **kwargs):
+        checkpoint_path = tmp_path / "checkpoint.json"
+        checkpoint_path.write_text("{}", encoding="utf-8")
+        return checkpoint_path
+
+    monkeypatch.setattr(agent, "update_resume_checkpoint", fake_checkpoint)
+
+    def fake_generate(prompt):
+        attempts["count"] += 1
+        if attempts["count"] == 1:
+            raise OllamaRuntimeError("Ollama request failed: 500 Server Error")
+        return json.dumps({"summary": "ok", "changes": []})
+
+    monkeypatch.setattr(agent.ollama, "generate", fake_generate)
+
+    result = agent.run_autonomous_loop()
+    assert result["final_status"] == "SUCCESS"
+    assert attempts["count"] >= 2
+
+
 def test_agent_rejects_non_github_hosted_runtime(monkeypatch, tmp_path):
     monkeypatch.setenv("QMOI_RUNTIME_MODE", "github-hosted")
     monkeypatch.setenv("QMOI_GITHUB_HOSTED", "true")
