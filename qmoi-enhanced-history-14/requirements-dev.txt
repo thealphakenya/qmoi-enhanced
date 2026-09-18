@@ -1,11 +1,13 @@
-flake8>=6.0.0
-pytest>=7.0.0
-
-requests
-Flask
-PyYAML
-aiohttp
-xmlrunner
-stripe
-pytest-cov
-coverage
+# Minimal development dependency set for historical validation.
+# xmlrunner was replaced with the maintained unittest-xml-reporting package because
+# the legacy xmlrunner release is incompatible with the Python version used here.
+flake8>=7.1.0
+pytest>=9.1.1
+requests>=2.32.4
+Flask>=3.1.0
+PyYAML>=6.0.3
+aiohttp>=3.11.0
+unittest-xml-reporting>=3.2.0
+stripe>=11.0.0
+pytest-cov>=5.0.0
+coverage>=7.6.0
