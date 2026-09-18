@@ -2306,6 +2306,87 @@ class CrossRepositoryAutonomyManager:
         """Compatibility helper used by merge routing summaries and decision logs."""
         return CrossRepositoryAutonomyManager.route_file_to_repository(root_path)
 
+    def identify_missing_implementations(
+        self,
+        repo_path: Path | str,
+    ) -> dict[str, Any]:
+        """Identify placeholders, TODOs, and stubbed implementations that the agent should resolve or merge."""
+        root = Path(repo_path).resolve()
+        findings: list[dict[str, Any]] = []
+        if not root.exists():
+            return {"root": str(root), "total_missing": 0, "items": findings}
+
+        for path in sorted(root.rglob("*")):
+            if not path.is_file():
+                continue
+            try:
+                text = path.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
+            lower = text.lower()
+            markers = [
+                "todo",
+                "tbd",
+                "fixme",
+                "placeholder",
+                "not implemented",
+                "coming soon",
+                "stub",
+                "pass\n",
+                "pass\r\n",
+            ]
+            if not any(marker in lower for marker in markers):
+                continue
+            reason = next((marker for marker in markers if marker in lower), "placeholder_or_stub")
+            findings.append(
+                {
+                    "path": str(path.relative_to(root)).replace("\\", "/"),
+                    "type": "implementation_gap",
+                    "reason": reason,
+                    "target_repo": self.route_file_to_repository(str(path.relative_to(root))),
+                    "priority": "high" if reason in {"todo", "not implemented", "placeholder"} else "medium",
+                }
+            )
+
+        return {
+            "root": str(root),
+            "total_missing": len(findings),
+            "items": findings,
+            "decision_rule": "prefer merging equivalent stubs, then route missing functionality to the canonical repo, then preserve the historical source as audit evidence.",
+        }
+
+    def group_similar_files(
+        self,
+        repo_path: Path | str,
+    ) -> list[dict[str, Any]]:
+        """Group files with nearly identical names or content so the autonomous agent can merge them safely."""
+        root = Path(repo_path).resolve()
+        groups: dict[str, list[str]] = {}
+        if not root.exists():
+            return []
+
+        for path in sorted(root.rglob("*")):
+            if not path.is_file():
+                continue
+            stem = path.stem.lower()
+            key = re.sub(r"(_|\-|duplicate|placeholder|stub|copy|v1|v2|final|temp)+", "", stem)
+            groups.setdefault(key or path.name.lower(), []).append(str(path.relative_to(root)).replace("\\", "/"))
+
+        result: list[dict[str, Any]] = []
+        for key, files in sorted(groups.items()):
+            unique_files = sorted(set(files))
+            if len(unique_files) < 2:
+                continue
+            result.append(
+                {
+                    "group_key": key,
+                    "files": unique_files,
+                    "decision": "merge_or_unify",
+                    "target_repo": self.route_file_to_repository(unique_files[0]),
+                }
+            )
+        return result
+
     def build_branch_history_inventory(
         self,
         repo_path: Path | str,
@@ -2655,6 +2736,8 @@ class CrossRepositoryAutonomyManager:
             include_history=include_history,
             include_memory=include_memory,
         )
+        implementation_gaps = self.identify_missing_implementations(target_root_path)
+        similar_file_groups = self.group_similar_files(target_root_path)
 
         merge_path = target_root_path / "MERGE.md"
         merge_path.parent.mkdir(parents=True, exist_ok=True)
@@ -2672,6 +2755,8 @@ class CrossRepositoryAutonomyManager:
             f"- duplicate_directory_count: {merge_metrics['duplicate_directory_count']}",
             f"- api_route_count: {merge_metrics['api_route_count']}",
             f"- feature_count: {merge_metrics['feature_count']}",
+            f"- missing_implementation_count: {implementation_gaps['total_missing']}",
+            f"- similar_file_group_count: {len(similar_file_groups)}",
             "",
             "```json",
             json.dumps(
@@ -2681,6 +2766,8 @@ class CrossRepositoryAutonomyManager:
                     "duplicate_directories": sorted(duplicate_dirs),
                     "merged_targets": merged_targets,
                     "merge_metrics": merge_metrics,
+                    "implementation_gaps": implementation_gaps,
+                    "similar_file_groups": similar_file_groups,
                 },
                 indent=2,
                 sort_keys=True,

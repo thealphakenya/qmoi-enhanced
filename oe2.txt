@@ -212,6 +212,11 @@ If a command cannot run because a dependency is missing, the next allowed action
 - [x] Included operational cross-references for automation, platform, trading, finance, mask/QVS, and GitHub/Vercel workflows.
 - [x] Created a live FINANCIALMANAGER.md with production risk controls, wallet model, bot architecture, and evidence standards.
 - [x] Created TRADINGREADME.md to define live trading architecture, production controls, and platform intent.
+- [x] Extended the autonomous merge planner to identify missing implementations, stubs, TODOs, and placeholder gaps before final merge acceptance.
+- [x] Added similarity grouping so equivalent or near-duplicate files can be merged or unified automatically under the canonical repo target.
+- [x] Recorded implementation-gap and similar-file merge metrics in the live MERGE.md audit output and the source-aware merge decision payload.
+- [x] Kept the repository branch-history inventory and live monitoring contract aligned with the current repo state and historical snapshot evidence.
+- [x] Re-ran the relevant merge and monitoring test suite and kept the live repo in a verified, push-ready state.
 
 ## Resume protocol for every future session
 

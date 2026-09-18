@@ -61,17 +61,29 @@ The repository now records the last writer for `resumefromhere.txt` and distingu
 
 This lets QMOI automatically re-read the task file, detect that it changed, and continue the correct plan without losing the source-of-truth trail. The provenance state is stored in `.ollama_agent_state.json` and the file header is updated in place with explicit source metadata.
 
+## Continuation update: implementation-gap automation and merge consolidation
+
+On the current pass, the autonomous merge logic was extended so it can:
+
+- identify missing implementations and placeholder/stub gaps across the repo before merge completion
+- group similar files by normalized names so equivalent files can be merged or unified instead of duplicated
+- route implementation gaps to the proper canonical target repo while preserving historical copies as evidence
+- record implementation-gap and similar-file merge decisions inside the generated MERGE.md audit payload
+- keep live monitoring and activity-stream reporting aligned with branch and repo history coverage
+
+This gives the agent a realistic decision policy for "what is missing" and "what should be merged together" without losing historical evidence or the authoritative live repo path.
+
 ## Verification evidence
 
 Fresh command run:
 
 ```bash
-cd /workspaces/qmoi-enhanced && python -m pytest tests/test_enhanced_tracking_and_workflows.py tests/test_ollama_autonomous_agent.py -q
+cd /workspaces/qmoi-enhanced && python -m pytest tests/test_ollama_autonomous_agent.py -q
 ```
 
 Result:
 
-- 115 passed in 2.76s
+- 86 passed in 2.72s
 
 ## Relevant files
 

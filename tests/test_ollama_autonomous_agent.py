@@ -156,6 +156,25 @@ class TestCrossRepositoryAutonomyManager:
         assert manager.route_file_to_repository("alpha/agent/integration.md") == "Alpha-Q-ai"
         assert manager.route_to_repo_for_root("docs/shared.md") == "qmoi-enhanced"
 
+    def test_identify_missing_implementations_and_group_similar_files(self, tmp_path):
+        repo = tmp_path / "project"
+        (repo / "docs").mkdir(parents=True)
+        (repo / "src").mkdir(parents=True)
+
+        (repo / "docs" / "README.md").write_text("# docs\nTODO: implement\n", encoding="utf-8")
+        (repo / "src" / "feature_placeholder.py").write_text("def stub():\n    pass\n", encoding="utf-8")
+        (repo / "src" / "feature_duplicate.py").write_text("def stub():\n    pass\n", encoding="utf-8")
+        (repo / "src" / "feature_duplicate_2.py").write_text("def stub():\n    pass\n", encoding="utf-8")
+
+        manager = CrossRepositoryAutonomyManager()
+        gaps = manager.identify_missing_implementations(repo)
+        groups = manager.group_similar_files(repo)
+
+        assert gaps["total_missing"] >= 1
+        assert any("placeholder" in entry["path"].lower() for entry in gaps["items"])
+        assert any(group["group_key"] for group in groups)
+        assert any(len(group["files"]) >= 2 for group in groups)
+
 
 class TestPlatformValidator:
     """Tests for PlatformValidator class."""
