@@ -11,6 +11,8 @@ Practical reference for monitoring the GitHub-hosted workflows in
 | `ollama-master-orchestrator.yml` | Preflight, validation, agent dispatch | Schedule, manual |
 | `ollama-autonomous-agent.yml` | Ollama bootstrap, inference, coding loop, final gate | Workflow completion, schedule, manual |
 | `ollama-autonomous-agent-realtime-monitor.yml` | Observes workflow and agent progress | Scheduled monitoring |
+| `ollama-live-activity-stream.yml` | Publishes the live Ollama activity stream and tracker heartbeat to GitHub artifacts | Schedule, workflow events, manual |
+| `qmoi-live-activity-stream.yml` | Publishes the live QMOI repo-health and system-activity stream to GitHub artifacts | Schedule, workflow events, manual |
 | `branch-sync.yml` | Repository and branch synchronization | Schedule, repository events |
 | `auto-merge-automated-pr.yml` | Merges eligible validated PRs | Pull request events |
 | `pr-monitor.yml` | Tracks pull request checks and status | Pull request events |
@@ -125,6 +127,10 @@ The status payload includes:
   "memory_sync": {...},
   "archive_awareness": {...},
   "ollama_autonomous_agent": {...},
+  "live_activity_stream": [
+    {"source": "qmoi", "event": "repo_health", "status": "healthy", ...},
+    {"source": "ollama_autonomous_agent", "event": "workflow_run", "status": "running", ...},
+  ],
   "health_gates": {
     "pr_success": True,
     "final_repo_state": "ready",
@@ -136,7 +142,38 @@ The status payload includes:
 }
 ```
 
+## Live activity stream contract (GitHub-visible)
+
+Two dedicated workflow streams are used to keep the source of each event explicit and visible in GitHub:
+
+- `ollama-live-activity-stream.yml` publishes the Ollama autonomous-agent stream, including workflow run status, tracker heartbeat, and latest activity updates.
+- `qmoi-live-activity-stream.yml` publishes the QMOI repo-health stream, including branch health, dirty/behind state, and the current QMOI operating status.
+
+Each workflow writes its own JSON payload to `ollamatracks/` and uploads it as a GitHub Actions artifact, while the combined stream is also retained as `ollamatracks/live_activity_stream.json` for local monitoring and remote continuity.
+
+The stream format is intentionally source-aware:
+
+- `source == "qmoi"` identifies QMOI system activity
+- `source == "ollama_autonomous_agent"` identifies Ollama autonomous-agent activity
+- `event` identifies the lifecycle event, such as `repo_health`, `workflow_run`, or `tracker_heartbeat`
+- `status` stays explicit (`healthy`, `warning`, `running`, `success`, `failure`, `idle`, etc.)
+
+This keeps both runtime streams independently monitorable while still being merged into one unified data model for internal health checks.
+
 This is the same contract used to answer whether the autonomous agent is truly running, whether the final repo is healthy, whether the memory is synchronized, and whether the archived QMOI state is still visible and recoverable.
+
+## Resume provenance and change detection
+
+`resumefromhere.txt` is now treated as a live operational ledger with source provenance. QMOI records the last writer in a metadata block and a JSON state snapshot so the repository can detect whether a change was created by the Ollama autonomous agent or by a human/manual edit.
+
+The detection flow is:
+
+- `update_resume_file_metadata(..., source="ollama_autonomous_agent")` stamps the file with the writer metadata block and updates `.ollama_agent_state.json`.
+- `detect_resume_file_origin()` compares the current file hash against the last recorded checksum.
+- If the checksum changed and the file metadata no longer matches the last agent writer, the repo marks the change as `manual`.
+- The live monitor and automation layer can then choose the correct follow-up action without confusing the two sources.
+
+This gives QMOI the ability to re-read the resume file, notice the origin of work, and automatically continue the right plan without losing the handoff path between human and autonomous updates.
 
 ## Remote health gates for autonomous continuity
 

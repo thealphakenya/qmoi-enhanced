@@ -32,8 +32,33 @@ from ollama_autonomous_agent import (
     QMOIAvatarWindowStyle,
     resolve_github_token,
     mask_github_token,
+    detect_resume_file_origin,
+    update_resume_file_metadata,
 )
 from realtime_workflow_monitor import WorkflowMonitor
+
+
+class TestResumeFileTracking:
+    def test_resume_file_tracking_distinguishes_agent_and_manual_updates(self, tmp_path):
+        resume_path = tmp_path / "resumefromhere.txt"
+        resume_path.write_text("# resumefromhere\n\nStatus: ready\n", encoding="utf-8")
+
+        agent_state = update_resume_file_metadata(tmp_path, source="ollama_autonomous_agent", note="sync progress")
+        assert agent_state["source"] == "ollama_autonomous_agent"
+        assert "QMOI_RESUME_SOURCE: ollama_autonomous_agent" in resume_path.read_text(encoding="utf-8")
+
+        origin = detect_resume_file_origin(tmp_path)
+        assert origin["source"] == "ollama_autonomous_agent"
+        assert origin["changed"] is False
+
+        resume_path.write_text(
+            resume_path.read_text(encoding="utf-8") + "\n# manual update\n",
+            encoding="utf-8",
+        )
+
+        origin = detect_resume_file_origin(tmp_path)
+        assert origin["source"] == "manual"
+        assert origin["changed"] is True
 
 
 class TestPlatformValidator:
@@ -847,6 +872,25 @@ class TestOllamaAutonomousAgent:
         assert isinstance(results, dict)
         for platform in ["windows", "macos", "linux", "ios", "android", "web"]:
             assert platform in results
+
+    def test_runtime_status_snapshot_includes_live_remote_statuses(self, tmp_path):
+        """The live runtime should expose the richer monitored lifecycle and QMOI health states."""
+        agent = OllamaAutonomousAgent(tmp_path)
+        status = agent.build_runtime_status_snapshot()
+
+        for key in [
+            "agent",
+            "qmoi",
+            "platforms",
+            "apps",
+            "remote_runtime",
+            "tracker_states",
+        ]:
+            assert key in status, f"Missing runtime status key: {key}"
+
+        assert len(status["tracker_states"]) >= 11
+        assert status["remote_runtime"]["is_remote_running"] is True
+        assert status["qmoi"]["status"] in {"running", "healthy", "ready"}
 
 
 class TestGitHubProofContract:

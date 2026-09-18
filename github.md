@@ -87,6 +87,21 @@ the required repository permission or use an authorized account, then repeat
 the commands. Never work around this by weakening workflow permissions or
 printing the token.
 
+## Live Activity Stream visibility in GitHub
+
+The live monitoring contract now includes two GitHub-visible activity streams so both runtime sources remain distinct and independently visible:
+
+1. `ollama-live-activity-stream.yml` shows live Ollama autonomous-agent activity, workflow state, and tracker heartbeat.
+2. `qmoi-live-activity-stream.yml` shows live QMOI repository health, branch state, dirty/behind indicators, and runtime status.
+
+Both workflows write source-labeled JSON artifacts into `ollamatracks/` and upload them as workflow artifacts, while the combined stream is retained at `ollamatracks/live_activity_stream.json` for a unified dashboard view.
+
+This allows GitHub-hosted monitoring to observe QMOI and Ollama independently in real time while still keeping one combined status to support local and remote continuity checks.
+
+## Resume provenance and source-aware continuity
+
+The repo now tracks the last writer for `resumefromhere.txt` and records whether the update came from the Ollama autonomous agent or from a manual file edit. QMOI reads that provenance before continuing or reprocessing the resume ledger, which prevents the repo from losing track of who changed the plan and ensures the correct follow-up automation is triggered.
+
 ## Real-Time Execution Status (2026-08-30 06:00 UTC)
 
 ### Latest Workflow Run Results

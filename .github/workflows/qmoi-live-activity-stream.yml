@@ -1,0 +1,84 @@
+name: QMOI Live Activity Stream
+
+on:
+  workflow_run:
+    workflows:
+      - "Ollama Autonomous Agent & Live Tracker"
+      - "Ollama PR Validation - 293+ Platform Features"
+      - "QMOI Live Activity Stream"
+    types:
+      - requested
+      - in_progress
+      - completed
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: qmoi-live-activity-stream-${{ github.repository }}
+  cancel-in-progress: false
+
+env:
+  PYTHON_VERSION: "3.11"
+  TRACK_DIR: ollamatracks
+
+jobs:
+  qmoi-live-activity:
+    name: QMOI live activity stream
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Generate QMOI live activity stream
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -Eeuo pipefail
+          python3 scripts/live_activity_stream.py --source combined
+          python3 scripts/live_activity_stream.py --source qmoi
+          python3 - <<'PY'
+import json
+from pathlib import Path
+for path in [
+    Path('ollamatracks/live_activity_stream.json'),
+    Path('ollamatracks/qmoi_live_activity.json'),
+]:
+    if not path.exists():
+        raise SystemExit(f'Missing QMOI activity stream artifact: {path}')
+    data = json.loads(path.read_text())
+    print(json.dumps({
+        'path': str(path),
+        'source': data.get('source'),
+        'count': len(data.get('stream', [])),
+    }, indent=2))
+PY
+
+      - name: Upload live activity artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: qmoi-live-activity-stream
+          path: |
+            ollamatracks/live_activity_stream.json
+            ollamatracks/qmoi_live_activity.json
+            ollamatracks/ollama_autonomous_agent_live_activity.json
+            ollamatracks/LATEST_ACTIVITY.txt
+            ollamatracks/CURRENT_STATUS.txt
+            ollamatracks/STATE.txt
+          if-no-files-found: warn

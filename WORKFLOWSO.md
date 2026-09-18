@@ -29,6 +29,9 @@ for audit and must not be interpreted as current success evidence.
 | `ollama-master-orchestrator.yml` | Preflight, validation, checkpoint/telemetry, single dispatch | Dispatch only after validation success |
 | `ollama-autonomous-agent.yml` | Ollama bootstrap, model/inference proof, bounded coding, post-validation | `OLLAMA_SUCCESS.json` with `SUCCESS` |
 | `ollama-autonomous-agent-realtime-monitor.yml` | Reconcile agent, PR, job, and check states | Never infer success from Python-only events |
+| `ollama-live-activity-stream.yml` | Publish Ollama source-labeled live activity and tracker heartbeat to GitHub artifacts | Source-aware stream and artifact retention |
+| `qmoi-live-activity-stream.yml` | Publish QMOI source-labeled live activity, branch awareness, and repo-health state to GitHub artifacts | Source-aware stream and artifact retention |
+| `resume-provenance-monitor.yml` | Optional resume-state integrity check for `resumefromhere.txt` source tracking | Detect agent-vs-manual file changes and maintain the latest writer state |
 | `pr-monitor.yml` | Report PR validation and failure/success status | Report source workflow conclusion |
 | `workflow-tracker.yml` | Track workflow lifecycle and metrics | Preserve queued/in-progress/failed states |
 | `branch-sync.yml` | Audited main/backup and Alpha-Q-ai synchronization | Conflict-free, reviewable sync result |

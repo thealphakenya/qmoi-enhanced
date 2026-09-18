@@ -1,0 +1,19 @@
+{
+  "source": "qmoi",
+  "stream": [
+    {
+      "details": {
+        "behind": true,
+        "branch": "main",
+        "dirty": true,
+        "raw_status": "## main...origin/main [behind 3]\n M MEMORY_INDEX.md\n M WORKFLOWSO.md\n M github.md\n M github_proof_contract.json\n M memory_index.json\n M monitor.md\n M oe2.txt\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LAST_RECONCILIATION.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/PR_STATUS.txt\n M ollamatracks/STATE.txt\n M ollamatracks/agent.log\n M ollamatracks/checkpoint.json\n M ollamatracks/monitoring_summary.json\n M ollamatracks/telemetry.jsonl\n M resumefromhere.txt\n M scripts/ollama_autonomous_agent.py\n M scripts/realtime_workflow_monitor.py\n M tests/test_enhanced_tracking_and_workflows.py\n M tests/test_ollama_autonomous_agent.py\n M validation_report.json\n?? .github/workflows/ollama-live-activity-stream.yml\n?? .github/workflows/qmoi-live-activity-stream.yml\n?? .ollama_agent_state.json\n?? oe2.md\n?? ollamatracks/live_activity_stream.json\n?? ollamatracks/ollama_autonomous_agent_live_activity.json\n?? ollamatracks/qmoi_live_activity.json\n?? scripts/live_activity_stream.py"
+      },
+      "entity": "qmoi",
+      "event": "repo_health",
+      "message": "QMOI repo health on main is warning.",
+      "source": "qmoi",
+      "status": "warning",
+      "timestamp_utc": "2026-09-18T07:56:19Z"
+    }
+  ]
+}

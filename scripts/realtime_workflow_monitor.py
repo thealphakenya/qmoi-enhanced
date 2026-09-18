@@ -677,6 +677,106 @@ class WorkflowMonitor:
             'last_checked_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
         }
 
+    def build_live_activity_stream(self) -> List[Dict[str, Any]]:
+        """Return a unified, source-labeled live activity stream for both QMOI and the Ollama agent."""
+        now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+        stream: List[Dict[str, Any]] = []
+
+        git_status = self.get_repo_git_status()
+        qmoi_status = 'healthy' if not git_status.get('dirty', False) and not git_status.get('behind', False) else 'warning'
+        stream.append({
+            "source": "qmoi",
+            "entity": "qmoi",
+            "event": "repo_health",
+            "status": qmoi_status,
+            "message": (
+                f"QMOI repo status for {git_status.get('branch', 'unknown')} is {qmoi_status}."
+            ),
+            "timestamp_utc": now,
+            "details": {
+                "branch": git_status.get('branch', 'unknown'),
+                "dirty": git_status.get('dirty', False),
+                "behind": git_status.get('behind', False),
+                "raw": git_status.get('raw', ''),
+            },
+        })
+
+        try:
+            recent_runs = self._run_gh_command(
+                f"run list --repo {self.repo} --workflow 'ollama-autonomous-agent.yml' --limit 5 --json "
+                "status,conclusion,displayTitle,headBranch,createdAt,updatedAt,url"
+            )
+        except Exception:
+            recent_runs = []
+
+        if not isinstance(recent_runs, list):
+            recent_runs = []
+
+        if recent_runs:
+            for run in recent_runs:
+                run_status = str(run.get('status', 'unknown')).lower()
+                conclusion = str(run.get('conclusion', '') or 'running').lower()
+                label = run.get('displayTitle') or run.get('workflowName') or 'Ollama Autonomous Agent'
+                if run_status in {'in_progress', 'queued', 'requested', 'waiting', 'pending'}:
+                    activity_status = 'running'
+                elif conclusion == 'success':
+                    activity_status = 'success'
+                elif conclusion == 'failure':
+                    activity_status = 'failure'
+                else:
+                    activity_status = run_status
+
+                stream.append({
+                    "source": "ollama_autonomous_agent",
+                    "entity": "ollama-autonomous-agent",
+                    "event": "workflow_run",
+                    "status": activity_status,
+                    "message": f"Ollama autonomous agent activity: {label} is {run_status}.",
+                    "timestamp_utc": run.get('updatedAt') or run.get('createdAt') or now,
+                    "details": {
+                        "display_title": label,
+                        "status": run_status,
+                        "conclusion": run.get('conclusion') or 'running',
+                        "branch": run.get('headBranch'),
+                        "url": run.get('url'),
+                    },
+                })
+        else:
+            stream.append({
+                "source": "ollama_autonomous_agent",
+                "entity": "ollama-autonomous-agent",
+                "event": "tracker_heartbeat",
+                "status": "idle",
+                "message": "No recent Ollama autonomous agent run was reported; tracker heartbeat is being monitored.",
+                "timestamp_utc": now,
+                "details": {},
+            })
+
+        tracker_activity = self._read_tracker_text(self.track_dir / 'LATEST_ACTIVITY.txt')
+        if tracker_activity:
+            stream.append({
+                "source": "ollama_autonomous_agent",
+                "entity": "ollama-autonomous-agent",
+                "event": "tracker_latest_activity",
+                "status": "active",
+                "message": tracker_activity,
+                "timestamp_utc": now,
+                "details": {"tracker_file": "LATEST_ACTIVITY.txt"},
+            })
+
+        stream.sort(key=lambda entry: (entry.get('timestamp_utc') or '1970-01-01T00:00:00Z', entry.get('source', '')))
+
+        activity_path = self.track_dir / 'live_activity_stream.json'
+        activity_path.write_text(json.dumps(stream, indent=2, sort_keys=True, default=str) + '\n', encoding='utf-8')
+        self._write_tracker_snapshot(
+            'live_activity_stream',
+            'Combined QMOI and Ollama live activity stream refreshed.',
+            'active',
+            'activity_stream',
+            {'entries': len(stream), 'sources': sorted({entry['source'] for entry in stream})},
+        )
+        return stream
+
     def build_qmoi_ollama_status_report(self) -> Dict[str, Any]:
         """Build a unified status snapshot for QMOI, Alpha-Q-ai, the Ollama autonomous agent, and the remote repo memory/archive awareness."""
         git_status = self.get_repo_git_status()
@@ -684,6 +784,7 @@ class WorkflowMonitor:
         memory_status = self.get_memory_sync_status()
         archive_status = self.get_archive_inventory()
         tracker_health = self.build_tracker_health(max_age_seconds=300)
+        live_activity_stream = self.build_live_activity_stream()
 
         try:
             recent_runs = self._run_gh_command(
@@ -742,6 +843,7 @@ class WorkflowMonitor:
                 "last_reconciliation": self._read_tracker_text(self.track_dir / 'LAST_RECONCILIATION.txt'),
             },
             "recent_gh_runs": recent_runs,
+            "live_activity_stream": live_activity_stream,
             "timestamp_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
         }
 
@@ -761,6 +863,7 @@ class WorkflowMonitor:
             "merge_status": merge_status,
             "health_gates": health_gates,
             "history": history_summary,
+            "live_activity_stream": live_activity_stream,
             "timestamp_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
             "report_name": "qmoi_and_ollama_live_status",
         }

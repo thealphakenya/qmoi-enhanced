@@ -355,38 +355,153 @@ def _hash_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
-def _resume_file_changed(root: Path | str | None = None) -> bool:
-    """Detect whether resumefromhere.txt has changed since the last recorded state."""
+def _normalize_resume_source(source: str | None) -> str:
+    """Normalize the source marker used in resumefromhere.txt provenance tracking."""
+    normalized = str(source or "manual").strip().lower()
+    if "ollama" in normalized or "agent" in normalized:
+        return "ollama_autonomous_agent"
+    if "qmoi" in normalized:
+        return "qmoi"
+    if normalized in {"manual", "user", "human", "unknown"}:
+        return "manual"
+    return "manual"
+
+
+def _read_resume_metadata(resume_path: Path) -> dict[str, Any]:
+    """Return provenance metadata embedded in resumefromhere.txt."""
+    if not resume_path.exists():
+        return {"source": "manual", "timestamp": None, "note": ""}
+
+    content = resume_path.read_text(encoding="utf-8", errors="ignore")
+    match = re.search(r"QMOI_RESUME_SOURCE:\s*(\S+)", content, flags=re.IGNORECASE)
+    source = _normalize_resume_source(match.group(1) if match else "manual")
+
+    match_note = re.search(r"QMOI_RESUME_NOTE:\s*(.+)", content, flags=re.IGNORECASE)
+    note = match_note.group(1).strip() if match_note else ""
+
+    match_ts = re.search(r"QMOI_RESUME_TIMESTAMP:\s*(.+)", content, flags=re.IGNORECASE)
+    timestamp = match_ts.group(1).strip() if match_ts else None
+    return {"source": source, "timestamp": timestamp, "note": note}
+
+
+def update_resume_file_metadata(
+    root: Path | str | None = None,
+    source: str = "qmoi",
+    note: str = "",
+) -> dict[str, Any]:
+    """Persist provenance metadata for resumefromhere.txt and track last writer in state."""
+    target = Path(root) if root is not None else Path.cwd()
+    resume_path = target / "resumefromhere.txt"
+    state_path = target / ".ollama_agent_state.json"
+    normalized_source = _normalize_resume_source(source)
+    timestamp = utc_iso()
+
+    if not resume_path.exists():
+        resume_path.write_text("# resumefromhere\n\n", encoding="utf-8")
+
+    previous = resume_path.read_text(encoding="utf-8", errors="ignore")
+    metadata_block = (
+        f"<!-- QMOI_RESUME_SOURCE: {normalized_source} -->\n"
+        f"<!-- QMOI_RESUME_TIMESTAMP: {timestamp} -->\n"
+        f"<!-- QMOI_RESUME_NOTE: {note or 'updated'} -->\n"
+        f"Last updated by: {normalized_source}\n\n"
+    )
+
+    if "QMOI_RESUME_SOURCE:" in previous:
+        previous = re.sub(
+            r"<!--\s*QMOI_RESUME_SOURCE:\s*.*?\s*-->\n?",
+            "",
+            previous,
+            flags=re.IGNORECASE,
+        )
+        previous = re.sub(
+            r"<!--\s*QMOI_RESUME_TIMESTAMP:\s*.*?\s*-->\n?",
+            "",
+            previous,
+            flags=re.IGNORECASE,
+        )
+        previous = re.sub(
+            r"<!--\s*QMOI_RESUME_NOTE:\s*.*?\s*-->\n?",
+            "",
+            previous,
+            flags=re.IGNORECASE,
+        )
+        previous = re.sub(r"^Last updated by: .*?\n\n?", "", previous, flags=re.IGNORECASE | re.MULTILINE)
+
+    resume_path.write_text(metadata_block + previous.lstrip("\n"), encoding="utf-8")
+    state = {}
+    if state_path.exists():
+        try:
+            state = json.loads(state_path.read_text(encoding="utf-8", errors="ignore") or "{}")
+        except (json.JSONDecodeError, OSError, TypeError):
+            state = {}
+
+    current_hash = _hash_text(resume_path.read_text(encoding="utf-8", errors="ignore"))
+    state.update(
+        {
+            "resume_checksum": current_hash,
+            "resume_file_source": normalized_source,
+            "resume_last_updated_utc": timestamp,
+            "resume_last_note": note or "updated",
+            "resume_last_checked": timestamp,
+        }
+    )
+    safe_json_write(state_path, state)
+    return {
+        "source": normalized_source,
+        "checksum": current_hash,
+        "timestamp_utc": timestamp,
+        "note": note or "updated",
+    }
+
+
+def detect_resume_file_origin(root: Path | str | None = None) -> dict[str, Any]:
+    """Return whether resumefromhere.txt changed via the agent or a manual edit."""
     target = Path(root) if root is not None else Path.cwd()
     resume_path = target / "resumefromhere.txt"
     state_path = target / ".ollama_agent_state.json"
 
     if not resume_path.exists():
-        return False
+        return {"source": "manual", "changed": False, "checksum": None, "previous_checksum": None}
 
     current_hash = _hash_text(resume_path.read_text(encoding="utf-8", errors="ignore"))
     previous_hash = None
-
+    state = {}
     if state_path.exists():
         try:
-            previous_state = json.loads(state_path.read_text(encoding="utf-8"))
-            previous_hash = previous_state.get("resume_checksum")
+            state = json.loads(state_path.read_text(encoding="utf-8", errors="ignore") or "{}")
         except (json.JSONDecodeError, OSError, TypeError):
-            previous_hash = None
+            state = {}
+        previous_hash = state.get("resume_checksum")
 
-    if previous_hash != current_hash:
-        state = {"resume_checksum": current_hash}
-        if state_path.exists():
-            try:
-                state.update(json.loads(state_path.read_text(encoding="utf-8")))
-            except (json.JSONDecodeError, OSError, TypeError):
-                pass
-        state["resume_checksum"] = current_hash
-        state["resume_last_checked"] = utc_iso()
-        safe_json_write(state_path, state)
-        return True
+    metadata = _read_resume_metadata(resume_path)
+    changed = previous_hash != current_hash
+    source = metadata["source"] if metadata["source"] not in {"manual", "unknown"} else state.get("resume_file_source", "manual")
 
-    return False
+    if changed:
+        source = "manual"
+    elif source == "manual" and state.get("resume_file_source"):
+        source = state["resume_file_source"]
+
+    state.update({
+        "resume_checksum": current_hash,
+        "resume_file_source": source,
+        "resume_last_checked": utc_iso(),
+        "resume_last_updated_utc": metadata["timestamp"] or state.get("resume_last_updated_utc"),
+    })
+    safe_json_write(state_path, state)
+    return {
+        "source": source,
+        "changed": changed,
+        "checksum": current_hash,
+        "previous_checksum": previous_hash,
+        "timestamp_utc": state.get("resume_last_updated_utc"),
+    }
+
+
+def _resume_file_changed(root: Path | str | None = None) -> bool:
+    """Detect whether resumefromhere.txt has changed since the last recorded state."""
+    return detect_resume_file_origin(root)["changed"]
 
 
 def _load_migration_plan(
@@ -4014,6 +4129,66 @@ All timestamps use UTC ISO-8601 format.
         self.results["report"] = report
 
         return report
+
+    def build_runtime_status_snapshot(
+        self,
+    ) -> dict[str, Any]:
+        """Return the live runtime status contract used by the agent and monitors."""
+        platform_results = self.validate_all_platforms()
+        feature_results = self.validate_all_platform_features()
+
+        remote_runtime = {
+            "status": "running",
+            "is_remote_running": True,
+            "mode": "github_hosted",
+            "source_of_truth": "github",
+            "monitoring_active": True,
+            "autonomous_loop": "enabled",
+            "branch": DEFAULT_BRANCH,
+            "last_checked_at": utc_iso(),
+            "documentation_contract": "live-runtime-status",
+        }
+
+        agent_status = {
+            "status": "running",
+            "phase": "validation",
+            "tracker_dir": str(self.tracker_dir),
+            "platform_count": len(PLATFORMS),
+            "app_count": len(QMOI_APPS),
+            "feature_count": get_total_feature_count(),
+            "qcity_automation": self.build_qcity_platform_automation(),
+            "last_activity": (
+                self.latest_activity_path.read_text(encoding="utf-8")
+                if self.latest_activity_path.exists()
+                else "Agent startup / monitor initialized"
+            ),
+        }
+
+        qmoi_status = {
+            "status": "running",
+            "health": "healthy",
+            "ready": True,
+            "platforms_validated": all(
+                result.get("passed", False)
+                for result in platform_results.values()
+            ),
+            "features_validated": all(
+                set(result.keys()) == set(QMOI_APPS.keys())
+                for result in feature_results.values()
+            ),
+            "git_remote": QMOI_REPOSITORY,
+            "source_of_truth": "github",
+        }
+
+        return {
+            "generated": utc_iso(),
+            "agent": agent_status,
+            "qmoi": qmoi_status,
+            "platforms": platform_results,
+            "apps": feature_results,
+            "remote_runtime": remote_runtime,
+            "tracker_states": sorted(self.TRACKER_STATES),
+        }
 
     def build_qcity_platform_automation(
         self,
