@@ -22,19 +22,27 @@ _SAFE_RELATIVE_PATH = re.compile(r"^[^/\\][^:]*$")
 _FORBIDDEN_PATCH_TEXT = (".github/workflows", "secrets.", "GITHUB_TOKEN", "GH_TOKEN")
 
 
+def normalize_ollama_base_url(raw_host: str | None) -> str:
+    """Return a valid HTTP base URL for the Ollama API."""
+    value = (raw_host or os.getenv("OLLAMA_HOST", DEFAULT_OLLAMA_HOST)).strip()
+    if not value:
+        return DEFAULT_OLLAMA_HOST
+    if value.startswith("http://") or value.startswith("https://"):
+        return value.rstrip("/")
+    if "/" in value:
+        value = value.split("/", 1)[0]
+    if ":" not in value:
+        value = f"{value}:11434"
+    return f"http://{value}"
+
+
 def normalize_ollama_server_host(raw_host: str | None) -> str:
     """Return the bind host string Ollama expects: host:port without a URL scheme."""
-    value = (raw_host or os.getenv("OLLAMA_HOST", "127.0.0.1:11434")).strip()
-    if value.startswith("http://"):
-        value = value.replace("http://", "", 1)
-    elif value.startswith("https://"):
-        value = value.replace("https://", "", 1)
+    value = normalize_ollama_base_url(raw_host).replace("http://", "").replace("https://", "")
     if "/" in value:
         value = value.split("/", 1)[0]
     if not value:
         return "127.0.0.1:11434"
-    if ":" not in value:
-        value = f"{value}:11434"
     return value
 
 
@@ -167,7 +175,7 @@ class OllamaClient:
         bootstrap: Any | None = None,
     ) -> None:
         raw_host = host or os.getenv("OLLAMA_HOST", DEFAULT_OLLAMA_HOST)
-        self.host = raw_host.rstrip("/")
+        self.host = normalize_ollama_base_url(raw_host)
         self.server_host = normalize_ollama_server_host(self.host)
         self.model = model or os.getenv("OLLAMA_MODEL", DEFAULT_OLLAMA_MODEL)
         self.timeout = float(timeout if timeout is not None else os.getenv("OLLAMA_TIMEOUT_SECONDS", "60"))

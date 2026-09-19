@@ -8,14 +8,12 @@ This file is the live execution ledger for the QMOI repository continuity and pr
 
 - Verified the current branch is `codespace-potential-tribble-g46v54ggq6rv2w4v5` and the remote tracking branch is `origin/codespace-potential-tribble-g46v54ggq6rv2w4v5`.
 - Verified branch parity with `git rev-list --left-right --count origin/codespace-potential-tribble-g46v54ggq6rv2w4v5...HEAD` and the result was `0 0`, meaning no local or remote divergence.
-- Verified the active browser/Codespace tree is intentionally lightweight: 1,554 files and 94 directories in the active checkout.
-- Verified the merge-policy and automation documents remain in place and include the no-skip, copy-before-merge, and audit requirements.
-- Verified the autonomous merge-and-sync execution path now exists in `scripts/ollama_autonomous_agent.py` and it records a real merge audit at `ollamatracks/merge_audit.json` with the full merge metrics package.
-- Verified the style/universal UI merge gate is active: `STYLES.md` and `UNIVERSALS.md` are explicitly classified as high-priority merge sources in the live inventory and in the realtime merge stream payload.
-- Verified the bounded regression test for the merge-and-sync path passes: `pytest -q tests/test_ollama_autonomous_agent.py -k 'merge_and_sync or build_unified_markdown_inventory_deduplicates_same_names'` returned `2 passed, 90 deselected`.
-- Verified the live activity stream emits realtime merge and repo-health entries through the tracked stream files in `ollamatracks/` and the generated combined payload remains valid.
-- Verified the repo is ready to publish the current branch state after recording this final ledger update.
-- Required next action: commit the validated merge-policy, automation, audit, and live-stream updates, then push to `origin/codespace-potential-tribble-g46v54ggq6rv2w4v5` and confirm the remote accepts the branch.
+- Verified the local Ollama runtime is healthy and serving inference on `http://127.0.0.1:11434` with a real model response from `qwen2.5-coder:3b`.
+- Verified the production runtime contract in `scripts/ollama_runtime.py` now normalizes bare `host:port` values and full URLs, preventing stale binding mismatches.
+- Verified the autonomous loop is able to run under the GitHub-hosted contract and can complete a real health + inference + bounded autonomous pass without relying on a stale local assumption.
+- Verified the focused runtime regression suite passes: `python3 -m pytest -q tests/test_ollama_runtime.py` returned `18 passed in 44.06s`.
+- Verified the repo remains ready to publish the current branch state after recording this ledger update and the next push.
+- Required next action: commit the verified runtime fix and the current ledger update, then push to `origin/codespace-potential-tribble-g46v54ggq6rv2w4v5` and confirm the remote accepts the branch.
 
 ## Merge automation hardening ledger (2026-09-19)
 

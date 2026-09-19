@@ -54,6 +54,12 @@ def test_verify_proves_model_and_inference():
     assert health.ollama_version == "0.1.0"
 
 
+def test_ollama_host_without_scheme_is_normalized_for_remote_runtime():
+    client = OllamaClient(host="remote-ollama.internal:11434", retries=1)
+    assert client.host == "http://remote-ollama.internal:11434"
+    assert client.server_host == "remote-ollama.internal:11434"
+
+
 def test_generate_restarts_server_before_retrying_when_connection_is_down(monkeypatch):
     session = FakeSession([
         ConnectionError("offline"),
