@@ -1,0 +1,13 @@
+[
+  {
+    "id": "288ee0c5-dfcc-467d-b779-c543080728f9",
+    "userId": "1",
+    "username": "admin",
+    "role": "Administrator",
+    "biometricMethods": ["fingerprint"],
+    "active": true,
+    "createdAt": "2026-01-16T07:14:19.799Z",
+    "expiresAt": "2026-01-16T15:14:19.799Z",
+    "lastActivity": "2026-01-16T07:14:19.799Z"
+  }
+]

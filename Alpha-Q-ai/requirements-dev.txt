@@ -1,0 +1,9 @@
+flake8>=7.1.1
+pytest>=8.3.3
+
+requests>=2.32.4
+Flask>=3.0.3
+PyYAML>=6.0.3
+aiohttp>=3.9.5
+stripe>=10.0.0
+coverage>=7.6.1

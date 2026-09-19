@@ -498,3 +498,41 @@ Current hardening actions:
 - added a root `.github/dependabot.yml` configuration for automated update management
 
 This update is part of the final repo hardening pass to keep the branch aligned with the user’s instructions to fix remaining dependency and vulnerability issues in the live repo state.
+## Auto sync ledger 2026-09-19T06:38:11Z
+- branch: merge/materialized-inputs-clean-20260919
+- mode: auto
+- remote: https://github.com/thealphakenya/qmoi-enhanced
+- status: lightweight-configured
+- note: auto-run executed from Codespaces/devcontainer lifecycle
+
+## Outstanding work ledger (2026-09-19)
+
+The following work remains open and must not be reported as complete until fresh
+remote evidence is recorded:
+
+- Merge and publish the complete unified history branch to `Alpha-Q-ai`.
+- Publish reciprocal imported `qmoi-enhanced` branch and tag refs to `Alpha-Q-ai`.
+- Confirm both final repositories contain the same integration commit and all
+	required imported refs through `git ls-remote` and GitHub API checks.
+- Merge and close PR #2120 only after its checks pass and the complete tracked
+	materialization is reviewed.
+- Re-run the complete inventory after remote publication and record the
+	`inventory-before-copy`, `copy-verified`, and `after-merge` metrics in
+	`MERGE.md`.
+- Keep the all-history metrics synchronized: 431,752 summed file entries,
+	99,637 summed directories, 369,231 deduplicated files, and 102,103
+	deduplicated directories, correcting them whenever refs change.
+- Verify the Codespaces light/full/audit lifecycle in a newly created browser
+	Codespace, including automatic `oe2.txt` update and push behavior.
+- Verify that automatic startup pushes never stages unrelated telemetry,
+	memory, generated, or user-edited files without review.
+- Resolve or document remaining dependency advisories in historical, archived,
+	or non-production material when upstream fixes become available.
+- Retrieve and review GitHub Dependabot alerts with a token that has the
+	required security-read permission; do not infer alert status from local scans.
+- Keep the full test suite, workflow syntax checks, dependency audits, and
+	post-merge tree comparisons green after every merge or automation change.
+
+Status: CONTINUATION_REQUIRED
+Completion rule: pause only after each item has fresh evidence in this repo or
+an explicit external blocker is recorded in `MERGE.md`.

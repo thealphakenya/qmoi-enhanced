@@ -1,0 +1,17 @@
+{
+  "source": "ollama_autonomous_agent",
+  "stream": [
+    {
+      "details": {
+        "auth_status": "invalid",
+        "source": "local_tracker"
+      },
+      "entity": "ollama-autonomous-agent",
+      "event": "github_auth_status",
+      "message": "GitHub auth is invalid; remote Ollama workflow data is unavailable. Local tracker heartbeat is active.",
+      "source": "ollama_autonomous_agent",
+      "status": "warning",
+      "timestamp_utc": "2026-09-18T13:44:37Z"
+    }
+  ]
+}

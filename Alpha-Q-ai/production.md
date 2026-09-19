@@ -1,0 +1,7587 @@
+# production.md
+
+This file tracks non-production or shallow implementations that must be upgraded to production-ready implementations.
+
+## Required replacement policy
+- Replace placeholders, stubs, TODOs, and ERROR markers with real production-grade implementations.
+- Upgrade minimal or shallow implementations to fully validated, secure, and observable production behavior.
+- Re-run the validation and monitoring loops after each replacement before considering the repo production-safe.
+
+## Files flagged for production replacement
+- .github/workflows/auto-merge-automated-pr.yml: ERROR
+- .github/workflows/branch-sync.yml: ERROR
+- .github/workflows/ollama-autonomous-agent-realtime-monitor.yml: ERROR
+- .github/workflows/ollama-autonomous-agent.yml: ERROR
+- .github/workflows/ollama-master-orchestrator.yml: ERROR
+- .github/workflows/ollama-pr-validation.yml: ERROR
+- .github/workflows/pr-monitor.yml: ERROR
+- .github/workflows/workflow-tracker.yml: ERROR
+- .pytest_cache/README.md: TODO, placeholder, TBD, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- ACCOUNTABILITY.md: ERROR
+- ADVANCEMENT.md: Exception, ERROR
+- ALLPLATFORMSDEVICE.md: ERROR
+- BUILD.md: ERROR
+- DOWNLOAD.md: Exception
+- ENHANCEMENT_SESSION_2026_08_18.md: Exception, ERROR
+- FINAL_SESSION_COMPLETION_REPORT.md: ERROR
+- FINAL_VALIDATION_EVIDENCE_2026_08_29.md: ERROR
+- FINANCIALMANAGER.md: placeholder
+- GITHUB_ACTIONS_EXECUTION_GUIDE.md: TODO, ERROR
+- IMPLEMENTATION_COMPLETE.md: ERROR
+- INSTALL.md: ERROR
+- MEMORY_INDEX.md: TODO, placeholder, ERROR, stub
+- MERGE.md: TODO, placeholder, ERROR, stub
+- MODELEVOLUTIONO.md: ERROR
+- MONITORING_GUIDE.md: ERROR
+- MONITORING_SUMMARY.md: ERROR
+- OLLAMA_AUTOMATION_GUIDE.md: ERROR
+- OLLAMA_ENHANCEMENT_COMPLETE.md: ERROR
+- OLLAMA_ENHANCEMENT_SUCCESS.md: Exception, ERROR
+- PHASE_1_4_COMPLETION_SUMMARY.md: TBD, ERROR
+- PLATFORM_REQUIREMENTS.md: Exception, ERROR
+- QTEAM.md: ERROR
+- README.md: placeholder, ERROR
+- REAL_TIME_MONITORING_GUIDE.md: Exception, ERROR
+- RESILIENCE_AUTO_HEALING.md: Exception, ERROR
+- SESSION_COMPLETION_REPORT.md: ERROR
+- SESSION_COMPLETION_REPORT_2025_01_10.md: ERROR
+- STYLES.md: ERROR
+- SYNC.md: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub
+- TEST_ENHANCEMENTS.md: ERROR
+- TREE_FULL_STRUCTURE.md: ERROR
+- WORKFLOWSO.md: ERROR
+- WORKFLOW_STATUS_DASHBOARD.md: ERROR
+- error2.txt: ERROR
+- github.md: ERROR
+- memory_index.json: TODO, placeholder, ERROR, stub
+- o.txt: placeholder, ERROR
+- oe.md: ERROR
+- oe.txt: TODO, placeholder, ERROR, stub
+- oe2.md: placeholder, stub
+- oe2.txt: TODO, placeholder, stub
+- ollamatracks/AUTO_HEALING_REPORT.json: ERROR
+- ollamatracks/checkpoint.json: ERROR
+- ollamatracks/link_validation_report.json: ERROR
+- or.md: TODO, FIXME, placeholder, ERROR
+- qmoi-enhanced-history-14/.github/PR_AUTOTODOS.md: ERROR
+- qmoi-enhanced-history-14/.github/workflows/build-and-release.yml: ERROR
+- qmoi-enhanced-history-14/.github/workflows/build-missing-platforms.yml: placeholder
+- qmoi-enhanced-history-14/.github/workflows/ci-debug.yml: ERROR
+- qmoi-enhanced-history-14/.github/workflows/ci.yml: ERROR
+- qmoi-enhanced-history-14/.github/workflows/dry-run-tests.yml: placeholder
+- qmoi-enhanced-history-14/.github/workflows/ollama-autonomous-agent.yml: ERROR
+- qmoi-enhanced-history-14/.github/workflows/ollamatrigger.yml: ERROR
+- qmoi-enhanced-history-14/.github/workflows/qmoi-app-build.yml: ERROR
+- qmoi-enhanced-history-14/.github/workflows/qvillage-sync.yml: ERROR
+- qmoi-enhanced-history-14/.qmoi_state/health_memory.json: ERROR
+- qmoi-enhanced-history-14/.qmoi_state/metrics_memory.json: ERROR
+- qmoi-enhanced-history-14/.venv/bin/Activate.ps1: ERROR
+- qmoi-enhanced-history-14/.venv/bin/jp.py: Exception, ERROR
+- qmoi-enhanced-history-14/.venv_qmoi_control/bin/Activate.ps1: ERROR
+- qmoi-enhanced-history-14/ADVANCED_USER_IDENTIFICATION_SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/ALLBACKEND.md: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/ALLERRORS.md: TODO, FIXME, placeholder, TBD, [PRODUCTION IMPLEMENTATION REQUIRED], traceback, Exception, ERROR, stub
+- qmoi-enhanced-history-14/ALLERRORS.txt: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/ALLERRORSSTATSQMOI.md: ERROR
+- qmoi-enhanced-history-14/ALLERRORSTYPESFILES.md: ERROR
+- qmoi-enhanced-history-14/ALLERRORTYPESANDHEALTHCHECKS.md: ERROR
+- qmoi-enhanced-history-14/ALLLINKS.md: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/ALLMDFILES.md: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/ALLMDFILESREFS.md: TODO, placeholder, ERROR, stub, prototype
+- qmoi-enhanced-history-14/ALLPORTS.md: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/ALLQMOIAUTOEVOLVINGENVS.md: Exception, ERROR
+- qmoi-enhanced-history-14/ALLSYSTEMSSTRUCTURESREFERENCES.md: ERROR
+- qmoi-enhanced-history-14/ALLUI.md: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/ALLVERSIONS.md: ERROR
+- qmoi-enhanced-history-14/ALLWALLETSQVS.md: ERROR
+- qmoi-enhanced-history-14/ALL_TODOS_SAMPLE.txt: TODO, FIXME, placeholder, TBD, ERROR, stub, prototype
+- qmoi-enhanced-history-14/ALPHAQMOIENGINE.md: ERROR
+- qmoi-enhanced-history-14/API.md: ERROR
+- qmoi-enhanced-history-14/API_ENDPOINTS_COMPLETE_AUDIT.md: ERROR
+- qmoi-enhanced-history-14/API_ENDPOINTS_REFERENCE.md: ERROR
+- qmoi-enhanced-history-14/API_INTEGRATION_GUIDE.md: ERROR, stub
+- qmoi-enhanced-history-14/API_REFERENCE.md: ERROR
+- qmoi-enhanced-history-14/APPS_PLATFORMS_DOCUMENTATION_UPDATE.md: TODO, placeholder, stub
+- qmoi-enhanced-history-14/APP_FIX_ACTION_PLAN.md: ERROR, stub
+- qmoi-enhanced-history-14/APP_FIX_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/APP_FIX_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/AUTH_SYSTEM_IMPLEMENTATION.md: ERROR
+- qmoi-enhanced-history-14/AUTOCLONE_STANDALONE.md: ERROR
+- qmoi-enhanced-history-14/AUTODOWNLOAD.md: TODO, ERROR
+- qmoi-enhanced-history-14/AUTOGIT.md: ERROR
+- qmoi-enhanced-history-14/AUTOLINTREADME.md: ERROR
+- qmoi-enhanced-history-14/AUTOMATION-SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/AUTO_RECOVERY_PROCEDURES.md: ERROR
+- qmoi-enhanced-history-14/AUTO_SETUP_COMPLETION_SUMMARY.md: ERROR, stub
+- qmoi-enhanced-history-14/BACKEND_API_TEMPLATES.md: Exception, ERROR
+- qmoi-enhanced-history-14/BACKGROUND_AUTOMATION_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/BIOMETRIC_LOGIN_TEST_RESULTS.md: ERROR
+- qmoi-enhanced-history-14/BUILD_COMPLETION_REPORT_v2.md: ERROR
+- qmoi-enhanced-history-14/BUILD_COMPLETION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/BUILD_INSTRUCTIONS.md: ERROR
+- qmoi-enhanced-history-14/BUILD_REAL_APPS.md: ERROR
+- qmoi-enhanced-history-14/CACHING_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/CAMPAIGN_COMPLETION_SUMMARY.md: placeholder, ERROR, stub
+- qmoi-enhanced-history-14/CASHON.md: ERROR
+- qmoi-enhanced-history-14/CASHONTRADINGREADME.md: ERROR
+- qmoi-enhanced-history-14/CMDCOMMANDS.md: ERROR
+- qmoi-enhanced-history-14/COLAB_DAGSHUB_DEPLOY_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/COMPLETE_SYSTEM_DOCUMENTATION_MASTER.md: ERROR
+- qmoi-enhanced-history-14/COMPLETION_INDEX.md: ERROR
+- qmoi-enhanced-history-14/COMPLETION_REPORT.md: ERROR
+- qmoi-enhanced-history-14/COMPLETION_REPORT.txt: ERROR
+- qmoi-enhanced-history-14/COMPLETION_REPORT_REAL_IMPLEMENTATIONS.md: placeholder, ERROR
+- qmoi-enhanced-history-14/COMPONENTS.md: ERROR, stub
+- qmoi-enhanced-history-14/COMPONENTS_INVENTORY.txt: ERROR
+- qmoi-enhanced-history-14/COMPREHENSIVE_TESTING_QA_STRATEGY.md: placeholder, ERROR
+- qmoi-enhanced-history-14/CONSOLIDATION_ANALYSIS.md: Exception
+- qmoi-enhanced-history-14/CONTINUOUS_IMPROVEMENT.md: ERROR
+- qmoi-enhanced-history-14/CREDENTIAL_ROTATION_PLAYBOOK.md: placeholder
+- qmoi-enhanced-history-14/CRITICAL_APP_AUDIT_REPORT.md: placeholder, ERROR
+- qmoi-enhanced-history-14/CURLCOMMANDS.md: ERROR
+- qmoi-enhanced-history-14/D1.txt: ERROR
+- qmoi-enhanced-history-14/DELIVERABLES_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/DELIVERABLES_FINAL_INVENTORY.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT-README.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_FIX_QUICK_START.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_GATEWAY.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_HEALTH_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_QUICK_START.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_READY_FINAL.md: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_SUMMARY.txt: ERROR
+- qmoi-enhanced-history-14/DEPLOYMENT_VERIFICATION.md: ERROR
+- qmoi-enhanced-history-14/DEPLOY_TO_VERCEL.sh: ERROR
+- qmoi-enhanced-history-14/DEVCOMMANDS.md: ERROR
+- qmoi-enhanced-history-14/DEVELOPER_QUICK_START.md: ERROR
+- qmoi-enhanced-history-14/DOCKER_DEPLOYMENT_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/DOCS.md: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/DOCUMENTATION_INDEX.md: ERROR
+- qmoi-enhanced-history-14/DOCUMENTATION_MASTER_INDEX.md: ERROR
+- qmoi-enhanced-history-14/DUPLICATE_COMPONENTS.txt: ERROR, stub
+- qmoi-enhanced-history-14/ENDPOINTS.md: ERROR
+- qmoi-enhanced-history-14/ENHANCED_AUTOMATION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/ENHANCEMENT_COMPLETE_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/ENVIRONMENT_CONFIG.md: ERROR
+- qmoi-enhanced-history-14/ERRORSREADME.md: ERROR
+- qmoi-enhanced-history-14/ERRORSTRACKS.md: ERROR
+- qmoi-enhanced-history-14/EXECUTION_SUMMARY.md: ERROR, stub
+- qmoi-enhanced-history-14/EXECUTIVE_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/FAST-BOOTSTRAP-README.md: ERROR
+- qmoi-enhanced-history-14/FEATURESREADME.md: ERROR, stub
+- qmoi-enhanced-history-14/FILES_MODIFIED_SUMMARY.txt: ERROR, stub
+- qmoi-enhanced-history-14/FILE_MANIFEST.md: ERROR
+- qmoi-enhanced-history-14/FINAL_AUDIT_COMPLETION.txt: placeholder, ERROR
+- qmoi-enhanced-history-14/FINAL_CAMPAIGN_SUMMARY.txt: ERROR
+- qmoi-enhanced-history-14/FINAL_COMPLETION_REPORT.md: ERROR
+- qmoi-enhanced-history-14/FINAL_HANDOFF.md: ERROR
+- qmoi-enhanced-history-14/FINAL_PRODUCTION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/FINAL_SESSION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/FINAL_STATUS.txt: ERROR
+- qmoi-enhanced-history-14/FINAL_STATUS_TODOS_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/FINAL_TODOS_FOUND.txt: ERROR
+- qmoi-enhanced-history-14/FINAL_VERIFICATION.md: ERROR
+- qmoi-enhanced-history-14/FINAL_VERIFICATION_CHECKLIST.txt: ERROR
+- qmoi-enhanced-history-14/FINAL_VERIFICATION_REPORT.md: ERROR, stub
+- qmoi-enhanced-history-14/FINAL_VERIFICATION_REPORT.txt: Exception, ERROR
+- qmoi-enhanced-history-14/FINANCE_CREDENTIALS.md: ERROR
+- qmoi-enhanced-history-14/FINANCIALMANAGER.md: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/GITHUB-ACTIONS-COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/GITHUBPAYED.md: ERROR
+- qmoi-enhanced-history-14/GITHUB_ACTIONS_AUTOFIX.md: ERROR
+- qmoi-enhanced-history-14/GITHUB_RELEASES_INDEX.md: ERROR
+- qmoi-enhanced-history-14/GITHUB_RELEASES_QUICKSTART.md: ERROR
+- qmoi-enhanced-history-14/GITHUB_RELEASES_REALTIME_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/GITHUB_RELEASES_VERIFICATION_REPORT.md: placeholder, stub
+- qmoi-enhanced-history-14/GITHUB_WORKFLOWS_VERIFICATION.md: ERROR
+- qmoi-enhanced-history-14/HFPAYED.md: stub
+- qmoi-enhanced-history-14/HOOKS.md: ERROR
+- qmoi-enhanced-history-14/HOSTLINKSDOMAINS.md: ERROR
+- qmoi-enhanced-history-14/IMPLEMENTATION_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/IMPLEMENTATION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/INDEPENDENTQMOI.md: ERROR
+- qmoi-enhanced-history-14/INTEGRATION_GUIDE.md: Exception, ERROR
+- qmoi-enhanced-history-14/INVINSIBLEQMOI.md: ERROR
+- qmoi-enhanced-history-14/ITERATIVE_IMPROVEMENT_ANALYSIS.md: Exception
+- qmoi-enhanced-history-14/LANGUAGES.md: ERROR
+- qmoi-enhanced-history-14/LEAHWALLET.md: ERROR
+- qmoi-enhanced-history-14/MANIFEST_AND_DEPLOYMENT_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/MASTERGUIDE.md: ERROR
+- qmoi-enhanced-history-14/MASTERREADME.md: ERROR
+- qmoi-enhanced-history-14/MASTER_COMPLETION_CERTIFICATE.txt: ERROR
+- qmoi-enhanced-history-14/MASTER_COMPLETION_FINAL.md: ERROR
+- qmoi-enhanced-history-14/MASTER_CONTROL_SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/MASTER_ONLY_FEATURES.md: ERROR
+- qmoi-enhanced-history-14/MASTER_OPERATIONS_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/MASTER_PROJECT_COMPLETION_INDEX.md: ERROR
+- qmoi-enhanced-history-14/MASTER_QUICK_SETUP.md: ERROR
+- qmoi-enhanced-history-14/MASTER_READINESS_INDEX.md: ERROR
+- qmoi-enhanced-history-14/MASTER_README.md: ERROR
+- qmoi-enhanced-history-14/MASTER_SYSTEM_DEPLOYMENT_REPORT.md: ERROR
+- qmoi-enhanced-history-14/MASTER_VERIFICATION_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/MERGE.md: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/MERGED_ARCHIVES_REPORT.md: ERROR
+- qmoi-enhanced-history-14/MONITORING.md: ERROR
+- qmoi-enhanced-history-14/MONITORING_API_DOCS.md: ERROR
+- qmoi-enhanced-history-14/MONITORING_IMPLEMENTATION_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/NETLIFYPAYED.md: stub
+- qmoi-enhanced-history-14/NEW_USER_SYSTEM_IMPLEMENTATION.md: ERROR
+- qmoi-enhanced-history-14/NEXT_STEPS_EXECUTIVE_SUMMARY.md: ERROR, stub
+- qmoi-enhanced-history-14/NEXT_STEPS_INDEX.md: stub
+- qmoi-enhanced-history-14/NEXT_STEPS_ROADMAP.md: ERROR, stub
+- qmoi-enhanced-history-14/NONPROD_REPORT_HEAD.txt: placeholder, TBD, ERROR, stub, prototype
+- qmoi-enhanced-history-14/OLLAMA_DEBUG_LOG.md: ERROR
+- qmoi-enhanced-history-14/OPTION_A_PRODUCTION_READY.md: ERROR
+- qmoi-enhanced-history-14/PAGES.md: ERROR
+- qmoi-enhanced-history-14/PAYMENTS.md: stub
+- qmoi-enhanced-history-14/PERFORMANCE_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/PHASE_1_COMPLETION_REPORT.md: ERROR
+- qmoi-enhanced-history-14/PHASE_3_SESSION_COMPLETE.txt: ERROR
+- qmoi-enhanced-history-14/PHASE_4_COMPLETION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/PHASE_4_QVILLAGE_HF_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/PHASE_4_SESSION_COMPLETION.md: ERROR
+- qmoi-enhanced-history-14/PHASE_5_COMPLETION.md: ERROR
+- qmoi-enhanced-history-14/PHASE_6_EXTENDED_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/PHASE_7_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/PRE_RELEASE_DISTRIBUTION_PLAN.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTIONCHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_ALWAYS_ON_DEPLOYMENT.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_API_REFERENCE.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_COMPLETION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_DEPLOYMENT_ALL_STEPS.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_DEPLOYMENT_AUTO_RECOVERY.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_DEPLOYMENT_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_DEPLOYMENT_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_DEPLOYMENT_COMPLETE.txt: TODO, ERROR
+- qmoi-enhanced-history-14/PRODUCTION_DEPLOYMENT_PLAYBOOK.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_DEPLOYMENT_READY.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_NEXT_STEPS_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_READINESS_AUDIT.md: ERROR, stub
+- qmoi-enhanced-history-14/PRODUCTION_READINESS_CHECKLIST_FINAL.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_READINESS_FINAL.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_READINESS_FINAL.txt: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_READINESS_FINAL_AUDIT.md: placeholder, ERROR
+- qmoi-enhanced-history-14/PRODUCTION_READINESS_REPORT.md: placeholder, ERROR, stub
+- qmoi-enhanced-history-14/PRODUCTION_READY_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_RELEASE_ACTION_PLAN.md: placeholder
+- qmoi-enhanced-history-14/PRODUCTION_RELEASE_DOCS_INDEX.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_RELEASE_VALIDATION_CHECKLIST.md: Exception, ERROR
+- qmoi-enhanced-history-14/PRODUCTION_SETUP.md: ERROR
+- qmoi-enhanced-history-14/PRODUCTION_SETUP_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/PROD_PLACEHOLDERS_INVENTORY.md: placeholder, ERROR
+- qmoi-enhanced-history-14/PROJECT_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/PR_FIX_SUMMARY.md: ERROR, stub
+- qmoi-enhanced-history-14/PUBLIC.md: placeholder, ERROR
+- qmoi-enhanced-history-14/QAvatar_User_Feedback_Kit.md: ERROR
+- qmoi-enhanced-history-14/QCITY-COMPLETION-SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QCITY-DELIVERABLES-CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/QCITY-ENTERPRISE-COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/QCITY-PROJECT-COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/QCITY-README.md: ERROR
+- qmoi-enhanced-history-14/QCITYDEVICEAUTOUPGRADE.md: ERROR
+- qmoi-enhanced-history-14/QCITYMAINDEVICE.md: ERROR
+- qmoi-enhanced-history-14/QCITYREADME.md: ERROR
+- qmoi-enhanced-history-14/QCITYRESOURCES.md: ERROR
+- qmoi-enhanced-history-14/QCITYRUNNERSENGINE.md: ERROR
+- qmoi-enhanced-history-14/QCITY_DEVICE_MANAGEMENT.md: ERROR
+- qmoi-enhanced-history-14/QMOI-AI-ENHANCEMENT.md: ERROR
+- qmoi-enhanced-history-14/QMOI-AIRTEL-INTEGRATION.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ANIMATION-ENHANCEMENT.md: ERROR
+- qmoi-enhanced-history-14/QMOI-AUTOMATION-COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/QMOI-AUTOUPDATE.md: ERROR
+- qmoi-enhanced-history-14/QMOI-CLOUD-ENHANCED.md: ERROR
+- qmoi-enhanced-history-14/QMOI-CLOUD.md: ERROR
+- qmoi-enhanced-history-14/QMOI-CROSS-PLATFORM.md: stub
+- qmoi-enhanced-history-14/QMOI-ENHANCED-AUTOMATION.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ENHANCED-AUTOTESTS.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ENHANCED-COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ENHANCED-FEATURES.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ENHANCED-FINAL.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ENHANCED-README.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ENHANCED-SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI-ENHANCED-SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/QMOI-FEATURE-INDEX.md: ERROR
+- qmoi-enhanced-history-14/QMOI-HUGGINGFACE-ENHANCEMENTS.md: ERROR
+- qmoi-enhanced-history-14/QMOI-MASTER-CONTROLS.md: ERROR
+- qmoi-enhanced-history-14/QMOI-PLATFORM-ANALYTICS.md: stub
+- qmoi-enhanced-history-14/QMOI-PLATFORM-AUTOMATION.md: stub
+- qmoi-enhanced-history-14/QMOI-PLATFORM-MONITORING.md: stub
+- qmoi-enhanced-history-14/QMOI-PLATFORM-SECURITY.md: stub
+- qmoi-enhanced-history-14/QMOI-REVENUE-README.md: ERROR
+- qmoi-enhanced-history-14/QMOI-VOICE-ENHANCEMENT.md: ERROR
+- qmoi-enhanced-history-14/QMOIACCOUNTS.md: ERROR
+- qmoi-enhanced-history-14/QMOIAICORE.md: ERROR
+- qmoi-enhanced-history-14/QMOIALLDEVICESHANDSFREE.md: ERROR
+- qmoi-enhanced-history-14/QMOIALLDEVICESINSTALL.md: ERROR
+- qmoi-enhanced-history-14/QMOIALWAYSPARALLEL.md: ERROR
+- qmoi-enhanced-history-14/QMOIAPPS.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOAPPSDEV.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOBET.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTODEV.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTODEVDOCTESTS.MD: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOEVOLVE.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOFIXREADME.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOGMAIL.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOMAKENEW.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOMAKESMONEY.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOMATIONMONITORING.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOPROJECTS.md: ERROR
+- qmoi-enhanced-history-14/QMOIAUTOREVENUEEARN.md: ERROR
+- qmoi-enhanced-history-14/QMOIAVATAR.md: ERROR
+- qmoi-enhanced-history-14/QMOIBROWSER.md: ERROR
+- qmoi-enhanced-history-14/QMOICLONE.md: ERROR
+- qmoi-enhanced-history-14/QMOICLONEGITHUB.md: ERROR
+- qmoi-enhanced-history-14/QMOICLONEGITLAB.md: ERROR
+- qmoi-enhanced-history-14/QMOICLONEGITPOD.md: ERROR
+- qmoi-enhanced-history-14/QMOICLONEHF.md: stub
+- qmoi-enhanced-history-14/QMOICLONEHUGGINGFACE.md: ERROR
+- qmoi-enhanced-history-14/QMOICLONEQUANTUM.md: stub
+- qmoi-enhanced-history-14/QMOICLONEVERCEL.md: stub
+- qmoi-enhanced-history-14/QMOICOLABDAGSHUB.md: ERROR
+- qmoi-enhanced-history-14/QMOIDEV.md: ERROR
+- qmoi-enhanced-history-14/QMOIDEVICES.md: ERROR
+- qmoi-enhanced-history-14/QMOIDOWNLOADS.md: ERROR
+- qmoi-enhanced-history-14/QMOIEMPLOYAUTOPAY.md: ERROR
+- qmoi-enhanced-history-14/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md: Exception, ERROR
+- qmoi-enhanced-history-14/QMOIENHANCEMENTSSUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOIENVWITHALLPROGRAMMINGLANGUAGES.md: Exception, ERROR
+- qmoi-enhanced-history-14/QMOIFORALL.md: ERROR
+- qmoi-enhanced-history-14/QMOIFREE.md: ERROR
+- qmoi-enhanced-history-14/QMOIGAMINGCLOUDUSERS.md: Exception, ERROR
+- qmoi-enhanced-history-14/QMOIGITHUBAPP.md: ERROR
+- qmoi-enhanced-history-14/QMOIGITHUBDEV.md: ERROR
+- qmoi-enhanced-history-14/QMOIGITLABDEV.md: ERROR
+- qmoi-enhanced-history-14/QMOIGITPODDEV.md: ERROR
+- qmoi-enhanced-history-14/QMOIHUGGINGFACEALWAYSUPDATE.md: ERROR
+- qmoi-enhanced-history-14/QMOIHUGGINGFACESPACESSETUPINST.md: ERROR
+- qmoi-enhanced-history-14/QMOIJEST.md: ERROR
+- qmoi-enhanced-history-14/QMOILINT.md: ERROR, stub
+- qmoi-enhanced-history-14/QMOINETWORK.md: ERROR
+- qmoi-enhanced-history-14/QMOIOWNDEVICE.md: Exception, ERROR
+- qmoi-enhanced-history-14/QMOIPREDEVDOCACTIONS.md: stub
+- qmoi-enhanced-history-14/QMOIQCITYAUTOMATIC.md: ERROR
+- qmoi-enhanced-history-14/QMOIQTEAMCUSTOMERCARE.md: ERROR
+- qmoi-enhanced-history-14/QMOIREADME.md: ERROR
+- qmoi-enhanced-history-14/QMOIREGISTRY.md: ERROR
+- qmoi-enhanced-history-14/QMOIREVENUEGENERATION.md: ERROR, prototype
+- qmoi-enhanced-history-14/QMOISERVERS.md: stub
+- qmoi-enhanced-history-14/QMOISPACE.md: ERROR
+- qmoi-enhanced-history-14/QMOISPACEDEV.md: Exception, ERROR
+- qmoi-enhanced-history-14/QMOISPACEUI.md: ERROR
+- qmoi-enhanced-history-14/QMOISYSTEMAUTO.md: ERROR
+- qmoi-enhanced-history-14/QMOITESTENVIRONMENT.md: ERROR
+- qmoi-enhanced-history-14/QMOIVERCELDEV.md: ERROR
+- qmoi-enhanced-history-14/QMOIVIDEOPLATFORMS.md: ERROR
+- qmoi-enhanced-history-14/QMOIWHATSAPP.md: ERROR
+- qmoi-enhanced-history-14/QMOIWHATSAPPBROWSERPAGE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_ADVANCED_VALIDATION_AUTODEVELOPMENT.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AGENT_INSTRUCTIONS.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AI_PRODUCTION_READY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_APIS_WEBHOOKS_ENDPOINTS.md: ERROR
+- qmoi-enhanced-history-14/QMOI_APPS_AND_PLATFORMS_INVENTORY.md: placeholder, ERROR, stub
+- qmoi-enhanced-history-14/QMOI_APPS_AND_PLATFORMS_INVENTORY_CORRECTED.md: stub
+- qmoi-enhanced-history-14/QMOI_AUTODEV.md: ERROR, prototype
+- qmoi-enhanced-history-14/QMOI_AUTOFIX_FILES_CREATED.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AUTOFIX_IMPLEMENTATION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AUTOFIX_MASTER_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AUTOFIX_QUICK_REFERENCE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AUTOFIX_SETUP_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AUTOFIX_SYSTEM_INDEX.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AUTOFIX_VISUAL_SUMMARY.txt: ERROR
+- qmoi-enhanced-history-14/QMOI_AUTOMATED_SYSTEMS_README.md: ERROR
+- qmoi-enhanced-history-14/QMOI_AUTO_SETUP_IMPLEMENTATION.md: ERROR, stub
+- qmoi-enhanced-history-14/QMOI_AUTO_TESTING_UI_DEVELOPMENT.md: ERROR
+- qmoi-enhanced-history-14/QMOI_CHAT_FIX_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_COMPLETE_ENHANCEMENT_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_COMPLETE_EVOLUTION_FRAMEWORK.md: ERROR
+- qmoi-enhanced-history-14/QMOI_COMPLETE_INTEGRATION_MASTER.md: ERROR
+- qmoi-enhanced-history-14/QMOI_COMPLETE_STATUS.md: ERROR
+- qmoi-enhanced-history-14/QMOI_COMPLETE_SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/QMOI_COMPLETE_SYSTEM_OVERVIEW.md: ERROR
+- qmoi-enhanced-history-14/QMOI_ENHANCEMENT_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_FEATURES_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_FRIENDSHIP_ENHANCEMENT.md: ERROR
+- qmoi-enhanced-history-14/QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md: ERROR
+- qmoi-enhanced-history-14/QMOI_GITLAB_AUTOMATION.md: ERROR
+- qmoi-enhanced-history-14/QMOI_MARKDOWN_AUTO_UPDATE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_MASTER_INTEGRATION_VALIDATION.md: ERROR
+- qmoi-enhanced-history-14/QMOI_MASTER_TESTING_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_MASTER_TESTING_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_MEMORY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_PHASE_3_COMPLETION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_PLATFORM_ARCHITECTURE.md: Exception, ERROR
+- qmoi-enhanced-history-14/QMOI_PRODUCTION_AUTO_RECOVERY_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/QMOI_QUICK_START.md: ERROR
+- qmoi-enhanced-history-14/QMOI_REALTIME_RELEASES_IMPLEMENTATION.md: ERROR
+- qmoi-enhanced-history-14/QMOI_RELEASE_VERIFICATION_SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/QMOI_RELEASE_VERSION_SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/QMOI_SYSTEMS_COMPLETE_INDEX.md: ERROR
+- qmoi-enhanced-history-14/QMOI_TESTING_INDEX.md: ERROR
+- qmoi-enhanced-history-14/QMOI_TEST_DASHBOARD.md: ERROR
+- qmoi-enhanced-history-14/QMOI_USER_IDENTIFICATION_IMPLEMENTATION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_V1_2_3_RELEASE_PLAN_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/QMOI_VALIDATION_IMPLEMENTATION_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/QSERVERREADME.md: ERROR
+- qmoi-enhanced-history-14/QUANTUM.md: ERROR
+- qmoi-enhanced-history-14/QUANTUMAUTOMARKET.md: ERROR
+- qmoi-enhanced-history-14/QUANTUMPAYED.md: ERROR
+- qmoi-enhanced-history-14/QUICK_ACTION_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/QUICK_REFERENCE.md: ERROR
+- qmoi-enhanced-history-14/QUICK_START.md: stub
+- qmoi-enhanced-history-14/QUICK_START_MONITORING.md: ERROR
+- qmoi-enhanced-history-14/QUICK_START_PRODUCTION.txt: ERROR
+- qmoi-enhanced-history-14/QUICK_START_VISUAL.md: ERROR
+- qmoi-enhanced-history-14/QUICK_TEST_START.md: ERROR
+- qmoi-enhanced-history-14/QVILLAGE.md: ERROR
+- qmoi-enhanced-history-14/QVILLAGE_HUGGINGFACE_INTEGRATION.md: Exception, ERROR
+- qmoi-enhanced-history-14/QVILLAGE_IMPLEMENTATION_SUMMARY.md: ERROR, stub
+- qmoi-enhanced-history-14/QVILLAGE_QMOI_MODELS_INTEGRATION.md: ERROR
+- qmoi-enhanced-history-14/QVIRTUALLABS.md: prototype
+- qmoi-enhanced-history-14/QVPNREADME.md: ERROR
+- qmoi-enhanced-history-14/QVS/ENHANCEDQVS.md: ERROR
+- qmoi-enhanced-history-14/QVS/QVSREADME.md: ERROR
+- qmoi-enhanced-history-14/Qstore.md: ERROR
+- qmoi-enhanced-history-14/RBAC_IMPLEMENTATION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/README (1).md: ERROR
+- qmoi-enhanced-history-14/README.md: ERROR, stub, prototype
+- qmoi-enhanced-history-14/README_DOCUMENTATION.md: ERROR
+- qmoi-enhanced-history-14/README_ENHANCED.md: ERROR
+- qmoi-enhanced-history-14/README_MONITORING.md: Exception, ERROR
+- qmoi-enhanced-history-14/README_PRODUCTION.md: ERROR
+- qmoi-enhanced-history-14/REAL_IMPLEMENTATIONS_SUMMARY.md: placeholder, ERROR
+- qmoi-enhanced-history-14/REAL_IMPLEMENTATIONS_VERIFICATION.md: ERROR
+- qmoi-enhanced-history-14/REFERENCES.md: ERROR
+- qmoi-enhanced-history-14/RELEASETRACKS.md: ERROR
+- qmoi-enhanced-history-14/RELEASE_FINALIZATION_PLAN.md: stub
+- qmoi-enhanced-history-14/RELEASE_v1.2.3_COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/RELEASE_v1.2.5_COMPLETION_REPORT.md: placeholder
+- qmoi-enhanced-history-14/RELEASE_v1.2.5_STATUS_REPORT.md: placeholder, ERROR
+- qmoi-enhanced-history-14/RELEASE_v1.2.5_VERIFICATION_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/REVENUEGENERATING.md: ERROR
+- qmoi-enhanced-history-14/ROUTES.md: ERROR
+- qmoi-enhanced-history-14/SCRIPTS.md: ERROR
+- qmoi-enhanced-history-14/SCRIPTSREADME.md: ERROR
+- qmoi-enhanced-history-14/SECURITY_AUDIT_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/SECURITY_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/SELF_EVOLUTION.md: ERROR
+- qmoi-enhanced-history-14/SERVEQCITYQMOIAIQMOISPACE.md: ERROR
+- qmoi-enhanced-history-14/SERVICES.md: ERROR
+- qmoi-enhanced-history-14/SERVINGERRORSISSUES.md: ERROR
+- qmoi-enhanced-history-14/SESSION_4_DELIVERABLES.md: ERROR
+- qmoi-enhanced-history-14/SESSION_4_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/SESSION_COMPLETION_REPORT_TODOS_PRODUCTION_READY.md: ERROR
+- qmoi-enhanced-history-14/SESSION_COMPLETION_SUMMARY.md: placeholder, ERROR, prototype
+- qmoi-enhanced-history-14/SESSION_COMPLETION_SUMMARY.txt: placeholder, ERROR
+- qmoi-enhanced-history-14/SESSION_PROGRESS.md: ERROR
+- qmoi-enhanced-history-14/SESSION_SUMMARY.txt: ERROR
+- qmoi-enhanced-history-14/SRC.md: ERROR
+- qmoi-enhanced-history-14/START.md: ERROR
+- qmoi-enhanced-history-14/START_PRODUCTION_DEPLOYMENT.md: ERROR
+- qmoi-enhanced-history-14/TABLE_OF_CONTENTS.md: ERROR
+- qmoi-enhanced-history-14/TEMPLATES.md: ERROR
+- qmoi-enhanced-history-14/TESTING.md: ERROR
+- qmoi-enhanced-history-14/TESTING_QUICK_REFERENCE.sh: ERROR
+- qmoi-enhanced-history-14/TESTREADME.md: ERROR
+- qmoi-enhanced-history-14/TESTS.md: ERROR, stub
+- qmoi-enhanced-history-14/THOROUGH_VERIFICATION_SUMMARY.txt: placeholder, ERROR, stub
+- qmoi-enhanced-history-14/TO-DOs.md: TODO
+- qmoi-enhanced-history-14/TODOS_COMPLETION_INDEX.md: ERROR
+- qmoi-enhanced-history-14/TODOS_COMPLETION_VERIFICATION.md: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/TODO_PROD_BATCH_PENDING.md: TODO
+- qmoi-enhanced-history-14/TRACKS.md: ERROR
+- qmoi-enhanced-history-14/TRADINGREADME.md: ERROR
+- qmoi-enhanced-history-14/TREE.md: ERROR
+- qmoi-enhanced-history-14/TREE_FULL_STRUCTURE.md: ERROR
+- qmoi-enhanced-history-14/TROUBLESHOOTING.md: ERROR
+- qmoi-enhanced-history-14/UI_ENHANCEMENT_COMPREHENSIVE_PLAN.md: ERROR
+- qmoi-enhanced-history-14/UI_ENHANCEMENT_IMPLEMENTATION_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/UI_ENHANCEMENT_QUICK_REFERENCE.md: ERROR
+- qmoi-enhanced-history-14/UI_FEATURES_AUDIT_COMPREHENSIVE.md: ERROR
+- qmoi-enhanced-history-14/UNIVERSALHEALTHRUNNERS.md: ERROR
+- qmoi-enhanced-history-14/UNIVERSALS.md: ERROR
+- qmoi-enhanced-history-14/UNUSED_API_ENDPOINTS.md: ERROR, stub
+- qmoi-enhanced-history-14/USEEMPLOYEESUSERS.md: Exception
+- qmoi-enhanced-history-14/USER_RESPONSE_TESTING_COMPLETE.txt: Exception
+- qmoi-enhanced-history-14/USER_RESPONSE_TESTING_INDEX.md: Exception
+- qmoi-enhanced-history-14/USER_RESPONSE_TESTS_GUEST.txt: Exception
+- qmoi-enhanced-history-14/USER_RESPONSE_TESTS_MASTER.txt: Exception
+- qmoi-enhanced-history-14/USER_RESPONSE_TESTS_SISTER.txt: Exception
+- qmoi-enhanced-history-14/VERCELLINKS.md: ERROR
+- qmoi-enhanced-history-14/VERCELPAYED.md: stub
+- qmoi-enhanced-history-14/VERCEL_AUTO_DEPLOY_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/VERCEL_AUTO_UPDATE_README.md: ERROR
+- qmoi-enhanced-history-14/VERCEL_DEPLOYMENT_READY.md: ERROR
+- qmoi-enhanced-history-14/VERCEL_DEPLOYMENT_SETUP_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/VERCEL_DEPLOYMENT_STATUS.md: ERROR
+- qmoi-enhanced-history-14/VERCEL_QMOI_AUTOFEATURES_MASTER.md: ERROR
+- qmoi-enhanced-history-14/VERIFICATION_COMPLETE_2026-01-15.md: ERROR
+- qmoi-enhanced-history-14/WATCHDEBUG.md: ERROR
+- qmoi-enhanced-history-14/WIRKFLOWSTRACKS.md: ERROR
+- qmoi-enhanced-history-14/WORKSPACEGENERAL.md: TODO
+- qmoi-enhanced-history-14/WPA.md: ERROR
+- qmoi-enhanced-history-14/Y2.txt: ERROR
+- qmoi-enhanced-history-14/Z12.txt: ERROR
+- qmoi-enhanced-history-14/__tests__/api/monitoring.test.ts: ERROR
+- qmoi-enhanced-history-14/__tests__/api.qmoi.chat.test.ts: ERROR
+- qmoi-enhanced-history-14/__tests__/api.test.ts: ERROR
+- qmoi-enhanced-history-14/__tests__/cache/cache.test.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/__tests__/chatbot.chat.test.tsx: placeholder, ERROR, prototype
+- qmoi-enhanced-history-14/__tests__/chatbot.model.test.tsx: ERROR, prototype
+- qmoi-enhanced-history-14/__tests__/integration/user-registration.test.ts: ERROR
+- qmoi-enhanced-history-14/__tests__/persona.integration.test.js: ERROR
+- qmoi-enhanced-history-14/__tests__/qmoi-comprehensive-test.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/__tests__/utils/test-helpers.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/.github/workflows/ci.yml: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/.venv/bin/Activate.ps1: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/@ALLMDFILESREFS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ALLERRORSSTATSQMOI.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ALLMDFILESREFS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ALPHAQMOIENGINE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/API.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/AUTODOWNLOAD.md: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/AUTOGIT.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/AUTOLINTREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/AUTOMATION-SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/CASHON.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/CASHONTRADINGREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/CMDCOMMANDS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/COLAB_DAGSHUB_DEPLOY_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/COMPONENTS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/CONTINUOUS_IMPROVEMENT.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/D1.txt: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/DEPLOYMENT-README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/DEVCOMMANDS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ERRORSREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/FAST-BOOTSTRAP-README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/FEATURESREADME.md: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/GITHUBPAYED.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/GITHUB_ACTIONS_AUTOFIX.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/INDEPENDENTQMOI.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/MASTERGUIDE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/MASTEROWNS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/MASTERREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/MONITORING.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QAvatar_User_Feedback_Kit.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QCITYMAINDEVICE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QCITYREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QCITYRESOURCES.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QCITYRUNNERSENGINE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-AI-ENHANCEMENT.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ANIMATION-ENHANCEMENT.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-AUTOUPDATE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-CLOUD-ENHANCED.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-CLOUD.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-FEATURES.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-FINAL.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-FEATURE-INDEX.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-HUGGINGFACE-ENHANCEMENTS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-MASTER-CONTROLS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-REVENUE-README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI-VOICE-ENHANCEMENT.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIACCOUNTS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAICORE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIALLDEVICESINSTALL.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIALWAYSPARALLEL.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAPPS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOAPPSDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOBET.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTODEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOEVOLVE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOFIXREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOGMAIL.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOMAKENEW.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOMAKESMONEY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOMATIONMONITORING.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOPROJECTS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAUTOREVENUEEARN.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIAVATAR.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIBROWSER.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOICLONE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOICLONEGITHUB.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOICLONEGITLAB.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOICLONEGITPOD.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOICLONEHUGGINGFACE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOICOLABDAGSHUB.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIDEVICES.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIDOWNLOADS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIEMPLOYAUTOPAY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIENHANCEMENTSSUMMARY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIENVWITHALLPROGRAMMINGLANGUAGES.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIFORALL.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIFREE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIGITHUBDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIGITLABDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIGITPODDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIHUGGINGFACEALWAYSUPDATE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOINETWORK.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIOWNDEVICE.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIPREDEVDOCACTIONS.md: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIQCITYAUTOMATIC.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIQTEAMCUSTOMERCARE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIREGISTRY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIREVENUEGENERATION.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOISPACE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOISPACEDEV.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOISPACEUI.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOISYSTEMAUTO.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOITESTENVIRONMENT.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIVERCELDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIVIDEOPLATFORMS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOIWHATSAPP.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI_AUTOMATED_SYSTEMS_README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI_COMPLETE_SYSTEM_OVERVIEW.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI_FRIENDSHIP_ENHANCEMENT.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QMOI_MEMORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QSERVERREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QUANTUM.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QUANTUMAUTOMARKET.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QUANTUMPAYED.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QVILLAGE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QVPNREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QVS/ENHANCEDQVS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/QVS/QVSREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/Qstore.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/README (1).md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/REFERENCES.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/REVENUEGENERATING.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/SCRIPTSREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/SELF_EVOLUTION.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/START.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/TESTREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/TRACKS.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/TRADINGREADME.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/TROUBLESHOOTING.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/USEEMPLOYEESUSERS.md: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/WATCHDEBUG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/WPA.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/Y2.txt: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/Z12.txt: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/account-automation/route.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/ai/scan/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/ai-anomaly-service/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/ai-health/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/ai-self-diagnostics/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/auth/login.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/auth/me.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/auth/rbac.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/auth/register.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/auth/session.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/auth/totp.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/auto-fix.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/automation/status/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/cashon/balance/route.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/cashon/deposit/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/cashon/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/cashon/signals/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/cashon/start-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/cashon/stop-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/cashon/trading-status/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/colab-job.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/datasets/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/datasets/settings/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/deploy/auto-redeploy/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/deploy/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/deployment-status/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/device-fingerprint/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/document-backup/route.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/earning/route.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/employment/megavault/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/employment/payment/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/employment/revenue/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/employment/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/financial/audit/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/financial/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/git/commit/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/git/pr/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/git/push/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/git/status/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/media/generate/route.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/media/status/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/monitor/status/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/mpesa/callback/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qapikey/route.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qcity/audit-log/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qcity/audit-log.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qcity/devices.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qcity/plugins.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qcity/remote-command/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qcity/remote-command.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qcity/schedule.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qcity/selfheal-npm/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qi-trading/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qi-trading.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/auto-fix/download-report/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/auto-fix/github-status/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/auto-fix/start/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/auto-fix/status/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/auto-fix/stop/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/avatars/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/backup/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/fix/all.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/language/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/master-mode/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/export/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/own-device-logs/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/research/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/reset/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/start/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/status/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/stop/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/target/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue/transfer/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/revenue-dashboard/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/user/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-preview/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi/voice-profiles/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-database/route.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-earning-enhanced/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-gitlab/deployments/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-gitlab/errors/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-gitlab/jobs/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-gitlab/pipelines/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-gitlab/trigger/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-model/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qmoi-model.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qnews/route.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/qradio/route.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/social-automation/route.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/ssh/list/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/ssh/read/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/ssh/write/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/wallet.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/whatsapp/audit/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/whatsapp/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/whatsapp-bot/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/whatsapp-business/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/wifi/route.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/wifi/scan/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/wifi-security/route.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/_app_archived/api/wifi-security.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ai-anomaly-service.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ai_self_update.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/api/qcity.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/auto-push.ps1: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/backend/trading-engine.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/bitget-trader.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cloud_config/qmoi_cloud_config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/AIContext.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/AppManager.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/BluetoothManager.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/BrowserInterface.tsx: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/CashonTradingPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/Chatbot.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/DeploymentStatusDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/DeviceSettingsPanel.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/DownloadManager.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/EmergencyPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/EnhancedPreviewWindow.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/EnhancedRevenuePanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/FarmBusinessManager.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/FileCategorizer.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/FinancialManager.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/FloatingPreviewWindow.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/GlobalCall.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/GlobalFileTransfer.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/GlobalMail.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/GlobalVideoCall.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/LeahWallet.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/LeahWalletPanel.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/MapLocationPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/MasterContext.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/MediaPreviewWindow.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/NotificationPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/PriceProductVerifier.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QAvatar.tsx: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QCityErrorManager.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QCityThemeProvider.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QConverse.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QFileManager.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QI.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QIStateWindow.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QMOIAutoFixDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QMOIOwnDevice.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QmoiAccessibility.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QmoiAutoDistribution.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QmoiBrowser.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QmoiDialer.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QmoiEnhancedSystem.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QmoiKeyboard.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QmoiMediaManager.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/QmoiRevenueDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/SettingsPanel.tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/SystemHealthDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/TeamRoleManager.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/VoiceSelectionPanel.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/WhatsAppBusinessPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/WifiAutoConnectPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/WifiPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/analytics/EncryptedAuditLog.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/auth/BiometricAuth.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/automation/AutomationRulesPanel.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/components/qmedia_player.md.tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/device/AWSCredentialsModal.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/device/AzureCredentialsModal.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/device/DeviceIntegrationStubs.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/device/GCPCredentialsModal.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/enhanced-system-dashboard.tsx: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/enhanced_build_tools.tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/media_&_ui_features_(2024_06_09).tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/predeploy/OrchestratorStatusPanel.tsx: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/projects/ProjectDashboard.tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/projects/ProjectForm.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/projects/ProjectList.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/projects/ResourceList.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/projects/TaskForm.tsx: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/projects/TaskList.tsx: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/q-city/EmploymentDashboard.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/q-city/QCityDevicePanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/q-city/QMOIBiometricManager.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/q-city/QMOIOwnDeviceLogs.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/q-city/QMOIRevenueDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/q-city/QVillage.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/real_time_status_dashboard_with_universal_language_support.tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/scripts/enhanced_build.py.tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/security/EncryptedAuditLog.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/PluginNotifications.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/calendar.tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/carousel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/chart.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/command.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/form.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/input.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/pagination.tsx: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/select.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/sidebar.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/ui/textarea.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/components/üõ°ô∏è_automated_build,_install,_and_error_fix_strategies.tsx: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/ai_automation_config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/master_access.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/qcity-device-config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/qcity_config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/qmoi_enhanced_config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/qmoi_huggingface_config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/qmoi_master_config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/qserver-config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/config/test_config.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_advanced.cy.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/cypress/e2e/qmoi_kernel_panel_sso_oauth_multi.cy.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/code-frame/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/code-frame/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/compat-data/corejs2-built-ins.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/compat-data/corejs3-shipped-proposals.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/compat-data/data/corejs2-built-ins.json: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/compat-data/native-modules.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/compat-data/overlapping-plugins.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/compat-data/plugin-bugfixes.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/compat-data/plugins.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/core/src/config/files/index-browser.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/core/src/transform-file-browser.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/core/src/transform-file.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/helper-globals/data/browser-upper.json: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/helper-globals/data/builtin-upper.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/parser/CHANGELOG.md: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/parser/bin/babel-parser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@babel/parser/typings/babel-parser.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@jridgewell/gen-mapping/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@jridgewell/gen-mapping/src/gen-mapping.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@jridgewell/remapping/src/build-source-map-tree.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@jridgewell/remapping/src/source-map-tree.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@jridgewell/sourcemap-codec/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@jridgewell/trace-mapping/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@jridgewell/trace-mapping/src/trace-mapping.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@types/babel__core/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@types/babel__template/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@types/babel__traverse/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/@vitejs/plugin-react/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/baseline-browser-mapping/README.md: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/baseline-browser-mapping/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/browserslist/browser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/browserslist/cli.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/browserslist/error.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/browserslist/error.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/browserslist/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/browserslist/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/browserslist/node.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/array-find-index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/array-find.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/array-includes.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/css-placeholder-shown.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/css-placeholder.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/date-tolocaledatestring.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/es6-string-includes.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/input-placeholder.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/pad-start-end.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features/promise-finally.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/caniuse-lite/data/features.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/convert-source-map/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/convert-source-map/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/debug/src/browser.js: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/debug/src/common.js: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/debug/src/node.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/esbuild/install.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/escalade/readme.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/gensync/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/gensync/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/gensync/test/index.test.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/js-tokens/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/jsesc/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/json5/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/loose-envify/loose-envify.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/lru-cache/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/lru-cache/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/picomatch/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/postcss/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/cjs/react-jsx-dev-runtime.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/cjs/react-jsx-runtime.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/cjs/react-jsx-runtime.production.min.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/cjs/react-jsx-runtime.profiling.min.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/cjs/react.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/cjs/react.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/cjs/react.shared-subset.development.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/cjs/react.shared-subset.production.min.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/umd/react.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/umd/react.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react/umd/react.profiling.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.min.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/cjs/react-dom.profiling.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/profiling.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.min.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-dom/umd/react-dom.profiling.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-refresh/cjs/react-refresh-babel.development.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-refresh/cjs/react-refresh-babel.production.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-refresh/cjs/react-refresh-runtime.development.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/react-refresh/cjs/react-refresh-runtime.production.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/rollup/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/scheduler/cjs/scheduler-unstable_mock.development.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/scheduler/cjs/scheduler-unstable_mock.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/scheduler/cjs/scheduler-unstable_post_task.development.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/scheduler/cjs/scheduler.development.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/scheduler/cjs/scheduler.production.min.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/scheduler/umd/scheduler-unstable_mock.development.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/scheduler/umd/scheduler-unstable_mock.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/scheduler/unstable_mock.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/semver/semver.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/source-map-js/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/update-browserslist-db/cli.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/update-browserslist-db/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/vite/LICENSE.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/vite/bin/vite.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/vite/client.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/vite/types/customEvent.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/vite/types/hmrPayload.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/yallist/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/yallist/iterator.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/dashboard/node_modules/yallist/yallist.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/device_enhancer.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/API.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/AUTOEVOLVE.md: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/ENHANCED_FEATURES.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/FEATURESINDEX.md: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/MONITORING_SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/QMOIGITHUBDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/QMOIGITLABDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/QMOIVERCELDEV.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/REFERENCES.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/TROUBLESHOOTING.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/docs/verification-report.json: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiai.py: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaiapk.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaiappimage.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaideb.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaidmg.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaiexe.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaiimg.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaiipa.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaismarttvapk.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/downloadqmoiaizip.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/earnvault/ui/EnhancedTradingPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/earnvault/ui/FloatingAQ.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ecosystem.config.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/enhanced-error-fix.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ensure_build_files.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/error-fix-summary.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/execute-final-deployment.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/force-deploy.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/git-depsfix.ps1: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/git-smart-sync.ps1: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/git.txt: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useAIHealthCheck.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useAutoFixAllProblems.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useBitgetTrader.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useColabJob.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useDatasetManager.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useDeviceHealth.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useErrorAutoFix.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useExtensionManager.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useGlobalAutomation.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useLargeFileUpload.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useMediaGenerationStatus.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useProjects.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useQCity.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useSystemMetrics.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useTTCVoice.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useTaskQueue.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useTrading.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useTradingAutomation.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/hooks/useWhatsApp.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/huggingface_space/app.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/huggingface_space/email.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/huggingface_space/inferenceProviders.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/huggingface_space/plugins/aiReview.js: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/huggingface_space/server.js: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/instructions.txt: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/local-release-verify.ps1: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/main.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/metrics.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ml/qmoi_advanced_error_predictor.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/App.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/components/AlertSettingsScreen.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/components/AnalyticsScreen.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/components/DeviceManagementScreen.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/code-frame/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/code-frame/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/compat-data/corejs2-built-ins.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/compat-data/corejs3-shipped-proposals.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/compat-data/data/corejs2-built-ins.json: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/compat-data/native-modules.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/compat-data/overlapping-plugins.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/compat-data/plugin-bugfixes.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/compat-data/plugins.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/core/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/core/node_modules/semver/semver.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/core/src/config/files/index-browser.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/core/src/transform-file-browser.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/core/src/transform-file.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/helper-compilation-targets/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/helper-compilation-targets/node_modules/semver/semver.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/helper-globals/data/browser-upper.json: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/helper-globals/data/builtin-upper.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/parser/CHANGELOG.md: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/parser/bin/babel-parser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/parser/typings/babel-parser.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/applyDecs.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/applyDecs2203.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/applyDecs2203R.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/applyDecs2301.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/applyDecs2305.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/applyDecs2311.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/assertClassBrand.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/assertThisInitialized.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/asyncIterator.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/callSuper.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/checkInRHS.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/checkPrivateRedeclaration.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/classApplyDescriptorDestructureSet.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/classApplyDescriptorSet.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/classCallCheck.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/classCheckPrivateStaticFieldDescriptor.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/classNameTDZError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/classPrivateFieldLooseBase.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/classPrivateMethodSet.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/classStaticPrivateMethodSet.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/construct.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/createClass.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/createForOfIteratorHelper.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/createSuper.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/decorate.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/dispose.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2203.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2203R.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2301.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2305.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2311.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/assertClassBrand.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/asyncIterator.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/callSuper.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/checkInRHS.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/checkPrivateRedeclaration.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/classApplyDescriptorDestructureSet.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/classApplyDescriptorSet.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/classCallCheck.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/classCheckPrivateStaticFieldDescriptor.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/classNameTDZError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/classPrivateFieldLooseBase.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/classPrivateMethodSet.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/classStaticPrivateMethodSet.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/construct.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/createClass.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelper.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelperLoose.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/createSuper.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/decorate.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/dispose.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/importDeferProxy.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/inherits.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/initializerWarningHelper.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/isNativeReflectConstruct.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/newArrowCheck.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/nullishReceiverError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/readOnlyError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/regenerator.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/regeneratorAsyncIterator.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/regeneratorValues.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/set.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/superPropBase.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/superPropGet.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/superPropSet.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/tdz.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/toPrimitive.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/typeof.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/using.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/usingCtx.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/wrapAsyncGenerator.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/wrapRegExp.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/esm/writeOnlyError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/importDeferProxy.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/inherits.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/inheritsLoose.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/initializerWarningHelper.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/newArrowCheck.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/nonIterableRest.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/nonIterableSpread.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/nullishReceiverError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/objectDestructuringEmpty.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/possibleConstructorReturn.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/readOnlyError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/regenerator.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/regeneratorAsyncIterator.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/regeneratorRuntime.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/regeneratorValues.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/set.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/setPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/superPropBase.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/superPropGet.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/superPropSet.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/tdz.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/toPrimitive.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/typeof.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/using.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/usingCtx.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/wrapNativeSuper.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/wrapRegExp.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/helpers/writeOnlyError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@babel/runtime/regenerator/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@isaacs/ttlcache/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@isaacs/ttlcache/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@istanbuljs/load-nyc-config/README.md: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@istanbuljs/load-nyc-config/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@istanbuljs/load-nyc-config/load-esm.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@istanbuljs/schema/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jest/create-cache-key-function/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/gen-mapping/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/gen-mapping/src/gen-mapping.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/remapping/src/build-source-map-tree.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/remapping/src/source-map-tree.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/source-map/README.md: TODO, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/source-map/src/source-map.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/sourcemap-codec/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/trace-mapping/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@jridgewell/trace-mapping/src/trace-mapping.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/README.md: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/out/adapters/fs.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/out/constants.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/out/providers/async.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/out/providers/async.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/out/providers/sync.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/out/settings.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/out/settings.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.scandir/out/types/index.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.stat/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.stat/out/adapters/fs.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.stat/out/providers/async.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.stat/out/providers/async.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.stat/out/providers/sync.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.stat/out/settings.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.stat/out/settings.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.stat/out/types/index.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/providers/async.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/providers/async.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/providers/stream.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/readers/async.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/readers/async.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/readers/common.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/readers/common.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/readers/sync.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/readers/sync.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/settings.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/settings.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@nodelib/fs.walk/out/types/index.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/assets-registry/path-support.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/js-polyfills/console.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/js-polyfills/error-guard.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/js-polyfills/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/js-polyfills/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/Lists/FillRateHelper.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/Lists/ListMetricsAggregator.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/Lists/ViewabilityHelper.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/Lists/VirtualizeUtils.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/Lists/VirtualizedList.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/Lists/VirtualizedListCellRenderer.js: TODO, FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/Lists/VirtualizedSectionList.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native/virtualized-lists/types_generated/Lists/FillRateHelper.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/jest/async-storage-mock.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/src/AsyncStorage.native.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/src/AsyncStorage.ts: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/src/NativeAsyncStorageModule.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/src/helpers.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-async-storage/async-storage/src/types.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/commander/typings/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/locate-path/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/p-limit/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli/node_modules/p-locate/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/argparse/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/argparse/argparse.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/import-fresh/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/bin/js-yaml.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/index.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/parse-json/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/parse-json/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/parse-json/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-config/node_modules/resolve-from/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-server-api/node_modules/open/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-server-api/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/locate-path/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/Mime.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/types/standard.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/p-limit/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-native-community/cli-tools/node_modules/p-locate/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/NavigationStateContext.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/checkSerializable.tsx: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/createNavigationContainerRef.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/createNavigatorFactory.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/fromEntries.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/getFocusedRouteNameFromRoute.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/getPathFromState.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/getStateFromPath.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/types.tsx: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useComponent.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useDescriptors.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useFocusEffect.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useKeyedChildListeners.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useNavigation.tsx: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useNavigationBuilder.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useNavigationCache.tsx: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useNavigationHelpers.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useOnPreventRemove.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/usePreventRemoveContext.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useRegisterNavigator.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useRoute.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useScheduleUpdate.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/useSyncState.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/core/src/validatePathConfig.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/elements/src/Header/Header.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/elements/src/Header/useHeaderHeight.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/elements/src/MaskedView.tsx: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/elements/src/ResourceSavingView.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native/src/ServerContainer.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native/src/createMemoryHistory.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native/src/useLinkProps.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native/src/useLinkTo.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native/src/useLinking.native.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native/src/useLinking.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native/src/useScrollToTop.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native-stack/src/navigators/createNativeStackNavigator.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native-stack/src/utils/useDismissedRouteError.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native-stack/src/utils/useInvalidPreventRemoveError.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native-stack/src/views/FontProcessor.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native-stack/src/views/HeaderConfig.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@react-navigation/routers/src/CommonActions.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/compiler/compiler.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/compiler/compiler.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/compiler/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/compiler/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/errors/errors.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/errors/errors.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/errors/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/errors/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/system/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/system/system.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/system/system.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/typebox.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/typebox.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/cast.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/cast.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/check.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/check.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/clone.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/convert.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/convert.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/create.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/create.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/delta.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/delta.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/equal.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/hash.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/hash.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/mutate.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/mutate.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/pointer.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/pointer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/value.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinclair/typebox/value/value.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinonjs/commons/package.json: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinonjs/commons/types/called-in-order.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinonjs/commons/types/index.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinonjs/commons/types/order-by-first-call.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinonjs/commons/types/prototypes/copy-prototype-methods.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinonjs/commons/types/prototypes/throws-on-proto.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinonjs/fake-timers/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@sinonjs/fake-timers/src/fake-timers-src.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/babel__core/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/babel__template/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/babel__traverse/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/graceful-fs/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/graceful-fs/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/assert.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/async_hooks.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/buffer.buffer.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/buffer.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/child_process.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/cluster.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/compatibility/iterators.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/console.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/crypto.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/dgram.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/diagnostics_channel.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/dns/promises.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/dns.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/domain.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/events.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/fs/promises.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/fs.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/globals.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/http.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/http2.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/https.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/index.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/inspector.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/inspector.generated.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/module.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/net.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/os.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/path.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/perf_hooks.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/process.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/readline.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/repl.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/sea.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/sqlite.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/stream/web.d.ts: ERROR, stub, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/stream.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/test.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/timers.d.ts: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/tls.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/trace_events.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/ts5.6/buffer.buffer.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/ts5.6/index.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/ts5.7/index.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/url.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/util.d.ts: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/v8.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/vm.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/wasi.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/web-globals/abortcontroller.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/web-globals/domexception.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/web-globals/events.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/web-globals/navigator.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/web-globals/storage.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/worker_threads.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/node/zlib.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/yargs/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@types/yargs-parser/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@vscode/sudo-prompt/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@vscode/sudo-prompt/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@vscode/sudo-prompt/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@vscode/sudo-prompt/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@vscode/sudo-prompt/test-concurrent.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/@vscode/sudo-prompt/test.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/accepts/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/accepts/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/acorn/CHANGELOG.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/acorn/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/anser/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/ansi-fragments/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/anymatch/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/appdirsjs/README.md: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/argparse/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asap/CHANGES.md: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asap/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asap/asap.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asap/browser-asap.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asap/browser-raw.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asap/raw.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/async-limiter/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asynckit/README.md: TBD, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asynckit/bench.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asynckit/parallel.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/asynckit/serialOrdered.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/axios/CHANGELOG.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/axios/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/axios/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/axios/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/babel-plugin-istanbul/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/babel-plugin-jest-hoist/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/babel-preset-current-node-syntax/src/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/base64-js/base64js.min.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/base64-js/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/baseline-browser-mapping/README.md: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/baseline-browser-mapping/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/bl/BufferList.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/bl/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/bl/bl.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/bl/test/indexOf.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/bl/test/test.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/HISTORY.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/on-finished/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/on-finished/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/on-finished/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/node_modules/on-finished/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/body-parser/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/braces/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/browserslist/browser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/browserslist/cli.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/browserslist/error.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/browserslist/error.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/browserslist/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/browserslist/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/browserslist/node.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/bser/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/bser/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/buffer/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/buffer/index.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/buffer/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/buffer-from/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/bytes/Readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/functionApply.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/functionApply.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/functionCall.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/functionCall.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/index.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bind-apply-helpers/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bound/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bound/index.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bound/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/call-bound/test/index.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/callsites/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/callsites/readme.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/camelcase/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/camelcase/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/array-find-index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/array-find.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/array-includes.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/css-placeholder-shown.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/css-placeholder.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/date-tolocaledatestring.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/es6-string-includes.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/input-placeholder.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/pad-start-end.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features/promise-finally.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/caniuse-lite/data/features.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chalk/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chalk/readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chalk/source/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chalk/source/templates.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chrome-launcher/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chrome-launcher/changelog.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chrome-launcher/manual-chrome-launcher.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chrome-launcher/scripts/download-chrome.sh: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chrome-launcher/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/changelog.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/manual-edge-launcher.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/chromium-edge-launcher/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/ci-info/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/cli-spinners/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/clone/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/clone/clone.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/color-convert/conversions.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/colorette/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/combined-stream/Readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/commander/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/commander/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/commander/typings/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/negotiator/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/compression/node_modules/negotiator/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/concat-map/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/HISTORY.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/connect/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/content-type/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/content-type/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/content-type/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/convert-source-map/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/convert-source-map/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/cosmiconfig/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/cosmiconfig/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/cross-spawn/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/cross-spawn/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/dayjs.min.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/index.js: TODO, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/advancedFormat/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/arraySupport/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/badMutable/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/bigIntSupport/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/buddhistEra/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/calendar/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/customParseFormat/index.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/dayOfYear/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/devHelper/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/duration/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isBetween/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isLeapYear/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isSameOrAfter/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isSameOrBefore/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isToday/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isTomorrow/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isYesterday/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isoWeek/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/isoWeeksInYear/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/localeData/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/localizedFormat/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/negativeYear/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/objectSupport/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/pluralGetSet/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/preParsePostFormat/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/quarterOfYear/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/relativeTime/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/timezone/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/toArray/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/toObject/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/utc/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/weekOfYear/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/weekYear/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/esm/plugin/weekday/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/advancedFormat.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/arraySupport.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/badMutable.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/bigIntSupport.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/buddhistEra.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/calendar.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/customParseFormat.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/dayOfYear.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/devHelper.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/duration.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isBetween.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isLeapYear.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isSameOrAfter.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isSameOrBefore.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isToday.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isTomorrow.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isYesterday.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isoWeek.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/isoWeeksInYear.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/localeData.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/localizedFormat.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/negativeYear.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/objectSupport.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/pluralGetSet.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/preParsePostFormat.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/quarterOfYear.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/relativeTime.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/timezone.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/toArray.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/toObject.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/utc.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/weekOfYear.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/weekYear.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dayjs/plugin/weekday.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/debug/src/browser.js: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/debug/src/common.js: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/debug/src/node.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/decamelize/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/decode-uri-component/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/deepmerge/changelog.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/deepmerge/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/delayed-stream/Readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/depd/History.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/depd/Readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/depd/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/destroy/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/destroy/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dunder-proto/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dunder-proto/get.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dunder-proto/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dunder-proto/set.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dunder-proto/test/get.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/dunder-proto/test/set.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/ee-first/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/ee-first/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/encodeurl/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/encodeurl/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/env-paths/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/env-paths/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/error-ex/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/error-ex/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/error-ex/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/error-stack-parser/README.md: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/error-stack-parser/error-stack-parser.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/error-stack-parser/error-stack-parser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/error-stack-parser/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/errorhandler/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/errorhandler/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/errorhandler/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/errorhandler/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/.github/FUNDING.yml: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/eval.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/eval.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/range.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/range.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/ref.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/ref.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/syntax.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/syntax.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/type.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/type.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/uri.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-errors/uri.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-object-atoms/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-object-atoms/RequireObjectCoercible.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-object-atoms/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-object-atoms/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-set-tostringtag/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-set-tostringtag/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-set-tostringtag/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/es-set-tostringtag/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/escalade/readme.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/escape-html/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/escape-string-regexp/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/esprima/bin/esparse.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/esprima/bin/esvalidate.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/etag/HISTORY.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/etag/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/etag/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/event-target-shim/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/event-target-shim/index.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/execa/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/execa/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/execa/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/exponential-backoff/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/exponential-backoff/src/backoff.spec.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/exponential-backoff/src/backoff.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/exponential-backoff/src/delay/always/always.delay.spec.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/exponential-backoff/src/options.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-deep-equal/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-deep-equal/es6/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-deep-equal/es6/react.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-deep-equal/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-deep-equal/react.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/providers/filters/error.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/providers/filters/error.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/providers/provider.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/providers/provider.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/providers/stream.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/readers/async.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/readers/reader.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/readers/reader.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/readers/stream.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/readers/sync.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/settings.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/settings.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/types/index.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/utils/errno.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/utils/errno.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-glob/out/utils/stream.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-json-stable-stringify/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-json-stable-stringify/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-json-stable-stringify/test/nested.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/CHANGELOG.md: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/cli/read.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/fxp.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/util.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/EntitiesParser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/OptionsBuilder.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/BaseOutputBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/JsArrBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/JsMinArrBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/JsObjBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/ParserOptionsBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/XMLParser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/Xml2JsParser.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/XmlPartReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/XmlSpecialTagsReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/inputSource/BufferSource.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/inputSource/StringSource.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/valueParsers/EntitiesParser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v5/valueParsers/booleanParser.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/EntitiesParser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/OptionsBuilder.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/BaseOutputBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/JsArrBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/JsMinArrBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/JsObjBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/ParserOptionsBuilder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/XMLParser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/Xml2JsParser.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/XmlPartReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/XmlSpecialTagsReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/inputSource/BufferSource.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/inputSource/StringSource.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/valueParsers/EntitiesParser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/v6/valueParsers/booleanParser.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/validator.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/xmlbuilder/json2xml.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/xmlparser/DocTypeReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/xmlparser/OptionsBuilder.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/xmlparser/OrderedObjParser.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/xmlparser/XMLParser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fast-xml-parser/src/xmlparser/node2json.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fastq/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fastq/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fastq/queue.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fastq/test/promise.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fastq/test/test.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fb-watchman/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fill-range/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fill-range/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/HISTORY.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/finalhandler/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/flow-enums-runtime/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/flow-enums-runtime/__tests__/tests.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/flow-enums-runtime/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/follow-redirects/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/follow-redirects/debug.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/follow-redirects/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/form-data/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/form-data/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/form-data/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fs-extra/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fs-extra/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fs.realpath/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fs.realpath/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/fs.realpath/old.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/function-bind/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/function-bind/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/function-bind/implementation.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/function-bind/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/function-bind/package.json: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/function-bind/test/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/gensync/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/gensync/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/gensync/test/index.test.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-caller-file/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-intrinsic/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-intrinsic/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-intrinsic/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-intrinsic/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-intrinsic/test/GetIntrinsic.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-proto/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-proto/Object.getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-proto/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-proto/Reflect.getPrototypeOf.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-proto/Reflect.getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-proto/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-proto/package.json: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-proto/test/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-stream/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-stream/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/get-stream/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/glob/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/glob/common.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/glob/glob.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/glob/sync.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/gopd/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/graceful-fs/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/graceful-fs/clone.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/graceful-fs/graceful-fs.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/graceful-fs/legacy-streams.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/graceful-fs/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/graceful-fs/polyfills.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-symbols/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-symbols/shams.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-symbols/test/shams/core-js.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-symbols/test/shams/get-own-property-symbols.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-symbols/test/tests.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-tostringtag/test/shams/core-js.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-tostringtag/test/shams/get-own-property-symbols.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-tostringtag/test/tests.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/has-tostringtag/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/hasown/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/hasown/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/hermes-parser/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/http-errors/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/http-errors/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/http-errors/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/HISTORY.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/codes.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/http-errors/node_modules/statuses/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/http-errors/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/human-signals/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/human-signals/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/Changelog.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/encodings/dbcs-codec.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/encodings/dbcs-data.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/encodings/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/encodings/internal.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/encodings/sbcs-codec.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/encodings/utf16.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/iconv-lite/encodings/utf7.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/image-size/Readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/image-size/bin/image-size.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/import-fresh/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/import-fresh/node_modules/resolve-from/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/imurmurhash/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/imurmurhash/imurmurhash.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/imurmurhash/imurmurhash.min.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/inherits/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/inherits/inherits_browser.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/invariant/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/invariant/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/invariant/browser.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/invariant/invariant.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/is-arrayish/package.json: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/is-directory/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/is-number/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/is-plain-obj/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/isexe/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/isexe/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/isexe/test/basic.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-coverage/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/node_modules/semver/semver.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/src/constants.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/src/instrumenter.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/src/read-coverage.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/src/source-coverage.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/istanbul-lib-instrument/src/visitor.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jest-mock/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jest-util/Readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jest-validate/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jest-validate/node_modules/camelcase/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jest-worker/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/js-tokens/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/js-yaml/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/js-yaml/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/js-yaml/bin/js-yaml.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jsc-safe-url/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jsc-safe-url/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jsesc/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-better-errors/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-better-errors/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-better-errors/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-better-errors/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-even-better-errors/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-even-better-errors/LICENSE.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-even-better-errors/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-even-better-errors/index.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json-parse-even-better-errors/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/json5/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jsonfile/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/jsonfile/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/kleur/readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/launch-editor/get-args.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/launch-editor/guess.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/launch-editor/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/launch-editor/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/leven/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/leven/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lighthouse-logger/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/locate-path/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lodash.throttle/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/log-symbols/browser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/log-symbols/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/log-symbols/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/log-symbols/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/docs/NODE_API.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/node_modules/y18n/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/node_modules/y18n/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/node_modules/y18n/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/node_modules/yargs/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/node_modules/yargs-parser/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/node_modules/yargs-parser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/logkitty/node_modules/yargs-parser/index.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/loose-envify/loose-envify.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lru-cache/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/lru-cache/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/makeerror/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/makeerror/readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/math-intrinsics/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/media-typer/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/media-typer/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/memoize-one/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/merge-options/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/merge-options/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/merge-stream/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/merge2/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/merge2/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/node_modules/hermes-parser/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/node_modules/ws/browser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/Assets.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/Bundler/util.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/Bundler.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/DeltaBundler/DeltaCalculator.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/DeltaBundler/Graph.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/DeltaBundler/Serializers/sourceMapGenerator.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/DeltaBundler/Transformer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/DeltaBundler/WorkerFarm.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/DeltaBundler/buildSubgraph.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/DeltaBundler.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/HmrServer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/IncrementalBundler/GraphNotFoundError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/IncrementalBundler/ResourceNotFoundError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/IncrementalBundler/RevisionNotFoundError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/IncrementalBundler.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/ModuleGraph/worker/collectDependencies.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/Server/symbolicate.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/Server.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/Server.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/cli/parseKeyValueParamArray.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/cli-utils.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/commands/dependencies.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/index.flow.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/integration_tests/basic_bundle/ErrorBundle.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/integration_tests/basic_bundle/require-context/empty.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/integration_tests/basic_bundle/require-resolveWeak/subdir/throwing-module.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/node-haste/DependencyGraph/ModuleResolution.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/node-haste/DependencyGraph/createFileMap.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/node-haste/DependencyGraph.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/node-haste/DependencyGraph.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/node-haste/Module.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro/src/shared/output/RamBundle/as-indexed-file.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-babel-transformer/node_modules/hermes-parser/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-cache/src/Cache.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-cache/src/stores/FileStore.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-cache/src/stores/HttpError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-cache/src/stores/HttpGetStore.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-cache/src/stores/HttpStore.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-cache/src/stores/NetworkError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-config/src/configTypes.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-config/src/defaults/exclusionList.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-config/src/defaults/index.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-config/src/loadConfig.js: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-core/README.md: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-core/src/Logger.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-core/src/errors/AmbiguousModuleResolutionError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-core/src/errors/PackageResolutionError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-core/src/errors.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-core/src/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/Watcher.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/Watcher.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/cache/DiskCacheManager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/crawlers/node/hasNativeFindSupport.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/crawlers/node/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/crawlers/watchman/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/flow-types.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/plugins/HastePlugin.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/plugins/MockPlugin.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/plugins/haste/DuplicateHasteCandidatesError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/plugins/haste/HasteConflictsError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/plugins/mocks/getMockName.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/watchers/AbstractWatcher.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/watchers/FallbackWatcher.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/watchers/NativeWatcher.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/watchers/WatchmanWatcher.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-file-map/src/worker.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/PackageExportsResolve.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/PackageImportsResolve.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/errors/FailedToResolveNameError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/errors/FailedToResolvePathError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/errors/FailedToResolveUnsupportedError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/errors/InvalidPackageConfigurationError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/errors/InvalidPackageError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/errors/PackageImportNotResolvedError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/errors/PackagePathNotExportedError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/resolve.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/types.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/utils/matchSubpathFromExportsLike.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-resolver/src/utils/reduceExportsLikeMap.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-runtime/src/modules/HMRClient.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-runtime/src/modules/vendor/eventemitter3.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-runtime/src/polyfills/require.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-source-map/README.md: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-source-map/src/Generator.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-source-map/src/composeSourceMaps.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-source-map/src/source-map.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-symbolicate/src/ChromeHeapSnapshot.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-symbolicate/src/SourceMetadataMapConsumer.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-symbolicate/src/Symbolication.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-symbolicate/src/symbolicate.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-transform-plugins/src/import-export-plugin.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-transform-plugins/src/inline-requires-plugin.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-transform-plugins/src/normalizePseudoGlobals.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-transform-worker/src/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/metro-transform-worker/src/utils/getMinifier.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/micromatch/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/micromatch/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mime/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mime/mime.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mime/src/test.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mime/types.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mime-db/db.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mime-types/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mimic-fn/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mimic-fn/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/minimatch/minimatch.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/mkdirp/bin/cmd.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/negotiator/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/negotiator/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/node-int64/Int64.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/node-stream-zip/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/node-stream-zip/node_stream_zip.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/node-stream-zip/node_stream_zip.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/normalize-path/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/npm-run-path/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/npm-run-path/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/nullthrows/nullthrows.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/bigint.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/element.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/err.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/fakes.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/has.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/indent-option.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/inspect.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/number.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/toStringTag.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/object-inspect/test/values.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/on-finished/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/on-finished/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/on-finished/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/on-finished/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/on-headers/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/once/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/once/once.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/onetime/index.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/onetime/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/onetime/readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/open/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/ora/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/p-limit/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/p-locate/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/p-locate/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/p-try/index.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/p-try/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/p-try/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/parent-module/node_modules/callsites/index.d.ts: TODO, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/parent-module/node_modules/callsites/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/parent-module/node_modules/callsites/readme.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/parse-json/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/parse-json/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/parse-json/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/parseurl/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/path-exists/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/path-key/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/path-key/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/picomatch/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/pirates/README.md: TODO, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/pirates/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/pretty-format/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/pretty-format/node_modules/ansi-styles/index.js: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/core.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/domains/core.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/domains/done.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/domains/es6-extensions.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/domains/finally.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/domains/node-extensions.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/domains/rejection-tracking.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/domains/synchronous.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/index.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/polyfill-done.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/setimmediate/core.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/setimmediate/done.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/setimmediate/es6-extensions.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/setimmediate/finally.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/setimmediate/node-extensions.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/setimmediate/rejection-tracking.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/setimmediate/synchronous.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/src/core.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/src/done.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/src/es6-extensions.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/src/finally.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/src/node-extensions.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/src/rejection-tracking.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/promise/src/synchronous.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/prompts/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/proxy-from-env/README.md: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/proxy-from-env/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/proxy-from-env/test.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/qs/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/qs/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/qs/test/parse.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/qs/test/stringify.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/qs/test/utils.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/query-string/index.d.ts: TODO, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/query-string/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/query-string/readme.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/queue/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/queue/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/queue/readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/queue-microtask/README.md: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/range-parser/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/range-parser/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/range-parser/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/raw-body/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/raw-body/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/raw-body/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/raw-body/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/raw-body/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/cjs/react-jsx-dev-runtime.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/cjs/react-jsx-runtime.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/cjs/react-jsx-runtime.production.min.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/cjs/react-jsx-runtime.profiling.min.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/cjs/react.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/cjs/react.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/cjs/react.shared-subset.development.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/cjs/react.shared-subset.production.min.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/umd/react.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/umd/react.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react/umd/react.profiling.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-devtools-core/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-devtools-core/node_modules/ws/browser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-is/cjs/react-is.development.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-is/umd/react-is.development.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ActionSheetIOS/ActionSheetIOS.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ActionSheetIOS/ActionSheetIOS.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Alert/Alert.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Alert/RCTAlertManager.android.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/Animated.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/Animated.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/AnimatedEvent.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/AnimatedExports.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/AnimatedImplementation.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/AnimatedMock.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/animations/Animation.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/animations/DecayAnimation.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/animations/SpringAnimation.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/animations/TimingAnimation.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/bezier.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedFlatList.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedImage.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedScrollView.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedSectionList.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedText.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedColor.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedDivision.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedInterpolation.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedNode.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedObject.js: FIXME, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedProps.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedStyle.js: FIXME, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedTransform.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedValue.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedValueXY.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedWithChildren.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/AppState/AppState.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/BatchedBridge/MessageQueue.js: TODO, FIXME, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/BatchedBridge/NativeModules.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Blob/Blob.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Blob/BlobManager.js: TODO, FIXME, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Blob/FileReader.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Blob/URL.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Blob/URLSearchParams.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/BugReporting/BugReporting.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/BugReporting/dumpReactTree.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/BugReporting/getReactData.js: TODO, FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/AccessibilityInfo/AccessibilityInfo.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/ActivityIndicator/ActivityIndicator.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Button.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/DrawerAndroid/DrawerLayoutAndroid.android.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/DrawerAndroid/DrawerLayoutAndroidFallback.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Keyboard/KeyboardAvoidingView.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/LayoutConformance/LayoutConformance.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Pressable/Pressable.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Pressable/useAndroidRippleForView.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/ProgressBarAndroid/ProgressBarAndroid.android.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/ProgressBarAndroid/ProgressBarAndroid.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/RefreshControl/RefreshControl.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/ScrollView/ScrollView.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/ScrollView/ScrollView.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/ScrollView/ScrollViewContext.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/ScrollView/ScrollViewStickyHeader.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/StatusBar/StatusBar.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Switch/Switch.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/TextInput/AndroidTextInputNativeComponent.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/TextInput/InputAccessoryView.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/TextInput/RCTTextInputViewConfig.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInput.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInput.flow.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInput.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInputState.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroidFallback.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/BoundingDimensions.js: FIXME, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/PooledClass.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/Position.js: FIXME, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/Touchable.d.ts: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/Touchable.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableBounce.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableHighlight.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableNativeFeedback.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableOpacity.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableWithoutFeedback.d.ts: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableWithoutFeedback.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Components/UnimplementedViews/UnimplementedView.js: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Devtools/loadBundleFromServer.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Devtools/openFileInEditor.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Devtools/openURLInBrowser.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Devtools/parseErrorStack.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Devtools/parseHermesStack.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Devtools/symbolicateStackTrace.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/ExceptionsManager.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/ExtendedError.js: FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/InitializeCore.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/NativeExceptionsManager.js: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/ReactFiberErrorDialog.js: FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/ReactNativeVersionCheck.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Timers/JSTimers.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Timers/immediateShim.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/Timers/queueMicrotask.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/polyfillPromise.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpDeveloperTools.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpErrorHandling.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpGlobals.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpNavigator.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpPerformance.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpReactDevTools.js: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpReactRefresh.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpSegmentFetcher.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Core/setUpTimers.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Debugging/DebuggingOverlayRegistry.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/EventEmitter/RCTDeviceEventEmitter.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/AssetSourceResolver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/Image.android.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/Image.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/Image.ios.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/ImageBackground.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/ImageProps.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/ImageTypes.flow.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/ImageViewNativeComponent.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/RelativeImageStub.js: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Image/resolveAssetSource.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Interaction/InteractionManager.js: FIXME, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Interaction/InteractionManagerStub.js: FIXME, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Interaction/PanResponder.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Interaction/TaskQueue.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Interaction/TouchHistoryMath.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LayoutAnimation/LayoutAnimation.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Linking/Linking.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Lists/FlatList.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Lists/SectionList.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/Data/LogBoxData.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/Data/LogBoxLog.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/Data/LogBoxSymbolication.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/Data/parseLogBoxLog.js: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/LogBox.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/LogBox.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/LogBoxNotificationContainer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/AnsiHighlight.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorBody.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorCodeFrame.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorFooter.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorHeader.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorHeaderButton.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorMessageHeader.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorSourceMapStatus.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorStackFrame.js: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorStackFrames.js: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxMessage.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxNotification.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxNotificationCountBadge.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxStyle.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Modal/Modal.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/NativeComponent/BaseViewConfig.android.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/NativeComponent/NativeComponentRegistry.js: FIXME, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/NativeComponent/StaticViewConfigValidator.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/NativeComponent/ViewConfig.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/NativeComponent/ViewConfigIgnore.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Network/RCTNetworking.android.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Network/RCTNetworking.ios.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Network/RCTNetworkingEventDefinitions.flow.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Network/XMLHttpRequest.js: FIXME, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Network/convertRequestBody.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/PermissionsAndroid/PermissionsAndroid.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Pressability/HoverState.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Pressability/Pressability.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/PushNotificationIOS/PushNotificationIOS.d.ts: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/PushNotificationIOS/PushNotificationIOS.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/AppContainer-dev.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/AppRegistryImpl.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/BridgelessUIManager.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/FabricUIManager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/HeadlessJsTaskError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/PaperUIManager.js: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/ReactFabricHostComponent.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/ReactFabricPublicInstance.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/ReactFabricPublicInstanceUtils.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/ReactNativeAttributePayload.js: TODO, FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/warnForStyleProps.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/ReactNativeRuntimeDiagnostics.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/RendererImplementation.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/UIManager.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/getCachedComponentWithDebugName.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/getNativeComponentAttributes.js: TODO, FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactNative/renderApplication.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/ReactPrivate/ReactNativePrivateInterface.js: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactFabric-dev.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactFabric-prod.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactFabric-profiling.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-profiling.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Renderer/shims/ReactNativeTypes.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Renderer/shims/ReactNativeViewConfigRegistry.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Settings/Settings.ios.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Share/Share.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/EdgeInsetsPropType.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/PlatformColorValueTypes.android.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/PlatformColorValueTypes.ios.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/PlatformColorValueTypesIOS.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/StyleSheet.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/StyleSheet.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/StyleSheetExports.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/StyleSheetTypes.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/flattenStyle.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/private/_TransformStyle.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/processColorArray.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/processFilter.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/processFontVariant.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/processTransform.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/StyleSheet/splitLayoutProps.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Text/Text.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/TurboModule/RCTExport.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/TurboModule/samples/NativeSampleTurboModule.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Types/CodegenTypes.js: TODO, FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Types/CodegenTypesNamespace.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/Appearance.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/Dimensions.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/FeatureDetection.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/HMRClient.js: FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/HMRClientProdShim.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/PixelRatio.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/Platform.android.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/Platform.ios.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/PlatformTypes.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/PolyfillFunctions.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/RCTLog.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/ReactNativeTestTools.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/binaryToBase64.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/codegenNativeCommands.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/codegenNativeComponent.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/deepFreezeAndThrowOnMutationInDev.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/differ/insetsDiffer.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/differ/pointsDiffer.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/differ/sizesDiffer.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/logError.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Utilities/stringifySafe.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/Vibration/Vibration.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/WebSocket/WebSocket.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/WebSocket/WebSocketInterceptor.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/promiseRejectionTrackingOptions.js: FIXME, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/vendor/core/ErrorUtils.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/vendor/core/ErrorUtils.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/Libraries/vendor/emitter/EventEmitter.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/src/main/jni/CMakeLists.txt: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/src/main/jni/first-party/fbgloginit/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/src/main/jni/first-party/jni-lib-merge/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/src/main/jni/react/jni/CMakeLists.txt: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/src/main/jni/react/jscexecutor/CMakeLists.txt: TODO, Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/src/main/jni/react/turbomodule/CMakeLists.txt: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/src/main/jni/third-party/boost/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactAndroid/src/main/jni/third-party/folly/CMakeLists.txt: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jserrorhandler/CMakeLists.txt: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jsi/jsi/CMakeLists.txt: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/cdp/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/network/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/react/renderer/mounting/CMakeLists.txt: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/react/runtime/CMakeLists.txt: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/cli.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/flow/console.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/flow/global.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/index.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/MockNativeMethods.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/RefreshControlMock.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/assetFileTransformer.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/local-setup.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/mockComponent.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/mockModal.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/mockScrollView.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/resolver.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/jest/setup.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/bundle.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/codegen/codegen-utils.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/generateFBReactNativeSpecIOS.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/generateRNCoreComponentsIOS.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/generateReactCodegenPodspec.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/generateSchemaInfos.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/utils.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/codegen/generate-specs-cli-executor.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/compose-source-maps.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/generate-provider-cli.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/hermes/hermes-utils.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/node-binary.sh: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/react-native-xcode.sh: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/react_native_pods_utils/script_phases.sh: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/scripts/xcode/with-environment.sh: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/sdks/hermes-engine/utils/build-apple-framework.sh: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/sdks/hermes-engine/utils/build-ios-framework.sh: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/sdks/hermes-engine/utils/replace_hermes_version.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/animated/NativeAnimatedHelper.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/animated/NativeAnimatedValidation.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/animated/createAnimatedPropsHook.js: TODO, FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/animated/createAnimatedPropsMemoHook.js: FIXME, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/ElementBox.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/ElementProperties.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/Inspector.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/InspectorOverlay.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/NetworkOverlay.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/XHRInterceptor.js: FIXME, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/resolveBoxStyle.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/devsupport/rndevtools/setUpFuseboxReactDevToolsDispatcher.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/featureflags/ReactNativeFeatureFlags.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/featureflags/ReactNativeFeatureFlagsBase.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/featureflags/specs/NativeReactNativeFeatureFlags.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/renderer/errorhandling/ErrorHandlers.js: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAccessibilityManager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeActionSheetManager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAlertManager.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAnimatedModule.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAnimatedTurboModule.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAppState.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeDialogManagerAndroid.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeExceptionsManager.js: TODO, Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeImageEditor.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeImageStoreAndroid.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeImageStoreIOS.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeIntentAndroid.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeJSCHeapCapture.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativePermissionsAndroid.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeSampleTurboModule.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeSegmentFetcher.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeStatusBarManagerIOS.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeUIManager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/events/Event.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/events/EventHandlerAttributes.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/events/EventTarget.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/events/internals/EventInternals.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/events/internals/EventTargetInternals.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReactNativeDocument.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReactNativeElement.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReadOnlyCharacterData.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReadOnlyElement.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReadOnlyNode.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/nodes/internals/NodeInternals.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/nodes/internals/ReactNativeDocumentInstanceHandle.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/dom/nodes/specs/NativeDOM.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/intersectionobserver/IntersectionObserver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/intersectionobserver/IntersectionObserverEntry.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/intersectionobserver/internals/IntersectionObserverManager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/intersectionobserver/specs/NativeIntersectionObserver.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/mutationobserver/MutationObserver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/mutationobserver/MutationRecord.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/mutationobserver/internals/MutationObserverManager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/performance/EventTiming.js: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/performance/Performance.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/performance/PerformanceObserver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/private/webapis/performance/internals/RawPerformanceEntry.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/src/types/globals.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/third-party-podspecs/replace_dependencies_version.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types/modules/Codegen.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types/modules/Devtools.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types/public/ReactNativeTypes.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/ActionSheetIOS/ActionSheetIOS.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Animated/AnimatedImplementation.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Animated/createAnimatedComponent.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Components/TextInput/InputAccessoryView.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Components/TextInput/TextInput.flow.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Components/Touchable/Touchable.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Components/Touchable/TouchableWithoutFeedback.d.ts: FIXME
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Core/Devtools/symbolicateStackTrace.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Core/ExceptionsManager.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Core/ExtendedError.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Core/NativeExceptionsManager.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Core/ReactFiberErrorDialog.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Image/Image.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Image/ImageProps.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Image/ImageTypes.flow.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Interaction/InteractionManager.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Interaction/PanResponder.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/LayoutAnimation/LayoutAnimation.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Lists/FlatList.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/LogBox/Data/LogBoxData.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/LogBox/Data/LogBoxLog.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/LogBox/Data/LogBoxSymbolication.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/LogBox/Data/parseLogBoxLog.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/LogBox/LogBox.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Network/XMLHttpRequest.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/PushNotificationIOS/PushNotificationIOS.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/ReactPrivate/ReactNativePrivateInterface.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Renderer/shims/ReactNativeTypes.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/TurboModule/RCTExport.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/Utilities/PixelRatio.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/vendor/core/ErrorUtils.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/Libraries/vendor/emitter/EventEmitter.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/index.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/src/private/specs_DEPRECATED/modules/NativeDialogManagerAndroid.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/src/private/specs_DEPRECATED/modules/NativeExceptionsManager.d.ts: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/src/private/specs_DEPRECATED/modules/NativeUIManager.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native/types_generated/src/private/webapis/dom/nodes/specs/NativeDOM.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native-biometrics/CHANGELOG.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native-biometrics/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-native-biometrics/index.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-refresh/cjs/react-refresh-babel.development.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-refresh/cjs/react-refresh-babel.production.min.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-refresh/cjs/react-refresh-runtime.development.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/react-refresh/cjs/react-refresh-runtime.production.min.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/readable-stream/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/readable-stream/errors-browser.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/readable-stream/errors.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/readable-stream/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/regenerator-runtime/runtime.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/resolve-from/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/reusify/benchmarks/createNoCodeFunction.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/rimraf/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/rimraf/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/rimraf/bin.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/rimraf/rimraf.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/run-parallel/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/safe-buffer/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/safe-buffer/index.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/safe-buffer/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/safer-buffer/Porting-Buffer.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/safer-buffer/Readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/safer-buffer/dangerous.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/safer-buffer/safer.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/safer-buffer/tests.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/cjs/scheduler-unstable_mock.development.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/cjs/scheduler-unstable_mock.production.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/cjs/scheduler-unstable_post_task.development.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/cjs/scheduler-unstable_post_task.production.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/cjs/scheduler.development.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/cjs/scheduler.native.development.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/cjs/scheduler.native.production.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/cjs/scheduler.production.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/scheduler/unstable_mock.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/README.md: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/classes/comparator.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/classes/range.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/classes/semver.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/functions/cmp.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/functions/parse.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/internal/debug.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/ranges/min-version.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/ranges/outside.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/semver/ranges/subset.js: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/HISTORY.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/on-finished/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/statuses/HISTORY.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/statuses/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/statuses/codes.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/node_modules/statuses/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/send/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/serialize-error/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/serialize-error/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/serialize-error/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/serve-static/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/serve-static/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/serve-static/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/serve-static/node_modules/encodeurl/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/serve-static/node_modules/encodeurl/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/setprototypeof/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/setprototypeof/index.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/setprototypeof/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/setprototypeof/package.json: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/setprototypeof/test/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/shell-quote/parse.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/shell-quote/test/parse.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-list/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-list/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-list/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-list/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-map/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-map/index.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-map/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-map/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-weakmap/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-weakmap/index.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-weakmap/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/side-channel-weakmap/test/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/signal-exit/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/slice-ansi/node_modules/color-convert/conversions.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/slice-ansi/node_modules/color-convert/index.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/source-map/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/source-map/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/source-map-support/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/source-map-support/browser-source-map-support.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/source-map-support/node_modules/source-map/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/source-map-support/node_modules/source-map/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/source-map-support/source-map-support.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/split-on-first/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/sprintf-js/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/sprintf-js/src/sprintf.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/sprintf-js/test/test.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stack-utils/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stack-utils/node_modules/escape-string-regexp/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stack-utils/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stack-utils/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stackframe/README.md: TODO, Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stackframe/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stackframe/stackframe.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stacktrace-parser/README.md: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/stacktrace-parser/package.json: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/statuses/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/statuses/codes.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/statuses/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/string-width/index.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/string-width/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/strnum/strnum.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/CHANGELOG.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/main.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/node_modules/commander/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/node_modules/commander/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/node_modules/commander/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/node_modules/commander/typings/index.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/terser/tools/domprops.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/test-exclude/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/test-exclude/index.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/throat/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/to-regex-range/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/to-regex-range/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/type-detect/README.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/type-detect/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/type-detect/type-detect.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/type-fest/source/basic.d.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/type-fest/source/merge-exclusive.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/type-fest/source/readonly-deep.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/type-is/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/type-is/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/balanced-pool.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/cache-interceptor.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/cache.d.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/client.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/connector.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/diagnostics-channel.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/dispatcher.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/errors.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/eventsource.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/fetch.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/h2c-client.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/interceptors.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/mock-agent.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/mock-call-history.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/mock-client.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/mock-errors.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/mock-interceptor.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/mock-pool.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/pool.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/retry-handler.d.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/webidl.d.ts: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/undici-types/websocket.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/universalify/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/unpipe/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/update-browserslist-db/cli.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/update-browserslist-db/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/util-deprecate/browser.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/util-deprecate/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/vary/index.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/walker/package.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/walker/readme.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/whatwg-fetch/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/whatwg-fetch/fetch.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/which/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/which/which.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/wrappy/wrappy.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/write-file-atomic/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/ws/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/ws/browser.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/y18n/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/y18n/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yallist/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yallist/iterator.js: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yallist/yallist.js: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yaml/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yargs/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yargs-parser/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yargs-parser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yargs-parser/browser.js: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/mobile/node_modules/yocto-queue/index.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/models/latest/README.md: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/models/latest/qmoi_enhanced_advanced_model.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/models/latest/qmoi_enhanced_model.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/models/latest/qmoi_enhanced_revenue.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/notify_on_whatsapp.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/pa.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/package-watchdebug.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/push-simple.ps1: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/push.ps1: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/push.txt: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/push_all_chunks.ps1: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qcity-artifacts/qmoi_build_report.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qcity-artifacts/qmoi_release_report.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi-app-builder.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi-friendship-core.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi-friendship-integration.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi-space/public/sw.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi-space-pwa/js/app.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi-space-pwa/sw.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi_build_all.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi_health_status.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoi_orchestrator.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoiaxe.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoiexe.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoiexe.spec: traceback
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoiexe_enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/qmoisimtwo.py: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/release-verify.ps1: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/reports/lint-report.json: ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/reports/self_healing_report.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/deployment-status.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/ai/fix.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/config.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/projects/[id]/tasks.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/projects/[id].ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/projects/index.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/start.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/status.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/stop.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/trading/config.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/trading/positions.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/whatsapp/config.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qcity/whatsapp/messages.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qmoi/autodev.ts: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qmoi/feedback.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qmoi/file.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qmoi/payload.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/api/qmoi/status.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/qcity/projects/[id].tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/qcity/projects/config.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/routes/qcity/projects/index.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/run_advanced_ai.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/ai-lint-engine.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/ai_automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/ai_metrics_check.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/api/automation_api.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/auto-git-update.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/auto-lint.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/auto-publish-all.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/auto-setup.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/auto-vercel-fix.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/auto_evolve.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/auto_lint_fix.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/auto_utils.js: TODO, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/automate_tasks.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/automation/github_actions_auto_fix.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/automation/qmoi_master_automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/autotest/advanced_autotest_system.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/autotest/qmoi_automation_autotest.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/autotest/qmoi_simple_autotest.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/aws_cost_report.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/backup_automation.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/backup_restore.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/check-latest-release.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/ci-self-heal.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/colab-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/colab_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/continuous_testing.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/custom_error_handler.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/dagshub-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/db_migrations.py: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/demo-automation.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deploy/cloud_deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deploy/deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deploy/deployment-monitor.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deploy/health-check.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deploy/vercel_auto_deploy.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deploy_huggingface.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deployment/auto_deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deployment/cloud_deployment.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deployment/deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/deployment/server.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/device_ownership_detector.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/device_unlock_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/doc_verifier.py: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/downloadqmoiai.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/enhance_ai.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/enhanced-build.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/enhanced-error-fix.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/enhanced_browser.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/enhanced_preview.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/ensure-build-tools.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/ensure-files.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/error/error_fixer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/error_handler.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/error_tracker.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/fast_git_commit.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/financial_verification.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/find_qcity_runner_docs.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/fix_deployment_issues.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/fix_icon.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/get_public_ip.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/github-fallback.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/github_actions_autofix.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/github_auto_push.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/gitlab-automation.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/gitlab-error-recovery.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/gitlab-notification-service.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/gitlab-push-automation.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/gitpod-notification-service.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/gmail_notify.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/hf_model_sync.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/hf_sync.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/json-config-fixer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/license_checker.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/license_checker.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/lint-notifier.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/lint-reporter.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/lint-watcher.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/log-errors.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/media_upload_api_example.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/models/qmoi_kernel.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/models/qmoi_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/models/qmoi_permissions.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/models/qmoi_personality.py: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitor_performance.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/api_endpoints_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/backup_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/cloud_resources_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/error_tracking.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/master_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/monitoring_dashboard.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/notification_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/performance_monitoring.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/start_all_monitors.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/monitoring/system_status_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/mpesa-setup-guide.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/network/network_connectivity_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/network/wifi_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/notify-telegram.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/one_command_automation.py: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/optimization/advanced_optimization.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/optimize_cpu.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/optimize_performance.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/optimize_storage.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/optimizer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/platform_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/postinstall-verify.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/preinstall-check.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qcity-automation.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qcity-device-manager.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qcity_advanced_installer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qcity_device_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qcity_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qcity_npm_selfheal.ps1: TODO, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qcity_npm_selfheal.sh: TODO, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qcity_unlimited_installer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-activity-logger.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-always-fix-all.js: FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-app-releaser.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-app-validator.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-auto-config-runner.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-auto-enhancement-system.js: FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-auto-evolution.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-auto-push.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-autofixer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-automation-autotest.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-automation-autotests.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-cloud-archive.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-cloud-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-cloud-elastic-manager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-cloud-env-manager.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-cloud-offload-optimizer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-cloud-provider.js: TODO, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-cloud-registry.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-cloud-sync.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-comprehensive-parallel-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-controller.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-dashboard.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-dev-actions.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-download-link-tester.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-auto-fix.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-auto-projects.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-avatar-system.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-controller.py: Exception, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-doc-verifier.js: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-health-checker.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-learning-revenue.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-live-status.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-master-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-notifications.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-enhanced-platform-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-environment-setup.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-error-handler.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-error-predictor.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-error-recovery.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-git-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-github-actions-fixer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-github-integration.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-gitlab-ci-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-gitlab-sync.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-hands-free.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-hf-sync.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-hf-test.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-hot-reload.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-huggingface-manager.js: TODO, Exception, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-info.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-install-autotest.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-json-auto-fixer.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-lint-integration.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-live-status.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-master-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-master-autostart.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-master-debugger.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-master-notifications.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-master-system.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-mobile-auto-selfheal.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-music-production-system.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-notification-system.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-package-installer.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-parallel-autotest.js: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-parallel-platform-enhancer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-parallel-processor.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-parallel-setup.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-performance-optimizer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-platform-manager.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-platform-optimizer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-qcity-automatic.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-qcity-enhanced-automatic.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-qcity-enhanced-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-quick-test.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-real-time-monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-registry-manager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-research-engine.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-revenue-dashboard.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-revenue-enforcer.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-secret-generator.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-self-updating-agent.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-setup.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-slack-notify.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-space-backend.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-start.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-system-controller.py: Exception, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-ultimate-automation.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-unified-push-enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-unified-push-ultimate.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-unified-push.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-universal-error-fixer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-universal-error-handler.js: FIXME, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi-vulnerability-scanner.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_advanced_analytics.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_advanced_automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_app_builder.py: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_app_installer.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_auto_docs.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_auto_evolution.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_auto_evolution_enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_auto_evolution_system.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_auto_fix_enhanced.py: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_auto_setup.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_auto_startup.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_auto_watcher.js: TODO, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_automated_betting_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_automated_device_controller.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_autosync_backup.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_build_ci.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_cloud_integration_enhanced.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_cloud_setup.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_complete_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_comprehensive_test.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_contact_verifier.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_dashboard.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_data_optimization_system.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_device_agent.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_device_integration.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_employment_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_enhanced_ai.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_enhanced_automation.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_enhanced_startup.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_env_manager.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_error_auto_fix.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_error_monitor.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_git_wrapper.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_gitlab_automation.py: Exception, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_health_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_health_reporting_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_hf_auto_manager.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_huggingface_setup.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_huggingface_spaces.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_integration_master.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_intelligent_scheduler.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_master_automation_enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_master_orchestrator.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_master_website_automation.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_media_orchestrator.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_notification_manager.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_own_device_logger.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_parallel_error_fixer.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_payment_fix.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_performance_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_permission_fix.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_pre_activity_check.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_revenue_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_secret_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_security_automation.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_security_monitor.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_self_evolve.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_self_healing_enhanced.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_self_test.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_self_test_runner.js: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_simple_autotest.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qmoi_windows_service.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qserver-download-tester.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/qserver-manager.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/quick_git_push.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/resolve_dependabot_conflict.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/resolve_deployment_conflicts.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/restore_from_gdrive.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/restore_from_s3.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/run_all_tests.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/run_enhancements.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/rust_lint_fix.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/security/security_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/analytics_optimization.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/asset_generation.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/auto_fix_service.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/comprehensive_test_runner.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/github_integration.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/localization_service.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/notification_service.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/notification_service.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/platform_discovery.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/platform_integrations.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/plugin_loader.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/project_service.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/qcity_service.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/qmoi_autodev_daemon.ts: Exception, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/role_management.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/schedule_runner.ts: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/self_healing.ts: TODO, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/trading_service.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/unified_ci_cd_service.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/services/whatsapp_service.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/setup.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/setup_qmoi_environment.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/smart-lint.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/start-revenue-engine.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/start_monitoring_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/start_qmoi_enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/terms_enforcer.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/test-qmoi-system.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/test_error_fixing_suite.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/test_hf_space_ui.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/test_runner.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/test_whatsapp.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/trading/enhanced_trading_system.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/ui/qcity_ui_enhancement.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/universal_memory.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/update_links_with_ngrok.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/update_model_card.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/update_readme.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/update_readme_cli_usage.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/upload-release-assets.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/upload_to_github_release.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/utils/error_fixer.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/utils/logger.ts: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/utils/notify_enhancement.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/validate_notification_config.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/validate_yml.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/verify-installable.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/watch_error_fixing.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/scripts/whatsapp_verification.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/security_proxy.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/auth/AuthManager.ts: TODO, ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/AITradingRules.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/AssetOverview.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/Chatbot.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/DownloadQCity.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/LcSpaces.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/QI.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/QiSpaces.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/TradingHistory.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/TradingStatus.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/AccountAutomationPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/AuditLogPanel.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/AvatarSelector.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/AviatorGalleryPanel.tsx: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/CommandPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/DevicePanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/DocumentManagerPanel.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/EarningDashboard.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/EnhancedQMOIDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/MetricsPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/Onboarding.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/PluginPanel.tsx: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QApiKeyManager.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QAvatar.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QFileManager.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMOIAutoFixDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMOIStateProvider.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiAutoDevPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiDatabaseDashboard.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiFileEditorChat.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiKernelPanel.integration.test.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiKernelPanel.test.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiKernelPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiMediaManager.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiMemoryPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiProjectDashboard.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiSettingsPanel.tsx: placeholder, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiState.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiStateContext.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QMoiToolbar.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/QNewsDashboard.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/SchedulePanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/SelfHealPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/SessionPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/SocialAutomationPanel.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/SystemHealthPanel.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/VoiceSelector.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/WalletManager.tsx: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/ZeroRatedPanel.tsx: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/avatarsConfig.ts: prototype
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/components/q-city/index.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/config/bitget.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/config/trading.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/config/wallet.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/hooks/useAuth.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/hooks/useAutoProjects.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.test.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/hooks/useQmoiKernel.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/plugins/AIReviewPlugin.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/plugins/DeviceHealthReviewerPlugin.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/plugins/OptimizationSuggestionPlugin.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/plugins/PluginManager.ts: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/plugins/QuickAIWidgetPlugin.ts: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/AIRequestRouter.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/AppManagementService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/AutoResearcher.ts: TODO, placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/BrowserService.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/DeviceTrackingService.ts: TODO, placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/EnhancedErrorFixingService.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/EnhancedParallelizationService.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/EnhancedRevenueAutomationService.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/EnhancedServicesCompatibility.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/EnhancedSiteGenerationService.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/ErrorFixingService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/FaceRecognitionService.ts: ERROR, stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/MultiUserSessionManager.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/NetworkManager.ts: TODO, placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/QmoiMemory.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/VPNService.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/VoiceRecognitionService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/services/WhatsAppService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/setupTests.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/src/types/trading.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/ssh-backend/apiKeyAuth.js: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/start-watchdebug.js: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/start.sh: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/start_qmoi_ngrok.py: Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/e2e/test_e2e_placeholder.py: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/integration/test_error_fixing_integration.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/integration/test_qcity_audit_log.py: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/integration/test_qcity_remote_command.py: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/md/test_md_links.py: Exception
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/security/test_security_placeholder.py: placeholder
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/ui/qmoi_ui_autotest.spec.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/unit/test_auto_watcher.js: stub
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tests/unit/test_error_fixing.py: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/types/index.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/types/projects.ts: TODO
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/types/qcity.ts: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/vercel-fix-report.json: ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/watchdebug.js: TODO, FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/whatsapp-qmoi-bot/handlers/call.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/_archive_qmoi-enhanced/whatsapp-qmoi-bot/services/qmoi.js: ERROR
+- qmoi-enhanced-history-14/abc.txt: ERROR
+- qmoi-enhanced-history-14/ai-anomaly-service.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/ai_self_update.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/all_api_endpoints_found.txt: ERROR
+- qmoi-enhanced-history-14/allrefs.txt: TODO, ERROR, stub
+- qmoi-enhanced-history-14/api/qcity.ts: ERROR, stub
+- qmoi-enhanced-history-14/app/admin/master/activity/page.tsx: ERROR
+- qmoi-enhanced-history-14/app/admin/master/layout.tsx: ERROR
+- qmoi-enhanced-history-14/app/admin/master/login/page.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app/admin/master/security/page.tsx: ERROR
+- qmoi-enhanced-history-14/app/admin/master/settings/page.tsx: ERROR
+- qmoi-enhanced-history-14/app/admin/page.tsx: ERROR
+- qmoi-enhanced-history-14/app/api/account-automation/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/app/api/admin/alerts/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/audit-logs/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/automation/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/autoscan/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/background-automation/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/bootstrap/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/config/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/errors/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/fix/[errorId]/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/fix-all/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/health/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/healthmonitor/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/scan/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/autofix/stream/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/dashboard/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/financial/summary/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/master/auth/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/master/logout/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/monitoring/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/rate-limits/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/admin/users/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/ai/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/ai/scan/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/app/api/ai-anomaly-service/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/ai-health/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/app/api/ai-self-diagnostics/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/analytics/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/analytics/wallets/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/biometric/capture/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/login/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/login.ts: TODO, placeholder
+- qmoi-enhanced-history-14/app/api/auth/me.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/profile/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/rbac.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/register/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/register.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/session.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/settings/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/signin/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/signup/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/totp.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/verify-email/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/webauthn/authenticate/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auth/webauthn/register/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/auto-fix.ts: ERROR
+- qmoi-enhanced-history-14/app/api/automation/status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/biometric/templates/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/biometric/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/cashon/balance/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/cashon/deposit/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/cashon/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/cashon/signals/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/cashon/start-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/cashon/stop-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/cashon/trading-status/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/colab-job.ts: ERROR, stub
+- qmoi-enhanced-history-14/app/api/datasets/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/datasets/settings/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/debug/users/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/deploy/auto-redeploy/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/deploy/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/deployment-status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/app/api/device-fingerprint/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/document-backup/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/app/api/domains/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/earning/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/app/api/employment/megavault/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/employment/payment/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/employment/revenue/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/employment/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/financial/audit/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/financial/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/financial/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/git/branch/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/git/commit/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/git/pr/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/git/push/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/git/remote/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/git/status/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/health/data/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/health/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/media/generate/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/media/status/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/metrics/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/middleware/roleAuth.ts: ERROR
+- qmoi-enhanced-history-14/app/api/monitor/status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/mpesa/callback/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/payments/initiate/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qapikey/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qcity/audit-log/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qcity/audit-log.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qcity/devices.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qcity/plugins.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qcity/remote-command/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qcity/remote-command.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qcity/schedule.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qcity/selfheal-npm/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/qi-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qi-trading.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/advanced-analysis/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/audio/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/auto-fix/download-report/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/auto-fix/github-status/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/auto-fix/start/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/auto-fix/status/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/auto-fix/stop/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/auto-setup/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/avatars/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/backup/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/chat/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/chat-enhanced/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/files/[id]/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/fix/all.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/friendship/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/language/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/master-mode/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/memory/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/own-device-logs/export/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/own-device-logs/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/profile-questions/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/projects/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/research/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue/reset/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue/start/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue/status/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue/stop/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue/target/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue/transfer/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/revenue-dashboard/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/session/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/transcribe/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/upload/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/user/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/visuals/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/voice/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/voice-enroll/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/voice-preview/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi/voice-profiles/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-database/route.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-earning-enhanced/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-gitlab/deployments/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-gitlab/errors/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-gitlab/jobs/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-gitlab/pipelines/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-gitlab/trigger/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-model/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qmoi-model.ts: ERROR
+- qmoi-enhanced-history-14/app/api/qvillage/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/social-automation/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/app/api/ssh/list/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/ssh/read/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/ssh/write/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/users/profile/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/voice/enroll/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/voice/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/wallet.ts: ERROR
+- qmoi-enhanced-history-14/app/api/wallets/[walletId]/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/wallets/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/webauthn/authenticate/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/webauthn/register/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/webhooks/payments/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app/api/webhooks/qvillage/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/whatsapp/audit/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/whatsapp/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/whatsapp-bot/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/whatsapp-business/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/wifi/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/wifi/scan/route.ts: ERROR
+- qmoi-enhanced-history-14/app/api/wifi-security/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app/api/wifi-security.ts: ERROR
+- qmoi-enhanced-history-14/app/components/AdminDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/app/components/AudibleConversation.tsx: ERROR
+- qmoi-enhanced-history-14/app/components/ChatMessaging.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app/components/ClientUISettings.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/app/components/FileUploadDownload.tsx: ERROR
+- qmoi-enhanced-history-14/app/components/QMOIAutoFixDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/app/components/QMOIAutoSetup.tsx: ERROR
+- qmoi-enhanced-history-14/app/components/QMOIMasterDashboard.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app/components/auth/RegisterForm.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app/components/user/UserProfile.tsx: ERROR
+- qmoi-enhanced-history-14/app/components/wallet/WalletList.tsx: ERROR
+- qmoi-enhanced-history-14/app/page.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app/qcity/page.jsx: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/admin/page.tsx: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/account-automation/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/admin/alerts/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/admin/audit-logs/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/admin/dashboard/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/admin/monitoring/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/admin/rate-limits/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/admin/users/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/ai/scan/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/ai-anomaly-service/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/ai-health/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/ai-self-diagnostics/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/analytics/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/analytics/wallets/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/login/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/login.ts: TODO, placeholder
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/me.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/rbac.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/register/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/register.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/session.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/totp.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/webauthn/authenticate/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auth/webauthn/register/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/auto-fix.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/automation/status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/biometric/templates/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/biometric/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/cashon/balance/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/cashon/deposit/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/cashon/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/cashon/signals/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/cashon/start-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/cashon/stop-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/cashon/trading-status/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/colab-job.ts: ERROR, stub
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/datasets/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/datasets/settings/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/debug/users/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/deploy/auto-redeploy/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/deploy/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/deployment-status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/device-fingerprint/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/document-backup/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/earning/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/employment/megavault/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/employment/payment/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/employment/revenue/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/employment/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/financial/audit/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/financial/transactions/route.ts: TODO, placeholder
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/financial/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/git/commit/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/git/pr/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/git/push/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/git/status/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/health/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/media/generate/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/media/status/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/metrics/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/middleware/roleAuth.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/monitor/status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/mpesa/callback/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/payments/initiate/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qapikey/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qcity/audit-log/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qcity/audit-log.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qcity/devices.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qcity/plugins.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qcity/remote-command/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qcity/remote-command.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qcity/schedule.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qcity/selfheal-npm/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qi-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qi-trading.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/auto-fix/download-report/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/auto-fix/github-status/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/auto-fix/start/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/auto-fix/status/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/auto-fix/stop/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/avatars/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/backup/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/chat/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/fix/all.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/language/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/master-mode/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/memory/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/own-device-logs/export/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/own-device-logs/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/research/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue/reset/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue/start/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue/status/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue/stop/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue/target/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue/transfer/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/revenue-dashboard/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/session/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/user/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/voice-enroll/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/voice-preview/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi/voice-profiles/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-database/route.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-earning-enhanced/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-gitlab/deployments/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-gitlab/errors/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-gitlab/jobs/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-gitlab/pipelines/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-gitlab/trigger/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-model/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qmoi-model.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qnews/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qradio/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/qvillage/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/social-automation/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/ssh/list/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/ssh/read/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/ssh/write/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/users/profile/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/voice/enroll/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/voice/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/wallet.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/wallets/[walletId]/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/wallets/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/webauthn/authenticate/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/webauthn/register/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/webhooks/payments/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/webhooks/qvillage/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/whatsapp/audit/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/whatsapp/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/whatsapp-bot/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/whatsapp-business/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/wifi/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/wifi/scan/route.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/wifi-security/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/api/wifi-security.ts: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/components/AdminDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/components/ClientUISettings.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/app.backup.20260121144720/components/auth/RegisterForm.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/components/user/UserProfile.tsx: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/components/wallet/WalletList.tsx: ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/page.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/app.backup.20260121144720/qcity/page.jsx: ERROR
+- qmoi-enhanced-history-14/auto-push.ps1: Exception, ERROR
+- qmoi-enhanced-history-14/backend/trading-engine.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/admin/page.tsx: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/account-automation/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/admin/alerts/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/admin/audit-logs/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/admin/dashboard/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/admin/monitoring/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/admin/rate-limits/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/admin/users/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/ai/scan/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/ai-anomaly-service/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/ai-health/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/ai-self-diagnostics/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/analytics/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/analytics/wallets/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/login/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/login.ts: TODO, placeholder
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/me.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/rbac.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/register/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/register.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/session.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/totp.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/webauthn/authenticate/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auth/webauthn/register/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/auto-fix.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/automation/status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/biometric/templates/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/biometric/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/cashon/balance/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/cashon/deposit/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/cashon/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/cashon/signals/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/cashon/start-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/cashon/stop-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/cashon/trading-status/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/colab-job.ts: ERROR, stub
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/datasets/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/datasets/settings/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/debug/users/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/deploy/auto-redeploy/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/deploy/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/deployment-status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/device-fingerprint/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/document-backup/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/earning/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/employment/megavault/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/employment/payment/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/employment/revenue/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/employment/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/financial/audit/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/financial/transactions/route.ts: TODO, placeholder
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/financial/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/git/commit/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/git/pr/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/git/push/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/git/status/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/health/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/media/generate/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/media/status/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/metrics/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/middleware/roleAuth.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/monitor/status/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/mpesa/callback/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/payments/initiate/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qapikey/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qcity/audit-log/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qcity/audit-log.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qcity/devices.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qcity/plugins.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qcity/remote-command/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qcity/remote-command.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qcity/schedule.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qcity/selfheal-npm/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qi-trading/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qi-trading.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/auto-fix/download-report/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/auto-fix/github-status/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/auto-fix/start/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/auto-fix/status/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/auto-fix/stop/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/avatars/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/backup/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/chat/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/fix/all.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/language/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/master-mode/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/memory/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/own-device-logs/export/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/own-device-logs/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/research/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue/reset/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue/start/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue/status/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue/stop/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue/target/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue/transfer/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/revenue-dashboard/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/session/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/user/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/voice-enroll/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/voice-preview/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi/voice-profiles/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-database/route.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-earning-enhanced/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-gitlab/deployments/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-gitlab/errors/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-gitlab/jobs/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-gitlab/pipelines/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-gitlab/trigger/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-model/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qmoi-model.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qnews/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qradio/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/qvillage/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/social-automation/route.ts: ERROR, stub
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/ssh/list/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/ssh/read/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/ssh/write/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/transactions/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/users/profile/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/voice/enroll/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/voice/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/wallet.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/wallets/[walletId]/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/wallets/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/webauthn/authenticate/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/webauthn/register/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/webhooks/payments/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/webhooks/qvillage/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/whatsapp/audit/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/whatsapp/verify/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/whatsapp-bot/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/whatsapp-business/route.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/wifi/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/wifi/scan/route.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/wifi-security/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/api/wifi-security.ts: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/components/AdminDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/components/ClientUISettings.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/components/auth/RegisterForm.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/components/user/UserProfile.tsx: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/components/wallet/WalletList.tsx: ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/page.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/app.backup.20260121144720/qcity/page.jsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/adapters/appServiceInit.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/adapters/backgroundServiceManager.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/adapters/clientAdapters.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/adapters/healthCheckService.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/adapters/serviceRecoveryManager.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/auth/AuthManager.ts: ERROR, stub
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/@vercel/analytics/next.tsx: stub
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/AssetOverview.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/Chatbot.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/DownloadQCity.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/FloatingAQ.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/LcSpaces.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/QI.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/QIStateWindow.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/QiSpaces.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/TradingHistory.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/TradingStatus.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/UISettings.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/AuditLogPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/AvatarSelector.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/AviatorGalleryPanel.tsx: stub
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/CommandPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/DevicePanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/EarningDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/EnhancedQMOIDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/MetricsPanel.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/Onboarding.tsx: TODO, placeholder, stub
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/PluginPanel.tsx: ERROR, stub
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QApiKeyManager.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QAvatar.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QFileManager.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMOIAutoFixDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMOIStateProvider.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiAutoDevPanel.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiDatabaseDashboard.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiFileEditorChat.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiKernelPanel.integration.test.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiKernelPanel.test.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiKernelPanel.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiMemoryPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiSettingsPanel.tsx: TODO, placeholder, stub
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiState.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiStateContext.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QMoiToolbar.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/QNewsDashboard.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/SchedulePanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/SelfHealPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/SessionPanel.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/SocialAutomationPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/SystemHealthPanel.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/VoiceSelector.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/WalletManager.tsx: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/ZeroRatedPanel.tsx: placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/avatarsConfig.ts: prototype
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/components/q-city/index.ts: placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/config/bitget.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/config/trading.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/config/wallet.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/hooks/useAuth.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/hooks/useAutoProjects.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/hooks/useQmoiKernel.test.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/hooks/useQmoiKernel.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/plugins/AIReviewPlugin.ts: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/plugins/AIReviewPlugin.tsx: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/plugins/DeviceHealthReviewerPlugin.ts: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/plugins/OptimizationSuggestionPlugin.ts: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/plugins/PluginManager.ts: ERROR, stub
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/plugins/QuickAIWidgetPlugin.ts: TODO, placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/AIRequestRouter.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/AppManagementService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/AutoResearcher.ts: placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/BrowserService.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/EnhancedErrorFixingService.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/EnhancedParallelizationService.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/EnhancedServicesCompatibility.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/ErrorFixingService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/FaceRecognitionService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/LoggerService.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/MultiUserSessionManager.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/NetworkManager.ts: placeholder
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/VPNService.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/VoiceRecognitionService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/services/WhatsAppService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/types/globals.d.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/types/trading.ts: ERROR
+- qmoi-enhanced-history-14/backups/src.backup.20260121144720/wallet.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/bitget-trader.py: Exception, ERROR
+- qmoi-enhanced-history-14/ci-debug-outputs/manual-build.txt: placeholder
+- qmoi-enhanced-history-14/ci-debug-outputs/manual-test.txt: placeholder
+- qmoi-enhanced-history-14/cloud_config/qmoi_cloud_config.json: ERROR
+- qmoi-enhanced-history-14/config/ai_automation_config.json: ERROR
+- qmoi-enhanced-history-14/config/master_access.json: ERROR
+- qmoi-enhanced-history-14/config/qcity-config.json: ERROR
+- qmoi-enhanced-history-14/config/qcity-device-config.json: ERROR
+- qmoi-enhanced-history-14/config/qcity_config.json: ERROR
+- qmoi-enhanced-history-14/config/qmoi_huggingface_config.json: ERROR
+- qmoi-enhanced-history-14/config/qmoi_master_config.json: ERROR
+- qmoi-enhanced-history-14/config/qserver-config.json: ERROR
+- qmoi-enhanced-history-14/config/test_config.json: ERROR
+- qmoi-enhanced-history-14/conftest.py: Exception
+- qmoi-enhanced-history-14/continuetodos.txt: TODO, placeholder, Exception, stub
+- qmoi-enhanced-history-14/continuous-release-monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/cypress/e2e/qmoi_kernel_panel_advanced.cy.js: ERROR
+- qmoi-enhanced-history-14/cypress/e2e/qmoi_kernel_panel_sso_oauth.cy.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/cypress/e2e/qmoi_kernel_panel_sso_oauth_biometric_magiclink.cy.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/cypress/e2e/qmoi_kernel_panel_sso_oauth_custom.cy.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/cypress/e2e/qmoi_kernel_panel_sso_oauth_device_delegated.cy.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/cypress/e2e/qmoi_kernel_panel_sso_oauth_edge.cy.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/cypress/e2e/qmoi_kernel_panel_sso_oauth_more.cy.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/cypress/e2e/qmoi_kernel_panel_sso_oauth_multi.cy.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/cypress/e2e/user-flows.cy.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/accepts/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/accepts/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/body-parser/HISTORY.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/body-parser/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/body-parser/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/body-parser/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/bytes/Readme.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bind-apply-helpers/README.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bind-apply-helpers/functionApply.d.ts: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bind-apply-helpers/functionApply.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bind-apply-helpers/functionCall.d.ts: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bind-apply-helpers/functionCall.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bind-apply-helpers/index.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bind-apply-helpers/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bind-apply-helpers/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bound/README.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bound/index.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bound/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/call-bound/test/index.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/content-disposition/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/content-type/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/content-type/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/content-type/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/cookie/README.md: placeholder, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/cookie/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/cookie-signature/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/cors/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/cors/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/debug/src/browser.js: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/debug/src/common.js: ERROR, stub
+- qmoi-enhanced-history-14/dashboard/node_modules/debug/src/node.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/depd/History.md: Exception, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/depd/Readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/depd/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/dunder-proto/README.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/dunder-proto/get.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/dunder-proto/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/dunder-proto/set.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/dunder-proto/test/get.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/dunder-proto/test/set.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/ee-first/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/ee-first/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/encodeurl/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/encodeurl/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/.github/FUNDING.yml: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/eval.d.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/eval.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/index.d.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/range.d.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/range.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/ref.d.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/ref.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/syntax.d.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/syntax.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/type.d.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/type.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/uri.d.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-errors/uri.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-object-atoms/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-object-atoms/RequireObjectCoercible.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-object-atoms/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/es-object-atoms/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/etag/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/express/History.md: Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/express/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/finalhandler/HISTORY.md: Exception, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/finalhandler/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/finalhandler/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/forwarded/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/function-bind/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/function-bind/README.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/function-bind/implementation.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/function-bind/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/function-bind/package.json: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/function-bind/test/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-intrinsic/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-intrinsic/README.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-intrinsic/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-intrinsic/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/get-intrinsic/test/GetIntrinsic.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-proto/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-proto/Object.getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-proto/README.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-proto/Reflect.getPrototypeOf.d.ts: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-proto/Reflect.getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-proto/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-proto/package.json: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/get-proto/test/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/gopd/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/has-symbols/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/has-symbols/shams.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/has-symbols/test/shams/core-js.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/has-symbols/test/shams/get-own-property-symbols.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/has-symbols/test/tests.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/hasown/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/http-errors/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/http-errors/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/http-errors/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/http-errors/node_modules/statuses/HISTORY.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/http-errors/node_modules/statuses/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/http-errors/node_modules/statuses/codes.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/http-errors/node_modules/statuses/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/http-errors/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/Changelog.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/encodings/dbcs-codec.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/encodings/dbcs-data.js: TODO
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/encodings/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/encodings/internal.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/encodings/sbcs-codec.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/encodings/utf16.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/encodings/utf32.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/iconv-lite/encodings/utf7.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/inherits/README.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/inherits/inherits_browser.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/ipaddr.js/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/ipaddr.js/ipaddr.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/js-tokens/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/loose-envify/loose-envify.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/math-intrinsics/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/media-typer/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/media-typer/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/media-typer/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/merge-descriptors/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/mime-db/db.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/mime-types/index.js: TODO
+- qmoi-enhanced-history-14/dashboard/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/negotiator/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/negotiator/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-assign/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/element.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/err.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/fakes.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/has.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/indent-option.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/inspect.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/number.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/toStringTag.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/object-inspect/test/values.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/on-finished/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/on-finished/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/on-finished/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/on-finished/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/once/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/once/once.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/path-to-regexp/Readme.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/proxy-addr/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/qs/CHANGELOG.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/qs/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/qs/test/parse.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/qs/test/stringify.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/qs/test/utils.js: TODO, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/range-parser/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/range-parser/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/range-parser/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/index.d.ts: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/node_modules/iconv-lite/Changelog.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/node_modules/iconv-lite/encodings/dbcs-codec.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/node_modules/iconv-lite/encodings/dbcs-data.js: TODO
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/node_modules/iconv-lite/encodings/internal.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/node_modules/iconv-lite/encodings/sbcs-codec.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/node_modules/iconv-lite/encodings/utf16.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/node_modules/iconv-lite/encodings/utf32.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/node_modules/iconv-lite/encodings/utf7.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/raw-body/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/react/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/react/cjs/react-jsx-dev-runtime.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react/cjs/react-jsx-runtime.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react/cjs/react-jsx-runtime.production.min.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react/cjs/react-jsx-runtime.profiling.min.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react/cjs/react.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react/cjs/react.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react/cjs/react.shared-subset.development.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/react/cjs/react.shared-subset.production.min.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/react/umd/react.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react/umd/react.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react/umd/react.profiling.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.browser.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-server-legacy.node.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-server.browser.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-server.node.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-server.node.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom-test-utils.production.min.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/cjs/react-dom.profiling.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/profiling.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom-server-legacy.browser.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom-server.browser.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom-server.browser.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom-test-utils.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom-test-utils.production.min.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/react-dom/umd/react-dom.profiling.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/router/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/router/README.md: placeholder, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/router/index.js: placeholder, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/safe-buffer/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/safe-buffer/index.d.ts: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/safe-buffer/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/safer-buffer/Porting-Buffer.md: Exception, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/safer-buffer/Readme.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/safer-buffer/dangerous.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/safer-buffer/safer.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/safer-buffer/tests.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/scheduler/cjs/scheduler-unstable_mock.development.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/scheduler/cjs/scheduler-unstable_mock.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/scheduler/cjs/scheduler-unstable_post_task.development.js: TODO, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/scheduler/cjs/scheduler.development.js: TODO, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/scheduler/cjs/scheduler.production.min.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/scheduler/umd/scheduler-unstable_mock.development.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/scheduler/umd/scheduler-unstable_mock.production.min.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/scheduler/unstable_mock.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/dashboard/node_modules/send/HISTORY.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/send/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/send/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/send/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/serve-static/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/serve-static/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/serve-static/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/setprototypeof/README.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/setprototypeof/index.d.ts: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/setprototypeof/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/setprototypeof/package.json: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/setprototypeof/test/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-list/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-list/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-list/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-list/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-map/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-map/index.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-map/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-map/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-weakmap/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-weakmap/index.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-weakmap/package.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/side-channel-weakmap/test/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/statuses/HISTORY.md: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/statuses/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/statuses/codes.json: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/statuses/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/type-is/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/type-is/README.md: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/type-is/index.js: prototype
+- qmoi-enhanced-history-14/dashboard/node_modules/unpipe/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/vary/index.js: ERROR
+- qmoi-enhanced-history-14/dashboard/node_modules/wrappy/wrappy.js: ERROR
+- qmoi-enhanced-history-14/data/qmoi-memory.json: ERROR
+- qmoi-enhanced-history-14/deploy-to-all-channels.py: Exception, ERROR
+- qmoi-enhanced-history-14/device_enhancer.py: Exception
+- qmoi-enhanced-history-14/docs/ALLTESTSAUTOTESTS.md: TODO
+- qmoi-enhanced-history-14/docs/API.md: ERROR
+- qmoi-enhanced-history-14/docs/API_REFERENCE.md: ERROR
+- qmoi-enhanced-history-14/docs/APIs_v1.md: stub
+- qmoi-enhanced-history-14/docs/APPSVALIDATION.md: stub
+- qmoi-enhanced-history-14/docs/AUTODEV_INSTRUCTIONS.md: TODO, stub
+- qmoi-enhanced-history-14/docs/AUTOEVOLVE.md: ERROR, stub
+- qmoi-enhanced-history-14/docs/AUTO_SETUP_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/docs/CLAUDE_SONNET_CONFIG.md: ERROR
+- qmoi-enhanced-history-14/docs/ENHANCED_FEATURES.md: ERROR
+- qmoi-enhanced-history-14/docs/FEATURESINDEX.md: stub
+- qmoi-enhanced-history-14/docs/IMPLEMENTATION_CHECKLIST.md: ERROR
+- qmoi-enhanced-history-14/docs/IMPLEMENTATION_SUMMARY.md: ERROR
+- qmoi-enhanced-history-14/docs/LION-ENHANCEMENTS-PLAN.md: ERROR
+- qmoi-enhanced-history-14/docs/LION-WEBHOOKS-ENHANCEMENTS.md: ERROR
+- qmoi-enhanced-history-14/docs/LIONOPERATINGSYSTEM.md: TODO, placeholder, prototype
+- qmoi-enhanced-history-14/docs/LION_ORCHESTRATOR_ENHANCEMENTS.md: TODO
+- qmoi-enhanced-history-14/docs/MASTER_INDEX.md: ERROR
+- qmoi-enhanced-history-14/docs/MONITORING_SYSTEM.md: ERROR
+- qmoi-enhanced-history-14/docs/PLATFORM_AUTOMATION.md: ERROR
+- qmoi-enhanced-history-14/docs/PRODUCTION_CHECKLIST.md: TODO, ERROR, stub
+- qmoi-enhanced-history-14/docs/QMOIGITHUBDEV.md: ERROR
+- qmoi-enhanced-history-14/docs/QMOIGITLABDEV.md: ERROR
+- qmoi-enhanced-history-14/docs/QMOIVERCELDEV.md: ERROR
+- qmoi-enhanced-history-14/docs/QMOI_AI_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/docs/QMOI_BACKGROUND_AUTOMATION_GUIDE.md: ERROR
+- qmoi-enhanced-history-14/docs/QMOI_BACKGROUND_AUTOMATION_README.md: ERROR
+- qmoi-enhanced-history-14/docs/QMOI_FRIENDSHIP_RUNBOOK.md: ERROR
+- qmoi-enhanced-history-14/docs/QTOOLS.md: stub
+- qmoi-enhanced-history-14/docs/QUICK_REFERENCE.md: ERROR
+- qmoi-enhanced-history-14/docs/README.md: ERROR
+- qmoi-enhanced-history-14/docs/REFERENCES.md: ERROR
+- qmoi-enhanced-history-14/docs/RELEASE_AUTOMATION.md: TODO, stub
+- qmoi-enhanced-history-14/docs/REVENUE_SPEC.md: Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/docs/REVENUE_SPEC.md.generated.md: Exception, ERROR, stub
+- qmoi-enhanced-history-14/docs/TODOS_ENHANCEMENTS.md: TODO
+- qmoi-enhanced-history-14/docs/TROUBLESHOOTING.md: ERROR
+- qmoi-enhanced-history-14/docs/TROUBLESHOOTING_FAQ.md: ERROR
+- qmoi-enhanced-history-14/docs/VALIDATIONSYSTEMS.md: placeholder
+- qmoi-enhanced-history-14/docs/VALIDATION_STRATEGIES.md: ERROR
+- qmoi-enhanced-history-14/docs/VALIDATION_TOOLS.md: TODO
+- qmoi-enhanced-history-14/docs/biometrics_report.json: ERROR
+- qmoi-enhanced-history-14/docs/full-app-inventory.json: placeholder, stub
+- qmoi-enhanced-history-14/docs/full-app-inventory.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/docs/link-validation-report.json: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/docs/link-validation-report.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/docs/link_report.json: TODO, ERROR
+- qmoi-enhanced-history-14/docs/link_report.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/docs/lion_variations/lion-plugin.md: stub
+- qmoi-enhanced-history-14/docs/md-inventory.json: TODO, ERROR
+- qmoi-enhanced-history-14/docs/md-inventory.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/docs/md_index.json: TODO, ERROR
+- qmoi-enhanced-history-14/docs/md_index.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/docs/merged_remediation_plan.md: placeholder, stub
+- qmoi-enhanced-history-14/docs/placeholders_replacement_report.json: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/docs/placeholders_replacement_report.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/docs/placeholders_report.json: TODO, FIXME, placeholder
+- qmoi-enhanced-history-14/docs/placeholders_report.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/docs/qvillage_features.md: ERROR
+- qmoi-enhanced-history-14/docs/validation/MANUAL_TODOS_TOP10.md: TODO
+- qmoi-enhanced-history-14/docs/validation/PLACEHOLDER_FIX_ACTIONS.md: TODO, placeholder
+- qmoi-enhanced-history-14/docs/verification-report.json: ERROR, prototype
+- qmoi-enhanced-history-14/docs/wallets_report.json: placeholder
+- qmoi-enhanced-history-14/docs/wallets_report.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/docs_site/PRODUCTION_LINK_AUDIT.json: stub
+- qmoi-enhanced-history-14/donerefs.txt: ERROR, stub
+- qmoi-enhanced-history-14/downloadqmoiai.py: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaiapk.py: Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaiappimage.py: Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaideb.py: Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaidmg.py: Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaiexe.py: Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaiimg.py: Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaiipa.py: Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaismarttvapk.py: Exception, ERROR
+- qmoi-enhanced-history-14/downloadqmoiaizip.py: Exception, ERROR
+- qmoi-enhanced-history-14/earnvault/ui/EnhancedTradingPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/earnvault/ui/FloatingAQ.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/enhanced-error-fix.js: ERROR
+- qmoi-enhanced-history-14/error-fix-summary.md: ERROR
+- qmoi-enhanced-history-14/eslint.config.js: ERROR
+- qmoi-enhanced-history-14/eslint_app_api.json: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/eslint_app_api.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_changed.json: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/eslint_changed.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_fix_result.json: TODO, FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/eslint_fix_result.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report.json: TODO, FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/eslint_report.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report_after_any_fix.json: TODO, FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/eslint_report_after_any_fix.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report_after_eslintignore.json: TODO, FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/eslint_report_after_eslintignore.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report_after_fix.json: TODO, FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/eslint_report_after_fix.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report_after_fix2.json: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/eslint_report_after_fix2.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report_after_fix2_post.json: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/eslint_report_after_fix2_post.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report_after_ignore.json: TODO, FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/eslint_report_after_ignore.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report_src.json: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/eslint_report_src.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_report_src_app.json: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/eslint_report_src_app.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_src_after_fix.json: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/eslint_src_after_fix.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/eslint_src_fix.json: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/eslint_src_fix.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/examples/dns_change.py: ERROR
+- qmoi-enhanced-history-14/execute-final-deployment.js: ERROR
+- qmoi-enhanced-history-14/execute-transfer.js: ERROR
+- qmoi-enhanced-history-14/finals.txt: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/force-deploy.js: ERROR
+- qmoi-enhanced-history-14/get-pip.py: TODO, placeholder, TBD, ERROR, stub
+- qmoi-enhanced-history-14/git-depsfix.ps1: ERROR
+- qmoi-enhanced-history-14/git-smart-sync.ps1: Exception, ERROR
+- qmoi-enhanced-history-14/git.txt: ERROR
+- qmoi-enhanced-history-14/hf_space_qvillage/app.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/hooks/useAIHealthCheck.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useAutoFixAllProblems.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useBitgetTrader.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/hooks/useColabJob.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useDatasetManager.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useDeviceHealth.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useErrorAutoFix.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useExtensionManager.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/hooks/useGlobalAutomation.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useLargeFileUpload.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useMediaGenerationStatus.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useProjects.ts: TODO, ERROR
+- qmoi-enhanced-history-14/hooks/useQCity.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useQMOIAutoInteraction.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useQMOIChat.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useQVillage.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useSystemMetrics.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useTTCVoice.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useTaskQueue.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useTrading.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useTradingAutomation.ts: ERROR
+- qmoi-enhanced-history-14/hooks/useWhatsApp.ts: ERROR
+- qmoi-enhanced-history-14/huggingface_space/app.js: TODO, placeholder
+- qmoi-enhanced-history-14/huggingface_space/email.js: ERROR
+- qmoi-enhanced-history-14/huggingface_space/inferenceProviders.js: ERROR
+- qmoi-enhanced-history-14/huggingface_space/plugins/aiReview.js: stub
+- qmoi-enhanced-history-14/huggingface_space/server.js: ERROR, stub
+- qmoi-enhanced-history-14/instructions.txt: ERROR
+- qmoi-enhanced-history-14/iterative-improvement-test.js: Exception, ERROR
+- qmoi-enhanced-history-14/jest.setup.js: ERROR
+- qmoi-enhanced-history-14/k6/load-test.js: ERROR
+- qmoi-enhanced-history-14/link_report.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/load-test-cache-utilities.sh: ERROR
+- qmoi-enhanced-history-14/local-release-verify.ps1: ERROR
+- qmoi-enhanced-history-14/main.js: ERROR
+- qmoi-enhanced-history-14/master-error-fix.js: ERROR
+- qmoi-enhanced-history-14/matches.json: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/matches.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/matches_with_comments.json: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/matches_with_comments.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/metrics.json: ERROR
+- qmoi-enhanced-history-14/middleware.ts: ERROR
+- qmoi-enhanced-history-14/ml/qmoi_advanced_error_predictor.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/App.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/components/AlertSettingsScreen.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/components/AnalyticsScreen.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/components/DeviceManagementScreen.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/code-frame/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/code-frame/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/compat-data/corejs2-built-ins.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/compat-data/corejs3-shipped-proposals.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/compat-data/data/corejs2-built-ins.json: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/compat-data/native-modules.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/compat-data/overlapping-plugins.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/compat-data/plugin-bugfixes.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/compat-data/plugins.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/core/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/core/node_modules/semver/semver.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/core/src/config/files/index-browser.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/core/src/transform-file-browser.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/core/src/transform-file.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/helper-compilation-targets/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/helper-compilation-targets/node_modules/semver/semver.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/helper-globals/data/browser-upper.json: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/helper-globals/data/builtin-upper.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/parser/CHANGELOG.md: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/parser/bin/babel-parser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/parser/typings/babel-parser.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/applyDecs.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/applyDecs2203.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/applyDecs2203R.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/applyDecs2301.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/applyDecs2305.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/applyDecs2311.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/assertClassBrand.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/assertThisInitialized.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/asyncIterator.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/callSuper.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/checkInRHS.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/checkPrivateRedeclaration.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/classApplyDescriptorDestructureSet.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/classApplyDescriptorSet.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/classCallCheck.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/classCheckPrivateStaticFieldDescriptor.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/classNameTDZError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/classPrivateFieldLooseBase.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/classPrivateMethodSet.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/classStaticPrivateMethodSet.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/construct.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/createClass.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/createForOfIteratorHelper.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/createForOfIteratorHelperLoose.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/createSuper.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/decorate.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/dispose.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2203.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2203R.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2301.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2305.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/applyDecs2311.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/assertClassBrand.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/asyncIterator.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/callSuper.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/checkInRHS.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/checkPrivateRedeclaration.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/classApplyDescriptorDestructureSet.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/classApplyDescriptorSet.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/classCallCheck.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/classCheckPrivateStaticFieldDescriptor.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/classNameTDZError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/classPrivateFieldLooseBase.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/classPrivateMethodSet.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/classStaticPrivateMethodSet.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/construct.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/createClass.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelper.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/createForOfIteratorHelperLoose.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/createSuper.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/decorate.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/dispose.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/importDeferProxy.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/inherits.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/initializerWarningHelper.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/isNativeReflectConstruct.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/newArrowCheck.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/nonIterableRest.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/nullishReceiverError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/readOnlyError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/regenerator.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/regeneratorAsyncIterator.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/regeneratorValues.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/set.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/superPropBase.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/superPropGet.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/superPropSet.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/tdz.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/toPrimitive.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/typeof.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/using.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/usingCtx.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/wrapAsyncGenerator.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/wrapRegExp.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/esm/writeOnlyError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/importDeferProxy.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/inherits.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/inheritsLoose.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/initializerWarningHelper.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/isNativeReflectConstruct.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/newArrowCheck.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/nonIterableRest.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/nonIterableSpread.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/nullishReceiverError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/objectDestructuringEmpty.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/possibleConstructorReturn.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/readOnlyError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/regenerator.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/regeneratorAsyncIterator.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/regeneratorRuntime.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/regeneratorValues.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/set.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/setPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/superPropBase.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/superPropGet.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/superPropSet.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/tdz.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/toPrimitive.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/typeof.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/using.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/usingCtx.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/wrapAsyncGenerator.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/wrapNativeSuper.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/wrapRegExp.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/helpers/writeOnlyError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@babel/runtime/regenerator/index.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@isaacs/ttlcache/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@isaacs/ttlcache/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@istanbuljs/load-nyc-config/README.md: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/@istanbuljs/load-nyc-config/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@istanbuljs/load-nyc-config/load-esm.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@istanbuljs/schema/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@jest/create-cache-key-function/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/gen-mapping/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/gen-mapping/src/gen-mapping.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/remapping/src/build-source-map-tree.ts: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/remapping/src/source-map-tree.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/source-map/README.md: TODO, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/source-map/src/source-map.ts: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/sourcemap-codec/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/trace-mapping/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/@jridgewell/trace-mapping/src/trace-mapping.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/README.md: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/out/adapters/fs.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/out/constants.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/out/providers/async.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/out/providers/async.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/out/providers/sync.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/out/settings.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/out/settings.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.scandir/out/types/index.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.stat/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.stat/out/adapters/fs.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.stat/out/providers/async.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.stat/out/providers/async.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.stat/out/providers/sync.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.stat/out/settings.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.stat/out/settings.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.stat/out/types/index.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/providers/async.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/providers/async.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/providers/stream.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/readers/async.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/readers/async.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/readers/common.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/readers/common.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/readers/sync.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/readers/sync.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/settings.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/settings.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@nodelib/fs.walk/out/types/index.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/assets-registry/path-support.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/js-polyfills/console.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/js-polyfills/error-guard.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/js-polyfills/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/js-polyfills/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/virtualized-lists/Lists/FillRateHelper.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/virtualized-lists/Lists/ListMetricsAggregator.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/virtualized-lists/Lists/ViewabilityHelper.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/virtualized-lists/Lists/VirtualizeUtils.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/virtualized-lists/Lists/VirtualizedList.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/virtualized-lists/Lists/VirtualizedListCellRenderer.js: TODO, FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/virtualized-lists/Lists/VirtualizedSectionList.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native/virtualized-lists/types_generated/Lists/FillRateHelper.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-async-storage/async-storage/jest/async-storage-mock.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-async-storage/async-storage/src/AsyncStorage.native.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-async-storage/async-storage/src/AsyncStorage.ts: ERROR, stub
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-async-storage/async-storage/src/NativeAsyncStorageModule.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-async-storage/async-storage/src/helpers.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-async-storage/async-storage/src/types.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli/node_modules/commander/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli/node_modules/commander/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli/node_modules/commander/typings/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli/node_modules/locate-path/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli/node_modules/p-limit/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli/node_modules/p-locate/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/argparse/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/argparse/argparse.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/cosmiconfig/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/import-fresh/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/bin/js-yaml.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/js-yaml/index.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/parse-json/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/parse-json/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/parse-json/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-config/node_modules/resolve-from/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-server-api/node_modules/open/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-server-api/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-tools/node_modules/locate-path/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/Mime.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-tools/node_modules/mime/types/standard.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-tools/node_modules/p-limit/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-native-community/cli-tools/node_modules/p-locate/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/BaseNavigationContainer.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/EnsureSingleNavigator.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/NavigationStateContext.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/PreventRemoveProvider.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/checkSerializable.tsx: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/createNavigationContainerRef.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/createNavigatorFactory.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/fromEntries.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/getFocusedRouteNameFromRoute.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/getPathFromState.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/getStateFromPath.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/types.tsx: stub
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useComponent.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useDescriptors.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useFocusEffect.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useKeyedChildListeners.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useNavigation.tsx: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useNavigationBuilder.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useNavigationCache.tsx: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useNavigationHelpers.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useOnPreventRemove.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/usePreventRemoveContext.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useRegisterNavigator.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useRoute.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useScheduleUpdate.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/useSyncState.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/core/src/validatePathConfig.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/elements/src/Header/Header.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/elements/src/Header/useHeaderHeight.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/elements/src/MaskedView.tsx: stub
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/elements/src/ResourceSavingView.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/elements/src/SafeAreaProviderCompat.tsx: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native/src/ServerContainer.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native/src/createMemoryHistory.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native/src/useLinkProps.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native/src/useLinkTo.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native/src/useLinking.native.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native/src/useLinking.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native/src/useScrollToTop.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native-stack/src/navigators/createNativeStackNavigator.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native-stack/src/utils/useDismissedRouteError.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native-stack/src/utils/useInvalidPreventRemoveError.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native-stack/src/views/FontProcessor.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native-stack/src/views/HeaderConfig.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/native-stack/src/views/NativeStackView.native.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@react-navigation/routers/src/CommonActions.tsx: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/compiler/compiler.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/compiler/compiler.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/compiler/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/compiler/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/errors/errors.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/errors/errors.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/errors/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/errors/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/system/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/system/system.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/system/system.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/typebox.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/typebox.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/cast.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/cast.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/check.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/check.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/clone.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/convert.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/convert.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/create.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/create.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/delta.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/delta.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/equal.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/hash.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/hash.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/mutate.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/mutate.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/pointer.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/pointer.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/value.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinclair/typebox/value/value.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinonjs/commons/package.json: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinonjs/commons/types/called-in-order.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], stub
+- qmoi-enhanced-history-14/mobile/node_modules/@sinonjs/commons/types/index.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinonjs/commons/types/order-by-first-call.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], stub
+- qmoi-enhanced-history-14/mobile/node_modules/@sinonjs/commons/types/prototypes/copy-prototype-methods.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@sinonjs/commons/types/prototypes/throws-on-proto.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinonjs/fake-timers/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@sinonjs/fake-timers/src/fake-timers-src.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/babel__core/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/babel__template/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/@types/babel__traverse/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/graceful-fs/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/graceful-fs/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/assert.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/async_hooks.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/buffer.buffer.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/buffer.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/child_process.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/cluster.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/compatibility/iterators.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/console.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/crypto.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/dgram.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/diagnostics_channel.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/dns/promises.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/dns.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/domain.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/events.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/fs/promises.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/fs.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/globals.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/http.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/http2.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/https.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/index.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/inspector.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/inspector.generated.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/module.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/net.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/os.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/path.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/perf_hooks.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/process.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/readline.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/repl.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/sea.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/sqlite.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/stream/web.d.ts: ERROR, stub, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/stream.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/test.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/timers.d.ts: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/tls.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/trace_events.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/ts5.6/buffer.buffer.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/ts5.6/index.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/ts5.7/index.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/url.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/util.d.ts: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/v8.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/vm.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/wasi.d.ts: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/web-globals/abortcontroller.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/web-globals/domexception.d.ts: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/web-globals/events.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/web-globals/navigator.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/web-globals/storage.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/worker_threads.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/node/zlib.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/yargs/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@types/yargs-parser/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@vscode/sudo-prompt/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@vscode/sudo-prompt/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@vscode/sudo-prompt/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@vscode/sudo-prompt/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@vscode/sudo-prompt/test-concurrent.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/@vscode/sudo-prompt/test.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/accepts/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/accepts/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/acorn/CHANGELOG.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/acorn/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/anser/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/ansi-fragments/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/anymatch/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/appdirsjs/README.md: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/argparse/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/asap/CHANGES.md: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/asap/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/asap/asap.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/asap/browser-asap.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/asap/browser-raw.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/asap/raw.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/async-limiter/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/asynckit/README.md: TBD, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/asynckit/bench.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/asynckit/parallel.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/asynckit/serialOrdered.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/axios/CHANGELOG.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/axios/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/axios/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/axios/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/babel-plugin-istanbul/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/babel-plugin-jest-hoist/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/babel-preset-current-node-syntax/src/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/base64-js/base64js.min.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/base64-js/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/baseline-browser-mapping/README.md: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/baseline-browser-mapping/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/bl/BufferList.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/bl/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/bl/bl.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/bl/test/indexOf.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/bl/test/test.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/HISTORY.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/on-finished/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/on-finished/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/on-finished/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/node_modules/on-finished/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/body-parser/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/braces/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/browserslist/browser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/browserslist/cli.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/browserslist/error.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/browserslist/error.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/browserslist/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/browserslist/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/browserslist/node.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/bser/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/bser/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/buffer/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/buffer/index.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/buffer/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/buffer-from/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/bytes/Readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/call-bind-apply-helpers/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/call-bind-apply-helpers/functionApply.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/call-bind-apply-helpers/functionApply.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/call-bind-apply-helpers/functionCall.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/call-bind-apply-helpers/functionCall.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/call-bind-apply-helpers/index.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/call-bind-apply-helpers/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/call-bind-apply-helpers/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/call-bound/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/call-bound/index.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/call-bound/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/call-bound/test/index.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/callsites/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/callsites/readme.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/camelcase/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/camelcase/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/array-find-index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/array-find.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/array-includes.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/css-placeholder-shown.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/css-placeholder.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/date-tolocaledatestring.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/es6-string-includes.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/input-placeholder.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/pad-start-end.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features/promise-finally.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/caniuse-lite/data/features.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/chalk/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/chalk/readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/chalk/source/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/chalk/source/templates.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/chrome-launcher/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/chrome-launcher/changelog.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/chrome-launcher/docs/chrome-flags-for-tools.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/mobile/node_modules/chrome-launcher/manual-chrome-launcher.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/chrome-launcher/scripts/download-chrome.sh: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/chrome-launcher/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/chromium-edge-launcher/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/chromium-edge-launcher/changelog.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/chromium-edge-launcher/docs/edge-flags-for-tools.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/mobile/node_modules/chromium-edge-launcher/manual-edge-launcher.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/chromium-edge-launcher/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/ci-info/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/cli-spinners/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/clone/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/clone/clone.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/color-convert/conversions.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/colorette/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/combined-stream/Readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/commander/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/commander/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/commander/typings/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/negotiator/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/compression/node_modules/negotiator/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/concat-map/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/connect/HISTORY.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/connect/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/connect/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/connect/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/connect/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/connect/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/connect/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/connect/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/connect/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/connect/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/content-type/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/content-type/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/content-type/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/convert-source-map/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/convert-source-map/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/cosmiconfig/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/cosmiconfig/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/cross-spawn/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/cross-spawn/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/dayjs.min.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/index.js: TODO, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/advancedFormat/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/arraySupport/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/badMutable/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/bigIntSupport/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/buddhistEra/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/calendar/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/customParseFormat/index.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/dayOfYear/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/devHelper/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/duration/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isBetween/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isLeapYear/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isSameOrAfter/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isSameOrBefore/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isToday/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isTomorrow/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isYesterday/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isoWeek/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/isoWeeksInYear/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/localeData/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/localizedFormat/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/negativeYear/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/objectSupport/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/pluralGetSet/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/preParsePostFormat/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/quarterOfYear/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/relativeTime/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/timezone/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/toArray/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/toObject/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/utc/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/weekOfYear/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/weekYear/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/esm/plugin/weekday/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/advancedFormat.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/arraySupport.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/badMutable.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/bigIntSupport.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/buddhistEra.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/calendar.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/customParseFormat.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/dayOfYear.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/devHelper.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/duration.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isBetween.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isLeapYear.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isSameOrAfter.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isSameOrBefore.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isToday.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isTomorrow.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isYesterday.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isoWeek.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/isoWeeksInYear.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/localeData.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/localizedFormat.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/negativeYear.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/objectSupport.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/pluralGetSet.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/preParsePostFormat.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/quarterOfYear.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/relativeTime.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/timezone.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/toArray.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/toObject.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/utc.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/weekOfYear.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/weekYear.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dayjs/plugin/weekday.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/debug/src/browser.js: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/debug/src/common.js: ERROR, stub
+- qmoi-enhanced-history-14/mobile/node_modules/debug/src/node.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/decamelize/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/decode-uri-component/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/deepmerge/changelog.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/deepmerge/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/delayed-stream/Readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/depd/History.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/depd/Readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/depd/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/destroy/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/destroy/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dunder-proto/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dunder-proto/get.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dunder-proto/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dunder-proto/set.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dunder-proto/test/get.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/dunder-proto/test/set.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/ee-first/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/ee-first/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/encodeurl/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/encodeurl/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/env-paths/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/env-paths/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/error-ex/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/error-ex/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/error-ex/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/error-stack-parser/README.md: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/error-stack-parser/error-stack-parser.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/error-stack-parser/error-stack-parser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/error-stack-parser/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/errorhandler/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/errorhandler/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/errorhandler/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/errorhandler/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/.github/FUNDING.yml: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/eval.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/eval.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/range.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/range.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/ref.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/ref.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/syntax.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/syntax.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/type.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/type.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/uri.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-errors/uri.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-object-atoms/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-object-atoms/RequireObjectCoercible.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-object-atoms/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-object-atoms/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-set-tostringtag/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/es-set-tostringtag/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-set-tostringtag/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/es-set-tostringtag/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/escalade/readme.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/escape-html/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/escape-string-regexp/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/esprima/bin/esparse.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/esprima/bin/esvalidate.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/etag/HISTORY.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/etag/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/etag/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/event-target-shim/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/event-target-shim/index.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/execa/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/execa/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/execa/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/exponential-backoff/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/exponential-backoff/src/backoff.spec.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/exponential-backoff/src/backoff.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/exponential-backoff/src/delay/always/always.delay.spec.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/exponential-backoff/src/options.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-deep-equal/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/fast-deep-equal/es6/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fast-deep-equal/es6/react.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fast-deep-equal/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fast-deep-equal/react.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/providers/filters/error.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/providers/filters/error.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/providers/provider.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/providers/provider.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/providers/stream.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/readers/async.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/readers/reader.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/readers/reader.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/readers/stream.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/readers/sync.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/settings.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/settings.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/types/index.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/utils/errno.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/utils/errno.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-glob/out/utils/stream.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-json-stable-stringify/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-json-stable-stringify/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-json-stable-stringify/test/nested.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/CHANGELOG.md: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/cli/read.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/fxp.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/util.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/EntitiesParser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/OptionsBuilder.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/BaseOutputBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/JsArrBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/JsMinArrBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/JsObjBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/OutputBuilders/ParserOptionsBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/XMLParser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/Xml2JsParser.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/XmlPartReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/XmlSpecialTagsReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/inputSource/BufferSource.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/inputSource/StringSource.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/valueParsers/EntitiesParser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v5/valueParsers/booleanParser.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/EntitiesParser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/OptionsBuilder.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/BaseOutputBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/JsArrBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/JsMinArrBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/JsObjBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/OutputBuilders/ParserOptionsBuilder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/XMLParser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/Xml2JsParser.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/XmlPartReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/XmlSpecialTagsReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/inputSource/BufferSource.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/inputSource/StringSource.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/valueParsers/EntitiesParser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/v6/valueParsers/booleanParser.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/validator.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/xmlbuilder/json2xml.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/xmlparser/DocTypeReader.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/xmlparser/OptionsBuilder.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/xmlparser/OrderedObjParser.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/xmlparser/XMLParser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fast-xml-parser/src/xmlparser/node2json.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/fastq/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fastq/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fastq/queue.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fastq/test/promise.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fastq/test/test.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fb-watchman/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fill-range/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fill-range/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/HISTORY.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/finalhandler/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/flow-enums-runtime/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/flow-enums-runtime/__tests__/tests.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/flow-enums-runtime/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/follow-redirects/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/follow-redirects/debug.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/follow-redirects/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/form-data/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/form-data/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/form-data/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fs-extra/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/fs-extra/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fs.realpath/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fs.realpath/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/fs.realpath/old.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/function-bind/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/function-bind/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/function-bind/implementation.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/function-bind/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/function-bind/package.json: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/function-bind/test/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/gensync/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/gensync/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/gensync/test/index.test.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/get-caller-file/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/get-intrinsic/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-intrinsic/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-intrinsic/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-intrinsic/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/get-intrinsic/test/GetIntrinsic.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-proto/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-proto/Object.getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-proto/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-proto/Reflect.getPrototypeOf.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-proto/Reflect.getPrototypeOf.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-proto/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-proto/package.json: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-proto/test/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/get-stream/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/get-stream/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/get-stream/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/glob/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/glob/common.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/glob/glob.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/glob/sync.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/gopd/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/graceful-fs/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/graceful-fs/clone.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/graceful-fs/graceful-fs.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/graceful-fs/legacy-streams.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/graceful-fs/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/graceful-fs/polyfills.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/has-symbols/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/has-symbols/shams.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/has-symbols/test/shams/core-js.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/has-symbols/test/shams/get-own-property-symbols.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/has-symbols/test/tests.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/has-tostringtag/test/shams/core-js.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/has-tostringtag/test/shams/get-own-property-symbols.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/has-tostringtag/test/tests.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/has-tostringtag/tsconfig.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/hasown/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/hasown/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/hermes-parser/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/http-errors/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/http-errors/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/http-errors/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/http-errors/node_modules/statuses/HISTORY.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/http-errors/node_modules/statuses/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/http-errors/node_modules/statuses/codes.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/http-errors/node_modules/statuses/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/http-errors/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/human-signals/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/human-signals/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/Changelog.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/encodings/dbcs-codec.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/encodings/dbcs-data.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/encodings/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/encodings/internal.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/encodings/sbcs-codec.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/encodings/utf16.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/iconv-lite/encodings/utf7.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/image-size/Readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/image-size/bin/image-size.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/import-fresh/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/import-fresh/node_modules/resolve-from/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/imurmurhash/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/imurmurhash/imurmurhash.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/imurmurhash/imurmurhash.min.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/inherits/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/inherits/inherits_browser.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/invariant/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/invariant/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/invariant/browser.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/invariant/invariant.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/is-arrayish/package.json: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/is-directory/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/is-number/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/is-plain-obj/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/isexe/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/isexe/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/isexe/test/basic.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-coverage/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/node_modules/semver/semver.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/src/constants.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/src/instrumenter.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/src/read-coverage.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/src/source-coverage.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/istanbul-lib-instrument/src/visitor.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/jest-mock/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/jest-util/Readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/jest-validate/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/jest-validate/node_modules/camelcase/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/jest-worker/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/js-tokens/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/js-yaml/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/js-yaml/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/js-yaml/bin/js-yaml.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/jsc-safe-url/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/jsc-safe-url/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/jsesc/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-better-errors/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-better-errors/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-better-errors/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-better-errors/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-even-better-errors/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-even-better-errors/LICENSE.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-even-better-errors/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-even-better-errors/index.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json-parse-even-better-errors/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/json5/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/jsonfile/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/jsonfile/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/kleur/readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/launch-editor/get-args.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/launch-editor/guess.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/launch-editor/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/launch-editor/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/leven/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/leven/index.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/lighthouse-logger/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/lighthouse-logger/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/lighthouse-logger/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/lighthouse-logger/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/lighthouse-logger/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/lighthouse-logger/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/lighthouse-logger/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/lighthouse-logger/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/locate-path/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/lodash.throttle/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/log-symbols/browser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/log-symbols/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/log-symbols/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/log-symbols/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/docs/NODE_API.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/node_modules/y18n/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/node_modules/y18n/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/node_modules/y18n/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/node_modules/yargs/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/node_modules/yargs-parser/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/node_modules/yargs-parser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/logkitty/node_modules/yargs-parser/index.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/loose-envify/loose-envify.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/lru-cache/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/lru-cache/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/makeerror/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/makeerror/readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/math-intrinsics/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/media-typer/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/media-typer/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/memoize-one/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/merge-options/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/merge-options/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/merge-stream/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/merge2/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/merge2/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/metro/node_modules/hermes-parser/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/node_modules/ws/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/metro/node_modules/ws/browser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/Assets.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/Bundler/util.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/Bundler.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/DeltaBundler/DeltaCalculator.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/DeltaBundler/Graph.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/DeltaBundler/Serializers/sourceMapGenerator.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/DeltaBundler/Transformer.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/DeltaBundler/WorkerFarm.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/DeltaBundler/buildSubgraph.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/DeltaBundler.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/HmrServer.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/IncrementalBundler/GraphNotFoundError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/IncrementalBundler/ResourceNotFoundError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/IncrementalBundler/RevisionNotFoundError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/IncrementalBundler.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/ModuleGraph/worker/collectDependencies.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/Server/symbolicate.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/Server.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/Server.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/cli/parseKeyValueParamArray.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/cli-utils.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/commands/dependencies.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/index.flow.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/integration_tests/basic_bundle/ErrorBundle.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/integration_tests/basic_bundle/require-context/empty.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/integration_tests/basic_bundle/require-resolveWeak/subdir/throwing-module.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/node-haste/DependencyGraph/ModuleResolution.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/node-haste/DependencyGraph/createFileMap.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/node-haste/DependencyGraph.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/node-haste/DependencyGraph.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/node-haste/Module.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro/src/shared/output/RamBundle/as-indexed-file.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-babel-transformer/node_modules/hermes-parser/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-cache/src/Cache.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-cache/src/stores/FileStore.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-cache/src/stores/HttpError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-cache/src/stores/HttpGetStore.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-cache/src/stores/HttpStore.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-cache/src/stores/NetworkError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-config/src/configTypes.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/metro-config/src/defaults/exclusionList.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/metro-config/src/defaults/index.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/metro-config/src/loadConfig.js: ERROR, stub
+- qmoi-enhanced-history-14/mobile/node_modules/metro-core/README.md: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/metro-core/src/Logger.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-core/src/errors/AmbiguousModuleResolutionError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-core/src/errors/PackageResolutionError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-core/src/errors.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-core/src/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/Watcher.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/Watcher.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/cache/DiskCacheManager.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/crawlers/node/hasNativeFindSupport.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/crawlers/node/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/crawlers/watchman/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/flow-types.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/plugins/HastePlugin.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/plugins/MockPlugin.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/plugins/haste/DuplicateHasteCandidatesError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/plugins/haste/HasteConflictsError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/plugins/mocks/getMockName.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/watchers/AbstractWatcher.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/watchers/FallbackWatcher.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/watchers/NativeWatcher.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/watchers/WatchmanWatcher.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-file-map/src/worker.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/PackageExportsResolve.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/PackageImportsResolve.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/errors/FailedToResolveNameError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/errors/FailedToResolvePathError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/errors/FailedToResolveUnsupportedError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/errors/InvalidPackageConfigurationError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/errors/InvalidPackageError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/errors/PackageImportNotResolvedError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/errors/PackagePathNotExportedError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/resolve.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/types.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/utils/matchSubpathFromExportsLike.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-resolver/src/utils/reduceExportsLikeMap.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-runtime/src/modules/HMRClient.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-runtime/src/modules/vendor/eventemitter3.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/metro-runtime/src/polyfills/require.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-source-map/README.md: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/metro-source-map/src/Generator.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-source-map/src/composeSourceMaps.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-source-map/src/source-map.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-symbolicate/src/ChromeHeapSnapshot.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/metro-symbolicate/src/SourceMetadataMapConsumer.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/metro-symbolicate/src/Symbolication.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-symbolicate/src/symbolicate.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-transform-plugins/src/import-export-plugin.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-transform-plugins/src/inline-requires-plugin.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-transform-plugins/src/normalizePseudoGlobals.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-transform-worker/src/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/metro-transform-worker/src/utils/getMinifier.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/micromatch/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/micromatch/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/mime/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/mime/mime.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/mime/src/test.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/mime/types.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/mime-db/db.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/mime-types/index.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/mimic-fn/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/mimic-fn/index.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/minimatch/minimatch.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/mkdirp/bin/cmd.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/negotiator/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/negotiator/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/node-int64/Int64.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/node-stream-zip/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/node-stream-zip/node_stream_zip.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/node-stream-zip/node_stream_zip.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/normalize-path/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/npm-run-path/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/npm-run-path/index.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/nullthrows/nullthrows.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/package.json: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/bigint.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/element.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/err.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/fakes.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/has.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/indent-option.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/inspect.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/number.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/toStringTag.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/object-inspect/test/values.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/on-finished/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/on-finished/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/on-finished/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/on-finished/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/on-headers/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/once/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/once/once.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/onetime/index.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/onetime/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/onetime/readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/open/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/ora/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/p-limit/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/p-locate/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/p-locate/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/p-try/index.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/p-try/index.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/p-try/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/parent-module/node_modules/callsites/index.d.ts: TODO, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/parent-module/node_modules/callsites/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/parent-module/node_modules/callsites/readme.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/parse-json/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/parse-json/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/parse-json/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/parseurl/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/path-exists/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/path-key/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/path-key/index.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/picomatch/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/pirates/README.md: TODO, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/pirates/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/pretty-format/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/pretty-format/node_modules/ansi-styles/index.js: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/promise/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/core.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/promise/domains/core.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/domains/done.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/domains/es6-extensions.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/domains/finally.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/domains/node-extensions.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/domains/rejection-tracking.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/promise/domains/synchronous.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/index.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/polyfill-done.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/setimmediate/core.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/setimmediate/done.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/setimmediate/es6-extensions.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/setimmediate/finally.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/setimmediate/node-extensions.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/setimmediate/rejection-tracking.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/promise/setimmediate/synchronous.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/src/core.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/src/done.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/src/es6-extensions.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/src/finally.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/src/node-extensions.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/promise/src/rejection-tracking.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/promise/src/synchronous.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/prompts/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/proxy-from-env/README.md: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/proxy-from-env/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/proxy-from-env/test.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/qs/CHANGELOG.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/qs/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/qs/test/parse.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/qs/test/stringify.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/qs/test/utils.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/query-string/index.d.ts: TODO, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/query-string/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/query-string/readme.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/queue/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/queue/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/queue/readme.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/queue-microtask/README.md: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/range-parser/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/range-parser/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/range-parser/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/raw-body/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/raw-body/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/raw-body/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/raw-body/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/raw-body/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react/cjs/react-jsx-dev-runtime.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react/cjs/react-jsx-runtime.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react/cjs/react-jsx-runtime.production.min.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react/cjs/react-jsx-runtime.profiling.min.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react/cjs/react.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react/cjs/react.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react/cjs/react.shared-subset.development.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react/cjs/react.shared-subset.production.min.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react/umd/react.development.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react/umd/react.production.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react/umd/react.profiling.min.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-devtools-core/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-devtools-core/node_modules/ws/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-devtools-core/node_modules/ws/browser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-is/cjs/react-is.development.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-is/umd/react-is.development.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ActionSheetIOS/ActionSheetIOS.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ActionSheetIOS/ActionSheetIOS.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Alert/Alert.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Alert/RCTAlertManager.android.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/Animated.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/Animated.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/AnimatedEvent.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/AnimatedExports.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/AnimatedImplementation.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/AnimatedMock.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/animations/Animation.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/animations/DecayAnimation.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/animations/SpringAnimation.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/animations/TimingAnimation.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/bezier.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedFlatList.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedImage.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedScrollView.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedSectionList.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/components/AnimatedText.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/createAnimatedComponent.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedColor.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedDivision.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedInterpolation.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedNode.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedObject.js: FIXME, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedProps.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedStyle.js: FIXME, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedTransform.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedValue.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedValueXY.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Animated/nodes/AnimatedWithChildren.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/AppState/AppState.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/BatchedBridge/MessageQueue.js: TODO, FIXME, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/BatchedBridge/NativeModules.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Blob/Blob.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Blob/BlobManager.js: TODO, FIXME, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Blob/FileReader.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Blob/URL.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Blob/URLSearchParams.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/BugReporting/BugReporting.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/BugReporting/dumpReactTree.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/BugReporting/getReactData.js: TODO, FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/AccessibilityInfo/AccessibilityInfo.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/ActivityIndicator/ActivityIndicator.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Button.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/DrawerAndroid/DrawerLayoutAndroid.android.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/DrawerAndroid/DrawerLayoutAndroidFallback.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Keyboard/KeyboardAvoidingView.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/LayoutConformance/LayoutConformance.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Pressable/Pressable.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Pressable/useAndroidRippleForView.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/ProgressBarAndroid/ProgressBarAndroid.android.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/ProgressBarAndroid/ProgressBarAndroid.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/RefreshControl/RefreshControl.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/ScrollView/ScrollView.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/ScrollView/ScrollView.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/ScrollView/ScrollViewContext.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/ScrollView/ScrollViewStickyHeader.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/StatusBar/StatusBar.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Switch/Switch.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/TextInput/AndroidTextInputNativeComponent.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/TextInput/InputAccessoryView.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/TextInput/RCTTextInputViewConfig.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInput.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInput.flow.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInput.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/TextInput/TextInputState.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/ToastAndroid/ToastAndroidFallback.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/BoundingDimensions.js: FIXME, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/PooledClass.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/Position.js: FIXME, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/Touchable.d.ts: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/Touchable.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableBounce.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableHighlight.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableNativeFeedback.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableOpacity.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableWithoutFeedback.d.ts: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/Touchable/TouchableWithoutFeedback.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Components/UnimplementedViews/UnimplementedView.js: stub
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Devtools/loadBundleFromServer.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Devtools/openFileInEditor.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Devtools/openURLInBrowser.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Devtools/parseErrorStack.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Devtools/parseHermesStack.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Devtools/symbolicateStackTrace.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/ExceptionsManager.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/ExtendedError.js: FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/InitializeCore.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/NativeExceptionsManager.js: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/ReactFiberErrorDialog.js: FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/ReactNativeVersionCheck.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Timers/JSTimers.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Timers/immediateShim.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/Timers/queueMicrotask.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/polyfillPromise.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpDeveloperTools.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpErrorHandling.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpGlobals.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpNavigator.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpPerformance.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpReactDevTools.js: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpReactRefresh.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpSegmentFetcher.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Core/setUpTimers.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Debugging/DebuggingOverlayRegistry.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/EventEmitter/RCTDeviceEventEmitter.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/AssetSourceResolver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/Image.android.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/Image.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/Image.ios.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/ImageBackground.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/ImageProps.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/ImageTypes.flow.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/ImageViewNativeComponent.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/RelativeImageStub.js: stub
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Image/resolveAssetSource.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Interaction/InteractionManager.js: FIXME, ERROR, stub
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Interaction/InteractionManagerStub.js: FIXME, ERROR, stub
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Interaction/PanResponder.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Interaction/TaskQueue.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Interaction/TouchHistoryMath.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LayoutAnimation/LayoutAnimation.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Linking/Linking.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Lists/FlatList.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Lists/SectionList.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/Data/LogBoxData.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/Data/LogBoxLog.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/Data/LogBoxSymbolication.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/Data/parseLogBoxLog.js: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/LogBox.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/LogBox.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/LogBoxNotificationContainer.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/AnsiHighlight.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorBody.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorCodeFrame.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorFooter.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorHeader.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorHeaderButton.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorMessageHeader.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorSourceMapStatus.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorStackFrame.js: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxInspectorStackFrames.js: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxMessage.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxNotification.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxNotificationCountBadge.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/LogBox/UI/LogBoxStyle.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Modal/Modal.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/NativeComponent/BaseViewConfig.android.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/NativeComponent/NativeComponentRegistry.js: FIXME, ERROR, stub
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/NativeComponent/StaticViewConfigValidator.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/NativeComponent/ViewConfig.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/NativeComponent/ViewConfigIgnore.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Network/RCTNetworking.android.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Network/RCTNetworking.ios.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Network/RCTNetworkingEventDefinitions.flow.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Network/XMLHttpRequest.js: FIXME, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Network/convertRequestBody.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/PermissionsAndroid/PermissionsAndroid.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Pressability/HoverState.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Pressability/Pressability.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/PushNotificationIOS/PushNotificationIOS.d.ts: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/PushNotificationIOS/PushNotificationIOS.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/AppContainer-dev.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/AppRegistryImpl.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/BridgelessUIManager.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/FabricUIManager.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/HeadlessJsTaskError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/PaperUIManager.js: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/ReactFabricHostComponent.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/ReactFabricPublicInstance.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/ReactFabricPublicInstanceUtils.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/ReactNativeAttributePayload.js: TODO, FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/ReactFabricPublicInstance/warnForStyleProps.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/ReactNativeRuntimeDiagnostics.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/RendererImplementation.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/UIManager.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/getCachedComponentWithDebugName.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/getNativeComponentAttributes.js: TODO, FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactNative/renderApplication.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/ReactPrivate/ReactNativePrivateInterface.js: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactFabric-dev.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactFabric-prod.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactFabric-profiling.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-prod.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-profiling.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Renderer/shims/ReactNativeTypes.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Renderer/shims/ReactNativeViewConfigRegistry.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Settings/Settings.ios.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Share/Share.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/EdgeInsetsPropType.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/PlatformColorValueTypes.android.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/PlatformColorValueTypes.ios.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/PlatformColorValueTypesIOS.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/StyleSheet.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/StyleSheet.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/StyleSheetExports.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/StyleSheetTypes.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/flattenStyle.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/private/_TransformStyle.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/processColorArray.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/processFilter.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/processFontVariant.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/processTransform.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/StyleSheet/splitLayoutProps.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Text/Text.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/TurboModule/RCTExport.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/TurboModule/samples/NativeSampleTurboModule.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Types/CodegenTypes.js: TODO, FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Types/CodegenTypesNamespace.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/Appearance.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/Dimensions.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/FeatureDetection.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/HMRClient.js: FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/HMRClientProdShim.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/PixelRatio.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/Platform.android.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/Platform.ios.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/PlatformTypes.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/PolyfillFunctions.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/RCTLog.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/ReactNativeTestTools.js: TODO, FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/binaryToBase64.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/codegenNativeCommands.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/codegenNativeComponent.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/deepFreezeAndThrowOnMutationInDev.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/differ/insetsDiffer.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/differ/pointsDiffer.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/differ/sizesDiffer.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/logError.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Utilities/stringifySafe.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/Vibration/Vibration.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/WebSocket/WebSocket.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/WebSocket/WebSocketInterceptor.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/promiseRejectionTrackingOptions.js: FIXME, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/vendor/core/ErrorUtils.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/vendor/core/ErrorUtils.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/Libraries/vendor/emitter/EventEmitter.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactAndroid/src/main/jni/CMakeLists.txt: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactAndroid/src/main/jni/first-party/fbgloginit/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactAndroid/src/main/jni/first-party/jni-lib-merge/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactAndroid/src/main/jni/react/jni/CMakeLists.txt: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactAndroid/src/main/jni/react/jscexecutor/CMakeLists.txt: TODO, Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactAndroid/src/main/jni/react/turbomodule/CMakeLists.txt: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactAndroid/src/main/jni/third-party/boost/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactAndroid/src/main/jni/third-party/folly/CMakeLists.txt: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactCommon/jserrorhandler/CMakeLists.txt: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactCommon/jsi/jsi/CMakeLists.txt: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/cdp/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/network/CMakeLists.txt: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactCommon/react/renderer/mounting/CMakeLists.txt: stub
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/ReactCommon/react/runtime/CMakeLists.txt: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/cli.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/flow/console.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/flow/global.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/index.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/MockNativeMethods.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/RefreshControlMock.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/assetFileTransformer.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/local-setup.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/mockComponent.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/mockModal.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/mockScrollView.js: FIXME, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/resolver.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/jest/setup.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/bundle.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/codegen/codegen-utils.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/generateFBReactNativeSpecIOS.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/generateRNCoreComponentsIOS.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/generateReactCodegenPodspec.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/generateSchemaInfos.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/codegen/generate-artifacts-executor/utils.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/codegen/generate-specs-cli-executor.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/compose-source-maps.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/generate-provider-cli.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/hermes/hermes-utils.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/node-binary.sh: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/react-native-xcode.sh: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/react_native_pods_utils/script_phases.sh: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/scripts/xcode/with-environment.sh: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/sdks/hermes-engine/utils/build-apple-framework.sh: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/sdks/hermes-engine/utils/build-ios-framework.sh: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/sdks/hermes-engine/utils/replace_hermes_version.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/animated/NativeAnimatedHelper.js: TODO, FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/animated/NativeAnimatedValidation.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/animated/createAnimatedPropsHook.js: TODO, FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/animated/createAnimatedPropsMemoHook.js: FIXME, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/ElementBox.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/ElementProperties.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/Inspector.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/InspectorOverlay.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/NetworkOverlay.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/XHRInterceptor.js: FIXME, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/devsupport/devmenu/elementinspector/resolveBoxStyle.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/devsupport/rndevtools/setUpFuseboxReactDevToolsDispatcher.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/featureflags/ReactNativeFeatureFlags.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/featureflags/ReactNativeFeatureFlagsBase.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/featureflags/specs/NativeReactNativeFeatureFlags.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/renderer/errorhandling/ErrorHandlers.js: TODO, FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAccessibilityManager.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeActionSheetManager.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAlertManager.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAnimatedModule.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAnimatedTurboModule.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeAppState.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeDialogManagerAndroid.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeExceptionsManager.js: TODO, Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeImageEditor.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeImageStoreAndroid.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeImageStoreIOS.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeIntentAndroid.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeJSCHeapCapture.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativePermissionsAndroid.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeSampleTurboModule.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeSegmentFetcher.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeStatusBarManagerIOS.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/specs_DEPRECATED/modules/NativeUIManager.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/events/Event.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/events/EventHandlerAttributes.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/events/EventTarget.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/events/internals/EventInternals.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/events/internals/EventTargetInternals.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReactNativeDocument.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReactNativeElement.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReadOnlyCharacterData.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReadOnlyElement.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/nodes/ReadOnlyNode.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/nodes/internals/NodeInternals.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/nodes/internals/ReactNativeDocumentInstanceHandle.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/dom/nodes/specs/NativeDOM.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/intersectionobserver/IntersectionObserver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/intersectionobserver/IntersectionObserverEntry.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/intersectionobserver/internals/IntersectionObserverManager.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/intersectionobserver/specs/NativeIntersectionObserver.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/mutationobserver/MutationObserver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/mutationobserver/MutationRecord.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/mutationobserver/internals/MutationObserverManager.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/performance/EventTiming.js: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/performance/Performance.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/performance/PerformanceObserver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/private/webapis/performance/internals/RawPerformanceEntry.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/src/types/globals.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/third-party-podspecs/replace_dependencies_version.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types/modules/Codegen.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types/modules/Devtools.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types/public/ReactNativeTypes.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/ActionSheetIOS/ActionSheetIOS.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Animated/AnimatedImplementation.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Animated/createAnimatedComponent.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Components/TextInput/InputAccessoryView.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Components/TextInput/TextInput.flow.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Components/Touchable/Touchable.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Components/Touchable/TouchableWithoutFeedback.d.ts: FIXME
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Core/Devtools/symbolicateStackTrace.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Core/ExceptionsManager.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Core/ExtendedError.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Core/NativeExceptionsManager.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Core/ReactFiberErrorDialog.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Image/Image.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Image/ImageProps.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Image/ImageTypes.flow.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Interaction/InteractionManager.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Interaction/PanResponder.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/LayoutAnimation/LayoutAnimation.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Lists/FlatList.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/LogBox/Data/LogBoxData.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/LogBox/Data/LogBoxLog.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/LogBox/Data/LogBoxSymbolication.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/LogBox/Data/parseLogBoxLog.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/LogBox/LogBox.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Network/XMLHttpRequest.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/PushNotificationIOS/PushNotificationIOS.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/ReactPrivate/ReactNativePrivateInterface.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Renderer/shims/ReactNativeTypes.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/TurboModule/RCTExport.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/Utilities/PixelRatio.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/vendor/core/ErrorUtils.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/Libraries/vendor/emitter/EventEmitter.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/index.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/src/private/specs_DEPRECATED/modules/NativeDialogManagerAndroid.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/src/private/specs_DEPRECATED/modules/NativeExceptionsManager.d.ts: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/src/private/specs_DEPRECATED/modules/NativeUIManager.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native/types_generated/src/private/webapis/dom/nodes/specs/NativeDOM.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-native-biometrics/CHANGELOG.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native-biometrics/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-native-biometrics/index.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-refresh/cjs/react-refresh-babel.development.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-refresh/cjs/react-refresh-babel.production.min.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/react-refresh/cjs/react-refresh-runtime.development.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/react-refresh/cjs/react-refresh-runtime.production.min.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/readable-stream/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/readable-stream/errors-browser.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/readable-stream/errors.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/readable-stream/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/regenerator-runtime/runtime.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/resolve-from/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/reusify/benchmarks/createNoCodeFunction.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/rimraf/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/rimraf/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/rimraf/bin.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/rimraf/rimraf.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/run-parallel/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/safe-buffer/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/safe-buffer/index.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/safe-buffer/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/safer-buffer/Porting-Buffer.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/safer-buffer/Readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/safer-buffer/dangerous.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/safer-buffer/safer.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/safer-buffer/tests.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/cjs/scheduler-unstable_mock.development.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/cjs/scheduler-unstable_mock.production.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/cjs/scheduler-unstable_post_task.development.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/cjs/scheduler-unstable_post_task.production.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/cjs/scheduler.development.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/cjs/scheduler.native.development.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/cjs/scheduler.native.production.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/cjs/scheduler.production.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/scheduler/unstable_mock.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/semver/README.md: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/semver/bin/semver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/classes/comparator.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/classes/range.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/classes/semver.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/functions/cmp.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/functions/parse.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/internal/debug.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/ranges/min-version.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/ranges/outside.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/semver/ranges/subset.js: Exception
+- qmoi-enhanced-history-14/mobile/node_modules/send/HISTORY.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/send/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/debug/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/debug/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/debug/karma.conf.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/debug/node_modules/ms/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/debug/src/browser.js: TODO, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/debug/src/debug.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/debug/src/node.js: FIXME, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/on-finished/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/on-finished/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/on-finished/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/on-finished/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/statuses/HISTORY.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/statuses/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/statuses/codes.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/send/node_modules/statuses/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/send/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/serialize-error/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/serialize-error/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/serialize-error/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/serve-static/HISTORY.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/serve-static/README.md: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/serve-static/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/serve-static/node_modules/encodeurl/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/serve-static/node_modules/encodeurl/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/setprototypeof/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/setprototypeof/index.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/setprototypeof/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/setprototypeof/package.json: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/setprototypeof/test/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/shell-quote/parse.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/shell-quote/test/parse.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-list/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-list/index.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-list/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-list/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-map/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-map/index.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-map/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-map/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-weakmap/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-weakmap/index.js: TODO, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-weakmap/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/side-channel-weakmap/test/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/signal-exit/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/slice-ansi/node_modules/color-convert/conversions.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/slice-ansi/node_modules/color-convert/index.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/source-map/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/source-map/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/source-map-support/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/source-map-support/browser-source-map-support.js: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/source-map-support/node_modules/source-map/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/source-map-support/node_modules/source-map/README.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/source-map-support/source-map-support.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/split-on-first/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/sprintf-js/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/sprintf-js/src/sprintf.js: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/sprintf-js/test/test.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/stack-utils/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/stack-utils/node_modules/escape-string-regexp/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/stack-utils/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/stack-utils/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/stackframe/README.md: TODO, Exception
+- qmoi-enhanced-history-14/mobile/node_modules/stackframe/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/stackframe/stackframe.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/stacktrace-parser/README.md: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/stacktrace-parser/package.json: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/statuses/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/statuses/codes.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/statuses/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/string-width/index.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/string-width/index.js: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/strnum/strnum.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/terser/CHANGELOG.md: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/terser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/terser/main.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/terser/node_modules/commander/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/terser/node_modules/commander/Readme.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/terser/node_modules/commander/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/terser/node_modules/commander/typings/index.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/terser/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/terser/tools/domprops.js: TODO, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/test-exclude/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/test-exclude/index.js: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/throat/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/to-regex-range/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/to-regex-range/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/type-detect/README.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/type-detect/index.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/type-detect/type-detect.js: [PRODUCTION IMPLEMENTATION REQUIRED], prototype
+- qmoi-enhanced-history-14/mobile/node_modules/type-fest/source/basic.d.ts: TODO
+- qmoi-enhanced-history-14/mobile/node_modules/type-fest/source/merge-exclusive.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/type-fest/source/readonly-deep.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/type-is/HISTORY.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/type-is/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/balanced-pool.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/cache-interceptor.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/cache.d.ts: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/client.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/connector.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/diagnostics-channel.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/dispatcher.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/errors.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/eventsource.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/fetch.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/h2c-client.d.ts: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/index.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/interceptors.d.ts: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/mock-agent.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/mock-call-history.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/mock-client.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/mock-errors.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/mock-interceptor.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/mock-pool.d.ts: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/pool.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/retry-handler.d.ts: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/webidl.d.ts: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/undici-types/websocket.d.ts: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/universalify/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/unpipe/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/update-browserslist-db/cli.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/update-browserslist-db/index.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/util-deprecate/browser.js: Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/util-deprecate/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/vary/index.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/walker/package.json: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/walker/readme.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/whatwg-fetch/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/whatwg-fetch/fetch.js: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/which/CHANGELOG.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/which/which.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/wrappy/wrappy.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/write-file-atomic/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/ws/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/ws/browser.js: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/y18n/CHANGELOG.md: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/y18n/README.md: [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/mobile/node_modules/yallist/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/yallist/iterator.js: prototype
+- qmoi-enhanced-history-14/mobile/node_modules/yallist/yallist.js: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/yaml/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/yargs/README.md: ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/yargs-parser/CHANGELOG.md: ERROR, prototype
+- qmoi-enhanced-history-14/mobile/node_modules/yargs-parser/README.md: [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/yargs-parser/browser.js: TODO, ERROR
+- qmoi-enhanced-history-14/mobile/node_modules/yocto-queue/index.js: TODO
+- qmoi-enhanced-history-14/mock_server.py: Exception, ERROR
+- qmoi-enhanced-history-14/models/latest/README.md: ERROR
+- qmoi-enhanced-history-14/models/latest/qmoi_enhanced_advanced_model.py: Exception, ERROR
+- qmoi-enhanced-history-14/models/latest/qmoi_enhanced_model.py: Exception, ERROR
+- qmoi-enhanced-history-14/models/latest/qmoi_enhanced_revenue.py: Exception, ERROR
+- qmoi-enhanced-history-14/newtests.txt: ERROR
+- qmoi-enhanced-history-14/next.config.js: ERROR
+- qmoi-enhanced-history-14/note.md: ERROR
+- qmoi-enhanced-history-14/notify_on_whatsapp.py: TODO, placeholder, Exception, ERROR, stub
+- qmoi-enhanced-history-14/ollama.md: ERROR
+- qmoi-enhanced-history-14/openapi-v2.1.json: ERROR
+- qmoi-enhanced-history-14/openapi.json: ERROR
+- qmoi-enhanced-history-14/pa.py: placeholder
+- qmoi-enhanced-history-14/package-lock.json: placeholder, TBD, ERROR, stub, prototype
+- qmoi-enhanced-history-14/package-lock.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/package-watchdebug.json: ERROR
+- qmoi-enhanced-history-14/package.json: placeholder
+- qmoi-enhanced-history-14/package.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/parsing_clean_report.json: ERROR
+- qmoi-enhanced-history-14/parsing_files.txt: ERROR
+- qmoi-enhanced-history-14/parsing_restore_report.json: ERROR
+- qmoi-enhanced-history-14/payments/provider_stub.py: stub
+- qmoi-enhanced-history-14/payments/reconciliation.py: Exception, ERROR
+- qmoi-enhanced-history-14/payments/stripe_adapter.py: TODO, placeholder, Exception, ERROR, stub
+- qmoi-enhanced-history-14/payments/webhook_processor.py: Exception, ERROR
+- qmoi-enhanced-history-14/placeholder_scan_summary.md: placeholder
+- qmoi-enhanced-history-14/prisma/generated/prisma/internal/class.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/internal/prismaNamespace.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/internal/prismaNamespaceBrowser.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/AuditLog.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/Dataset.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/Discussion.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/KnowledgeBaseEntry.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/MediaTask.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/News.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/Notification.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/Transaction.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/User.ts: ERROR
+- qmoi-enhanced-history-14/prisma/generated/prisma/models/Wallet.ts: ERROR
+- qmoi-enhanced-history-14/problemsanderrors.txt: ERROR, stub
+- qmoi-enhanced-history-14/production.md: TODO, FIXME, placeholder, TBD, [PRODUCTION IMPLEMENTATION REQUIRED], traceback, Exception, ERROR, stub
+- qmoi-enhanced-history-14/productionenhanced.md: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/public/qcity/dashboard.js: ERROR
+- qmoi-enhanced-history-14/public/qmoi-pwa-manager.js: ERROR
+- qmoi-enhanced-history-14/public/service-worker.js: ERROR
+- qmoi-enhanced-history-14/publish-releases-realtime.py: Exception, ERROR
+- qmoi-enhanced-history-14/publish-releases-realtime.sh: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/push-simple.ps1: ERROR
+- qmoi-enhanced-history-14/push.ps1: Exception, ERROR
+- qmoi-enhanced-history-14/push.txt: Exception, ERROR
+- qmoi-enhanced-history-14/push_all_chunks.ps1: ERROR
+- qmoi-enhanced-history-14/pwa_apps/deals/js/stripe-payment.js: ERROR
+- qmoi-enhanced-history-14/pwa_apps/qmoi-ai/sw.js: ERROR
+- qmoi-enhanced-history-14/qcity-artifacts/qmoi_release_report.json: ERROR
+- qmoi-enhanced-history-14/qmoi/claude_integration.py: Exception, ERROR
+- qmoi-enhanced-history-14/qmoi/local_model_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/qmoi/model.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/qmoi/parallel_processor.py: placeholder, Exception, ERROR, stub
+- qmoi-enhanced-history-14/qmoi/qvs_system.py: Exception
+- qmoi-enhanced-history-14/qmoi/validation_system.py: ERROR
+- qmoi-enhanced-history-14/qmoi-app-builder.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/qmoi-autofix-quickstart.sh: ERROR
+- qmoi-enhanced-history-14/qmoi-friendship-core.js: ERROR
+- qmoi-enhanced-history-14/qmoi-friendship-integration.js: ERROR
+- qmoi-enhanced-history-14/qmoi-space/public/js/auto-update.js: ERROR
+- qmoi-enhanced-history-14/qmoi-space/public/js/camera-integration.js: ERROR
+- qmoi-enhanced-history-14/qmoi-space/public/js/chat.js: ERROR
+- qmoi-enhanced-history-14/qmoi-space/public/js/file-handler.js: ERROR
+- qmoi-enhanced-history-14/qmoi-space/public/js/qmoi-core.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/qmoi-space/public/js/voice-control.js: ERROR
+- qmoi-enhanced-history-14/qmoi-space/public/sw.js: ERROR
+- qmoi-enhanced-history-14/qmoi-space-pwa/js/app.js: ERROR
+- qmoi-enhanced-history-14/qmoi-space-pwa/sw.js: ERROR
+- qmoi-enhanced-history-14/qmoi-test-runner.js: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/qmoi_autogen_unused_api_tests.sh: ERROR
+- qmoi-enhanced-history-14/qmoi_cloud_upload.sh: ERROR
+- qmoi-enhanced-history-14/qmoi_control_server.py: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/qmoi_health_status.json: ERROR
+- qmoi-enhanced-history-14/qmoi_test.sh: ERROR
+- qmoi-enhanced-history-14/qmoiaxe.py: Exception, ERROR
+- qmoi-enhanced-history-14/qmoiexe.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/qmoiexe.spec: traceback
+- qmoi-enhanced-history-14/qmoiexe_enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/qmoimasterresponses.txt: TODO, ERROR
+- qmoi-enhanced-history-14/qmoimodelupgradeplan.txt: ERROR, prototype
+- qmoi-enhanced-history-14/qmoisimtwo.py: stub
+- qmoi-enhanced-history-14/query-revenue.js: ERROR
+- qmoi-enhanced-history-14/release-verify.ps1: ERROR
+- qmoi-enhanced-history-14/reports/final_release_verification.json: ERROR
+- qmoi-enhanced-history-14/reports/lint-report.json: ERROR, prototype
+- qmoi-enhanced-history-14/reports/placeholders.json: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/reports/placeholders.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/reports/self_healing_report.json: ERROR
+- qmoi-enhanced-history-14/reports/suggestions.json: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/reports/suggestions.json.ollama_update.txt: placeholder
+- qmoi-enhanced-history-14/reports.txt: ERROR
+- qmoi-enhanced-history-14/responsesa_enhanced.txt: ERROR
+- qmoi-enhanced-history-14/responsesf.txt: Exception
+- qmoi-enhanced-history-14/responsesg.txt: Exception, ERROR
+- qmoi-enhanced-history-14/responsesh.txt: ERROR
+- qmoi-enhanced-history-14/resumefromhere.txt: TODO, FIXME, placeholder, TBD, traceback, Exception, ERROR, stub
+- qmoi-enhanced-history-14/resumetodos.txt: TODO
+- qmoi-enhanced-history-14/route.js: ERROR
+- qmoi-enhanced-history-14/route.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/routes/api/deployment-status.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/ai/fix.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/config.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/projects/[id]/tasks.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/projects/[id].ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/projects/index.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/start.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/status.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/stop.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/trading/config.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/trading/positions.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/whatsapp/config.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qcity/whatsapp/messages.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qmoi/autodev.ts: ERROR, stub
+- qmoi-enhanced-history-14/routes/api/qmoi/feedback.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/routes/api/qmoi/file.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qmoi/memory-backup.ts: ERROR
+- qmoi-enhanced-history-14/routes/api/qmoi/payload.ts: ERROR
+- qmoi-enhanced-history-14/routes/qcity/projects/[id].tsx: ERROR
+- qmoi-enhanced-history-14/routes/qcity/projects/config.tsx: ERROR
+- qmoi-enhanced-history-14/routes/qcity/projects/index.tsx: ERROR
+- qmoi-enhanced-history-14/run-qmoi-tests.ts: ERROR
+- qmoi-enhanced-history-14/run_advanced_ai.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/scripts/ai-lint-engine.js: ERROR
+- qmoi-enhanced-history-14/scripts/ai_automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/ai_metrics_check.js: ERROR
+- qmoi-enhanced-history-14/scripts/all_cloned_releases.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/api/automation_api.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/app_validator.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/apply_all_enhancements.py: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/apply_dotslash_fixes.py: Exception
+- qmoi-enhanced-history-14/scripts/apply_safe_link_fixes.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/audit_releases.py: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/auto-deploy-and-fix.sh: ERROR
+- qmoi-enhanced-history-14/scripts/auto-fix-deployment.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto-git-update.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto-lint.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto-publish-all.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto-setup.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto-vercel-fix.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto_creds.py: Exception
+- qmoi-enhanced-history-14/scripts/auto_enhance_pipeline.py: TODO, placeholder, traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/auto_evolve.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto_fix_catch_params.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto_fix_md.py: TODO, placeholder, Exception
+- qmoi-enhanced-history-14/scripts/auto_fix_release_artifacts.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/auto_fix_workflows.py: Exception
+- qmoi-enhanced-history-14/scripts/auto_lint_fix.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/auto_prefix_unused_args_and_any_to_unknown.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto_release_manager.py: TODO, placeholder, stub
+- qmoi-enhanced-history-14/scripts/auto_trading.js: ERROR
+- qmoi-enhanced-history-14/scripts/auto_utils.js: TODO, placeholder, stub
+- qmoi-enhanced-history-14/scripts/automate_tasks.py: ERROR
+- qmoi-enhanced-history-14/scripts/automation/github_actions_auto_fix.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/automation/qmoi_master_automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/autotag_md_with_lion.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/autotest/advanced_autotest_system.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/autotest/qmoi_automation_autotest.py: Exception
+- qmoi-enhanced-history-14/scripts/autotest/qmoi_simple_autotest.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/autoupdate_releases.py: Exception
+- qmoi-enhanced-history-14/scripts/aws_cost_report.js: ERROR
+- qmoi-enhanced-history-14/scripts/backup.sh: ERROR
+- qmoi-enhanced-history-14/scripts/backup_automation.js: ERROR
+- qmoi-enhanced-history-14/scripts/backup_restore.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/billing_guard.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/biometrics_check.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/build-android-production.sh: ERROR
+- qmoi-enhanced-history-14/scripts/build-pwa-production.sh: ERROR
+- qmoi-enhanced-history-14/scripts/build_all_apps.py: Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/check-deployment.js: ERROR
+- qmoi-enhanced-history-14/scripts/check-latest-release.js: ERROR
+- qmoi-enhanced-history-14/scripts/check_and_replace_placeholders.py: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/check_copilot_auth.sh: ERROR
+- qmoi-enhanced-history-14/scripts/check_github_releases.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/check_placeholders.py: TODO, FIXME, placeholder, Exception
+- qmoi-enhanced-history-14/scripts/ci/propose_workflow_fixes.py: TODO, placeholder, Exception
+- qmoi-enhanced-history-14/scripts/ci/scan_workflows.py: Exception
+- qmoi-enhanced-history-14/scripts/ci-self-heal.js: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/ci_checks/check_no_model_selector.js: ERROR
+- qmoi-enhanced-history-14/scripts/ci_production_orchestrator.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/colab-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/colab_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/collect_todos.js: TODO, FIXME, placeholder
+- qmoi-enhanced-history-14/scripts/container-smoke.js: ERROR
+- qmoi-enhanced-history-14/scripts/continuous_testing.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/create_dns_issues_using_pr.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/create_issues_from_audit.py: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/scripts/create_missing_assets_issues.py: Exception
+- qmoi-enhanced-history-14/scripts/create_pr_and_issues.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/create_release_placeholders.py: TODO, placeholder, Exception, stub
+- qmoi-enhanced-history-14/scripts/custom_error_handler.py: ERROR
+- qmoi-enhanced-history-14/scripts/daemon/qmoi_daemon.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/dagshub-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/db_migrations.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/demo-automation.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/deploy/cloud_deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/deploy/deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/deploy/deployment-monitor.js: ERROR
+- qmoi-enhanced-history-14/scripts/deploy/health-check.js: ERROR
+- qmoi-enhanced-history-14/scripts/deploy/vercel_auto_deploy.js: ERROR
+- qmoi-enhanced-history-14/scripts/deploy-production.sh: ERROR
+- qmoi-enhanced-history-14/scripts/deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/deploy_huggingface.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/deployment/auto_deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/deployment/cloud_deployment.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/deployment/deploy.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/deployment/server.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/deployment-error-handler.js: ERROR
+- qmoi-enhanced-history-14/scripts/deployment-monitor.sh: ERROR
+- qmoi-enhanced-history-14/scripts/dev-placeholder.js: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/device_ownership_detector.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/device_unlock_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/diagnostics/parse_next_trace.js: ERROR
+- qmoi-enhanced-history-14/scripts/dispatch_workflow_with_pat.sh: ERROR
+- qmoi-enhanced-history-14/scripts/dispatch_workflow_with_pat_clean.sh: ERROR
+- qmoi-enhanced-history-14/scripts/dns_plan_signer.py: ERROR
+- qmoi-enhanced-history-14/scripts/doc_verifier.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/domain_assigner.py: stub
+- qmoi-enhanced-history-14/scripts/domain_registry.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/downloadqmoiai.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/enable_claude_sonnet.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/enhance_ai.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/enhanced-build.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/enhanced-error-fix.js: ERROR
+- qmoi-enhanced-history-14/scripts/enhanced_browser.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/enhanced_credential_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/enhanced_preview.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/enhanced_wallet_report.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/ensure-build-tools.js: ERROR
+- qmoi-enhanced-history-14/scripts/ensure-files.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/scripts/env_manager.py: Exception
+- qmoi-enhanced-history-14/scripts/error/error_fixer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/error_handler.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/error_tracker.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/expand_platform_todos.py: TODO, Exception
+- qmoi-enhanced-history-14/scripts/fast_git_commit.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/finance/settle_to_cashon.py: placeholder, Exception
+- qmoi-enhanced-history-14/scripts/financial_verification.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/fix-catch-error.js: ERROR
+- qmoi-enhanced-history-14/scripts/fix-catches.js: ERROR
+- qmoi-enhanced-history-14/scripts/fix_any_and_unused_params.js: ERROR
+- qmoi-enhanced-history-14/scripts/fix_broken_links.py: Exception
+- qmoi-enhanced-history-14/scripts/fix_common_ts_issues.js: ERROR
+- qmoi-enhanced-history-14/scripts/fix_deployment_issues.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/fix_icon.py: ERROR
+- qmoi-enhanced-history-14/scripts/fix_removed_placeholders_batch.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/gen_real_apps.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/generate_all_links.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/generate_app_metadata.py: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/generate_issue_drafts_for_removed.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/scripts/generate_md_inventory.py: ERROR
+- qmoi-enhanced-history-14/scripts/generate_payed_md.py: Exception, stub
+- qmoi-enhanced-history-14/scripts/generate_real_apps.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/generate_release_compliance_report.py: ERROR
+- qmoi-enhanced-history-14/scripts/generate_revenue_spec.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/get_public_ip.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/github-fallback.js: ERROR
+- qmoi-enhanced-history-14/scripts/github_actions_autofix.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/github_auto_push.py: ERROR
+- qmoi-enhanced-history-14/scripts/gitlab-automation.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/scripts/gitlab-error-recovery.js: ERROR
+- qmoi-enhanced-history-14/scripts/gitlab-notification-service.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/scripts/gitlab-push-automation.js: ERROR
+- qmoi-enhanced-history-14/scripts/gitpod-notification-service.js: ERROR
+- qmoi-enhanced-history-14/scripts/gmail_notify.py: Exception
+- qmoi-enhanced-history-14/scripts/health-check.sh: ERROR
+- qmoi-enhanced-history-14/scripts/hf_model_sync.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/hf_sync.py: Exception
+- qmoi-enhanced-history-14/scripts/host-provision.sh: ERROR
+- qmoi-enhanced-history-14/scripts/host_health_monitor.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/init-monitoring.js: ERROR
+- qmoi-enhanced-history-14/scripts/integration_test_control_server.py: Exception
+- qmoi-enhanced-history-14/scripts/json-config-fixer.js: ERROR
+- qmoi-enhanced-history-14/scripts/launch-production.sh: ERROR
+- qmoi-enhanced-history-14/scripts/license_checker.js: ERROR
+- qmoi-enhanced-history-14/scripts/license_checker.py: ERROR
+- qmoi-enhanced-history-14/scripts/link_apply_preview.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/link_autoupdater.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/link_cache.py: Exception
+- qmoi-enhanced-history-14/scripts/link_cache_maintenance.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/link_normalization_dryrun.py: Exception
+- qmoi-enhanced-history-14/scripts/link_validator.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/lint-notifier.js: ERROR
+- qmoi-enhanced-history-14/scripts/lint-reporter.js: ERROR
+- qmoi-enhanced-history-14/scripts/lint-watcher.js: ERROR
+- qmoi-enhanced-history-14/scripts/lion_feature_enhancer.py: Exception, stub
+- qmoi-enhanced-history-14/scripts/lion_orchestrator.py: TODO, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/load-test-cache.sh: ERROR
+- qmoi-enhanced-history-14/scripts/log-errors.js: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/make_minimal_deb.py: stub
+- qmoi-enhanced-history-14/scripts/media_upload_api_example.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/merge_queue_metrics.py: Exception
+- qmoi-enhanced-history-14/scripts/metrics_server.py: Exception
+- qmoi-enhanced-history-14/scripts/migrate.sh: ERROR
+- qmoi-enhanced-history-14/scripts/migrate_memory_to_redis.py: Exception
+- qmoi-enhanced-history-14/scripts/models/qmoi_kernel.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/models/qmoi_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/models/qmoi_permissions.json: ERROR
+- qmoi-enhanced-history-14/scripts/models/qmoi_personality.py: stub
+- qmoi-enhanced-history-14/scripts/monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitor_performance.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/api_endpoints_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/backup_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/cloud_resources_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/error_tracking.py: ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/master_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/monitoring_dashboard.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/notification_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/performance_monitoring.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/start_all_monitors.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring/system_status_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/monitoring-dashboard.js: ERROR
+- qmoi-enhanced-history-14/scripts/monitoring-setup.js: ERROR
+- qmoi-enhanced-history-14/scripts/mpesa-setup-guide.js: ERROR
+- qmoi-enhanced-history-14/scripts/network/network_connectivity_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/network/wifi_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/nonprod_scanner.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/notify-telegram.js: ERROR
+- qmoi-enhanced-history-14/scripts/ollama_autonomous_agent.py: TODO, FIXME, placeholder, TBD, [PRODUCTION IMPLEMENTATION REQUIRED], traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/one_command_automation.py: stub
+- qmoi-enhanced-history-14/scripts/optimization/advanced_optimization.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/optimize_cpu.py: Exception
+- qmoi-enhanced-history-14/scripts/optimize_performance.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/optimize_storage.py: Exception
+- qmoi-enhanced-history-14/scripts/optimizer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/package_pwas.py: Exception
+- qmoi-enhanced-history-14/scripts/parallel_executor.py: Exception
+- qmoi-enhanced-history-14/scripts/patch_api_headers.js: ERROR
+- qmoi-enhanced-history-14/scripts/placeholder_fixer.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception
+- qmoi-enhanced-history-14/scripts/placeholder_scan.py: TODO, FIXME, placeholder, TBD, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/placeholder_scanner.py: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/platform_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/postinstall-verify.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/scripts/preinstall-check.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/scripts/production_helper_server.py: Exception
+- qmoi-enhanced-history-14/scripts/providers/__init__.py: ERROR
+- qmoi-enhanced-history-14/scripts/providers/aws_route53.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/providers/cloudflare.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/providers/netlify.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/providers/provider_base.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/q.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qcity-automation.js: ERROR
+- qmoi-enhanced-history-14/scripts/qcity-device-manager.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qcity-ui-server.js: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qcity_advanced_installer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qcity_device_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qcity_enhancer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qcity_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qcity_npm_selfheal.ps1: TODO, placeholder, stub
+- qmoi-enhanced-history-14/scripts/qcity_npm_selfheal.sh: TODO, placeholder, stub
+- qmoi-enhanced-history-14/scripts/qcity_unlimited_installer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-activity-logger.py: Exception
+- qmoi-enhanced-history-14/scripts/qmoi-always-fix-all.js: FIXME, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-app-releaser.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-app-validator.py: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-auto-config-runner.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-auto-enhancement-system.js: TODO, FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-auto-evolution.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-auto-push.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-autofixer.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-automation-autotest.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-automation-autotests.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-background-setup.sh: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-cloud-archive.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-cloud-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-cloud-elastic-manager.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-cloud-env-manager.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-cloud-offload-optimizer.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-cloud-provider.js: TODO, placeholder, stub
+- qmoi-enhanced-history-14/scripts/qmoi-cloud-registry.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-cloud-sync.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-comprehensive-parallel-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-controller.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-dashboard.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-dev-actions.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/scripts/qmoi-download-link-tester.py: Exception
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-auto-fix.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-auto-projects.js: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-avatar-system.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-controller.py: Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-health-checker.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-learning-revenue.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-live-status.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-master-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-notifications.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-enhanced-platform-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-environment-setup.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-error-handler.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-error-predictor.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-error-recovery.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-git-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-github-actions-fixer.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-github-integration.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-gitlab-ci-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-gitlab-sync.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-hands-free.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-hf-sync.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-hf-test.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception
+- qmoi-enhanced-history-14/scripts/qmoi-hot-reload.js: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/qmoi-huggingface-manager.js: TODO, placeholder, Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi-info.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-install-autotest.py: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-integrity-guardian.py: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-json-auto-fixer.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-lint-integration.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-live-status.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-master-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-master-autostart.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-master-debugger.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-master-notifications.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-master-system.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-mobile-auto-selfheal.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-music-production-system.js: ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi-notification-system.js: ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi-package-installer.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-parallel-autotest.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-parallel-platform-enhancer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-parallel-processor.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-parallel-setup.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-performance-optimizer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-platform-manager.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-platform-optimizer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-production-autohealth.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-production-init.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-qcity-automatic.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-qcity-enhanced-automatic.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-qcity-enhanced-automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-quick-test.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-real-time-monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-registry-manager.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-research-engine.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-revenue-dashboard.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-revenue-enforcer.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-secret-generator.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/scripts/qmoi-self-updating-agent.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-setup.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-slack-notify.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-space-backend.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-start-watch.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-start.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-system-controller.py: Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi-ultimate-automation.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-unified-push-enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-unified-push-ultimate.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-unified-push.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-universal-error-fixer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-universal-error-handler.js: FIXME, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-vulnerability-scanner.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi-workflow-fix.py: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_advanced_analytics.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_advanced_automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_ai_api_simple.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_app_builder.py: TODO, placeholder, Exception
+- qmoi-enhanced-history-14/scripts/qmoi_app_installer.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_auto_app_delivery.py: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/qmoi_auto_ci_runner.sh: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/qmoi_auto_docs.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_auto_evolution.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_auto_evolution_enhanced.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_auto_evolution_system.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_auto_fix_enhanced.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_auto_setup.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_auto_startup.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_auto_watcher.js: TODO, placeholder, stub
+- qmoi-enhanced-history-14/scripts/qmoi_automated_betting_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_automated_device_controller.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_build_ci.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_chat_server.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_cloud_integration_enhanced.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_cloud_setup.py: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_complete_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_comprehensive_test.py: Exception
+- qmoi-enhanced-history-14/scripts/qmoi_contact_verifier.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_data_optimization_system.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_device_agent.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_device_integration.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_doc_verifier.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi_employment_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_enhanced_ai.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi_enhanced_auto_config.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_enhanced_automation.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_enhanced_startup.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_env_manager.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/scripts/qmoi_error_auto_fix.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_error_monitor.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_generate_env.sh: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/qmoi_gitlab_automation.py: Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi_health_integration.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_health_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_health_reporting_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_hf_auto_manager.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_huggingface_setup.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_huggingface_spaces.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_integration_master.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_intelligent_scheduler.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_local_server.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_log_analyzer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_master_automation_enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_master_orchestrator.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_master_wallet_cli.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_master_website_automation.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_media_orchestrator.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_memory.py: Exception, stub
+- qmoi-enhanced-history-14/scripts/qmoi_model_enhancer.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_notification_manager.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_own_device_logger.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_parallel_error_fixer.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_payment_fix.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_performance_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_permission_fix.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_pre_activity_check.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_revenue_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_security_automation.py: Exception
+- qmoi-enhanced-history-14/scripts/qmoi_security_monitor.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_self_evolve.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/qmoi_self_healing_enhanced.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_self_test.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_self_test_runner.js: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_simple_autotest.js: ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_todos.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_wallet_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_wallet_monitor.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qmoi_windows_service.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qserver-download-tester.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/qserver-manager.js: ERROR
+- qmoi-enhanced-history-14/scripts/queue_worker.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/quick_git_push.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/quick_qmoi_checks.js: ERROR
+- qmoi-enhanced-history-14/scripts/reconcile_payments.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/register_app_build.py: Exception
+- qmoi-enhanced-history-14/scripts/release_automation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/release_helper.py: Exception
+- qmoi-enhanced-history-14/scripts/remove-unused-catch-param.js: ERROR
+- qmoi-enhanced-history-14/scripts/replace_all_release_assets.py: ERROR
+- qmoi-enhanced-history-14/scripts/replace_placeholders.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/replace_release_asset.py: ERROR
+- qmoi-enhanced-history-14/scripts/report_scheduler.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/resolve_dependabot_conflict.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/resolve_deployment_conflicts.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/restore_from_gdrive.py: Exception
+- qmoi-enhanced-history-14/scripts/restore_from_s3.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/restore_release_assets.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/revenue_enhancement_config.py: ERROR
+- qmoi-enhanced-history-14/scripts/revenue_enhancer.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/run-migrations.js: ERROR
+- qmoi-enhanced-history-14/scripts/run_all_tests.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/run_enhancements.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/run_placeholder_scans.py: TODO, placeholder, Exception
+- qmoi-enhanced-history-14/scripts/run_qmoi_test.js: ERROR
+- qmoi-enhanced-history-14/scripts/run_tests.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/run_unit_tests.py: Exception
+- qmoi-enhanced-history-14/scripts/run_validation.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/run_validations.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/rust_lint_fix.js: ERROR
+- qmoi-enhanced-history-14/scripts/scan_and_index.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/scan_lion_usage.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/scan_placeholders.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/scan_replace_placeholders.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/search_and_serve_components.py: ERROR
+- qmoi-enhanced-history-14/scripts/security/security_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/seed.ts: ERROR
+- qmoi-enhanced-history-14/scripts/services/analytics_optimization.ts: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/services/asset_generation.ts: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/services/auto_fix_service.ts: ERROR
+- qmoi-enhanced-history-14/scripts/services/comprehensive_test_runner.ts: ERROR
+- qmoi-enhanced-history-14/scripts/services/github_integration.ts: ERROR
+- qmoi-enhanced-history-14/scripts/services/localization_service.ts: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/services/notification_service.js: ERROR
+- qmoi-enhanced-history-14/scripts/services/notification_service.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/services/notification_service.ts: ERROR
+- qmoi-enhanced-history-14/scripts/services/platform_discovery.ts: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/services/platform_integrations.ts: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/services/plugin_loader.ts: ERROR
+- qmoi-enhanced-history-14/scripts/services/project_service.ts: TODO, ERROR
+- qmoi-enhanced-history-14/scripts/services/qcity_service.ts: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/scripts/services/qmoi_autodev_daemon.ts: Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/services/role_management.ts: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/services/schedule_runner.ts: ERROR, stub
+- qmoi-enhanced-history-14/scripts/services/self_healing.ts: TODO, ERROR
+- qmoi-enhanced-history-14/scripts/services/trading_service.ts: ERROR
+- qmoi-enhanced-history-14/scripts/services/unified_ci_cd_service.ts: ERROR
+- qmoi-enhanced-history-14/scripts/services/whatsapp_service.ts: ERROR
+- qmoi-enhanced-history-14/scripts/setup-backup-system.sh: ERROR
+- qmoi-enhanced-history-14/scripts/setup-database.sh: ERROR
+- qmoi-enhanced-history-14/scripts/setup-nginx-automated.sh: ERROR
+- qmoi-enhanced-history-14/scripts/setup-ssl-automated.sh: ERROR
+- qmoi-enhanced-history-14/scripts/setup.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/setup_github_secrets.sh: ERROR
+- qmoi-enhanced-history-14/scripts/setup_qmoi_environment.py: ERROR
+- qmoi-enhanced-history-14/scripts/smart-lint.js: ERROR
+- qmoi-enhanced-history-14/scripts/smoke-check.js: ERROR
+- qmoi-enhanced-history-14/scripts/start-production-deployment.sh: ERROR
+- qmoi-enhanced-history-14/scripts/start-revenue-engine.js: ERROR
+- qmoi-enhanced-history-14/scripts/start_monitoring_system.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/start_qmoi_enhanced.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/strip_large_files.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/sync_all_releases.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/sync_memory.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/sync_qmoi_downloads.py: placeholder, Exception, stub
+- qmoi-enhanced-history-14/scripts/sync_to_draft_release.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/task_queue.py: Exception
+- qmoi-enhanced-history-14/scripts/terms_enforcer.py: Exception
+- qmoi-enhanced-history-14/scripts/test-qmoi-system.js: ERROR
+- qmoi-enhanced-history-14/scripts/test-worker.js: ERROR
+- qmoi-enhanced-history-14/scripts/test_control_server_endpoints.py: Exception
+- qmoi-enhanced-history-14/scripts/test_deals_and_sponsored.py: Exception
+- qmoi-enhanced-history-14/scripts/test_error_fixing_suite.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/test_hf_space_ui.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/test_pay_flow.py: stub
+- qmoi-enhanced-history-14/scripts/test_payments.py: stub
+- qmoi-enhanced-history-14/scripts/test_qmoi_ai.js: ERROR
+- qmoi-enhanced-history-14/scripts/test_runner.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/test_wallets.py: Exception
+- qmoi-enhanced-history-14/scripts/test_webhooks.py: ERROR, stub
+- qmoi-enhanced-history-14/scripts/test_whatsapp.js: ERROR
+- qmoi-enhanced-history-14/scripts/tests/auth_gating_presence_test.js: ERROR
+- qmoi-enhanced-history-14/scripts/tests/auth_gating_presence_test.ts: ERROR
+- qmoi-enhanced-history-14/scripts/tests/endpoint_gating_test.js: placeholder, ERROR
+- qmoi-enhanced-history-14/scripts/tests/endpoint_gating_test.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/scripts/tests/requireApiKeyTest.js: ERROR
+- qmoi-enhanced-history-14/scripts/tests/requireApiKeyTest.ts: ERROR
+- qmoi-enhanced-history-14/scripts/tests/route_flags_test.js: ERROR
+- qmoi-enhanced-history-14/scripts/tests/route_flags_test.ts: ERROR
+- qmoi-enhanced-history-14/scripts/tests/test_memory_sync.py: ERROR
+- qmoi-enhanced-history-14/scripts/todo_prod_batch.js: TODO, placeholder
+- qmoi-enhanced-history-14/scripts/trading/enhanced_trading_system.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/trading_connection_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/ts-codemod.js: ERROR
+- qmoi-enhanced-history-14/scripts/ui/qcity_ui_enhancement.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/universal_memory.py: Exception
+- qmoi-enhanced-history-14/scripts/update_md_from_state.py: Exception
+- qmoi-enhanced-history-14/scripts/update_md_refs.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/update_model_card.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/update_ngrok_links.py: Exception
+- qmoi-enhanced-history-14/scripts/update_readme.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/scripts/update_readme_cli_usage.py: ERROR
+- qmoi-enhanced-history-14/scripts/upload-release-assets.js: ERROR
+- qmoi-enhanced-history-14/scripts/upload_release_assets.py: Exception
+- qmoi-enhanced-history-14/scripts/upload_to_github_release.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/utils/error_fixer.py: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/utils/logger.ts: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/utils/notify_enhancement.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/validate-production-env.js: ERROR
+- qmoi-enhanced-history-14/scripts/validate-trading-env.js: ERROR
+- qmoi-enhanced-history-14/scripts/validate_all_credentials.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/validate_and_fix_md.py: Exception
+- qmoi-enhanced-history-14/scripts/validate_apps.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/validate_builds.py: TODO, Exception, stub
+- qmoi-enhanced-history-14/scripts/validate_links_and_downloads.py: Exception
+- qmoi-enhanced-history-14/scripts/validate_md.py: TODO, Exception, ERROR, stub
+- qmoi-enhanced-history-14/scripts/validate_notification_config.js: ERROR
+- qmoi-enhanced-history-14/scripts/validate_payed_platforms.py: TODO, Exception
+- qmoi-enhanced-history-14/scripts/validate_payment_credentials.js: placeholder
+- qmoi-enhanced-history-14/scripts/validate_ui_components.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/validate_yml.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/vercel-autoclone-autodev.js: ERROR
+- qmoi-enhanced-history-14/scripts/vercel-deployment-test.js: ERROR
+- qmoi-enhanced-history-14/scripts/vercel-monitor.js: ERROR
+- qmoi-enhanced-history-14/scripts/verify-installable.js: ERROR
+- qmoi-enhanced-history-14/scripts/verify-production.sh: ERROR
+- qmoi-enhanced-history-14/scripts/verify_and_finalize_done.py: TODO, placeholder, Exception
+- qmoi-enhanced-history-14/scripts/verify_apk.sh: ERROR
+- qmoi-enhanced-history-14/scripts/verify_apps.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/verify_exe.sh: ERROR
+- qmoi-enhanced-history-14/scripts/verify_ipa.sh: ERROR
+- qmoi-enhanced-history-14/scripts/wallet_balance_checker.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/wallet_credential_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/wallet_manager.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/wallets/PRODUCTION_RUNBOOK.md: ERROR
+- qmoi-enhanced-history-14/scripts/wallets/adapter_base.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/wallets/adapters/binance_adapter.py: placeholder, Exception
+- qmoi-enhanced-history-14/scripts/wallets/adapters/mpesa_adapter.py: placeholder, Exception
+- qmoi-enhanced-history-14/scripts/wallets/check_wallets.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/scripts/wallets/currency_convert.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/wallets/persist_history.py: TBD, Exception
+- qmoi-enhanced-history-14/scripts/wallets/query_wallet.py: Exception
+- qmoi-enhanced-history-14/scripts/wallets/run_wallet_tests.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/wallets/state_store.py: Exception
+- qmoi-enhanced-history-14/scripts/wallets/wallets_api.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/wallets_audit.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/watch_error_fixing.py: Exception, ERROR
+- qmoi-enhanced-history-14/scripts/whatsapp_verification.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/scripts/workspace_audit.py: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception
+- qmoi-enhanced-history-14/security_proxy.py: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/server.py: ERROR
+- qmoi-enhanced-history-14/services/adapters/index.ts: ERROR
+- qmoi-enhanced-history-14/services/adapters/payments/PayPal.ts: ERROR
+- qmoi-enhanced-history-14/services/adapters/payments/stripe.ts: placeholder
+- qmoi-enhanced-history-14/services/adapters/payments/webhooks.ts: ERROR
+- qmoi-enhanced-history-14/services/adapters/social/facebook.ts: ERROR
+- qmoi-enhanced-history-14/services/adapters/social/instagram.ts: ERROR
+- qmoi-enhanced-history-14/services/adapters/social/whatsapp.ts: ERROR
+- qmoi-enhanced-history-14/services/payments/stripe_adapter.py: ERROR, stub
+- qmoi-enhanced-history-14/services/platformManager.ts: ERROR, stub
+- qmoi-enhanced-history-14/services/secrets/secretStore.ts: ERROR
+- qmoi-enhanced-history-14/services/walletManager.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/setup.sh: ERROR
+- qmoi-enhanced-history-14/src/adapters/appServiceInit.ts: ERROR
+- qmoi-enhanced-history-14/src/adapters/backgroundServiceManager.ts: ERROR
+- qmoi-enhanced-history-14/src/adapters/clientAdapters.ts: ERROR
+- qmoi-enhanced-history-14/src/adapters/healthCheckService.ts: ERROR
+- qmoi-enhanced-history-14/src/adapters/serviceRecoveryManager.ts: ERROR
+- qmoi-enhanced-history-14/src/auth/AuthManager.ts: ERROR, stub
+- qmoi-enhanced-history-14/src/components/@vercel/analytics/next.tsx: stub
+- qmoi-enhanced-history-14/src/components/AIContext.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/AccountabilitySystem.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/AppManager.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/AskQMoi.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/AssetOverview.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/AvatarGalleryPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/BiometricAuth.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/BiometricEnrollment.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/BluetoothManager.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/BrowserInterface.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/CashonTradingPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/Chatbot.js: stub
+- qmoi-enhanced-history-14/src/components/Chatbot.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/DeploymentStatusDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/DeviceSettingsPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/DownloadManager.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/DownloadQCity.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/EmergencyPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/EnhancedPreviewWindow.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/EnhancedRevenuePanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/FarmBusinessManager.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/FileCategorizer.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/FileExplorer.js: stub
+- qmoi-enhanced-history-14/src/components/FinancialManager.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/FloatingAQ.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/FloatingPreviewWindow.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/GitStatus.js: stub
+- qmoi-enhanced-history-14/src/components/GlobalCall.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/GlobalFileTransfer.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/GlobalMail.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/GlobalVideoCall.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/LcSpaces.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/LeahWallet.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/LeahWalletPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/MapLocationPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/MasterContext.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/MediaPreviewWindow.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/MemoryAwareness.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/NotificationPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/ParallelProcessing.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/PriceProductVerifier.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/QAvatar.tsx: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/src/components/QCityErrorManager.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/QCityThemeProvider.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/QConverse.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/QFileManager.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/QI.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/QIStateWindow.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/QMOIAutoFixDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/QMOIDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/QMOIOwnDevice.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/QVillage.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/QiSpaces.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/QmoiAccessibility.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/QmoiAutoDistribution.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/QmoiBrowser.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/QmoiDialer.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/QmoiEnhancedSystem.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/QmoiKeyboard.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/QmoiMediaManager.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/QmoiRevenueDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/RealtimeAvatarWindow.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/SettingsSidebar.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/SisterProjects.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/SystemHealthDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/SystemHealthMonitor.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/TeamRoleManager.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/TradingHistory.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/TradingStatus.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/UISettings.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/UserAccessControl.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/VoiceLibraryPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/VoiceSelectionPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/WhatsAppBusinessPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/WifiAutoConnectPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/WifiPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/_automerge/Chatbot.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/_automerge/QI.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/alpha-q-ai-system.js: stub
+- qmoi-enhanced-history-14/src/components/analytics/EncryptedAuditLog.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/auth/BiometricAuth.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/automation/AutomationRulesPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/device/AWSCredentialsModal.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/device/AzureCredentialsModal.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/device/DeviceIntegrationStubs.ts: ERROR
+- qmoi-enhanced-history-14/src/components/device/GCPCredentialsModal.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/enhanced-system-dashboard.tsx: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/src/components/predeploy/OrchestratorStatusPanel.tsx: ERROR, stub
+- qmoi-enhanced-history-14/src/components/projects/ProjectDashboard.tsx: TODO
+- qmoi-enhanced-history-14/src/components/projects/ProjectForm.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/projects/ProjectList.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/projects/ResourceList.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/projects/TaskForm.tsx: TODO, ERROR
+- qmoi-enhanced-history-14/src/components/projects/TaskList.tsx: TODO, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/AccountAutomationPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/AuditLogPanel.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/q-city/AvatarSelector.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/AviatorGalleryPanel.tsx: stub
+- qmoi-enhanced-history-14/src/components/q-city/CommandPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/DevicePanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/DocumentManagerPanel.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/q-city/EarningDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/EmploymentDashboard.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/EnhancedQMOIDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/MetricsPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/Onboarding.tsx: placeholder, stub
+- qmoi-enhanced-history-14/src/components/q-city/PluginPanel.tsx: ERROR, stub
+- qmoi-enhanced-history-14/src/components/q-city/QApiKeyManager.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QAvatar.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/q-city/QCityDevicePanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QFileManager.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMOIAutoFixDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMOIBiometricManager.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMOIOwnDeviceLogs.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMOIRevenueDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMOIStateProvider.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiAutoDevPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiDatabaseDashboard.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiFileEditorChat.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiKernelPanel.integration.test.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiKernelPanel.test.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/q-city/QMoiKernelPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiMemoryPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiSettingsPanel.tsx: placeholder, stub
+- qmoi-enhanced-history-14/src/components/q-city/QMoiState.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiStateContext.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QMoiToolbar.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/QNewsDashboard.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/q-city/QVillage.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/SchedulePanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/SelfHealPanel.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/SessionPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/SocialAutomationPanel.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/q-city/SystemHealthPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/VoiceSelector.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/q-city/WalletManager.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/q-city/ZeroRatedPanel.tsx: placeholder
+- qmoi-enhanced-history-14/src/components/q-city/avatarsConfig.ts: prototype
+- qmoi-enhanced-history-14/src/components/q-city/index.ts: placeholder
+- qmoi-enhanced-history-14/src/components/qmoi/AvatarDisplay.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/qmoi/FriendshipManagement.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/qmoi/FriendshipUI.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/qmoi/ProjectManagement.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/qmoi/QMOIChat.tsx: placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/qmoi/VoiceSelector.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/qmoi-gitlab-clone/QMOIGitLabClone.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/security/EncryptedAuditLog.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/ui/PluginNotifications.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/ui/carousel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src/components/ui/chart.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/ui/command.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/ui/form.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/ui/input.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/ui/recharts-shim.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/ui/select.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/components/ui/sidebar.tsx: ERROR
+- qmoi-enhanced-history-14/src/components/ui/textarea.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src/config/bitget.ts: ERROR
+- qmoi-enhanced-history-14/src/config/trading.ts: ERROR
+- qmoi-enhanced-history-14/src/config/wallet.ts: ERROR, stub
+- qmoi-enhanced-history-14/src/hooks/useAuth.ts: ERROR
+- qmoi-enhanced-history-14/src/hooks/useAutoProjects.ts: ERROR
+- qmoi-enhanced-history-14/src/hooks/useQCity.ts: ERROR
+- qmoi-enhanced-history-14/src/hooks/useQMOIChat.ts: ERROR
+- qmoi-enhanced-history-14/src/hooks/useQmoiKernel.test.ts: ERROR
+- qmoi-enhanced-history-14/src/hooks/useQmoiKernel.ts: ERROR
+- qmoi-enhanced-history-14/src/hooks/useTrading.ts: ERROR
+- qmoi-enhanced-history-14/src/plugins/AIReviewPlugin.tsx: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src/plugins/DeviceHealthReviewerPlugin.ts: placeholder
+- qmoi-enhanced-history-14/src/plugins/OptimizationSuggestionPlugin.ts: placeholder
+- qmoi-enhanced-history-14/src/plugins/PluginManager.ts: ERROR, stub
+- qmoi-enhanced-history-14/src/plugins/QuickAIWidgetPlugin.ts: placeholder
+- qmoi-enhanced-history-14/src/services/AIRequestRouter.ts: ERROR
+- qmoi-enhanced-history-14/src/services/AppManagementService.ts: [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src/services/AutoResearcher.ts: placeholder
+- qmoi-enhanced-history-14/src/services/BrowserService.ts: ERROR
+- qmoi-enhanced-history-14/src/services/EnhancedErrorFixingService.ts: ERROR
+- qmoi-enhanced-history-14/src/services/EnhancedParallelizationService.ts: ERROR
+- qmoi-enhanced-history-14/src/services/EnhancedServicesCompatibility.ts: ERROR
+- qmoi-enhanced-history-14/src/services/ErrorFixingService.ts: ERROR
+- qmoi-enhanced-history-14/src/services/FaceRecognitionService.ts: ERROR
+- qmoi-enhanced-history-14/src/services/LoggerService.ts: ERROR
+- qmoi-enhanced-history-14/src/services/MultiUserSessionManager.ts: ERROR
+- qmoi-enhanced-history-14/src/services/NetworkManager.ts: placeholder
+- qmoi-enhanced-history-14/src/services/VPNService.ts: ERROR
+- qmoi-enhanced-history-14/src/services/VoiceRecognitionService.ts: ERROR
+- qmoi-enhanced-history-14/src/services/WhatsAppService.ts: ERROR
+- qmoi-enhanced-history-14/src/types/globals.d.ts: ERROR
+- qmoi-enhanced-history-14/src/types/trading.ts: ERROR
+- qmoi-enhanced-history-14/src/wallet.ts: placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/adapters/appServiceInit.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/adapters/backgroundServiceManager.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/adapters/clientAdapters.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/adapters/healthCheckService.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/adapters/serviceRecoveryManager.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/auth/AuthManager.ts: ERROR, stub
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/@vercel/analytics/next.tsx: stub
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/AssetOverview.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/Chatbot.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/DownloadQCity.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/FloatingAQ.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/LcSpaces.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/QI.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/QIStateWindow.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/QiSpaces.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/TradingHistory.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/TradingStatus.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/UISettings.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/AccountAutomationPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/AuditLogPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/AvatarSelector.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/AviatorGalleryPanel.tsx: stub
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/CommandPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/DevicePanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/DocumentManagerPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/EarningDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/EnhancedQMOIDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/MetricsPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/Onboarding.tsx: TODO, placeholder, stub
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/PluginPanel.tsx: ERROR, stub
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QApiKeyManager.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QAvatar.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QFileManager.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMOIAutoFixDashboard.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMOIStateProvider.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiAutoDevPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiDatabaseDashboard.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiFileEditorChat.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiKernelPanel.integration.test.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiKernelPanel.test.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiKernelPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiMemoryPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiSettingsPanel.tsx: TODO, placeholder, stub
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiState.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiStateContext.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QMoiToolbar.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/QNewsDashboard.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/SchedulePanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/SelfHealPanel.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/SessionPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/SocialAutomationPanel.tsx: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/SystemHealthPanel.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/VoiceSelector.tsx: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/WalletManager.tsx: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/ZeroRatedPanel.tsx: placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/avatarsConfig.ts: prototype
+- qmoi-enhanced-history-14/src.backup.20260121144720/components/q-city/index.ts: placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/config/bitget.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/config/trading.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/config/wallet.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/hooks/useAuth.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/hooks/useAutoProjects.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/hooks/useQmoiKernel.test.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/hooks/useQmoiKernel.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/plugins/AIReviewPlugin.ts: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/plugins/AIReviewPlugin.tsx: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/plugins/DeviceHealthReviewerPlugin.ts: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/plugins/OptimizationSuggestionPlugin.ts: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/plugins/PluginManager.ts: ERROR, stub
+- qmoi-enhanced-history-14/src.backup.20260121144720/plugins/QuickAIWidgetPlugin.ts: TODO, placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/AIRequestRouter.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/AppManagementService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/AutoResearcher.ts: placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/BrowserService.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/EnhancedErrorFixingService.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/EnhancedParallelizationService.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/EnhancedServicesCompatibility.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/ErrorFixingService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/FaceRecognitionService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/LoggerService.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/MultiUserSessionManager.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/NetworkManager.ts: placeholder
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/VPNService.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/VoiceRecognitionService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/services/WhatsAppService.ts: TODO, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/types/globals.d.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/types/trading.ts: ERROR
+- qmoi-enhanced-history-14/src.backup.20260121144720/wallet.ts: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/ssh-backend/apiKeyAuth.js: ERROR
+- qmoi-enhanced-history-14/start-production-deployment.sh: ERROR
+- qmoi-enhanced-history-14/start-watchdebug.js: Exception, ERROR
+- qmoi-enhanced-history-14/start.sh: ERROR
+- qmoi-enhanced-history-14/start_qmoi_ngrok.py: Exception
+- qmoi-enhanced-history-14/startup.sh: ERROR
+- qmoi-enhanced-history-14/temps/atoz.txt: ERROR
+- qmoi-enhanced-history-14/test-PayPal-verification.ts: ERROR
+- qmoi-enhanced-history-14/test-ai-integrations.js: placeholder, ERROR
+- qmoi-enhanced-history-14/test-api-connectivity.ts: ERROR
+- qmoi-enhanced-history-14/test-auto-setup.sh: ERROR
+- qmoi-enhanced-history-14/test-autodev-enhanced.js: Exception, ERROR
+- qmoi-enhanced-history-14/test-getHandlers.js: ERROR
+- qmoi-enhanced-history-14/test-msw-node.js: ERROR
+- qmoi-enhanced-history-14/test-msw.js: ERROR
+- qmoi-enhanced-history-14/test-qmoi-comprehensive.sh: Exception, ERROR
+- qmoi-enhanced-history-14/test-qmoi-iterations.sh: ERROR
+- qmoi-enhanced-history-14/test-qmoi-master.js: ERROR
+- qmoi-enhanced-history-14/test-real-money-transfer.ts: ERROR
+- qmoi-enhanced-history-14/test_PayPal.js: ERROR
+- qmoi-enhanced-history-14/test_PayPal_adapter.js: ERROR
+- qmoi-enhanced-history-14/test_PayPal_direct.js: ERROR
+- qmoi-enhanced-history-14/tests/e2e/test_e2e_placeholder.py: placeholder
+- qmoi-enhanced-history-14/tests/handlers.integration.test.ts: ERROR
+- qmoi-enhanced-history-14/tests/integration/test_error_fixing_integration.py: ERROR
+- qmoi-enhanced-history-14/tests/integration/test_qcity_audit_log.py: TODO
+- qmoi-enhanced-history-14/tests/integration/test_qcity_remote_command.py: TODO
+- qmoi-enhanced-history-14/tests/md/test_md_links.py: Exception
+- qmoi-enhanced-history-14/tests/reports/error_fixing_test_report_20251220_204105.json: ERROR
+- qmoi-enhanced-history-14/tests/reports/error_fixing_test_report_20251220_204116.json: ERROR
+- qmoi-enhanced-history-14/tests/scripts/auto_trading.test.js: ERROR
+- qmoi-enhanced-history-14/tests/security/test_security_placeholder.py: placeholder
+- qmoi-enhanced-history-14/tests/test_billing_guard.py: ERROR
+- qmoi-enhanced-history-14/tests/test_check_and_replace_placeholders.py: placeholder
+- qmoi-enhanced-history-14/tests/test_check_placeholders.py: placeholder
+- qmoi-enhanced-history-14/tests/test_create_release_placeholders.py: placeholder
+- qmoi-enhanced-history-14/tests/test_custom_error_handler.py: ERROR
+- qmoi-enhanced-history-14/tests/test_enhancers.py: stub
+- qmoi-enhanced-history-14/tests/test_error_fixer.py: ERROR
+- qmoi-enhanced-history-14/tests/test_error_handler.py: ERROR
+- qmoi-enhanced-history-14/tests/test_error_tracker.py: ERROR
+- qmoi-enhanced-history-14/tests/test_error_tracking.py: ERROR
+- qmoi-enhanced-history-14/tests/test_expand_platform_todos.py: TODO
+- qmoi-enhanced-history-14/tests/test_fix_removed_placeholders_batch.py: placeholder
+- qmoi-enhanced-history-14/tests/test_integration.py: Exception, ERROR
+- qmoi-enhanced-history-14/tests/test_link_autoupdater.py: placeholder
+- qmoi-enhanced-history-14/tests/test_link_systems.py: Exception, ERROR
+- qmoi-enhanced-history-14/tests/test_notify_on_whatsapp.py: ERROR, stub
+- qmoi-enhanced-history-14/tests/test_ollama_autonomous_agent.py: TODO, placeholder, stub
+- qmoi-enhanced-history-14/tests/test_placeholder_fixer.py: placeholder
+- qmoi-enhanced-history-14/tests/test_placeholder_scan.py: placeholder
+- qmoi-enhanced-history-14/tests/test_placeholder_scanner.py: placeholder
+- qmoi-enhanced-history-14/tests/test_providers.py: ERROR
+- qmoi-enhanced-history-14/tests/test_qmoi-error-handler.py: ERROR
+- qmoi-enhanced-history-14/tests/test_qmoi-universal-error-fixer.py: ERROR
+- qmoi-enhanced-history-14/tests/test_qmoi_error_auto_fix.py: ERROR
+- qmoi-enhanced-history-14/tests/test_qmoi_error_monitor.py: ERROR
+- qmoi-enhanced-history-14/tests/test_qmoi_friendship.js: ERROR
+- qmoi-enhanced-history-14/tests/test_qmoi_local_server.py: Exception
+- qmoi-enhanced-history-14/tests/test_qmoi_parallel_error_fixer.py: ERROR
+- qmoi-enhanced-history-14/tests/test_qmoi_todos.py: TODO
+- qmoi-enhanced-history-14/tests/test_queue_worker.py: Exception, ERROR
+- qmoi-enhanced-history-14/tests/test_release_helper.py: Exception
+- qmoi-enhanced-history-14/tests/test_replace_placeholders.py: placeholder
+- qmoi-enhanced-history-14/tests/test_run_placeholder_scans.py: placeholder
+- qmoi-enhanced-history-14/tests/test_scan_placeholders.py: placeholder
+- qmoi-enhanced-history-14/tests/test_scan_replace_placeholders.py: placeholder
+- qmoi-enhanced-history-14/tests/test_test_error_fixing_suite.py: ERROR
+- qmoi-enhanced-history-14/tests/test_watch_error_fixing.py: ERROR
+- qmoi-enhanced-history-14/tests/ui/qmoi_ui_autotest.spec.js: ERROR
+- qmoi-enhanced-history-14/tests/unit/test_auto_watcher.js: stub
+- qmoi-enhanced-history-14/tests/unit/test_error_fixing.py: ERROR
+- qmoi-enhanced-history-14/teststoadd.txt: ERROR
+- qmoi-enhanced-history-14/tools/allrefs.status.json: TODO, placeholder, ERROR, stub
+- qmoi-enhanced-history-14/tools/allrefs_summary.md: ERROR
+- qmoi-enhanced-history-14/tools/apply_link_fixes.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/auto_fix_build.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/auto_fix_placeholders.py: TODO, FIXME, placeholder, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/tools/auto_fix_placeholders_broad.py: TODO, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/tools/auto_prefix_unused_args.js: ERROR
+- qmoi-enhanced-history-14/tools/autotest_runner.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/tools/build_light_index.py: placeholder, Exception
+- qmoi-enhanced-history-14/tools/cache_links.py: Exception, ERROR, stub
+- qmoi-enhanced-history-14/tools/check_links.py: ERROR
+- qmoi-enhanced-history-14/tools/check_links_clean.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/check_links_runner.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/collect_versions.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/create_link_issues.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/dashboard_inventory.json: placeholder, [PRODUCTION IMPLEMENTATION REQUIRED]
+- qmoi-enhanced-history-14/tools/dns_docs_inventory.json: TODO, placeholder, Exception, ERROR, prototype
+- qmoi-enhanced-history-14/tools/dns_links_report.json: Exception, ERROR, prototype
+- qmoi-enhanced-history-14/tools/dns_links_report.md: ERROR
+- qmoi-enhanced-history-14/tools/extract_comments.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/tools/find_placeholders.py: TODO, FIXME, placeholder, Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/tools/fix_param_references.js: ERROR
+- qmoi-enhanced-history-14/tools/generate_api_docs.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/generate_fix_templates.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/tools/generate_issue_drafts.py: placeholder, ERROR, stub
+- qmoi-enhanced-history-14/tools/generate_link_report.py: placeholder, Exception, ERROR, stub
+- qmoi-enhanced-history-14/tools/generate_remediation_plan.py: placeholder
+- qmoi-enhanced-history-14/tools/github_releases_publisher.py: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0134_.npm-cache__cacache_index-v5_40_36_cbbcff6af18f592ff113259fcdc4e8c5902c9f9d5ba8592f25c8371c5164.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0166_.npm-cache__cacache_index-v5_50_49_f46671c43e424b49b6a0f290d3d29b7bc682b42deff181239c8df0ab1c62.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0173_.npm-cache__cacache_index-v5_54_64_de6f1b1d9eec665e30b5424f33c4a4a0408cf574d723e136ab5f1e6bf5a1.md: TBD
+- qmoi-enhanced-history-14/tools/issue_drafts/0218_.npm-cache__cacache_index-v5_72_09_5bc2d75ac0b95bd1ef037a38f5e289c8d10fc23f4631df056b7fd247f724.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0245_.npm-cache__cacache_index-v5_82_03_5d1db8951d6496925ebc655962fcc9ee2395b4673df9ce073099c846c9ff.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0366_.npm-cache__cacache_index-v5_bf_a5_06a15524b7577a21f1b5a74459f86868f12c678482fb356ff2480f62500a.md: TBD
+- qmoi-enhanced-history-14/tools/issue_drafts/0367_.npm-cache__cacache_index-v5_bf_cd_6528c1b9f0395b162315eefa4050d6070ae6671d7849b0ca37c68670c365.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0406_.npm-cache__cacache_index-v5_d5_c6_fd0264b89bf7b094d0b1463774e6845d30313d56c703a95cd87e421adfee.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0464_.npm-cache__cacache_index-v5_f5_b1_bbe991fcc0a606353a4ca171b172b1fd8c6f88c9e79190fb21ec582f371a.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0477_.npm-cache__cacache_index-v5_fd_71_c7f3aae7973ddb056f116c1e1b5c592809893c3bb8abb715bd9149a465a5.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0481_ALLERRORSSTATSQMOI.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0483_AUTODOWNLOAD.md.md: TODO, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0484_AUTOGIT.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0485_AUTOLINTREADME.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0488_CONTINUOUS_IMPROVEMENT.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0492_DEVCOMMANDS.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0494_ERRORSTRACKS.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0495_FAST-BOOTSTRAP-README.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0496_HOOKS.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0499_LANGUAGES.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/04_qmoi-enhanced_scripts_demo-automation_js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0501_PAGES.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0502_PUBLIC.md.md: placeholder, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0506_QAvatar_User_Feedback_Kit.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0508_QMOI-CLOUD-ENHANCED.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0510_QMOI-CLOUD.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0511_QMOI-CROSS-PLATFORM.md.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0514_QMOI-PLATFORM-ANALYTICS.md.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0515_QMOI-PLATFORM-AUTOMATION.md.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0516_QMOI-PLATFORM-MONITORING.md.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0517_QMOIALLDEVICESINSTALL.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0518_QMOIAUTODEV.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0520_QMOICLONEGITPOD.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0521_QMOICLONEHF.md.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0522_QMOICLONEQUANTUM.md.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0523_QMOICLONEVERCEL.md.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0524_QMOICOLABDAGSHUB.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0525_QMOIDOWNLOADS.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0528_QMOIFREE.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0530_QMOIGITLABDEV.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0531_QMOIGITLABDEV.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0532_QMOIGITLABDEV.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0533_QMOIGITPODDEV.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0534_QMOIGITPODDEV.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0535_QMOIGITPODDEV.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0536_QMOIHUGGINGFACEALWAYSUPDATE.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0537_QMOIJEST.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0539_QMOIREGISTRY.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0540_QMOIVERCELDEV.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0541_QMOIVERCELDEV.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0542_QMOIVERCELDEV.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0543_QMOI_MEMORY.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0546_QUANTUMAUTOMARKET.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0547_Qstore.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0554_SERVEQCITYQMOIAIQMOISPACE.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0555_SERVICES.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0556_SERVINGERRORSISSUES.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0558_START.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0559_TEMPLATES.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0560_TROUBLESHOOTING.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0561_UNIVERSALHEALTHRUNNERS.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0562_UNUSED_API_ENDPOINTS.md.md: ERROR, stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0563_WATCHDEBUG.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0564_WATCHDEBUG.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0565_WATCHDEBUG.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0566_WIRKFLOWSTRACKS.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0568_app_api_deploy_auto-redeploy_route.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0573_components_ui_carousel.tsx.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0574_components_ui_sidebar.tsx.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0583_docs_REFERENCES.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0584_docs_REFERENCES.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0585_docs_REFERENCES.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0587_docs_full-app-inventory.json.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0588_docs_md-inventory.json.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0591_error-fix-summary.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0592_git-smart-sync.ps1.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0593_git.txt.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0595_hooks_useTTCVoice.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0596_hooks_useTrading.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0597_hooks_useWhatsApp.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0599_local-release-verify.ps1.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0600_logs_quick-test-report.json.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0601_main.js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0604_models_latest_README.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0605_push.bat.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0690_qmoi-enhanced_.npm-cache__cacache_index-v5_41_69_27044a2ad4976da4157e99342dd0414afb8b70e2d1bbf43fffc698925a68.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0852_qmoi-enhanced_ALLERRORSSTATSQMOI.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0854_qmoi-enhanced_AUTODOWNLOAD.md.md: TODO, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0855_qmoi-enhanced_AUTOGIT.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0856_qmoi-enhanced_AUTOLINTREADME.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0859_qmoi-enhanced_CONTINUOUS_IMPROVEMENT.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0860_qmoi-enhanced_DEVCOMMANDS.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0865_qmoi-enhanced_FAST-BOOTSTRAP-README.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0868_qmoi-enhanced_QAvatar_User_Feedback_Kit.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0870_qmoi-enhanced_QMOI-CLOUD-ENHANCED.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0871_qmoi-enhanced_QMOI-CLOUD.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0874_qmoi-enhanced_QMOIALLDEVICESINSTALL.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0876_qmoi-enhanced_QMOIAUTODEV.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0878_qmoi-enhanced_QMOICLONEGITPOD.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0879_qmoi-enhanced_QMOICOLABDAGSHUB.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0880_qmoi-enhanced_QMOIDOWNLOADS.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0883_qmoi-enhanced_QMOIFREE.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0885_qmoi-enhanced_QMOIGITLABDEV.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0886_qmoi-enhanced_QMOIGITLABDEV.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0887_qmoi-enhanced_QMOIGITLABDEV.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0888_qmoi-enhanced_QMOIGITPODDEV.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0889_qmoi-enhanced_QMOIGITPODDEV.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0890_qmoi-enhanced_QMOIGITPODDEV.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0891_qmoi-enhanced_QMOIHUGGINGFACEALWAYSUPDATE.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0893_qmoi-enhanced_QMOIREGISTRY.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0894_qmoi-enhanced_QMOIVERCELDEV.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0895_qmoi-enhanced_QMOIVERCELDEV.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0896_qmoi-enhanced_QMOIVERCELDEV.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0897_qmoi-enhanced_QMOI_MEMORY.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0901_qmoi-enhanced_QUANTUMAUTOMARKET.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0902_qmoi-enhanced_Qstore.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0904_qmoi-enhanced_START.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0905_qmoi-enhanced_TROUBLESHOOTING.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0906_qmoi-enhanced_WATCHDEBUG.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0907_qmoi-enhanced_WATCHDEBUG.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0908_qmoi-enhanced_WATCHDEBUG.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0909_qmoi-enhanced_app_api_deploy_auto-redeploy_route.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0910_qmoi-enhanced_app_api_qmoi_auto-fix_start_route.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0915_qmoi-enhanced_components_ui_carousel.tsx.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0916_qmoi-enhanced_components_ui_sidebar.tsx.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0920_qmoi-enhanced_docs_REFERENCES.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0921_qmoi-enhanced_docs_REFERENCES.md.dotfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0922_qmoi-enhanced_docs_REFERENCES.md.linkfix.bak.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0925_qmoi-enhanced_error-fix-summary.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0926_qmoi-enhanced_git-smart-sync.ps1.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0927_qmoi-enhanced_git.txt.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0929_qmoi-enhanced_hooks_useTTCVoice.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0930_qmoi-enhanced_hooks_useTrading.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0931_qmoi-enhanced_hooks_useWhatsApp.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0932_qmoi-enhanced_local-release-verify.ps1.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0933_qmoi-enhanced_main.js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0936_qmoi-enhanced_models_latest_README.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0937_qmoi-enhanced_push.bat.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0941_qmoi-enhanced_scripts_auto-vercel-fix.js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0942_qmoi-enhanced_scripts_backup_restore.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0943_qmoi-enhanced_scripts_colab-automation.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0944_qmoi-enhanced_scripts_dagshub-automation.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0945_qmoi-enhanced_scripts_deployment_cloud_deployment.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0946_qmoi-enhanced_scripts_enhanced-build.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0948_qmoi-enhanced_scripts_license_checker.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0949_qmoi-enhanced_scripts_monitoring_error_tracking.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0952_qmoi-enhanced_scripts_qmoi-cloud-elastic-manager.js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0953_qmoi-enhanced_scripts_qmoi-cloud-offload-optimizer.js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0956_qmoi-enhanced_scripts_qmoi-universal-error-fixer.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0957_qmoi-enhanced_scripts_qmoi_auto_startup.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0958_qmoi-enhanced_scripts_qmoi_build_ci.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0959_qmoi-enhanced_scripts_qmoi_git_wrapper.py.md: Exception
+- qmoi-enhanced-history-14/tools/issue_drafts/0960_qmoi-enhanced_scripts_resolve_dependabot_conflict.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0961_qmoi-enhanced_scripts_services_unified_ci_cd_service.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0965_qmoi-enhanced_scripts_test_runner.py.md: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0966_qmoi-enhanced_scripts_update_model_card.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0967_qmoi-enhanced_scripts_update_readme_cli_usage.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0968_qmoi-enhanced_scripts_utils_error_fixer.py.md: traceback, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0969_qmoi-enhanced_scripts_validate_yml.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0971_qmoi-enhanced_src_components_q-city_QMoiSettingsPanel.tsx.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/0972_qmoi-enhanced_src_hooks_useQmoiKernel.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/0974_qmoi-enhanced_src_services_QmoiMemory.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1005_qmoi-space_.npm-cache__cacache_index-v5_41_69_27044a2ad4976da4157e99342dd0414afb8b70e2d1bbf43fffc698925a68.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1012_qmoi_autogen_unused_api_tests.sh.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1015_scripts_all_cloned_releases.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1016_scripts_auto-vercel-fix.js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1017_scripts_backup_restore.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1018_scripts_colab-automation.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1019_scripts_dagshub-automation.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1020_scripts_deployment_cloud_deployment.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1021_scripts_enhanced-build.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1027_scripts_license_checker.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1028_scripts_link_cache_maintenance.py.md: Exception
+- qmoi-enhanced-history-14/tools/issue_drafts/1029_scripts_monitoring_error_tracking.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1033_scripts_qmoi-cloud-elastic-manager.js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1034_scripts_qmoi-cloud-offload-optimizer.js.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1036_scripts_qmoi-integrity-guardian.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1038_scripts_qmoi-universal-error-fixer.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1039_scripts_qmoi_auto_startup.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1040_scripts_qmoi_build_ci.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1041_scripts_resolve_dependabot_conflict.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1043_scripts_run_tests.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1044_scripts_run_unit_tests.py.md: Exception
+- qmoi-enhanced-history-14/tools/issue_drafts/1045_scripts_run_validation.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1046_scripts_scan_lion_usage.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1047_scripts_services_unified_ci_cd_service.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1051_scripts_test_runner.py.md: traceback, Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1052_scripts_update_model_card.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1053_scripts_update_ngrok_links.py.md: Exception
+- qmoi-enhanced-history-14/tools/issue_drafts/1054_scripts_update_ngrok_links.py.bak.20251022T225934.md: Exception
+- qmoi-enhanced-history-14/tools/issue_drafts/1055_scripts_update_readme_cli_usage.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1056_scripts_utils_error_fixer.py.md: traceback, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1057_scripts_validate_and_fix_md.py.md: Exception
+- qmoi-enhanced-history-14/tools/issue_drafts/1059_scripts_validate_yml.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1060_scripts_wallets_currency_convert.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1061_scripts_wallets_audit.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1065_src_components_q-city_QMoiSettingsPanel.tsx.md: stub
+- qmoi-enhanced-history-14/tools/issue_drafts/1066_src_hooks_useQmoiKernel.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1069_tests_integration_adapter-dryrun.test.ts.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1072_tests_test_link_systems.py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1073_tools_allrefs_summary.md.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1075_tools_generate_api_docs.py.md: Exception, ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/1077_tools_update_resume_todos.py.md: TODO
+- qmoi-enhanced-history-14/tools/issue_drafts/10_qmoi-enhanced_scripts_auto_lint_fix_py.md: ERROR
+- qmoi-enhanced-history-14/tools/issue_drafts/13_qmoi-enhanced_components_device_DeviceIntegrationStubs_ts.md: stub
+- qmoi-enhanced-history-14/tools/light_index.json: placeholder
+- qmoi-enhanced-history-14/tools/link_check.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/link_fix_actions_more.md: ERROR, prototype
+- qmoi-enhanced-history-14/tools/link_fix_proposals_more.json: ERROR, prototype
+- qmoi-enhanced-history-14/tools/link_fix_propose_only.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/link_report.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/lion_install.js: ERROR
+- qmoi-enhanced-history-14/tools/lionlaunch.json: placeholder
+- qmoi-enhanced-history-14/tools/matches_priority.json: TODO, FIXME, placeholder, ERROR, stub, prototype
+- qmoi-enhanced-history-14/tools/matches_priority.md: ERROR, stub
+- qmoi-enhanced-history-14/tools/monitor_hf_costs.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/phase4_deployer.py: placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/tools/placeholder_actions.md: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/tools/placeholder_artifacts/README.md: placeholder, stub
+- qmoi-enhanced-history-14/tools/placeholder_fix_report.json: TODO, placeholder, ERROR
+- qmoi-enhanced-history-14/tools/placeholder_proposals.json: placeholder
+- qmoi-enhanced-history-14/tools/placeholder_scan.json: TODO, FIXME, placeholder, TBD, Exception, ERROR, stub, prototype
+- qmoi-enhanced-history-14/tools/poll_and_fix_pr94.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/priority_scan.py: TODO, FIXME, placeholder, stub, prototype
+- qmoi-enhanced-history-14/tools/process_allrefs.py: TODO, FIXME, placeholder, Exception, ERROR
+- qmoi-enhanced-history-14/tools/production_link_audit.py: placeholder, stub
+- qmoi-enhanced-history-14/tools/propose_apply_trivial_fixes.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/qmoi_lint_report.json: TODO, placeholder, traceback, ERROR
+- qmoi-enhanced-history-14/tools/qvillage_memory_sync.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/release_helper.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/release_templates/update.json: placeholder
+- qmoi-enhanced-history-14/tools/remediation_plan.md: stub
+- qmoi-enhanced-history-14/tools/rerun_and_fix_pr94.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/safe_fix_api.js: ERROR
+- qmoi-enhanced-history-14/tools/standalone_runner.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/start_light_server.py: Exception
+- qmoi-enhanced-history-14/tools/startup_manager.py: Exception
+- qmoi-enhanced-history-14/tools/triage_link_issues.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/update_markdown.py: Exception
+- qmoi-enhanced-history-14/tools/update_md_refs.py: Exception, ERROR
+- qmoi-enhanced-history-14/tools/update_resume_todos.py: TODO
+- qmoi-enhanced-history-14/tools/versions_summary.json: ERROR
+- qmoi-enhanced-history-14/transfer-money.js: ERROR
+- qmoi-enhanced-history-14/tsc_after_autoresearcher.txt: ERROR, stub
+- qmoi-enhanced-history-14/tsc_after_manual_fix.txt: ERROR, stub
+- qmoi-enhanced-history-14/tsc_after_payment_fix.txt: ERROR, stub
+- qmoi-enhanced-history-14/tsc_after_qmoi_panel_fix.txt: ERROR, stub
+- qmoi-enhanced-history-14/tsc_after_relax.txt: ERROR, stub
+- qmoi-enhanced-history-14/tsc_after_revenue_fix.txt: ERROR, stub
+- qmoi-enhanced-history-14/tsc_snapshot3.txt: ERROR, stub
+- qmoi-enhanced-history-14/tsc_snapshot_after_api_fix.txt: ERROR, stub
+- qmoi-enhanced-history-14/tsc_snapshot_current.txt: ERROR, stub
+- qmoi-enhanced-history-14/types/globals.d.ts: placeholder
+- qmoi-enhanced-history-14/types/index.ts: ERROR
+- qmoi-enhanced-history-14/types/projects.ts: TODO
+- qmoi-enhanced-history-14/types/qcity.ts: ERROR
+- qmoi-enhanced-history-14/types/scripts-auto-fix.d.ts: ERROR
+- qmoi-enhanced-history-14/ui_missing_paths.txt: ERROR, stub
+- qmoi-enhanced-history-14/utils/env_manager.py: ERROR
+- qmoi-enhanced-history-14/vercel-fix-report.json: ERROR
+- qmoi-enhanced-history-14/verify-all-releases.sh: ERROR
+- qmoi-enhanced-history-14/watchdebug.js: FIXME, placeholder, [PRODUCTION IMPLEMENTATION REQUIRED], Exception, ERROR
+- qmoi-enhanced-history-14/whatsapp-qmoi-bot/services/qmoi.js: ERROR
+- scripts/advanced_agent_healer.py: Exception, ERROR
+- scripts/autonomous_runner.py: Exception, ERROR
+- scripts/github-auto-setup.sh: ERROR
+- scripts/github_auto_setup.py: Exception, ERROR
+- scripts/link_validator.py: ERROR
+- scripts/live_activity_stream.py: Exception, ERROR
+- scripts/monitor.sh: ERROR
+- scripts/monitor_workflows.py: ERROR
+- scripts/ollama_autonomous_agent.py: TODO, FIXME, placeholder, TBD, [PRODUCTION IMPLEMENTATION REQUIRED], traceback, Exception, ERROR, stub, prototype, minimal implementation, shallow implementation
+- scripts/ollama_runtime.py: Exception, ERROR
+- scripts/qmoi_release_autofix.py: TODO, placeholder, ERROR
+- scripts/realtime_workflow_monitor.py: Exception, ERROR
+- scripts/resilience_auto_healing.py: Exception, ERROR
+- scripts/trading/production_trading_autopilot.py: ERROR
+- scripts/validate_workflows.py: Exception, ERROR
+- scripts/workflow_status_dashboard.py: ERROR
+- tests/test_ollama_autonomous_agent.py: TODO, placeholder, Exception, ERROR, stub, prototype
+- tests/test_ollama_enhanced_features.py: Exception, ERROR
+- tests/test_ollama_runtime.py: Exception, ERROR, stub
+- tests/test_production_trading_autopilot.py: ERROR
+- tests/test_qmoi_release_autofix.py: placeholder
+- zx.txt: ERROR

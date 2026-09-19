@@ -1,0 +1,246 @@
+As you work on all these, note that pr ollama autonomous agent also has very many files of this repo that haven't been shown or not yet had full successful pull request and so it should also work on those files and all others best. Also make best plan to go through all git operations, commands and everything related to git and enhance and automate further best in all aspects best as required. Also make best plan to enhance and automate further ollama merge features to thoroughly also include all files and all directories thoroughly of all branches in both repos as mentioned in the files(qmoi-enhanced and Alpha-Q-ai as mentioned in its files) . It should also be able to get and check latest pushes to qmoi-enhanced of all contributers to push to qmoi-enhanced and for Alpha-Q-ai, it should be able to check at least 4 pushes to Alpha-Q-ai. It should be thorough in being able to get and understand best all changes in all pushes plus all files and directories in the repo after the push so that ollama autonomous agent and qmoi should be able to get a clear full structure all files and directories of each repo at a particular time plus also knowing who pushed or made the changes and when plus all information and details of each repo from the moment it was created . These features should ensure ollama autonomous agent is thorough in it's merge activities and features to also incooperate all repo past pushes and changes in it's merge activities in all repos too , for all types of files and all directories plus all others as mentioned in the merge features and instructions plus how it will also automatically update MERGE.md of all merge activities including of all branches merging too. Also make best plan to advance merge activities, features and tasks in all aspects plus how ollama automous agent is thorough, intelligent, creative and fully autonomous in all merge activities and tasks , also enhance and automate further merge activities and tasks related to merging everything from all branches, from all contributers, from all git history, from all commits , from all repos and everywhere else best to ensure all current files,branches, directories l,apps, features, implementations and all others have all features and implementations they should have(this merge features should ensure that the implementations,files, features, features, platforms,sites,automations and everything else that is not currently being used or not implemented to the current system,files, scripts,apps, platforms,sites, directories and all others are actually merged and implemented best accordingly, it should be thorough in all merge activities and tasks to ensure it captures everything in all merge activities. Also enhance how ollama/qmoi is fully autonomous, creative, intelligent and always makes best decisions in all merge activities,tasks and plans best. Also enhance how ollama autonomous agent makes best decisions in merging features, file, directories,sites and all others that are not in the current implementations and how and where to place each one of them and ensure they are actually implemented. Ollama/qmoi should. These features should ensure that ollama autonomous agent is thorough in ensuring the final directories, files features after merging should contain all features and files that they should contain. So that the implementations,files, directories in all branches, in all repos and including history of changes and updates to these repos are included in the merge activities,plans and tasks of ollama autonomous agent and also qmoi. Also thoroughly make best plan to check and note features ollama autonomous agent does or updates anything so that it would always do so or everything else in the name of meo(model evolution o) instead of ollama in a way that it will be an enhancement for easy future integration of model evolution o features as it mentioned in MODELEVOLUTIONO.md as in its files . Also make best plan to note all steps involved in each .yml and add step for each in WORKFLOWSO.md(this file should also contain all .yml and enhance how you ensure it contains steps involved in all .yml and its scripts too to ensure you note all steps are included here plus information of the file/workflow each step is in.). WORKFLOWSO.md should also contain all information,metrics,stats and data of each workflow and realtime status of each run/workflow in GitHub actions then also automate and enhance further how these information, metrics related to run of each are automatically updated in WORKFLOWSO.md and to ensure all workflows are successful including details of precise time and day of each run plus also other information, details, metrics of each workflow.  Also make best plan to go through all steps in ollama master orchestra workflow and make best plan to enhance and automate further each step and ensure it is enhanced in all aspects and features best. Also thoroughly make best plan to understand each and every step then make best plan to advance/enhance all aspects and features of each and every step best. Also add QSTEPSMANAGER.md( It should contain general definition of step plus specific definition, instructions, metrics and information of each step. Then you will make best plan to add a more advanced, enhanced system that will be responsible for each and every step in each .yml, it's tests and its scripts too. This system call it q steps manager and qmoi model/ai should also have this q step manager system in all ways qmoi could use these features as an enhancement in all steps in all its workflows, scripts and everything in it that involves steps. Enhance and automate further how ollama autonomous agent will also automatically add all these q step manager features in all files and features including to qmoi model/ai that could benefit from these q step manager features. Also enhance and enhance further how ollama autonomous agent uses these q step manager features in all aspects best. Also make best plan to automate and enhance further q step manager and add at least 20(then it should add all these at least 20 additions in QSTEPMANAGER.md) improvements, additions and enhancements to step manager features used in all workflows, scripts and all others to ensure all steps in workflows, scripts and everywhere else are more advanced in all aspects of steps thanks to the step manager features in best ways to ensure that all steps will always be successful even without human intervention. The step manager should be also be an advancement and improvement to how everything is fully resilient to all types of errors and issues including being an enhancement to how it ensure each and every step is successful. Also make best plan of at least 10 additions, improvements, automations and all others to the step manager based on how step manager would be advanced in handling all steps and all types of steps. You will also update WORKFLOWSO.md and all steps you will include in it of all workflows,scripts plus all related workflows, scripts and files with the step manager features as an advancement and improvement best as you will decide. Ollama Autonomous Agent or qmoi should always automatically add sites, platforms and others that are not currently implemented or gotten from merge activities then add them automatically and update in ui features related to master owns(these ui features should only be accessible to master) plus all their details while also updating MASTEROWNS.md. Also make best plan to enhance and automate further test features of pr ollama autonomous agent plus how you will ensure all it's tests are actually successful, add at least 10(then add them to QSTEPMANAGER.md). improvements, automations and advancements to the test features of ollama autonomous agent plus all steps involved in all ollama autonomous agent  tests to enhance successful, very fast, thorough and accurate healing in each step in the ollama autonomous agent tests plus all other steps and all types of steps as you will mentioned in QSTEPMANAGER.md . Also note all errors below and make best plan to fix all of them then also note the failing step and make best plan to automate and enhance further in all aspects how q step manager will be an advancement and improvement to the failing step plus all other steps. Also remember to update all ollama autonomous agent tests to contain everything it should contain best. Also make best plan of how you will ensure everything is GitHub hosted and enhance and automate further the monitor features so that you could monitor everything running in GitHub in realtime best and very simply. Skip to content
+Alpha-Q-ai
+Repository navigation
+Code
+Issues
+Pull requests
+Ollama Master Orchestrator - Enhanced Auto-Healing
+Ollama Master Orchestrator - Enhanced Auto-Healing #17
+Annotations
+1 error and 1 warning
+Comprehensive Validation Suite (tests)
+failed now in 19s
+1s
+4s
+2s
+0s
+4s
+1s
+2s
+tests/test_ollama_enhanced_features.py::TestEdgeCases::test_invalid_app_does_not_corrupt_registry PASSED [ 95%]
+tests/test_ollama_enhanced_features.py::TestIntegration::test_full_validation_suite_method_exists PASSED [ 96%]
+tests/test_ollama_enhanced_features.py::TestIntegration::test_cross_platform_feature_matrix_is_complete PASSED [ 96%]
+tests/test_ollama_enhanced_features.py::TestIntegration::test_feature_matrix_has_unique_entries PASSED [ 97%]
+tests/test_ollama_enhanced_features.py::TestIntegration::test_feature_registry_is_deterministic PASSED [ 98%]
+tests/test_ollama_enhanced_features.py::TestPublicValidatorAPI::test_platform_validator_is_importable PASSED [ 98%]
+tests/test_ollama_enhanced_features.py::TestPublicValidatorAPI::test_platform_specific_validator_is_importable PASSED [ 99%]
+tests/test_ollama_enhanced_features.py::TestPublicValidatorAPI::test_agent_class_is_importable PASSED [100%]
+
+=================================== FAILURES ===================================
+____________ TestEnhancedValidation.test_platform_validator_caching ____________
+tests/test_enhanced_tracking_and_workflows.py:146: in test_platform_validator_caching
+assert "test_app-web" in validator.compile_cache
+E   AssertionError: assert 'test_app-web' in {}
+E    +  where {} = <ollama_autonomous_agent.PlatformValidator object at 0x7f8b4e70f850>.compile_cache
+______ TestOllamaAutonomousAgent.test_validate_all_features_returns_dict _______
+tests/test_ollama_autonomous_agent.py:629: in test_validate_all_features_returns_dict
+assert app in results
+E   AssertionError: assert 'qmoiaiui' in {'windows': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'macos': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'linux': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'ios': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, ...}
+________ TestPRSuccessContract.test_pr_contract_validates_all_features _________
+tests/test_ollama_autonomous_agent.py:701: in test_pr_contract_validates_all_features
+assert app in results, f"App {app} feature tests missing"
+E   AssertionError: App qmoiaiui feature tests missing
+E   assert 'qmoiaiui' in {'windows': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'macos': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'linux': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'ios': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, ...}
+_ TestPlatformSpecificFeatures.test_agent_platform_validation_returns_mapping __
+tests/test_ollama_enhanced_features.py:577: in test_agent_platform_validation_returns_mapping
+assert app in platform_results, (
+E   AssertionError: App 'qmoiaiui' missing from validation results for platform 'windows'.
+E   assert 'qmoiaiui' in {'platform': 'windows', 'code_compiles': True, 'dependencies_resolve': True, 'manifests_present': True, ...}
+=========================== short test summary info ============================
+FAILED tests/test_enhanced_tracking_and_workflows.py::TestEnhancedValidation::test_platform_validator_caching - AssertionError: assert 'test_app-web' in {}
+
+where {} = <ollama_autonomous_agent.PlatformValidator object at 0x7f8b4e70f850>.compile_cache
+FAILED tests/test_ollama_autonomous_agent.py::TestOllamaAutonomousAgent::test_validate_all_features_returns_dict - AssertionError: assert 'qmoiaiui' in {'windows': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'macos': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'linux': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'ios': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, ...}
+FAILED tests/test_ollama_autonomous_agent.py::TestPRSuccessContract::test_pr_contract_validates_all_features - AssertionError: App qmoiaiui feature tests missing
+assert 'qmoiaiui' in {'windows': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'macos': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'linux': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, 'ios': {'qmoiaiui': {'conversation_creation': True, 'message_history': True, 'model_selector': True, 'parameter_tuning': True, ...}, 'qcity': {'folder_tree_navigation': True, 'view_modes': True, 'search_functionality': True, 'batch_operations': True, ...}, 'qmoi-space': {'playback_controls': True, 'volume_control': True, 'quality_selection': True, 'subtitle_switching': True, ...}, 'qalpha': {'code_editing': True, 'syntax_highlighting': True, 'code_completion': True, 'debugger': True, ...}}, ...}
+FAILED tests/test_ollama_enhanced_features.py::TestPlatformSpecificFeatures::test_agent_platform_validation_returns_mapping - AssertionError: App 'qmoiaiui' missing from validation results for platform 'windows'.
+assert 'qmoiaiui' in {'platform': 'windows', 'code_compiles': True, 'dependencies_resolve': True, 'manifests_present': True, ...}
+======================== 4 failed, 150 passed in 0.71s =========================
+Error: Process completed with exit code 1.
+0s
+2s
+0s
+0s
+--- QMOI AUTONOMOUS AGENT REMEDIATION RECORD ---
+
+Instructions captured from this log:
+- Repair and validate the Ollama autonomous-agent PR and its tests.
+- Cover repository files/directories, branches, Git operations, and merge activities.
+- Support both thealphakenya/qmoi-enhanced and thealphakenya/Alpha-Q-ai.
+- Inspect contributors, pushes, commit history, timestamps, branches, and tracked-file structure.
+- Inspect all reachable QMOI pushes and at least four recent Alpha-Q-ai pushes.
+- Preserve merge traceability by updating MERGE.md for merge activity.
+- Keep this file updated until validation is complete, then run the push commands.
+
+Recorded CI errors and status:
+- PlatformValidator cache expected `test_app-web`; fixed with app-platform cache keys and invalid-app caching.
+- Feature validation callers used platform-first and app-first shapes; fixed with backward-compatible aliases.
+- Platform validation callers expected app entries alongside metadata; fixed while retaining metadata.
+
+Implementation completed so far:
+- Added read-only cross-repository Git snapshots with branches, tracked files, authors, emails, timestamps, subjects, and hashes.
+- Added merge-audit planning with all-branch/file-history requirements and a four-commit Alpha-Q-ai minimum.
+- Added timestamped MERGE.md activity recording.
+- Targeted failing tests: PASS (4/4).
+
+Remaining validation:
+- Run the complete Ollama autonomous-agent suite and CLI proof validation.
+- Run syntax and workflow YAML checks.
+- Confirm the intended diff, then execute explicit push commands and record the result here.
+
+Final validation result:
+- Complete test suite: PASS (161 passed).
+- Python compilation: PASS.
+- CLI validate-all proof: PASS, status ready_for_github, 6 platforms, 4 apps, 374 features.
+- GitHub workflow YAML validation: PASS (8 files).
+- Source-safety regression: PASS (2 tests).
+- Ready for explicit commit and push after final diff review.
+
+Publication result:
+- Commit: `d113b43812` (`fix: harden Ollama validation and merge audits`).
+- Push: PASS to `origin/main`.
+- Final audit-log update is being published with this commit.
+0s
+
+
+
+
+
+Skip to content
+Alpha-Q-ai
+Repository navigation
+Code
+Issues
+Pull requests
+Ollama Master Orchestrator - Enhanced Auto-Healing
+Ollama Master Orchestrator - Enhanced Auto-Healing #22
+Annotations
+2 errors and 1 warning
+Auto-Trigger Agent (Tests Success)
+failed 9 hours ago in 17s
+1s
+3s
+3s
+6s
+0s
+1s
+Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+Run actions/github-script@v7
+Dispatching ollama-autonomous-agent.yml for thealphakenya/Alpha-Q-ai on ref main
+[@octokit/request] "POST https://api.github.com/repos/thealphakenya/Alpha-Q-ai/actions/workflows/ollama-autonomous-agent.yml/dispatches" is deprecated. It is scheduled to be removed on Fri, 10 Mar 2028 00:00:00 GMT. See https://docs.github.com/en/rest/about-the-rest-api/api-versions
+Error: Autonomous-agent dispatch failed: Unexpected inputs provided: ["verbose"]
+RequestError [HttpError]: Unexpected inputs provided: ["verbose"]
+Error: Unhandled error: HttpError: Unexpected inputs provided: ["verbose"]
+    at /home/runner/work/_actions/actions/github-script/v7/dist/index.js:9537:21
+        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+            at async eval (eval at callAsyncFunction (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:36187:16), <anonymous>:21:3)
+                at async main (/home/runner/work/_actions/actions/github-script/v7/dist/index.js:36285:20) {
+                      status: 422,
+                        response: {
+                                url: 'https://api.github.com/repos/thealphakenya/Alpha-Q-ai/actions/workflows/ollama-autonomous-agent.yml/dispatches',
+                                    status: 422,
+                                        headers: {
+                                                  'access-control-allow-origin': '*',
+                                                        'access-control-expose-headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset, Warning',
+                                                              'content-length': '172',
+                                                                    'content-security-policy': "default-src 'none'",
+                                                                          'content-type': 'application/json; charset=utf-8',
+                                                                                date: 'Sun, 23 Aug 2026 00:31:19 GMT',
+                                                                                      deprecation: 'Tue, 10 Mar 2026 00:00:00 GMT',
+                                                                                            link: '<https://docs.github.com/en/rest/about-the-rest-api/api-versions>; rel="deprecation"; type="text/html"',
+                                                                                                  'referrer-policy': 'origin-when-cross-origin, strict-origin-when-cross-origin',
+                                                                                                  0s
+                                                                                                  1s
+                                                                                                  0s
+                                                                                                  0s
+                                                                                                  0s
+                                                                                                  
+                                        }
+                        }
+                }
+
+      --- 2026-08-23 FOLLOW-UP STATUS ---
+
+                  --- 2026-08-23 FINAL FOLLOW-UP ---
+
+                  - Local Ollama regression suite: PASS (161 passed).
+                  - Hosted Ollama PR Validation run `32642348677`: PASS.
+                  - Hosted Branch Sync Monitor for `c4ac85293a`: PASS.
+                  - Manual workflow dispatch remains blocked by HTTP 403 because the current
+                        GitHub token lacks Actions write permission.
+
+      Remediation:
+      - Removed the unsupported `verbose` input from the QMOI master orchestrator dispatch payload.
+      - Published as commit `c4ac85293a` to `thealphakenya/qmoi-enhanced` `main`.
+
+      Hosted validation:
+      - Branch Sync Monitor: PASS for `c4ac85293a`.
+      - Ollama PR Validation: IN PROGRESS for `c4ac85293a`.
+      - Previous orchestrator failure `32640424370` is from the older SHA and is retained for history.
+      - Alpha-Q-ai latest four pushes were inspected; recent hosted runs were successful.
+
+      Permissions:
+      - GitHub identity: `theofalphakenya`.
+      - Workflow dispatch attempt was blocked by GitHub API HTTP 403: `Resource not accessible by integration`.
+      - A token or repository authorization with Actions write permission is required to manually dispatch the master orchestrator.
+
+      Local validation:
+      - Workflow YAML parsing: PASS.
+      - Python compilation: PASS.
+      - Pytest was unavailable because `pytest` is not installed in this container.
+      - User changes remain preserved: `error2.txt` and untracked `package-lock.json` are not included in the published commit.
+
+      --- 2026-08-23 CREDENTIAL SECURITY ---
+
+      - A PAT was exposed in chat; revoke it immediately and create a replacement.
+      - The exposed credential was not used, stored, echoed, or written to files.
+      - Current authentication remains the Codespaces `GITHUB_TOKEN`.
+      - Store replacement credentials only in GitHub Secrets or the Codespaces secret store.
+
+      --- 2026-08-23 WORKFLOW METRICS ---
+
+      - Realtime tracker run `32643353706`: PASS on `54e5cb1f2b`.
+      - Ollama PR validation run `32643309908`: QUEUED on `54e5cb1f2b`.
+      - Branch sync run `32643389408`: IN PROGRESS on `54e5cb1f2b`.
+      - Workflow tracker run `32642930937`: PASS on `407049d3f705`.
+      - Historical auto-merge and master-orchestrator failures remain recorded.
+      - `github.md` and `WORKFLOWSO.md` were updated with the complete eight-workflow snapshot.
+
+                  --- 2026-08-23 REALTIME WORKFLOW CHECKPOINT ---
+
+                  - Branch Sync run `32643796801`: PASS.
+                  - PR Validation run `32643712530`: all substantive validation jobs PASS;
+                        final status-reporting job remains IN PROGRESS.
+                  - Autonomous/live tracker runs: PASS.
+                  - Auto-merge and master-orchestrator latest failures are historical.
+                  - PR Monitor has no recent hosted run.
+                  - All workflows are not yet fully successful; unresolved states are
+                        documented in `github.md` rather than falsely marked PASS.
+
+                  --- 2026-08-23 ALL ACTIVE RUN MONITORING ---
+
+                  - Realtime monitor enhanced to query every repository workflow's active
+                        runs, covering queued, in_progress, requested, waiting, and pending.
+                  - Active runs are deduplicated by run ID and merged with existing named
+                        workflow history and manual-run inspection.
+                  - Focused monitor tests: PASS (8 passed).
+                  - Workflow YAML and monitor collection validation: PASS.
+
+                  --- 2026-08-23 LIVE RUN FOLLOW-UP ---
+
+                  - PR validation `32644238115`: IN PROGRESS; completed integrity and
+                        documentation jobs passed, six platform jobs remain active.
+                  - Branch sync `32644238113`: CANCELLED by concurrency, superseded by
+                        pending run `32644312057`; not a test failure.
+                  - Older branch sync `32644169261`: still IN PROGRESS.
+                  - Repository-wide active-run collection covers all listed runs.
+
+                  --- 2026-08-23 ACTIVE JOB CHECKPOINT ---
+
+                  - PR validation `32644363957`: active; Android is the remaining platform
+                        job, with all other listed jobs PASS.
+                  - Autonomous agent `32644388010`: active.
+                  - Branch sync `32644403642`: pending; `32644312057`: active.
+                  - Older validation `32644238115`: all substantive jobs PASS; final report
+                        job remains active.
+                  - No active job currently reports failure.

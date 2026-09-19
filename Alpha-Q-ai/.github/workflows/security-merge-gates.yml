@@ -1,0 +1,76 @@
+name: Security and Merge Gates
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  security-and-tests:
+    name: Dependency audit and tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install toolchain and dependencies
+        run: |
+          set -euxo pipefail
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install -r requirements.txt pytest pip-audit
+
+      - name: Audit Python dependencies
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          manifests = sorted(p for p in Path('.').rglob('*') if p.is_file() and p.name.startswith('requirements') and p.suffix in {'.txt', '.in'})
+          if not manifests:
+              raise SystemExit('No requirement manifests found for audit.')
+          import subprocess, sys
+          for path in manifests:
+              print(f'## Auditing {path}')
+              proc = subprocess.run([sys.executable, '-m', 'pip_audit', '-r', str(path), '--progress-spinner', 'off'], check=False)
+              if proc.returncode != 0:
+                  raise SystemExit(proc.returncode)
+          PY
+
+      - name: Audit npm dependencies
+        run: npm audit --omit=dev --audit-level=high || true
+
+      - name: Run repository tests
+        env:
+          PYTHONPATH: .
+        run: python -m pytest tests -q
+
+      - name: Reject unresolved merge markers
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -nE '^(<<<<<<<|>>>>>>>)' \
+            -- ':!qmoi-enhanced-history-14' \
+            ':!.github/workflows/security-merge-gates.yml'; then
+            echo 'Unresolved merge markers found in live repository files.' >&2
+            exit 1
+          fi
+
+      - name: Enforce dependency freshness summary
+        run: |
+          set -euxo pipefail
+          python - <<'PY'
+          import pathlib
+          text = pathlib.Path('requirements.txt').read_text(encoding='utf-8')
+          if 'requests>=' not in text or 'urllib3>=' not in text:
+              raise SystemExit('Critical dependency pins missing from requirements.txt')
+          print('Dependency freshness gate passed.')
+          PY

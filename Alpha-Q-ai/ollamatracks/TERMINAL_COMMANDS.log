@@ -1,0 +1,12 @@
+# Sanitized terminal and agent command evidence
+# Secrets and credential values are never recorded.
+
+2026-09-17 | gh api repos/thealphakenya/qmoi-enhanced/dependabot/alerts --paginate | result=403_resource_not_accessible
+2026-09-17 | find /workspaces -maxdepth 3 -type d -name .git | result=only_qmoi-enhanced_checkout
+2026-09-17 | inspect SYNC.md, MERGE.md, ALLAUTO.md, ollama-autonomous-agent.yml | result=contracts_present_alpha_checkout_missing
+2026-09-17 | inspect agent command sanitizer and checkpoint persistence | result=credential_redaction_present
+2026-09-17 | local dependency and repository inventory | result=remaining_alert_source_requires_github_alert_access
+2026-09-17 | edit SYNC.md, ollama-autonomous-agent.yml, branch-sync.yml, and oe2.txt | result=merge_and_command_evidence_contracts_updated
+2026-09-17 | parse edited workflows and run PYTHONPATH=. python -m pytest tests -q | result=191_passed
+
+Protocol: append command intent, repository scope, timestamp, and sanitized result for every autonomous/local command batch. Never record tokens, passwords, private keys, or full authenticated URLs.

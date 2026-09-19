@@ -1,0 +1,14 @@
+[Unit]
+Description=QMOI Queue Worker
+After=network.target
+
+[Service]
+Type=simple
+User=qmoi
+WorkingDirectory=/opt/qmoi
+ExecStart=/usr/bin/python3 /opt/qmoi/scripts/queue_worker.py --concurrency 2
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

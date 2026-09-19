@@ -1,0 +1,15 @@
+QMOI TRACKING INDEX
+===================
+
+Tracking schema:
+- CURRENT_STATUS.txt
+- LATEST_ACTIVITY.txt
+- STATE.txt
+- PR_STATUS.txt
+- LAST_RECONCILIATION.txt
+- TRACKING_INDEX.txt
+- monitoring_summary.json
+- telemetry.jsonl
+- agent.log
+
+All timestamps use UTC ISO-8601 format.

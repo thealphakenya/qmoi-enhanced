@@ -1,0 +1,51 @@
+OLLAMA TRACKING PROTOCOL
+========================
+
+Protocol: ollamatracks-v4
+Schema: 4.0
+
+TIMESTAMP
+---------
+UTC ISO-8601 format:
+
+YYYY-MM-DDTHH:MM:SS.mmmZ
+
+HISTORICAL EVENTS
+----------------
+NNNNNN_event-name.txt
+
+The numeric sequence determines repository-local event order.
+
+MUTABLE PROJECTIONS
+-------------------
+CURRENT_STATUS.txt
+LATEST_ACTIVITY.txt
+STATE.txt
+PR_STATUS.txt
+LAST_RECONCILIATION.txt
+
+STRUCTURED TELEMETRY
+--------------------
+telemetry.jsonl
+
+Each JSONL record should contain, when available:
+
+event_id
+event_type
+timestamp_utc
+repository
+workflow
+workflow_run_id
+workflow_run_attempt
+agent_run_id
+iteration
+task_id
+action
+status
+result
+
+SECURITY
+--------
+workflow_run workflows are privileged.
+
+Never execute untrusted pull-request source code from this tracker.

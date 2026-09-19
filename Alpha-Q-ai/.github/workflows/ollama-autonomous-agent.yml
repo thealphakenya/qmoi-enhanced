@@ -1,0 +1,741 @@
+name: Ollama Autonomous Agent & Live Tracker
+
+# ============================================================================
+# QMOI / OLLAMA AUTONOMOUS AGENT (SELF-HEALING & LOOP-PROTECTED)
+# ============================================================================
+#
+# PURPOSE
+# -------
+# Trusted orchestration, validation, autonomous execution, recovery,
+# telemetry, repository integrity, and self-healing layer for QMOI/Ollama.
+# Fully automated universal error remediation without human intervention.
+#
+# IMPORTANT CLI COMPATIBILITY
+# ---------------------------
+# scripts/ollama_autonomous_agent.py currently supports:
+#
+#   validate-all
+#   validate-platforms
+#   validate-features
+#   validate-file-handlers
+#   generate-memory-index
+#   generate-model-card
+#   proof
+#   checkpoint
+#
+# SECURITY PRINCIPLES
+# -------------------
+# 1. Never execute untrusted PR-head code.
+# 2. Always validate repository/Git state before mutation.
+# 3. Repair only deterministic/mechanical failures automatically.
+# 4. Retry transient failures with bounded backoff.
+# 5. Validate after every major mutation.
+# 6. Preserve diagnostics even when the workflow fails.
+# 7. Never create an infinite autonomous recovery loop.
+# 8. Prefer evidence preservation over destructive guessing.
+# 9. Human intervention remains the boundary for ambiguous failures.
+#
+# ============================================================================
+
+on:
+  workflow_run:
+    workflows:
+      - "Ollama Master Orchestrator - Enhanced Auto-Healing"
+      - "Ollama PR Validation - 293+ Platform Features"
+    types:
+      - completed
+
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Agent execution mode"
+        required: true
+        default: "full"
+        type: choice
+        options:
+          - full
+          - validate
+          - sync
+          - monitor
+          - heal
+
+      auto_heal:
+        description: "Enable bounded automatic recovery and circuit breaker"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+      auto_fix:
+        description: "Enable universal automated file and workflow fixes"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+      force_agent:
+        description: "Allow autonomous agent execution"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+      max_iterations:
+        description: "Maximum autonomous-agent iterations"
+        required: true
+        default: "200"
+        type: string
+
+      max_per_iteration:
+        description: "Maximum tasks per agent iteration"
+        required: true
+        default: "200"
+        type: string
+
+      max_recovery_attempts:
+        description: "Maximum bounded recovery attempts"
+        required: true
+        default: "3"
+        type: string
+
+      reason:
+        description: "Reason for manual execution"
+        required: false
+        default: "Autonomous self-healing execution"
+        type: string
+
+  schedule:
+    - cron: "0 */6 * * *"
+
+permissions:
+  contents: write
+  actions: read
+  pull-requests: read
+  checks: read
+  statuses: read
+
+concurrency:
+  group: ollama-autonomous-agent-${{ github.repository }}-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  TRACK_DIR: ollamatracks
+  TRACK_SCHEMA_VERSION: "7.4"
+  TRACKING_PROTOCOL: "ollamatracks-v7-self-healing"
+  VALIDATION_WORKFLOW_NAME: "Ollama Master Orchestrator - Enhanced Auto-Healing"
+  AGENT_SCRIPT: "scripts/ollama_autonomous_agent.py"
+  PYTHON_VERSION: "3.11"
+  DEFAULT_MAX_ITERATIONS: "3"
+  DEFAULT_MAX_PER_ITERATION: "10"
+  DEFAULT_MAX_RECOVERY_ATTEMPTS: "3"
+  QMOI_RUNTIME_MODE: "github-hosted"
+  QMOI_GITHUB_HOSTED: "true"
+  QMOI_AUTO_HEAL: ${{ github.event.inputs.auto_heal || 'true' }}
+  QMOI_AUTO_FIX: ${{ github.event.inputs.auto_fix || 'true' }}
+  QMOI_AGENT_MODE: ${{ github.event.inputs.mode || 'full' }}
+  QMOI_FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
+  QMOI_RETRY_ATTEMPTS: "5"
+  QMOI_RETRY_DELAY: "10"
+  QMOI_TIMEOUT_SECONDS: "300"
+  OLLAMA_TIMEOUT_SECONDS: "300"
+  OLLAMA_RETRY_COUNT: "3"
+  OLLAMA_HOST: "http://127.0.0.1:11434"
+  OLLAMA_MODEL: "qwen2.5-coder:3b"
+  OLLAMA_APPLY_REPAIRS: ${{ github.event.inputs.auto_fix || 'true' }}
+  REASON: ${{ github.event.inputs.reason || 'Scheduled/workflow-triggered execution' }}
+
+jobs:
+  ollama-agent:
+    name: Ollama Autonomous Agent + Universal Self-Healing Engine
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+
+    steps:
+      - name: Checkout trusted default branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+          clean: true
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Runner and environment preflight
+        id: runner_preflight
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          echo "============================================================"
+          echo "RUNNER PREFLIGHT"
+          echo "============================================================"
+          uname -a
+          cat /etc/os-release || true
+          df -h
+          free -h || true
+          python3 --version || true
+          git --version
+          pwd
+          test -d "$GITHUB_WORKSPACE"
+
+      - name: Enforce GitHub-hosted runtime contract
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if [ "${GITHUB_ACTIONS:-false}" != "true" ]; then
+            echo "::error::This QMOI autonomous agent must run on a GitHub-hosted runner. Local codespaces and local shells are not the authoritative production runtime."
+            exit 1
+          fi
+          echo "GitHub Actions runtime confirmed: $GITHUB_ACTIONS"
+          echo "Runtime mode: ${QMOI_RUNTIME_MODE}"
+          echo "GitHub-hosted: ${QMOI_GITHUB_HOSTED}"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Initialize durable tracking
+        id: initialize
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_ACTION: ${{ github.event.action }}
+          VALIDATION_RUN_ID: ${{ github.event.workflow_run.id }}
+          VALIDATION_RUN_ATTEMPT: ${{ github.event.workflow_run.run_attempt }}
+          VALIDATION_STATUS: ${{ github.event.workflow_run.status }}
+          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          VALIDATION_URL: ${{ github.event.workflow_run.html_url }}
+        run: |
+          set -Eeuo pipefail
+          mkdir -p "$TRACK_DIR"
+          now="$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ')"
+          agent_run_id="agent-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+
+          touch \
+            "$TRACK_DIR/telemetry.jsonl" \
+            "$TRACK_DIR/CURRENT_STATUS.txt" \
+            "$TRACK_DIR/LATEST_ACTIVITY.txt" \
+            "$TRACK_DIR/STATE.txt" \
+            "$TRACK_DIR/PR_STATUS.txt" \
+            "$TRACK_DIR/LAST_RECONCILIATION.txt" \
+            "$TRACK_DIR/LAST_TEST_RESULT.txt" \
+            "$TRACK_DIR/REPAIR_LOG.txt" \
+            "$TRACK_DIR/error_fingerprints.log" \
+            "$TRACK_DIR/TERMINAL_COMMANDS.log"
+
+            printf '# Sanitized autonomous command evidence\n' > "$TRACK_DIR/TERMINAL_COMMANDS.log"
+            printf '# Secrets and credential values are never recorded.\n' >> "$TRACK_DIR/TERMINAL_COMMANDS.log"
+            for command in "${QMOI_AGENT_COMMAND:-}" "${QMOI_TERMINAL_COMMAND:-}"; do
+              if [ -n "$command" ]; then
+                sanitized="$command"
+                sanitized="$(printf '%s' "$sanitized" | sed -E \
+                  -e 's/(GH_TOKEN|GITHUB_TOKEN|MY_CUSTOM_TOKEN|MY_CUTOM_TOKEN)[[:space:]]*=[[:space:]]*[^[:space:];&|]+/\1=<redacted>/Ig' \
+                  -e 's/(github_pat_|ghp_|gho_|ghs_|ghu_)[A-Za-z0-9_]+/<redacted>/g')"
+                printf '%s | command=%s\n' "$now" "$sanitized" >> "$TRACK_DIR/TERMINAL_COMMANDS.log"
+              fi
+            done
+
+          cat > "$TRACK_DIR/TRACKING_PROTOCOL.txt" <<EOF
+          OLLAMA AUTONOMOUS TRACKING PROTOCOL
+          Protocol: $TRACKING_PROTOCOL
+          Schema: $TRACK_SCHEMA_VERSION
+          Repository: $GITHUB_REPOSITORY
+          Workflow: $GITHUB_WORKFLOW
+          Agent: $AGENT_SCRIPT
+          Security: Trusted default branch only.
+          Recovery: Bounded deterministic/mechanical recovery with circuit breakers.
+          EOF
+
+          cat > "$TRACK_DIR/CURRENT_STATUS.txt" <<EOF
+          OLLAMA AUTONOMOUS AGENT
+          State: INITIALIZING
+          Status: RUNNING
+          Timestamp UTC: $now
+          Run: $GITHUB_RUN_ID
+          EOF
+
+          echo "agent_run_id=$agent_run_id" >> "$GITHUB_OUTPUT"
+          echo "timestamp_utc=$now" >> "$GITHUB_OUTPUT"
+
+      - name: Repair and validate Git repository
+        id: git_recovery_initial
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          echo "============================================================"
+          echo "GIT INTEGRITY / SELF-HEALING"
+          echo "============================================================"
+          mkdir -p "$TRACK_DIR"
+          repair_log="$TRACK_DIR/REPAIR_LOG.txt"
+
+          [ -d .git/rebase-merge ] && git rebase --abort 2>/dev/null || true
+          [ -f .git/MERGE_HEAD ] && git merge --abort 2>/dev/null || true
+          [ -f .git/CHERRY_PICK_HEAD ] && git cherry-pick --abort 2>/dev/null || true
+
+          find .git -type f \( -name '*.lock' -o -name 'index.lock' \) -delete 2>/dev/null || true
+
+          if ! git status --porcelain=v1 >/dev/null 2>&1; then
+            echo "::warning::Git index corrupted; rebuilding."
+            echo "$(date -u '+%Y-%m-%dT%H:%M:%S.%3NZ') | GIT_INDEX_REPAIR" >> "$repair_log"
+            rm -f .git/index
+            git reset --mixed HEAD
+          fi
+
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "Git integrity preflight passed."
+
+      - name: Install validation and recovery tooling
+        id: tooling
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python -m pip install --upgrade pip setuptools wheel pytest PyYAML ruff
+          if [ -f requirements.txt ]; then
+            python -m pip install -r requirements.txt
+          fi
+
+      - name: Bootstrap Ollama runtime
+        id: ollama_bootstrap
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          if ! command -v ollama >/dev/null 2>&1; then
+            curl --fail --silent --show-error --location https://ollama.com/install.sh | sh
+          fi
+          ollama --version
+          export OLLAMA_HOST="$OLLAMA_HOST"
+          if ! curl --fail --silent --show-error "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
+            nohup ollama serve > "$TRACK_DIR/ollama-server.log" 2>&1 &
+          fi
+          for attempt in $(seq 1 90); do
+            if curl --fail --silent --show-error "$OLLAMA_HOST/api/tags" >/dev/null 2>&1; then
+              break
+            fi
+            if [ "$attempt" -eq 90 ]; then
+              echo "::error::Ollama did not become healthy within 90 seconds."
+              tail -100 "$TRACK_DIR/ollama-server.log" 2>/dev/null || true
+              exit 1
+            fi
+            sleep 1
+          done
+          echo "Ollama server is healthy at $OLLAMA_HOST"
+
+      - name: Universal Autonomous File Auto-Fix Engine
+        id: action_repair
+        if: env.QMOI_AUTO_FIX == 'true'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          echo "============================================================"
+          echo "UNIVERSAL AUTONOMOUS FILE & WORKFLOW AUTO-FIX ENGINE"
+          echo "============================================================"
+          mkdir -p "$TRACK_DIR"
+          repair_log="$TRACK_DIR/REPAIR_LOG.txt"
+          changed=0
+
+          if [ -d .github/workflows ]; then
+            find .github/workflows -type f \( -name '*.yml' -o -name '*.yaml' \) | while read -r wf; do
+              before=$(sha256sum "$wf" | awk '{print $1}')
+              
+              # Fix deprecated or invalid CLI command usage across all workflows
+              sed -i 's/validate-all-platforms/validate-platforms/g' "$wf"
+              sed -i 's/validate-all-features/validate-features/g' "$wf"
+
+              # Upgrade older actions to v4 compliance
+              sed -i -E 's#actions/upload-artifact@v[1-3]#actions/upload-artifact@v4#g' "$wf"
+              sed -i -E 's#actions/download-artifact@v[1-3]#actions/download-artifact@v4#g' "$wf"
+
+              after=$(sha256sum "$wf" | awk '{print $1}')
+              if [ "$before" != "$after" ]; then
+                changed=1
+                echo "$(date -u +%FT%TZ) | FIXED_WORKFLOW | $wf" >> "$repair_log"
+                echo "Automatically fixed workflow file: $wf"
+              fi
+            done
+          fi
+
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+
+      - name: Verify autonomous agent source
+        id: verify_agent_source
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          test -f "$AGENT_SCRIPT"
+          python "$AGENT_SCRIPT" --help
+
+      - name: Determine agent execution mode
+        id: execution_mode
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          WORKFLOW_RUN_HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
+          VALIDATION_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          FORCE_AGENT: ${{ github.event.inputs.force_agent || 'false' }}
+          REQUESTED_MODE: ${{ github.event.inputs.mode || 'full' }}
+        run: |
+          set -Eeuo pipefail
+          run_agent="false"
+          command="monitor"
+          reason="Monitoring/reconciliation."
+
+          case "$EVENT_NAME" in
+            workflow_run)
+              if [ "$WORKFLOW_RUN_HEAD_BRANCH" = "$DEFAULT_BRANCH" ] && [ "$VALIDATION_CONCLUSION" != "cancelled" ]; then
+                run_agent="true"
+                command="autonomous"
+                reason="Trusted default-branch validation completed; run the bounded autonomous repair and validation loop even when upstream checks fail."
+              fi
+              ;;
+            workflow_dispatch)
+              if [ "$FORCE_AGENT" = "true" ]; then
+                run_agent="true"
+                case "$REQUESTED_MODE" in
+                  full|validate|heal) command="autonomous" ;;
+                  *) command="monitor" ;;
+                esac
+                reason="Manual autonomous execution."
+              fi
+              ;;
+            schedule)
+              run_agent="true"
+              command="autonomous"
+              reason="Scheduled bounded autonomous health and repair cycle."
+              ;;
+          esac
+
+          echo "run_agent=$run_agent" >> "$GITHUB_OUTPUT"
+          echo "command=$command" >> "$GITHUB_OUTPUT"
+          echo "reason=$reason" >> "$GITHUB_OUTPUT"
+
+      - name: Strictly validate all GitHub workflow YAML
+        id: yaml_validation
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          class UniqueLoader(yaml.SafeLoader): pass
+          def construct_mapping(loader, node, deep=False):
+              mapping = {}
+              for key_node, value_node in node.value:
+                  key = loader.construct_object(key_node, deep=deep)
+                  if key in mapping: raise ValueError(f"Duplicate key: {key!r}")
+                  mapping[key] = loader.construct_object(value_node, deep=deep)
+              return mapping
+          UniqueLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, construct_mapping)
+          root = Path(".github/workflows")
+          if root.exists():
+              for path in root.glob("*.y*ml"):
+                  yaml.load(path.read_text(encoding="utf-8"), Loader=UniqueLoader)
+          print("Workflow YAML validation passed.")
+          PY
+
+      - name: Validate Python source syntax
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python -m compileall -q scripts tests
+
+      - name: Validate agent-owned lint contract
+        id: lint
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          python -m ruff check \
+            scripts/ollama_autonomous_agent.py \
+            scripts/ollama_runtime.py \
+            scripts/validate_workflows.py
+
+      - name: Execute repository test suite
+        id: tests
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -Eeuo pipefail
+          if [ -d tests ]; then
+            python -m pytest tests -v --tb=short
+          fi
+
+      - name: Create pre-agent repository checkpoint
+        id: pre_agent_checkpoint
+        if: steps.execution_mode.outputs.run_agent == 'true'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          mkdir -p "$TRACK_DIR"
+          git status --short > "$TRACK_DIR/pre_agent_status.txt"
+          git diff > "$TRACK_DIR/pre_agent_diff.patch" || true
+
+      - name: Execute Autonomous Agent with Circuit-Breaker Loop Protection
+        id: agent_execution
+        if: steps.execution_mode.outputs.run_agent == 'true'
+        timeout-minutes: 240
+        shell: bash
+        env:
+          MAX_RETRIES: ${{ github.event.inputs.max_recovery_attempts || env.DEFAULT_MAX_RECOVERY_ATTEMPTS }}
+          MAX_ITERATIONS: ${{ github.event.inputs.max_iterations || env.DEFAULT_MAX_ITERATIONS }}
+          MAX_TASKS_PER_ITERATION: ${{ github.event.inputs.max_per_iteration || env.DEFAULT_MAX_PER_ITERATION }}
+          QMOI_AGENT_COMMAND: "python ${{ env.AGENT_SCRIPT }} ${{ steps.execution_mode.outputs.command }}"
+        run: |
+          set -Eeuo pipefail
+          command="${{ steps.execution_mode.outputs.command }}"
+          agent_cmd="python ${AGENT_SCRIPT} ${command}"
+          
+          attempt=1
+          last_fingerprint=""
+          success=0
+
+          while [ "$attempt" -le "$MAX_RETRIES" ]; do
+            echo "============================================================"
+            echo "AUTONOMOUS AGENT RUN: Attempt $attempt / $MAX_RETRIES"
+            echo "============================================================"
+
+            set +e
+            eval "$agent_cmd" > "$TRACK_DIR/agent_run_$attempt.log" 2>&1
+            exit_code=$?
+            set -e
+
+            if [ "$exit_code" -eq 0 ] && [ -f "$TRACK_DIR/OLLAMA_SUCCESS.json" ] && \
+              python -c 'import json,sys; data=json.load(open(sys.argv[1])); raise SystemExit(0 if data.get("final_status") == "SUCCESS" else 1)' "$TRACK_DIR/OLLAMA_SUCCESS.json"; then
+              echo "Autonomous agent executed successfully."
+              success=1
+              break
+            fi
+
+            current_fingerprint=$(sha256sum "$TRACK_DIR/agent_run_$attempt.log" | awk '{print $1}')
+            echo "Failure Fingerprint: $current_fingerprint"
+
+            if [ "$current_fingerprint" = "$last_fingerprint" ]; then
+              echo "::error::Circuit Breaker Triggered: Identical error state detected on consecutive attempts."
+              break
+            fi
+            last_fingerprint="$current_fingerprint"
+
+            python -m compileall -q scripts/ tests/
+
+            attempt=$((attempt + 1))
+            sleep 5
+          done
+
+          if [ "$success" -ne 1 ]; then
+            echo "::error::Autonomous agent failed after guarded execution attempts."
+            exit 1
+          fi
+
+      - name: Repair Git repository after autonomous agent
+        id: git_recovery_post_agent
+        if: always() && steps.execution_mode.outputs.run_agent == 'true'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          find .git -type f \( -name '*.lock' -o -name 'index.lock' \) -delete 2>/dev/null || true
+          if ! git status --porcelain=v1 >/dev/null 2>&1; then
+            rm -f .git/index
+            git reset --mixed HEAD
+          fi
+
+      - name: Commit safe mechanical repairs and workflow updates
+        id: safe_repair_commit
+        if: |
+          env.QMOI_AUTO_FIX == 'true' &&
+          steps.action_repair.outputs.changed == '1'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          git add .github/workflows
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "ci: autonomous self-healing and automatic workflow remediation [skip ci]"
+
+          branch="${{ github.event.repository.default_branch }}"
+          for i in 1 2 3; do
+            # Safely pull and rebase first to integrate incoming remote updates before pushing
+            git pull origin "${branch}" --rebase --autostash
+            
+            if git push origin "HEAD:${branch}"; then
+              break
+            fi
+            sleep 5
+          done
+
+      - name: Repository-wide GitHub monitoring snapshot
+        id: github_monitoring
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN || github.token }}
+        run: |
+          set -Eeuo pipefail
+          mkdir -p "$TRACK_DIR"
+          python scripts/realtime_workflow_monitor.py "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" --all > "$TRACK_DIR/repository_monitor_snapshot.json" 2>&1 || true
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path('ollamatracks/repository_monitor_snapshot.json')
+          if path.exists():
+              try:
+                  data = json.loads(path.read_text(encoding='utf-8'))
+                  if isinstance(data, dict):
+                      print(f"Repository active runs: {data.get('summary', {}).get('active', 0)}")
+                      print(f"Repository success runs: {data.get('summary', {}).get('success', 0)}")
+                      print(f"Repository failure runs: {data.get('summary', {}).get('failure', 0)}")
+              except json.JSONDecodeError:
+                  print('Repository monitoring snapshot not yet valid JSON; raw output captured.')
+          else:
+              print('Repository monitoring snapshot was not produced.')
+          PY
+
+      - name: Final lightweight validation
+        id: final_validation
+        if: always()
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -Eeuo pipefail
+          python -m compileall -q scripts
+          if [ -d tests ]; then
+            python -m pytest tests -q --tb=short
+          fi
+
+      - name: Validate repository and hosted links
+        id: link_validation
+        if: always()
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -Eeuo pipefail
+          python scripts/link_validator.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          report = json.loads(Path("ollamatracks/link_validation_report.json").read_text())
+          print(
+              f"Validated {report['total_links_validated']} links; "
+              f"blocking failures: {report['blocking_inaccessible']}"
+          )
+          if report["blocking_inaccessible"]:
+              raise SystemExit("Operational link validation failed")
+          PY
+
+      - name: Publish GitHub Actions summary
+        if: always()
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          {
+            echo "# Ollama Autonomous Agent"
+            echo "## Execution Summary"
+            echo "- Agent: ${{ steps.agent_execution.outcome || 'not-run' }}"
+            echo "- Validation: ${{ steps.final_validation.outcome || 'unknown' }}"
+            echo "- Links: ${{ steps.link_validation.outcome || 'unknown' }}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Finalize successful resume evidence
+        if: always() && steps.agent_execution.outcome == 'success'
+        shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          set -Eeuo pipefail
+          python - <<'PY'
+          import json
+          import os
+          from scripts.ollama_autonomous_agent import OllamaAutonomousAgent
+
+          success_path = "ollamatracks/OLLAMA_SUCCESS.json"
+          with open(success_path, encoding="utf-8") as handle:
+              success = json.load(handle)
+
+          agent = OllamaAutonomousAgent()
+          agent.results.update(
+              {
+                  "ollama_health": success.get("ollama_healthy", False),
+                  "validation_passed": success.get("validation_passed", False),
+                  "lint_passed": success.get("lint_passed", False),
+                  "files_analyzed": success.get("files_analyzed", []),
+                  "files_modified": success.get("files_modified", []),
+                  "llm_iterations": success.get("llm_iterations", 0),
+                  "tests_after": success.get("tests_after"),
+              }
+          )
+          agent.update_resume_checkpoint(
+              status="success",
+              completed_steps=[
+                  "Ollama health",
+                  "LLM coding loop",
+                  "post-agent validation",
+                  "success contract",
+                  "final hosted evidence",
+              ],
+              evidence={
+                  "repository_commit": success.get("commit") or os.getenv("GITHUB_SHA"),
+                  "workflow_run": success.get("workflow_run_id") or os.getenv("GITHUB_RUN_ID"),
+                  "model": success.get("model"),
+                  "ollama_health": success.get("ollama_healthy", False),
+                  "files_inspected": success.get("files_analyzed", []),
+                  "files_changed": success.get("files_modified", []),
+                  "test_result": success.get("validation_passed", False),
+                  "validation_passed": success.get("validation_passed", False),
+              },
+          )
+          print("Final success resume evidence written.")
+          PY
+
+      - name: Persist final resume evidence
+        if: always() && steps.agent_execution.outcome == 'success'
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          branch="${{ github.event.repository.default_branch }}"
+          git add resumefromhere.txt ollamatracks/checkpoint.json
+          if git diff --cached --quiet; then
+            echo "Resume evidence is already persisted."
+            exit 0
+          fi
+          git commit -m "chore: persist autonomous resume evidence [skip ci]"
+          git pull origin "$branch" --rebase --autostash
+          git push origin "HEAD:$branch"
+
+      - name: Upload autonomous-agent diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ollama-autonomous-agent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.TRACK_DIR }}/
+            resumefromhere.txt
+          retention-days: 30
+
+      - name: Enforce final health gate
+        if: always()
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          execution="${{ steps.execution_mode.outputs.run_agent }}"
+          agent="${{ steps.agent_execution.outcome }}"
+
+          if [ "$execution" != "true" ]; then
+            exit 0
+          fi
+          if [ "$agent" = "success" ] && [ -f "$TRACK_DIR/OLLAMA_SUCCESS.json" ] && \
+            [ "${{ steps.link_validation.outcome }}" = "success" ] && \
+            python -c 'import json,sys; data=json.load(open(sys.argv[1])); required=("ollama_healthy","model_available","inference_verified","llm_coding_started","validation_passed","lint_passed","checkpoint_created"); raise SystemExit(0 if data.get("final_status") == "SUCCESS" and all(data.get(key) for key in required) else 1)' "$TRACK_DIR/OLLAMA_SUCCESS.json"; then
+            exit 0
+          fi
+          exit 1

@@ -1,0 +1,36 @@
+{
+  "name": "QMOI Enhanced Light",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12-bookworm",
+  "remoteUser": "vscode",
+  "containerEnv": {
+    "GIT_OPTIONAL_LOCKS": "0",
+    "GIT_CONFIG_COUNT": "1",
+    "GIT_CONFIG_KEY_0": "fetch.writeCommitGraph",
+    "GIT_CONFIG_VALUE_0": "true"
+  },
+  "postCreateCommand": "bash scripts/prepare_codespace.sh light && bash scripts/auto_repo_sync.sh",
+  "postStartCommand": "bash scripts/auto_repo_sync.sh",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "git.autofetch": false,
+        "files.watcherExclude": {
+          "**/qmoi-enhanced-history-14/**": true,
+          "**/Alpha-Q-ai/**": true,
+          "**/node_modules/**": true,
+          "**/.venv/**": true
+        },
+        "search.exclude": {
+          "**/qmoi-enhanced-history-14/**": true,
+          "**/Alpha-Q-ai/**": true,
+          "**/node_modules/**": true,
+          "**/.venv/**": true
+        }
+      },
+      "extensions": [
+        "ms-python.python",
+        "github.vscode-github-actions"
+      ]
+    }
+  }
+}

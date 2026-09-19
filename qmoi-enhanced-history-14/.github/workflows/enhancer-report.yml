@@ -1,0 +1,78 @@
+name: Enhancement Report
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - "**/*.md"
+      - "scripts/**"
+      - "docs/**"
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Run enhancers
+        run: |
+          python3 scripts/qcity_enhancer.py --root .
+          python3 scripts/lion_feature_enhancer.py --root .
+
+      - name: Read reports
+        id: read-reports
+        run: |
+          echo "QCITY_REPORT<<EOF" >> $GITHUB_ENV
+          cat .qmoi_validation/qcity_enhancer.json >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+          echo "LION_REPORT<<EOF" >> $GITHUB_ENV
+          cat .qmoi_validation/lion_feature_enhancer.json >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const qcityReport = JSON.parse(process.env.QCITY_REPORT);
+            const lionReport = JSON.parse(process.env.LION_REPORT);
+
+            let comment = '## Enhancement Report\n\n';
+
+            // qCity summary
+            comment += '### qCity Platform Analysis\n';
+            comment += `- Manifests found: ${qcityReport.manifests_found}\n`;
+            if (qcityReport.details) {
+              comment += '- Suggestions:\n';
+              for (const [file, details] of Object.entries(qcityReport.details)) {
+                comment += `  - ${file}:\n`;
+                comment += details.suggestions.map(s => `    - ${s}`).join('\n');
+                comment += `\n    Confidence: ${details.confidence}\n`;
+              }
+            }
+
+            // Lion feature summary  
+            comment += '\n### Lion Feature Analysis\n';
+            comment += `- Features found: ${lionReport.found}\n`;
+            if (lionReport.recommendations) {
+              comment += '- Recommendations:\n';
+              for (const [file, details] of Object.entries(lionReport.recommendations)) {
+                comment += `  - ${file}:\n`;
+                comment += details.recommendations.map(r => `    - ${r}`).join('\n');
+                comment += `\n    Confidence: ${details.confidence}\n`;
+              }
+            }
+
+            comment += '\n---\nThis is an automated enhancement report. See `.qmoi_validation/` for full details.';
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
