@@ -1,14 +1,11 @@
 {
   "details": {
-    "auto_push": false,
-    "repositories": [
-      "/workspaces/qmoi-enhanced",
-      "/workspaces/Alpha-Q-ai"
-    ]
+    "feature_count": 404,
+    "proof_path": "/workspaces/qmoi-enhanced/github_proof_contract.json"
   },
-  "event": "merge_sync_started",
-  "message": "Repository merge and sync audit started.",
-  "phase": "merge_sync",
-  "status": "active",
-  "timestamp_utc": "2026-09-19T10:13:30.366933Z"
+  "event": "validation_pipeline_complete",
+  "message": "Validation pipeline completed.",
+  "phase": "validation",
+  "status": "passed",
+  "timestamp_utc": "2026-09-19T10:40:42.049902Z"
 }

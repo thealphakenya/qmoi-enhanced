@@ -1,5 +1,4 @@
 {
-  "feature_validation_passed": true,
   "features": {
     "android": {
       "qalpha": {
@@ -466,7 +465,6 @@
       }
     }
   },
-  "file_handler_validation_passed": true,
   "file_handlers": {
     "android": {
       ".7z": {
@@ -2713,14 +2711,13 @@
       }
     }
   },
-  "generated": "2026-09-19T09:59:28.333350Z",
-  "platform_validation_passed": true,
+  "generated": "2026-09-19T10:40:42.045586Z",
   "platforms": {
     "android": {
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 1e-06,
+      "duration_seconds": 0.0,
       "manifests_present": true,
       "passed": true,
       "platform": "android",
@@ -3052,7 +3049,7 @@
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 1e-06,
+      "duration_seconds": 0.0,
       "manifests_present": true,
       "passed": true,
       "platform": "web",
@@ -3131,7 +3128,7 @@
       "code_compiles": true,
       "dependencies_resolve": true,
       "diagnostics": {},
-      "duration_seconds": 1.1e-05,
+      "duration_seconds": 5e-06,
       "manifests_present": true,
       "passed": true,
       "platform": "windows",
@@ -3329,7 +3326,7 @@
       "sync_strategy": "main -> autosync-backup -> cross-repository -> historical inventory sync",
       "target_repository": "thealphakenya/Alpha-Q-ai"
     },
-    "generated": "2026-09-19T09:59:28.332982Z",
+    "generated": "2026-09-19T10:40:42.045291Z",
     "proof": {
       "alpha_q_ai_included": true,
       "applications_per_platform": 4,

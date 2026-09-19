@@ -1,8 +1,8 @@
 # QMOI Realtime Memory Index
 
-Generated: 2026-09-19T09:59:28.326450Z
+Generated: 2026-09-19T10:40:42.032897Z
 
-Files Tracked: 182
+Files Tracked: 183
 
 ## Files
 
@@ -137,6 +137,7 @@ Files Tracked: 182
 - `ollamatracks/TRACKING_INDEX.txt`
 - `ollamatracks/agent.log`
 - `ollamatracks/checkpoint.json`
+- `ollamatracks/link_validation_report.json`
 - `ollamatracks/live_activity_stream.json`
 - `ollamatracks/monitoring_summary.json`
 - `ollamatracks/ollama_autonomous_agent_live_activity.json`
