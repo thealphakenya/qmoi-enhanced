@@ -116,6 +116,21 @@ the Alpha-Q-ai push is still pending because the available Git credential in
 this execution environment is stale even though the API now reports push
 permission.
 
+### Published Remote Tree Metrics (2026-09-19)
+
+These counts come from the exact remote branch trees and are distinct from the
+all-history staging counts above:
+
+| Remote ref | Files | Directories | Commit |
+| --- | ---: | ---: | --- |
+| `qmoi-enhanced:merge/complete-copy-gate-qe-20260919` | 1,342 | 6 | `5dd13d7ee2` |
+| `Alpha-Q-ai:main` | 1,346 | 6 | `5ac4ece2cc` |
+
+The unified integration branch and reciprocal imported refs are not present on
+Alpha-Q-ai yet. These remote totals are therefore not the requested all-history
+union; final union metrics remain blocked until integration and imported refs
+are published to both repositories.
+
 ### Remote Completeness Audit (2026-09-19)
 
 The latest remote audit found `0` reciprocal imported-ref namespaces on both
