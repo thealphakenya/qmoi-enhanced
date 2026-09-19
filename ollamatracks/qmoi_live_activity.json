@@ -4,16 +4,16 @@
     {
       "details": {
         "behind": false,
-        "branch": "main",
+        "branch": "codespace-potential-tribble-g46v54ggq6rv2w4v5",
         "dirty": true,
-        "raw_status": "## main...origin/main\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LAST_RECONCILIATION.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/PR_STATUS.txt\n M ollamatracks/STATE.txt\n M ollamatracks/live_activity_stream.json\n M ollamatracks/ollama_autonomous_agent_live_activity.json\n M ollamatracks/qmoi_live_activity.json\n M ollamatracks/telemetry.jsonl"
+        "raw_status": "## codespace-potential-tribble-g46v54ggq6rv2w4v5...origin/codespace-potential-tribble-g46v54ggq6rv2w4v5\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/STATE.txt\n M ollamatracks/live_activity_stream.json\n M ollamatracks/ollama_autonomous_agent_live_activity.json\n M ollamatracks/qmoi_live_activity.json\n?? ollamatracks/complete_merge_report.json"
       },
       "entity": "qmoi",
       "event": "repo_health",
-      "message": "QMOI repo health on main is warning.",
+      "message": "QMOI repo health on codespace-potential-tribble-g46v54ggq6rv2w4v5 is warning.",
       "source": "qmoi",
       "status": "warning",
-      "timestamp_utc": "2026-09-18T13:44:36Z"
+      "timestamp_utc": "2026-09-19T09:04:56Z"
     }
   ]
 }
