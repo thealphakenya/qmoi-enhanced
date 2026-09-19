@@ -412,24 +412,3 @@ class ProductionTradingAutopilot:
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(self.render_dashboard_html(wallet_balance=wallet_balance, market_status=market_status), encoding='utf-8')
         return target
-
-
-def _demo() -> None:
-    bot = ProductionTradingAutopilot()
-    decision = bot.build_trade_plan(
-        platform_name='binance',
-        symbol='BTC/USDT',
-        side='buy',
-        price=60000,
-        amount=0.02,
-        confidence=0.82,
-        rationale='Conservative momentum entry within configured risk limits',
-    )
-    print(json.dumps(asdict(decision), indent=2))
-    print(json.dumps(bot.evaluate_execution(decision, wallet_balance=1000.0), indent=2))
-    dashboard_path = bot.write_dashboard_html(wallet_balance=1000.0, market_status='stable')
-    print(f'Dashboard written to: {dashboard_path}')
-
-
-if __name__ == '__main__':
-    _demo()
