@@ -1,5 +1,33 @@
 # MERGE.md - Merge Procedures and Guidelines
 
+## Complete History, Light Codespaces
+
+The repository keeps complete history and all merge inputs without requiring a
+large default working tree. Git history is the canonical archive; the working
+tree is a selected view. Codespaces use `.devcontainer/devcontainer.json` and
+`scripts/prepare_codespace.sh light` to omit `qmoi-enhanced-history-14`, the
+materialized `Alpha-Q-ai` tree, virtual environments, dependency caches, and
+generated backup trees from the active view. This reduces browser filesystem,
+search, watcher, and data-transfer costs while retaining the source objects on
+the remote.
+
+Use the modes deliberately:
+
+```bash
+bash scripts/prepare_codespace.sh light  # normal browser/Codespaces work
+bash scripts/prepare_codespace.sh full   # rehydrate every tracked path
+bash scripts/prepare_codespace.sh audit  # copy and verify all merge inputs
+```
+
+The `full` mode is required before a merge or release that needs every tracked
+path. The `audit` mode writes a complete report with per-source files,
+directories, symlinks, refs, reachable commits, missing paths, and staging
+status. Historical versions remain available with Git commands or the audit
+staging directory; they are not duplicated under conflicting working-tree
+paths. CI merge jobs must use full-history/object access only for audit and
+merge stages, while ordinary tests and documentation jobs should use blobless
+or sparse checkout.
+
 ## Overview
 This document provides comprehensive procedures for merging files and features between qmoi-enhanced and Alpha-Q-ai repositories. It ensures that no implementations are degraded, features are preserved, and conflicts are resolved intelligently.
 
