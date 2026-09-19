@@ -1,0 +1,77 @@
+{
+  "timestamp": "2025-11-13T07:06:22.631488",
+  "validations": [
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/windows/latest/qmoi_ai.exe",
+      "status": "FOUND",
+      "size": 5242880
+    },
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/mac/latest/qmoi_ai.dmg",
+      "status": "FOUND",
+      "size": 8388608
+    },
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/linux/latest/qmoi_ai.AppImage",
+      "status": "FOUND",
+      "size": 6291456
+    },
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/linux/latest/qmoi_ai.deb",
+      "status": "FOUND",
+      "size": 4194304
+    },
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/android/latest/qmoi_ai.apk",
+      "status": "FOUND",
+      "size": 10485760
+    },
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/ios/latest/qmoi_ai.ipa",
+      "status": "FOUND",
+      "size": 12582912
+    },
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/smarttv/latest/qmoi_ai_smarttv.apk",
+      "status": "FOUND",
+      "size": 8388608
+    },
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/chromebook/latest/qmoi_ai_chromebook.zip",
+      "status": "FOUND",
+      "size": 3145728
+    },
+    {
+      "app": "qmoi-ai",
+      "path": "Qmoi_downloaded_apps/raspberrypi/latest/qmoi_ai.img",
+      "status": "FOUND",
+      "size": 2097152000
+    },
+    {
+      "app": "qmoi-space",
+      "pwa": "pwa_apps/qmoi-space",
+      "status": "FOUND",
+      "files_count": 3
+    },
+    {
+      "app": "q-alpha",
+      "pwa": "pwa_apps/q-alpha",
+      "status": "FOUND",
+      "files_count": 7
+    },
+    {
+      "app": "qcity",
+      "path": "Qmoi_downloaded_apps/qcity/latest/qcity_package.zip",
+      "status": "FOUND",
+      "size": 2097152
+    }
+  ]
+}

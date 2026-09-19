@@ -1,0 +1,74 @@
+﻿2025-07-07T02:23:37.4091217Z ##[group]Run npm ci --legacy-peer-deps
+npm ci --legacy-peer-deps
+npm install -g vercel@latest
+shell: /usr/bin/bash -e {0}
+env:
+  NODE_VERSION: 18
+  QMOI_AUTODEV_ENABLED: true
+npm error code ETARGET
+npm error notarget No matching version found for k6@^0.47.0.
+npm error notarget In most cases you or one of your dependencies are requesting
+npm error notarget a package version that doesn't exist.
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-07-07T02_23_37_499Z-debug-0.log
+Process completed with exit code 1.
+
+
+  QMOI_VERSION: 2.0
+  PYTHON_VERSION: 3.9
+  NODE_VERSION: 18
+  pythonLocation: /opt/hostedtoolcache/Python/3.9.23/x64
+  PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.9.23/x64/lib/pkgconfig
+  Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.23/x64
+  Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.23/x64
+  Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.9.23/x64
+  LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.9.23/x64/lib
+Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.9.23/x64/lib/python3.9/site-packages (25.1.1)
+Collecting requests>=2.31.0 (from -r requirements/qmoi_enhanced_requirements.txt (line 4))
+  Downloading requests-2.32.4-py3-none-any.whl.metadata (4.9 kB)
+Collecting psutil>=5.9.0 (from -r requirements/qmoi_enhanced_requirements.txt (line 5))
+  Downloading psutil-7.0.0-cp36-abi3-manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (22 kB)
+ERROR: Could not find a version that satisfies the requirement sqlite3 (from versions: none)
+ERROR: No matching distribution found for sqlite3
+Process completed with exit code 1.
+
+﻿2025-07-07T02:25:00.6544410Z ##[group]Run npm ci
+npm ci
+shell: /usr/bin/bash -e {0}
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: jest-config@29.7.0
+npm warn Found: @types/node@24.0.3
+npm warn node_modules/jest-config/node_modules/@types/node
+npm warn   @types/node@"*" from @jest/console@29.7.0
+npm warn   node_modules/jest-config/node_modules/@jest/console
+npm warn     @jest/console@"^29.7.0" from @jest/test-result@29.7.0
+npm warn     node_modules/jest-config/node_modules/@jest/test-result
+npm warn     1 more (jest-runner)
+npm warn   9 more (@jest/environment, @jest/fake-timers, @jest/types, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peerOptional @types/node@"*" from jest-config@29.7.0
+npm warn node_modules/jest-config
+npm warn   jest-config@"^29.7.0" from create-jest@29.7.0
+npm warn   node_modules/create-jest
+npm warn   3 more (jest-cli, @jest/core, @jest/core)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: react-scripts@5.0.1
+npm warn Found: typescript@5.8.3
+npm warn node_modules/typescript
+npm warn   dev typescript@"^5.3.0" from the root project
+npm warn   10 more (fork-ts-checker-webpack-plugin, cosmiconfig, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peerOptional typescript@"^3.2.1 || ^4" from react-scripts@5.0.1
+npm warn node_modules/react-scripts
+npm warn
+npm warn Conflicting peer dependency: typescript@4.9.5
+npm warn node_modules/typescript
+npm warn   peerOptional typescript@"^3.2.1 || ^4" from react-scripts@5.0.1
+npm warn   node_modules/react-scripts
+npm error code ETARGET
+npm error notarget No matching version found for k6@^0.47.0.
+npm error notarget In most cases you or one of your dependencies are requesting
+npm error notarget a package version that doesn't exist.
+npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-07-07T02_25_00_736Z-debug-0.log
+Process completed with exit code 1.

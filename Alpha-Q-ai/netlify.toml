@@ -1,0 +1,9 @@
+[build]
+  command = "python -m pytest tests/test_ollama_autonomous_agent.py -q"
+  publish = "."
+  functions = "functions"
+
+[[redirects]]
+  from = "/*"
+  to = \"/index.html"
+  status = 200

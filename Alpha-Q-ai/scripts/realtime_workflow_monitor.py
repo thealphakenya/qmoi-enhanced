@@ -1,0 +1,1294 @@
+#!/usr/bin/env python3
+"""
+🔴 REALTIME GITHUB WORKFLOW MONITOR
+=====================================
+Monitors the Ollama Autonomous Agent workflow execution in GitHub in real-time.
+Tracks job status, agent behavior, test results, quality metrics, and performance.
+"""
+
+import os
+import sys
+import json
+import time
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Dict, List, Any, Optional
+from dataclasses import dataclass, asdict
+from enum import Enum
+import re
+
+# Color codes for terminal output
+class Colors:
+    RESET = '\033[0m'
+    BOLD = '\033[1m'
+    DIM = '\033[2m'
+    
+    # Status colors
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    BLUE = '\033[94m'
+    CYAN = '\033[96m'
+    MAGENTA = '\033[95m'
+    WHITE = '\033[97m'
+    
+    # Background
+    BG_GREEN = '\033[102m'
+    BG_YELLOW = '\033[103m'
+    BG_RED = '\033[101m'
+    BG_BLUE = '\033[104m'
+
+class JobStatus(Enum):
+    QUEUED = "queued"
+    IN_PROGRESS = "in_progress"
+    COMPLETED = "completed"
+    SUCCESS = "success"
+    FAILURE = "failure"
+    SKIPPED = "skipped"
+    CANCELLED = "cancelled"
+
+@dataclass
+class MetricSnapshot:
+    """Captures a single moment in time of workflow metrics"""
+    timestamp: str
+    elapsed_seconds: int
+    jobs_total: int
+    jobs_completed: int
+    jobs_in_progress: int
+    jobs_passed: int
+    jobs_failed: int
+    completion_percent: float
+    overall_status: str
+    
+class WorkflowMonitor:
+    """
+    Real-time monitor for Ollama PR Validation workflow running in GitHub.
+    
+    Features:
+    - Live job status tracking
+    - Test result aggregation
+    - Performance metrics collection
+    - Quality/reliability scoring
+    - Automatic alerts on failures
+    - Detailed logging
+    """
+    
+    def __init__(self, run_id: str, repo: str = "thealphakenya/qmoi-enhanced", 
+                 token: Optional[str] = None, update_interval: int = 10):
+        self.run_id = run_id
+        self.repo = repo
+        self.token = token or self._resolve_token()
+        self.update_interval = update_interval
+        self.track_dir = Path(__file__).resolve().parent.parent / "ollamatracks"
+        self.track_dir.mkdir(parents=True, exist_ok=True)
+        
+        self.start_time = None
+        self.end_time = None
+        self.job_history: Dict[str, List[Dict[str, Any]]] = {}
+        self.metrics_history: List[MetricSnapshot] = []
+        self.current_status = None
+        self.current_conclusion = None
+        self.jobs_snapshot = []
+        
+        self._setup_gh_token()
+        self._write_tracker_snapshot("monitor_initialized", "Realtime workflow monitor initialized", "initializing", "startup", {})
+    
+    def _resolve_token(self) -> str:
+        """Resolve GitHub token from environment with priority order"""
+        precedence = ['MY_CUSTOM_TOKEN', 'MY_CUTOM_TOKEN', 'GITHUB_TOKEN', 'GH_TOKEN']
+        for env_var in precedence:
+            token = os.environ.get(env_var)
+            if token:
+                return token
+        raise ValueError("No GitHub token found in environment")
+    
+    def _setup_gh_token(self):
+        """Configure gh CLI with the token"""
+        if not self.token:
+            return
+        os.environ['GH_TOKEN'] = self.token
+        os.environ['MY_CUSTOM_TOKEN'] = self.token
+    
+    def _run_gh_command(self, cmd: str) -> Dict[str, Any]:
+        """Execute gh CLI command and return parsed JSON with retry/backoff for transient failures."""
+        last_error = None
+        for attempt in range(1, 4):
+            try:
+                full_cmd = f"GH_PAGER=cat gh {cmd}"
+                result = subprocess.run(
+                    full_cmd,
+                    shell=True,
+                    capture_output=True,
+                    text=True,
+                    timeout=30
+                )
+                if result.returncode == 0 and result.stdout.strip():
+                    try:
+                        return json.loads(result.stdout)
+                    except json.JSONDecodeError:
+                        last_error = f"JSON decode failed on attempt {attempt}: {result.stdout[:200]}"
+                else:
+                    last_error = f"gh command returned code {result.returncode}: {result.stderr.strip() or result.stdout.strip()}"
+            except Exception as e:
+                last_error = f"Error running gh command: {e}"
+
+            if attempt < 3:
+                time.sleep(2 * attempt)
+
+        if last_error:
+            print(f"{Colors.YELLOW}⚠️ {last_error}{Colors.RESET}")
+        return {}
+    
+    def get_run_status(self) -> Dict[str, Any]:
+        """Fetch current run status from GitHub."""
+        # gh run view supports fields like number, status, conclusion, jobs, etc.
+        # runNumber is not a valid field name for gh JSON output; using it causes the
+        # GitHub CLI to exit with code 1 and triggers the monitor's "Failed to fetch run status" path.
+        cmd = f"run view {self.run_id} --repo {self.repo} --json " \
+              f"databaseId,displayTitle,status,conclusion,headBranch,createdAt," \
+              f"updatedAt,startedAt,url,headSha,number,event,jobs,name"
+        data = self._run_gh_command(cmd)
+        if not isinstance(data, dict):
+            return {}
+        return data
+
+    def get_repository_run_overview(self, limit: int = 20) -> Dict[str, Any]:
+        """Return the repository-wide status snapshot across active and recent GitHub runs."""
+        cmd = (
+            f"run list --repo {self.repo} --limit {limit} --json "
+            "databaseId,displayTitle,status,conclusion,headBranch,createdAt,updatedAt,"
+            "startedAt,url,workflowName,event,name,number"
+        )
+        data = self._run_gh_command(cmd)
+        if not isinstance(data, list):
+            return {
+                "runs": [],
+                "active_runs": [],
+                "summary": {"total": 0, "active": 0, "success": 0, "failure": 0},
+                "workflow_health": {},
+            }
+
+        active_statuses = {"queued", "in_progress", "requested", "waiting", "pending"}
+        active = [run for run in data if str(run.get("status", "")).lower() in active_statuses]
+
+        workflow_counts: Dict[str, int] = {}
+        workflow_states: Dict[str, Dict[str, int]] = {}
+        for run in data:
+            name = str(run.get("workflowName") or run.get("name") or "unknown")
+            workflow_counts[name] = workflow_counts.get(name, 0) + 1
+            state = workflow_states.setdefault(name, {"total": 0, "active": 0, "success": 0, "failure": 0})
+            state["total"] += 1
+            if str(run.get("status", "")).lower() in active_statuses:
+                state["active"] += 1
+            if str(run.get("conclusion", "")).lower() == "success":
+                state["success"] += 1
+            if str(run.get("conclusion", "")).lower() == "failure":
+                state["failure"] += 1
+
+        summary = {
+            "total": len(data),
+            "active": len(active),
+            "success": sum(1 for run in data if str(run.get("conclusion", "")).lower() == "success"),
+            "failure": sum(1 for run in data if str(run.get("conclusion", "")).lower() == "failure"),
+            "queued": sum(1 for run in data if str(run.get("status", "")).lower() == "queued"),
+            "in_progress": sum(1 for run in data if str(run.get("status", "")).lower() == "in_progress"),
+            "requested": sum(1 for run in data if str(run.get("status", "")).lower() == "requested"),
+            "waiting": sum(1 for run in data if str(run.get("status", "")).lower() == "waiting"),
+        }
+        return {
+            "runs": data,
+            "active_runs": active,
+            "summary": summary,
+            "workflow_health": workflow_states,
+            "workflow_counts": workflow_counts,
+        }
+
+    def monitor_repository_once(self, limit: int = 20) -> Dict[str, Any]:
+        """Capture a repository-wide GitHub health summary and persist it to the tracker state."""
+        overview = self.get_repository_run_overview(limit=limit)
+        summary = overview.get("summary", {})
+        workflow_health = overview.get("workflow_health", {})
+        self._write_tracker_snapshot(
+            "repository_monitor_snapshot",
+            "Repository-wide GitHub run monitoring snapshot captured.",
+            "monitoring",
+            "github_repo",
+            {
+                "runs_total": summary.get("total", 0),
+                "active_runs": summary.get("active", 0),
+                "success_runs": summary.get("success", 0),
+                "failure_runs": summary.get("failure", 0),
+                "queued_runs": summary.get("queued", 0),
+                "in_progress_runs": summary.get("in_progress", 0),
+                "requested_runs": summary.get("requested", 0),
+                "waiting_runs": summary.get("waiting", 0),
+                "workflow_health": workflow_health,
+            },
+        )
+        return overview
+    
+    def get_job_logs(self, job_id: str) -> str:
+        """Fetch logs for a specific job"""
+        try:
+            cmd = f"run view {self.run_id} --repo {self.repo} --log-failed"
+            result = subprocess.run(
+                f"GH_PAGER=cat gh {cmd}",
+                shell=True,
+                capture_output=True,
+                text=True,
+                timeout=30
+            )
+            return result.stdout if result.returncode == 0 else ""
+        except Exception as e:
+            return f"Error fetching logs: {e}"
+    
+    def calculate_metrics(self) -> MetricSnapshot:
+        """Calculate and return current metrics snapshot"""
+        if not self.start_time:
+            self.start_time = datetime.now()
+        
+        elapsed = (datetime.now() - self.start_time).total_seconds()
+        
+        jobs_total = len(self.jobs_snapshot)
+        jobs_completed = sum(1 for j in self.jobs_snapshot if j.get('status') == 'completed')
+        active_states = {'in_progress', 'queued', 'requested', 'waiting', 'pending'}
+        jobs_in_progress = sum(1 for j in self.jobs_snapshot if j.get('status') in active_states)
+        jobs_passed = sum(1 for j in self.jobs_snapshot if j.get('conclusion') == 'success')
+        jobs_failed = sum(1 for j in self.jobs_snapshot if j.get('conclusion') == 'failure')
+        
+        completion_percent = (jobs_completed / jobs_total * 100) if jobs_total > 0 else 0
+        
+        overall_status = "🔴 Running"
+        if self.current_status == 'completed':
+            if self.current_conclusion == 'success':
+                overall_status = "🟢 Success"
+            elif self.current_conclusion == 'failure':
+                overall_status = "🔴 Failed"
+            else:
+                overall_status = "🟡 Cancelled"
+        elif self.current_status == 'in_progress':
+            overall_status = "🟡 In Progress"
+        
+        snapshot = MetricSnapshot(
+            timestamp=datetime.now().isoformat(),
+            elapsed_seconds=int(elapsed),
+            jobs_total=jobs_total,
+            jobs_completed=jobs_completed,
+            jobs_in_progress=jobs_in_progress,
+            jobs_passed=jobs_passed,
+            jobs_failed=jobs_failed,
+            completion_percent=completion_percent,
+            overall_status=overall_status
+        )
+        
+        self.metrics_history.append(snapshot)
+        return snapshot
+    
+    def format_duration(self, seconds: int) -> str:
+        """Format seconds to human-readable duration"""
+        hours = seconds // 3600
+        minutes = (seconds % 3600) // 60
+        secs = seconds % 60
+        
+        if hours > 0:
+            return f"{hours}h {minutes}m {secs}s"
+        elif minutes > 0:
+            return f"{minutes}m {secs}s"
+        else:
+            return f"{secs}s"
+    
+    def build_health_summary(self) -> Dict[str, Any]:
+        """Build a structured health summary from the current job snapshot."""
+        jobs = self.jobs_snapshot or []
+        jobs_total = len(jobs)
+        jobs_passed = sum(1 for j in jobs if j.get('conclusion') == 'success')
+        jobs_failed = sum(1 for j in jobs if j.get('conclusion') == 'failure')
+        active_states = {'in_progress', 'queued', 'requested', 'waiting', 'pending'}
+        jobs_in_progress = sum(1 for j in jobs if j.get('status') in active_states)
+        failed_jobs = [j.get('name') for j in jobs if j.get('conclusion') == 'failure']
+        test_jobs = [j for j in jobs if 'test' in (j.get('name', '')).lower() or 'pytest' in (j.get('name', '')).lower()]
+        test_summary = {
+            "total_test_jobs": len(test_jobs),
+            "completed_test_jobs": sum(1 for j in test_jobs if j.get('status') == 'completed'),
+            "passing_test_jobs": sum(1 for j in test_jobs if j.get('conclusion') == 'success'),
+            "failing_test_jobs": sum(1 for j in test_jobs if j.get('conclusion') == 'failure'),
+            "test_job_names": [j.get('name') for j in test_jobs],
+        }
+
+        pass_rate = (jobs_passed / jobs_total * 100.0) if jobs_total else 0.0
+        reliability_score = max(0.0, min(100.0, pass_rate))
+
+        return {
+            "jobs_total": jobs_total,
+            "jobs_passed": jobs_passed,
+            "jobs_failed": jobs_failed,
+            "jobs_in_progress": jobs_in_progress,
+            "pass_rate": pass_rate,
+            "reliability_score": reliability_score,
+            "failed_jobs": failed_jobs,
+            "status": self.current_status,
+            "conclusion": self.current_conclusion,
+            "test_summary": test_summary,
+        }
+
+    def get_alerts(self) -> List[str]:
+        """Return human-readable alerts for any failed or blocked jobs."""
+        alerts: List[str] = []
+        for job in self.jobs_snapshot or []:
+            if job.get('conclusion') == 'failure':
+                alerts.append(f"{job.get('name', 'Unknown job')} failed during validation")
+            elif job.get('status') == 'in_progress' and job.get('conclusion') is None:
+                alerts.append(f"{job.get('name', 'Unknown job')} is still in progress")
+        return alerts
+
+    def build_validation_summary(self) -> Dict[str, Any]:
+        """Return a structured view of validation jobs, pass/fail counts, and failed job names."""
+        jobs = self.jobs_snapshot or []
+        validation_jobs = [
+            job for job in jobs
+            if 'validate' in (job.get('name', '')).lower() or 'validation' in (job.get('name', '')).lower() or 'test' in (job.get('name', '')).lower()
+        ]
+
+        failed_jobs = [job.get('name') for job in validation_jobs if job.get('conclusion') == 'failure']
+        successful_jobs = [job.get('name') for job in validation_jobs if job.get('conclusion') == 'success']
+
+        return {
+            "validation_jobs_total": len(validation_jobs),
+            "validation_jobs_completed": sum(1 for job in validation_jobs if job.get('status') == 'completed'),
+            "validation_jobs_failed": len(failed_jobs),
+            "validation_jobs_passed": len(successful_jobs),
+            "failed_jobs": failed_jobs,
+            "successful_jobs": successful_jobs,
+            "status": self.current_status,
+        }
+
+    def build_recovery_plan(self) -> List[str]:
+        """Return actionable remediation guidance for failed validation jobs."""
+        alerts: List[str] = []
+        validation = self.build_validation_summary()
+
+        if validation["validation_jobs_failed"]:
+            alerts.append("Investigate failed validation jobs before retrying the workflow.")
+            alerts.append("Retry only after fixing the root cause in the specific failing platform or test stage.")
+            alerts.append("Re-run the GitHub validation workflow and monitor the final validation status until all jobs pass.")
+        else:
+            alerts.append("Validation is stable; continue monitoring for the autonomous agent trigger.")
+
+        if not self.jobs_snapshot:
+            alerts.append("No job data loaded yet; wait for the next GitHub status refresh.")
+
+        return alerts
+
+    def build_validation_system_summary(self) -> Dict[str, Any]:
+        """Aggregate all validation domains into one live status view across platform, tests, docs, workflow, security, and agent states."""
+        jobs = self.jobs_snapshot or []
+
+        domain_groups = {
+            "platform": [j for j in jobs if "platform" in (j.get("name", "")).lower() or "feature" in (j.get("name", "")).lower()],
+            "tests": [j for j in jobs if "test" in (j.get("name", "")).lower() or "pytest" in (j.get("name", "")).lower()],
+            "docs": [j for j in jobs if "document" in (j.get("name", "")).lower() or "markdown" in (j.get("name", "")).lower()],
+            "security": [j for j in jobs if "security" in (j.get("name", "")).lower() or "depend" in (j.get("name", "")).lower() or "audit" in (j.get("name", "")).lower()],
+            "workflows": [j for j in jobs if "workflow" in (j.get("name", "")).lower() or "integrity" in (j.get("name", "")).lower()],
+            "agent": [j for j in jobs if "agent" in (j.get("name", "")).lower() or "trigger" in (j.get("name", "")).lower()],
+        }
+
+        def summarize(items: List[Dict[str, Any]]) -> Dict[str, Any]:
+            if not items:
+                return {"total": 0, "passed": 0, "failed": 0, "active": 0, "progress_percent": 0.0, "status": "idle"}
+            total = len(items)
+            passed = sum(1 for j in items if j.get("conclusion") == "success")
+            failed = sum(1 for j in items if j.get("conclusion") == "failure")
+            active = sum(1 for j in items if str(j.get("status", "")).lower() in {"in_progress", "queued", "requested", "waiting", "pending"})
+            progress = (sum(1 for j in items if j.get("status") == "completed") / total) * 100.0 if total else 0.0
+            if failed:
+                status = "failed"
+            elif active:
+                status = "running"
+            elif passed == total:
+                status = "healthy"
+            else:
+                status = "idle"
+            return {
+                "total": total,
+                "passed": passed,
+                "failed": failed,
+                "active": active,
+                "progress_percent": round(progress, 1),
+                "status": status,
+            }
+
+        system_health = {name: summarize(items) for name, items in domain_groups.items()}
+        systems_total = sum(entry["total"] for entry in system_health.values())
+        completed = sum(1 for j in jobs if j.get("status") == "completed")
+        overall_progress_percent = round((completed / systems_total * 100.0) if systems_total else 0.0, 1)
+        failed_any = any(entry["failed"] > 0 for entry in system_health.values())
+        active_any = any(entry["active"] > 0 for entry in system_health.values())
+        overall_status = "failed" if failed_any else "running" if active_any else "healthy" if systems_total else "idle"
+
+        return {
+            "systems_total": systems_total,
+            "overall_progress_percent": overall_progress_percent,
+            "status": overall_status,
+            "jobs_total": len(jobs),
+            "jobs_completed": completed,
+            "jobs_failed": sum(1 for j in jobs if j.get("conclusion") == "failure"),
+            "jobs_in_progress": sum(1 for j in jobs if str(j.get("status", "")).lower() in {"in_progress", "queued", "requested", "waiting", "pending"}),
+            "system_health": system_health,
+            "last_updated_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        }
+
+    def get_phase_summary(self) -> Dict[str, Any]:
+        """Return the current live phase: tests still running or autonomous agent triggered."""
+        jobs = self.jobs_snapshot or []
+        active_jobs = [j.get('name') for j in jobs if j.get('status') in {'in_progress', 'queued'}]
+        agent_jobs = [j for j in jobs if 'agent' in (j.get('name', '')).lower() or 'trigger' in (j.get('name', '')).lower()]
+        test_jobs = [j for j in jobs if 'test' in (j.get('name', '')).lower() or 'validate' in (j.get('name', '')).lower()]
+
+        if agent_jobs:
+            agent = agent_jobs[0]
+            phase = "autonomous_agent_running"
+            if agent.get('status') == 'queued':
+                phase = "autonomous_agent_ready"
+            return {
+                "phase": phase,
+                "active_jobs": active_jobs,
+                "agent_status": agent.get('status', 'unknown'),
+                "tests_status": "active" if test_jobs else "idle",
+                "message": "The PR Ollama autonomous agent has started or is queued after successful validation tests.",
+            }
+
+        if test_jobs:
+            return {
+                "phase": "tests_running",
+                "active_jobs": active_jobs,
+                "agent_status": "not_started",
+                "tests_status": "active",
+                "message": "GitHub is still in the automated test and validation stage.",
+            }
+
+        return {
+            "phase": "idle",
+            "active_jobs": active_jobs,
+            "agent_status": "not_started",
+            "tests_status": "idle",
+            "message": "No active test or agent jobs are currently running.",
+        }
+
+    def build_test_monitor_summary(self) -> Dict[str, Any]:
+        """Return a focused summary for GitHub-hosted PR test execution."""
+        jobs = self.jobs_snapshot or []
+        def is_test_or_validation_job(job_name: str) -> bool:
+            name = (job_name or '').lower()
+            return 'test' in name or 'pytest' in name or 'validate' in name or 'validation' in name
+
+        test_jobs = [j for j in jobs if is_test_or_validation_job(j.get('name', ''))]
+        test_summary = {
+            "total_test_jobs": len(test_jobs),
+            "completed_test_jobs": sum(1 for j in test_jobs if j.get('status') == 'completed'),
+            "passing_test_jobs": sum(1 for j in test_jobs if j.get('conclusion') == 'success'),
+            "failing_test_jobs": sum(1 for j in test_jobs if j.get('conclusion') == 'failure'),
+            "job_names": [j.get('name') for j in test_jobs],
+        }
+        return test_summary
+
+    def build_tracker_health(self, max_age_seconds: int = 120) -> Dict[str, Any]:
+        """Report whether the persisted realtime monitor heartbeat is fresh and valid."""
+        required_files = [
+            self.track_dir / 'CURRENT_STATUS.txt',
+            self.track_dir / 'STATE.txt',
+            self.track_dir / 'telemetry.jsonl',
+        ]
+        missing = [str(path.relative_to(self.track_dir)) for path in required_files if not path.exists()]
+        issues: List[str] = []
+        latest_event = None
+        heartbeat_age_seconds: Optional[float] = None
+
+        telemetry_path = self.track_dir / 'telemetry.jsonl'
+        if telemetry_path.exists():
+            lines = [line for line in telemetry_path.read_text(encoding='utf-8').splitlines() if line.strip()]
+            if not lines:
+                issues.append('telemetry.jsonl is empty')
+            else:
+                try:
+                    latest = json.loads(lines[-1])
+                    latest_event = latest.get('event')
+                    timestamp = latest.get('timestamp_utc')
+                    if not timestamp:
+                        issues.append('latest telemetry event has no timestamp_utc')
+                    else:
+                        event_time = datetime.fromisoformat(timestamp.replace('Z', '+00:00'))
+                        heartbeat_age_seconds = max(
+                            0.0,
+                            (datetime.now(timezone.utc) - event_time).total_seconds(),
+                        )
+                except (json.JSONDecodeError, ValueError, TypeError) as error:
+                    issues.append(f'latest telemetry event is invalid: {error}')
+
+        if missing:
+            issues.extend(f'missing tracker file: {name}' for name in missing)
+        if heartbeat_age_seconds is not None and heartbeat_age_seconds > max_age_seconds:
+            issues.append(f'tracker heartbeat is stale: {heartbeat_age_seconds:.1f}s old')
+
+        return {
+            'healthy': not issues,
+            'status': 'healthy' if not issues else 'degraded',
+            'max_age_seconds': max_age_seconds,
+            'heartbeat_age_seconds': heartbeat_age_seconds,
+            'latest_event': latest_event,
+            'missing_files': missing,
+            'issues': issues,
+            'checked_at_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+        }
+
+    def get_repo_git_status(self) -> Dict[str, Any]:
+        """Return the current Git repository status for the local repo."""
+        try:
+            repo_root = Path(__file__).resolve().parent.parent
+            status = subprocess.run(
+                ['git', '-C', str(repo_root), 'status', '--short', '--branch'],
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            branch_raw = subprocess.run(
+                ['git', '-C', str(repo_root), 'branch', '--show-current'],
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            branch = (branch_raw.stdout or '').strip() or 'unknown'
+            output = (status.stdout or '').strip()
+            behind = 'behind' in output.lower() or 'diverged' in output.lower()
+            dirty = bool(output and any(line.strip() for line in output.splitlines() if line and line[0] in {'?', 'M', 'A', 'D', 'U', 'R', 'C'}))
+            return {
+                'branch': branch,
+                'dirty': dirty,
+                'behind': behind,
+                'raw': output,
+                'status': 'dirty' if dirty else 'clean',
+            }
+        except (OSError, subprocess.SubprocessError):
+            return {'branch': 'unknown', 'dirty': False, 'behind': False, 'raw': '', 'status': 'unknown'}
+
+    def get_alpha_q_ai_status(self) -> Dict[str, Any]:
+        """Return the cross-repository health state for the Alpha-Q-ai repo, if it is reachable from this workspace."""
+        candidates = [
+            Path(__file__).resolve().parent.parent.parent / 'Alpha-Q-ai',
+            Path(__file__).resolve().parent.parent / 'Alpha-Q-ai',
+            Path('/workspaces/Alpha-Q-ai'),
+            Path('/workspaces/qmoi-enhanced/../Alpha-Q-ai'),
+        ]
+        repo_path = next((path for path in candidates if path.exists()), None)
+        if repo_path is None:
+            return {
+                'repo': 'thealphakenya/Alpha-Q-ai',
+                'available': False,
+                'healthy': False,
+                'synced': False,
+                'branch': 'unknown',
+                'dirty': False,
+                'behind': False,
+                'status': 'missing',
+                'raw_status': 'Alpha-Q-ai repo not present in the active workspace.',
+            }
+
+        try:
+            status = subprocess.run(
+                ['git', '-C', str(repo_path), 'status', '--short', '--branch'],
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            branch_raw = subprocess.run(
+                ['git', '-C', str(repo_path), 'branch', '--show-current'],
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            branch = (branch_raw.stdout or '').strip() or 'unknown'
+            output = (status.stdout or '').strip()
+            behind = 'behind' in output.lower() or 'diverged' in output.lower()
+            dirty = bool(output and any(line.strip() for line in output.splitlines() if line and line[0] in {'?', 'M', 'A', 'D', 'U', 'R', 'C'}))
+            healthy = not dirty and not behind
+            return {
+                'repo': 'thealphakenya/Alpha-Q-ai',
+                'path': str(repo_path),
+                'available': True,
+                'healthy': healthy,
+                'synced': healthy,
+                'branch': branch,
+                'dirty': dirty,
+                'behind': behind,
+                'status': 'clean' if healthy else 'dirty' if dirty else 'out_of_sync',
+                'raw_status': output,
+            }
+        except (OSError, subprocess.SubprocessError):
+            return {
+                'repo': 'thealphakenya/Alpha-Q-ai',
+                'available': True,
+                'healthy': False,
+                'synced': False,
+                'branch': 'unknown',
+                'dirty': False,
+                'behind': False,
+                'status': 'unreachable',
+                'raw_status': 'Alpha-Q-ai git status could not be read.',
+            }
+
+    def get_memory_sync_status(self) -> Dict[str, Any]:
+        """Return the local memory-sync health of the repo and the tracked memory indexes."""
+        repo_root = Path(__file__).resolve().parent.parent
+        required_memory_files = [
+            repo_root / 'memory_index.json',
+            repo_root / 'QMOI_REALTIME_MEMORY_INDEX.md',
+            repo_root / 'ollamatracks' / 'telemetry.jsonl',
+        ]
+        existing = [str(path.relative_to(repo_root)) for path in required_memory_files if path.exists()]
+        healthy = len(existing) >= 2
+        return {
+            'healthy': healthy,
+            'status': 'synced' if healthy else 'warning',
+            'tracked_repos': ['qmoi-enhanced', 'Alpha-Q-ai'],
+            'memory_files': existing,
+            'required_files': [str(path.relative_to(repo_root)) for path in required_memory_files],
+            'last_checked_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+        }
+
+    def get_archive_inventory(self) -> Dict[str, Any]:
+        """Return the known archive and tracker inventory that QMOI must remain aware of."""
+        repo_root = Path(__file__).resolve().parent.parent
+        candidates = [
+            repo_root / 'qmoi-enhanced-history-14',
+            repo_root / 'ollamatracks',
+            repo_root / '.git',
+        ]
+        history_dirs = [str(path.relative_to(repo_root)) for path in candidates if path.exists()]
+        aware = bool(history_dirs)
+        return {
+            'aware': aware,
+            'history_dirs': history_dirs,
+            'archive_count': len(history_dirs),
+            'status': 'aware' if aware else 'missing',
+            'last_checked_utc': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+        }
+
+    def _is_gh_auth_error(self, output: Any) -> bool:
+        """Return True when GitHub CLI output indicates the token or auth state is invalid."""
+        if output is None:
+            return False
+        text = str(output).lower()
+        markers = [
+            'failed to log in',
+            'bad credentials',
+            'http 401',
+            'token is invalid',
+            'try authenticating with',
+            'not logged in',
+            'authentication required',
+        ]
+        return any(marker in text for marker in markers)
+
+    def get_gh_auth_status(self) -> Dict[str, Any]:
+        """Check the GitHub auth status through gh and report the real reason if it is invalid."""
+        try:
+            result = self._run_gh_command("auth status -h github.com")
+        except Exception:
+            result = {}
+
+        if isinstance(result, dict):
+            text = str(result).lower()
+            if self._is_gh_auth_error(text):
+                return {"valid": False, "message": "GitHub auth is invalid; remote workflow data is unavailable."}
+            if 'active account' in text or 'logged in' in text:
+                return {"valid": True, "message": "GitHub auth is valid."}
+
+        return {"valid": None, "message": "GitHub auth status is unknown."}
+
+    def build_live_activity_stream(self) -> List[Dict[str, Any]]:
+        """Return a unified, source-labeled live activity stream for both QMOI and the Ollama agent."""
+        now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z')
+        stream: List[Dict[str, Any]] = []
+
+        git_status = self.get_repo_git_status()
+        qmoi_status = 'healthy' if not git_status.get('dirty', False) and not git_status.get('behind', False) else 'warning'
+        stream.append({
+            "source": "qmoi",
+            "entity": "qmoi",
+            "event": "repo_health",
+            "status": qmoi_status,
+            "message": (
+                f"QMOI repo status for {git_status.get('branch', 'unknown')} is {qmoi_status}."
+            ),
+            "timestamp_utc": now,
+            "details": {
+                "branch": git_status.get('branch', 'unknown'),
+                "dirty": git_status.get('dirty', False),
+                "behind": git_status.get('behind', False),
+                "raw": git_status.get('raw', ''),
+            },
+        })
+
+        try:
+            recent_runs = self._run_gh_command(
+                f"run list --repo {self.repo} --workflow 'ollama-autonomous-agent.yml' --limit 5 --json "
+                "status,conclusion,displayTitle,headBranch,createdAt,updatedAt,url"
+            )
+        except Exception:
+            recent_runs = []
+
+        auth_status = self.get_gh_auth_status()
+
+        if not isinstance(recent_runs, list):
+            recent_runs = []
+
+        if recent_runs:
+            for run in recent_runs:
+                run_status = str(run.get('status', 'unknown')).lower()
+                conclusion = str(run.get('conclusion', '') or 'running').lower()
+                label = run.get('displayTitle') or run.get('workflowName') or 'Ollama Autonomous Agent'
+                if run_status in {'in_progress', 'queued', 'requested', 'waiting', 'pending'}:
+                    activity_status = 'running'
+                elif conclusion == 'success':
+                    activity_status = 'success'
+                elif conclusion == 'failure':
+                    activity_status = 'failure'
+                else:
+                    activity_status = run_status
+
+                stream.append({
+                    "source": "ollama_autonomous_agent",
+                    "entity": "ollama-autonomous-agent",
+                    "event": "workflow_run",
+                    "status": activity_status,
+                    "message": f"Ollama autonomous agent activity: {label} is {run_status}.",
+                    "timestamp_utc": run.get('updatedAt') or run.get('createdAt') or now,
+                    "details": {
+                        "display_title": label,
+                        "status": run_status,
+                        "conclusion": run.get('conclusion') or 'running',
+                        "branch": run.get('headBranch'),
+                        "url": run.get('url'),
+                    },
+                })
+        elif auth_status.get('valid') is False:
+            stream.append({
+                "source": "ollama_autonomous_agent",
+                "entity": "ollama-autonomous-agent",
+                "event": "github_auth_status",
+                "status": "warning",
+                "message": "GitHub auth is invalid; remote Ollama workflow data is unavailable. Local tracker heartbeat is active.",
+                "timestamp_utc": now,
+                "details": {"auth_status": "invalid", "note": auth_status.get('message', 'GitHub auth status unknown.')},
+            })
+        else:
+            stream.append({
+                "source": "ollama_autonomous_agent",
+                "entity": "ollama-autonomous-agent",
+                "event": "tracker_heartbeat",
+                "status": "idle",
+                "message": "No recent Ollama autonomous agent run was reported; tracker heartbeat is being monitored.",
+                "timestamp_utc": now,
+                "details": {},
+            })
+
+        tracker_activity = self._read_tracker_text(self.track_dir / 'LATEST_ACTIVITY.txt')
+        if tracker_activity:
+            stream.append({
+                "source": "ollama_autonomous_agent",
+                "entity": "ollama-autonomous-agent",
+                "event": "tracker_latest_activity",
+                "status": "active",
+                "message": tracker_activity,
+                "timestamp_utc": now,
+                "details": {"tracker_file": "LATEST_ACTIVITY.txt"},
+            })
+
+        stream.sort(key=lambda entry: (entry.get('timestamp_utc') or '1970-01-01T00:00:00Z', entry.get('source', '')))
+
+        activity_path = self.track_dir / 'live_activity_stream.json'
+        activity_path.write_text(json.dumps(stream, indent=2, sort_keys=True, default=str) + '\n', encoding='utf-8')
+        self._write_tracker_snapshot(
+            'live_activity_stream',
+            'Combined QMOI and Ollama live activity stream refreshed.',
+            'active',
+            'activity_stream',
+            {'entries': len(stream), 'sources': sorted({entry['source'] for entry in stream})},
+        )
+        return stream
+
+    def build_qmoi_ollama_status_report(self) -> Dict[str, Any]:
+        """Build a unified status snapshot for QMOI, Alpha-Q-ai, the Ollama autonomous agent, and the remote repo memory/archive awareness."""
+        git_status = self.get_repo_git_status()
+        alpha_status = self.get_alpha_q_ai_status()
+        memory_status = self.get_memory_sync_status()
+        archive_status = self.get_archive_inventory()
+        tracker_health = self.build_tracker_health(max_age_seconds=300)
+        live_activity_stream = self.build_live_activity_stream()
+
+        try:
+            recent_runs = self._run_gh_command(
+                f"run list --repo {self.repo} --workflow 'ollama-autonomous-agent.yml' --limit 5 --json "
+                "status,conclusion,displayTitle,headBranch,createdAt,updatedAt,url"
+            )
+        except Exception:
+            recent_runs = []
+
+        if not isinstance(recent_runs, list):
+            recent_runs = []
+
+        ollama_status = {
+            "workflow_name": "Ollama Autonomous Agent & Live Tracker",
+            "recent_runs": recent_runs,
+            "active_run": next((run for run in recent_runs if str(run.get('status', '')).lower() in {'in_progress', 'queued', 'requested', 'waiting', 'pending'}), None),
+            "healthy": any(str(run.get('conclusion', '')).lower() == 'success' for run in recent_runs) if recent_runs else False,
+            "latest_status": recent_runs[0].get('status') if recent_runs else 'unknown',
+            "latest_conclusion": recent_runs[0].get('conclusion') if recent_runs else 'unknown',
+            "tracker_health": tracker_health,
+        }
+
+        qmoi_status = {
+            "repo": self.repo,
+            "branch": git_status.get('branch', 'unknown'),
+            "dirty": git_status.get('dirty', False),
+            "behind": git_status.get('behind', False),
+            "raw_status": git_status.get('raw', ''),
+            "status": 'healthy' if not git_status.get('dirty', False) else 'dirty',
+            "tracker_health": tracker_health,
+        }
+
+        pr_success = bool(recent_runs) and any(str(run.get('conclusion', '')).lower() == 'success' for run in recent_runs)
+        final_repo_state = 'ready'
+        if git_status.get('dirty', False) or git_status.get('behind', False):
+            final_repo_state = 'warning'
+        if not alpha_status.get('healthy', False) or not memory_status.get('healthy', False) or not archive_status.get('aware', False):
+            final_repo_state = 'warning'
+        if not pr_success and not tracker_health.get('healthy', False):
+            final_repo_state = 'warning'
+
+        health_gates = {
+            'pr_success': pr_success,
+            'final_repo_state': final_repo_state,
+            'repo_clean': not git_status.get('dirty', False) and not git_status.get('behind', False),
+            'alpha_q_ai_healthy': bool(alpha_status.get('healthy', False)),
+            'memory_sync_healthy': bool(memory_status.get('healthy', False)),
+            'archive_aware': bool(archive_status.get('aware', False)),
+        }
+
+        history_summary = {
+            "local_tracker": {
+                "current_status": self._read_tracker_text(self.track_dir / 'CURRENT_STATUS.txt'),
+                "latest_activity": self._read_tracker_text(self.track_dir / 'LATEST_ACTIVITY.txt'),
+                "state": self._read_tracker_text(self.track_dir / 'STATE.txt'),
+                "last_reconciliation": self._read_tracker_text(self.track_dir / 'LAST_RECONCILIATION.txt'),
+            },
+            "recent_gh_runs": recent_runs,
+            "live_activity_stream": live_activity_stream,
+            "timestamp_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+        }
+
+        merge_status = {
+            "status": 'synced' if not git_status.get('behind', False) and not git_status.get('dirty', False) else 'warning',
+            "behind": git_status.get('behind', False),
+            "dirty": git_status.get('dirty', False),
+            "summary": 'Local repo is synced enough to continue; remote GitHub automation is still active.' if not git_status.get('behind', False) else 'Local repo is behind the remote branch; sync is required before final branch state is considered complete.',
+        }
+
+        report = {
+            "qmoi": qmoi_status,
+            "alpha_q_ai": alpha_status,
+            "memory_sync": memory_status,
+            "archive_awareness": archive_status,
+            "ollama_autonomous_agent": ollama_status,
+            "merge_status": merge_status,
+            "health_gates": health_gates,
+            "history": history_summary,
+            "live_activity_stream": live_activity_stream,
+            "timestamp_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+            "report_name": "qmoi_and_ollama_live_status",
+        }
+        self._write_tracker_snapshot(
+            'qmoi_ollama_live_status_report',
+            'Combined QMOI, Alpha-Q-ai, memory, archive, and Ollama status report generated',
+            'healthy' if (not git_status.get('dirty', False) and ollama_status.get('healthy', False) and alpha_status.get('healthy', False) and memory_status.get('healthy', False) and archive_status.get('aware', False)) else 'warning',
+            'monitoring',
+            {'qmoi_branch': git_status.get('branch', 'unknown'), 'alpha_branch': alpha_status.get('branch', 'unknown'), 'ollama_runs': len(recent_runs)},
+        )
+        return report
+
+    def _read_tracker_text(self, path: Path) -> str:
+        try:
+            return path.read_text(encoding='utf-8', errors='ignore').strip()
+        except OSError:
+            return ''
+
+    def print_header(self):
+        """Print monitor header"""
+        print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*70}")
+        print(f"🔴 OLLAMA PR VALIDATION REALTIME MONITOR{Colors.RESET}")
+        print(f"{Colors.CYAN}{'='*70}{Colors.RESET}\n")
+        print(f"Run ID:     {Colors.BOLD}{self.run_id}{Colors.RESET}")
+        print(f"Repository: {Colors.BOLD}{self.repo}{Colors.RESET}")
+        print(f"Started:    {datetime.now().isoformat()}")
+        print(f"\n{Colors.DIM}Monitoring live workflow execution in GitHub...{Colors.RESET}\n")
+    
+    def print_job_status(self, jobs: List[Dict[str, Any]]):
+        """Print formatted job status table"""
+        print(f"{Colors.BOLD}📊 JOB STATUS:{Colors.RESET}\n")
+        
+        print(f"{'Job Name':<45} {'Status':<15} {'Conclusion':<12}")
+        print(f"{'-'*72}")
+        
+        for job in jobs:
+            name = job.get('name', 'Unknown')[:42]
+            status = job.get('status', 'unknown')
+            conclusion = job.get('conclusion', '-') or '-'
+            
+            # Color code by status
+            if status == 'completed':
+                status_color = Colors.GREEN if conclusion == 'success' else Colors.RED
+                status_str = f"{status_color}✅ {status}{Colors.RESET}"
+            elif status == 'in_progress':
+                status_str = f"{Colors.YELLOW}⏳ {status}{Colors.RESET}"
+            else:
+                status_str = f"{Colors.BLUE}⏸️  {status}{Colors.RESET}"
+            
+            conclusion_display = f"{Colors.GREEN}✓ {conclusion}{Colors.RESET}" if conclusion == 'success' else \
+                                f"{Colors.RED}✗ {conclusion}{Colors.RESET}" if conclusion == 'failure' else \
+                                f"{Colors.YELLOW}-{Colors.RESET}"
+            
+            print(f"{name:<45} {status_str:<30} {conclusion_display:<12}")
+        
+        print()
+    
+    def print_metrics(self, metrics: MetricSnapshot):
+        """Print formatted metrics"""
+        print(f"{Colors.BOLD}📈 METRICS:{Colors.RESET}\n")
+        
+        print(f"Overall Status:     {metrics.overall_status}")
+        print(f"Elapsed Time:       {Colors.BOLD}{self.format_duration(metrics.elapsed_seconds)}{Colors.RESET}")
+        print(f"Completion:         {Colors.BOLD}{metrics.completion_percent:.1f}%{Colors.RESET} " \
+              f"({metrics.jobs_completed}/{metrics.jobs_total} jobs)")
+        print(f"Jobs Passed:        {Colors.GREEN}{metrics.jobs_passed}{Colors.RESET}")
+        print(f"Jobs Failed:        {Colors.RED}{metrics.jobs_failed}{Colors.RESET}")
+        print(f"Jobs In Progress:   {Colors.YELLOW}{metrics.jobs_in_progress}{Colors.RESET}")
+        print()
+    
+    def print_quality_report(self, metrics: MetricSnapshot):
+        """Print quality and reliability metrics"""
+        print(f"{Colors.BOLD}⭐ QUALITY METRICS:{Colors.RESET}\n")
+        
+        # Calculate pass rate
+        total_jobs = metrics.jobs_total
+        passed = metrics.jobs_passed
+        pass_rate = (passed / total_jobs * 100) if total_jobs > 0 else 0
+        
+        # Calculate speed (jobs per minute)
+        elapsed_minutes = metrics.elapsed_seconds / 60.0
+        speed = (metrics.jobs_completed / elapsed_minutes) if elapsed_minutes > 0 else 0
+        
+        # Reliability score (0-100)
+        reliability = (passed / total_jobs * 100) if total_jobs > 0 else 0
+        
+        print(f"Pass Rate:          {Colors.GREEN if pass_rate >= 90 else Colors.YELLOW}" \
+              f"{pass_rate:.1f}%{Colors.RESET}")
+        print(f"Reliability Score:  {Colors.GREEN if reliability >= 90 else Colors.YELLOW}" \
+              f"{reliability:.1f}/100{Colors.RESET}")
+        print(f"Processing Speed:   {Colors.BOLD}{speed:.2f} jobs/min{Colors.RESET}")
+        
+        if elapsed_minutes > 0:
+            avg_job_time = metrics.elapsed_seconds / metrics.jobs_completed if metrics.jobs_completed > 0 else 0
+            print(f"Avg Job Duration:   {Colors.BOLD}{self.format_duration(int(avg_job_time))}{Colors.RESET}")
+
+        test_summary = self.build_test_monitor_summary()
+        print(f"Test Jobs:          {Colors.BOLD}{test_summary['total_test_jobs']}{Colors.RESET}")
+        print(f"Passing Test Jobs:  {Colors.GREEN}{test_summary['passing_test_jobs']}{Colors.RESET}")
+        print(f"Failing Test Jobs:  {Colors.RED}{test_summary['failing_test_jobs']}{Colors.RESET}")
+        print(f"Active Test Jobs:   {Colors.YELLOW}{sum(1 for j in test_summary['job_names'] if j and j.lower())}{Colors.RESET}")
+
+        print()
+    
+    def print_alerts(self):
+        """Print any alerts or warnings"""
+        if not self.jobs_snapshot:
+            return
+        
+        failed_jobs = [j for j in self.jobs_snapshot if j.get('conclusion') == 'failure']
+        
+        if failed_jobs:
+            print(f"{Colors.BOLD}{Colors.RED}⚠️ ALERTS:{Colors.RESET}\n")
+            for job in failed_jobs:
+                print(f"{Colors.RED}✗ {job.get('name')} FAILED{Colors.RESET}")
+            print()
+    
+    def monitor_once(self) -> bool:
+        """
+        Perform one monitoring cycle and return True if still running, False if complete.
+        """
+        data = self.get_run_status()
+
+        if not data:
+            print(f"{Colors.RED}Failed to fetch run status from GitHub API. The run may still be starting or the CLI response may be temporarily empty.{Colors.RESET}")
+            return True
+
+        self.current_status = data.get('status', 'unknown')
+        self.current_conclusion = data.get('conclusion', '')
+        self.jobs_snapshot = data.get('jobs', []) or []
+        self._write_tracker_snapshot(
+            'workflow_status_snapshot',
+            f"GitHub workflow run is {self.current_status}",
+            self.current_status,
+            'monitoring',
+            {'jobs': len(self.jobs_snapshot), 'conclusion': self.current_conclusion},
+        )
+        
+        # Clear screen and print update
+        os.system('clear' if os.name != 'nt' else 'cls')
+        
+        self.print_header()
+        self.print_job_status(self.jobs_snapshot)
+
+        phase = self.get_phase_summary()
+        print(f"{Colors.BOLD}📡 LIVE PHASE:{Colors.RESET} {phase['phase']}")
+        print(f"{Colors.DIM}{phase['message']}{Colors.RESET}")
+        if phase.get('active_jobs'):
+            print(f"Active jobs: {', '.join(phase['active_jobs'])}")
+        print()
+        
+        metrics = self.calculate_metrics()
+        self.print_metrics(metrics)
+        self.print_quality_report(metrics)
+
+        validation_summary = self.build_validation_summary()
+        print(f"{Colors.BOLD}✅ VALIDATION SUMMARY:{Colors.RESET}")
+        print(f"Total validation jobs: {validation_summary['validation_jobs_total']}")
+        print(f"Passed: {validation_summary['validation_jobs_passed']}")
+        print(f"Failed: {validation_summary['validation_jobs_failed']}")
+        if validation_summary["failed_jobs"]:
+            print(f"Failed jobs: {', '.join(validation_summary['failed_jobs'])}")
+        print()
+
+        recovery_plan = self.build_recovery_plan()
+        print(f"{Colors.BOLD}🛠️ RECOVERY PLAN:{Colors.RESET}")
+        for item in recovery_plan:
+            print(f"- {item}")
+        print()
+
+        self.print_alerts()
+        
+        # Footer
+        print(f"{Colors.DIM}Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print(f"Updating every {self.update_interval} seconds (Ctrl+C to stop){Colors.RESET}\n")
+        
+        # GitHub workflow runs commonly sit in queued/requested/waiting states
+        # before they move to in_progress. Treat all active states as still running.
+        active_statuses = {'queued', 'in_progress', 'requested', 'waiting', 'pending'}
+        return self.current_status in active_statuses
+    
+    def run_continuous(self, max_duration: int = 3600):
+        """
+        Continuously monitor the workflow until it completes or timeout.
+        
+        Args:
+            max_duration: Maximum monitoring duration in seconds (default 1 hour)
+        """
+        self.print_header()
+        
+        start_monitor_time = time.time()
+        last_status = None
+        status_change_count = 0
+        
+        try:
+            while True:
+                elapsed_total = time.time() - start_monitor_time
+                
+                # Check timeout
+                if elapsed_total > max_duration:
+                    print(f"{Colors.YELLOW}⏱️ Monitoring timeout reached ({self.format_duration(int(max_duration))})"\
+                          f"{Colors.RESET}")
+                    break
+                
+                is_running = self.monitor_once()
+                
+                # Track status changes
+                if self.current_status != last_status:
+                    status_change_count += 1
+                    last_status = self.current_status
+                
+                if not is_running:
+                    print(f"\n{Colors.GREEN}{Colors.BOLD}✅ Workflow execution COMPLETE{Colors.RESET}\n")
+                    print(f"Final Status: {self.current_status}")
+                    print(f"Conclusion: {self.current_conclusion or 'N/A'}")
+                    break
+                
+                time.sleep(self.update_interval)
+        
+        except KeyboardInterrupt:
+            print(f"\n{Colors.YELLOW}Monitoring stopped by user{Colors.RESET}\n")
+        
+        # Final report
+        self._print_final_report(status_change_count)
+    
+    def _print_final_report(self, status_changes: int):
+        """Print final monitoring report"""
+        print(f"\n{Colors.BOLD}{Colors.CYAN}{'='*70}")
+        print(f"📋 FINAL MONITORING REPORT{Colors.RESET}")
+        print(f"{Colors.CYAN}{'='*70}{Colors.RESET}\n")
+        
+        if self.metrics_history:
+            final_metrics = self.metrics_history[-1]
+            
+            print(f"Total Monitoring Duration: {Colors.BOLD}{self.format_duration(final_metrics.elapsed_seconds)}{Colors.RESET}")
+            print(f"Status Changes Observed:   {Colors.BOLD}{status_changes}{Colors.RESET}")
+            print(f"Final Status:              {final_metrics.overall_status}")
+            print(f"Jobs Completed:            {Colors.BOLD}{final_metrics.jobs_completed}/{final_metrics.jobs_total}{Colors.RESET}")
+            print(f"Jobs Passed:               {Colors.GREEN}{final_metrics.jobs_passed}{Colors.RESET}")
+            print(f"Jobs Failed:               {Colors.RED}{final_metrics.jobs_failed}{Colors.RESET}")
+            
+            if final_metrics.jobs_total > 0:
+                pass_rate = (final_metrics.jobs_passed / final_metrics.jobs_total) * 100
+                print(f"Pass Rate:                 {Colors.GREEN if pass_rate == 100 else Colors.YELLOW}" \
+                      f"{pass_rate:.1f}%{Colors.RESET}")
+            
+            print()
+        
+        # Save report to file
+        self._save_report()
+    
+    def _write_tracker_snapshot(self, event: str, description: str, status: str, phase: str, details: Dict[str, Any]) -> None:
+        """Persist the live workflow monitor state into the ollamatracks directory."""
+        timestamp = datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')
+        self.track_dir.mkdir(parents=True, exist_ok=True)
+        (self.track_dir / 'CURRENT_STATUS.txt').write_text(
+            "OLLAMA AUTONOMOUS AGENT - CURRENT STATUS\n"
+            "=========================================\n\n"
+            f"Timestamp UTC: {timestamp}\n\n"
+            f"Repository: {self.repo}\n"
+            f"Run ID: {self.run_id}\n"
+            f"Current status: {status}\n"
+            f"Phase: {phase}\n"
+            f"Latest event: {event}\n"
+            f"Description: {description}\n\n"
+            "This is a mutable current-state projection.\n",
+            encoding='utf-8',
+        )
+        (self.track_dir / 'LATEST_ACTIVITY.txt').write_text(
+            "OLLAMA AUTONOMOUS AGENT - LATEST ACTIVITY\n"
+            "==========================================\n\n"
+            f"Timestamp UTC: {timestamp}\n"
+            f"Event: {event}\n"
+            f"Description: {description}\n"
+            f"Repository: {self.repo}\n"
+            f"Tracker run: {self.run_id}\n"
+            f"Status: {status}\n"
+            f"Phase: {phase}\n\n"
+            "This is a mutable current-state projection.\n",
+            encoding='utf-8',
+        )
+        (self.track_dir / 'STATE.txt').write_text(
+            f"status: {status}\nphase: {phase}\nevent: {event}\ndescription: {description}\nlast_updated_utc: {timestamp}\n",
+            encoding='utf-8',
+        )
+        (self.track_dir / 'PR_STATUS.txt').write_text(
+            f"PR Status: {status}\nPhase: {phase}\nEvent: {event}\nRun ID: {self.run_id}\nLast update UTC: {timestamp}\n",
+            encoding='utf-8',
+        )
+        (self.track_dir / 'LAST_RECONCILIATION.txt').write_text(
+            f"{timestamp} | {event} | {status} | {phase} | {description}\n",
+            encoding='utf-8',
+        )
+        telemetry_line = {
+            'timestamp_utc': timestamp,
+            'event': event,
+            'status': status,
+            'phase': phase,
+            'description': description,
+            'details': details,
+            'run_id': self.run_id,
+            'repository': self.repo,
+        }
+        with (self.track_dir / 'telemetry.jsonl').open('a', encoding='utf-8') as handle:
+            handle.write(json.dumps(telemetry_line, default=str, sort_keys=True) + '\n')
+
+    def _save_report(self):
+        """Save monitoring report to JSON file"""
+        try:
+            report = {
+                'run_id': self.run_id,
+                'repository': self.repo,
+                'started_at': self.start_time.isoformat() if self.start_time else None,
+                'monitoring_samples': len(self.metrics_history),
+                'metrics_history': [asdict(m) for m in self.metrics_history],
+                'final_jobs': self.jobs_snapshot,
+                'final_status': self.current_status,
+                'final_conclusion': self.current_conclusion,
+            }
+            
+            report_file = f'/tmp/workflow_monitor_{self.run_id}.json'
+            with open(report_file, 'w') as f:
+                json.dump(report, f, indent=2)
+            
+            self._write_tracker_snapshot(
+                'monitor_report_saved',
+                'Monitoring report persisted to JSON and tracker state files',
+                self.current_status or 'completed',
+                'report',
+                {'report_file': report_file, 'jobs_total': len(self.jobs_snapshot)},
+            )
+            print(f"{Colors.GREEN}✅ Report saved to: {report_file}{Colors.RESET}\n")
+        except Exception as e:
+            print(f"{Colors.YELLOW}⚠️ Failed to save report: {e}{Colors.RESET}\n")
+
+def main():
+    """CLI entry point"""
+    import argparse
+    
+    parser = argparse.ArgumentParser(
+        description='🔴 Real-time GitHub Workflow Monitor for Ollama PR Validation',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  %(prog)s 31834413057
+  %(prog)s 31834413057 --interval 5 --duration 1800
+  %(prog)s 31834413057 --repo owner/repo --token YOUR_TOKEN
+        """
+    )
+    
+    parser.add_argument('run_id', help='GitHub workflow run ID to monitor')
+    parser.add_argument('--repo', default='thealphakenya/qmoi-enhanced',
+                        help='Repository in format owner/repo')
+    parser.add_argument('--interval', type=int, default=10,
+                        help='Update interval in seconds (default: 10)')
+    parser.add_argument('--duration', type=int, default=3600,
+                        help='Maximum monitoring duration in seconds (default: 3600)')
+    parser.add_argument('--token', help='GitHub token (auto-resolved if not provided)')
+    parser.add_argument('--all', action='store_true',
+                        help='Monitor the repository-wide GitHub activity instead of a single run')
+    
+    args = parser.parse_args()
+
+    if args.all:
+        monitor = WorkflowMonitor(
+            run_id="repo-wide-monitor",
+            repo=args.repo,
+            token=args.token,
+            update_interval=args.interval,
+        )
+        print(json.dumps(monitor.monitor_repository_once(limit=20), indent=2))
+        raise SystemExit(0)
+    
+    monitor = WorkflowMonitor(
+        run_id=args.run_id,
+        repo=args.repo,
+        token=args.token,
+        update_interval=args.interval
+    )
+    
+    monitor.run_continuous(max_duration=args.duration)
+
+if __name__ == '__main__':
+    main()

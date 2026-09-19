@@ -1,0 +1,12 @@
+{
+  "timestamp_utc": "2026-09-19T03:07:59.898Z",
+  "snapshot_hash": "129737478c37c31b10119b839d69984e81472e2ebd8ec6c15b176aa1725a6b2b",
+  "validation_workflow_id": 334713505,
+  "agent_workflow_id": 334713504,
+  "latest_validation_run_id": 35417439600,
+  "latest_agent_run_id": 35417521501,
+  "discovered_active_run_count": 3,
+  "active_run_count": 3,
+  "open_pr_count": 8,
+  "force_snapshot": true
+}

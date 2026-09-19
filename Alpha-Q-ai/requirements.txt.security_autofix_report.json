@@ -1,0 +1,8 @@
+{
+  "status": "healthy",
+  "summary": "Dependency security floor validated and updated when vulnerable versions were detected.",
+  "report_path": "/workspaces/qmoi-enhanced/requirements.txt.security_autofix_report.json",
+  "requirements_path": "/workspaces/qmoi-enhanced/requirements.txt",
+  "requirements_file": "requirements.txt",
+  "updated": false
+}

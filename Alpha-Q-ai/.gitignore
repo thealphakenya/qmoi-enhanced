@@ -1,0 +1,29 @@
+.env
+.env.*
+!.env.example
+
+# Generated or local runtime artifacts
+.backups/
+.backup/
+*.log
+*.tmp
+*.tmp.*
+**/node_modules/
+**/.gradle/
+mobile/
+qvillage/
+hf_space_qvillage/
+requirements/
+ollama_agent.log
+tests.log
+validation_report.json
+
+# Local Python validation artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local audit and coverage output
+.coverage
+htmlcov/
+coverage.xml

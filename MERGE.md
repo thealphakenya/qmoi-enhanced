@@ -154,6 +154,22 @@ all distinct files and directories. Neither remote default branch currently
 contains this full union because Alpha-Q-ai still lacks the integration and
 imported-history refs.
 
+### Current Checkout Post-Copy Metrics (2026-09-19)
+
+The clean materialization branch contains the tracked Alpha-Q-ai `main` tree
+and the complete `qmoi-enhanced-history-14` snapshot without repository-internal
+`.git` objects:
+
+| Current checkout scope | Files | Directories | Symlinks |
+| --- | ---: | ---: | ---: |
+| Existing qmoi-enhanced tree plus materialized inputs | 33,324 | 5,858 | 93 |
+| qmoi-enhanced-history-14 | 29,406 | 5,451 | 93 |
+| Alpha-Q-ai tracked main tree | 1,342 | 6 | 0 |
+
+The all-history union remains 369,231 files and 102,103 directories; the
+current working tree count is lower because historical versions are retained
+in Git history rather than duplicated under one pathname.
+
 ### Remote Completeness Audit (2026-09-19)
 
 The latest remote audit found `0` reciprocal imported-ref namespaces on both

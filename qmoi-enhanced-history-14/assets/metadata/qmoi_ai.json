@@ -1,0 +1,16 @@
+{
+  "id": "qmoi_ai",
+  "name": "QMOI AI",
+  "version": "v1.2.3",
+  "type": "binary",
+  "platforms": [
+    "Windows",
+    "macOS",
+    "Linux",
+    "Android",
+    "iOS",
+    "SmartTV",
+    "Chromebook"
+  ],
+  "icon": "assets/icons/qmoi_ai.svg"
+}

@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-10-25T01:50:04.691337",
+  "tools": {
+    "docker": false,
+    "jq": true,
+    "curl": true,
+    "tar": true,
+    "unzip": true
+  },
+  "build_report_present": true
+}

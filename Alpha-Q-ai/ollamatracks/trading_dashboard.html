@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QMOI Trading Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 32px; background: #0f172a; color: #e2e8f0; }
+    .card { background: #111827; border: 1px solid #334155; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    h1, h2 { margin-top: 0; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #334155; padding: 10px; text-align: left; }
+    th { background: #1f2937; }
+    ul { padding-left: 20px; }
+    .status { color: #86efac; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>QMOI Trading Dashboard</h1>
+    <p class="status">Trading is in dry-run safety mode until PRODUCTION_CONFIRMED=true.</p>
+  </div>
+
+  <div class="card">
+    <h2>Trading Overview</h2>
+    <p>Market status: <strong>stable</strong></p>
+    <p>Wallet balance: <strong>1000.0</strong></p>
+    <p>Platforms tracked: <strong>3</strong></p>
+    <p>Strategies: trend_following, risk_budgeting, portfolio_balance, drawdown_guard</p>
+  </div>
+
+  <div class="card">
+    <h2>Platform Status</h2>
+    <table>
+      <thead><tr><th>Platform</th><th>State</th><th>Mode</th><th>Max Position</th></tr></thead>
+      <tbody><tr><td>Binance</td><td>Enabled</td><td>Sandbox</td><td>0.05</td></tr><tr><td>Bitget</td><td>Enabled</td><td>Sandbox</td><td>0.04</td></tr><tr><td>Cashon</td><td>Enabled</td><td>Sandbox</td><td>0.03</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Wallets</h2>
+    <table>
+      <thead><tr><th>Name</th><th>Currency</th><th>Balance</th><th>Status</th></tr></thead>
+      <tbody><tr><td>cashon</td><td>USD</td><td>1000.0</td><td>active</td></tr><tr><td>binance</td><td>USDT</td><td>700.0</td><td>connected</td></tr><tr><td>bitget</td><td>USDT</td><td>300.0</td><td>connected</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Risk Controls</h2>
+    <ul><li>Production confirmed: false</li><li>Market status: stable</li><li>Risk mode: dry-run</li><li>Execution allowed: false</li></ul>
+  </div>
+</body>
+</html>

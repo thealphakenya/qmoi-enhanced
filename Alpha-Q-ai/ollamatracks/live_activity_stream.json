@@ -1,0 +1,31 @@
+{
+  "source": "combined",
+  "stream": [
+    {
+      "details": {
+        "behind": false,
+        "branch": "main",
+        "dirty": true,
+        "raw_status": "## main...origin/main\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LAST_RECONCILIATION.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/PR_STATUS.txt\n M ollamatracks/STATE.txt\n M ollamatracks/live_activity_stream.json\n M ollamatracks/ollama_autonomous_agent_live_activity.json\n M ollamatracks/qmoi_live_activity.json\n M ollamatracks/telemetry.jsonl"
+      },
+      "entity": "qmoi",
+      "event": "repo_health",
+      "message": "QMOI repo health on main is warning.",
+      "source": "qmoi",
+      "status": "warning",
+      "timestamp_utc": "2026-09-18T13:44:36Z"
+    },
+    {
+      "details": {
+        "auth_status": "invalid",
+        "source": "local_tracker"
+      },
+      "entity": "ollama-autonomous-agent",
+      "event": "github_auth_status",
+      "message": "GitHub auth is invalid; remote Ollama workflow data is unavailable. Local tracker heartbeat is active.",
+      "source": "ollama_autonomous_agent",
+      "status": "warning",
+      "timestamp_utc": "2026-09-18T13:44:37Z"
+    }
+  ]
+}

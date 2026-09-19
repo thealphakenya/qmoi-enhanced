@@ -1,0 +1,2446 @@
+{
+  "generated_by": "generate_md_inventory.py",
+  "generated_at": "2025-10-21T00:42:50.177271Z",
+  "files": [
+    {
+      "name": "@ALLMDFILESREFS.md",
+      "path": "/workspaces/qmoi-enhanced/@ALLMDFILESREFS.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLDEVICESSETTINGS.md",
+      "path": "/workspaces/qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLERRORS.md",
+      "path": "/workspaces/qmoi-enhanced/ALLERRORS.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLERRORSSTATSQMOI.md",
+      "path": "/workspaces/qmoi-enhanced/ALLERRORSSTATSQMOI.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLERRORSTYPESFILES.md",
+      "path": "/workspaces/qmoi-enhanced/ALLERRORSTYPESFILES.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLERRORTYPESANDHEALTHCHECKS.md",
+      "path": "/workspaces/qmoi-enhanced/ALLERRORTYPESANDHEALTHCHECKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLMDFILESREFS.md",
+      "path": "/workspaces/qmoi-enhanced/ALLMDFILESREFS.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLQMOIAIAPPSREALEASESVERSIONS.md",
+      "path": "/workspaces/qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLQMOIAUTOEVOLVINGENVS.md",
+      "path": "/workspaces/qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALLSYSTEMSSTRUCTURESREFERENCES.md",
+      "path": "/workspaces/qmoi-enhanced/ALLSYSTEMSSTRUCTURESREFERENCES.md",
+      "last_verified": null
+    },
+    {
+      "name": "ALPHAQMOIENGINE.md",
+      "path": "/workspaces/qmoi-enhanced/ALPHAQMOIENGINE.md",
+      "last_verified": null
+    },
+    {
+      "name": "API.md",
+      "path": "/workspaces/qmoi-enhanced/API.md",
+      "last_verified": null
+    },
+    {
+      "name": "AUTODOWNLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/AUTODOWNLOAD.md",
+      "last_verified": null
+    },
+    {
+      "name": "AUTOGIT.md",
+      "path": "/workspaces/qmoi-enhanced/AUTOGIT.md",
+      "last_verified": null
+    },
+    {
+      "name": "AUTOLINTREADME.md",
+      "path": "/workspaces/qmoi-enhanced/AUTOLINTREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "AUTOMATION-SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/AUTOMATION-SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "AUTOOPTIMIZEALPHAQMOIENGINE.md",
+      "path": "/workspaces/qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md",
+      "last_verified": null
+    },
+    {
+      "name": "BUILDAPPSFORALLPLATFORMS.md",
+      "path": "/workspaces/qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "BUILD_COMPLETION_SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "CASHON.md",
+      "path": "/workspaces/qmoi-enhanced/CASHON.md",
+      "last_verified": null
+    },
+    {
+      "name": "CASHONTRADINGREADME.md",
+      "path": "/workspaces/qmoi-enhanced/CASHONTRADINGREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "CMDCOMMANDS.md",
+      "path": "/workspaces/qmoi-enhanced/CMDCOMMANDS.md",
+      "last_verified": null
+    },
+    {
+      "name": "COLAB_DAGSHUB_DEPLOY_CHECKLIST.md",
+      "path": "/workspaces/qmoi-enhanced/COLAB_DAGSHUB_DEPLOY_CHECKLIST.md",
+      "last_verified": null
+    },
+    {
+      "name": "COMPONENTS.md",
+      "path": "/workspaces/qmoi-enhanced/COMPONENTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "CONTINUOUS_IMPROVEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/CONTINUOUS_IMPROVEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "CURLCOMMANDS.md",
+      "path": "/workspaces/qmoi-enhanced/CURLCOMMANDS.md",
+      "last_verified": null
+    },
+    {
+      "name": "DASHBOARDTRACKS.md",
+      "path": "/workspaces/qmoi-enhanced/DASHBOARDTRACKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "DEPLOYMENT-README.md",
+      "path": "/workspaces/qmoi-enhanced/DEPLOYMENT-README.md",
+      "last_verified": null
+    },
+    {
+      "name": "DEVCOMMANDS.md",
+      "path": "/workspaces/qmoi-enhanced/DEVCOMMANDS.md",
+      "last_verified": null
+    },
+    {
+      "name": "DEVICERESOURCEOPTIMIZATION.md",
+      "path": "/workspaces/qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "path": "/workspaces/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "last_verified": null
+    },
+    {
+      "name": "EMPLOYEESUSERSENROLLED.md",
+      "path": "/workspaces/qmoi-enhanced/EMPLOYEESUSERSENROLLED.md",
+      "last_verified": null
+    },
+    {
+      "name": "ENHANCEDQVS.md",
+      "path": "/workspaces/qmoi-enhanced/ENHANCEDQVS.md",
+      "last_verified": null
+    },
+    {
+      "name": "ENHANCED_AUTOMATION_SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "ERRORSREADME.md",
+      "path": "/workspaces/qmoi-enhanced/ERRORSREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "ERRORSTRACKS.md",
+      "path": "/workspaces/qmoi-enhanced/ERRORSTRACKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "FAST-BOOTSTRAP-README.md",
+      "path": "/workspaces/qmoi-enhanced/FAST-BOOTSTRAP-README.md",
+      "last_verified": null
+    },
+    {
+      "name": "FEATURESREADME.md",
+      "path": "/workspaces/qmoi-enhanced/FEATURESREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "GITHUB-ACTIONS-COMPLETE.md",
+      "path": "/workspaces/qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md",
+      "last_verified": null
+    },
+    {
+      "name": "GITHUBPAYED.md",
+      "path": "/workspaces/qmoi-enhanced/GITHUBPAYED.md",
+      "last_verified": null
+    },
+    {
+      "name": "GITHUB_ACTIONS_AUTOFIX.md",
+      "path": "/workspaces/qmoi-enhanced/GITHUB_ACTIONS_AUTOFIX.md",
+      "last_verified": null
+    },
+    {
+      "name": "GITPODPAYED.md",
+      "path": "/workspaces/qmoi-enhanced/GITPODPAYED.md",
+      "last_verified": null
+    },
+    {
+      "name": "HOOKS.md",
+      "path": "/workspaces/qmoi-enhanced/HOOKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "HUGGINGFACEPAYED.md",
+      "path": "/workspaces/qmoi-enhanced/HUGGINGFACEPAYED.md",
+      "last_verified": null
+    },
+    {
+      "name": "INDEPENDENTQMOI.md",
+      "path": "/workspaces/qmoi-enhanced/INDEPENDENTQMOI.md",
+      "last_verified": null
+    },
+    {
+      "name": "INSTALL.md",
+      "path": "/workspaces/qmoi-enhanced/INSTALL.md",
+      "last_verified": null
+    },
+    {
+      "name": "INSTALLATION.md",
+      "path": "/workspaces/qmoi-enhanced/INSTALLATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "INVINSIBLEQMOI.md",
+      "path": "/workspaces/qmoi-enhanced/INVINSIBLEQMOI.md",
+      "last_verified": null
+    },
+    {
+      "name": "LANGUAGES.md",
+      "path": "/workspaces/qmoi-enhanced/LANGUAGES.md",
+      "last_verified": null
+    },
+    {
+      "name": "LINKSTRACKS.md",
+      "path": "/workspaces/qmoi-enhanced/LINKSTRACKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "MASTERGUIDE.md",
+      "path": "/workspaces/qmoi-enhanced/MASTERGUIDE.md",
+      "last_verified": null
+    },
+    {
+      "name": "MASTEROWNS.md",
+      "path": "/workspaces/qmoi-enhanced/MASTEROWNS.md",
+      "last_verified": null
+    },
+    {
+      "name": "MASTERREADME.md",
+      "path": "/workspaces/qmoi-enhanced/MASTERREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "MEGAVAULT.md",
+      "path": "/workspaces/qmoi-enhanced/MEGAVAULT.md",
+      "last_verified": null
+    },
+    {
+      "name": "MONITORING.md",
+      "path": "/workspaces/qmoi-enhanced/MONITORING.md",
+      "last_verified": null
+    },
+    {
+      "name": "PAGES.md",
+      "path": "/workspaces/qmoi-enhanced/PAGES.md",
+      "last_verified": null
+    },
+    {
+      "name": "PAYEDGITLAB.md",
+      "path": "/workspaces/qmoi-enhanced/PAYEDGITLAB.md",
+      "last_verified": null
+    },
+    {
+      "name": "POSTPRODUCTIONCHECKLIST.md",
+      "path": "/workspaces/qmoi-enhanced/POSTPRODUCTIONCHECKLIST.md",
+      "last_verified": null
+    },
+    {
+      "name": "PRODUCTIONCHECKLIST.md",
+      "path": "/workspaces/qmoi-enhanced/PRODUCTIONCHECKLIST.md",
+      "last_verified": null
+    },
+    {
+      "name": "PUBLIC.md",
+      "path": "/workspaces/qmoi-enhanced/PUBLIC.md",
+      "last_verified": null
+    },
+    {
+      "name": "PWA.md",
+      "path": "/workspaces/qmoi-enhanced/PWA.md",
+      "last_verified": null
+    },
+    {
+      "name": "QAlLPURPOSE.MD",
+      "path": "/workspaces/qmoi-enhanced/QAlLPURPOSE.MD",
+      "last_verified": null
+    },
+    {
+      "name": "QAvatar_User_Feedback_Kit.md",
+      "path": "/workspaces/qmoi-enhanced/QAvatar_User_Feedback_Kit.md",
+      "last_verified": null
+    },
+    {
+      "name": "QCITYDEVICEAUTOUPGRADE.md",
+      "path": "/workspaces/qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QCITYMAINDEVICE.md",
+      "path": "/workspaces/qmoi-enhanced/QCITYMAINDEVICE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QCITYQMOIAUTOSTART.md",
+      "path": "/workspaces/qmoi-enhanced/QCITYQMOIAUTOSTART.md",
+      "last_verified": null
+    },
+    {
+      "name": "QCITYREADME.md",
+      "path": "/workspaces/qmoi-enhanced/QCITYREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "QCITYRESOURCES.md",
+      "path": "/workspaces/qmoi-enhanced/QCITYRESOURCES.md",
+      "last_verified": null
+    },
+    {
+      "name": "QCITYRUNNERSENGINE.md",
+      "path": "/workspaces/qmoi-enhanced/QCITYRUNNERSENGINE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QCITY_DEVICE_MANAGEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "QGAMINGCLOUD.md",
+      "path": "/workspaces/qmoi-enhanced/QGAMINGCLOUD.md",
+      "last_verified": null
+    },
+    {
+      "name": "QGLOBAL.md",
+      "path": "/workspaces/qmoi-enhanced/QGLOBAL.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-AI-ENHANCEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-AI-ENHANCEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-AIRTEL-INTEGRATION.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ANIMATION-ENHANCEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ANIMATION-ENHANCEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-AUTOMATION-COMPLETE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-AUTOUPDATE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-AUTOUPDATE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-CLOUD-ENHANCED.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-CLOUD-ENHANCED.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-CLOUD-OFFLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-CLOUD-OFFLOAD.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-CLOUD.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-CLOUD.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-EARNING-ENHANCED.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-EARNING-ENHANCED.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-AUTOMATION.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-AUTOTESTS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-COMPLETE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-FEATURES.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-FEATURES.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-FINAL.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-FINAL.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-README.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-README.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCED-SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-ENHANCEMENT-SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-ENHANCEMENT-SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-FEATURE-INDEX.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-FEATURE-INDEX.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-HUGGINGFACE-ENHANCEMENTS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-HUGGINGFACE-ENHANCEMENTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-MASTER-CONTROLS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-MASTER-CONTROLS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-OPTIMIZATION.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-OPTIMIZATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-PLUGIN-SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-PLUGIN-SYSTEM.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-REVENUE-README.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-REVENUE-README.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI-VOICE-ENHANCEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI-VOICE-ENHANCEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIACCOUNTS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIACCOUNTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIACCOUNTSPLATFORMS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAICORE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAICORE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIALLDEVICESHANDSFREE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIALLDEVICESINSTALL.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIALLPLATFORMS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALLPLATFORMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIALLPROJECTSADDSTRAILERSDOCS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIALWAYSPARALLEL.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIALWAYSPARALLEL.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAPIKEYREADME.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAPIKEYREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAPPS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAPPS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIARTISTS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIARTISTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTHBIOMETRICS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTHBIOMETRICS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOAPPSDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOBET.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOBET.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTODEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTODEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTODEVDOCTESTS.MD",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTODISTRIBUTEMARKET.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTODISTRIBUTEMARKET.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOEVOLVE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOEVOLVE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOFIXREADME.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOFIXREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOGMAIL.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOGMAIL.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOMAKENEW.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOMAKENEW.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOMAKESMONEY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOMAKESMONEY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOMATIONMONITORING.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOMATIONMONITORING.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOOPPORTUNITIES.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOOPPORTUNITIES.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOPROJECTS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOPROJECTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAUTOREVENUEEARN.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAUTOREVENUEEARN.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIAVATAR.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIAVATAR.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIBINARIES.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIBINARIES.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIBROWSER.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIBROWSER.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOICLONE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOICLONE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOICLONEGITHUB.md",
+      "path": "/workspaces/qmoi-enhanced/QMOICLONEGITHUB.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOICLONEGITLAB.md",
+      "path": "/workspaces/qmoi-enhanced/QMOICLONEGITLAB.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOICLONEGITPOD.md",
+      "path": "/workspaces/qmoi-enhanced/QMOICLONEGITPOD.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOICLONEHUGGINGFACE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOICLONEHUGGINGFACE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOICOLABDAGSHUB.md",
+      "path": "/workspaces/qmoi-enhanced/QMOICOLABDAGSHUB.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIDATABASE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIDATABASE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIDEVICES.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIDEVICES.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIDNS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIDNS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIDOMAINS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIDOMAINS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIDOMAINSLINKS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIDOMAINSLINKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIDOWNLOADS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIDOWNLOADS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIEARNING.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIEARNING.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIEMPLOYAUTOPAY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIEMPLOYAUTOPAY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIEMPLOYEES.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIEMPLOYEES.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIEMULATORS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIEMULATORS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIENHANCEMENTSSUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIENHANCEMENTSSUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIENVWITHALLPROGRAMMINGLANGUAGES.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIENVWITHALLPROGRAMMINGLANGUAGES.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIFORALL.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIFORALL.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIFREE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIFREE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIGAMINGCLOUDUSERS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIGAMINGGENREV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGAMINGGENREV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIGITHUBAPP.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGITHUBAPP.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIGITHUBDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGITHUBDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIGITLABDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGITLABDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIGITPODDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIGITPODDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIHUGGINGFACEALWAYSUPDATE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIHUGGINGFACEALWAYSUPDATE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIHUGGINGFACESPACES.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIHUGGINGFACESPACES.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIHUGGINGFACESPACESSETUPINST.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIMASKS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIMASKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIMEMORY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIMEMORY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIMODEL.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIMODEL.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIMODELTESTS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIMODELTESTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOINETWORK.md",
+      "path": "/workspaces/qmoi-enhanced/QMOINETWORK.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOINGROK.md",
+      "path": "/workspaces/qmoi-enhanced/QMOINGROK.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIOWNDEVICE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIOWNDEVICE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIPREDEVDOCACTIONS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIQCITYAUTOMATIC.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIQCITYAUTOMATIC.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIQTEAMCUSTOMERCARE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIQTEAMCUSTOMERCARE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIRADIOREADME.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIRADIOREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIREADME.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIREGISTRY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIREGISTRY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIREVENUEGENERATION.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIREVENUEGENERATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOISPACE.md",
+      "path": "/workspaces/qmoi-enhanced/QMOISPACE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOISPACEDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOISPACEDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOISPACEUI.md",
+      "path": "/workspaces/qmoi-enhanced/QMOISPACEUI.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOISYSTEMAUTO.md",
+      "path": "/workspaces/qmoi-enhanced/QMOISYSTEMAUTO.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOITESTENVIRONMENT.md",
+      "path": "/workspaces/qmoi-enhanced/QMOITESTENVIRONMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOITRADER.md",
+      "path": "/workspaces/qmoi-enhanced/QMOITRADER.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIVERCELDEV.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIVERCELDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIVIDEOPLATFORMS.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIVIDEOPLATFORMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOIWHATSAPP.md",
+      "path": "/workspaces/qmoi-enhanced/QMOIWHATSAPP.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI_AUTOMATED_SYSTEMS_README.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI_AUTOMATED_SYSTEMS_README.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI_COMPLETE_SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI_COMPLETE_SYSTEM_OVERVIEW.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI_COMPLETE_SYSTEM_OVERVIEW.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI_FRIENDSHIP_ENHANCEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI_FRIENDSHIP_ENHANCEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI_GITLAB_AUTOMATION.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "QMOI_MEMORY.md",
+      "path": "/workspaces/qmoi-enhanced/QMOI_MEMORY.md",
+      "last_verified": null
+    },
+    {
+      "name": "QRADIOPROGRAMS.md",
+      "path": "/workspaces/qmoi-enhanced/QRADIOPROGRAMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QSERVERREADME.md",
+      "path": "/workspaces/qmoi-enhanced/QSERVERREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "QTEAMTERMS.md",
+      "path": "/workspaces/qmoi-enhanced/QTEAMTERMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QUANTUGENREV.md",
+      "path": "/workspaces/qmoi-enhanced/QUANTUGENREV.md",
+      "last_verified": null
+    },
+    {
+      "name": "QUANTUM.md",
+      "path": "/workspaces/qmoi-enhanced/QUANTUM.md",
+      "last_verified": null
+    },
+    {
+      "name": "QUANTUMAUTOMARKET.md",
+      "path": "/workspaces/qmoi-enhanced/QUANTUMAUTOMARKET.md",
+      "last_verified": null
+    },
+    {
+      "name": "QUANTUMPAYED.md",
+      "path": "/workspaces/qmoi-enhanced/QUANTUMPAYED.md",
+      "last_verified": null
+    },
+    {
+      "name": "QVILLAGE.md",
+      "path": "/workspaces/qmoi-enhanced/QVILLAGE.md",
+      "last_verified": null
+    },
+    {
+      "name": "QVPNREADME.md",
+      "path": "/workspaces/qmoi-enhanced/QVPNREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "QVS/ENHANCEDQVS.md",
+      "path": "/workspaces/qmoi-enhanced/QVS/ENHANCEDQVS.md",
+      "last_verified": null
+    },
+    {
+      "name": "QVS/QVSREADME.md",
+      "path": "/workspaces/qmoi-enhanced/QVS/QVSREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "Qstore.md",
+      "path": "/workspaces/qmoi-enhanced/Qstore.md",
+      "last_verified": null
+    },
+    {
+      "name": "README (1).md",
+      "path": "/workspaces/qmoi-enhanced/README (1).md",
+      "last_verified": null
+    },
+    {
+      "name": "README.md",
+      "path": "/workspaces/qmoi-enhanced/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "REFERENCES.md",
+      "path": "/workspaces/qmoi-enhanced/REFERENCES.md",
+      "last_verified": null
+    },
+    {
+      "name": "RELEASETRACKS.md",
+      "path": "/workspaces/qmoi-enhanced/RELEASETRACKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "REVENUEGENERATING.md",
+      "path": "/workspaces/qmoi-enhanced/REVENUEGENERATING.md",
+      "last_verified": null
+    },
+    {
+      "name": "RSAAPIREADME.md",
+      "path": "/workspaces/qmoi-enhanced/RSAAPIREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "SCRIPTS.md",
+      "path": "/workspaces/qmoi-enhanced/SCRIPTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "SCRIPTSREADME.md",
+      "path": "/workspaces/qmoi-enhanced/SCRIPTSREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "SECURITY.md",
+      "path": "/workspaces/qmoi-enhanced/SECURITY.md",
+      "last_verified": null
+    },
+    {
+      "name": "SECURITYREADME.md",
+      "path": "/workspaces/qmoi-enhanced/SECURITYREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "SECURITY_AUTOMATION.md",
+      "path": "/workspaces/qmoi-enhanced/SECURITY_AUTOMATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "SELF_EVOLUTION.md",
+      "path": "/workspaces/qmoi-enhanced/SELF_EVOLUTION.md",
+      "last_verified": null
+    },
+    {
+      "name": "SERVEQCITYQMOIAIQMOISPACE.md",
+      "path": "/workspaces/qmoi-enhanced/SERVEQCITYQMOIAIQMOISPACE.md",
+      "last_verified": null
+    },
+    {
+      "name": "SERVICES.md",
+      "path": "/workspaces/qmoi-enhanced/SERVICES.md",
+      "last_verified": null
+    },
+    {
+      "name": "SERVINGERRORSISSUES.md",
+      "path": "/workspaces/qmoi-enhanced/SERVINGERRORSISSUES.md",
+      "last_verified": null
+    },
+    {
+      "name": "SISTERREADME.md",
+      "path": "/workspaces/qmoi-enhanced/SISTERREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "SRC.md",
+      "path": "/workspaces/qmoi-enhanced/SRC.md",
+      "last_verified": null
+    },
+    {
+      "name": "START.md",
+      "path": "/workspaces/qmoi-enhanced/START.md",
+      "last_verified": null
+    },
+    {
+      "name": "SYNCREPOS.md",
+      "path": "/workspaces/qmoi-enhanced/SYNCREPOS.md",
+      "last_verified": null
+    },
+    {
+      "name": "TEMPLATES.md",
+      "path": "/workspaces/qmoi-enhanced/TEMPLATES.md",
+      "last_verified": null
+    },
+    {
+      "name": "TESTREADME.md",
+      "path": "/workspaces/qmoi-enhanced/TESTREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "TO-DOs.md",
+      "path": "/workspaces/qmoi-enhanced/TO-DOs.md",
+      "last_verified": null
+    },
+    {
+      "name": "TRACKS.md",
+      "path": "/workspaces/qmoi-enhanced/TRACKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "TRADINGREADME.md",
+      "path": "/workspaces/qmoi-enhanced/TRADINGREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "TROUBLESHOOTING.md",
+      "path": "/workspaces/qmoi-enhanced/TROUBLESHOOTING.md",
+      "last_verified": null
+    },
+    {
+      "name": "UNIVERSALHEALTHRUNNERS.md",
+      "path": "/workspaces/qmoi-enhanced/UNIVERSALHEALTHRUNNERS.md",
+      "last_verified": null
+    },
+    {
+      "name": "UNUSED_API_ENDPOINTS.md",
+      "path": "/workspaces/qmoi-enhanced/UNUSED_API_ENDPOINTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "USEEMPLOYEESUSERS.md",
+      "path": "/workspaces/qmoi-enhanced/USEEMPLOYEESUSERS.md",
+      "last_verified": null
+    },
+    {
+      "name": "USERREADME.md",
+      "path": "/workspaces/qmoi-enhanced/USERREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "WATCHDEBUG.md",
+      "path": "/workspaces/qmoi-enhanced/WATCHDEBUG.md",
+      "last_verified": null
+    },
+    {
+      "name": "WEBHOOKS.md",
+      "path": "/workspaces/qmoi-enhanced/WEBHOOKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "WIRKFLOWSTRACKS.md",
+      "path": "/workspaces/qmoi-enhanced/WIRKFLOWSTRACKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "WPA.md",
+      "path": "/workspaces/qmoi-enhanced/WPA.md",
+      "last_verified": null
+    },
+    {
+      "name": "ZERORATEDQMOI.md",
+      "path": "/workspaces/qmoi-enhanced/ZERORATEDQMOI.md",
+      "last_verified": null
+    },
+    {
+      "name": "components/qmedia-player.md",
+      "path": "/workspaces/qmoi-enhanced/components/qmedia-player.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/ACCESSIBILITY.md",
+      "path": "/workspaces/qmoi-enhanced/docs/ACCESSIBILITY.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/API.md",
+      "path": "/workspaces/qmoi-enhanced/docs/API.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/AUTOEVOLVE.md",
+      "path": "/workspaces/qmoi-enhanced/docs/AUTOEVOLVE.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/ENHANCED_FEATURES.md",
+      "path": "/workspaces/qmoi-enhanced/docs/ENHANCED_FEATURES.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/FEATURESINDEX.md",
+      "path": "/workspaces/qmoi-enhanced/docs/FEATURESINDEX.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/MONITORING_SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/docs/MONITORING_SYSTEM.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/QMOI-ENHANCED-AUTOTESTS.md",
+      "path": "/workspaces/qmoi-enhanced/docs/QMOI-ENHANCED-AUTOTESTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/QMOICLONE.md",
+      "path": "/workspaces/qmoi-enhanced/docs/QMOICLONE.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/QMOIGITHUBDEV.md",
+      "path": "/workspaces/qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/QMOIGITLABDEV.md",
+      "path": "/workspaces/qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/QMOIVERCELDEV.md",
+      "path": "/workspaces/qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/README.md",
+      "path": "/workspaces/qmoi-enhanced/docs/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/REFERENCES.md",
+      "path": "/workspaces/qmoi-enhanced/docs/REFERENCES.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/TROUBLESHOOTING.md",
+      "path": "/workspaces/qmoi-enhanced/docs/TROUBLESHOOTING.md",
+      "last_verified": null
+    },
+    {
+      "name": "docs/corrupted.md",
+      "path": "/workspaces/qmoi-enhanced/docs/corrupted.md",
+      "last_verified": null
+    },
+    {
+      "name": "error-fix-summary.md",
+      "path": "/workspaces/qmoi-enhanced/error-fix-summary.md",
+      "last_verified": null
+    },
+    {
+      "name": "mobile/README.md",
+      "path": "/workspaces/qmoi-enhanced/mobile/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "models/latest/README.md",
+      "path": "/workspaces/qmoi-enhanced/models/latest/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "pwa_apps/README.md",
+      "path": "/workspaces/qmoi-enhanced/pwa_apps/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/@ALLMDFILESREFS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/@ALLMDFILESREFS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ALLDEVICESSETTINGS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ALLERRORSSTATSQMOI.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ALLERRORSSTATSQMOI.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ALLMDFILESREFS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ALLMDFILESREFS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ALLQMOIAIAPPSREALEASESVERSIONS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ALLQMOIAUTOEVOLVINGENVS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ALPHAQMOIENGINE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ALPHAQMOIENGINE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/API.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/API.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/AUTODOWNLOAD.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AUTODOWNLOAD.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/AUTOGIT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AUTOGIT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/AUTOLINTREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AUTOLINTREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/AUTOMATION-SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AUTOMATION-SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/AUTOOPTIMIZEALPHAQMOIENGINE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/BUILDAPPSFORALLPLATFORMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/BUILD_COMPLETION_SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/CASHON.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/CASHON.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/CASHONTRADINGREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/CASHONTRADINGREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/CMDCOMMANDS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/CMDCOMMANDS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/COLAB_DAGSHUB_DEPLOY_CHECKLIST.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/COLAB_DAGSHUB_DEPLOY_CHECKLIST.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/COMPONENTS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/COMPONENTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/CONTINUOUS_IMPROVEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/CONTINUOUS_IMPROVEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/DEPLOYMENT-README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/DEPLOYMENT-README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/DEVCOMMANDS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/DEVCOMMANDS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/DEVICERESOURCEOPTIMIZATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/DOWNLOADQMOIAIAPPALLDEVICES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/EMPLOYEESUSERSENROLLED.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/EMPLOYEESUSERSENROLLED.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ENHANCEDQVS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ENHANCEDQVS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ENHANCED_AUTOMATION_SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ERRORSREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ERRORSREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/FAST-BOOTSTRAP-README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/FAST-BOOTSTRAP-README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/FEATURESREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/FEATURESREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/GITHUB-ACTIONS-COMPLETE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/GITHUBPAYED.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/GITHUBPAYED.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/GITHUB_ACTIONS_AUTOFIX.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/GITHUB_ACTIONS_AUTOFIX.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/GITPODPAYED.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/GITPODPAYED.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/HUGGINGFACEPAYED.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/HUGGINGFACEPAYED.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/INDEPENDENTQMOI.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/INDEPENDENTQMOI.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/INSTALL.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/INSTALL.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/INSTALLATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/INSTALLATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/MASTERGUIDE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/MASTERGUIDE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/MASTEROWNS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/MASTEROWNS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/MASTERREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/MASTERREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/MEGAVAULT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/MEGAVAULT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/MONITORING.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/MONITORING.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/PAYEDGITLAB.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/PAYEDGITLAB.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QAlLPURPOSE.MD",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QAlLPURPOSE.MD",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QAvatar_User_Feedback_Kit.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QAvatar_User_Feedback_Kit.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYDEVICEAUTOUPGRADE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QCITYMAINDEVICE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYMAINDEVICE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QCITYQMOIAUTOSTART.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYQMOIAUTOSTART.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QCITYREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QCITYRESOURCES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYRESOURCES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QCITYRUNNERSENGINE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITYRUNNERSENGINE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QCITY_DEVICE_MANAGEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QGAMINGCLOUD.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QGAMINGCLOUD.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QGLOBAL.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QGLOBAL.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-AI-ENHANCEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-AI-ENHANCEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-AIRTEL-INTEGRATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ANIMATION-ENHANCEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ANIMATION-ENHANCEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-AUTOMATION-COMPLETE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-AUTOUPDATE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-AUTOUPDATE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-CLOUD-ENHANCED.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-CLOUD-ENHANCED.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-CLOUD.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-CLOUD.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-EARNING-ENHANCED.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-EARNING-ENHANCED.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-AUTOMATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-AUTOTESTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-COMPLETE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-COMPREHENSIVE-SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-FEATURES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-FEATURES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-FINAL.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-FINAL.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCED-SYSTEM.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-ENHANCEMENT-SUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-ENHANCEMENT-SUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-FEATURE-INDEX.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-FEATURE-INDEX.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-HUGGINGFACE-ENHANCEMENTS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-HUGGINGFACE-ENHANCEMENTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-MASTER-CONTROLS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-MASTER-CONTROLS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-OPTIMIZATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-OPTIMIZATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-PLUGIN-SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-PLUGIN-SYSTEM.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-REVENUE-README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-REVENUE-README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI-VOICE-ENHANCEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI-VOICE-ENHANCEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIACCOUNTS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIACCOUNTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIACCOUNTSPLATFORMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAICORE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAICORE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALLDEVICESHANDSFREE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALLDEVICESINSTALL.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIALLPLATFORMS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALLPLATFORMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALLPROJECTSADDSTRAILERSDOCS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIALWAYSPARALLEL.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIALWAYSPARALLEL.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAPIKEYREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAPIKEYREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAPPS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAPPS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIARTISTS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIARTISTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTHBIOMETRICS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTHBIOMETRICS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOAPPSDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOBET.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOBET.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTODEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTODEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTODEVDOCTESTS.MD",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTODISTRIBUTEMARKET.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTODISTRIBUTEMARKET.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOEVOLVE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOEVOLVE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOFIXREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOFIXREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOGMAIL.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOGMAIL.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOMAKENEW.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOMAKENEW.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOMAKESMONEY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOMAKESMONEY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOMATIONMONITORING.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOMATIONMONITORING.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOOPPORTUNITIES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOOPPORTUNITIES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOPROJECTS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOPROJECTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOPROJECTSAUTODISTRIBUTEMARKET.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAUTOREVENUEEARN.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAUTOREVENUEEARN.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIAVATAR.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIAVATAR.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIBINARIES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIBINARIES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIBROWSER.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIBROWSER.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOICLONE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOICLONE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOICLONEGITHUB.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOICLONEGITHUB.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOICLONEGITLAB.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOICLONEGITLAB.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOICLONEGITPOD.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOICLONEGITPOD.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOICLONEHUGGINGFACE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOICLONEHUGGINGFACE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOICOLABDAGSHUB.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOICOLABDAGSHUB.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIDATABASE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIDATABASE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIDEVICES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIDEVICES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIDNS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIDNS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIDOMAINS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIDOMAINS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIDOWNLOADS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIDOWNLOADS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIEARNING.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIEARNING.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIEMPLOYAUTOPAY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIEMPLOYAUTOPAY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIEMPLOYEES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIEMPLOYEES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIEMULATORS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIEMULATORS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIENHANCEDAUTOEVOLVINGALLPYTHONENV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIENHANCEMENTSSUMMARY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIENHANCEMENTSSUMMARY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIENVWITHALLPROGRAMMINGLANGUAGES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIENVWITHALLPROGRAMMINGLANGUAGES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIFORALL.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIFORALL.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIFREE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIFREE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGAMINGCLOUDUSERS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIGAMINGGENREV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGAMINGGENREV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIGITHUBDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITHUBDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIGITLABDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITLABDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIGITPODDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIGITPODDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIHUGGINGFACEALWAYSUPDATE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIHUGGINGFACEALWAYSUPDATE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIHUGGINGFACESPACES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIHUGGINGFACESPACES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIHUGGINGFACESPACESSETUPINST.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIICONS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIICONS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIMASKS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIMASKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIMEMORY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIMEMORY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOINETWORK.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOINETWORK.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOINGROK.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOINGROK.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIOWNDEVICE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIOWNDEVICE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIPREDEVDOCACTIONS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIQCITYAUTOMATIC.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIQCITYAUTOMATIC.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIQTEAMCUSTOMERCARE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIQTEAMCUSTOMERCARE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIRADIOREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIRADIOREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIREGISTRY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIREGISTRY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIREVENUEGENERATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIREVENUEGENERATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOISPACE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOISPACE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOISPACEDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOISPACEDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOISPACEUI.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOISPACEUI.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOISYSTEMAUTO.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOISYSTEMAUTO.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOITESTENVIRONMENT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOITESTENVIRONMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOITRADER.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOITRADER.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIVERCELDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIVERCELDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIVIDEOPLATFORMS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIVIDEOPLATFORMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOIWHATSAPP.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOIWHATSAPP.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_AUTOMATED_SYSTEMS_README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_AUTOMATED_SYSTEMS_README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_COMPLETE_SYSTEM.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_COMPLETE_SYSTEM_OVERVIEW.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_COMPLETE_SYSTEM_OVERVIEW.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_FRIENDSHIP_ENHANCEMENT.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_FRIENDSHIP_ENHANCEMENT.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_FRIENDSHIP_SYSTEM_INTEGRATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_GITLAB_AUTOMATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_MEMORY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_MEMORY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_ORCHESTRATOR.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_ORCHESTRATOR.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QMOI_ORCHESTRATOR_FLAGS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QMOI_ORCHESTRATOR_FLAGS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QRADIOPROGRAMS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QRADIOPROGRAMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QSERVERREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QSERVERREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QTEAMTERMS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QTEAMTERMS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QUANTUGENREV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QUANTUGENREV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QUANTUM.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QUANTUM.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QUANTUMAUTOMARKET.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QUANTUMAUTOMARKET.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QUANTUMPAYED.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QUANTUMPAYED.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QVILLAGE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QVILLAGE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QVPNREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QVPNREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QVS/ENHANCEDQVS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QVS/ENHANCEDQVS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/QVS/QVSREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/QVS/QVSREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/Qstore.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/Qstore.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/README (1).md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/README (1).md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/REFERENCES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/REFERENCES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/REVENUEGENERATING.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/REVENUEGENERATING.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/RSAAPIREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/RSAAPIREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/SCRIPTSREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/SCRIPTSREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/SECURITY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/SECURITY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/SECURITYREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/SECURITYREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/SECURITY_AUTOMATION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/SECURITY_AUTOMATION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/SELF_EVOLUTION.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/SELF_EVOLUTION.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/SISTERREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/SISTERREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/START.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/START.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/SYNCREPOS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/SYNCREPOS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/TESTREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/TESTREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/TRACKS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/TRACKS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/TRADINGREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/TRADINGREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/TROUBLESHOOTING.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/TROUBLESHOOTING.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/USEEMPLOYEESUSERS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/USEEMPLOYEESUSERS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/USERREADME.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/USERREADME.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/WATCHDEBUG.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/WATCHDEBUG.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/WPA.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/WPA.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/ZERORATEDQMOI.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/ZERORATEDQMOI.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/components/qmedia-player.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/components/qmedia-player.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/ACCESSIBILITY.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/ACCESSIBILITY.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/API.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/API.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/AUTOEVOLVE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/AUTOEVOLVE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/ENHANCED_FEATURES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/ENHANCED_FEATURES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/FEATURESINDEX.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/FEATURESINDEX.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/MONITORING_SYSTEM.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/MONITORING_SYSTEM.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/QMOI-ENHANCED-AUTOTESTS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOI-ENHANCED-AUTOTESTS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/QMOICLONE.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOICLONE.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIGITHUBDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIGITLABDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/QMOIVERCELDEV.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/REFERENCES.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/REFERENCES.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/TROUBLESHOOTING.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/TROUBLESHOOTING.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/docs/corrupted.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/docs/corrupted.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/error-fix-summary.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/error-fix-summary.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/mobile/README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/mobile/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/models/latest/README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/models/latest/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/scripts/README_QMOI_SECRETS.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/scripts/README_QMOI_SECRETS.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/scripts/templates/README_template.en.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/scripts/templates/README_template.en.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/scripts/templates/README_template.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/scripts/templates/README_template.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/scripts/templates/README_template.sw.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/scripts/templates/README_template.sw.md",
+      "last_verified": null
+    },
+    {
+      "name": "qmoi-enhanced/whatsapp-qmoi-bot/README.md",
+      "path": "/workspaces/qmoi-enhanced/qmoi-enhanced/whatsapp-qmoi-bot/README.md",
+      "last_verified": null
+    },
+    {
+      "name": "scripts/templates/README_template.en.md",
+      "path": "/workspaces/qmoi-enhanced/scripts/templates/README_template.en.md",
+      "last_verified": null
+    },
+    {
+      "name": "scripts/templates/README_template.md",
+      "path": "/workspaces/qmoi-enhanced/scripts/templates/README_template.md",
+      "last_verified": null
+    },
+    {
+      "name": "scripts/templates/README_template.sw.md",
+      "path": "/workspaces/qmoi-enhanced/scripts/templates/README_template.sw.md",
+      "last_verified": null
+    },
+    {
+      "name": "whatsapp-qmoi-bot/README.md",
+      "path": "/workspaces/qmoi-enhanced/whatsapp-qmoi-bot/README.md",
+      "last_verified": null
+    }
+  ]
+}

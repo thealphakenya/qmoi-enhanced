@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-07-06T03:59:00.225193",
+  "system_status": "operational",
+  "revenue_summary": {
+    "total_daily": 0.0,
+    "target_met": false,
+    "streams": [
+      {
+        "stream_id": "animation_movies",
+        "name": "Animation Movies",
+        "platform": "multiple",
+        "daily_target": 22000.0,
+        "current_revenue": 0.0,
+        "last_updated": 
