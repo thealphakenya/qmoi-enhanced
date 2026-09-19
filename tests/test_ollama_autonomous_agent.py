@@ -36,6 +36,38 @@ from ollama_autonomous_agent import (
     update_resume_file_metadata,
 )
 from realtime_workflow_monitor import WorkflowMonitor
+from monitoring_guard import validate_tracker_outputs, ALLOWED_TRACKER_FILES, MAX_TRACKER_FILE_BYTES
+
+
+class TestMonitoringGuard:
+    def test_validate_tracker_outputs_rejects_large_unapproved_files(self, tmp_path):
+        track_dir = tmp_path / "ollamatracks"
+        track_dir.mkdir()
+
+        for name in [
+            "CURRENT_STATUS.txt",
+            "LATEST_ACTIVITY.txt",
+            "STATE.txt",
+            "live_activity_stream.json",
+            "qmoi_live_activity.json",
+            "ollama_autonomous_agent_live_activity.json",
+        ]:
+            (track_dir / name).write_text("{}\n", encoding="utf-8")
+
+        (track_dir / "oversized_report.json").write_text("x" * (MAX_TRACKER_FILE_BYTES + 1), encoding="utf-8")
+
+        result = validate_tracker_outputs(track_dir)
+        assert result["ok"] is False
+        assert any("oversized_report.json" in issue for issue in result["issues"])
+
+        (track_dir / "oversized_report.json").unlink()
+        (track_dir / "UNAPPROVED.txt").write_text("temp", encoding="utf-8")
+        result = validate_tracker_outputs(track_dir)
+        assert result["ok"] is False
+        assert any("UNAPPROVED.txt" in issue for issue in result["issues"])
+
+        approved = {name for name in ALLOWED_TRACKER_FILES if (track_dir / name).exists()}
+        assert approved
 
 
 class TestResumeFileTracking:

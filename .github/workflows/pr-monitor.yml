@@ -105,6 +105,47 @@ jobs:
       # COLLECT METRICS
       # ----------------------------------------------------------------------
 
+      - name: Validate approved tracker artifacts
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path('.')
+          track_dir = root / 'ollamatracks'
+          allowed = {
+              'CURRENT_STATUS.txt',
+              'LATEST_ACTIVITY.txt',
+              'STATE.txt',
+              'live_activity_stream.json',
+              'qmoi_live_activity.json',
+              'ollama_autonomous_agent_live_activity.json',
+          }
+          max_size = 10 * 1024 * 1024
+          issues = []
+          if track_dir.exists():
+              seen = {p.name for p in track_dir.iterdir() if p.is_file()}
+              unexpected = sorted(seen - allowed)
+              if unexpected:
+                  issues.extend(f'Unapproved tracker file: {name}' for name in unexpected)
+              for name in sorted(allowed):
+                  path = track_dir / name
+                  if not path.exists():
+                      continue
+                  if path.stat().st_size > max_size:
+                      issues.append(f'Oversized tracker file: {name} ({path.stat().st_size} bytes > {max_size})')
+                  if path.suffix.lower() == '.json':
+                      try:
+                          json.loads(path.read_text(encoding='utf-8'))
+                      except Exception as exc:
+                          issues.append(f'Invalid JSON tracker file: {name} ({exc})')
+          if issues:
+              raise SystemExit('Tracker validation failed: ' + '; '.join(issues))
+          print('Tracker validation passed: approved files only.')
+          PY
+
       - name: Collect workflow metrics
         id: metrics
         uses: actions/github-script@v7
