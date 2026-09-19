@@ -3838,6 +3838,165 @@ All timestamps use UTC ISO-8601 format.
 
         return results
 
+    def build_unified_markdown_inventory(
+        self,
+        roots: Sequence[Path | str] | None = None,
+        *,
+        include_history: bool = True,
+        include_memory: bool = True,
+    ) -> dict[str, Any]:
+        """Delegate unified markdown inventory generation to the cross-repo manager."""
+        return self.cross_repo_manager.build_unified_markdown_inventory(
+            roots,
+            include_history=include_history,
+            include_memory=include_memory,
+        )
+
+    def collect_full_merge_metrics(
+        self,
+        roots: Sequence[Path | str] | None = None,
+        *,
+        include_history: bool = True,
+        include_memory: bool = True,
+    ) -> dict[str, Any]:
+        """Delegate merge metrics collection to the cross-repo manager."""
+        return self.cross_repo_manager.collect_full_merge_metrics(
+            roots,
+            include_history=include_history,
+            include_memory=include_memory,
+        )
+
+    def merge_duplicate_markdown_files(
+        self,
+        roots: Sequence[Path | str] | None = None,
+        *,
+        target_root: Path | str | None = None,
+        include_history: bool = True,
+        include_memory: bool = True,
+    ) -> dict[str, Any]:
+        """Delegate deduplicated markdown merge execution to the cross-repo manager."""
+        return self.cross_repo_manager.merge_duplicate_markdown_files(
+            roots,
+            target_root=target_root,
+            include_history=include_history,
+            include_memory=include_memory,
+        )
+
+    def record_merge_audit(
+        self,
+        repo_path: Path | str,
+        plan: Mapping[str, Any],
+    ) -> Path:
+        """Delegate merge audit recording to the cross-repo manager."""
+        return self.cross_repo_manager.record_merge_audit(repo_path, plan)
+
+    def execute_merge_and_sync(
+        self,
+        repo_roots: Sequence[Path | str],
+        *,
+        auto_push: bool = False,
+        target_root: Path | str | None = None,
+    ) -> dict[str, Any]:
+        """Inventory, audit, and synchronize repo trees while keeping file and directory metrics in scope."""
+        repo_paths = [Path(repo).resolve() for repo in repo_roots]
+        if not repo_paths:
+            raise ValueError("At least one repository path is required for merge execution.")
+
+        primary_root = Path(target_root).resolve() if target_root is not None else repo_paths[0]
+        primary_root.mkdir(parents=True, exist_ok=True)
+
+        self.record_tracker_event(
+            "merge_sync_started",
+            "Repository merge and sync audit started.",
+            status="active",
+            phase="merge_sync",
+            details={"repositories": [str(path) for path in repo_paths], "auto_push": auto_push},
+        )
+
+        inventory = self.cross_repo_manager.build_unified_markdown_inventory(
+            repo_paths,
+            include_history=True,
+            include_memory=True,
+        )
+        merge_metrics = self.collect_full_merge_metrics(
+            repo_paths,
+            include_history=True,
+            include_memory=True,
+        )
+
+        merge_plan = self.merge_duplicate_markdown_files(
+            repo_paths,
+            target_root=primary_root,
+            include_history=True,
+            include_memory=True,
+        )
+
+        self.record_merge_audit(primary_root, {
+            "merge_metrics": merge_metrics,
+            "inventory": inventory,
+            "merge_plan": merge_plan,
+            "repositories": [str(path) for path in repo_paths],
+            "auto_push": auto_push,
+        })
+
+        audit_dir = primary_root / "ollamatracks"
+        audit_dir.mkdir(parents=True, exist_ok=True)
+        audit_path = audit_dir / "merge_audit.json"
+        audit_payload = {
+            "status": "ready" if merge_metrics.get("total_files", 0) > 0 else "blocked",
+            "repositories": [str(path) for path in repo_paths],
+            "primary_root": str(primary_root),
+            "merge_metrics": merge_metrics,
+            "inventory": inventory,
+            "merge_plan": merge_plan,
+            "captured_at": utc_iso(),
+            "auto_push": auto_push,
+        }
+        safe_json_write(audit_path, audit_payload)
+
+        if auto_push:
+            for repo in repo_paths:
+                if not (repo / ".git").exists():
+                    continue
+                try:
+                    subprocess.run(["git", "-C", str(repo), "add", "."], check=True, capture_output=True, text=True)
+                    subprocess.run(["git", "-C", str(repo), "commit", "-m", "chore: autonomous merge audit and sync"], check=False, capture_output=True, text=True)
+                    subprocess.run(["git", "-C", str(repo), "push", "origin", "HEAD"], check=True, capture_output=True, text=True)
+                except subprocess.CalledProcessError as exc:
+                    self.record_tracker_event(
+                        "merge_sync_push_failed",
+                        f"Push failed for {repo}: {exc.stderr or exc.stdout}",
+                        status="failed",
+                        phase="merge_sync",
+                        details={"repository": str(repo), "error": str(exc)},
+                    )
+                    audit_payload["status"] = "blocked"
+                    safe_json_write(audit_path, audit_payload)
+                    return {
+                        **audit_payload,
+                        "audit_path": str(audit_path),
+                        "push_failed": True,
+                    }
+
+        final_status = "ready" if merge_metrics.get("total_files", 0) > 0 else "blocked"
+        self.record_tracker_event(
+            "merge_sync_complete",
+            "Repository merge and sync audit completed.",
+            status="SUCCESS" if final_status == "ready" else "failed",
+            phase="merge_sync",
+            details={"status": final_status, "total_files": merge_metrics.get("total_files", 0)},
+        )
+
+        return {
+            **audit_payload,
+            "status": final_status,
+            "audit_path": audit_path,
+            "repositories": [str(path) for path in repo_paths],
+            "merge_metrics": merge_metrics,
+            "inventory": inventory,
+            "merge_plan": merge_plan,
+        }
+
     # ------------------------------------------------------------------------
     # FULL VALIDATION
     # ------------------------------------------------------------------------
@@ -5707,6 +5866,7 @@ def main(
             "checkpoint",
             "health",
             "autonomous",
+            "merge-sync",
         ],
     )
 
@@ -5749,6 +5909,20 @@ def main(
         except (OllamaRuntimeError, OSError, ValueError) as exc:
             print(f"Autonomous execution failed: {exc}", file=sys.stderr)
             return 1
+
+    if args.command == "merge-sync":
+        roots = [
+            Path(args.base_path).resolve() if args.base_path else Path.cwd().resolve(),
+            Path(args.base_path).resolve().parent / "Alpha-Q-ai" if args.base_path else Path.cwd().resolve().parent / "Alpha-Q-ai",
+        ]
+        if not roots[1].exists():
+            roots = roots[:1]
+        result = agent.execute_merge_and_sync(roots, auto_push=False)
+        printable = dict(result)
+        if "audit_path" in printable and isinstance(printable["audit_path"], Path):
+            printable["audit_path"] = str(printable["audit_path"])
+        print(json.dumps(printable, indent=2, sort_keys=True, default=str))
+        return 0 if result.get("status") == "ready" else 1
 
     if args.command == "validate-platforms":
         print(

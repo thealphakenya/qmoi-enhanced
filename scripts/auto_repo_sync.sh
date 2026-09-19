@@ -29,7 +29,8 @@ append_oe2() {
 
 update_repo_state() {
   append_oe2
-  git add -- "${TARGET_FILES[@]}" 2>/dev/null || true
+  python3 scripts/ollama_autonomous_agent.py merge-sync --base-path "$ROOT" >/tmp/qmoi_merge_sync.log 2>&1 || true
+  git add -- "${TARGET_FILES[@]}" "scripts/ollama_autonomous_agent.py" "scripts/auto_repo_sync.sh" "ollamatracks/merge_audit.json" 2>/dev/null || true
   if git diff --cached --quiet; then
     echo "No auto-sync changes to publish."
     return 0

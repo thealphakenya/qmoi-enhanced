@@ -61,6 +61,32 @@ class TestResumeFileTracking:
         assert origin["changed"] is True
 
 
+class TestAutonomousMergeExecution:
+    def test_agent_execute_merge_and_sync_records_inventory_and_produces_audit(self, tmp_path):
+        repo_qe = tmp_path / "qmoi-enhanced"
+        repo_aq = tmp_path / "Alpha-Q-ai"
+        for repo in [repo_qe, repo_aq]:
+            repo.mkdir()
+            subprocess.run(["git", "init", str(repo)], check=True, stdout=subprocess.DEVNULL)
+            subprocess.run(["git", "-C", str(repo), "config", "user.name", "QMOI Test"], check=True)
+            subprocess.run(["git", "-C", str(repo), "config", "user.email", "test@example.com"], check=True)
+            (repo / "docs").mkdir()
+            (repo / "docs" / "README.md").write_text("# sample\n", encoding="utf-8")
+            (repo / "src").mkdir()
+            (repo / "src" / "core.py").write_text("print('ok')\n", encoding="utf-8")
+            subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
+            subprocess.run(["git", "-C", str(repo), "commit", "-m", "init"], check=True, stdout=subprocess.DEVNULL)
+
+        agent = OllamaAutonomousAgent(base_path=repo_qe)
+        result = agent.execute_merge_and_sync([repo_qe, repo_aq], auto_push=False)
+
+        assert result["status"] in {"ready", "blocked"}
+        assert result["repositories"] == [str(repo_qe), str(repo_aq)]
+        assert result["merge_metrics"]["total_files"] >= 2
+        assert result["audit_path"].exists()
+        assert any("merge_metrics" in key for key in result.keys()) or result["merge_metrics"]
+
+
 class TestCrossRepositoryAutonomyManager:
     def test_build_unified_markdown_inventory_deduplicates_same_names(self, tmp_path):
         repo_qe = tmp_path / "qmoi-enhanced"
