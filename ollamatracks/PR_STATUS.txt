@@ -1,16 +1,16 @@
 OLLAMA PR STATUS
 ================
 
-Timestamp UTC: 2026-09-19T11:14:41.742Z
+Timestamp UTC: 2026-09-19T14:30:23.668Z
 Repository: thealphakenya/qmoi-enhanced
 
 PR #2120: Materialize complete history and Alpha-Q-ai inputs
   head: merge/materialized-inputs-clean-20260919
-  head_sha: 11831c0646ed518a19d145cd88ffb0884cd81c97
+  head_sha: 6b99d5ec0becbd903ba303be02b86062da434d39
   base: main
   draft: false
   mergeable: unknown
-  checks: 24
+  checks: 23
   combined_status: failure
 
 PR #2119: Enforce complete copy before repository merges
