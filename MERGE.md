@@ -116,6 +116,17 @@ the Alpha-Q-ai push is still pending because the available Git credential in
 this execution environment is stale even though the API now reports push
 permission.
 
+### Remote Completeness Audit (2026-09-19)
+
+The latest remote audit found `0` reciprocal imported-ref namespaces on both
+remotes. The source gate branch is published on `qmoi-enhanced` at commit
+`2cd9d0ae83`; the complete-copy report is local staging evidence, not a claim
+that both final remote default branches contain the union. Alpha-Q-ai must
+receive the integration branch, all imported `qmoi-enhanced` refs and tags,
+and the materialized `qmoi-enhanced-history-14` tree before its after-merge
+metrics can be marked complete. Until then, the final remote completion status
+is `BLOCKED_EXTERNAL_PUBLICATION`.
+
 ## Local Audit Evidence (2026-09-08)
 
 The locally available audit was completed before documentation changes. The
