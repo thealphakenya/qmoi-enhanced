@@ -19,7 +19,17 @@ ALLOWED_TRACKER_FILES = {
     "live_activity_stream.json",
     "qmoi_live_activity.json",
     "ollama_autonomous_agent_live_activity.json",
+    "PR_STATUS.txt",
+    "LAST_RECONCILIATION.txt",
+    "TRACKING_INDEX.txt",
+    "monitoring_summary.json",
+    "telemetry.jsonl",
+    "agent.log",
 }
+
+
+def _is_allowed_reconciliation_file(name: str) -> bool:
+    return name.endswith("_tracker_reconciliation.txt") and name[:6].isdigit()
 
 
 def validate_tracker_outputs(track_dir: str | Path) -> dict[str, Any]:
@@ -31,11 +41,16 @@ def validate_tracker_outputs(track_dir: str | Path) -> dict[str, Any]:
         return {"ok": False, "issues": [f"Tracker directory does not exist: {root}"]}
 
     found = {path.name for path in root.iterdir() if path.is_file()}
-    unexpected = sorted(found - approved)
+    unexpected = sorted(
+        name for name in found
+        if name not in approved and not _is_allowed_reconciliation_file(name)
+    )
     for name in unexpected:
         issues.append(f"Unapproved tracker file: {name}")
 
-    for name in sorted(approved):
+    for name in sorted(found):
+        if name not in approved and not _is_allowed_reconciliation_file(name):
+            continue
         path = root / name
         if not path.exists():
             continue

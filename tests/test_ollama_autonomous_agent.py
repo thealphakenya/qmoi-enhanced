@@ -51,8 +51,15 @@ class TestMonitoringGuard:
             "live_activity_stream.json",
             "qmoi_live_activity.json",
             "ollama_autonomous_agent_live_activity.json",
+            "PR_STATUS.txt",
+            "LAST_RECONCILIATION.txt",
+            "TRACKING_INDEX.txt",
+            "monitoring_summary.json",
+            "telemetry.jsonl",
+            "agent.log",
+            "000123_tracker_reconciliation.txt",
         ]:
-            (track_dir / name).write_text("{}\n", encoding="utf-8")
+            (track_dir / name).write_text("{}\n" if name.endswith(".json") or name.endswith(".jsonl") else "ok\n", encoding="utf-8")
 
         (track_dir / "oversized_report.json").write_text("x" * (MAX_TRACKER_FILE_BYTES + 1), encoding="utf-8")
 
@@ -68,6 +75,32 @@ class TestMonitoringGuard:
 
         approved = {name for name in ALLOWED_TRACKER_FILES if (track_dir / name).exists()}
         assert approved
+
+    def test_validate_tracker_outputs_allows_runtime_and_reconciliation_artifacts(self, tmp_path):
+        track_dir = tmp_path / "ollamatracks"
+        track_dir.mkdir()
+
+        for name in [
+            "CURRENT_STATUS.txt",
+            "LATEST_ACTIVITY.txt",
+            "STATE.txt",
+            "live_activity_stream.json",
+            "qmoi_live_activity.json",
+            "ollama_autonomous_agent_live_activity.json",
+            "PR_STATUS.txt",
+            "LAST_RECONCILIATION.txt",
+            "TRACKING_INDEX.txt",
+            "monitoring_summary.json",
+            "telemetry.jsonl",
+            "agent.log",
+            "000123_tracker_reconciliation.txt",
+            "000124_tracker_reconciliation.txt",
+        ]:
+            content = "{}\n" if name.endswith(".json") or name.endswith(".jsonl") else "ok\n"
+            (track_dir / name).write_text(content, encoding="utf-8")
+
+        result = validate_tracker_outputs(track_dir)
+        assert result["ok"] is True, result["issues"]
 
 
 class TestResumeFileTracking:
