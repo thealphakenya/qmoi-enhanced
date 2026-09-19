@@ -634,7 +634,7 @@ jobs:
 
       - name: Upload validation artifacts
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: validation-${{ matrix.validation_type }}-logs
           path: |
@@ -927,7 +927,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-results
           path: |
@@ -1173,7 +1173,7 @@ jobs:
 
       - name: Upload agent trigger record
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: agent-trigger-record-${{ github.run_id }}
           path: ollamatracks/AGENT_TRIGGER.txt
@@ -1335,7 +1335,7 @@ jobs:
 
       - name: Upload comprehensive report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: final-validation-report
           path: VALIDATION_REPORT_*.md
