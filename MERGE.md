@@ -131,6 +131,29 @@ Alpha-Q-ai yet. These remote totals are therefore not the requested all-history
 union; final union metrics remain blocked until integration and imported refs
 are published to both repositories.
 
+### Complete File And Directory Totals (2026-09-19)
+
+The PR and history counts are recorded separately because a PR tree is one
+commit while a history inventory is the union of paths across every reachable
+ref. The exact PR head is `3e896bad77`.
+
+| Scope | Files | Directories |
+| --- | ---: | ---: |
+| `qmoi-enhanced` all reachable histories | 369,230 | 88,736 |
+| `Alpha-Q-ai` all reachable histories | 33,023 | 5,450 |
+| `qmoi-enhanced-history-14` materialized snapshot | 29,499 | 5,451 |
+| **Summed all-history inputs** | **431,752** | **99,637** |
+| **Deduplicated path union across all inputs** | **369,231** | **102,103** |
+| `qmoi-enhanced` PR tree (`3e896bad77`) | 1,342 | 6 |
+| `Alpha-Q-ai` current `main` tree | 1,346 | 6 |
+
+The summed total is the arithmetic total of every source inventory. The
+deduplicated total removes identical relative paths shared between sources;
+it is the correct union metric for checking that the final repositories contain
+all distinct files and directories. Neither remote default branch currently
+contains this full union because Alpha-Q-ai still lacks the integration and
+imported-history refs.
+
 ### Remote Completeness Audit (2026-09-19)
 
 The latest remote audit found `0` reciprocal imported-ref namespaces on both
