@@ -135,7 +135,7 @@ are published to both repositories.
 
 The PR and history counts are recorded separately because a PR tree is one
 commit while a history inventory is the union of paths across every reachable
-ref. The exact PR head is `372cdf96df`.
+ref. The exact PR head is `5507f1cca6`.
 
 | Scope | Files | Directories |
 | --- | ---: | ---: |
@@ -144,7 +144,7 @@ ref. The exact PR head is `372cdf96df`.
 | `qmoi-enhanced-history-14` materialized snapshot | 29,499 | 5,451 |
 | **Summed all-history inputs** | **431,752** | **99,637** |
 | **Deduplicated path union across all inputs** | **369,231** | **102,103** |
-| `qmoi-enhanced` PR tree (`372cdf96df`) | 1,342 | 6 |
+| `qmoi-enhanced` PR tree (`5507f1cca6`) | 1,342 | 6 |
 | `Alpha-Q-ai` current `main` tree | 1,346 | 6 |
 
 The summed total is the arithmetic total of every source inventory. The
