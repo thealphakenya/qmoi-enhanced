@@ -1,8 +1,8 @@
 {
-  "total_links_validated": 110,
+  "total_links_validated": 108,
   "accessible": 103,
-  "inaccessible": 7,
-  "success_rate": "93.6%",
+  "inaccessible": 5,
+  "success_rate": "95.4%",
   "results": [
     {
       "url": "https://github.com/thealphakenya/qmoi-enhanced",
@@ -1072,28 +1072,6 @@
       "paired_url": null
     },
     {
-      "url": "https://github.com/{cls.__dict__.get(",
-      "accessible": false,
-      "status_code": null,
-      "error": "curl: (3) unmatched brace in URL position 20:\nhttps://github.com/{cls.__dict__.get(\n                   ^",
-      "source_file": "scripts/link_validator.py",
-      "link_type": "reference",
-      "rendered_ok": null,
-      "ownership": null,
-      "paired_url": null
-    },
-    {
-      "url": "https://github.com/{cls.github_repo",
-      "accessible": false,
-      "status_code": null,
-      "error": "curl: (3) unmatched brace in URL position 20:\nhttps://github.com/{cls.github_repo\n                   ^",
-      "source_file": "scripts/link_validator.py",
-      "link_type": "reference",
-      "rendered_ok": null,
-      "ownership": null,
-      "paired_url": null
-    },
-    {
       "url": "https://help.qmoi.com",
       "accessible": false,
       "status_code": 0,
@@ -1228,28 +1206,6 @@
       "paired_url": null
     },
     {
-      "url": "https://github.com/{cls.__dict__.get(",
-      "accessible": false,
-      "status_code": null,
-      "error": "curl: (3) unmatched brace in URL position 20:\nhttps://github.com/{cls.__dict__.get(\n                   ^",
-      "source_file": "scripts/link_validator.py",
-      "link_type": "reference",
-      "rendered_ok": null,
-      "ownership": null,
-      "paired_url": null
-    },
-    {
-      "url": "https://github.com/{cls.github_repo",
-      "accessible": false,
-      "status_code": null,
-      "error": "curl: (3) unmatched brace in URL position 20:\nhttps://github.com/{cls.github_repo\n                   ^",
-      "source_file": "scripts/link_validator.py",
-      "link_type": "reference",
-      "rendered_ok": null,
-      "ownership": null,
-      "paired_url": null
-    },
-    {
       "url": "https://help.qmoi.com",
       "accessible": false,
       "status_code": 0,
@@ -1295,8 +1251,8 @@
     }
   ],
   "blocking_inaccessible": 0,
-  "nonblocking_inaccessible": 7,
-  "timestamp": "2026-09-19T10:29:16.130374+00:00",
+  "nonblocking_inaccessible": 5,
+  "timestamp": "2026-09-19T10:35:40.165223+00:00",
   "qmoi_domain_pairs": [
     {
       "qmoi_url": "https://qmoi.com",

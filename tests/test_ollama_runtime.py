@@ -351,3 +351,21 @@ def test_link_validator_tracks_qmoi_owned_and_github_paired_domains():
     assert qmoi_classification["paired_url"] == "https://github.com/thealphakenya/qmoi-enhanced"
     assert github_classification["ownership"] == "external_non_qmoi"
     assert github_classification["paired_url"] is None
+
+
+def test_markdown_link_validator_requires_qmoi_github_pairing(tmp_path):
+    LinkValidator = __import__("scripts.link_validator", fromlist=["LinkValidator"]).LinkValidator
+    md_file = tmp_path / "README.md"
+    md_file.write_text("[QMOI](https://qmoi.com)\n", encoding="utf-8")
+
+    validator = LinkValidator(repo_path=str(tmp_path))
+    validator.validate_markdown_qmoi_pairs()
+
+    assert any(
+        result.ownership == "qmoi_owned" and result.paired_url == "https://github.com/thealphakenya/qmoi-enhanced"
+        for result in validator.results
+    )
+    assert any(
+        result.link_type == "qmoi_pairing" and result.accessible is False
+        for result in validator.results
+    )

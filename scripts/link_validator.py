@@ -74,10 +74,10 @@ class LinkValidator:
         self.github_repo = "thealphakenya/qmoi-enhanced"
         self.results: list[LinkResult] = []
 
-    @classmethod
-    def build_qmoi_domain_pairs(cls) -> list[dict[str, str | None]]:
-        """Return each QMOI-owned domain with its paired GitHub URL."""
-        github_repo_url = f"https://github.com/{cls.__dict__.get('github_repo', 'thealphakenya/qmoi-enhanced') if False else 'thealphakenya/qmoi-enhanced'}"
+    @staticmethod
+    def build_qmoi_domain_pairs() -> list[dict[str, str | None]]:
+        """Return each QMOI-owned domain with the canonical paired GitHub URL."""
+        github_repo_url = "https://github.com/thealphakenya/qmoi-enhanced"
         qmoi_urls = [
             "https://qmoi.com",
             "https://www.qmoi.com",
@@ -113,11 +113,12 @@ class LinkValidator:
         )
         return pairs
 
-    @classmethod
-    def classify_link_domain(cls, url: str) -> dict[str, str | None]:
-        """Classify a URL as QMOI-owned or external, and attach its paired GitHub link when present."""
+    @staticmethod
+    def classify_link_domain(url: str) -> dict[str, str | None]:
+        """Classify a URL as QMOI-owned or external, and attach its GitHub companion when appropriate."""
         parsed = urlparse(url)
         host = (parsed.netloc or parsed.path or "").lower().replace("www.", "")
+        github_repo_url = "https://github.com/thealphakenya/qmoi-enhanced"
         qmoi_hosts = {
             "qmoi.com",
             "qmoi.ai",
@@ -130,10 +131,10 @@ class LinkValidator:
         if host in qmoi_hosts or host.endswith(".qmoi.com") or host.endswith(".qmoi.ai"):
             return {
                 "ownership": "qmoi_owned",
-                "paired_url": f"https://github.com/{cls.github_repo if hasattr(cls, 'github_repo') else 'thealphakenya/qmoi-enhanced'}" if False else f"https://github.com/thealphakenya/qmoi-enhanced",
+                "paired_url": github_repo_url,
                 "note": "QMOI-owned domain; GitHub is the paired repository reference.",
             }
-        if "github.com" in host or host.endswith("github.com"):
+        if host == "github.com" or host.endswith(".github.com"):
             return {
                 "ownership": "external_non_qmoi",
                 "paired_url": None,
@@ -521,6 +522,57 @@ class LinkValidator:
             url = f"https://github.com/{self.github_repo}/blob/main/{path.as_posix()}"
             self.add_checked(url, str(path), "workflow")
 
+    def validate_markdown_qmoi_pairs(self) -> None:
+        """Ensure every QMOI-owned link in Markdown has a paired GitHub companion and a matching ownership record."""
+        github_repo_url = f"https://github.com/{self.github_repo}"
+        for path in sorted(self.repo_path.rglob("*.md")):
+            normalized = f"/{path.as_posix()}"
+            if any(part in normalized for part in self.ignored_parts):
+                continue
+            try:
+                content = path.read_text(encoding="utf-8", errors="ignore")
+            except OSError:
+                continue
+            urls = self.extract_urls(content)
+            if not urls:
+                continue
+            qmoi_urls = [
+                url for url in urls if self.classify_link_domain(url)["ownership"] == "qmoi_owned"
+            ]
+            if not qmoi_urls:
+                continue
+            has_github_companion = any(
+                self.github_repo in url for url in urls if "github.com" in url
+            ) or github_repo_url in urls
+            if not has_github_companion:
+                for qmoi_url in qmoi_urls:
+                    self.results.append(
+                        LinkResult(
+                            qmoi_url,
+                            False,
+                            None,
+                            f"QMOI-owned link missing required paired GitHub reference: {github_repo_url}",
+                            str(path.relative_to(self.repo_path)),
+                            "qmoi_pairing",
+                            ownership="qmoi_owned",
+                            paired_url=github_repo_url,
+                        )
+                    )
+                continue
+            for qmoi_url in qmoi_urls:
+                self.results.append(
+                    LinkResult(
+                        qmoi_url,
+                        True,
+                        200,
+                        None,
+                        str(path.relative_to(self.repo_path)),
+                        "qmoi_pairing",
+                        ownership="qmoi_owned",
+                        paired_url=github_repo_url,
+                    )
+                )
+
     def validate_latest_run(self) -> None:
         """Check the latest autonomous run page and artifact availability."""
         try:
@@ -578,6 +630,8 @@ class LinkValidator:
         self.validate_ollama_links()
         print("Validating QMOI domains and app routes...")
         self.validate_qmoi_domains()
+        print("Validating QMOI/GitHub markdown pairing across .md docs...")
+        self.validate_markdown_qmoi_pairs()
         print("Validating published QMOI release assets...")
         self.validate_release_assets()
         print("Validating workflow links...")
