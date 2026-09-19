@@ -1,4 +1,2 @@
-STATE: success
-PHASE: checkpoint
-EVENT: resume_checkpoint
-Timestamp: 2026-09-19T10:49:28.389623Z
+STATE: initialized
+Timestamp: 2026-09-19T10:54:48.095045Z

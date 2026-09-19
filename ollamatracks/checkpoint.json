@@ -18,7 +18,6 @@
     "historical snapshot and clone inventory coverage",
     "continuation cycle"
   ],
-  "continue_mode": true,
   "error": null,
   "failure_fingerprint": null,
   "files_changed": [],
@@ -36,17 +35,15 @@
     "GitHub monitoring snapshot",
     "resume and checkpoint persistence"
   ],
-  "last_checkpoint_status": "ready",
   "model": "qwen2.5-coder:3b",
   "ollama_health": null,
   "ollama_host": "http://127.0.0.1:11434",
-  "repair_state": "success",
+  "repair_state": "ready",
   "repository_commit": null,
-  "runtime": "false",
-  "status": "success",
+  "status": "ready",
   "task": null,
   "test_result": null,
   "tests_run": null,
-  "timestamp": "2026-09-19T10:49:28.388316Z",
+  "timestamp": "2026-09-19T10:54:48.027478Z",
   "workflow_run": null
 }

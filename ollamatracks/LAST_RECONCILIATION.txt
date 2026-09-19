@@ -1,4 +1,2 @@
-LAST_RECONCILIATION: resume_checkpoint
-STATUS: success
-PHASE: checkpoint
-Timestamp: 2026-09-19T10:49:28.389623Z
+LAST_RECONCILIATION: initialized
+Timestamp: 2026-09-19T10:54:48.095045Z
