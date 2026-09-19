@@ -2477,6 +2477,8 @@ class CrossRepositoryAutonomyManager:
         feature_related_files: set[str] = set()
         style_universal_related_files: set[str] = set()
 
+        ignored_dirs = {".git", ".hg", ".svn", ".pytest_cache", "__pycache__", ".mypy_cache", ".ruff_cache", ".venv", "venv", "node_modules", ".next", "dist", "build", "target"}
+
         for root in roots_list:
             if not root.exists():
                 continue
@@ -2496,6 +2498,8 @@ class CrossRepositoryAutonomyManager:
                 )
             else:
                 for path in sorted(root.rglob("*")):
+                    if any(part in ignored_dirs for part in path.parts):
+                        continue
                     if path.is_dir():
                         total_directories += 1
                     elif path.is_file():
@@ -2505,9 +2509,9 @@ class CrossRepositoryAutonomyManager:
                             feature_related_files.add(str(path.resolve()))
                         if any(keyword in str(path).lower() for keyword in ("api", "endpoint", "route", "port", "workflow", "monitor")):
                             api_route_related_files.add(str(path.resolve()))
-                lowered = str(path).lower()
-                if any(token in lowered for token in ("styles.md", "universals.md", "style", "universal", "user-style", "platform-style", "design-system")):
-                    style_universal_related_files.add(str(path.resolve()))
+                        lowered = str(path).lower()
+                        if any(token in lowered for token in ("styles.md", "universals.md", "style", "universal", "user-style", "platform-style", "design-system")):
+                            style_universal_related_files.add(str(path.resolve()))
 
         duplicate_file_names = sorted(name for name, count in duplicate_basenames.items() if count > 1)
         duplicate_directory_names = sorted(name for name, count in duplicate_directories.items() if count > 1)
@@ -2586,10 +2590,14 @@ class CrossRepositoryAutonomyManager:
         canonical_targets: dict[str, str] = {}
         seen_names: dict[str, str] = {}
 
+        ignored_dirs = {".git", ".hg", ".svn", ".pytest_cache", "__pycache__", ".mypy_cache", ".ruff_cache", ".venv", "venv", "node_modules", ".next", "dist", "build", "target"}
+
         for root in roots_list:
             if not root.exists():
                 continue
             for path in sorted(root.rglob("*")):
+                if any(part in ignored_dirs for part in path.parts):
+                    continue
                 if not path.is_file() or path.suffix.lower() != ".md":
                     continue
                 basename = path.name

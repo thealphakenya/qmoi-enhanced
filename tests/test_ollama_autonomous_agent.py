@@ -207,6 +207,25 @@ class TestCrossRepositoryAutonomyManager:
             str(history / "docs" / "README.md"),
         }
 
+    def test_merge_inventory_ignores_git_and_tool_cache_directories(self, tmp_path):
+        repo_qe = tmp_path / "qmoi-enhanced"
+        repo_qe.mkdir()
+        (repo_qe / "docs").mkdir()
+        (repo_qe / "docs" / "README.md").write_text("# live\n", encoding="utf-8")
+        (repo_qe / ".git").mkdir()
+        (repo_qe / ".git" / "objects").mkdir()
+        (repo_qe / ".git" / "objects" / "dummy.txt").write_text("large-git-data", encoding="utf-8")
+        (repo_qe / ".pytest_cache").mkdir()
+        (repo_qe / ".pytest_cache" / "cache.txt").write_text("x" * 2048, encoding="utf-8")
+        (repo_qe / "venv").mkdir()
+        (repo_qe / "venv" / "cache.txt").write_text("x" * 2048, encoding="utf-8")
+
+        manager = CrossRepositoryAutonomyManager()
+        inventory = manager.build_unified_markdown_inventory([repo_qe], include_history=True, include_memory=True)
+        assert "README.md" in inventory["by_basename"]
+        assert ".git" not in inventory["roots"][0]
+        assert inventory["total_markdown_files"] == 1
+
     def test_merge_duplicate_markdown_files_combines_history_and_repo_content(self, tmp_path):
         repo_qe = tmp_path / "qmoi-enhanced"
         repo_aq = tmp_path / "Alpha-Q-ai"
