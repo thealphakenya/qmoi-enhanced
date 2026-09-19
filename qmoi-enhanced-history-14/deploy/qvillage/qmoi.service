@@ -1,0 +1,16 @@
+[Unit]
+Description=QM OI Local Server (qmoi) for qvillage
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/workspaces/qmoi-enhanced
+ExecStart=/bin/bash /workspaces/qmoi-enhanced/deploy/qvillage/run_qmoi.sh
+Restart=always
+RestartSec=5
+Environment=QMOI_MODEL=qmoi
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

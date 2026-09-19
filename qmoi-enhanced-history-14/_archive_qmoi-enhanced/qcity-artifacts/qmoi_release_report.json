@@ -1,0 +1,56 @@
+{
+  "windows": {
+    "device": "windows",
+    "status": "fail",
+    "path": "Qmoi_apps\\windows\\qmoi ai.exe",
+    "error": "Rebuild failed"
+  },
+  "mac": {
+    "device": "mac",
+    "status": "fail",
+    "path": "Qmoi_apps\\mac\\qmoi ai.dmg",
+    "error": "Rebuild failed"
+  },
+  "linux": {
+    "device": "linux",
+    "status": "fail",
+    "path": "Qmoi_apps\\linux\\qmoi ai.AppImage",
+    "error": "Rebuild failed"
+  },
+  "android": {
+    "device": "android",
+    "status": "fail",
+    "path": "Qmoi_apps\\android\\qmoi ai.apk",
+    "error": "Rebuild failed"
+  },
+  "ios": {
+    "device": "ios",
+    "status": "fail",
+    "path": "Qmoi_apps\\ios\\qmoi ai.ipa",
+    "error": "Rebuild failed"
+  },
+  "qcity": {
+    "device": "qcity",
+    "status": "fail",
+    "path": "Qmoi_apps\\qcity\\qmoi ai.zip",
+    "error": "Rebuild failed"
+  },
+  "chromebook": {
+    "device": "chromebook",
+    "status": "fail",
+    "path": "Qmoi_apps\\chromebook\\qmoi ai.deb",
+    "error": "Rebuild failed"
+  },
+  "raspberrypi": {
+    "device": "raspberrypi",
+    "status": "fail",
+    "path": "Qmoi_apps\\raspberrypi\\qmoi ai.img",
+    "error": "Rebuild failed"
+  },
+  "smarttv": {
+    "device": "smarttv",
+    "status": "fail",
+    "path": "Qmoi_apps\\smarttv\\qmoi ai.apk",
+    "error": "Rebuild failed"
+  }
+}

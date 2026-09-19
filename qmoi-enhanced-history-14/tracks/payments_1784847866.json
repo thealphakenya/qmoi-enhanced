@@ -1,0 +1,8 @@
+{
+  "id": "6f39b40e-3a08-4dee-9157-6a3cf2515eea",
+  "type": "refund",
+  "refund_of": "fe05dbcb-225f-4993-a7d8-9772fe0088a1",
+  "amount_cents": 5000,
+  "timestamp": 1784847866,
+  "status": "succeeded"
+}

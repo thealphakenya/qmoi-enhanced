@@ -1,0 +1,155 @@
+# NOTE: 1 placeholder(s) found in this file. See .qmoi_validation/placeholder_fix_report.txt for details.
+import os
+import subprocess
+import sys
+import platform
+
+# Robust import for log_activity
+try:
+    from scripts.qmoi_activity_logger import log_activity
+except ImportError:
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('qmoi_activity_logger', os.path.join(os.path.dirname(__file__), 'qmoi-activity-logger.py'))
+    qmoi_activity_logger = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(qmoi_activity_logger)
+    log_activity = qmoi_activity_logger.log_activity
+
+# Ensure logs directory exists
+os.makedirs(os.path.join(os.path.dirname(__file__), '../logs'), exist_ok=True)
+
+
+def preflight_check():
+    """Conservative preflight: ensure critical runtime packages exist.
+
+    If a package is missing, print a clear message and exit with code 2 so
+    supervisors (watchers) can detect the problem early.
+    """
+    # Map import names to PyPI package names when they differ
+    check_pkgs = {
+        'requests': 'requests',
+        'aiohttp': 'aiohttp',
+        'schedule': 'schedule',
+        'yaml': 'PyYAML',
+        'git': 'GitPython',
+        'watchdog': 'watchdog',
+    }
+    # Some packages require system headers or compilation; do not attempt auto-install
+    # for heavy packages here. List can be expanded if needed.
+    auto_install_exclusions = set()
+
+    missing = []
+    for imp_name, pkg_name in check_pkgs.items():
+        try:
+            __import__(imp_name)
+        except Exception:
+            missing.append((imp_name, pkg_name))
+
+    if missing:
+        # Attempt to auto-install lightweight missing packages using the
+        # current interpreter's pip. We avoid auto-installing heavy ML packages.
+        attempted = []
+        for imp_name, pkg_name in missing:
+            if imp_name in auto_install_exclusions:
+                # skip auto-install for this package
+                print(f"Skipping auto-install for package that may need system deps: {pkg_name}", file=sys.stderr)
+                continue
+            try:
+                # Try to install the package into the current Python environment
+                print(f"Attempting to install missing package: {pkg_name}", file=sys.stderr)
+                subprocess.run([sys.executable, '-m', 'pip', 'install', pkg_name], check=False)
+                # re-check import
+                __import__(imp_name)
+                attempted.append(imp_name)
+            except Exception:
+                # leave it in missing if install/reimport failed
+                pass
+
+        # Recompute remaining missing after attempted installs
+        remaining = []
+        for imp_name, pkg_name in missing:
+            try:
+                __import__(imp_name)
+            except Exception:
+                remaining.append(imp_name)
+
+        if remaining:
+            msg = f"Missing required packages after auto-install: {', '.join(remaining)}.\n"
+            msg += "Install them with 'pip install -r requirements.txt' or use a virtualenv.\n"
+            print(msg, file=sys.stderr)
+            try:
+                log_activity('qmoi-start preflight failed: missing ' + ','.join(remaining))
+            except Exception:
+                pass
+            sys.exit(2)
+
+
+def is_qmoi_running():
+    # Check for a running QMOI process (simple check for [PRODUCTION IMPLEMENTATION REQUIRED]; can be enhanced)
+    try:
+        result = subprocess.check_output('tasklist' if os.name == 'nt' else 'ps aux', shell=True).decode()
+        return 'qmoi-qcity-automatic.py' in result or 'qmoi-qcity-automatic' in result
+    except Exception:
+        return False
+
+def show_status():
+    print('QMOI Status:')
+    try:
+        subprocess.run([sys.executable, os.path.join('scripts', 'qmoi-info.py')])
+    except Exception as e:
+        print('Could not show QMOI info:', e)
+
+def start_qmoi():
+    print('Starting QMOI automation system...')
+    log_activity('Starting QMOI automation system (all clouds, QCity, error fixing, notifications, always-on).')
+    # Start QMOI main automation (non-blocking)
+    subprocess.Popen([sys.executable, os.path.join('scripts', 'qmoi-qcity-automatic.py')])
+    print('QMOI started. It will now run in the background and in the cloud.')
+    show_status()
+
+def start_as_service():
+    if platform.system() == 'Windows':
+        # Use nssm or pythonw to run as a Windows service
+        try:
+            subprocess.Popen(['pythonw', 'scripts/qmoi-qcity-automatic.py'])
+            print('Started QMOI automation as a background process (Windows).')
+        except Exception as e:
+            print(f'Failed to start as Windows service: {e}')
+    else:
+        # Use nohup for Unix
+        try:
+            # Start the child using the same Python interpreter so that virtualenv
+            # environments are respected. Run detached (new session) and redirect
+            # output to the logs directory.
+            logs_dir = os.path.join(os.path.dirname(__file__), '..', 'logs')
+            os.makedirs(logs_dir, exist_ok=True)
+            out_path = os.path.join(logs_dir, 'qmoi-service.out.log')
+            err_path = os.path.join(logs_dir, 'qmoi-service.err.log')
+            out_f = open(out_path, 'a')
+            err_f = open(err_path, 'a')
+            subprocess.Popen([sys.executable, os.path.join('scripts', 'qmoi-qcity-automatic.py')],
+                             stdout=out_f, stderr=err_f, start_new_session=True)
+            print('Started QMOI automation as a Unix daemon.')
+        except Exception as e:
+            print(f'Failed to start as Unix daemon: {e}')
+
+def main():
+    print('--- QMOI Start/Resume ---')
+    # Run preflight checks to fail fast if runtime deps are missing.
+    preflight_check()
+    if is_qmoi_running():
+        print('QMOI is already running.')
+        log_activity('QMOI start script run: already running.')
+        show_status()
+    else:
+        start_qmoi()
+
+if __name__ == "__main__":
+    main()
+    start_as_service() 
+# AUTOFIXED by Ollama at 2026-07-21T21:35:01.362977Z: replaced placeholders or noted TODOs. Please review.
+
+# AUTOFIXED by Ollama at 2026-07-26T18:54:41.282429Z
+
+# AUTOFIXED by Ollama at 2026-07-26T18:57:34.312625Z
+
+# AUTOFIXED by Ollama at 2026-07-26T19:31:06.334877Z

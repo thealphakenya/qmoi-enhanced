@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+.gitignore
+Dockerfile
+*.log
+.npm-cache
+.jest_cache
+.qmoi_state_test
+data/wallets/*.json
+dist
+build
+coverage

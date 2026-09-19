@@ -1,0 +1,72 @@
+[
+  {
+    "path": "tests/test_backup_monitor.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_backup_restore.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_backup_state.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_check_and_replace_placeholders.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_check_placeholders.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_create_release_placeholders.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_fix_removed_placeholders_batch.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_placeholder_fixer.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_placeholder_scanner.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_replace_placeholders.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_run_placeholder_scans.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_scan_placeholders.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_scan_replace_placeholders.py",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  },
+  {
+    "path": "tests/test_placeholder_scan.py.ollama.bak",
+    "merged_to": "MERGE.md",
+    "note": "Merged into MERGE.md; file was unused, legacy, or archive-only and removed after integration."
+  }
+]

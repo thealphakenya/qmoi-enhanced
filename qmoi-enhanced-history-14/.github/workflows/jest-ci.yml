@@ -1,0 +1,73 @@
+name: CI - Autotest & Jest
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  autotest:
+    name: Autotest + Jest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run autotest runner (scans + jest)
+        run: |
+          python3 tools/autotest_runner.py
+
+      - name: Upload artifacts (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: autotest-artifacts
+          path: |
+            tools/jest_results.json
+            tools/jest_list.txt
+            tools/autotest_report.md
+            coverage/**
+
+      - name: Optional: upload coverage to Codecov
+        if: always() && env.CODECOV_TOKEN
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage/lcov.info
+
+  jest-integration:
+    name: Jest - persona integration
+    runs-on: ubuntu-latest
+    needs: autotest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run persona integration test
+        env:
+          QMOI_LOCAL_PORT: '18088'
+          QMOI_MEMORY_FILE: "${{ github.workspace }}/qmoi_memory_18088.json"
+        run: npx jest --config=jest.config.cjs __tests__/persona.integration.test.js -i --runInBand --colors

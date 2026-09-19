@@ -1,0 +1,5 @@
+ÿþimport React from 'react';
+
+export function FinancialManager() {
+  return <div>Financial Manager - Master Only</div>;
+}

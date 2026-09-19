@@ -1,0 +1,27 @@
+name: Wallet unit tests
+
+on:
+  push:
+    paths:
+      - "scripts/wallets/**"
+      - "tests/test_currency_convert.py"
+      - "tests/test_adapter_base.py"
+  pull_request:
+    paths:
+      - "scripts/wallets/**"
+      - "tests/test_currency_convert.py"
+      - "tests/test_adapter_base.py"
+
+jobs:
+  wallet-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install deps
+        run: pip install -r requirements.txt
+      - name: Run wallet tests
+        run: python3 scripts/wallets/run_wallet_tests.py

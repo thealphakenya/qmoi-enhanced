@@ -1,0 +1,14 @@
+[Unit]
+Description=QMOI Orchestrator Service
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/opt/qmoi
+ExecStart=/usr/bin/env python3 /opt/qmoi/qmoi_orchestrator.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

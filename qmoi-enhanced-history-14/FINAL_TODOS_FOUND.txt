@@ -1,0 +1,40 @@
+./components/SettingsPanel.tsx:459:                      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Advanced automation controls, logs, scheduling */}
+./components/QiSpaces.tsx:23:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to goals data */}
+./components/QiSpaces.tsx:28:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to achievements data */}
+./components/QiSpaces.tsx:33:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to projects data */}
+./components/QiSpaces.tsx:38:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Integrate wallet/finance APIs */}
+./components/QiSpaces.tsx:43:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to routines/habits data */}
+./components/QiSpaces.tsx:48:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to reminders/alarms data */}
+./components/QiSpaces.tsx:53:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Add settings/controls */}
+./components/scripts/enhanced_build.py.tsx:11:      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement component functionality */}
+./components/advanced_ui_&_parallel_processing_features_(2025_01_22).tsx:11:      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement component functionality */}
+./components/QI.tsx:643:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement pause all */}}>
+./components/QI.tsx:658:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement wallpaper change */}}>
+./components/QI.tsx:664:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement appearance settings */}}>
+./components/QI.tsx:670:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement app management */}}>
+./components/QI.tsx:704:                  <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Add funds */}}>
+./components/QI.tsx:709:                  {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Add transaction list */}
+./components/QI.tsx:724:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement pause all */}}>
+./components/QI.tsx:737:              <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement bluetooth scan */}}>
+./components/QI.tsx:752:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement wifi scan */}}>
+./components/QI.tsx:766:              <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement add goal */}}>
+./components/QI.tsx:779:              <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement add project */}}>
+./components/QI.tsx:828:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Add new rule */}}>
+./components/QI.tsx:885:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Clear notifications */}}>
+./components/QI.tsx:890:                {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Add notification list */}
+./components/QI.tsx:934:                <Button size="sm" variant="outline" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Start new optimization */}}>
+./components/QAvatar.tsx:1161:              <Button size="sm" onClick={() => {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Open QCity management UI */}}>Open QCity Management</Button>
+./components/real_time_status_dashboard_with_universal_language_support.tsx:11:      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement component functionality */}
+./components/üõ°ô∏è_automated_build,_install,_and_error_fix_strategies.tsx:11:      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement component functionality */}
+./components/LcSpaces.tsx:23:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to goals/plans data */}
+./components/LcSpaces.tsx:28:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to achievements data */}
+./components/LcSpaces.tsx:33:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to projects data */}
+./components/LcSpaces.tsx:38:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to routines/habits data */}
+./components/LcSpaces.tsx:43:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to reminders/alarms data */}
+./components/LcSpaces.tsx:48:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Connect to places/memories data */}
+./components/LcSpaces.tsx:53:          {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Add settings/controls */}
+./components/components/qmedia_player.md.tsx:11:      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement component functionality */}
+./components/media_&_ui_features_(2024_06_09).tsx:11:      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement component functionality */}
+./components/enhanced_build_tools.tsx:11:      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Implement component functionality */}
+./components/BrowserInterface.tsx:1:// [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Restore or implement missing UI modules and browserService for full functionality.
+./qmoi-enhanced/components/SettingsPanel.tsx:459:                      {/* [AUTOFIXED by Ollama at 2026-07-26T00:54:34.541774Z]: Advanced automation controls, logs, scheduling */}

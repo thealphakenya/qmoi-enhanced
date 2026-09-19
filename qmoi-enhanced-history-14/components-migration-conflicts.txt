@@ -1,0 +1,14 @@
+src/components/_automerge/alpha-q-ai-system.tsx
+src/components/_automerge/Chatbot.tsx
+src/components/_automerge/Chatbot.tsx.ollama.bak
+src/components/_automerge/Chatbot.tsx.ollama.bak.ollama.bak
+src/components/_automerge/FileExplorer.tsx
+src/components/_automerge/GitStatus.tsx
+src/components/_automerge/LcSpaces.tsx
+src/components/_automerge/PreviewWindow.tsx
+src/components/_automerge/QiSpaces.tsx
+src/components/_automerge/QIStateWindow.tsx
+src/components/_automerge/QI.tsx
+src/components/_automerge/QI.tsx.ollama.bak
+src/components/_automerge/QI.tsx.ollama.bak.ollama.bak
+src/components/_automerge/theme-provider.tsx
