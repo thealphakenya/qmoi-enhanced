@@ -12,8 +12,9 @@ This file is the live execution ledger for the QMOI repository continuity and pr
 - Verified the merge-policy and automation documents remain in place and include the no-skip, copy-before-merge, and audit requirements.
 - Verified the autonomous merge-and-sync execution path now exists in `scripts/ollama_autonomous_agent.py` and it records a real merge audit at `ollamatracks/merge_audit.json` with the full merge metrics package.
 - Verified the bounded regression test for the merge-and-sync path passes: `pytest -q tests/test_ollama_autonomous_agent.py -k 'merge_and_sync or build_unified_markdown_inventory_deduplicates_same_names'` returned `2 passed, 90 deselected`.
+- Verified the live activity stream emits realtime merge and repo-health entries through the tracked stream files in `ollamatracks/` and the generated combined payload remains valid.
 - Verified the repo is ready to publish the current branch state after recording this final ledger update.
-- Required next action: commit the validated merge-policy, automation, and audit updates, then push to `origin/codespace-potential-tribble-g46v54ggq6rv2w4v5` and confirm the remote accepts the branch.
+- Required next action: commit the validated merge-policy, automation, audit, and live-stream updates, then push to `origin/codespace-potential-tribble-g46v54ggq6rv2w4v5` and confirm the remote accepts the branch.
 
 ## Merge automation hardening ledger (2026-09-19)
 
