@@ -333,3 +333,21 @@ def test_validate_rendered_page_flags_missing_content(monkeypatch):
     assert result.accessible is True
     assert result.rendered_ok is False
     assert "QMOI" in (result.error or "")
+
+
+def test_link_validator_tracks_qmoi_owned_and_github_paired_domains():
+    LinkValidator = __import__("scripts.link_validator", fromlist=["LinkValidator"]).LinkValidator
+    validator = LinkValidator()
+
+    pairs = validator.build_qmoi_domain_pairs()
+    assert any(item["qmoi_url"] == "https://qmoi.com" for item in pairs)
+    assert any(item["ownership"] == "qmoi_owned" for item in pairs)
+    assert any(item["ownership"] == "external_non_qmoi" for item in pairs)
+
+    qmoi_classification = validator.classify_link_domain("https://qmoi.com/ai")
+    github_classification = validator.classify_link_domain("https://github.com/thealphakenya/qmoi-enhanced")
+
+    assert qmoi_classification["ownership"] == "qmoi_owned"
+    assert qmoi_classification["paired_url"] == "https://github.com/thealphakenya/qmoi-enhanced"
+    assert github_classification["ownership"] == "external_non_qmoi"
+    assert github_classification["paired_url"] is None

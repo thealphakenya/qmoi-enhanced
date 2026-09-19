@@ -9,6 +9,7 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 from typing import Any, ClassVar
 
 
@@ -23,6 +24,8 @@ class LinkResult:
     source_file: str | None = None
     link_type: str = "unknown"
     rendered_ok: bool | None = None
+    ownership: str | None = None
+    paired_url: str | None = None
 
 
 class LinkValidator:
@@ -70,6 +73,83 @@ class LinkValidator:
         self.repo_path = Path(repo_path)
         self.github_repo = "thealphakenya/qmoi-enhanced"
         self.results: list[LinkResult] = []
+
+    @classmethod
+    def build_qmoi_domain_pairs(cls) -> list[dict[str, str | None]]:
+        """Return each QMOI-owned domain with its paired GitHub URL."""
+        github_repo_url = f"https://github.com/{cls.__dict__.get('github_repo', 'thealphakenya/qmoi-enhanced') if False else 'thealphakenya/qmoi-enhanced'}"
+        qmoi_urls = [
+            "https://qmoi.com",
+            "https://www.qmoi.com",
+            "https://qmoi.ai",
+            "https://www.qmoi.ai",
+            "https://app.qmoi.com",
+            "https://space.qmoi.com",
+            "https://files.qmoi.com",
+            "https://ide.qmoi.com",
+            "https://help.qmoi.com",
+        ]
+        pairs: list[dict[str, str | None]] = []
+        for qmoi_url in qmoi_urls:
+            parsed = urlparse(qmoi_url)
+            domain = parsed.netloc.lower().replace("www.", "")
+            pairs.append(
+                {
+                    "qmoi_url": qmoi_url,
+                    "domain": domain,
+                    "github_url": github_repo_url,
+                    "ownership": "qmoi_owned",
+                    "paired_url": github_repo_url,
+                }
+            )
+        pairs.append(
+            {
+                "qmoi_url": github_repo_url,
+                "domain": "github.com",
+                "github_url": None,
+                "ownership": "external_non_qmoi",
+                "paired_url": None,
+            }
+        )
+        return pairs
+
+    @classmethod
+    def classify_link_domain(cls, url: str) -> dict[str, str | None]:
+        """Classify a URL as QMOI-owned or external, and attach its paired GitHub link when present."""
+        parsed = urlparse(url)
+        host = (parsed.netloc or parsed.path or "").lower().replace("www.", "")
+        qmoi_hosts = {
+            "qmoi.com",
+            "qmoi.ai",
+            "app.qmoi.com",
+            "space.qmoi.com",
+            "files.qmoi.com",
+            "ide.qmoi.com",
+            "help.qmoi.com",
+        }
+        if host in qmoi_hosts or host.endswith(".qmoi.com") or host.endswith(".qmoi.ai"):
+            return {
+                "ownership": "qmoi_owned",
+                "paired_url": f"https://github.com/{cls.github_repo if hasattr(cls, 'github_repo') else 'thealphakenya/qmoi-enhanced'}" if False else f"https://github.com/thealphakenya/qmoi-enhanced",
+                "note": "QMOI-owned domain; GitHub is the paired repository reference.",
+            }
+        if "github.com" in host or host.endswith("github.com"):
+            return {
+                "ownership": "external_non_qmoi",
+                "paired_url": None,
+                "note": "GitHub is an external host and not a QMOI-owned domain.",
+            }
+        if host in {"ollama.com", "ollama.ai", "raw.githubusercontent.com", "github.blog"}:
+            return {
+                "ownership": "external_non_qmoi",
+                "paired_url": None,
+                "note": "External vendor or platform domain; not QMOI-owned.",
+            }
+        return {
+            "ownership": "external_non_qmoi",
+            "paired_url": None,
+            "note": "No QMOI ownership claim; external domain or unknown host.",
+        }
 
     def extract_urls(self, text: str) -> list[str]:
         """Extract and normalize HTTP(S) URLs from text."""
@@ -163,8 +243,18 @@ class LinkValidator:
 
     def add_checked(self, url: str, source: str, link_type: str) -> None:
         accessible, status, error = self.check_url(url)
+        classification = self.classify_link_domain(url)
         self.results.append(
-            LinkResult(url, accessible, status, error, source, link_type)
+            LinkResult(
+                url,
+                accessible,
+                status,
+                error,
+                source,
+                link_type,
+                ownership=classification["ownership"],
+                paired_url=classification.get("paired_url"),
+            )
         )
 
     def validate_repository_links(self) -> None:
@@ -221,6 +311,7 @@ class LinkValidator:
         link_type: str = "rendered_page",
     ) -> LinkResult:
         """Verify that a page is reachable and contains expected HTML text markers."""
+        classification = self.classify_link_domain(url)
         accessible, status, error = self.check_url(url)
         if not accessible:
             return LinkResult(
@@ -231,6 +322,8 @@ class LinkValidator:
                 source,
                 link_type,
                 rendered_ok=False,
+                ownership=classification["ownership"],
+                paired_url=classification.get("paired_url"),
             )
 
         markers = tuple(required_markers) if required_markers else ("QMOI", "AI")
@@ -264,10 +357,12 @@ class LinkValidator:
             source,
             link_type,
             rendered_ok,
+            ownership=classification["ownership"],
+            paired_url=classification.get("paired_url"),
         )
 
     def validate_qmoi_domains(self) -> None:
-        """Check the public QMOI site and each documented app route."""
+        """Check the public QMOI site and each documented app route, always with its paired GitHub reference."""
         pages = {
             "https://qmoi.com": ("QMOI", "AI"),
             "https://qmoi.com/ai": ("QMOI", "AI"),
@@ -277,9 +372,10 @@ class LinkValidator:
             "https://qmoi.com/help/faq": ("FAQ", "QMOI"),
         }
         for url, markers in pages.items():
-            self.results.append(
-                self.validate_rendered_page(url, markers, source="QMOI domains", link_type="domain")
-            )
+            result = self.validate_rendered_page(url, markers, source="QMOI domains", link_type="domain")
+            result.paired_url = self.classify_link_domain(url).get("paired_url")
+            result.ownership = self.classify_link_domain(url).get("ownership")
+            self.results.append(result)
 
     def validate_release_assets(self) -> None:
         """Validate every asset in the latest published GitHub release."""
@@ -493,7 +589,17 @@ class LinkValidator:
         print("Validating latest hosted autonomous run...")
         self.validate_latest_run()
         self.results = list({result.url: result for result in self.results}.values())
-        return self.report()
+        domain_pairs = self.build_qmoi_domain_pairs()
+        qmoi_owned = [pair["qmoi_url"] for pair in domain_pairs if pair["ownership"] == "qmoi_owned"]
+        external_non_qmoi = [
+            result for result in self.results
+            if result.ownership == "external_non_qmoi" and result.url not in qmoi_owned
+        ]
+        report = self.report()
+        report["qmoi_domain_pairs"] = domain_pairs
+        report["qmoi_owned_links"] = qmoi_owned
+        report["external_non_qmoi_links"] = sorted({result.url for result in external_non_qmoi})
+        return report
 
 
 def main() -> int:
