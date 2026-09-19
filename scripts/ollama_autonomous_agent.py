@@ -94,6 +94,7 @@ try:
         build_success_contract,
         parse_repair_plan,
     )
+    from scripts.live_activity_stream import build_merge_activity_stream, persist_latest_activity, write_stream_payload
 except ModuleNotFoundError:  # pragma: no cover - direct script execution path
     from ollama_runtime import (
         OllamaBootstrap,
@@ -102,6 +103,7 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution path
         build_success_contract,
         parse_repair_plan,
     )
+    from live_activity_stream import build_merge_activity_stream, persist_latest_activity, write_stream_payload
 
 
 # ============================================================================
@@ -3953,6 +3955,46 @@ All timestamps use UTC ISO-8601 format.
             "auto_push": auto_push,
         }
         safe_json_write(audit_path, audit_payload)
+
+        merge_stream = build_merge_activity_stream(
+            [str(path) for path in repo_paths],
+            audit_payload["status"],
+            merge_metrics,
+            source="ollama_autonomous_agent",
+        )
+        safe_json_write(
+            self.tracker_dir / "live_activity_stream.json",
+            {"stream": merge_stream, "source": "combined"},
+        )
+        safe_json_write(
+            self.tracker_dir / "qmoi_live_activity.json",
+            {"stream": [entry for entry in merge_stream if entry["source"] == "qmoi"], "source": "qmoi"},
+        )
+        safe_json_write(
+            self.tracker_dir / "ollama_autonomous_agent_live_activity.json",
+            {"stream": [entry for entry in merge_stream if entry["source"] == "ollama_autonomous_agent"], "source": "ollama_autonomous_agent"},
+        )
+        latest = merge_stream[-1] if merge_stream else {
+            "source": "qmoi",
+            "entity": "qmoi",
+            "event": "merge_status",
+            "status": audit_payload["status"],
+            "message": "Merge activity stream initialized.",
+            "timestamp_utc": utc_iso(),
+            "details": {},
+        }
+        safe_text_write(
+            self.tracker_dir / "LATEST_ACTIVITY.txt",
+            f"SOURCE: {latest['source']}\nEVENT: {latest['event']}\nSTATUS: {latest['status']}\nMESSAGE: {latest['message']}\nTIMESTAMP_UTC: {latest['timestamp_utc']}\n",
+        )
+        safe_text_write(
+            self.tracker_dir / "CURRENT_STATUS.txt",
+            f"STATUS: {latest['status']}\nSOURCE: {latest['source']}\nPHASE: merge_sync\nTIMESTAMP_UTC: {latest['timestamp_utc']}\n",
+        )
+        safe_text_write(
+            self.tracker_dir / "STATE.txt",
+            f"STATE: active\nSOURCE: {latest['source']}\nPHASE: merge_sync\nTIMESTAMP_UTC: {latest['timestamp_utc']}\n",
+        )
 
         if auto_push:
             for repo in repo_paths:

@@ -84,6 +84,8 @@ class TestAutonomousMergeExecution:
         assert result["repositories"] == [str(repo_qe), str(repo_aq)]
         assert result["merge_metrics"]["total_files"] >= 2
         assert result["audit_path"].exists()
+        stream_payload = json.loads((repo_qe / "ollamatracks" / "live_activity_stream.json").read_text(encoding="utf-8"))
+        assert any(entry.get("event") == "merge_inventory" for entry in stream_payload["stream"])
         assert any("merge_metrics" in key for key in result.keys()) or result["merge_metrics"]
 
 
