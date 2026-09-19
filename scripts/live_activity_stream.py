@@ -139,6 +139,7 @@ def build_entry(source: str, entity: str, event: str, status: str, message: str,
 def build_merge_activity_stream(repo_roots: list[str] | list[Path] | None, status: str, merge_metrics: dict[str, Any] | None, source: str = "ollama_autonomous_agent") -> list[dict[str, Any]]:
     normalized = [str(Path(repo).resolve()) for repo in (repo_roots or [])]
     metrics = merge_metrics or {}
+    style_universal_count = metrics.get("style_universal_count", 0)
     entries: list[dict[str, Any]] = [
         build_entry(
             "qmoi",
@@ -157,6 +158,21 @@ def build_merge_activity_stream(repo_roots: list[str] | list[Path] | None, statu
             {"repositories": normalized, "merge_metrics": metrics},
         ),
     ]
+    if style_universal_count:
+        entries.append(
+            build_entry(
+                source,
+                "merge_sync",
+                "style_universal_ui_sync",
+                status,
+                f"Style and universal UI merge protections are active for {style_universal_count} documented style/universal files.",
+                {
+                    "style_universal_count": style_universal_count,
+                    "style_universal_related_files": metrics.get("style_universal_related_files", []),
+                    "included": ["STYLES.md", "UNIVERSALS.md", "user style docs", "per-platform UI design docs"],
+                },
+            )
+        )
     if metrics:
         entries.append(
             build_entry(

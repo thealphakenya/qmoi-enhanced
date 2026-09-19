@@ -2471,6 +2471,7 @@ class CrossRepositoryAutonomyManager:
         duplicate_directories: dict[str, int] = {}
         api_route_related_files: set[str] = set()
         feature_related_files: set[str] = set()
+        style_universal_related_files: set[str] = set()
 
         for root in roots_list:
             if not root.exists():
@@ -2500,6 +2501,9 @@ class CrossRepositoryAutonomyManager:
                             feature_related_files.add(str(path.resolve()))
                         if any(keyword in str(path).lower() for keyword in ("api", "endpoint", "route", "port", "workflow", "monitor")):
                             api_route_related_files.add(str(path.resolve()))
+                lowered = str(path).lower()
+                if any(token in lowered for token in ("styles.md", "universals.md", "style", "universal", "user-style", "platform-style", "design-system")):
+                    style_universal_related_files.add(str(path.resolve()))
 
         duplicate_file_names = sorted(name for name, count in duplicate_basenames.items() if count > 1)
         duplicate_directory_names = sorted(name for name, count in duplicate_directories.items() if count > 1)
@@ -2517,6 +2521,8 @@ class CrossRepositoryAutonomyManager:
             "api_route_count": len(api_route_related_files),
             "feature_related_files": sorted(feature_related_files),
             "feature_count": len(feature_related_files),
+            "style_universal_related_files": sorted(style_universal_related_files),
+            "style_universal_count": len(style_universal_related_files),
             "captured_at": utc_iso(),
         }
 
@@ -2603,6 +2609,13 @@ class CrossRepositoryAutonomyManager:
 
         unique_markdown_files = len(by_basename)
         total_markdown_files = sum(len(files) for files in by_basename.values())
+        style_universal_markdown_files = sorted(
+            basename for basename in by_basename
+            if basename.lower() in {"styles.md", "universals.md"}
+            or "style" in basename.lower()
+            or "universal" in basename.lower()
+            or ("user" in basename.lower() and "style" in basename.lower())
+        )
         return {
             "roots": [str(path.resolve()) for path in roots_list],
             "by_basename": {basename: files for basename, files in sorted(by_basename.items())},
@@ -2610,11 +2623,14 @@ class CrossRepositoryAutonomyManager:
             "canonical_targets": canonical_targets,
             "unique_markdown_files": unique_markdown_files,
             "total_markdown_files": total_markdown_files,
+            "style_universal_markdown_files": style_universal_markdown_files,
+            "style_universal_count": len(style_universal_markdown_files),
             "merge_priority": {
                 "live_qmoi": "prefer qmoi-enhanced root files first",
                 "live_alpha_q_ai": "prefer Alpha-Q-ai root files next",
                 "history_snapshot": "preserve historical copies as fallback/merge source",
                 "memory_directory": "treat tracker and memory outputs as runtime evidence, not primary source",
+                "ui_styles_and_universals": "treat STYLES.md, UNIVERSALS.md, user style docs, and per-platform UI design docs as high-priority merge sources before generic history duplicates",
             },
         }
 

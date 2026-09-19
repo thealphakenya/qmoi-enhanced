@@ -90,6 +90,27 @@ class TestAutonomousMergeExecution:
 
 
 class TestCrossRepositoryAutonomyManager:
+    def test_merge_inventory_preserves_styles_and_universals(self, tmp_path):
+        repo_qe = tmp_path / "qmoi-enhanced"
+        repo_aq = tmp_path / "Alpha-Q-ai"
+        history = tmp_path / "qmoi-enhanced-history-14"
+
+        for root in [repo_qe, repo_aq, history]:
+            (root / "docs").mkdir(parents=True)
+
+        (repo_qe / "STYLES.md").write_text("# QE style\n", encoding="utf-8")
+        (repo_qe / "UNIVERSALS.md").write_text("# QE universal\n", encoding="utf-8")
+        (repo_aq / "STYLES.md").write_text("# AQ style\n", encoding="utf-8")
+        (history / "UNIVERSALS.md").write_text("# History universal\n", encoding="utf-8")
+
+        manager = CrossRepositoryAutonomyManager()
+        inventory = manager.build_unified_markdown_inventory([repo_qe, repo_aq, history], include_history=True, include_memory=True)
+
+        assert "STYLES.md" in inventory["by_basename"]
+        assert "UNIVERSALS.md" in inventory["by_basename"]
+        assert inventory["canonical_targets"]["STYLES.md"]
+        assert inventory["canonical_targets"]["UNIVERSALS.md"]
+
     def test_build_unified_markdown_inventory_deduplicates_same_names(self, tmp_path):
         repo_qe = tmp_path / "qmoi-enhanced"
         repo_aq = tmp_path / "Alpha-Q-ai"

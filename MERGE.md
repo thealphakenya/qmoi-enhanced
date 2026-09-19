@@ -131,6 +131,23 @@ The 2026-09-19 integration evidence recorded 1,346 files in the
 contained 30,845 tracked paths. Future runs must regenerate these values from
 the source refs rather than treating this snapshot as current state.
 
+### Style and universal UI merge coverage (2026-09-19)
+
+The merge inventory now treats UI styling and universal platform standards as
+first-class live sources instead of generic markdown noise. The canonical live
+root files are:
+
+- `STYLES.md`
+- `UNIVERSALS.md`
+
+These files are recognized as live `style_universal` sources in
+`build_unified_markdown_inventory()` and the merge metrics package, and the
+runtime stream records them as priority evidence before generic duplicated
+history copies. The live merge inventory currently exposes a canonical count of
+2 root-level style/universal docs in the active repository, with additional
+platform or design-system variants treated as supporting evidence rather than
+primary merge targets.
+
 ### Complete Staging Evidence (2026-09-19)
 
 The executable gate is `scripts/merge_inventory.py`. It completed with
