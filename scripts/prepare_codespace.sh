@@ -9,17 +9,17 @@ case "$MODE" in
   light)
     git config core.sparseCheckout true
     git config core.sparseCheckoutCone false
-    git sparse-checkout set \
-      '/*' \
-      '!/qmoi-enhanced-history-14/**' \
-      '!/Alpha-Q-ai/**' \
-      '!/qmoi-enhanced-history-14/.venv/**' \
-      '!/qmoi-enhanced-history-14/.venv_qmoi_control/**' \
-      '!/qmoi-enhanced-history-14/node_modules/**' \
-      '!/qmoi-enhanced-history-14/**/node_modules/**' \
-      '!/qmoi-enhanced-history-14/**/.npm-cache/**' \
-      '!/qmoi-enhanced-history-14/**/backups/**' \
-      '!/qmoi-enhanced-history-14/**/.git/**'
+    git sparse-checkout set --no-cone \
+      '*' \
+      '!qmoi-enhanced-history-14/**' \
+      '!Alpha-Q-ai/**' \
+      '!qmoi-enhanced-history-14/.venv/**' \
+      '!qmoi-enhanced-history-14/.venv_qmoi_control/**' \
+      '!qmoi-enhanced-history-14/node_modules/**' \
+      '!qmoi-enhanced-history-14/**/node_modules/**' \
+      '!qmoi-enhanced-history-14/**/.npm-cache/**' \
+      '!qmoi-enhanced-history-14/**/backups/**' \
+      '!qmoi-enhanced-history-14/**/.git/**'
     git config gc.auto 0
     git config fetch.writeCommitGraph true
     git config fetch.parallel 4
