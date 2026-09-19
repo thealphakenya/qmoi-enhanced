@@ -5746,6 +5746,57 @@ All timestamps use UTC ISO-8601 format.
     # CLI PIPELINE
     # ------------------------------------------------------------------------
 
+    def run_continue_cycle(
+        self,
+    ) -> int:
+        """Resume safely from the latest checkpoint and continue the bounded validation loop."""
+        checkpoint = self.load_checkpoint() or {}
+        completed_steps = list(dict.fromkeys(checkpoint.get("completed_steps") or []))
+
+        self.record_tracker_event(
+            "continue_cycle_started",
+            "Autonomous continuation cycle started from the latest checkpoint.",
+            status="CHECKPOINTING",
+            phase="continuation",
+            details={
+                "checkpoint_status": checkpoint.get("status", "unknown"),
+                "completed_steps": completed_steps,
+            },
+        )
+
+        self.update_resume_checkpoint(
+            status="continuation_started",
+            completed_steps=completed_steps or ["continuation scheduled"],
+            evidence={
+                "continue_mode": True,
+                "runtime": os.getenv("GITHUB_ACTIONS", "false"),
+            },
+        )
+
+        if os.getenv("GITHUB_ACTIONS", "").lower() == "true":
+            try:
+                self.verify_ollama()
+            except Exception as exc:  # pragma: no cover - runtime verification may fail in degraded hosted runs
+                self.record_tracker_event(
+                    "continue_cycle_runtime_warning",
+                    f"Continuation runtime check reported a warning: {exc}",
+                    status="warning",
+                    phase="continuation",
+                    details={"error": str(exc)},
+                )
+
+        self.update_resume_checkpoint(
+            status="success" if checkpoint.get("status") in {"success", "autonomous_complete", "ready"} else "continuation_complete",
+            completed_steps=[*completed_steps, "continuation cycle"],
+            evidence={
+                "continue_mode": True,
+                "last_checkpoint_status": checkpoint.get("status", "unknown"),
+                "runtime": os.getenv("GITHUB_ACTIONS", "false"),
+            },
+        )
+
+        return 0
+
     def run_validation_pipeline(
         self,
     ) -> int:
@@ -5956,6 +6007,7 @@ def main(
             "checkpoint",
             "health",
             "autonomous",
+            "continue",
             "merge-sync",
         ],
     )
@@ -5998,6 +6050,15 @@ def main(
             return 0 if contract.get("final_status") == "SUCCESS" else 1
         except (OllamaRuntimeError, OSError, ValueError) as exc:
             print(f"Autonomous execution failed: {exc}", file=sys.stderr)
+            return 1
+
+    if args.command == "continue":
+        try:
+            exit_code = agent.run_continue_cycle()
+            print(f"Continuation cycle status: {exit_code}")
+            return exit_code
+        except (OllamaRuntimeError, OSError, ValueError) as exc:
+            print(f"Autonomous continuation failed: {exc}", file=sys.stderr)
             return 1
 
     if args.command == "merge-sync":

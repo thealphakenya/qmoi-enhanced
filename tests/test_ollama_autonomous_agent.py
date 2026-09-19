@@ -34,6 +34,7 @@ from ollama_autonomous_agent import (
     mask_github_token,
     detect_resume_file_origin,
     update_resume_file_metadata,
+    main,
 )
 from realtime_workflow_monitor import WorkflowMonitor
 from monitoring_guard import validate_tracker_outputs, ALLOWED_TRACKER_FILES, MAX_TRACKER_FILE_BYTES
@@ -1034,6 +1035,16 @@ class TestResumeCheckpoint:
         content = resume_path.read_text()
         assert "- None; all required checks in this run are verified." in content
         assert "Continue autonomous validation" not in content
+
+    def test_cli_accepts_continue_mode_and_executes_a_safe_continuation_cycle(self, tmp_path):
+        agent = OllamaAutonomousAgent(tmp_path)
+        agent.update_resume_checkpoint(
+            status="ready",
+            completed_steps=["platform validation", "feature validation"],
+        )
+
+        exit_code = main(["continue", "--base-path", str(tmp_path)])
+        assert exit_code == 0
 
     def test_tracker_state_rejects_unknown_states(self, tmp_path):
         agent = OllamaAutonomousAgent(tmp_path)

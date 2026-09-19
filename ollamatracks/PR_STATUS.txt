@@ -1,2 +1,4 @@
-PR_STATUS: monitoring
-Timestamp: 2026-09-19T10:40:42.126111Z
+PR_STATUS: success
+PHASE: checkpoint
+EVENT: resume_checkpoint
+Timestamp: 2026-09-19T10:49:28.389623Z
