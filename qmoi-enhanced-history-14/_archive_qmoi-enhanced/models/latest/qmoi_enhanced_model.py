@@ -29,6 +29,7 @@ import logging
 from pathlib import Path
 import psutil
 import gc
+from cryptography.fernet import Fernet
 
 # Enhanced logging
 logging.basicConfig(
@@ -243,6 +244,23 @@ class EmploymentManager:
         ))
         conn.commit()
         conn.close()
+
+    def _get_letter_cipher(self) -> Fernet:
+        """Get or create a Fernet cipher for employment letter encryption."""
+        key = os.getenv("QMOI_EMPLOYMENT_LETTER_KEY")
+        key_path = Path("employment_letters/.letter_key")
+        if key:
+            return Fernet(key.encode("utf-8"))
+
+        os.makedirs("employment_letters", exist_ok=True)
+        if key_path.exists():
+            stored_key = key_path.read_bytes().strip()
+            return Fernet(stored_key)
+
+        new_key = Fernet.generate_key()
+        key_path.write_bytes(new_key)
+        os.chmod(key_path, 0o600)
+        return Fernet(new_key)
     
     def generate_employment_letter(self, employee: Employee):
         """Generate employment letter with payment details"""
@@ -278,13 +296,15 @@ class EmploymentManager:
         Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         """
         
-        # Save letter to file
-        letter_path = f"employment_letters/{employee.employee_id}_letter.txt"
+        # Save encrypted letter to file
+        letter_path = f"employment_letters/{employee.employee_id}_letter.enc"
         os.makedirs("employment_letters", exist_ok=True)
-        with open(letter_path, 'w') as f:
-            f.write(letter)
+        cipher = self._get_letter_cipher()
+        encrypted_letter = cipher.encrypt(letter.encode("utf-8"))
+        with open(letter_path, 'wb') as f:
+            f.write(encrypted_letter)
         
-        logger.info(f"Generated employment letter for {employee.name}")
+        logger.info(f"Generated encrypted employment letter for {employee.name}")
 
 # --- Revenue Generation System ---
 @dataclass
