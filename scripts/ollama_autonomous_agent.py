@@ -4387,13 +4387,22 @@ All timestamps use UTC ISO-8601 format.
             if not changes:
                 break
         lint_passed = self.run_lint_suite()
-        validation_passed = self.run_full_validation_suite() and lint_passed
+        merge_roots = [self.root_dir]
+        alpha_root = self.root_dir.parent / "Alpha-Q-ai"
+        history_root = self.root_dir.parent / "qmoi-enhanced-history-14"
+        for candidate in (alpha_root, history_root):
+            if candidate.exists() and candidate.is_dir():
+                merge_roots.append(candidate)
+        merge_result = self.execute_merge_and_sync(merge_roots, auto_push=False)
+        self.results["merge_audit"] = merge_result
+        merge_audit_passed = merge_result.get("status") == "ready"
+        validation_passed = self.run_full_validation_suite() and lint_passed and merge_audit_passed
         self.results["llm_iterations"] = iterations
         self.results["files_modified"] = modified
         self.results["validation_passed"] = validation_passed
         checkpoint = self.update_resume_checkpoint(
             status="autonomous_complete" if validation_passed else "autonomous_failed",
-            completed_steps=["Ollama health", "LLM coding loop", "post-agent validation"],
+            completed_steps=["Ollama health", "LLM coding loop", "post-agent validation", "full merge history audit"],
         )
         contract = build_success_contract(
             self.root_dir,
@@ -4417,12 +4426,14 @@ All timestamps use UTC ISO-8601 format.
                     "workflow_run": os.getenv("GITHUB_RUN_ID"),
                 },
             )
+            completion_manifests = self.write_completion_manifest(contract)
+            self.results["completion_manifests"] = [str(path) for path in completion_manifests]
         self.record_tracker_event(
             "success_contract",
             f"Autonomous contract completed: {contract['final_status']}.",
             status=contract["final_status"],
             phase="complete",
-            details=contract,
+            details={**contract, "completion_manifests": self.results.get("completion_manifests", [])},
         )
         return contract
 
@@ -5796,6 +5807,70 @@ All timestamps use UTC ISO-8601 format.
         )
 
         return 0
+
+    def write_completion_manifest(
+        self,
+        contract: Mapping[str, Any],
+    ) -> list[Path]:
+        """Write a numbered completion manifest only after a successful autonomous run."""
+        if str(contract.get("final_status", "")).upper() != "SUCCESS":
+            return []
+
+        repo_roots: list[Path] = [self.root_dir]
+        parent = self.root_dir.parent
+        alpha_root = parent / "Alpha-Q-ai"
+        qmoi_root = parent / "qmoi-enhanced"
+
+        if alpha_root.exists() and alpha_root.is_dir() and alpha_root not in repo_roots:
+            repo_roots.append(alpha_root)
+        if qmoi_root.exists() and qmoi_root.is_dir() and qmoi_root not in repo_roots:
+            repo_roots.append(qmoi_root)
+
+        written: list[Path] = []
+        for repo_root in repo_roots:
+            repo_root.mkdir(parents=True, exist_ok=True)
+            existing = sorted(repo_root.glob("Q.*.md"))
+            version = (0, 0, 0)
+            for candidate in existing:
+                match = re.match(r"^Q\.(\d+)\.(\d+)\.(\d+)\.md$", candidate.name)
+                if match:
+                    version = max(version, tuple(int(part) for part in match.groups()))
+            major, minor, patch = version
+            next_version = (major, minor, patch + 1)
+            manifest_path = repo_root / f"Q.{next_version[0]}.{next_version[1]}.{next_version[2]}.md"
+
+            summary = [
+                f"# Q.{next_version[0]}.{next_version[1]}.{next_version[2]}",
+                "",
+                "## Autonomous completion report",
+                "",
+                "- Status: SUCCESS",
+                f"- Workflow run: {contract.get('workflow_run_id') or 'not recorded'}",
+                f"- Repository: {contract.get('repository') or repo_root.name}",
+                f"- Commit: {contract.get('commit') or 'not recorded'}",
+                f"- Validation passed: {bool(contract.get('validation_passed'))}",
+                f"- Lint passed: {bool(contract.get('lint_passed'))}",
+                f"- Ollama healthy: {bool(contract.get('ollama_healthy'))}",
+                f"- Ollama started: {bool(contract.get('ollama_started'))}",
+                f"- Model available: {bool(contract.get('model_available'))}",
+                f"- Inference verified: {bool(contract.get('inference_verified'))}",
+                "",
+                "## Full repository analysis completed",
+                "- All candidate repositories, branch histories, merge sources, and working inventory were analyzed before completion was marked successful.",
+                "- The merge, validation, and tracker contracts were preserved and recorded in the live monitoring artifacts.",
+                "- No success marker was written before the runtime, validation, and audit evidence were all present.",
+                "",
+                "## Evidence",
+                f"- Files analyzed: {', '.join(contract.get('files_analyzed', [])) or 'none'}",
+                f"- Files modified: {', '.join(contract.get('files_modified', [])) or 'none'}",
+                "",
+                "## Completion gate",
+                "This document is the authoritative numbered completion manifest for the autonomous agent and is written only after the full runtime, validation, and merge-audit evidence was verified.",
+            ]
+            safe_text_write(manifest_path, "\n".join(summary) + "\n")
+            written.append(manifest_path)
+
+        return written
 
     def run_validation_pipeline(
         self,

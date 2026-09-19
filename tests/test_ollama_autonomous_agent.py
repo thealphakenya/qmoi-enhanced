@@ -1046,6 +1046,49 @@ class TestResumeCheckpoint:
         exit_code = main(["continue", "--base-path", str(tmp_path)])
         assert exit_code == 0
 
+    def test_success_manifest_writes_ordered_completion_markdown_in_each_repo(self, tmp_path):
+        repo_qe = tmp_path / "qmoi-enhanced"
+        repo_aq = tmp_path / "Alpha-Q-ai"
+        repo_qe.mkdir()
+        repo_aq.mkdir()
+
+        agent = OllamaAutonomousAgent(repo_qe)
+        contract = {
+            "final_status": "SUCCESS",
+            "validation_passed": True,
+            "lint_passed": True,
+            "ollama_healthy": True,
+            "ollama_started": True,
+            "model_available": True,
+            "inference_verified": True,
+            "workflow_run_id": "123",
+            "repository": "example/repo",
+            "commit": "abc123",
+            "files_analyzed": ["README.md"],
+            "files_modified": ["README.md"],
+        }
+
+        created = agent.write_completion_manifest(contract)
+        assert created
+        assert all(path.name == "Q.0.0.1.md" for path in created)
+        assert (repo_qe / "Q.0.0.1.md").exists()
+        assert (repo_aq / "Q.0.0.1.md").exists()
+        assert "SUCCESS" in (repo_qe / "Q.0.0.1.md").read_text(encoding="utf-8")
+
+    def test_run_autonomous_loop_requires_full_merge_history_audit_before_success(self, tmp_path, monkeypatch):
+        repo_qe = tmp_path / "qmoi-enhanced"
+        repo_qe.mkdir()
+        agent = OllamaAutonomousAgent(repo_qe)
+
+        monkeypatch.setattr(agent, "verify_ollama", lambda: {"ollama_healthy": True, "ollama_started": True, "model_available": True, "inference_verified": True})
+        monkeypatch.setattr(agent, "run_lint_suite", lambda: True)
+        monkeypatch.setattr(agent, "run_full_validation_suite", lambda: True)
+        monkeypatch.setattr(agent, "execute_merge_and_sync", lambda *args, **kwargs: {"status": "ready", "audit_path": str(repo_qe / "ollamatracks" / "merge_audit.json")})
+
+        contract = agent.run_autonomous_loop()
+        assert contract["final_status"] == "SUCCESS"
+        assert agent.results["merge_audit"]["status"] == "ready"
+
     def test_tracker_state_rejects_unknown_states(self, tmp_path):
         agent = OllamaAutonomousAgent(tmp_path)
         with pytest.raises(ValueError):
