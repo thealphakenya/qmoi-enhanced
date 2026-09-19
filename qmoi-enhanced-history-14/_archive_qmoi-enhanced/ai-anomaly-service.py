@@ -96,7 +96,8 @@ def external_alert():
             resp = requests.post(webhook, json={"text": message})
             return jsonify({"status": "sent", "response": resp.text})
         except Exception as e:
-            return jsonify({"status": "failed", "error": str(e)}), 500
+            app.logger.exception("Failed to send external alert")
+            return jsonify({"status": "failed", "error": "Failed to send alert"}), 500
     return jsonify({"status": "no webhook provided"}), 400
 
 auto_monitoring = {
