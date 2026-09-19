@@ -87,6 +87,9 @@ from pathlib import Path
 from typing import Any, ClassVar
 
 try:
+    from scripts.live_activity_stream import (
+        build_merge_activity_stream,
+    )
     from scripts.ollama_runtime import (
         OllamaBootstrap,
         OllamaClient,
@@ -94,8 +97,10 @@ try:
         build_success_contract,
         parse_repair_plan,
     )
-    from scripts.live_activity_stream import build_merge_activity_stream, persist_latest_activity, write_stream_payload
 except ModuleNotFoundError:  # pragma: no cover - direct script execution path
+    from live_activity_stream import (
+        build_merge_activity_stream,
+    )
     from ollama_runtime import (
         OllamaBootstrap,
         OllamaClient,
@@ -103,7 +108,6 @@ except ModuleNotFoundError:  # pragma: no cover - direct script execution path
         build_success_contract,
         parse_repair_plan,
     )
-    from live_activity_stream import build_merge_activity_stream, persist_latest_activity, write_stream_payload
 
 
 # ============================================================================
@@ -3275,11 +3279,12 @@ class OllamaAutonomousAgent:
             / "resumefromhere.txt"
         )
 
-        self.ollama = OllamaClient()
         self.ollama_bootstrap = OllamaBootstrap(
-            self.ollama,
+            None,
             startup_timeout=float(os.getenv("OLLAMA_STARTUP_TIMEOUT_SECONDS", "90")),
         )
+        self.ollama = OllamaClient(bootstrap=self.ollama_bootstrap)
+        self.ollama_bootstrap.client = self.ollama
         self.max_iterations = max(
             1,
             int(os.getenv("MAX_ITERATIONS", "3")),
@@ -4189,7 +4194,26 @@ All timestamps use UTC ISO-8601 format.
                 text=True,
                 check=False,
             )
-            passed = result.returncode == 0
+            if result.returncode == 0:
+                passed = True
+            elif "No module named ruff" in (result.stderr or "") or "No module named ruff" in (result.stdout or ""):
+                install = subprocess.run(
+                    [sys.executable, "-m", "pip", "install", "ruff>=0.6.0"],
+                    capture_output=True,
+                    text=True,
+                    check=False,
+                )
+                if install.returncode == 0:
+                    result = subprocess.run(
+                        [sys.executable, "-m", "ruff", "check", *targets],
+                        capture_output=True,
+                        text=True,
+                        check=False,
+                    )
+                passed = result.returncode == 0
+            else:
+                passed = False
+
             self.results["lint_passed"] = passed
             self.record_tracker_event(
                 "lint_complete",

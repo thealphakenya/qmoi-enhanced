@@ -54,6 +54,27 @@ def test_verify_proves_model_and_inference():
     assert health.ollama_version == "0.1.0"
 
 
+def test_generate_restarts_server_before_retrying_when_connection_is_down(monkeypatch):
+    session = FakeSession([
+        ConnectionError("offline"),
+        {"response": HEALTH_SENTINEL},
+    ])
+    client = OllamaClient(session=session, retries=1)
+    bootstrap = object()
+    ensure_calls = {"count": 0}
+
+    def fake_ensure():
+        ensure_calls["count"] += 1
+        return True
+
+    monkeypatch.setattr(client, "_request", lambda method, path, **kwargs: (session.request(method, path, **kwargs)))
+    monkeypatch.setattr(OllamaBootstrap, "ensure_server", lambda self: fake_ensure())
+
+    response = client.generate("ping")
+    assert response == HEALTH_SENTINEL
+    assert ensure_calls["count"] == 1
+
+
 def test_bootstrap_reuses_healthy_server():
     session = FakeSession([{"models": []}])
     client = OllamaClient(session=session, retries=1)
@@ -154,6 +175,43 @@ def test_success_contract_accepts_agent_health_mapping(tmp_path: Path):
         checkpoint_created=True,
     )
     assert contract["final_status"] == "SUCCESS"
+
+
+def test_build_github_proof_contract_marks_valid_registry_ready(monkeypatch, tmp_path: Path):
+    from scripts.ollama_autonomous_agent import OllamaAutonomousAgent, PLATFORMS, QMOI_APPS
+
+    agent = OllamaAutonomousAgent(tmp_path)
+
+    monkeypatch.setattr(
+        agent,
+        "validate_all_platforms",
+        lambda: {platform: {"passed": True} for platform in PLATFORMS},
+    )
+    monkeypatch.setattr(
+        agent,
+        "validate_all_platform_features",
+        lambda: {
+            platform: {app: {"feature_1": True} for app in QMOI_APPS}
+            for platform in PLATFORMS
+        },
+    )
+    monkeypatch.setattr(
+        agent,
+        "validate_file_handlers",
+        lambda: {platform: {"registered": True} for platform in PLATFORMS},
+    )
+    monkeypatch.setattr(
+        agent.cross_repo_manager,
+        "build_autonomy_plan",
+        lambda: {"alpha_q_ai_included": True},
+    )
+    monkeypatch.setattr(
+        "scripts.ollama_autonomous_agent.BranchSyncManager.build_sync_plan",
+        lambda: {"status": "ready"},
+    )
+
+    contract = agent.build_github_proof_contract()
+    assert contract["status"] == "ready_for_github"
 
 
 def test_run_autonomous_loop_recovers_from_transient_model_500(monkeypatch, tmp_path: Path):
