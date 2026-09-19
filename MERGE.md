@@ -146,6 +146,7 @@ ref. The PR tree is measured from the currently published PR head.
 | **Deduplicated path union across all inputs** | **369,231** | **102,103** |
 | `qmoi-enhanced` PR tree | 1,342 | 6 |
 | `Alpha-Q-ai` current `main` tree | 1,346 | 6 |
+| Materialized PR candidate after history and Alpha inputs | 32,187 | 5,468 |
 
 The summed total is the arithmetic total of every source inventory. The
 deduplicated total removes identical relative paths shared between sources;
@@ -162,9 +163,9 @@ and the complete `qmoi-enhanced-history-14` snapshot without repository-internal
 
 | Current checkout scope | Files | Directories | Symlinks |
 | --- | ---: | ---: | ---: |
-| Existing qmoi-enhanced tree plus materialized inputs | 33,324 | 5,858 | 93 |
+| Existing qmoi-enhanced tree plus materialized inputs | 33,338 | 5,859 | 93 |
 | qmoi-enhanced-history-14 | 29,406 | 5,451 | 93 |
-| Alpha-Q-ai tracked main tree | 1,342 | 6 | 0 |
+| Alpha-Q-ai tracked main tree | 1,346 | 6 | 0 |
 
 The all-history union remains 369,231 files and 102,103 directories; the
 current working tree count is lower because historical versions are retained
