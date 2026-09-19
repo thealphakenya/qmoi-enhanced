@@ -49,6 +49,10 @@ content blindly.
 
 ## Autonomous Merge Procedure
 
+### Mandatory Copy-Before-Merge Gate
+
+The autonomous agent must inventory and copy every source tree, directory, symlink, reachable ref, and reachable commit into a staging area before it plans or applies any merge. `MERGE.md` must record per-source file, directory, symlink, ref, and commit counts before copying, after copying, and after merging. A missing path or incomplete history export blocks merging.
+
 1. Discover repository remotes, all refs, default/backup/history branches, and
     working-tree state without mutation.
 2. Capture immutable inventories of all trees, markdown paths, commits,
@@ -75,6 +79,91 @@ The Ollama autonomous agent and QMOI automation must use this procedure for
 branch sync, PR merge, recovery, auto-healing, and cross-repository operations.
 They may automate speed and repetition, but not bypass evidence, ownership,
 review, or validation gates.
+
+### Required Metrics Record
+
+Every merge run must append a machine-readable record containing, for each
+source repository and each history snapshot: `files`, `directories`,
+`symlinks`, `refs`, and `reachable_commits`. The record must contain these
+phases in order: `inventory-before-copy`, `copy-verified`, and `after-merge`.
+The merge is incomplete when any source has missing paths, missing refs, or a
+lower post-copy count without an explicit reviewed deletion decision.
+
+The 2026-09-19 integration evidence recorded 1,346 files in the
+`qmoi-enhanced` main tree, 1,342 files in the `Alpha-Q-ai` main tree, and
+29,499 tracked paths in `qmoi-enhanced-history-14`; the final integrated tree
+contained 30,845 tracked paths. Future runs must regenerate these values from
+the source refs rather than treating this snapshot as current state.
+
+### Complete Staging Evidence (2026-09-19)
+
+The executable gate is `scripts/merge_inventory.py`. It completed with
+`ready=true` and `missing_paths=0` against the full local integration worktree,
+the full Alpha-Q-ai mirror, and the materialized history directory. The report
+covered every reachable branch, remote branch, and tag, not only `main`.
+
+| Source | Files | Directories | Symlinks | Refs | Reachable commits | Unique paths across history |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| qmoi-enhanced | 30,759 | 5,462 | 93 | 168 | 3,317 | 369,230 |
+| Alpha-Q-ai | 22 | 8 | 0 | 16 | 1,887 | 33,023 |
+| qmoi-enhanced-history-14 | 29,406 | 5,451 | 93 | 0 | 0 | materialized snapshot |
+
+The copy phase created complete source trees and Git bundles in the staging
+area, then compared every source filesystem path with its staged copy. The
+post-copy result was complete with zero missing paths. A final `after-merge`
+record must be generated after both remote integration branches are published;
+the Alpha-Q-ai push is still pending because the available Git credential in
+this execution environment is stale even though the API now reports push
+permission.
+
+### Published Remote Tree Metrics (2026-09-19)
+
+These counts come from the exact remote branch trees and are distinct from the
+all-history staging counts above:
+
+| Remote ref | Files | Directories | Commit |
+| --- | ---: | ---: | --- |
+| `qmoi-enhanced:merge/complete-copy-gate-qe-20260919` | 1,342 | 6 | `5dd13d7ee2` |
+| `Alpha-Q-ai:main` | 1,346 | 6 | `5ac4ece2cc` |
+
+The unified integration branch and reciprocal imported refs are not present on
+Alpha-Q-ai yet. These remote totals are therefore not the requested all-history
+union; final union metrics remain blocked until integration and imported refs
+are published to both repositories.
+
+### Complete File And Directory Totals (2026-09-19)
+
+The PR and history counts are recorded separately because a PR tree is one
+commit while a history inventory is the union of paths across every reachable
+ref. The PR tree is measured from the currently published PR head.
+
+| Scope | Files | Directories |
+| --- | ---: | ---: |
+| `qmoi-enhanced` all reachable histories | 369,230 | 88,736 |
+| `Alpha-Q-ai` all reachable histories | 33,023 | 5,450 |
+| `qmoi-enhanced-history-14` materialized snapshot | 29,499 | 5,451 |
+| **Summed all-history inputs** | **431,752** | **99,637** |
+| **Deduplicated path union across all inputs** | **369,231** | **102,103** |
+| `qmoi-enhanced` PR tree | 1,342 | 6 |
+| `Alpha-Q-ai` current `main` tree | 1,346 | 6 |
+
+The summed total is the arithmetic total of every source inventory. The
+deduplicated total removes identical relative paths shared between sources;
+it is the correct union metric for checking that the final repositories contain
+all distinct files and directories. Neither remote default branch currently
+contains this full union because Alpha-Q-ai still lacks the integration and
+imported-history refs.
+
+### Remote Completeness Audit (2026-09-19)
+
+The latest remote audit found `0` reciprocal imported-ref namespaces on both
+remotes. The source gate branch is published on `qmoi-enhanced` at commit
+`2cd9d0ae83`; the complete-copy report is local staging evidence, not a claim
+that both final remote default branches contain the union. Alpha-Q-ai must
+receive the integration branch, all imported `qmoi-enhanced` refs and tags,
+and the materialized `qmoi-enhanced-history-14` tree before its after-merge
+metrics can be marked complete. Until then, the final remote completion status
+is `BLOCKED_EXTERNAL_PUBLICATION`.
 
 ## Local Audit Evidence (2026-09-08)
 
