@@ -1,0 +1,13 @@
+{
+  "details": {
+    "auto_push": false,
+    "repositories": [
+      "/workspaces/qmoi-enhanced"
+    ]
+  },
+  "event": "merge_sync_started",
+  "message": "Repository merge and sync audit started.",
+  "phase": "merge_sync",
+  "status": "active",
+  "timestamp_utc": "2026-09-19T09:22:06.120596Z"
+}

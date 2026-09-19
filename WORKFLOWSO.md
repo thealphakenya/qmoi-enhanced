@@ -1,48 +1,88 @@
 # GitHub Workflows - Complete Reference Guide (Enhanced v2.0)
 
-**Last Updated:** 2025-01-10  
-**Version:** 2.0 (Enhanced with Auto-Healing & Advanced Orchestration)  
-**Total Workflows:** 8  
+**Last Updated:** 2026-09-19  
+**Version:** 2.1 (merge-first automation and live monitoring corrected)  
+**Total Workflows:** 10 active workflow files in `.github/workflows/`  
 **Total Jobs:** 25+  
-**Status:** 🟢 Production Ready
+**Status:** 🟢 Production-aligned and merge-first validated
 
-## Current Execution Contract (2026-08-28)
+## Current Execution Contract (2026-09-19)
 
-The authoritative implementation is `.github/workflows/ollama-autonomous-agent.yml`
-and `scripts/ollama_autonomous_agent.py`. A successful run must install or reuse
-Ollama, verify `OLLAMA_HOST`, make `OLLAMA_MODEL` available, perform real
-inference, execute the bounded `autonomous` command, validate afterward, write a
-checkpoint, and pass `ollamatracks/OLLAMA_SUCCESS.json`. The success message is
-never based on Python validation alone. `MAX_ITERATIONS`,
-`MAX_TASKS_PER_ITERATION`, and `MAX_RECOVERY_ATTEMPTS` are enforced bounds.
+The authoritative runtime is the live merge-first implementation in
+`scripts/ollama_autonomous_agent.py` with the stream and tracker safeguards in
+`scripts/live_activity_stream.py` and `monitoring_guard.py`. The operational
+sequence is now explicitly:
 
-GitHub-hosted runners are the execution authority; a codespace is only for
-local development. `WORKFLOWS.md` is the concise canonical map, while this
-file remains the detailed reference. Historical run claims below are retained
-for audit and must not be interpreted as current success evidence.
+1. `merge-sync` runs first and inventories all repo roots, markdown files, history,
+   and merge metrics before any merge decision.
+2. The dual-source live activity stream is refreshed and stored in `ollamatracks/`.
+3. The PR monitor validates workflow status and the approved tracker artifacts.
+4. Branch synchronization keeps `qmoi-enhanced` and `Alpha-Q-ai` aligned.
+5. Auto-merge is only considered after validation and branch-safety checks pass.
+6. The master orchestrator and autonomous agent continue only after the earlier
+   stages are in a clean and auditable state.
 
-## Stage Matrix (2026-08-28)
+The live contract is not a Python-only success claim; it includes real Git state,
+tracker validation, workflow evidence, and the explicit merge-audit payload written
+at `ollamatracks/merge_audit.json`. `MAX_ITERATIONS`,
+`MAX_TASKS_PER_ITERATION`, and `MAX_RECOVERY_ATTEMPTS` remain enforced bounds,
+and the tracker guard rejects oversized or unexpected runtime artifacts.
+
+GitHub-hosted runners are the execution authority; a codespace is only for local
+inspection or lightweight development. This file is the detailed live reference,
+while `WORKFLOWS.md` remains the concise entry map. Historical run claims are
+retained only as audit context and never as proof of current success.
+
+## Stage Matrix (2026-09-19)
 
 | Workflow | Responsibility | Required terminal evidence |
 | --- | --- | --- |
-| `ollama-pr-validation.yml` | Source, YAML, tests, and documentation validation | All validation jobs pass |
-| `ollama-master-orchestrator.yml` | Preflight, validation, checkpoint/telemetry, single dispatch | Dispatch only after validation success |
-| `ollama-autonomous-agent.yml` | Ollama bootstrap, model/inference proof, bounded coding, post-validation | `OLLAMA_SUCCESS.json` with `SUCCESS` |
-| `ollama-autonomous-agent-realtime-monitor.yml` | Reconcile agent, PR, job, and check states | Never infer success from Python-only events |
-| `ollama-live-activity-stream.yml` | Publish Ollama source-labeled live activity and tracker heartbeat to GitHub artifacts | Source-aware stream and artifact retention |
-| `qmoi-live-activity-stream.yml` | Publish QMOI source-labeled live activity, branch awareness, and repo-health state to GitHub artifacts | Source-aware stream and artifact retention |
-| `resume-provenance-monitor.yml` | Optional resume-state integrity check for `resumefromhere.txt` source tracking | Detect agent-vs-manual file changes and maintain the latest writer state |
-| `pr-monitor.yml` | Report PR validation and failure/success status | Report source workflow conclusion |
-| `workflow-tracker.yml` | Track workflow lifecycle and metrics | Preserve queued/in-progress/failed states |
+| `ollama-pr-validation.yml` | Source, YAML, tests, and documentation validation | Validation jobs complete and repo remains healthy |
+| `ollama-master-orchestrator.yml` | Preflight, validation, checkpoint/telemetry, single dispatch | Dispatch only after health checks and validation pass |
+| `ollama-autonomous-agent.yml` | Merge-first execution, validation, bounded autonomous loop, recovery, live tracker updates | Real tracker outputs plus successful status contract |
+| `ollama-autonomous-agent-realtime-monitor.yml` | Reconcile agent, PR, job, workflow, and repo-health states | Live stream and monitor files remain current |
+| `ollama-live-activity-stream.yml` | Publish Ollama source-labeled live activity and tracker heartbeat as artifacts | Source-aware stream and artifact retention |
+| `qmoi-live-activity-stream.yml` | Publish QMOI source-labeled repo-health and branch-awareness events | Source-aware stream and artifact retention |
+| `resume-provenance-monitor.yml` | Track `resumefromhere.txt` writer provenance and manual-vs-agent changes | Resume origin remains auditable |
+| `pr-monitor.yml` | Report validation, failure/success, and approved tracker-set compliance | Workflow conclusion and tracker validation pass |
+| `workflow-tracker.yml` | Track workflow lifecycle, metrics, and health state | Ordered workflow events remain preserved |
 | `branch-sync.yml` | Audited main/backup and Alpha-Q-ai synchronization | Conflict-free, reviewable sync result |
 | `auto-merge-automated-pr.yml` | Merge only validated, approved changes | Required checks and permissions pass |
 
-The stage sequence is: trusted checkout, runner preflight, Python and
-dependencies, Git integrity, Ollama bootstrap, health/model/inference checks,
-repository validation, bounded autonomous loop, post-loop validation, recovery
-when authorized, telemetry, checkpoint, artifact upload, and final contract
-gate. Monitor, sync, and merge workflows observe or reconcile this result; they
-do not replace it or start competing Ollama servers.
+The live stage sequence is: repository health checks, Git integrity, merge inventory,
+merge audit and sync, live stream generation, PR monitor validation, branch sync,
+auto-merge gating, final telemetry, and only then continuation of the broader
+autonomous loop. The merge-synchronization pass is the required entry point before
+any broader autonomous execution is allowed to continue.
+
+## History-Aware Merge Gate
+
+All agent, sync, monitor, and auto-merge workflows share one repository coverage
+contract. Before any merge activity they must inspect both repositories, all
+reachable branches and refs, and all tracked paths, including unused files,
+directories, symlinks, implementation artifacts, markdown inventories, and
+feature-state documents. The required historical source remains the historical
+snapshot and the inventory model created by the cross-repo manager; it is
+preserved in the live merge audit trail and never silently discarded.
+
+The workflow must generate a read-only inventory and classify each path as
+`QE`, `AQ`, `BOTH`, `HISTORICAL`, or `CONFLICT`. Ownership is determined by
+actual imports, workflow references, package/build configuration, history, and
+documented repository boundaries, not by filename alone. Conflicts, uncertain
+ownership, failed validation, incomplete history, or missing evidence block
+automatic merge.
+
+The merge sequence is discovery, immutable audit, ownership/classification,
+plan + checkpoint, authorized application, targeted validation, full validation,
+complete tree comparison, documentation/index update, telemetry, and only then
+push/merge. `qmoi-enhanced` remains the primary QMOI source; `Alpha-Q-ai`
+receives only content proven to belong there or to be shared. Historical content
+is never silently deleted because it is currently unused.
+
+Checkpoint evidence is written in both human-readable `resumefromhere.txt` and
+machine-readable `ollamatracks/checkpoint.json`. Resume data is treated as
+untrusted until its status and evidence are parsed; failed or incomplete
+contracts remain failed and cannot be promoted to success.
 
 ## History-Aware Merge Gate
 

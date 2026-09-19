@@ -196,6 +196,12 @@ If any item remains incomplete, the correct action is to continue, not to pause.
 - [x] Extended the trading autopilot with explicit Binance and Bitget adapter capabilities, CashOn wallet reconciliation capabilities, sandbox-only discovery for additional configured venues, and readiness reporting across Windows, macOS, Linux, iOS, Android, and web.
 - [x] Added focused regression coverage proving automatically discovered platforms cannot authorize live execution without a verified provider adapter and production gate; focused trading suite passed 8 tests.
 
+## Workflow and merge-first automation status (2026-09-19)
+
+- Updated the authoritative workflow reference in `WORKFLOWSO.md` to reflect the actual merge-first live execution contract: merge inventory and merge audit run before broader autonomous work; the dual-source live activity stream and PR monitor remain active; branch sync and auto-merge remain downstream safeguards; and the orchestrator dispatch now aligns with the real runtime order.
+- Verified the live automation contract in `scripts/ollama_autonomous_agent.py` and `scripts/live_activity_stream.py`: the merge sync path records an audit, writes the live stream payloads in `ollamatracks/`, and updates the live tracker state without introducing unapproved artifacts.
+- Revalidated the small approved tracker set through `monitoring_guard.py` and the regression suite, confirming the runtime continues to reject oversized or unexpected tracker files while allowing the required reconciliation and monitoring outputs.
+
 ## Current execution status
 
 - Status: active and verified in GitHub-hosted production mode, with one remaining external security-gate state pending GitHub-side advisory refresh
