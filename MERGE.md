@@ -28,6 +28,14 @@ paths. CI merge jobs must use full-history/object access only for audit and
 merge stages, while ordinary tests and documentation jobs should use blobless
 or sparse checkout.
 
+### Automatic repository sync and ledger update
+
+The repo now includes `scripts/auto_repo_sync.sh`, which executes at container
+startup and after creation. It refreshes `oe2.txt` with a timestamped ledger,
+ensures the lightweight setup is active, and pushes any resulting automation or
+ledger edits back to the current branch. This keeps the working environment
+self-healing and reduction-friendly without requiring manual reruns.
+
 ## Overview
 This document provides comprehensive procedures for merging files and features between qmoi-enhanced and Alpha-Q-ai repositories. It ensures that no implementations are degraded, features are preserved, and conflicts are resolved intelligently.
 

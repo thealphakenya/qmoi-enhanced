@@ -8,7 +8,8 @@
     "GIT_CONFIG_KEY_0": "fetch.writeCommitGraph",
     "GIT_CONFIG_VALUE_0": "true"
   },
-  "postCreateCommand": "bash scripts/prepare_codespace.sh light",
+  "postCreateCommand": "bash scripts/prepare_codespace.sh light && bash scripts/auto_repo_sync.sh",
+  "postStartCommand": "bash scripts/auto_repo_sync.sh",
   "customizations": {
     "vscode": {
       "settings": {
