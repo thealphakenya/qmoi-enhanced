@@ -1,0 +1,6 @@
+FROM python:3.11-slim
+WORKDIR /app
+COPY . /app
+ENV PYTHONUNBUFFERED=1
+# Default to dry-run orchestrator; override CMD to run with --execute for real actions
+CMD ["python3", "scripts/lion_orchestrator.py", "--limit", "10"]

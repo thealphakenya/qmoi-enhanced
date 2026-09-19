@@ -1,0 +1,38 @@
+# Dockerfile for Android build environment
+# Includes OpenJDK 17, Android SDK command-line tools, Gradle and required utilities
+
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV ANDROID_SDK_ROOT=/opt/android-sdk
+ENV PATH=${PATH}:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/platform-tools
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  openjdk-17-jdk-headless \
+  curl unzip wget git zip && \
+  rm -rf /var/lib/apt/lists/*
+
+# Install Android command line tools
+RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools && \
+  cd /tmp && \
+  curl -fsSL -o /tmp/commandlinetools.zip https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip && \
+  unzip -q /tmp/commandlinetools.zip -d ${ANDROID_SDK_ROOT}/cmdline-tools && \
+  mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools/latest && \
+  mv ${ANDROID_SDK_ROOT}/cmdline-tools/cmdline-tools/* ${ANDROID_SDK_ROOT}/cmdline-tools/latest/ || true && \
+  rm -f /tmp/commandlinetools.zip
+
+# Accept licenses and install platform-tools, build-tools and platform
+RUN yes | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses || true && \
+  ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+
+# Create a non-root user for building
+RUN useradd -m builder
+USER builder
+WORKDIR /home/builder
+
+# Copy entrypoint scripts
+COPY --chown=builder:builder scripts /home/builder/scripts
+RUN chmod +x /home/builder/scripts/*.sh || true
+
+# Default entrypoint to run build inside container; override as needed
+ENTRYPOINT ["/home/builder/scripts/container_build_entrypoint.sh"]

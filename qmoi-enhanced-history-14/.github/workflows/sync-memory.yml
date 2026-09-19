@@ -1,0 +1,37 @@
+name: QM OI Memory Sync
+
+on:
+  schedule:
+    - cron: "*/15 * * * *" # every 15 minutes
+  push:
+    branches:
+      - "autosync-*"
+      - main
+
+jobs:
+  sync-memory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install requirements (requests if available)
+        run: |
+          python -m pip install --upgrade pip || true
+          pip install requests || true
+
+      - name: Run sync_memory helper
+        env:
+          QMOI_SYNC_BACKENDS: ${{ secrets.QMOI_SYNC_BACKENDS }}
+          QMOI_GIST_ID: ${{ secrets.QMOI_GIST_ID }}
+          QMOI_GH_TOKEN: ${{ secrets.QMOI_GH_TOKEN }}
+          QMOI_HF_REPO: ${{ secrets.QMOI_HF_REPO }}
+          QMOI_HF_TOKEN: ${{ secrets.QMOI_HF_TOKEN }}
+        run: |
+          echo "Running scripts/sync_memory.py"
+          python3 scripts/sync_memory.py || exit 0

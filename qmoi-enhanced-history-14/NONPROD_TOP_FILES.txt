@@ -1,0 +1,40 @@
+   4811 ./tools/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.622339Z]_scan.json
+   4707 ./docs/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.622339Z]s_replacement_report.json
+   1286 ./matches_with_comments.json
+   1268 ./matches.json
+    494 ./tools/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.622339Z]_actions.md
+    360 ./reports/[AUTOFIXED by Ollama at 2026-07-26T00:54:34.622339Z]s.json
+    136 ./qmoi-enhanced/node_modules/playwright/types/test.d.ts
+    111 ./tools/matches_priority.json
+     92 ./qmoi-enhanced/node_modules/electron/node_modules/@types/node/test.d.ts
+     92 ./qmoi-enhanced/node_modules/@types/node/test.d.ts
+     91 ./qmoi-enhanced/node_modules/@types/jest/index.d.ts
+     69 ./qmoi-enhanced/node_modules/cypress/types/sinon/index.d.ts
+     44 ./qmoi-enhanced/node_modules/cypress/vue/vue/dist/cypress-vue.esm-bundler.js
+     44 ./qmoi-enhanced/node_modules/cypress/vue/vue/dist/cypress-vue.cjs.js
+     44 ./qmoi-enhanced/node_modules/cypress/vue/dist/cypress-vue.esm-bundler.js
+     44 ./qmoi-enhanced/node_modules/cypress/vue/dist/cypress-vue.cjs.js
+     43 ./qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/tests/InspectorPackagerConnectionTest.cpp
+     43 ./mobile/node_modules/react-native/ReactCommon/jsinspector-modern/tests/InspectorPackagerConnectionTest.cpp
+     38 ./qmoi-enhanced/node_modules/jest-mock/build/index.js
+     31 ./qmoi-enhanced/node_modules/cypress/types/cypress.d.ts
+     25 ./qmoi-enhanced/node_modules/better-sqlite3/deps/sqlite3/sqlite3.c
+     23 ./qmoi-enhanced/node_modules/expect/build/index.d.ts
+     22 ./qmoi-enhanced/node_modules/expect/build/spyMatchers.js
+     19 ./qmoi-enhanced/node_modules/@jest/environment/build/index.d.ts
+     18 ./qmoi-enhanced/node_modules/playwright/lib/common/expectBundleImpl.js
+     14 ./yarn.lock
+     14 ./routes/api/qmoi/autodev.ts
+     14 ./reports/suggestions.json
+     14 ./qmoi-enhanced/routes/api/qmoi/autodev.ts
+     14 ./qmoi-enhanced/node_modules/jest-mock/build/index.d.ts
+     11 ./qmoi-enhanced/node_modules/playwright-core/types/types.d.ts
+     11 ./qmoi-enhanced/mobile/node_modules/react-native/ReactCommon/jsinspector-modern/tests/prelude.js.h
+     11 ./qmoi-enhanced/mobile/node_modules/@react-native/js-polyfills/console.js
+     11 ./mobile/node_modules/react-native/ReactCommon/jsinspector-modern/tests/prelude.js.h
+     11 ./mobile/node_modules/@react-native/js-polyfills/console.js
+     10 ./qmoi-enhanced/node_modules/jest-runtime/build/index.js
+     10 ./qmoi-enhanced/node_modules/jest-mock/README.md
+      9 ./src/wallet.ts
+      9 ./release_assets_manifest.json
+      9 ./qmoi-enhanced/node_modules/undici-types/index.d.ts

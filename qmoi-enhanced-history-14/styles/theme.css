@@ -1,0 +1,427 @@
+/**
+ * QMOI Global Theme CSS Variables
+ * This file defines all CSS custom properties for the theming system
+ * These are set dynamically by the ThemeManager but have sensible defaults
+ */
+
+:root {
+  /* ========================================================================
+     PRIMARY COLORS - Main brand colors
+     ======================================================================== */
+  --color-primary: #00d9ff; /* Cyan/Blue */
+  --color-primary-rgb: 0, 217, 255;
+  --color-primary-dark: #0099cc;
+  --color-primary-light: #33e5ff;
+
+  /* ========================================================================
+     SECONDARY COLORS - Supporting colors
+     ======================================================================== */
+  --color-secondary: #ff00ff; /* Magenta */
+  --color-secondary-rgb: 255, 0, 255;
+  --color-secondary-dark: #cc00cc;
+  --color-secondary-light: #ff33ff;
+
+  /* ========================================================================
+     ACCENT COLORS - Highlight and emphasis
+     ======================================================================== */
+  --color-accent: #00ff00; /* Lime */
+  --color-accent-rgb: 0, 255, 0;
+  --color-accent-dark: #00cc00;
+  --color-accent-light: #33ff33;
+
+  /* ========================================================================
+     BACKGROUND COLORS
+     ======================================================================== */
+  --color-background: #0a0e27; /* Dark blue */
+  --color-background-rgb: 10, 14, 39;
+  --color-background-secondary: #1a1f3a;
+  --color-surface: #1a1f3a;
+  --color-surface-rgb: 26, 31, 58;
+
+  /* ========================================================================
+     TEXT COLORS
+     ======================================================================== */
+  --color-text: #e0e6ff;
+  --color-text-rgb: 224, 230, 255;
+  --color-text-muted: #a0aacc;
+  --color-text-muted-rgb: 160, 170, 204;
+  --color-text-subtle: #6b7280;
+
+  /* ========================================================================
+     SEMANTIC COLORS
+     ======================================================================== */
+  --color-success: #00ff41; /* Neon Green */
+  --color-success-rgb: 0, 255, 65;
+  --color-warning: #ffd700; /* Gold */
+  --color-warning-rgb: 255, 215, 0;
+  --color-error: #ff1744; /* Red */
+  --color-error-rgb: 255, 23, 68;
+  --color-info: #00d9ff; /* Cyan */
+  --color-info-rgb: 0, 217, 255;
+
+  /* ========================================================================
+     BORDER AND DIVIDER COLORS
+     ======================================================================== */
+  --color-border: #2a3f5f;
+  --color-border-rgb: 42, 63, 95;
+  --color-divider: rgba(255, 255, 255, 0.1);
+
+  /* ========================================================================
+     GRADIENTS
+     ======================================================================== */
+  --gradient-primary: linear-gradient(135deg, #00d9ff 0%, #ff00ff 100%);
+  --gradient-secondary: linear-gradient(135deg, #ff00ff 0%, #00ff00 100%);
+  --gradient-background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+  --gradient-accent: linear-gradient(135deg, #00d9ff 0%, #00ff00 100%);
+
+  /* ========================================================================
+     SHADOWS
+     ======================================================================== */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+  /* Glowing shadows */
+  --shadow-glow: 0 0 20px rgba(0, 217, 255, 0.3);
+  --shadow-glow-strong: 0 0 40px rgba(0, 217, 255, 0.5);
+
+  /* ========================================================================
+     BLUR AND EFFECTS
+     ======================================================================== */
+  --blur-sm: blur(4px);
+  --blur-md: blur(12px);
+  --blur-lg: blur(24px);
+  --blur-xl: blur(40px);
+
+  /* ========================================================================
+     Z-INDEX SCALE
+     ======================================================================== */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-notification: 1080;
+
+  /* ========================================================================
+     SPACING SCALE (in pixels)
+     ======================================================================== */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* ========================================================================
+     BORDER RADIUS
+     ======================================================================== */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-full: 9999px;
+
+  /* ========================================================================
+     TRANSITIONS AND ANIMATIONS
+     ======================================================================== */
+  --transition-fast: all 0.15s ease-in-out;
+  --transition-base: all 0.3s ease-in-out;
+  --transition-slow: all 0.5s ease-in-out;
+
+  --animation-duration-short: 0.2s;
+  --animation-duration-base: 0.3s;
+  --animation-duration-long: 0.5s;
+
+  /* ========================================================================
+     FONT SIZES
+     ======================================================================== */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  /* ========================================================================
+     OPACITY SCALE
+     ======================================================================== */
+  --opacity-0: 0;
+  --opacity-10: 0.1;
+  --opacity-20: 0.2;
+  --opacity-30: 0.3;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-80: 0.8;
+  --opacity-90: 0.9;
+  --opacity-100: 1;
+}
+
+/* ============================================================================
+   BODY AND GLOBAL STYLES
+   ============================================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--gradient-background);
+  color: var(--color-text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  transition: var(--transition-base);
+}
+
+/* ============================================================================
+   SCROLLBAR STYLING
+   ============================================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}
+
+/* ============================================================================
+   SELECTION STYLING
+   ============================================================================ */
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+::-moz-selection {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+/* ============================================================================
+   FOCUS STATES
+   ============================================================================ */
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   UTILITY CLASSES
+   ============================================================================ */
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.shadow-glow-strong {
+  box-shadow: var(--shadow-glow-strong);
+}
+
+/* ============================================================================
+   ANIMATION DEFINITIONS
+   ============================================================================ */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 217, 255, 0.5);
+  }
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 217, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 217, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 217, 255, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-text: #1f2937;
+    --color-text-muted: #6b7280;
+    --color-background: #ffffff;
+    --color-surface: #f9fafb;
+    --color-border: #e5e7eb;
+  }
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+
+@media print {
+  * {
+    box-shadow: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
