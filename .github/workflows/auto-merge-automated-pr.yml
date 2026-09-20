@@ -100,7 +100,10 @@ jobs:
     # ------------------------------------------------------------------------
 
     if: >
-      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event_name == 'workflow_dispatch' &&
+        inputs.pr_number != ''
+      ) ||
       (
         github.event_name == 'pull_request_target' &&
         github.event.pull_request.number != null

@@ -14,6 +14,7 @@ def init_repo(root: Path, name: str) -> Path:
     (repo / "src" / f"{name}.txt").write_text(name, encoding="utf-8")
     subprocess.run(["git", "-C", str(repo), "add", "."], check=True)
     subprocess.run(["git", "-C", str(repo), "commit", "-qm", "initial"], check=True)
+    subprocess.run(["git", "-C", str(repo), "branch", "-M", "main"], check=True)
     subprocess.run(["git", "-C", str(repo), "branch", "history"], check=True)
     return repo
 
