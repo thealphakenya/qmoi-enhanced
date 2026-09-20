@@ -1,8 +1,8 @@
 # QMOI Realtime Memory Index
 
-Generated: 2026-09-19T11:25:36.891671Z
+Generated: 2026-09-19T13:18:21.869008Z
 
-Files Tracked: 183
+Files Tracked: 184
 
 ## Files
 
@@ -158,6 +158,7 @@ Files Tracked: 183
 - `scripts/advanced_agent_healer.py`
 - `scripts/auto_repo_sync.sh`
 - `scripts/autonomous_runner.py`
+- `scripts/continue_cycles.py`
 - `scripts/create-pr.sh`
 - `scripts/github-auto-setup.sh`
 - `scripts/github_auto_setup.py`
