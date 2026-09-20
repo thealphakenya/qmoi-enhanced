@@ -192,7 +192,7 @@ class GitHubSetup:
             ("Session 2 (Enhanced Features):", [
                 "✅ ALLPLATFORMSDEVICE.md (468 lines) - 293+ feature matrix",
                 "✅ STYLES.md (712 lines) - 6 design systems",
-                "✅ scripts/ollama_autonomous_agent_enhanced.py (765 lines)",
+                "✅ scripts/ollama_autonomous_agent.py (canonical merged agent)",
                 "✅ tests/test_ollama_enhanced_features.py (508 lines)",
                 "✅ OLLAMA_ENHANCEMENT_COMPLETE.md (394 lines)",
                 "✅ OLLAMA_ENHANCEMENT_SUCCESS.md",
