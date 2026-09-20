@@ -18,6 +18,11 @@
 - [x] Synchronized local `main` with the latest remote tracker reconciliation commit `5548d9c026`; the worktree is clean and aligned with `origin/main`.
 - [x] Latest tracker evidence at `2026-09-20T21:39:20Z` reports 10 active workflow runs, 13 open pull requests, validation run `35539322927` in progress, and autonomous-agent run `35539260426` pending.
 - [ ] Keep the validation and autonomous-agent entries open until the tracker records terminal conclusions; GitHub CLI API authentication is unavailable in this shell, so no unsupported remote completion claim is made.
+- [x] Refreshed local `main` to remote commit `6a7523cace` before this completion pass; the remote autosync tracker artifacts were preserved.
+- [x] Full local validation passed: `python -m pytest tests -q` returned `222 passed in 56.88s`; Python compilation, workflow validation, and `git diff --check` also passed.
+- [!] Full-history merge inventory remains blocked in this light checkout because `Alpha-Q-ai`, `qmoi-enhanced-history-14`, and staging inputs are not present locally; `MERGE.md` requires those sources before claiming complete cross-repository merge evidence.
+- [x] Test-generated runtime/proof projections were excluded from publication after validation so `ollamatracks/` remains authoritative rather than polluted by temporary test run IDs.
+- [ ] Complete the required full-history audit only after the Alpha-Q-ai and historical source trees are materialized; keep remote workflow conclusions open while GitHub CLI authentication is unavailable.
 # oe2.txt
 
 ## Working mandate
