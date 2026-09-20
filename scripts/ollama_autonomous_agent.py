@@ -4317,7 +4317,7 @@ All timestamps use UTC ISO-8601 format.
             phase="autonomous",
             details={"max_iterations": self.max_iterations},
         )
-        llm_generation_enabled = os.getenv("OLLAMA_APPLY_REPAIRS", "false").lower() == "true"
+        llm_generation_enabled = os.getenv("OLLAMA_APPLY_REPAIRS", "true").strip().lower() not in {"0", "false", "no", "off"}
         if not llm_generation_enabled:
             self.record_tracker_event(
                 "llm_coding_skipped",
@@ -4327,6 +4327,17 @@ All timestamps use UTC ISO-8601 format.
                 details={
                     "max_iterations": self.max_iterations,
                     "ollama_apply_repairs": False,
+                },
+            )
+        elif not files:
+            self.record_tracker_event(
+                "llm_coding_skipped",
+                "Repository context is empty; no repair generation loop is needed for this run.",
+                status="info",
+                phase="autonomous",
+                details={
+                    "max_iterations": self.max_iterations,
+                    "files_analyzed": 0,
                 },
             )
         else:
@@ -4346,7 +4357,19 @@ All timestamps use UTC ISO-8601 format.
                     except OllamaRuntimeError as exc:
                         generation_attempts += 1
                         if generation_attempts >= 3:
-                            raise
+                            self.record_tracker_event(
+                                "llm_generation_unavailable",
+                                "Ollama generation remained unavailable after bounded retries; continuing with validation-only execution.",
+                                status="warning",
+                                phase="autonomous",
+                                details={
+                                    "attempt": generation_attempts,
+                                    "max_attempts": 3,
+                                    "error": str(exc),
+                                },
+                            )
+                            response = ""
+                            break
                         try:
                             self.ollama_bootstrap.ensure_server()
                         except OllamaRuntimeError as bootstrap_exc:
@@ -4372,6 +4395,8 @@ All timestamps use UTC ISO-8601 format.
                             },
                         )
                         self.ollama.sleep(min(2 ** (generation_attempts - 1), 4))
+                if not response:
+                    break
                 if response == previous_response:
                     break
                 previous_response = response

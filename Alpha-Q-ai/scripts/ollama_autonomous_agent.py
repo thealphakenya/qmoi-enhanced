@@ -4068,75 +4068,99 @@ All timestamps use UTC ISO-8601 format.
             phase="autonomous",
             details={"max_iterations": self.max_iterations},
         )
-        for iterations in range(1, self.max_iterations + 1):
-            prompt = (
-                "Return JSON only with keys summary and changes. "
-                "Each change must have a relative path and content. "
-                "Do not propose workflow, secret, git, or credential changes. "
-                f"Repository files: {json.dumps(files[:self.max_tasks_per_iteration])}"
+        llm_generation_enabled = os.getenv("OLLAMA_APPLY_REPAIRS", "true").strip().lower() not in {"0", "false", "no", "off"}
+        if not llm_generation_enabled:
+            self.record_tracker_event(
+                "llm_coding_skipped",
+                "OLLAMA_APPLY_REPAIRS is disabled; continuing with validation-only autonomous checks.",
+                status="warning",
+                phase="autonomous",
+                details={
+                    "max_iterations": self.max_iterations,
+                    "ollama_apply_repairs": False,
+                },
             )
-            response = ""
-            generation_attempts = 0
-            while generation_attempts < 3:
-                try:
-                    response = self.ollama.generate(prompt)
-                    break
-                except OllamaRuntimeError as exc:
-                    generation_attempts += 1
-                    if generation_attempts >= 3:
-                        raise
+        elif not files:
+            self.record_tracker_event(
+                "llm_coding_skipped",
+                "Repository context is empty; no repair generation loop is needed for this run.",
+                status="info",
+                phase="autonomous",
+                details={
+                    "max_iterations": self.max_iterations,
+                    "files_analyzed": 0,
+                },
+            )
+        else:
+            for iterations in range(1, self.max_iterations + 1):
+                prompt = (
+                    "Return JSON only with keys summary and changes. "
+                    "Each change must have a relative path and content. "
+                    "Do not propose workflow, secret, git, or credential changes. "
+                    f"Repository files: {json.dumps(files[:self.max_tasks_per_iteration])}"
+                )
+                response = ""
+                generation_attempts = 0
+                while generation_attempts < 3:
                     try:
-                        self.ollama_bootstrap.ensure_server()
-                    except OllamaRuntimeError as bootstrap_exc:
+                        response = self.ollama.generate(prompt)
+                        break
+                    except OllamaRuntimeError as exc:
+                        generation_attempts += 1
+                        if generation_attempts >= 3:
+                            raise
+                        try:
+                            self.ollama_bootstrap.ensure_server()
+                        except OllamaRuntimeError as bootstrap_exc:
+                            self.record_tracker_event(
+                                "ollama_server_restart_failed",
+                                f"Ollama server restart failed: {bootstrap_exc}",
+                                status="warning",
+                                phase="autonomous",
+                                details={
+                                    "attempt": generation_attempts,
+                                    "error": str(bootstrap_exc),
+                                },
+                            )
                         self.record_tracker_event(
-                            "ollama_server_restart_failed",
-                            f"Ollama server restart failed: {bootstrap_exc}",
+                            "llm_generation_retry",
+                            "Transient Ollama generation failure; retrying with bounded backoff.",
                             status="warning",
                             phase="autonomous",
                             details={
                                 "attempt": generation_attempts,
-                                "error": str(bootstrap_exc),
+                                "max_attempts": 3,
+                                "error": str(exc),
                             },
                         )
+                        self.ollama.sleep(min(2 ** (generation_attempts - 1), 4))
+                if response == previous_response:
+                    break
+                previous_response = response
+                try:
+                    plan = parse_repair_plan(response, self.root_dir)
+                except OllamaRuntimeError as exc:
                     self.record_tracker_event(
-                        "llm_generation_retry",
-                        "Transient Ollama generation failure; retrying with bounded backoff.",
+                        "llm_repair_plan_rejected",
+                        f"Rejected model repair proposal without mutating the repository: {exc}",
                         status="warning",
                         phase="autonomous",
-                        details={
-                            "attempt": generation_attempts,
-                            "max_attempts": 3,
-                            "error": str(exc),
-                        },
+                        details={"error": str(exc)},
                     )
-                    self.ollama.sleep(min(2 ** (generation_attempts - 1), 4))
-            if response == previous_response:
-                break
-            previous_response = response
-            try:
-                plan = parse_repair_plan(response, self.root_dir)
-            except OllamaRuntimeError as exc:
-                self.record_tracker_event(
-                    "llm_repair_plan_rejected",
-                    f"Rejected model repair proposal without mutating the repository: {exc}",
-                    status="warning",
-                    phase="autonomous",
-                    details={"error": str(exc)},
-                )
-                break
-            changes = plan.get("changes", [])
-            if os.getenv("OLLAMA_APPLY_REPAIRS", "false").lower() != "true":
-                break
-            for change in changes[:self.max_tasks_per_iteration]:
-                path = (self.root_dir / str(change["path"])).resolve()
-                content = change.get("content")
-                if not isinstance(content, str):
-                    raise OllamaRuntimeError("Repair content must be a string")
-                path.parent.mkdir(parents=True, exist_ok=True)
-                path.write_text(content, encoding="utf-8")
-                modified.append(str(path.relative_to(self.root_dir)).replace("\\", "/"))
-            if not changes:
-                break
+                    break
+                changes = plan.get("changes", [])
+                if not llm_generation_enabled:
+                    break
+                for change in changes[:self.max_tasks_per_iteration]:
+                    path = (self.root_dir / str(change["path"])).resolve()
+                    content = change.get("content")
+                    if not isinstance(content, str):
+                        raise OllamaRuntimeError("Repair content must be a string")
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_text(content, encoding="utf-8")
+                    modified.append(str(path.relative_to(self.root_dir)).replace("\\", "/"))
+                if not changes:
+                    break
         lint_passed = self.run_lint_suite()
         validation_passed = self.run_full_validation_suite() and lint_passed
         self.results["llm_iterations"] = iterations
