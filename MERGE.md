@@ -133,6 +133,26 @@ two-destination policy:
 - The report exposes `source_metrics`, `unique_union`, and per-destination
   `projections.*.metrics` with projected file and directory counts. These are
   forecasts until a separately authorized merge produces `after_merge` metrics.
+- Duplicate learning uses content identities, not names alone:
+  `duplicate_path_count = identical_duplicate_count + variant_duplicate_count`.
+  Identical paths may be deduplicated after provenance capture; variant paths
+  require feature extraction, additive merge planning, tests for each behavior,
+  and explicit review before resolution. A variant is never discarded merely
+  because another source has the same filename.
+- The final projection formula is
+  `final_files = |history_paths union qmoi_history_paths union alpha_history_paths|`
+  and `final_directories` is the count of unique parent directories of those
+  paths. Both destination repositories receive the same planned union, while
+  their bases remain distinct and all source ownership is retained.
+- PR trees are separate inputs, not replacements: the agent inventories the
+  original QMOI/Alpha base paths represented by each PR head, compares PR
+  additions and deletions against every source, and blocks any deletion or
+  feature loss without an explicit reviewed decision.
+- Auto-research/learning is evidence-based: compare blob/content identities,
+  parse symbols/routes/workflows/configuration, extract behaviors unique to
+  variants, propose an additive plan, run targeted and full tests, and record
+  unresolved conflicts. The agent may learn merge heuristics from prior merge
+  reports, but cannot use heuristic similarity as permission to overwrite.
 
 Run the planner after the copy gate with `--report`; it is intentionally
 plan-only. A complete merge must still record the post-merge tree for both

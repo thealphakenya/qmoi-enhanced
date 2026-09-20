@@ -9,6 +9,7 @@ materialized historical snapshot before allowing a merge plan to proceed.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import shutil
 import subprocess
@@ -45,6 +46,21 @@ def git_paths(repo: Path, ref: str) -> list[str]:
     return sorted(set(paths))
 
 
+def git_path_records(repo: Path, ref: str) -> dict[str, set[str]]:
+    """Return path-to-blob identities across a Git ref's reachable tree."""
+    result = subprocess.run(
+        ["git", "-C", str(repo), "ls-tree", "-r", ref],
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    records: dict[str, set[str]] = {}
+    for line in result.stdout.splitlines():
+        metadata, path = line.split("\t", 1)
+        records.setdefault(path, set()).add(metadata.split()[2])
+    return records
+
+
 def filesystem_metrics(root: Path) -> dict[str, Any]:
     files = directories = symlinks = 0
     paths: list[str] = []
@@ -66,9 +82,25 @@ def filesystem_metrics(root: Path) -> dict[str, Any]:
     }
 
 
+def filesystem_fingerprints(root: Path) -> dict[str, set[str]]:
+    """Return SHA-256 content identities for files in a materialized source."""
+    fingerprints: dict[str, set[str]] = {}
+    if not root.exists():
+        return fingerprints
+    for path in root.rglob("*"):
+        if path.is_file() and not path.is_symlink():
+            digest = hashlib.sha256(path.read_bytes()).hexdigest()
+            fingerprints.setdefault(path.relative_to(root).as_posix(), set()).add(digest)
+    return fingerprints
+
+
 def inventory_repository(name: str, repo: Path) -> dict[str, Any]:
     refs = run_git(repo, "for-each-ref", "--format=%(refname)", "refs/heads", "refs/remotes", "refs/tags")
     paths_by_ref = {ref: git_paths(repo, ref) for ref in refs}
+    fingerprints: dict[str, set[str]] = {}
+    for ref in refs:
+        for path, identities in git_path_records(repo, ref).items():
+            fingerprints.setdefault(path, set()).update(identities)
     union = sorted({path for paths in paths_by_ref.values() for path in paths})
     commits = run_git(repo, "rev-list", "--all")
     return {
@@ -81,13 +113,21 @@ def inventory_repository(name: str, repo: Path) -> dict[str, Any]:
         "unique_history_paths": union,
         "history_file_count": len(union),
         "history_directory_count": len({str(Path(path).parent) for path in union if Path(path).parent != Path(".")}),
+        "content_fingerprints": {path: sorted(values) for path, values in fingerprints.items()},
         "filesystem": filesystem_metrics(repo),
     }
 
 
 def stage_sources(sources: dict[str, Path], history: Path, staging: Path) -> dict[str, Any]:
     before = {name: inventory_repository(name, repo) for name, repo in sources.items()}
-    before[HISTORY_NAME] = {"name": HISTORY_NAME, "classification": "HISTORICAL", "filesystem": filesystem_metrics(history)}
+    before[HISTORY_NAME] = {
+        "name": HISTORY_NAME,
+        "classification": "HISTORICAL",
+        "filesystem": filesystem_metrics(history),
+        "content_fingerprints": {
+            path: sorted(values) for path, values in filesystem_fingerprints(history).items()
+        },
+    }
     if staging.exists():
         shutil.rmtree(staging)
     staging.mkdir(parents=True)
@@ -147,6 +187,28 @@ def projected_tree_metrics(paths: set[str]) -> dict[str, int]:
     return {"files": len(paths), "directories": len(directories)}
 
 
+def classify_duplicate_content(content_by_source: dict[str, dict[str, set[str]]]) -> dict[str, Any]:
+    """Classify duplicate paths as identical, additive variants, or conflicts."""
+    path_sources: dict[str, dict[str, set[str]]] = {}
+    for source, records in content_by_source.items():
+        for path, identities in records.items():
+            path_sources.setdefault(path, {})[source] = identities
+    duplicate_paths = {path: sources for path, sources in path_sources.items() if len(sources) > 1}
+    identical = []
+    variants = []
+    for path, sources in duplicate_paths.items():
+        identities = set().union(*sources.values())
+        (identical if len(identities) == 1 else variants).append(path)
+    return {
+        "duplicate_path_count": len(duplicate_paths),
+        "identical_duplicate_count": len(identical),
+        "variant_duplicate_count": len(variants),
+        "identical_paths": sorted(identical),
+        "variant_paths": sorted(variants),
+        "formula": "variant duplicates require feature extraction and additive merge review; identical duplicates may be deduplicated after provenance capture",
+    }
+
+
 def build_base_merge_plan(report: dict[str, Any]) -> dict[str, Any]:
     """Build a read-only, provenance-aware projection for both destination repos.
 
@@ -171,6 +233,10 @@ def build_base_merge_plan(report: dict[str, Any]) -> dict[str, Any]:
         HISTORY_NAME: history_paths,
         QMOI_NAME: source_paths[QMOI_NAME] | current_paths[QMOI_NAME],
         ALPHA_NAME: source_paths[ALPHA_NAME] | current_paths[ALPHA_NAME],
+    }
+    content_by_source = {
+        source: before[source].get("content_fingerprints", {})
+        for source in all_sources
     }
     provenance: dict[str, list[str]] = {}
     for source, paths in all_sources.items():
@@ -202,6 +268,7 @@ def build_base_merge_plan(report: dict[str, Any]) -> dict[str, Any]:
         "conflicting_paths": conflicts,
         "provenance": {path: sorted(owners) for path, owners in provenance.items()},
         "requires_review_before_apply": bool(conflicts),
+        "duplicate_content": classify_duplicate_content(content_by_source),
         "apply_mode": "plan-only; no files are copied or overwritten",
     }
 

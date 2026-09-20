@@ -4,6 +4,7 @@ from pathlib import Path
 from scripts.merge_inventory import (
     add_after_merge_metrics,
     build_base_merge_plan,
+    classify_duplicate_content,
     inventory_repository,
     projected_tree_metrics,
     stage_sources,
@@ -100,3 +101,18 @@ def test_base_merge_plan_uses_history_and_alpha_bases_with_provenance():
     assert plan["provenance"]["README.md"] == ["Alpha-Q-ai", "qmoi-enhanced", "qmoi-enhanced-history-14"]
     assert plan["requires_review_before_apply"] is True
     assert "plan-only" in plan["apply_mode"]
+
+
+def test_duplicate_content_classification_preserves_variant_features():
+    result = classify_duplicate_content(
+        {
+            "history": {"same.md": ["hash-a"], "variant.md": ["hash-a"]},
+            "qmoi": {"same.md": ["hash-a"], "variant.md": ["hash-b"]},
+        }
+    )
+
+    assert result["duplicate_path_count"] == 2
+    assert result["identical_duplicate_count"] == 1
+    assert result["variant_duplicate_count"] == 1
+    assert result["identical_paths"] == ["same.md"]
+    assert result["variant_paths"] == ["variant.md"]
