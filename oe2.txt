@@ -9,7 +9,9 @@
 - [x] Added `liveactivitystream.md` with canonical QMOI/Ollama workflow, Actions, run, and artifact links plus the JSON/text output and fallback contract.
 - [x] Fixed the two remote agent lint failures in `scripts/ollama_autonomous_agent.py` and `scripts/ollama_runtime.py`.
 - [x] Focused lint validation passed: `python -m ruff check scripts/ollama_autonomous_agent.py scripts/ollama_runtime.py scripts/validate_workflows.py`.
-- [ ] Generate and validate the refreshed stream artifacts, run regression tests, push the verified branch, and confirm the remote workflow reruns successfully.
+- [x] Generated and structurally validated refreshed stream artifacts, ran the focused regression suite (`35 passed`), pushed the verified branch, and confirmed remote stream reruns.
+- [x] Latest QMOI stream run `35538803643` and Security and Merge Gates run `35538803640` completed successfully on `013ccb0174`.
+- [ ] Continue monitoring the still-in-progress feature-validation run `35538803668` and branch-sync run `35538818095` until their final conclusions are recorded.
 # oe2.txt
 
 ## Working mandate
