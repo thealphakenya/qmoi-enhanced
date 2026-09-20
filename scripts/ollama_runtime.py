@@ -27,7 +27,7 @@ def normalize_ollama_base_url(raw_host: str | None) -> str:
     value = (raw_host or os.getenv("OLLAMA_HOST", DEFAULT_OLLAMA_HOST)).strip()
     if not value:
         return DEFAULT_OLLAMA_HOST
-    if value.startswith("http://") or value.startswith("https://"):
+    if value.startswith(("http://", "https://")):
         return value.rstrip("/")
     if "/" in value:
         value = value.split("/", 1)[0]

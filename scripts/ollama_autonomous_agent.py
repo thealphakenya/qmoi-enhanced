@@ -5875,7 +5875,7 @@ All timestamps use UTC ISO-8601 format.
         if os.getenv("GITHUB_ACTIONS", "").lower() == "true":
             try:
                 self.verify_ollama()
-            except Exception as exc:  # pragma: no cover - runtime verification may fail in degraded hosted runs
+            except (OSError, RuntimeError, ValueError) as exc:  # pragma: no cover - degraded hosted runs
                 self.record_tracker_event(
                     "continue_cycle_runtime_warning",
                     f"Continuation runtime check reported a warning: {exc}",
