@@ -1,12 +1,12 @@
 {
-  "timestamp_utc": "2026-09-20T22:44:57.919Z",
-  "snapshot_hash": "ca1a1fdb090529bd2082c99ca0fd9846a7142746f8f711354c2fcf3217e30c8b",
+  "timestamp_utc": "2026-09-20T22:46:58.290Z",
+  "snapshot_hash": "fe7a4d0836781311002e4125c227858a128cf4da7b6189568b6a0891b7a69e7c",
   "validation_workflow_id": 333901991,
   "agent_workflow_id": 316417903,
   "latest_validation_run_id": 35542265054,
   "latest_agent_run_id": 35542522050,
-  "discovered_active_run_count": 7,
-  "active_run_count": 7,
+  "discovered_active_run_count": 5,
+  "active_run_count": 5,
   "open_pr_count": 13,
   "force_snapshot": true
 }
