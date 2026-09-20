@@ -25,6 +25,10 @@
 - [ ] Complete the required full-history audit only after the Alpha-Q-ai and historical source trees are materialized; keep remote workflow conclusions open while GitHub CLI authentication is unavailable.
 - [x] Continued the audit prerequisite check: the local Git database currently exposes 1 local head, 143 remote refs, 8 tags, and 3,280 reachable commits.
 - [!] Those Git refs do not replace the required Alpha-Q-ai repository tree or `qmoi-enhanced-history-14` materialization; no complete cross-repository copy or post-merge count is claimed.
+- [x] Materialized temporary audit sources from existing refs without changing the production checkout: `origin/integration/all-repositories-20260919` supplied `qmoi-enhanced-history-14`, and `origin/imported/theofalphakenya/main` supplied the imported Alpha projection.
+- [x] `scripts/merge_inventory.py` completed with `ready=true`, `missing_paths={}`, and phase sequence `inventory-before-copy -> copy-verified`; the historical snapshot contained 29,406 files, 5,451 directories, and 93 symlinks, and staged-copy verification produced both source Git bundles.
+- [!] The imported Alpha projection staged 11 files and 5 directories but shares the local Git object database; it is recorded as a ref-based projection, not independent proof of every Alpha-Q-ai repository history. No post-merge publication or destructive merge was performed.
+- [x] The full-history copy gate is now evidenced for the available refs; the remaining gate is independent Alpha-Q-ai history access plus explicit post-merge validation.
 # oe2.txt
 
 ## Working mandate
