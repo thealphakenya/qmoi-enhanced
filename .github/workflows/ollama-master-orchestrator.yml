@@ -1107,7 +1107,13 @@ jobs:
                 ref: ref || "main",
                 inputs: {
                   mode: "full",
-                  auto_heal: "true"
+                  auto_heal: "true",
+                  auto_fix: "true",
+                  force_agent: "true",
+                  merge_history: "true",
+                  repo_targets: "qmoi-enhanced,Alpha-Q-ai",
+                  completion_sequence: "Q.0.0.N",
+                  reason: "Merge all histories, update both repositories, and create the next numbered completion directory after all validations succeed."
                 }
               });
 

@@ -4301,8 +4301,50 @@ All timestamps use UTC ISO-8601 format.
                 files.append(str(path.relative_to(self.root_dir)).replace("\\", "/"))
         return sorted(files)[:100]
 
+    def discover_repo_roots(self, include_history: bool = True) -> list[Path]:
+        """Return the canonical repo roots that should be merged, synchronized, and updated together."""
+        base_dir = self.root_dir.parent
+        candidates: list[Path] = []
+        seen: set[Path] = set()
+
+        for repo_name in [
+            self.root_dir.name,
+            "Alpha-Q-ai",
+            "qmoi-enhanced",
+            "qmoi-enhanced-history-14",
+        ]:
+            candidate = (base_dir / repo_name).resolve()
+            if candidate.exists() and candidate.is_dir() and candidate not in seen:
+                candidates.append(candidate)
+                seen.add(candidate)
+
+        if include_history:
+            for directory in sorted(base_dir.iterdir(), key=lambda p: p.name):
+                if not directory.is_dir():
+                    continue
+                resolved = directory.resolve()
+                if resolved in seen:
+                    continue
+                if any(marker in directory.name.lower() for marker in ("history", "alpha-q-ai", "qmoi-enhanced")):
+                    candidates.append(resolved)
+                    seen.add(resolved)
+
+        found_git_roots = []
+        for candidate in candidates:
+            if (candidate / ".git").exists() or (candidate / ".git").is_dir():
+                found_git_roots.append(candidate)
+
+        if found_git_roots:
+            return sorted(found_git_roots, key=lambda p: p.name)
+
+        return sorted(candidates, key=lambda p: p.name)
+
     def run_autonomous_loop(self) -> dict[str, Any]:
-        """Ask Ollama for bounded repair plans and validate the repository."""
+        """Merge all repo histories, validate, and then finalize the update for each repo."""
+        repo_roots = self.discover_repo_roots(include_history=True)
+        merge_result = self.execute_merge_and_sync(repo_roots, auto_push=False)
+        self.results["merge_audit"] = merge_result
+
         health = self.verify_ollama()
         self.results["ollama_health"] = health.get("ollama_healthy", False)
         files = self._repository_context()
@@ -5850,7 +5892,7 @@ All timestamps use UTC ISO-8601 format.
         self,
         contract: Mapping[str, Any],
     ) -> list[Path]:
-        """Write a numbered completion manifest only after a successful autonomous run."""
+        """Write a numbered completion manifest directory after a successful autonomous run."""
         if str(contract.get("final_status", "")).upper() != "SUCCESS":
             return []
 
@@ -5867,15 +5909,17 @@ All timestamps use UTC ISO-8601 format.
         written: list[Path] = []
         for repo_root in repo_roots:
             repo_root.mkdir(parents=True, exist_ok=True)
-            existing = sorted(repo_root.glob("Q.*.md"))
+            existing = sorted(list(repo_root.glob("Q.*")) + list(repo_root.glob("Q.*.md")))
             version = (0, 0, 0)
             for candidate in existing:
-                match = re.match(r"^Q\.(\d+)\.(\d+)\.(\d+)\.md$", candidate.name)
+                candidate_name = candidate.name
+                match = re.match(r"^Q\.(\d+)\.(\d+)\.(\d+)(?:\.md)?$", candidate_name)
                 if match:
                     version = max(version, tuple(int(part) for part in match.groups()))
             major, minor, patch = version
             next_version = (major, minor, patch + 1)
-            manifest_path = repo_root / f"Q.{next_version[0]}.{next_version[1]}.{next_version[2]}.md"
+            manifest_dir = repo_root / f"Q.{next_version[0]}.{next_version[1]}.{next_version[2]}"
+            manifest_dir.mkdir(parents=True, exist_ok=True)
 
             summary = [
                 f"# Q.{next_version[0]}.{next_version[1]}.{next_version[2]}",
@@ -5905,8 +5949,12 @@ All timestamps use UTC ISO-8601 format.
                 "## Completion gate",
                 "This document is the authoritative numbered completion manifest for the autonomous agent and is written only after the full runtime, validation, and merge-audit evidence was verified.",
             ]
-            safe_text_write(manifest_path, "\n".join(summary) + "\n")
-            written.append(manifest_path)
+            readme_path = manifest_dir / "README.md"
+            safe_text_write(readme_path, "\n".join(summary) + "\n")
+
+            legacy_manifest = repo_root / f"Q.{next_version[0]}.{next_version[1]}.{next_version[2]}.md"
+            safe_text_write(legacy_manifest, "\n".join(summary) + "\n")
+            written.append(legacy_manifest)
 
         return written
 

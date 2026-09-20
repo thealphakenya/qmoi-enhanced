@@ -4052,8 +4052,50 @@ All timestamps use UTC ISO-8601 format.
                 files.append(str(path.relative_to(self.root_dir)).replace("\\", "/"))
         return sorted(files)[:100]
 
+    def discover_repo_roots(self, include_history: bool = True) -> list[Path]:
+        """Return the canonical repo roots that should be merged, synchronized, and updated together."""
+        base_dir = self.root_dir.parent
+        candidates: list[Path] = []
+        seen: set[Path] = set()
+
+        for repo_name in [
+            self.root_dir.name,
+            "Alpha-Q-ai",
+            "qmoi-enhanced",
+            "qmoi-enhanced-history-14",
+        ]:
+            candidate = (base_dir / repo_name).resolve()
+            if candidate.exists() and candidate.is_dir() and candidate not in seen:
+                candidates.append(candidate)
+                seen.add(candidate)
+
+        if include_history:
+            for directory in sorted(base_dir.iterdir(), key=lambda p: p.name):
+                if not directory.is_dir():
+                    continue
+                resolved = directory.resolve()
+                if resolved in seen:
+                    continue
+                if any(marker in directory.name.lower() for marker in ("history", "alpha-q-ai", "qmoi-enhanced")):
+                    candidates.append(resolved)
+                    seen.add(resolved)
+
+        found_git_roots = []
+        for candidate in candidates:
+            if (candidate / ".git").exists() or (candidate / ".git").is_dir():
+                found_git_roots.append(candidate)
+
+        if found_git_roots:
+            return sorted(found_git_roots, key=lambda p: p.name)
+
+        return sorted(candidates, key=lambda p: p.name)
+
     def run_autonomous_loop(self) -> dict[str, Any]:
-        """Ask Ollama for bounded repair plans and validate the repository."""
+        """Merge all repo histories, validate, and then finalize the update for each repo."""
+        repo_roots = self.discover_repo_roots(include_history=True)
+        merge_result = self.execute_merge_and_sync(repo_roots, auto_push=False)
+        self.results["merge_audit"] = merge_result
+
         health = self.verify_ollama()
         self.results["ollama_health"] = health.get("ollama_healthy", False)
         files = self._repository_context()
