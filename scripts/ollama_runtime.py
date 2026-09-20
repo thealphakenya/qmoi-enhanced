@@ -22,6 +22,30 @@ _SAFE_RELATIVE_PATH = re.compile(r"^[^/\\][^:]*$")
 _FORBIDDEN_PATCH_TEXT = (".github/workflows", "secrets.", "GITHUB_TOKEN", "GH_TOKEN")
 
 
+def normalize_ollama_base_url(raw_host: str | None) -> str:
+    """Return a valid HTTP base URL for the Ollama API."""
+    value = (raw_host or os.getenv("OLLAMA_HOST", DEFAULT_OLLAMA_HOST)).strip()
+    if not value:
+        return DEFAULT_OLLAMA_HOST
+    if value.startswith("http://") or value.startswith("https://"):
+        return value.rstrip("/")
+    if "/" in value:
+        value = value.split("/", 1)[0]
+    if ":" not in value:
+        value = f"{value}:11434"
+    return f"http://{value}"
+
+
+def normalize_ollama_server_host(raw_host: str | None) -> str:
+    """Return the bind host string Ollama expects: host:port without a URL scheme."""
+    value = normalize_ollama_base_url(raw_host).replace("http://", "").replace("https://", "")
+    if "/" in value:
+        value = value.split("/", 1)[0]
+    if not value:
+        return "127.0.0.1:11434"
+    return value
+
+
 class OllamaRuntimeError(RuntimeError):
     """Raised when an Ollama prerequisite or inference contract fails."""
 
@@ -52,7 +76,7 @@ class OllamaBootstrap:
             )
 
         environment = os.environ.copy()
-        environment["OLLAMA_HOST"] = self.client.host
+        environment["OLLAMA_HOST"] = normalize_ollama_server_host(self.client.host)
         try:
             self.process = subprocess.Popen(
                 [binary, "serve"],
@@ -148,13 +172,17 @@ class OllamaClient:
         retries: int | None = None,
         session: Any | None = None,
         sleep: Callable[[float], None] = time.sleep,
+        bootstrap: Any | None = None,
     ) -> None:
-        self.host = (host or os.getenv("OLLAMA_HOST", DEFAULT_OLLAMA_HOST)).rstrip("/")
+        raw_host = host or os.getenv("OLLAMA_HOST", DEFAULT_OLLAMA_HOST)
+        self.host = normalize_ollama_base_url(raw_host)
+        self.server_host = normalize_ollama_server_host(self.host)
         self.model = model or os.getenv("OLLAMA_MODEL", DEFAULT_OLLAMA_MODEL)
         self.timeout = float(timeout if timeout is not None else os.getenv("OLLAMA_TIMEOUT_SECONDS", "60"))
         self.retries = max(1, int(retries if retries is not None else os.getenv("OLLAMA_RETRY_COUNT", "3")))
         self.session = session or requests.Session()
         self.sleep = sleep
+        self.bootstrap = bootstrap
 
     def _request(self, method: str, path: str, **kwargs: Any) -> requests.Response:
         last_error: Exception | None = None
@@ -209,8 +237,18 @@ class OllamaClient:
                 if not isinstance(response, str) or not response.strip():
                     raise OllamaRuntimeError("Ollama returned no generated response")
                 return response.strip()
-            except (OllamaRuntimeError, requests.RequestException, ValueError) as exc:
+            except (OllamaRuntimeError, requests.RequestException, ValueError, OSError) as exc:
                 last_error = exc
+                if self.bootstrap is not None:
+                    try:
+                        self.bootstrap.ensure_server()
+                    except OllamaRuntimeError:
+                        pass
+                else:
+                    try:
+                        OllamaBootstrap(self).ensure_server()
+                    except OllamaRuntimeError:
+                        pass
 
         raise OllamaRuntimeError(f"Ollama request failed while generating: {last_error}")
 

@@ -100,7 +100,10 @@ jobs:
     # ------------------------------------------------------------------------
 
     if: >
-      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event_name == 'workflow_dispatch' &&
+        inputs.pr_number != ''
+      ) ||
       (
         github.event_name == 'pull_request_target' &&
         github.event.pull_request.number != null
@@ -177,21 +180,7 @@ jobs:
           PR_JSON="$(
             gh pr view "${PR_NUMBER}" \
               --repo "${REPOSITORY}" \
-              --json \
-                number,\
-                state,\
-                isDraft,\
-                headRefName,\
-                headRefOid,\
-                baseRefName,\
-                baseRefOid,\
-                headRepository,\
-                headRepositoryOwner,\
-                isCrossRepository,\
-                mergeStateStatus,\
-                mergeable,\
-                autoMergeRequest,\
-                url
+              --json 'number,state,isDraft,headRefName,headRefOid,baseRefName,baseRefOid,headRepository,headRepositoryOwner,isCrossRepository,mergeStateStatus,mergeable,autoMergeRequest,url'
           )"
 
           echo

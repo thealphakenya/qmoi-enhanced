@@ -1,5 +1,41 @@
 # MERGE.md - Merge Procedures and Guidelines
 
+## Complete History, Light Codespaces
+
+The repository keeps complete history and all merge inputs without requiring a
+large default working tree. Git history is the canonical archive; the working
+tree is a selected view. Codespaces use `.devcontainer/devcontainer.json` and
+`scripts/prepare_codespace.sh light` to omit `qmoi-enhanced-history-14`, the
+materialized `Alpha-Q-ai` tree, virtual environments, dependency caches, and
+generated backup trees from the active view. This reduces browser filesystem,
+search, watcher, and data-transfer costs while retaining the source objects on
+the remote.
+
+Use the modes deliberately:
+
+```bash
+bash scripts/prepare_codespace.sh light  # normal browser/Codespaces work
+bash scripts/prepare_codespace.sh full   # rehydrate every tracked path
+bash scripts/prepare_codespace.sh audit  # copy and verify all merge inputs
+```
+
+The `full` mode is required before a merge or release that needs every tracked
+path. The `audit` mode writes a complete report with per-source files,
+directories, symlinks, refs, reachable commits, missing paths, and staging
+status. Historical versions remain available with Git commands or the audit
+staging directory; they are not duplicated under conflicting working-tree
+paths. CI merge jobs must use full-history/object access only for audit and
+merge stages, while ordinary tests and documentation jobs should use blobless
+or sparse checkout.
+
+### Automatic repository sync and ledger update
+
+The repo now includes `scripts/auto_repo_sync.sh`, which executes at container
+startup and after creation. It refreshes `oe2.txt` with a timestamped ledger,
+ensures the lightweight setup is active, and pushes any resulting automation or
+ledger edits back to the current branch. This keeps the working environment
+self-healing and reduction-friendly without requiring manual reruns.
+
 ## Overview
 This document provides comprehensive procedures for merging files and features between qmoi-enhanced and Alpha-Q-ai repositories. It ensures that no implementations are degraded, features are preserved, and conflicts are resolved intelligently.
 
@@ -49,6 +85,10 @@ content blindly.
 
 ## Autonomous Merge Procedure
 
+### Mandatory Copy-Before-Merge Gate
+
+The autonomous agent must inventory and copy every source tree, directory, symlink, reachable ref, and reachable commit into a staging area before it plans or applies any merge. `MERGE.md` must record per-source file, directory, symlink, ref, and commit counts before copying, after copying, and after merging. A missing path or incomplete history export blocks merging.
+
 1. Discover repository remotes, all refs, default/backup/history branches, and
     working-tree state without mutation.
 2. Capture immutable inventories of all trees, markdown paths, commits,
@@ -75,6 +115,187 @@ The Ollama autonomous agent and QMOI automation must use this procedure for
 branch sync, PR merge, recovery, auto-healing, and cross-repository operations.
 They may automate speed and repetition, but not bypass evidence, ownership,
 review, or validation gates.
+
+### Required Metrics Record
+
+Every merge run must append a machine-readable record containing, for each
+source repository and each history snapshot: `files`, `directories`,
+`symlinks`, `refs`, and `reachable_commits`. The record must contain these
+phases in order: `inventory-before-copy`, `copy-verified`, and `after-merge`.
+The merge is incomplete when any source has missing paths, missing refs, or a
+lower post-copy count without an explicit reviewed deletion decision.
+
+The 2026-09-19 integration evidence recorded 1,346 files in the
+`qmoi-enhanced` main tree, 1,342 files in the `Alpha-Q-ai` main tree, and
+29,499 tracked paths in `qmoi-enhanced-history-14`; the final integrated tree
+contained 30,845 tracked paths. Future runs must regenerate these values from
+the source refs rather than treating this snapshot as current state.
+
+### Style and universal UI merge coverage (2026-09-19)
+
+The merge inventory now treats UI styling and universal platform standards as
+first-class live sources instead of generic markdown noise. The canonical live
+root files are:
+
+- `STYLES.md`
+- `UNIVERSALS.md`
+
+These files are recognized as live `style_universal` sources in
+`build_unified_markdown_inventory()` and the merge metrics package, and the
+runtime stream records them as priority evidence before generic duplicated
+history copies. The live merge inventory currently exposes a canonical count of
+2 root-level style/universal docs in the active repository, with additional
+platform or design-system variants treated as supporting evidence rather than
+primary merge targets.
+
+### Complete Staging Evidence (2026-09-19)
+
+The executable gate is `scripts/merge_inventory.py`. It completed with
+`ready=true` and `missing_paths=0` against the full local integration worktree,
+the full Alpha-Q-ai mirror, and the materialized history directory. The report
+covered every reachable branch, remote branch, and tag, not only `main`.
+
+| Source | Files | Directories | Symlinks | Refs | Reachable commits | Unique paths across history |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| qmoi-enhanced | 30,759 | 5,462 | 93 | 168 | 3,317 | 369,230 |
+| Alpha-Q-ai | 22 | 8 | 0 | 16 | 1,887 | 33,023 |
+| qmoi-enhanced-history-14 | 29,406 | 5,451 | 93 | 0 | 0 | materialized snapshot |
+
+The copy phase created complete source trees and Git bundles in the staging
+area, then compared every source filesystem path with its staged copy. The
+post-copy result was complete with zero missing paths. A final `after-merge`
+record must be generated after both remote integration branches are published;
+the Alpha-Q-ai push is still pending because the available Git credential in
+this execution environment is stale even though the API now reports push
+permission.
+
+### Published Remote Tree Metrics (2026-09-19)
+
+These counts come from the exact remote branch trees and are distinct from the
+all-history staging counts above:
+
+| Remote ref | Files | Directories | Commit |
+| --- | ---: | ---: | --- |
+| `qmoi-enhanced:merge/complete-copy-gate-qe-20260919` | 1,342 | 6 | `5dd13d7ee2` |
+| `Alpha-Q-ai:main` | 1,346 | 6 | `5ac4ece2cc` |
+
+The unified integration branch and reciprocal imported refs are not present on
+Alpha-Q-ai yet. These remote totals are therefore not the requested all-history
+union; final union metrics remain blocked until integration and imported refs
+are published to both repositories.
+
+### Complete File And Directory Totals (2026-09-19)
+
+The PR and history counts are recorded separately because a PR tree is one
+commit while a history inventory is the union of paths across every reachable
+ref. The PR tree is measured from the currently published PR head.
+
+| Scope | Files | Directories |
+| --- | ---: | ---: |
+| `qmoi-enhanced` all reachable histories | 369,230 | 88,736 |
+| `Alpha-Q-ai` all reachable histories | 33,023 | 5,450 |
+| `qmoi-enhanced-history-14` materialized snapshot | 29,499 | 5,451 |
+| **Summed all-history inputs** | **431,752** | **99,637** |
+| **Deduplicated path union across all inputs** | **369,231** | **102,103** |
+| `qmoi-enhanced` PR tree | 1,342 | 6 |
+| `Alpha-Q-ai` current `main` tree | 1,346 | 6 |
+| Materialized PR candidate after history and Alpha inputs | 32,187 | 5,468 |
+
+The summed total is the arithmetic total of every source inventory. The
+deduplicated total removes identical relative paths shared between sources;
+it is the correct union metric for checking that the final repositories contain
+all distinct files and directories. Neither remote default branch currently
+contains this full union because Alpha-Q-ai still lacks the integration and
+imported-history refs.
+
+### Current Checkout Post-Copy Metrics (2026-09-19)
+
+The repo uses a two-mode layout: a light browser/Codespaces checkout for daily
+use and a full materialized mode for merge and audit work. The current verified
+active tree on the `codespace-potential-tribble-g46v54ggq6rv2w4v5` branch is a
+browser-light sparse checkout. The full materialized local copy is produced by
+`bash scripts/prepare_codespace.sh full` and is intentionally not kept in the
+normal active view to reduce browser bandwidth, filesystem churn, and search
+cost.
+
+| Checkout scope | Files | Directories | Symlinks | Notes |
+| --- | ---: | ---: | ---: | --- |
+| Active browser-light sparse checkout | 1,554 | 94 | 0 | Default Codespace/browser view; excludes heavy historical and Alpha-Q-ai inputs |
+| Full materialized local copy in this workspace | 32,382 | 5,553 | 0 | Live repo root plus `Alpha-Q-ai` plus `qmoi-enhanced-history-14`, deduplicated by path where sources overlap |
+| `qmoi-enhanced-history-14` materialized snapshot | 29,482 | 5,451 | 0 | Historical snapshot retained for audit and recovery |
+| Alpha-Q-ai tracked main tree | 1,346 | 6 | 0 | Materialized mirror tree |
+
+The figure `432,752 files` and `99,637 directories` in the all-history arithmetic
+summary is a summed-input count, not the current checkout count. It includes
+multiple repository and snapshot totals and overlaps across refs, so it is not a
+single filesystem copy count. The physically materialized local copy in this
+workspace is therefore 32,382 files and 5,553 directories, while the logical
+all-history union recorded for evidence remains 369,231 files and 102,103
+directories across all reachable history paths.
+
+This distinction matters because browser/Codespaces performance requires a light
+active view, while the full history and merge inputs remain available as Git
+objects and as on-demand materialized copies for merge, audit, recovery, and
+remote automation.
+
+## Autonomous Merge Automation Hardening
+
+The Ollama autonomous agent must treat all merge work as a full-history, full-
+repo, no-skip operation. It must inventory and preserve every source tree,
+directory, file, symlink, tag, branch, PR head, and reachable commit before it
+attempts any merge decision. The copy stage is not a best-effort operation: it is
+an evidence gate. For each source root, the agent records counts before copy,
+after copy, and after merge. Any missing file, directory, route, API surface,
+workflow, config file, secret-bearing file, or link reference blocks the merge
+until it is accounted for or explicitly reviewed.
+
+The automation must:
+
+- Copy all live repo content from `qmoi-enhanced`, `Alpha-Q-ai`, and all materialized historical snapshots.
+- Include all reachable branches, remote refs, tags, and PR tree contents in scope for merge planning.
+- Preserve duplicate paths by provenance and canonical ownership, while deduplicating only after classification.
+- Treat API routes, ports, workflows, build artifacts, environment variables, and link validation as part of the same merge contract.
+- Validate secrets handling, credential redaction, environment-variable safety, and GitHub/Vercel host validation before publication.
+- Keep the active Codespace light by using sparse/light mode for daily work and full materialization only for audits, merge preparation, and release work.
+- Maintain a live ledger in `oe2.txt` and update the repo metrics in `MERGE.md` after every significant merge, inventory, or materialization change.
+- Autonomously push or reconcile repo updates to both `qmoi-enhanced` and `Alpha-Q-ai` only after completion gates pass and the final evidence is recorded.
+
+The merge decision engine must prefer live canonical roots first, then Alpha-Q-ai
+live content, then historical snapshot sources, while preserving duplicate info as
+source evidence. It must never silently drop a file, directory, feature, route,
+port, API endpoint, or build artifact. Decision-making must favor correctness,
+feature preservation, link health, and safety over speed.
+
+### Required merge automation guardrails
+
+1. Inventory every branch, tag, ref, and PR tree before merge.
+2. Copy every file and directory into a staging area before merge planning.
+3. Reconcile duplicates by basename, content identity, and canonical ownership.
+4. Validate APIs, routes, ports, GitHub workflows, links, environment variables, and secrets handling in both repos.
+5. Validate build artifacts and install/download flows for every app and platform surface.
+6. Re-run the full validation and merge metrics pass after copy and again after merge.
+7. Record final metrics and ledger evidence in `MERGE.md` and `oe2.txt`.
+8. Keep the repo in light mode by default and full mode only when required.
+
+### Merge accountability contract
+
+Every autonomous merge run must be attributable to a source path, a source repo,
+a source ref, a captured metric set, and a final validation result. The agent is
+accountable for the complete file and directory inventory, not just the branch
+head being edited. If a file, directory, route, environment variable, or feature
+is not explicitly covered, it is treated as a merge gap and requires a
+resolution before the merge can be considered complete.
+
+### Remote Completeness Audit (2026-09-19)
+
+The latest remote audit found `0` reciprocal imported-ref namespaces on both
+remotes. The source gate branch is published on `qmoi-enhanced` at commit
+`2cd9d0ae83`; the complete-copy report is local staging evidence, not a claim
+that both final remote default branches contain the union. Alpha-Q-ai must
+receive the integration branch, all imported `qmoi-enhanced` refs and tags,
+and the materialized `qmoi-enhanced-history-14` tree before its after-merge
+metrics can be marked complete. Until then, the final remote completion status
+is `BLOCKED_EXTERNAL_PUBLICATION`.
 
 ## Local Audit Evidence (2026-09-08)
 

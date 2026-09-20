@@ -179,7 +179,7 @@ This PR contains the complete Ollama autonomous agent enhancement with comprehen
 ### 📁 Files Added/Modified
 - ALLPLATFORMSDEVICE.md: 468 lines - Complete feature matrix
 - STYLES.md: 712 lines - Design system specifications
-- ollama_autonomous_agent_enhanced.py: 765 lines - Enhanced agent
+- ollama_autonomous_agent.py: canonical merged agent
 - test_ollama_enhanced_features.py: 508 lines - Comprehensive tests
 - .github/workflows/: Robust CI/CD pipeline
 - README.md: Complete project documentation

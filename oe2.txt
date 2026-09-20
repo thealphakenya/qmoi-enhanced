@@ -26,6 +26,10 @@ The work may only pause when all of the following are true:
 5. The repo has fresh validation evidence from the commands that are available in the environment.
 6. The live ledger and relevant docs have been updated to reflect the exact current status.
 
+Audit update 2026-09-20T12:00:40Z: QE PR #2121 contains the synchronized
+autonomous-agent, merge-inventory, workflow, dependency, and CodeQL fixes.
+Local validation passed; GitHub platform validation remains in progress.
+
 If any item remains incomplete, the correct action is to continue, not to pause.
 
 ## Highest-priority requirements
