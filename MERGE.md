@@ -116,6 +116,29 @@ branch sync, PR merge, recovery, auto-healing, and cross-repository operations.
 They may automate speed and repetition, but not bypass evidence, ownership,
 review, or validation gates.
 
+### Base-repository merge policy
+
+The executable planner in `scripts/merge_inventory.py` now uses an explicit
+two-destination policy:
+
+- `qmoi-enhanced-history-14` is the immutable base for the projected evolved
+  `qmoi-enhanced` tree.
+- The current Alpha-Q-ai tree is the base for the projected Alpha-Q-ai tree.
+- The complete discovered path sets from both repositories and the historical
+  snapshot are overlays for both projections, so no file or directory is
+  silently omitted from planning.
+- Duplicate paths retain all source owners in `provenance` and set
+  `requires_review_before_apply`; planning never overwrites content or resolves
+  conflicts by filename alone.
+- The report exposes `source_metrics`, `unique_union`, and per-destination
+  `projections.*.metrics` with projected file and directory counts. These are
+  forecasts until a separately authorized merge produces `after_merge` metrics.
+
+Run the planner after the copy gate with `--report`; it is intentionally
+plan-only. A complete merge must still record the post-merge tree for both
+destinations, validate all path conflicts, and publish only with explicit
+authorization.
+
 ### Required Metrics Record
 
 Every merge run must append a machine-readable record containing, for each

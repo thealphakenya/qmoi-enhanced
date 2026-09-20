@@ -29,6 +29,10 @@
 - [x] `scripts/merge_inventory.py` completed with `ready=true`, `missing_paths={}`, and phase sequence `inventory-before-copy -> copy-verified`; the historical snapshot contained 29,406 files, 5,451 directories, and 93 symlinks, and staged-copy verification produced both source Git bundles.
 - [!] The imported Alpha projection staged 11 files and 5 directories but shares the local Git object database; it is recorded as a ref-based projection, not independent proof of every Alpha-Q-ai repository history. No post-merge publication or destructive merge was performed.
 - [x] The full-history copy gate is now evidenced for the available refs; the remaining gate is independent Alpha-Q-ai history access plus explicit post-merge validation.
+- [x] Enhanced `scripts/merge_inventory.py` with an explicit base policy: `qmoi-enhanced-history-14` is the QMOI base, the current Alpha-Q-ai tree is the Alpha base, and all discovered source-history paths are provenance-preserving overlays.
+- [x] Added plan-only projected metrics, duplicate-path provenance, conflict counts, and review gating; added regression coverage in `tests/test_merge_inventory.py` and documented the contract in `MERGE.md`.
+- [x] Fresh available-ref projection: historical base `34,950` files/`5,451` directories; QMOI source union `371,327`/`102,350`; imported Alpha projection `370,586`/`102,104`; deduplicated final projection for both destinations `376,775` files/`102,350` directories.
+- [!] The projection contains `370,588` duplicate-path conflicts requiring content review; these are forecasts from the plan-only union, not a claim that all content has been automatically overwritten or fully merged.
 # oe2.txt
 
 ## Working mandate

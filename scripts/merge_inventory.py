@@ -17,6 +17,8 @@ from pathlib import Path
 from typing import Any
 
 HISTORY_NAME = "qmoi-enhanced-history-14"
+QMOI_NAME = "qmoi-enhanced"
+ALPHA_NAME = "Alpha-Q-ai"
 
 
 def run_git(repo: Path, *args: str) -> list[str]:
@@ -134,6 +136,76 @@ def add_after_merge_metrics(report: dict[str, Any], merged: dict[str, Path]) -> 
     return report
 
 
+def projected_tree_metrics(paths: set[str]) -> dict[str, int]:
+    """Return deterministic file and directory counts for a projected tree."""
+    directories = {
+        parent.as_posix()
+        for path in paths
+        for parent in Path(path).parents
+        if parent != Path(".")
+    }
+    return {"files": len(paths), "directories": len(directories)}
+
+
+def build_base_merge_plan(report: dict[str, Any]) -> dict[str, Any]:
+    """Build a read-only, provenance-aware projection for both destination repos.
+
+    The historical snapshot is the QMOI base and the current Alpha tree is the
+    Alpha base. Every source contributes its discovered history paths to both
+    projections; duplicate paths are retained as provenance records and are
+    never silently overwritten by this planning step.
+    """
+    before = report["before_copy"]
+    history_paths = set(before[HISTORY_NAME]["filesystem"]["paths"])
+    source_paths = {
+        name: set(data["unique_history_paths"])
+        for name, data in before.items()
+        if name in {QMOI_NAME, ALPHA_NAME}
+    }
+    current_paths = {
+        name: set(data["filesystem"]["paths"])
+        for name, data in before.items()
+        if name in {QMOI_NAME, ALPHA_NAME}
+    }
+    all_sources = {
+        HISTORY_NAME: history_paths,
+        QMOI_NAME: source_paths[QMOI_NAME] | current_paths[QMOI_NAME],
+        ALPHA_NAME: source_paths[ALPHA_NAME] | current_paths[ALPHA_NAME],
+    }
+    provenance: dict[str, list[str]] = {}
+    for source, paths in all_sources.items():
+        for path in paths:
+            provenance.setdefault(path, []).append(source)
+    conflicts = sorted(path for path, owners in provenance.items() if len(owners) > 1)
+    union = set(provenance)
+    projections = {
+        QMOI_NAME: {
+            "base": HISTORY_NAME,
+            "overlays": [QMOI_NAME, ALPHA_NAME],
+            "metrics": projected_tree_metrics(union),
+        },
+        ALPHA_NAME: {
+            "base": ALPHA_NAME,
+            "overlays": [HISTORY_NAME, QMOI_NAME],
+            "metrics": projected_tree_metrics(union),
+        },
+    }
+    return {
+        "policy": "history-base-for-qmoi-and-current-alpha-base",
+        "source_order": [HISTORY_NAME, QMOI_NAME, ALPHA_NAME],
+        "projections": projections,
+        "unique_union": projected_tree_metrics(union),
+        "source_metrics": {
+            source: projected_tree_metrics(paths) for source, paths in all_sources.items()
+        },
+        "conflict_count": len(conflicts),
+        "conflicting_paths": conflicts,
+        "provenance": {path: sorted(owners) for path, owners in provenance.items()},
+        "requires_review_before_apply": bool(conflicts),
+        "apply_mode": "plan-only; no files are copied or overwritten",
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--qmoi", type=Path, required=True)
@@ -154,6 +226,7 @@ def main() -> int:
             "qmoi-enhanced": args.merged_qmoi.resolve(),
             "Alpha-Q-ai": args.merged_alpha.resolve(),
         })
+    report["base_merge_plan"] = build_base_merge_plan(report)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({"ready": report["ready"], "report": str(args.report), "staging": str(args.staging)}, sort_keys=True))

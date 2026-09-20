@@ -1,7 +1,13 @@
-from pathlib import Path
 import subprocess
+from pathlib import Path
 
-from scripts.merge_inventory import add_after_merge_metrics, inventory_repository, stage_sources
+from scripts.merge_inventory import (
+    add_after_merge_metrics,
+    build_base_merge_plan,
+    inventory_repository,
+    projected_tree_metrics,
+    stage_sources,
+)
 
 
 def init_repo(root: Path, name: str) -> Path:
@@ -59,3 +65,38 @@ def test_after_merge_metrics_preserve_phases(tmp_path):
     assert report["status"] == "complete"
     assert report["sequence"][-1] == "after-merge"
     assert report["after_merge"]["qmoi-enhanced"]["files"] == 1
+
+
+def test_projected_tree_metrics_counts_parent_directories():
+    metrics = projected_tree_metrics({"README.md", "docs/guide.md", "src/app/main.py"})
+
+    assert metrics == {"files": 3, "directories": 3}
+
+
+def test_base_merge_plan_uses_history_and_alpha_bases_with_provenance():
+    report = {
+        "before_copy": {
+            "qmoi-enhanced-history-14": {
+                "filesystem": {"paths": ["README.md", "docs/history.md"]}
+            },
+            "qmoi-enhanced": {
+                "unique_history_paths": ["README.md", "src/qmoi.py"],
+                "filesystem": {"paths": ["README.md", "src/qmoi.py"]},
+            },
+            "Alpha-Q-ai": {
+                "unique_history_paths": ["README.md", "alpha/app.ts"],
+                "filesystem": {"paths": ["README.md", "alpha/app.ts"]},
+            },
+        }
+    }
+
+    plan = build_base_merge_plan(report)
+
+    assert plan["source_order"] == ["qmoi-enhanced-history-14", "qmoi-enhanced", "Alpha-Q-ai"]
+    assert plan["projections"]["qmoi-enhanced"]["base"] == "qmoi-enhanced-history-14"
+    assert plan["projections"]["Alpha-Q-ai"]["base"] == "Alpha-Q-ai"
+    assert plan["unique_union"] == {"files": 4, "directories": 3}
+    assert plan["conflict_count"] == 1
+    assert plan["provenance"]["README.md"] == ["Alpha-Q-ai", "qmoi-enhanced", "qmoi-enhanced-history-14"]
+    assert plan["requires_review_before_apply"] is True
+    assert "plan-only" in plan["apply_mode"]
