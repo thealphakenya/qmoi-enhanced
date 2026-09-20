@@ -4,16 +4,16 @@
     {
       "details": {
         "behind": false,
-        "branch": "codespace-potential-tribble-g46v54ggq6rv2w4v5",
+        "branch": "codespace-didactic-halibut-pj95gjxxr5v736w64",
         "dirty": true,
-        "raw_status": "## codespace-potential-tribble-g46v54ggq6rv2w4v5...origin/codespace-potential-tribble-g46v54ggq6rv2w4v5\n M WORKFLOWSO.md\n M oe2.txt\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/STATE.txt\n?? ollamatracks/LAST_RECONCILIATION.txt\n?? ollamatracks/PR_STATUS.txt\n?? ollamatracks/TRACKING_INDEX.txt\n?? ollamatracks/monitoring_summary.json\n?? ollamatracks/telemetry.jsonl"
+        "raw_status": "## codespace-didactic-halibut-pj95gjxxr5v736w64...origin/codespace-didactic-halibut-pj95gjxxr5v736w64\n M MEMORY_INDEX.md\n M github_proof_contract.json\n M memory_index.json\n M ollamatracks/CURRENT_STATUS.txt\n M ollamatracks/LAST_RECONCILIATION.txt\n M ollamatracks/LATEST_ACTIVITY.txt\n M ollamatracks/PR_STATUS.txt\n M ollamatracks/STATE.txt\n M ollamatracks/checkpoint.json\n M ollamatracks/live_activity_stream.json\n M ollamatracks/monitoring_summary.json\n M ollamatracks/ollama_autonomous_agent_live_activity.json\n M ollamatracks/qmoi_live_activity.json\n M ollamatracks/telemetry.jsonl\n M resumefromhere.txt\n M validation_report.json"
       },
       "entity": "qmoi",
       "event": "repo_health",
-      "message": "QMOI repo health on codespace-potential-tribble-g46v54ggq6rv2w4v5 is warning.",
+      "message": "QMOI repo health on codespace-didactic-halibut-pj95gjxxr5v736w64 is warning.",
       "source": "qmoi",
       "status": "warning",
-      "timestamp_utc": "2026-09-19T09:40:10Z"
+      "timestamp_utc": "2026-09-20T07:21:14Z"
     }
   ]
 }

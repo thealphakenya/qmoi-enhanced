@@ -3928,7 +3928,7 @@ All timestamps use UTC ISO-8601 format.
         auto_push: bool = False,
         target_root: Path | str | None = None,
     ) -> dict[str, Any]:
-        """Inventory, audit, and synchronize repo trees while keeping file and directory metrics in scope."""
+        """Inventory, audit, and synchronize repo trees while keeping file, directory, and merge metrics in scope for every repo."""
         repo_paths = [Path(repo).resolve() for repo in repo_roots]
         if not repo_paths:
             raise ValueError("At least one repository path is required for merge execution.")
@@ -3962,13 +3962,16 @@ All timestamps use UTC ISO-8601 format.
             include_memory=True,
         )
 
-        self.record_merge_audit(primary_root, {
-            "merge_metrics": merge_metrics,
-            "inventory": inventory,
-            "merge_plan": merge_plan,
-            "repositories": [str(path) for path in repo_paths],
-            "auto_push": auto_push,
-        })
+        for repo_path in repo_paths:
+            repo_path.mkdir(parents=True, exist_ok=True)
+            self.record_merge_audit(repo_path, {
+                "merge_metrics": merge_metrics,
+                "inventory": inventory,
+                "merge_plan": merge_plan,
+                "repositories": [str(path) for path in repo_paths],
+                "auto_push": auto_push,
+                "primary_root": str(primary_root),
+            })
 
         audit_dir = primary_root / "ollamatracks"
         audit_dir.mkdir(parents=True, exist_ok=True)

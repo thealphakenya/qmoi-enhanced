@@ -154,6 +154,13 @@ class TestAutonomousMergeExecution:
         assert any(entry.get("event") == "merge_inventory" for entry in stream_payload["stream"])
         assert any("merge_metrics" in key for key in result.keys()) or result["merge_metrics"]
 
+        assert (repo_qe / "MERGE.md").exists()
+        assert (repo_aq / "MERGE.md").exists()
+        assert "Autonomous History Merge Audit" in (repo_qe / "MERGE.md").read_text(encoding="utf-8")
+        assert "Autonomous History Merge Audit" in (repo_aq / "MERGE.md").read_text(encoding="utf-8")
+        assert "total_files" in (repo_qe / "MERGE.md").read_text(encoding="utf-8")
+        assert "feature_count" in (repo_qe / "MERGE.md").read_text(encoding="utf-8")
+
 
 class TestCrossRepositoryAutonomyManager:
     def test_merge_inventory_preserves_styles_and_universals(self, tmp_path):
