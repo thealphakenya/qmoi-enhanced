@@ -14,6 +14,7 @@
 - 2026-09-21 command audit: `gh auth status -h github.com` confirmed the active account without exposing credentials; `gh repo view` and `gh api repos/thealphakenya/Alpha-Q-ai` reported write/push permission.
 - 2026-09-21 push audit: `gh auth setup-git` followed by `git -C /workspaces/Alpha-Q-ai push origin HEAD:main` still returned HTTP 403 from the Codespaces credential. No token was printed, copied, persisted, or sent through the agent.
 - Remaining action requiring user-owned secret input: run `gh auth login --with-token` directly in the terminal with an authorized token, then rerun `git -C /workspaces/Alpha-Q-ai push origin HEAD:main`.
+- Credential safety: token values are never entered into repository files, logs, prompts, commits, command output, or assistant messages; only sanitized account/scope/outcome metadata is recorded.
 - [x] Pushed `main` successfully to `origin` at commit `054cd56b40` and confirmed local/remote SHA equality.
 - [x] QMOI live activity workflow run `35538651063` completed successfully on the pushed SHA; the prior Ollama live activity run `35536732110` completed successfully.
 - [!] Manual dispatch of `ollama-autonomous-agent.yml` returned GitHub `HTTP 403 Resource not accessible by integration`; no fresh agent run is claimed until a token with workflow-dispatch permission is supplied.
