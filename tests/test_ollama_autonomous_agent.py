@@ -32,6 +32,7 @@ from ollama_autonomous_agent import (
     QMOIAvatarWindowStyle,
     resolve_github_token,
     mask_github_token,
+    configure_github_git_auth,
     detect_resume_file_origin,
     update_resume_file_metadata,
 )
@@ -888,6 +889,30 @@ class TestGitHubTokenConfiguration:
         masked = mask_github_token("ghp_verysecretvalue123")
         assert masked.startswith("ghp_") or "..." in masked
         assert masked != "ghp_verysecretvalue123"
+
+    def test_github_git_auth_uses_existing_login_without_recording_credentials(self, monkeypatch):
+        calls = []
+
+        class Result:
+            returncode = 0
+            stdout = "Logged in"
+            stderr = ""
+
+        def fake_run(command, **kwargs):
+            calls.append(command)
+            return Result()
+
+        monkeypatch.setattr("ollama_autonomous_agent.subprocess.run", fake_run)
+        result = configure_github_git_auth()
+
+        assert result["configured"] is True
+        assert result["authenticated"] is True
+        assert result["credential_values_recorded"] is False
+        assert "token" not in result["diagnostic"].lower()
+        assert calls == [
+            ["gh", "auth", "setup-git"],
+            ["gh", "auth", "status", "-h", "github.com"],
+        ]
 
     def test_github_actions_monitoring_is_independent_of_codespace(self):
         """Monitoring should be configured to run via GitHub Actions instead of local execution."""

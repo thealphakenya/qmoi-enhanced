@@ -361,6 +361,42 @@ def sanitize_command_metadata(
     )
 
 
+def configure_github_git_auth() -> dict[str, Any]:
+    """Refresh Git's GitHub helper from an existing gh login without handling secrets."""
+    result: dict[str, Any] = {
+        "configured": False,
+        "authenticated": False,
+        "credential_values_recorded": False,
+        "action": "use_existing_gh_login_only",
+    }
+    try:
+        setup = subprocess.run(
+            ["gh", "auth", "setup-git"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        result["configured"] = setup.returncode == 0
+        status = subprocess.run(
+            ["gh", "auth", "status", "-h", "github.com"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        result["authenticated"] = status.returncode == 0
+        diagnostic_lines = []
+        for line in (status.stderr or status.stdout or "").splitlines():
+            if "token:" in line.lower() or "password:" in line.lower():
+                continue
+            diagnostic_lines.append(line)
+        result["diagnostic"] = sanitize_command_metadata(
+            "\n".join(diagnostic_lines).strip()
+        )[-500:]
+    except OSError as exc:
+        result["diagnostic"] = sanitize_command_metadata(str(exc))
+    return result
+
+
 def _hash_text(text: str) -> str:
     """Return a stable SHA-256 fingerprint for a text value."""
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
@@ -6501,6 +6537,7 @@ def main(
             "autonomous",
             "continue",
             "merge-sync",
+            "github-auth",
         ],
     )
 
@@ -6534,6 +6571,10 @@ def main(
         except OllamaRuntimeError as exc:
             print(f"Ollama health check failed: {exc}", file=sys.stderr)
             return 1
+
+    if args.command == "github-auth":
+        print(json.dumps(configure_github_git_auth(), indent=2, sort_keys=True))
+        return 0
 
     if args.command == "autonomous":
         try:
