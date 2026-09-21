@@ -1,0 +1,35 @@
+{
+  "master": [
+    {
+      "id": "qki-1",
+      "created": "2025-10-20T12:00:00Z",
+      "type": "preference",
+      "key": "q.ki",
+      "value": {
+        "persona": "master",
+        "notes": "Master user primary q.ki memory"
+      }
+    }
+  ],
+  "sister": [
+    {
+      "id": "qki-2",
+      "created": "2025-10-20T12:05:00Z",
+      "type": "preference",
+      "key": "q.ki",
+      "value": {
+        "persona": "sister",
+        "notes": "Sister user q.ki memory"
+      }
+    }
+  ],
+  "testuser_667c0c": [
+    {
+      "id": "it-1",
+      "key": "q.ki",
+      "value": {
+        "note": "integration test"
+      }
+    }
+  ]
+}

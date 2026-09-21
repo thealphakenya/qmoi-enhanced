@@ -1,0 +1,9 @@
+{
+  "accounts": [
+    {
+      "currency": "USD",
+      "available": "0.00",
+      "pending": "0.00"
+    }
+  ]
+}

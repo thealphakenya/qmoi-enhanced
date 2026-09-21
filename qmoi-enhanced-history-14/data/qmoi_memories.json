@@ -1,0 +1,11 @@
+{
+  "memories": [
+    {
+      "id": "mem-1769071490718",
+      "sessionId": "test-session-1",
+      "userId": "test-user",
+      "text": "I enjoy jazz music and coffee",
+      "createdAt": "2026-01-22T08:44:50.710Z"
+    }
+  ]
+}

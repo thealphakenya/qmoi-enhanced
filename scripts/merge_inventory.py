@@ -61,6 +61,58 @@ def git_path_records(repo: Path, ref: str) -> dict[str, set[str]]:
     return records
 
 
+def git_tree_metrics(
+    repo: Path, ref: str, prefix: str | None = None
+) -> dict[str, Any]:
+    """Return complete metrics for one historical Git tree."""
+    command = ["git", "-C", str(repo), "ls-tree", "-r", "-l", ref]
+    if prefix:
+        command.extend(["--", prefix])
+    result = subprocess.run(
+        command,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    files: set[str] = set()
+    directories: set[str] = set()
+    symlinks = 0
+    executable_files = 0
+    bytes_total = 0
+    entries: list[dict[str, Any]] = []
+    normalized_prefix = prefix.rstrip("/") + "/" if prefix else ""
+    for line in result.stdout.splitlines():
+        metadata, raw_path = line.split("\t", 1)
+        path = raw_path.removeprefix(normalized_prefix)
+        mode, _kind, object_id, size = metadata.split()
+        files.add(path)
+        parent = Path(path).parent
+        while parent != Path("."):
+            directories.add(parent.as_posix())
+            parent = parent.parent
+        if mode == "120000":
+            symlinks += 1
+        if mode == "100755":
+            executable_files += 1
+        if size != "-":
+            bytes_total += int(size)
+        entries.append({
+            "path": path,
+            "mode": mode,
+            "object": object_id,
+            "bytes": None if size == "-" else int(size),
+        })
+    return {
+        "ref": ref,
+        "files": len(files),
+        "directories": len(directories),
+        "symlinks": symlinks,
+        "executable_files": executable_files,
+        "bytes": bytes_total,
+        "entries": entries,
+    }
+
+
 def filesystem_metrics(root: Path) -> dict[str, Any]:
     files = directories = symlinks = 0
     paths: list[str] = []
@@ -282,6 +334,15 @@ def main() -> int:
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--merged-qmoi", type=Path)
     parser.add_argument("--merged-alpha", type=Path)
+    parser.add_argument(
+        "--historical-ref",
+        help="Record an additional complete Git-tree snapshot from --qmoi.",
+    )
+    parser.add_argument(
+        "--historical-prefix",
+        default="Alpha-Q-ai",
+        help="Path prefix for --historical-ref (default: Alpha-Q-ai).",
+    )
     args = parser.parse_args()
     report = stage_sources(
         {"qmoi-enhanced": args.qmoi.resolve(), "Alpha-Q-ai": args.alpha.resolve()},
@@ -293,6 +354,12 @@ def main() -> int:
             "qmoi-enhanced": args.merged_qmoi.resolve(),
             "Alpha-Q-ai": args.merged_alpha.resolve(),
         })
+    if args.historical_ref:
+        report["historical_snapshots"] = {
+            ALPHA_NAME: git_tree_metrics(
+                args.qmoi.resolve(), args.historical_ref, args.historical_prefix
+            )
+        }
     report["base_merge_plan"] = build_base_merge_plan(report)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")

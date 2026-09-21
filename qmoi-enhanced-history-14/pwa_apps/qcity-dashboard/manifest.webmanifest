@@ -1,0 +1,8 @@
+{
+  "name": "Qcity Dashboard",
+  "short_name": "Qcity Dashboard",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000"
+}

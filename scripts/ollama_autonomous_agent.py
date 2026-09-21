@@ -2173,6 +2173,292 @@ class CrossRepositoryAutonomyManager:
                 "historical QMOI/Alpha-Q-ai repo snapshot including the "
                 "qmoi-enhanced-history-14 archive and cloned repo inventory"
             ),
+            "feature_discovery_plan": self.build_feature_discovery_plan(),
+            "complete_execution_contract": self.build_complete_execution_contract(),
+            "cross_repository_merge_plan": self.build_cross_repository_merge_plan(),
+        }
+
+    def build_feature_discovery_plan(self) -> dict[str, Any]:
+        """Define evidence gates before proposing new cross-repository features."""
+        return {
+            "base_repository": HISTORY_SNAPSHOT_DIRECTORY,
+            "base_policy": (
+                "Treat qmoi-enhanced-history-14 as the overall implementation "
+                "base; overlay Alpha-Q-ai and current QMOI sources without "
+                "deleting existing Alpha behavior."
+            ),
+            "source_order": [
+                HISTORY_SNAPSHOT_DIRECTORY,
+                QMOI_REPOSITORY,
+                ALPHA_Q_AI_REPOSITORY,
+                "reachable refs and archived snapshots",
+            ],
+            "candidate_surfaces": [
+                "new sites",
+                "new applications",
+                "web and mobile UI features",
+                "APIs and backend services",
+                "platform integrations and automation",
+                "documentation, workflows, and operational tooling",
+            ],
+            "required_evidence": [
+                "complete path and directory inventories",
+                "content identity and ownership for every candidate path",
+                "routes, symbols, workflows, configuration, and dependency analysis",
+                "existing Alpha behavior and history preservation check",
+            ],
+            "decision_gates": [
+                "propose additive feature only after cross-history comparison",
+                "reject duplicate or speculative work without a measurable gap",
+                "write an implementation plan with dependencies and affected paths",
+                "run targeted tests, full validation, and UI/build checks when applicable",
+                "require explicit review for conflicts, deletions, and new external integrations",
+            ],
+            "alpha_preservation": (
+                "Alpha-Q-ai keeps every existing tracked path and receives only "
+                "verified historical or additive changes."
+            ),
+        }
+
+    def build_complete_execution_contract(self) -> dict[str, Any]:
+        """Describe mandatory whole-repository, style, and auth gates."""
+        return {
+            "review_scope": [
+                "all files and directories in the live repositories",
+                "all reachable refs and historical snapshots",
+                "all relevant tests, workflows, routes, symbols, and configuration",
+            ],
+            "whole_repository_actions": [
+                "inventory every source path before planning",
+                "read and classify relevant implementation and test surfaces",
+                "map dependencies, ownership, routes, UI surfaces, and auth boundaries",
+                "run targeted tests plus the complete repository test command",
+                "record skipped, blocked, or unavailable checks explicitly",
+            ],
+            "style_source": {
+                "file": "STYLES.md",
+                "role": "source of truth for generated UI layout, typography, color, motion, accessibility, and platform styling",
+                "required_when": "creating or changing any site, app, dashboard, web, or mobile UI feature",
+                "required_update": "update STYLES.md whenever a new UI pattern or styling capability is introduced",
+            },
+            "universal_source": {
+                "file": "UNIVERSALS.md",
+                "role": "source of truth for authentication, login, identity, permissions, security, device, and cross-platform behavior",
+                "required_when": "any feature requires authentication, login, identity, authorization, or protected data",
+                "required_update": "update UNIVERSALS.md whenever a new universal/authentication capability is introduced",
+            },
+            "completion_requirements": [
+                "every UI proposal cites applicable STYLES.md sections",
+                "every protected-flow proposal cites applicable UNIVERSALS.md sections",
+                "STYLES.md and UNIVERSALS.md update status is recorded in the validation report",
+                "no feature is complete while required source docs or tests are missing",
+            ],
+        }
+
+    def build_cross_repository_merge_plan(
+        self,
+        roots: Sequence[Path | str] | None = None,
+    ) -> dict[str, Any]:
+        """Plan complete Alpha-history coverage and bidirectional feature routing."""
+        repo_root = Path(__file__).resolve().parent.parent
+        root_map = {
+            "qmoi-enhanced": repo_root,
+            "qmoi-enhanced-history-14": repo_root / HISTORY_SNAPSHOT_DIRECTORY,
+            "Alpha-Q-ai": repo_root.parent / "Alpha-Q-ai",
+        }
+        if roots is not None:
+            supplied = [Path(item).resolve() for item in roots]
+            root_map = {path.name: path for path in supplied}
+        alpha_root = root_map.get("Alpha-Q-ai")
+        history_root = (
+            alpha_root / "alpha-q-ai-history-14"
+            if alpha_root and (alpha_root / "alpha-q-ai-history-14").is_dir()
+            else repo_root / "alpha-q-ai-history-14"
+        )
+        source_roots = {
+            **root_map,
+            "alpha-q-ai-history-14": history_root,
+        }
+        markdown_audit = self.audit_all_markdown_sources(list(source_roots.values()))
+        metrics: dict[str, dict[str, Any]] = {}
+        all_paths: set[str] = set()
+        merge_documents: set[str] = set()
+        for name, root in source_roots.items():
+            files: list[str] = []
+            directories: set[str] = set()
+            if root.is_dir():
+                for path in sorted(root.rglob("*")):
+                    if ".git" in path.parts:
+                        continue
+                    relative = path.relative_to(root).as_posix()
+                    if path.is_dir():
+                        directories.add(relative)
+                    elif path.is_file():
+                        files.append(relative)
+                        all_paths.add(f"{name}/{relative}")
+                        if path.name.lower() == "merge.md" or "merge" in path.name.lower():
+                            merge_documents.add(f"{name}/{relative}")
+            metrics[name] = {
+                "root": str(root),
+                "exists": root.is_dir(),
+                "files": len(files),
+                "directories": len(directories),
+                "paths": files,
+            }
+
+        alpha_history_paths = set(metrics["alpha-q-ai-history-14"]["paths"])
+        routed_to_qmoi: list[str] = []
+        routed_to_alpha: list[str] = []
+        for path in sorted(alpha_history_paths):
+            target = self.route_file_to_repository(path)
+            (routed_to_alpha if target == "Alpha-Q-ai" else routed_to_qmoi).append(path)
+
+        return {
+            "base_repository": HISTORY_SNAPSHOT_DIRECTORY,
+            "source_order": [
+                HISTORY_SNAPSHOT_DIRECTORY,
+                "qmoi-enhanced",
+                "Alpha-Q-ai",
+                "alpha-q-ai-history-14",
+            ],
+            "metrics": metrics,
+            "base_available": metrics[HISTORY_SNAPSHOT_DIRECTORY]["exists"],
+            "ready_for_apply": (
+                metrics[HISTORY_SNAPSHOT_DIRECTORY]["exists"]
+                and metrics["Alpha-Q-ai"]["exists"]
+                and metrics["alpha-q-ai-history-14"]["exists"]
+                and len(metrics["alpha-q-ai-history-14"]["paths"]) > 0
+                and markdown_audit["index_complete"]
+            ),
+            "all_source_paths": sorted(all_paths),
+            "all_alpha_history_paths_included": len(routed_to_qmoi) + len(routed_to_alpha)
+            == metrics["alpha-q-ai-history-14"]["files"],
+            "merge_documents": sorted(merge_documents),
+            "markdown_audit": markdown_audit,
+            "feature_direction": {
+                "alpha_to_qmoi": {
+                    "rule": "add Alpha features to QMOI when ownership, dependencies, and tests show a compatible capability absent from QMOI",
+                    "candidate_paths": routed_to_qmoi,
+                },
+                "qmoi_to_alpha": {
+                    "rule": "add QMOI features to Alpha when they are additive, compatible, and preserve existing Alpha behavior",
+                    "candidate_paths": routed_to_alpha,
+                },
+                "conflicts": "block automatic overwrite; retain both owners and require reviewed resolution",
+            },
+            "required_merge_inputs": [
+                "all files and directories in alpha-q-ai-history-14",
+                "MERGE.md from every repository and history source",
+                "STYLES.md and UNIVERSALS.md",
+                "memory indexes, tracker state, and synchronization evidence",
+                "tests, workflows, routes, APIs, ports, and automation files",
+            ],
+            "synchronization_gates": [
+                "generate or refresh memory indexes for every destination repository",
+                "record QMOI awareness, identity, and memory-sync state in each repository",
+                "update automation and workflow references after every accepted feature",
+                "run targeted tests and full repository validation in both destinations",
+                "record skipped, blocked, conflicting, or unavailable source checks",
+            ],
+            "apply_mode": "blocked until the base and every required source inventory are available; then plan-only until ownership, conflict, test, and authorization gates pass",
+        }
+
+    def audit_all_markdown_sources(
+        self,
+        roots: Sequence[Path | str] | None = None,
+    ) -> dict[str, Any]:
+        """Audit every Markdown source and its index coverage without rewriting content."""
+        repo_root = Path(__file__).resolve().parent.parent
+        default_roots = [
+            repo_root,
+            repo_root / HISTORY_SNAPSHOT_DIRECTORY,
+            repo_root.parent / "Alpha-Q-ai",
+            repo_root.parent / "Alpha-Q-ai" / "alpha-q-ai-history-14",
+        ]
+        source_roots = [Path(item).resolve() for item in (roots or default_roots)]
+        reports: list[dict[str, Any]] = []
+        all_paths: set[str] = set()
+        unresolved: list[dict[str, str]] = []
+        for root in source_roots:
+            if not root.is_dir():
+                reports.append({"root": str(root), "exists": False, "files": 0})
+                continue
+            markdown_files = []
+            for path in sorted(root.rglob("*.md")):
+                if ".git" in path.parts:
+                    continue
+                relative = path.relative_to(root).as_posix()
+                markdown_files.append(relative)
+                all_paths.add(f"{root.name}/{relative}")
+                text = path.read_text(encoding="utf-8", errors="replace")
+                if not text.strip():
+                    unresolved.append({"path": str(path), "issue": "empty Markdown file"})
+                if not any(line.lstrip().startswith("#") for line in text.splitlines()):
+                    unresolved.append({"path": str(path), "issue": "missing Markdown heading"})
+                if re.search(r"\b(?:TODO|FIXME|TBD|PLACEHOLDER)\b", text, re.IGNORECASE):
+                    unresolved.append({"path": str(path), "issue": "unresolved marker"})
+            index_path = root / "ALLMDFILESREFS.md"
+            index_text = index_path.read_text(encoding="utf-8", errors="replace") if index_path.is_file() else ""
+            missing_from_index = [path for path in markdown_files if path not in index_text]
+            reports.append({
+                "root": str(root),
+                "exists": True,
+                "files": len(markdown_files),
+                "paths": markdown_files,
+                "index": str(index_path),
+                "index_exists": index_path.is_file(),
+                "missing_from_index": missing_from_index,
+                "index_complete": index_path.is_file() and not missing_from_index,
+            })
+        return {
+            "source_roots": [str(root) for root in source_roots],
+            "reports": reports,
+            "total_markdown_files": sum(report.get("files", 0) for report in reports),
+            "all_paths": sorted(all_paths),
+            "merge_documents": sorted(
+                path for path in all_paths if path.lower().endswith("merge.md") or "/merge" in path.lower()
+            ),
+            "unresolved_checks": unresolved,
+            "index_complete": all(
+                report.get("index_complete", False)
+                for report in reports
+                if report.get("exists") and report.get("files", 0) > 0
+            ),
+            "truth_checks_passed": not unresolved,
+            "read_only": True,
+        }
+
+    def refresh_all_markdown_indexes(
+        self,
+        roots: Sequence[Path | str] | None = None,
+    ) -> dict[str, Any]:
+        """Write complete path inventories into ALLMDFILESREFS.md for each source root."""
+        audit = self.audit_all_markdown_sources(roots)
+        marker_start = "\n## Complete Autonomous Markdown Source Inventory\n"
+        updated: list[str] = []
+        for report in audit["reports"]:
+            if not report.get("exists"):
+                continue
+            index_path = Path(report["index"])
+            existing = index_path.read_text(encoding="utf-8") if index_path.is_file() else "# ALLMDFILESREFS.md\n"
+            prefix = existing.split(marker_start, 1)[0].rstrip()
+            section = [
+                marker_start.rstrip(),
+                "",
+                "Generated by the Ollama autonomous agent. This section enumerates every Markdown path in this source root.",
+                "",
+                f"- Source root: `{report['root']}`",
+                f"- Markdown files: `{report['files']}`",
+                "",
+                "### Paths",
+                "",
+            ]
+            section.extend(f"- `{path}`" for path in report["paths"])
+            index_path.write_text(prefix + "\n\n" + "\n".join(section) + "\n", encoding="utf-8")
+            updated.append(str(index_path))
+        return {
+            "updated_indexes": updated,
+            "audit": self.audit_all_markdown_sources(roots),
         }
 
     @staticmethod
@@ -2554,8 +2840,15 @@ class CrossRepositoryAutonomyManager:
             repo_root / "qmoi-enhanced-history-14" / "_archive_qmoi-enhanced",
             repo_root / "ollamatracks",
         ]
-        if (repo_root / "Alpha-Q-ai").exists():
-            defaults.append(repo_root / "Alpha-Q-ai")
+        alpha_roots = [repo_root / "Alpha-Q-ai", repo_root.parent / "Alpha-Q-ai"]
+        for alpha_root in alpha_roots:
+            if alpha_root.exists():
+                defaults.extend(
+                    [
+                        alpha_root,
+                        alpha_root / "alpha-q-ai-history-14",
+                    ]
+                )
 
         root_sources = list(roots) if roots is not None else list(defaults)
         candidates = [Path(item).resolve() for item in root_sources]
@@ -2828,7 +3121,7 @@ class CrossRepositoryAutonomyManager:
         merge_path = repo / "MERGE.md"
         merge_path.parent.mkdir(parents=True, exist_ok=True)
         merge_metrics = plan.get("merge_metrics") or self.collect_full_merge_metrics([repo])
-        metrics_summary = { 
+        metrics_summary = {
             "total_branches": merge_metrics.get("total_branches", 0),
             "total_files": merge_metrics.get("total_files", 0),
             "total_directories": merge_metrics.get("total_directories", 0),
@@ -3949,6 +4242,8 @@ All timestamps use UTC ISO-8601 format.
             details={"repositories": [str(path) for path in repo_paths], "auto_push": auto_push},
         )
 
+        markdown_index_refresh = self.cross_repo_manager.refresh_all_markdown_indexes()
+
         inventory = self.cross_repo_manager.build_unified_markdown_inventory(
             repo_paths,
             include_history=True,
@@ -3966,6 +4261,9 @@ All timestamps use UTC ISO-8601 format.
             include_history=True,
             include_memory=True,
         )
+        cross_repository_plan = self.cross_repo_manager.build_cross_repository_merge_plan(
+            repo_paths
+        )
 
         for repo_path in repo_paths:
             repo_path.mkdir(parents=True, exist_ok=True)
@@ -3973,6 +4271,8 @@ All timestamps use UTC ISO-8601 format.
                 "merge_metrics": merge_metrics,
                 "inventory": inventory,
                 "merge_plan": merge_plan,
+                "cross_repository_plan": cross_repository_plan,
+                "markdown_index_refresh": markdown_index_refresh,
                 "repositories": [str(path) for path in repo_paths],
                 "auto_push": auto_push,
                 "primary_root": str(primary_root),
@@ -3988,6 +4288,8 @@ All timestamps use UTC ISO-8601 format.
             "merge_metrics": merge_metrics,
             "inventory": inventory,
             "merge_plan": merge_plan,
+            "cross_repository_plan": cross_repository_plan,
+            "markdown_index_refresh": markdown_index_refresh,
             "captured_at": utc_iso(),
             "auto_push": auto_push,
         }
@@ -4074,6 +4376,7 @@ All timestamps use UTC ISO-8601 format.
             "merge_metrics": merge_metrics,
             "inventory": inventory,
             "merge_plan": merge_plan,
+            "cross_repository_plan": cross_repository_plan,
         }
 
     # ------------------------------------------------------------------------
@@ -4118,6 +4421,23 @@ All timestamps use UTC ISO-8601 format.
 
             handler_passed = bool(handlers)
 
+            source_documents = {}
+            for document in ("STYLES.md", "UNIVERSALS.md"):
+                path = self.root_dir / document
+                source_documents[document] = {
+                    "exists": path.is_file(),
+                    "non_empty": path.is_file() and path.stat().st_size > 0,
+                    "required_for": (
+                        "UI feature generation"
+                        if document == "STYLES.md"
+                        else "authentication, login, identity, and universal behavior"
+                    ),
+                }
+            source_documents_passed = all(
+                item["exists"] and item["non_empty"]
+                for item in source_documents.values()
+            )
+
             self.memory_generator.generate_index()
             self.model_card_generator.generate_card()
 
@@ -4134,6 +4454,9 @@ All timestamps use UTC ISO-8601 format.
                 "platforms": platforms,
                 "features": features,
                 "file_handlers": handlers,
+                "source_documents": source_documents,
+                "source_documents_validation_passed": source_documents_passed,
+                "complete_execution_contract": self.build_complete_execution_contract(),
                 "proof": contract,
                 "platform_validation_passed": platform_passed,
                 "feature_validation_passed": feature_passed,

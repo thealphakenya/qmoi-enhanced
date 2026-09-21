@@ -1,12 +1,2 @@
-{
-  "timestamp_utc": "2026-09-20T23:19:05.201Z",
-  "snapshot_hash": "e96fc816a0344110fd5a5658f9d58e46377354aa4ceed8e2620d5683aabda688",
-  "validation_workflow_id": 333901991,
-  "agent_workflow_id": 316417903,
-  "latest_validation_run_id": 35542265054,
-  "latest_agent_run_id": 35542522050,
-  "discovered_active_run_count": 1,
-  "active_run_count": 1,
-  "open_pr_count": 13,
-  "force_snapshot": true
-}
+LAST_RECONCILIATION: initialized
+Timestamp: 2026-09-21T00:09:41.995653Z

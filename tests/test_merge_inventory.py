@@ -5,6 +5,7 @@ from scripts.merge_inventory import (
     add_after_merge_metrics,
     build_base_merge_plan,
     classify_duplicate_content,
+    git_tree_metrics,
     inventory_repository,
     projected_tree_metrics,
     stage_sources,
@@ -34,6 +35,15 @@ def test_inventory_counts_all_refs_and_unique_history_paths(tmp_path):
     assert "refs/heads/main" in report["refs"]
     assert "src/qmoi-enhanced.txt" in report["unique_history_paths"]
     assert report["history_file_count"] == 1
+
+
+def test_git_tree_metrics_records_complete_snapshot(tmp_path):
+    repo = init_repo(tmp_path, "qmoi-enhanced")
+    metrics = git_tree_metrics(repo, "HEAD")
+    assert metrics["files"] == 1
+    assert metrics["directories"] == 1
+    assert metrics["symlinks"] == 0
+    assert metrics["entries"][0]["path"] == "src/qmoi-enhanced.txt"
 
 
 def test_stage_requires_complete_tree_and_records_history(tmp_path):

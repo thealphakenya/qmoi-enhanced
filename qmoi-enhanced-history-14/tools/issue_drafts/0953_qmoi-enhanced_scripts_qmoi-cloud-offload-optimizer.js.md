@@ -1,0 +1,105 @@
+---
+title: "Issue draft for qmoi-enhanced/scripts/qmoi-cloud-offload-optimizer.js"
+generated: 2025-11-08T16:06:38.818360Z
+---
+
+# Review needed: qmoi-enhanced/scripts/qmoi-cloud-offload-optimizer.js
+
+Status: AUTOMATED_REMOVAL_FROM_DONEREFS
+
+Suggested next steps:
+
+- Inspect the file and its [AUTOFIXED by Ollama at 2026-07-26T18:54:42.060491Z] markers or [AUTOFIXED by Ollama at 2026-07-26T18:54:42.060491Z]s.
+- If the file is safe for production, remove the [AUTOFIXED by Ollama at 2026-07-26T18:54:42.060491Z] and add tests / small PR.
+- If the file is intentionally non-production (e.g. simulated or cache), consider moving it out of the repo or documenting its purpose.
+- After changes, re-run `scripts/verify_and_finalize_done.py` to include the file back in `donerefs.txt`.
+
+Excerpt (first 2KB):
+
+```
+#!/usr/bin/env node
+
+/**
+ * QMOI Cloud Offload Optimizer
+ * Monitors system resources and automatically offloads heavy tasks to the cloud
+ * for ultra-lightweight operation on all devices.
+ */
+
+const { exec } = require('child_process');
+const os = require('os');
+const path = require('path');
+const fs = require('fs');
+
+const LOG_PATH = path.join(__dirname, '../logs/qmoi-cloud-offload.log');
+const CONFIG_PATH = path.join(__dirname, '../config/qmoi_cloud_config.json');
+
+function log(msg) {
+  const entry = `[${new Date().toISOString()}] ${msg}\n`;
+  fs.appendFileSync(LOG_PATH, entry);
+  if (process.env.QMOI_MASTER) console.log(entry);
+}
+
+function run(cmd, cwd = '.', opts = {}) {
+  return new Promise((resolve, reject) => {
+    log(`Running: ${cmd} (cwd: ${cwd})`);
+    const child = exec(cmd, { cwd, ...opts }, (err, stdout, stderr) => {
+      if (stdout) log(stdout);
+      if (stderr) log(stderr);
+      if (err) {
+        log(`Error: ${err.message}`);
+        return reject(err);
+      }
+      resolve(stdout);
+    });
+  });
+}
+
+function getSystemResources() {
+  const totalMem = os.totalmem();
+  const freeMem = os.freemem();
+  const usedMem = totalMem - freeMem;
+  const memUsagePercent = (usedMem / totalMem) * 100;
+
+  const cpus = os.cpus();
+  const cpuUsage = cpus.reduce((acc, cpu) => {
+    const total = Object.values(cpu.times).reduce((a, b) => a + b);
+    const idle = cpu.times.idle;
+    return acc + ((total - idle) / total);
+  }, 0) / cpus.length * 100;
+
+  const loadAvg = os.loadavg();
+
+  return {
+    memory: {
+      total: totalMem,
+      free: freeMem,
+      used: usedMem,
+      usagePercent: memUsagePercent
+    },
+    cpu: {
+      usage: cpuUsage,
+      cores: cpus.length
+    },
+    load: {
+      avg1: loadAvg[0],
+      avg5: loadAvg[1],
+      avg15: loadAvg[2]
+    }
+  };
+}
+
+function shouldOffload(resources) {
+  const thresholds = {
+    memory: 80, // Offload if memory usage > 80%
+    cpu: 70,    // Offload if CPU usage > 70%
+    load: 2.0   // Offload if load average > 2.0
+  };
+
+  return (
+    resources.me
+```
+
+Notes:
+
+- This draft was generated automatically to help triage files removed from `donerefs.txt`.
+- Backups and previous runs may exist under `.qmoi_validation`.

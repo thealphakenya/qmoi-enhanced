@@ -1,0 +1,17 @@
+{
+  "root": "/workspaces/qmoi-enhanced",
+  "tokens": [
+    "\\bTODO\\b",
+    "\\bFIXME\\b",
+    "\\bPLACEHOLDER\\b",
+    "<replace>",
+    "\\bplaceholder\\b",
+    "\\bplaceholders\\b",
+    "\\bdummy\\b",
+    "in production",
+    "REPLACE_ME",
+    "REPLACE_THIS",
+    "<PLACEHOLDER>"
+  ],
+  "matches": []
+}

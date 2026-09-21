@@ -1,0 +1,7 @@
+# Dockerfile for ai-anomaly-service.py
+FROM python:3.11-slim
+WORKDIR /app
+COPY ai-anomaly-service.py ./
+RUN pip install flask scikit-learn numpy
+EXPOSE 5001
+CMD ["python", "ai-anomaly-service.py"]

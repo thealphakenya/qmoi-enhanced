@@ -1,3 +1,16 @@
+## 2026-09-20 Markdown and merge-control continuation
+
+- Restored the complete `qmoi-enhanced-history-14` base and confirmed the merge readiness gate.
+- Added complete Markdown-source auditing across QMOI, `qmoi-enhanced-history-14`, Alpha-Q-ai, and `alpha-q-ai-history-14`.
+- Added complete `ALLMDFILESREFS.md` refresh support and merge-plan coverage for all Markdown paths and merge documents.
+- Normalized `admin`, `Admin`, and `ADMIN` to `master`, `Master`, and `MASTER` in historical Markdown trees; remaining token count is zero.
+- Next validation: run the Markdown audit/index refresh, affected tests, full validation, update merge metrics, and only then attempt remote push.
+
+- Markdown audit completed across four roots: 7,512 Markdown files indexed; QMOI 3,660, history base 3,559, Alpha-Q-ai 196, Alpha history 97.
+- `ALLMDFILESREFS.md` refresh completed in all four roots with zero missing indexed paths.
+- Truth-audit result: 621 warnings remain, primarily TODO/FIXME/TBD/placeholder markers; these remain explicit review warnings and are not reported as proven claims.
+- Historical terminology migration completed: zero remaining `admin`, `Admin`, or `ADMIN` tokens in text files under `qmoi-enhanced-history-14` and `alpha-q-ai-history-14`.
+- Merge control remains first: Markdown indexing and source audit run before merge planning; push remains gated on tests, validation, truthful audit output, and authorization.
 - [x] Pushed `main` successfully to `origin` at commit `054cd56b40` and confirmed local/remote SHA equality.
 - [x] QMOI live activity workflow run `35538651063` completed successfully on the pushed SHA; the prior Ollama live activity run `35536732110` completed successfully.
 - [!] Manual dispatch of `ollama-autonomous-agent.yml` returned GitHub `HTTP 403 Resource not accessible by integration`; no fresh agent run is claimed until a token with workflow-dispatch permission is supplied.

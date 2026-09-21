@@ -1,0 +1,1 @@
+ÿþ// QMOI Emergency Fix System

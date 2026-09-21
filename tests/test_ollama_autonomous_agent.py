@@ -62,6 +62,57 @@ class TestResumeFileTracking:
 
 
 class TestCrossRepositoryAutonomyManager:
+    def test_autonomy_plan_uses_history_base_for_feature_discovery(self):
+        manager = CrossRepositoryAutonomyManager()
+        plan = manager.build_autonomy_plan()
+        discovery = plan["feature_discovery_plan"]
+
+        assert discovery["base_repository"] == "qmoi-enhanced-history-14"
+        assert "new sites" in discovery["candidate_surfaces"]
+        assert "new applications" in discovery["candidate_surfaces"]
+        assert "web and mobile UI features" in discovery["candidate_surfaces"]
+        assert "thealphakenya/Alpha-Q-ai" in discovery["source_order"]
+        assert discovery["alpha_preservation"].startswith("Alpha-Q-ai keeps")
+
+        contract = plan["complete_execution_contract"]
+        assert contract["style_source"]["file"] == "STYLES.md"
+        assert contract["universal_source"]["file"] == "UNIVERSALS.md"
+        assert "complete repository test command" in " ".join(
+            contract["whole_repository_actions"]
+        )
+        assert "authentication" in contract["universal_source"]["required_when"]
+
+    def test_cross_repository_plan_covers_alpha_history_and_merge_docs(self):
+        manager = CrossRepositoryAutonomyManager()
+        plan = manager.build_cross_repository_merge_plan()
+
+        history = plan["metrics"]["alpha-q-ai-history-14"]
+        assert history["exists"] is True
+        assert history["files"] == 1346
+        assert plan["all_alpha_history_paths_included"] is True
+        assert any(path.endswith("/MERGE.md") for path in plan["merge_documents"])
+        assert plan["base_repository"] == "qmoi-enhanced-history-14"
+        assert "base_available" in plan
+        assert "ready_for_apply" in plan
+        assert "memory indexes, tracker state, and synchronization evidence" in plan[
+            "required_merge_inputs"
+        ]
+
+    def test_markdown_audit_reports_index_and_truth_status(self, tmp_path):
+        root = tmp_path / "source"
+        root.mkdir()
+        (root / "README.md").write_text("# Readme\n\nTODO: verify\n", encoding="utf-8")
+        (root / "ALLMDFILESREFS.md").write_text(
+            "# Index\n- README.md\n- ALLMDFILESREFS.md\n", encoding="utf-8"
+        )
+
+        audit = CrossRepositoryAutonomyManager().audit_all_markdown_sources([root])
+
+        assert audit["total_markdown_files"] == 2
+        assert audit["index_complete"] is True
+        assert audit["truth_checks_passed"] is False
+        assert any(item["issue"] == "unresolved marker" for item in audit["unresolved_checks"])
+
     def test_build_unified_markdown_inventory_deduplicates_same_names(self, tmp_path):
         repo_qe = tmp_path / "qmoi-enhanced"
         repo_aq = tmp_path / "Alpha-Q-ai"
@@ -234,14 +285,14 @@ class TestMarkdownCategoryIndex:
 
 class TestPlatformValidator:
     """Tests for PlatformValidator class."""
-    
+
     def test_validator_initialization(self):
         """Test platform validator can be initialized for each platform."""
         platforms = ["windows", "macos", "linux", "ios", "android", "web"]
         for platform in platforms:
             validator = PlatformValidator(platform)
             assert validator.platform == platform
-    
+
     def test_all_platforms_support_validation(self):
         """Verify validation methods exist for all platforms."""
         platforms = ["windows", "macos", "linux", "ios", "android", "web"]
@@ -255,12 +306,12 @@ class TestPlatformValidator:
 
 class TestFeatureTester:
     """Tests for FeatureTester class."""
-    
+
     def test_qmoiaiui_features_complete(self):
         """Test QMOIAIUI has all required features."""
         tester = FeatureTester("qmoiaiui", "web")
         features = tester.test_qmoiaiui_features()
-        
+
         required_features = [
             "conversation_creation",
             "message_history",
@@ -273,15 +324,15 @@ class TestFeatureTester:
             "accessibility_features",
             "platform_specific_styling",
         ]
-        
+
         for feature in required_features:
             assert feature in features, f"Missing feature: {feature}"
-    
+
     def test_qcity_features_complete(self):
         """Test QCity has all required features."""
         tester = FeatureTester("qcity", "web")
         features = tester.test_qcity_features()
-        
+
         required_features = [
             "folder_tree_navigation",
             "view_modes",
@@ -295,7 +346,7 @@ class TestFeatureTester:
             "gesture_controls",
             "file_preview",
         ]
-        
+
         for feature in required_features:
             assert feature in features, f"Missing feature: {feature}"
 
@@ -373,12 +424,12 @@ class TestFeatureTester:
         assert "README.md" in production_text
         assert (tmp_path / "production.md").exists()
         assert "TODO" in (tmp_path / "production.md").read_text(encoding="utf-8")
-    
+
     def test_qmoi_space_features_complete(self):
         """Test QMOI Space has all required features."""
         tester = FeatureTester("qmoi-space", "web")
         features = tester.test_qmoi_space_features()
-        
+
         required_features = [
             "playback_controls",
             "volume_control",
@@ -393,15 +444,15 @@ class TestFeatureTester:
             "keyboard_shortcuts",
             "eye_tracking",
         ]
-        
+
         for feature in required_features:
             assert feature in features, f"Missing feature: {feature}"
-    
+
     def test_qalpha_features_complete(self):
         """Test QALPHA has all required features."""
         tester = FeatureTester("qalpha", "web")
         features = tester.test_qalpha_features()
-        
+
         required_features = [
             "code_editing",
             "syntax_highlighting",
@@ -414,18 +465,18 @@ class TestFeatureTester:
             "keyboard_shortcuts",
             "extensions",
         ]
-        
+
         for feature in required_features:
             assert feature in features, f"Missing feature: {feature}"
 
 
 class TestFileHandlerValidator:
     """Tests for FileHandlerValidator class."""
-    
+
     def test_file_type_coverage(self):
         """Verify all common file types have handlers."""
         validator = FileHandlerValidator()
-        
+
         essential_types = {
             ".pdf": "qcity",      # Documents
             ".mp3": "qmoi-space",  # Audio
@@ -434,16 +485,16 @@ class TestFileHandlerValidator:
             ".py": "qalpha",       # Code
             ".xlsx": "qcity",      # Spreadsheets
         }
-        
+
         for ext, expected_handler in essential_types.items():
             assert ext in validator.FILE_TYPE_MAPPING
             assert validator.FILE_TYPE_MAPPING[ext] == expected_handler
-    
+
     def test_handler_validation_for_all_platforms(self):
         """Test handler validation works for all platforms."""
         validator = FileHandlerValidator()
         platforms = ["windows", "macos", "linux", "ios", "android", "web"]
-        
+
         for platform in platforms:
             results = validator.validate_handler_registration(platform)
             assert isinstance(results, dict)
@@ -452,32 +503,32 @@ class TestFileHandlerValidator:
 
 class TestMemoryIndexGenerator:
     """Tests for MemoryIndexGenerator class."""
-    
+
     def test_memory_index_generation(self, tmp_path):
         """Test memory index file generation."""
         generator = MemoryIndexGenerator(tmp_path)
-        
+
         # Create a dummy file to track
         test_file = tmp_path / "test.md"
         test_file.write_text("# Test")
-        
+
         generator.generate_index()
-        
+
         # Check markdown file was created
         assert generator.index_path.exists()
         content = generator.index_path.read_text()
         assert "QMOI Realtime Memory Index" in content
         assert "Files Tracked" in content
-    
+
     def test_json_index_generation(self, tmp_path):
         """Test JSON index file generation."""
         generator = MemoryIndexGenerator(tmp_path)
-        
+
         test_file = tmp_path / "test.py"
         test_file.write_text("# Test")
-        
+
         generator.generate_index()
-        
+
         # Check JSON file was created
         assert generator.json_path.exists()
         data = json.loads(generator.json_path.read_text())
@@ -488,37 +539,37 @@ class TestMemoryIndexGenerator:
 
 class TestModelCardGenerator:
     """Tests for ModelCardGenerator class."""
-    
+
     def test_model_card_generation(self, tmp_path):
         """Test model card file generation."""
         generator = ModelCardGenerator(tmp_path)
         generator.generate_card()
-        
+
         # Check file was created
         assert generator.card_path.exists()
         content = generator.card_path.read_text()
-        
+
         # Verify key sections
         assert "QMOI Model Card" in content
         assert "QMOIAIUI" in content
         assert "QCity" in content
         assert "QMOI Space" in content
         assert "QALPHA" in content
-    
+
     def test_model_card_includes_all_apps(self, tmp_path):
         """Verify model card documents all apps."""
         generator = ModelCardGenerator(tmp_path)
         generator.generate_card()
-        
+
         content = generator.card_path.read_text()
-        
+
         apps = {
             "QMOIAIUI": "Conversational AI",
             "QCity": "File Manager",
             "QMOI Space": "Media Player",
             "QALPHA": "IDE",
         }
-        
+
         for app, description in apps.items():
             assert app in content
 
@@ -569,7 +620,7 @@ def test_historical_autonomous_agent_utils_are_available(tmp_path):
 
 class TestWorkflowNormalizer:
     """Tests for WorkflowNormalizer class."""
-    
+
     def test_normalize_4space_indentation(self):
         """Test normalization of 4-space indentation."""
         input_yaml = """---
@@ -589,7 +640,7 @@ jobs:
         assert "- name: Test" in result
         assert "run: echo test" in result
         lines = result.split('\n')
-        
+
         # Should maintain empty lines
         assert '' in lines
 
@@ -1051,47 +1102,47 @@ class TestAvatarRealtimeValidation:
 
 class TestOllamaAutonomousAgent:
     """Integration tests for OllamaAutonomousAgent."""
-    
+
     def test_agent_initialization(self, tmp_path):
         """Test agent can be initialized."""
         agent = OllamaAutonomousAgent(tmp_path)
         assert agent.root_dir == tmp_path
         assert len(agent.validators) == 6  # 6 platforms
-    
+
     def test_all_platforms_have_validators(self, tmp_path):
         """Verify all platforms have validators."""
         agent = OllamaAutonomousAgent(tmp_path)
         expected_platforms = ["windows", "macos", "linux", "ios", "android", "web"]
-        
+
         for platform in expected_platforms:
             assert platform in agent.validators
             assert isinstance(agent.validators[platform], PlatformValidator)
-    
+
     def test_validate_all_platforms_returns_dict(self, tmp_path):
         """Test validate_all_platforms returns proper structure."""
         agent = OllamaAutonomousAgent(tmp_path)
         results = agent.validate_all_platforms()
-        
+
         assert isinstance(results, dict)
         for platform in ["windows", "macos", "linux", "ios", "android", "web"]:
             assert platform in results
             assert isinstance(results[platform], dict)
-    
+
     def test_validate_all_features_returns_dict(self, tmp_path):
         """Test validate_all_features returns proper structure."""
         agent = OllamaAutonomousAgent(tmp_path)
         results = agent.validate_all_features()
-        
+
         assert isinstance(results, dict)
         expected_apps = ["qmoiaiui", "qcity", "qmoi-space", "qalpha"]
         for app in expected_apps:
             assert app in results
-    
+
     def test_validate_file_handlers_returns_dict(self, tmp_path):
         """Test validate_file_handlers returns proper structure."""
         agent = OllamaAutonomousAgent(tmp_path)
         results = agent.validate_file_handlers()
-        
+
         assert isinstance(results, dict)
         for platform in ["windows", "macos", "linux", "ios", "android", "web"]:
             assert platform in results
@@ -1150,20 +1201,20 @@ class TestGitHubProofContract:
 
 class TestPRSuccessContract:
     """Tests verifying PR validation contract compliance."""
-    
+
     def test_pr_contract_validates_all_platforms(self, tmp_path):
         """
-        Verify PR contract: 
+        Verify PR contract:
         All builds must succeed on Windows, macOS, Linux, iOS, Android, Web
         """
         agent = OllamaAutonomousAgent(tmp_path)
         results = agent.validate_all_platforms()
-        
+
         required_platforms = ["windows", "macos", "linux", "ios", "android", "web"]
-        
+
         for platform in required_platforms:
             assert platform in results, f"Platform {platform} validation missing"
-    
+
     def test_pr_contract_validates_all_features(self, tmp_path):
         """
         Verify PR contract:
@@ -1171,15 +1222,15 @@ class TestPRSuccessContract:
         """
         agent = OllamaAutonomousAgent(tmp_path)
         results = agent.validate_all_features()
-        
+
         required_apps = ["qmoiaiui", "qcity", "qmoi-space", "qalpha"]
         required_platforms = ["windows", "macos", "linux", "ios", "android", "web"]
-        
+
         for app in required_apps:
             assert app in results, f"App {app} feature tests missing"
             for platform in required_platforms:
                 assert platform in results[app], f"Platform {platform} tests missing for {app}"
-    
+
     def test_pr_contract_validates_file_handlers(self, tmp_path):
         """
         Verify PR contract:
@@ -1187,27 +1238,27 @@ class TestPRSuccessContract:
         """
         agent = OllamaAutonomousAgent(tmp_path)
         results = agent.validate_file_handlers()
-        
+
         required_platforms = ["windows", "macos", "linux", "ios", "android", "web"]
-        
+
         for platform in required_platforms:
             assert platform in results, f"Platform {platform} handler validation missing"
-    
+
     def test_pr_contract_generates_memory_index(self, tmp_path):
         """
         Verify PR contract:
         Memory index and JSON must be generated
         """
         agent = OllamaAutonomousAgent(tmp_path)
-        
+
         test_file = tmp_path / "test.md"
         test_file.write_text("# Test")
-        
+
         agent.memory_generator.generate_index()
-        
+
         assert agent.memory_generator.index_path.exists()
         assert agent.memory_generator.json_path.exists()
-    
+
     def test_pr_contract_generates_model_card(self, tmp_path):
         """
         Verify PR contract:
@@ -1215,7 +1266,7 @@ class TestPRSuccessContract:
         """
         agent = OllamaAutonomousAgent(tmp_path)
         agent.model_card_generator.generate_card()
-        
+
         assert agent.model_card_generator.card_path.exists()
 
 
@@ -1258,7 +1309,7 @@ def test_validator_exists_for_platform(platform):
 def test_app_features_exist(app, features):
     """Parametrized test for app features."""
     tester = FeatureTester(app, "web")
-    
+
     if app == "qmoiaiui":
         app_features = tester.test_qmoiaiui_features()
     elif app == "qcity":
@@ -1267,19 +1318,19 @@ def test_app_features_exist(app, features):
         app_features = tester.test_qmoi_space_features()
     elif app == "qalpha":
         app_features = tester.test_qalpha_features()
-    
+
     for feature in features:
         assert feature in app_features
 
 
 class TestResilienceAndAutoHealing:
     """Tests for agent resilience and auto-healing capabilities."""
-    
+
     def test_agent_recovers_from_missing_files(self, tmp_path):
         """Agent should detect and recover from missing essential files."""
         agent = OllamaAutonomousAgent(tmp_path)
         result = agent.detect_missing_files()
-        
+
         assert isinstance(result, dict)
         assert "recovery_procedures" in result or "can_recover" in result or len(result) >= 0
 
@@ -1287,38 +1338,38 @@ class TestResilienceAndAutoHealing:
         """Agent should handle corrupted files without crashing."""
         corrupted = tmp_path / "data.json"
         corrupted.write_bytes(b'\x00\x01\x02\x03')  # Binary garbage
-        
+
         agent = OllamaAutonomousAgent(tmp_path)
         result = agent.handle_corrupted_file(corrupted)
-        
+
         assert isinstance(result, (dict, bool, type(None)))
 
     def test_autonomous_self_healing_mechanism(self, tmp_path):
         """Verify the agent can automatically identify, patch, and verify an anomalous file state without human input."""
         agent = OllamaAutonomousAgent(tmp_path)
-        
+
         # Simulate a broken workflow file configuration
         broken_file = tmp_path / ".github" / "workflows" / "broken.yml"
         broken_file.parent.mkdir(parents=True, exist_ok=True)
         broken_file.write_text("invalid: [unclosed bracket", encoding="utf-8")
-        
+
         # Invoke autonomous self-healing routine
         healing_result = agent.auto_heal_file(broken_file)
-        
+
         assert healing_result["healed"] is True
         assert "fixed" in healing_result["action"].lower() or "normalized" in healing_result["action"].lower()
 
 
 class TestPlatformSpecificFeatures:
     """Tests for the platform-specific features with safe type handling."""
-    
+
     def test_features_covered_across_platforms(self):
         """Features should cover all 6 platforms, safely handling dictionary or list data structures."""
         agent = OllamaAutonomousAgent()
         features = agent.PLATFORM_SPECIFIC_FEATURES
-        
+
         platforms = ["windows", "macos", "linux", "ios", "android", "web"]
-        
+
         if isinstance(features, dict):
             for platform in platforms:
                 assert platform in features, f"Platform {platform} missing from features"

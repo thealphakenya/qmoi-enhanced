@@ -1,0 +1,50 @@
+name: Build QMOI AI
+'on':
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: 0 3 * * *
+  workflow_dispatch: null
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install Python deps
+        run: pip install requests
+      - name: Install Node.js deps
+        run: |
+          npm install
+          npm install --save-dev electron-builder
+      - name: Run Builder
+        run: python qmoi-app-builder.py
+      - name: Build Android APK
+        if: ${{ hashFiles('android/**') != '' }}
+        run: |
+          cd android
+          ./gradlew assembleRelease || echo "⚠️ Skipping Android build"
+      - name: Commit README changes
+        run: |
+          git config --global user.email "qmoibot@users.noreply.github.com"
+          git config --global user.name "QMOI Bot"
+          git add README.md
+          git commit -m "🔄 Auto-update QMOI status" || echo "No changes to commit"
+          git push
+    timeout_minutes: 30
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+env:
+  NODE_VERSION: '18'
+  QMOI_AUTODEV_ENABLED: 'true'

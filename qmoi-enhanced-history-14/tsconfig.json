@@ -1,0 +1,69 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["node"],
+    "module": "esnext",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "useUnknownInCatchVariables": false,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"],
+      "@/components/*": ["./src/components/*"],
+      "@/app/*": ["./app/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/adapters/*": ["./src/adapters/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/lib/*": ["./lib/*"]
+    },
+    "allowJs": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "app/**/*",
+    "pages/**/*",
+    "src/**/*",
+    "src/components/**/*",
+    "lib/**/*",
+    "types/**/*",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "dist",
+    "lib/**",
+    "mobile/**",
+    "scripts/**",
+    "qmoi-enhanced/scripts/**",
+    "earnvault/**",
+    "public/**",
+    "coverage/**",
+    "**/*.md.ts",
+    "**/*.md.tsx",
+    "**/*.py.tsx",
+    "app/api/auth/**",
+    "app/api/auto-fix.ts",
+    "app/api/middleware/**",
+    "app/api/qmoi-model.ts",
+    "app/api/wifi-security.ts"
+  ]
+}
