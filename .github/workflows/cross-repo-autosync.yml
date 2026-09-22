@@ -108,7 +108,7 @@ jobs:
 
       - name: Upload synchronization report
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: cross-repo-sync-report-${{ github.run_id }}
           path: cross-repo-sync-report.json

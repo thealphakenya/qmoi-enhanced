@@ -70,7 +70,7 @@ jobs:
           PY
 
       - name: Upload live activity artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: qmoi-live-activity-stream
           path: |

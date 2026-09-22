@@ -479,7 +479,7 @@ jobs:
 
       - name: Upload branch sync artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: branch-sync-report
           path: branch-sync-report.txt
