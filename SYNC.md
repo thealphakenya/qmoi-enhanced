@@ -79,6 +79,39 @@ The following critical files are synced bidirectionally:
 - **Scheduled Daily**: Full sync check and reconciliation
 - **On File Update**: Real-time sync for critical documentation files
 
+### Bidirectional Autosync Workflow
+
+Both repositories include `.github/workflows/cross-repo-autosync.yml`. It runs
+on pushes to `main`, every 15 minutes, and manual dispatch. The workflow checks
+out the current repository and its counterpart, runs
+`scripts/cross_repo_sync.py`, publishes `autosync-backup` first, and promotes
+to `main` only when the target tip is a verified fast-forward. QMOI remains the
+policy master, but a push from Alpha-Q-ai selects the reverse direction so
+either repository can initiate a synchronization attempt.
+
+The workflow never force-pushes. Diverged or unrelated histories stop with a
+reviewable failure and an uploaded JSON audit report. This is intentional:
+automatic synchronization must not erase work from either repository. The
+existing `branch-sync.yml` legacy force-mirroring job is disabled; the guarded
+workflow is the only automatic branch synchronizer.
+
+The workflow uses `MY_CUSTOM_TOKEN` for write access to both repositories. That
+secret must already exist in each repository's Actions settings; no code-only
+change can grant GitHub write permission. Local Codespaces can use the same
+runner in either checkout:
+
+```bash
+python scripts/cross_repo_sync.py \
+	--qmoi /path/to/qmoi-enhanced \
+	--alpha /path/to/Alpha-Q-ai \
+	--direction audit \
+	--report /tmp/cross-repo-sync-report.json
+```
+
+Use `qmoi-to-alpha` or `alpha-to-qmoi` with `--apply --promote` only after the
+audit reports `fast_forward_possible: true`. A false value requires a reviewed
+merge or rebase before promotion.
+
 All sync jobs use a single-writer rule per repository, `autosync-backup` as the
 first publication target, `[sync]` commit markers, and `[skip ci]` only for the
 resulting synchronization commit. This prevents push-trigger recursion and
