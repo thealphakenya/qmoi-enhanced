@@ -1074,7 +1074,7 @@ jobs:
 
       - name: Trigger ollama-autonomous-agent workflow
         id: dispatch_agent
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           AGENT_WORKFLOW_FILE: ollama-autonomous-agent.yml
         with:
