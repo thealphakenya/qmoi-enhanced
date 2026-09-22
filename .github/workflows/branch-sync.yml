@@ -38,6 +38,7 @@ jobs:
 
   sync-branches:
     name: Synchronize branches across repositories
+    if: ${{ false }}
     runs-on: ubuntu-latest
 
     permissions:

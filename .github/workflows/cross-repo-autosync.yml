@@ -1,0 +1,97 @@
+name: QMOI Bidirectional Cross-Repository Autosync
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+    inputs:
+      direction:
+        description: "Sync direction, or audit only"
+        required: false
+        default: auto
+        type: choice
+        options: [auto, audit, qmoi-to-alpha, alpha-to-qmoi]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: qmoi-cross-repo-autosync
+  cancel-in-progress: false
+
+env:
+  QMOI_REPOSITORY: thealphakenya/qmoi-enhanced
+  ALPHA_REPOSITORY: thealphakenya/Alpha-Q-ai
+  SYNC_TOKEN: ${{ secrets.MY_CUSTOM_TOKEN }}
+
+jobs:
+  autosync:
+    name: Audit and safely synchronize both repositories
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+          token: ${{ secrets.MY_CUSTOM_TOKEN }}
+
+      - name: Checkout counterpart repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository == env.QMOI_REPOSITORY && env.ALPHA_REPOSITORY || env.QMOI_REPOSITORY }}
+          ref: main
+          path: counterpart
+          fetch-depth: 0
+          persist-credentials: true
+          token: ${{ secrets.MY_CUSTOM_TOKEN }}
+
+      - name: Select direction and validate token
+        id: plan
+        shell: bash
+        env:
+          REQUESTED_DIRECTION: ${{ inputs.direction || 'auto' }}
+        run: |
+          set -euo pipefail
+          test -n "${SYNC_TOKEN:-}" || { echo "::error::MY_CUSTOM_TOKEN is required for automatic bidirectional sync."; exit 1; }
+          if [ "${REQUESTED_DIRECTION}" = audit ]; then
+            direction=audit
+          elif [ "${REQUESTED_DIRECTION}" != auto ]; then
+            direction="${REQUESTED_DIRECTION}"
+          elif [ "${GITHUB_REPOSITORY}" = "${QMOI_REPOSITORY}" ]; then
+            direction=qmoi-to-alpha
+          else
+            direction=alpha-to-qmoi
+          fi
+          echo "direction=${direction}" >> "${GITHUB_OUTPUT}"
+          echo "Selected direction: ${direction}"
+
+      - name: Run guarded cross-repository sync
+        env:
+          DIRECTION: ${{ steps.plan.outputs.direction }}
+        run: |
+          set -euo pipefail
+          if [ "${GITHUB_REPOSITORY}" = "${QMOI_REPOSITORY}" ]; then
+            qmoi_root="${GITHUB_WORKSPACE}"
+            alpha_root="${GITHUB_WORKSPACE}/counterpart"
+          else
+            qmoi_root="${GITHUB_WORKSPACE}/counterpart"
+            alpha_root="${GITHUB_WORKSPACE}"
+          fi
+          python scripts/cross_repo_sync.py \
+            --qmoi "${qmoi_root}" \
+            --alpha "${alpha_root}" \
+            --direction "${DIRECTION}" \
+            --apply \
+            --promote \
+            --report "${GITHUB_WORKSPACE}/cross-repo-sync-report.json"
+
+      - name: Upload synchronization report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-repo-sync-report-${{ github.run_id }}
+          path: cross-repo-sync-report.json
+          if-no-files-found: ignore
