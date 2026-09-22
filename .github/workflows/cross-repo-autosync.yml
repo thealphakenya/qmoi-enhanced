@@ -68,6 +68,24 @@ jobs:
           echo "direction=${direction}" >> "${GITHUB_OUTPUT}"
           echo "Selected direction: ${direction}"
 
+      - name: Bootstrap counterpart autosync contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp .github/workflows/cross-repo-autosync.yml counterpart/.github/workflows/cross-repo-autosync.yml
+          cp .github/workflows/branch-sync.yml counterpart/.github/workflows/branch-sync.yml
+          cp scripts/cross_repo_sync.py counterpart/scripts/cross_repo_sync.py
+          cp SYNC.md counterpart/SYNC.md
+          git -C counterpart config user.name "Ollama Autonomous Agent"
+          git -C counterpart config user.email "ollama-agent@qmoi.com"
+          git -C counterpart add .github/workflows/cross-repo-autosync.yml .github/workflows/branch-sync.yml scripts/cross_repo_sync.py SYNC.md
+          if git -C counterpart diff --cached --quiet; then
+            echo "Counterpart autosync contract is already current."
+          else
+            git -C counterpart commit -m "Sync guarded bidirectional autosync contract"
+            git -C counterpart push origin HEAD:main
+          fi
+
       - name: Run guarded cross-repository sync
         env:
           DIRECTION: ${{ steps.plan.outputs.direction }}
