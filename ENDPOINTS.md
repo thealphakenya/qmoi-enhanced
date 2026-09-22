@@ -5,6 +5,20 @@ This document lists the endpoint families used by the QMOI system and the reposi
 
 ## Endpoint Inventory
 
+The Ollama autonomous agent must treat the following operational endpoints as part of the merge and automation contract:
+
+- /agent/merge-history
+- /agent/reconcile-markdown
+- /agent/scan-archive
+- /agent/validate-ui-styles
+- /agent/validate-user-auth
+- /agent/sync-documentation
+- /agent/validate-routes
+- /agent/validate-ports
+- /agent/validate-history
+
+These endpoints ensure that merge activity, markdown inventory validation, UI styling checks, route and port validation, and historical archive reconciliation are all part of the same operational process. The agent should always verify against the active repo first and then compare against [qmoi-enhanced-history-14](qmoi-enhanced-history-14) for missing or recovered implementation logic.
+
 ### Core System
 - /health
 - /status

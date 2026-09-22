@@ -49,6 +49,84 @@ materialized snapshot, including paths that are currently unused or absent
 from the active checkout. Any mismatch is recorded as an addition, omission,
 duplicate, or conflict before merge authorization.
 
+## Autonomous Agent, Historical Archive, and Snapshot Markdown References
+
+The Ollama autonomous agent must treat the following canonical markdown guides and archive references as required reading during merge, styling, orchestration, synchronization, and monitoring work:
+
+### Active canonical references
+- [API.md](API.md)
+- [ENDPOINTS.md](ENDPOINTS.md)
+- [ROUTES.md](ROUTES.md)
+- [ALLPORTS.md](ALLPORTS.md)
+- [ALLMDFILESREFS.md](ALLMDFILESREFS.md)
+- [STYLES.md](STYLES.md)
+- [UNIVERSALS.md](UNIVERSALS.md)
+- [ALLAUTO.md](ALLAUTO.md)
+- [ALLBACKEND.md](ALLBACKEND.md)
+- [ALLFRONTEND.md](ALLFRONTEND.md)
+- [ALLPLATFORMSDEVICE.md](ALLPLATFORMSDEVICE.md)
+- [ALLROUTES.md](ALLROUTES.md)
+- [ACCOUNTABILITY.md](ACCOUNTABILITY.md)
+- [MERGE.md](MERGE.md)
+- [SYNC.md](SYNC.md)
+- [MONITORING_GUIDE.md](MONITORING_GUIDE.md)
+- [MONITORING_INDEX.md](MONITORING_INDEX.md)
+- [REAL_TIME_MONITORING_GUIDE.md](REAL_TIME_MONITORING_GUIDE.md)
+- [REAL_TIME_MONITORING_README.md](REAL_TIME_MONITORING_README.md)
+- [OLLAMA_AUTOMATION_GUIDE.md](OLLAMA_AUTOMATION_GUIDE.md)
+- [OLLAMA_ENHANCEMENT_COMPLETE.md](OLLAMA_ENHANCEMENT_COMPLETE.md)
+- [OLLAMA_ENHANCEMENT_SUCCESS.md](OLLAMA_ENHANCEMENT_SUCCESS.md)
+- [RESILIENCE_AUTO_HEALING.md](RESILIENCE_AUTO_HEALING.md)
+- [TEST_ENHANCEMENTS.md](TEST_ENHANCEMENTS.md)
+- [WORKFLOW_EXECUTION_PLAN.md](WORKFLOW_EXECUTION_PLAN.md)
+- [WORKFLOW_STATUS_DASHBOARD.md](WORKFLOW_STATUS_DASHBOARD.md)
+
+### Historical archive references
+- [qmoi-enhanced-history-14/ALLMDFILESREFS.md](qmoi-enhanced-history-14/ALLMDFILESREFS.md)
+- [qmoi-enhanced-history-14/STYLES.md](qmoi-enhanced-history-14/STYLES.md)
+- [qmoi-enhanced-history-14/UNIVERSALS.md](qmoi-enhanced-history-14/UNIVERSALS.md)
+- [qmoi-enhanced-history-14/API.md](qmoi-enhanced-history-14/API.md)
+- [qmoi-enhanced-history-14/ENDPOINTS.md](qmoi-enhanced-history-14/ENDPOINTS.md)
+- [qmoi-enhanced-history-14/ROUTES.md](qmoi-enhanced-history-14/ROUTES.md)
+- [qmoi-enhanced-history-14/ALLPORTS.md](qmoi-enhanced-history-14/ALLPORTS.md)
+- [qmoi-enhanced-history-14/ALLAUTO.md](qmoi-enhanced-history-14/ALLAUTO.md)
+- [qmoi-enhanced-history-14/AUTODEV.md](qmoi-enhanced-history-14/AUTODEV.md)
+- [qmoi-enhanced-history-14/ALLFRONTEND.md](qmoi-enhanced-history-14/ALLFRONTEND.md)
+- [qmoi-enhanced-history-14/ALLBACKEND.md](qmoi-enhanced-history-14/ALLBACKEND.md)
+- [qmoi-enhanced-history-14/ALLROUTES.md](qmoi-enhanced-history-14/ALLROUTES.md)
+- [qmoi-enhanced-history-14/QMOI_MODEL_CARD.md](qmoi-enhanced-history-14/QMOI_MODEL_CARD.md)
+- [qmoi-enhanced-history-14/QMOI_REALTIME_MEMORY_INDEX.md](qmoi-enhanced-history-14/QMOI_REALTIME_MEMORY_INDEX.md)
+
+### Snapshot reference directory
+- [Alpha-Q-ai-2025/Alpha-Q-a-2025.md](Alpha-Q-ai-2025/Alpha-Q-a-2025.md)
+
+### Historical merge candidates for validation next
+The following archive files are valid candidates for review, extraction, or selective adoption when the live repo lacks the same behavior or documentation quality. They are not auto-copied; they are reviewed against the active repo and applied only if ownership, safety, and validation are confirmed.
+
+- [qmoi-enhanced-history-14/ALLAUTO.md](qmoi-enhanced-history-14/ALLAUTO.md)
+- [qmoi-enhanced-history-14/AUTODEV.md](qmoi-enhanced-history-14/AUTODEV.md)
+- [qmoi-enhanced-history-14/ALLBACKEND.md](qmoi-enhanced-history-14/ALLBACKEND.md)
+- [qmoi-enhanced-history-14/ALLFRONTEND.md](qmoi-enhanced-history-14/ALLFRONTEND.md)
+- [qmoi-enhanced-history-14/ALLROUTES.md](qmoi-enhanced-history-14/ALLROUTES.md)
+- [qmoi-enhanced-history-14/ALLPORTS.md](qmoi-enhanced-history-14/ALLPORTS.md)
+- [qmoi-enhanced-history-14/ALLPLATFORMSDEVICE.md](qmoi-enhanced-history-14/ALLPLATFORMSDEVICE.md)
+- [qmoi-enhanced-history-14/ACCOUNTABILITY.md](qmoi-enhanced-history-14/ACCOUNTABILITY.md)
+- [qmoi-enhanced-history-14/MERGE.md](qmoi-enhanced-history-14/MERGE.md)
+- [qmoi-enhanced-history-14/SYNC.md](qmoi-enhanced-history-14/SYNC.md)
+- [qmoi-enhanced-history-14/MONITORING_GUIDE.md](qmoi-enhanced-history-14/MONITORING_GUIDE.md)
+- [qmoi-enhanced-history-14/MONITORING_INDEX.md](qmoi-enhanced-history-14/MONITORING_INDEX.md)
+- [qmoi-enhanced-history-14/REAL_TIME_MONITORING_README.md](qmoi-enhanced-history-14/REAL_TIME_MONITORING_README.md)
+- [qmoi-enhanced-history-14/QMOI_REALTIME_MEMORY_INDEX.md](qmoi-enhanced-history-14/QMOI_REALTIME_MEMORY_INDEX.md)
+- [qmoi-enhanced-history-14/WORKFLOW_EXECUTION_PLAN.md](qmoi-enhanced-history-14/WORKFLOW_EXECUTION_PLAN.md)
+- [qmoi-enhanced-history-14/WORKFLOW_STATUS_DASHBOARD.md](qmoi-enhanced-history-14/WORKFLOW_STATUS_DASHBOARD.md)
+- [qmoi-enhanced-history-14/OLLAMA_AUTOMATION_GUIDE.md](qmoi-enhanced-history-14/OLLAMA_AUTOMATION_GUIDE.md)
+- [qmoi-enhanced-history-14/OLLAMA_ENHANCEMENT_COMPLETE.md](qmoi-enhanced-history-14/OLLAMA_ENHANCEMENT_COMPLETE.md)
+- [qmoi-enhanced-history-14/OLLAMA_ENHANCEMENT_SUCCESS.md](qmoi-enhanced-history-14/OLLAMA_ENHANCEMENT_SUCCESS.md)
+- [qmoi-enhanced-history-14/RESILIENCE_AUTO_HEALING.md](qmoi-enhanced-history-14/RESILIENCE_AUTO_HEALING.md)
+- [qmoi-enhanced-history-14/TEST_ENHANCEMENTS.md](qmoi-enhanced-history-14/TEST_ENHANCEMENTS.md)
+
+The agent must confirm that every required markdown file is accounted for in this inventory before completion of any large merge, UI change, or automation update. Historical archive documents are reference material only; live repository files remain the authoritative source of truth unless a merge conflict is intentionally resolved by policy.
+
 ## Current root inventory and canonical ownership
 - Root docs: README.md, BUILD.md, INSTALL.md, DOWNLOAD.md, PLATFORM_REQUIREMENTS.md, ALLPLATFORMSDEVICE.md, ACCOUNTABILITY.md, SYNC.md, MERGE.md, MODELEVOLUTIONO.md, QMOI_MODEL_CARD.md, QMOI_REALTIME_MEMORY_INDEX.md, STYLES.md, MONITORING_GUIDE.md, OLLAMA_AUTOMATION_GUIDE.md, OLLAMA_ENHANCEMENT_COMPLETE.md, OLLAMA_ENHANCEMENT_SUCCESS.md, GITHUB_SETUP_COMPLETE.md, IMPLEMENTATION_COMPLETE.md, SESSION_COMPLETION_REPORT.md, PHASE_1_4_COMPLETION_SUMMARY.md, RESILIENCE_AUTO_HEALING.md, TEST_ENHANCEMENTS.md, TREE_FULL_STRUCTURE.md, ALLMDFILESREFS.md, FINANCIALMANAGER.md, TRADINGREADME.md, WORKFLOWS.md, WORKFLOWSO.md, WORKFLOW_EXECUTION_PLAN.md, WORKFLOW_STATUS_DASHBOARD.md, GITHUB_ACTIONS_EXECUTION_GUIDE.md, REAL_TIME_MONITORING_GUIDE.md, REAL_TIME_MONITORING_README.md, oe.md, or.md, ollama.md, github.md, monitor.md, trigger.md, QTEAM.md, API.md, ENDPOINTS.md, ROUTES.md, ALLAUTO.md, AUTODEV.md, UNIVERSALS.md, QMOIAI.md, QCITY.md, QMOISPACE.md, QALPHA.md, QMOIAIUI.md, QCITYUI.md, QMOISPACEUI.md, QALPHAUI.md, ALLFRONTEND.md, ALLBACKEND.md, ALLPORTS.md, ALLROUTES.md, ADVANCEMENT.md, ENHANCEMENT_SESSION_2026_08_18.md, FINAL_SESSION_COMPLETION_REPORT.md, FINAL_VALIDATION_EVIDENCE_2026_08_29.md, GITHUBCLONED.md, MEMORY_INDEX.md, MONITORING_INDEX.md, MONITORING_SUMMARY.md, MODEL_CARD.md, SESSION_COMPLETION_REPORT_2025_01_10.md, QMOIORCHESTRATOR.md, QMOIMASKS.md, QMOINETWORK.md
 - Directories: .github, scripts, tests, ollamatracks, and the repo root itself

@@ -13,6 +13,22 @@ motion, responsive, and operational-state rules above. Every new reusable UI
 pattern, platform style, or visual capability must update this document in the
 same change and record the relevant source sections in its validation evidence.
 
+## Ollama autonomous agent merge and styling contract
+
+The Ollama autonomous agent must always read and reconcile the following sources before making any UI or repo-level merge decision:
+
+- [UNIVERSALS.md](UNIVERSALS.md)
+- [ALLMDFILESREFS.md](ALLMDFILESREFS.md)
+- [API.md](API.md)
+- [ENDPOINTS.md](ENDPOINTS.md)
+- [ROUTES.md](ROUTES.md)
+- [ALLPORTS.md](ALLPORTS.md)
+- [qmoi-enhanced-history-14/STYLES.md](qmoi-enhanced-history-14/STYLES.md)
+- [qmoi-enhanced-history-14/UNIVERSALS.md](qmoi-enhanced-history-14/UNIVERSALS.md)
+- [qmoi-enhanced-history-14/ALLMDFILESREFS.md](qmoi-enhanced-history-14/ALLMDFILESREFS.md)
+
+The UI workflow must set up the QMOI style system for every interface, while preserving the universal rules for login, role-based access, and user-specific personalization. Authentication-aware layouts must ensure that protected actions are gated behind identity checks, user intent confirmation, and audit visibility. Visual personalization must never hide wallet risk, security state, or validation evidence. The agent must always prefer the canonical active repo files, while revisiting the historical archive to recover any missing visual or functional pattern that is still valid.
+
 ---
 
 ## Table of Contents

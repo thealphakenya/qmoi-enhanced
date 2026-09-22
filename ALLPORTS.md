@@ -15,6 +15,10 @@ This file documents the expected port and service layout for the QMOI project an
 - 9000: local automation or self-healing gateway
 - 9090: metrics or observability endpoint
 
+## Ollama autonomous agent runtime port and merge usage
+
+The Ollama autonomous agent must include the active repo, the historical archive, and the markdown inventory in its operational checks, and it must confirm that no merge step conflicts with the expected runtime ports. The agent should treat the active port map as a contract, validate route and endpoint alignment, and compare the live repo with the historical archive before migrating any recovered feature into the active repo.
+
 ## QMOI Runtime Port Usage
 - Local dev and validation flows: 8000, 8080, 5000
 - Ollama runtime: 11434

@@ -3541,3 +3541,17 @@ Captured from commit 343289ed at 2025-08-15T22:51:52+03:00 (2025-08-15 19:51:52Z
 ## Merge objective
 
 The target state is: Alpha-Q-ai should contain every file and every directory currently in Alpha-Q-ai-2025, plus all existing content already in the active Alpha-Q-ai repo. The snapshot is a historical reference, while the main repo remains the live working tree.
+
+## Merge audit
+
+- Snapshot-only files: 2134
+- Snapshot files that already exist in the active repo at the same relative path: 25
+- Snapshot directories that already exist in the active repo at the same relative path: 5
+- Snapshot-only directories: 964
+
+### Merge rule
+
+- Preserve the archival snapshot under Alpha-Q-ai-2025 as a frozen reference.
+- Keep live app code in the root repo as source of truth.
+- For duplicate paths, prefer the active repo version for application execution and keep snapshot copies as archived backups in the Alpha-Q-ai-2025 tree.
+- For unique snapshot-only files, integrate them into the root repo only after a deliberate namespace or folder strategy is chosen.

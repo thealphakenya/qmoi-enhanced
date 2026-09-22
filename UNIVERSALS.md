@@ -7,6 +7,27 @@ universal rules and authentication boundaries defined here, preserve existing
 security behavior, and update this document in the same change whenever a new
 universal capability or protected-flow rule is introduced.
 
+## Ollama autonomous agent merge and automation contract
+
+The Ollama autonomous agent must read this file together with [STYLES.md](STYLES.md), [ALLMDFILESREFS.md](ALLMDFILESREFS.md), [API.md](API.md), [ENDPOINTS.md](ENDPOINTS.md), [ROUTES.md](ROUTES.md), [ALLPORTS.md](ALLPORTS.md), and the historical guidance in [qmoi-enhanced-history-14](qmoi-enhanced-history-14) before making any repo merge, automation, UI, or protected-flow decision. The active repository remains the source of truth for live behavior, while the historical archive is the reference layer used to recover missing patterns, valid features, and prior architecture decisions without overwriting working code.
+
+The agent must always:
+- verify the full markdown inventory against [ALLMDFILESREFS.md](ALLMDFILESREFS.md)
+- compare active repo state with [qmoi-enhanced-history-14](qmoi-enhanced-history-14) before merge or conflict resolution
+- use [STYLES.md](STYLES.md) for all UI, theme, dashboard, and multimodal interface changes
+- enforce universal login, identity, access, and risk gating for all protected actions
+- record the justification, tested scope, and evidence for every change before marking work complete
+
+## Universal authentication and protected-flow rules
+
+Any feature requiring login, identity, role checks, wallet access, protected data, or user-specific personalization must satisfy the following rules:
+- require explicit identity or session validation before access is granted
+- preserve audit visibility for security-sensitive actions and state changes
+- ensure the UI does not hide risk, wallet health, or decision evidence behind cosmetic personalization
+- keep user-specific styling consistent with platform-wide safety and authentication rules
+- compare historical and current implementations before enabling a new protected flow or login pattern
+- never allow a merge or automation pass to bypass validation, documentation, or route/port alignment
+
 # UNIVERSALS.md - Universal QMOI Standards
 
 ## Purpose

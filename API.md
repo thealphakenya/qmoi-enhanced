@@ -63,6 +63,22 @@ This document is the canonical API index for the QMOI ecosystem across the qmoi-
 - GET /history/refs
 - GET /history/clones
 
+## Ollama autonomous agent merge and documentation contract
+
+The Ollama autonomous agent must reconcile the following files before it marks a merge or automation pass as complete:
+
+- [ALLMDFILESREFS.md](ALLMDFILESREFS.md)
+- [STYLES.md](STYLES.md)
+- [UNIVERSALS.md](UNIVERSALS.md)
+- [ENDPOINTS.md](ENDPOINTS.md)
+- [ROUTES.md](ROUTES.md)
+- [ALLPORTS.md](ALLPORTS.md)
+- [qmoi-enhanced-history-14/ALLMDFILESREFS.md](qmoi-enhanced-history-14/ALLMDFILESREFS.md)
+- [qmoi-enhanced-history-14/STYLES.md](qmoi-enhanced-history-14/STYLES.md)
+- [qmoi-enhanced-history-14/UNIVERSALS.md](qmoi-enhanced-history-14/UNIVERSALS.md)
+
+The agent must use the processed API inventory, endpoint registry, route map, and port map to ensure that every automation, workflow, and merge operation matches the real system behavior. When the archive contains a missing feature or a recovered pattern, the agent merges it into the live repo only after validating the source-of-truth and preserving security, identity, and UI consistency.
+
 ## Core Contracts
 
 ### PR Validation Contract

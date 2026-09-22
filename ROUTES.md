@@ -5,6 +5,17 @@ This file defines the main route families that connect the repository automation
 
 ## Route Families
 
+### Ollama autonomous agent and merge routes
+- /agent/merge-history
+- /agent/reconcile-markdown
+- /agent/scan-archive
+- /agent/validate-ui-styles
+- /agent/validate-user-auth
+- /agent/sync-documentation
+- /agent/validate-routes
+- /agent/validate-ports
+- /agent/validate-history
+
 ### Public Routes
 - /README
 - /BUILD
