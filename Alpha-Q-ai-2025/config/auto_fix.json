@@ -1,0 +1,11 @@
+{
+  "enable": true,
+  "autoNpmInstall": true,
+  "autoPermissionFix": true,
+  "autoRerun": true,
+  "autoRemoveUnusedDeps": true,
+  "autoUpdateDeps": true,
+  "autoGenerateConfigs": true,
+  "autoFixSecrets": true,
+  "autoSummarize": true
+}

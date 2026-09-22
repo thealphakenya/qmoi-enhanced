@@ -1,0 +1,31 @@
+{
+  "autoFixEnabled": true,
+  "smartFixesEnabled": true,
+  "aiAnalysisEnabled": true,
+  "fileWatchingEnabled": true,
+  "reportingEnabled": true,
+  "notificationEnabled": true,
+  "fixStrategies": {
+    "unusedImports": true,
+    "missingSemicolons": true,
+    "quoteStandardization": true,
+    "trailingSpaces": true,
+    "indentation": true,
+    "consoleRemoval": true,
+    "constConversion": true
+  },
+  "filePatterns": {
+    "include": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx"
+    ],
+    "exclude": [
+      "node_modules/**",
+      "dist/**",
+      "build/**",
+      ".git/**"
+    ]
+  }
+}
