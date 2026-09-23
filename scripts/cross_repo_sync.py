@@ -109,13 +109,6 @@ def push_fast_forward(target: Path, source: Path, target_branch: str, source_bra
         ).returncode == 0
         if not is_ancestor:
             raise RuntimeError(f"Refusing non-fast-forward update of {target_branch}: review conflict first")
-    source_remote = "cross-repo-source"
-    run_git(target, "remote", "remove", source_remote, check=False)
-    run_git(target, "remote", "add", source_remote, str(source))
-    try:
-        run_git(target, "fetch", source_remote, source_sha)
-    finally:
-        run_git(target, "remote", "remove", source_remote, check=False)
     run_git(target, "push", "origin", f"{source_sha}:refs/heads/{target_branch}")
 
 
