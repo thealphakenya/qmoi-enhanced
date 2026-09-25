@@ -12,7 +12,7 @@ pandas
 pytest>=7.0.0
 coverage>=7.0.0
 requests>=2.28.0
-python-dotenv>=1.0.0
+python-dotenv>=1.2.3
 stripe>=5.0.0
 flask>=2.3.0
 cryptography>=41.0.0
