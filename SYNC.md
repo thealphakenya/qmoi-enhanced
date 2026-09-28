@@ -34,6 +34,27 @@ Both repositories maintain:
 1. **Main Branch**: Production-ready code with validated features
 2. **Autosync-Backup Branch**: Automated backup and staging branch
 
+### Autonomous update and publication contract
+The Ollama autonomous agent may update both repositories only after the local validation, merge inventory, and lifecycle gates pass. The authorized sequence is:
+
+1. validate the local repo and merge inventory
+2. publish or validate the backup branch (`autosync-backup`) for both repos
+3. verify exact SHA and fast-forward safety on both repos
+4. create the Q.0.0.1 directory and companion manifest on the final branch state
+5. promote main only after backup publication and final workflow proof agree
+6. record exact final SHAs and remote workflow evidence in the ledger and the branch status files
+
+This contract applies to Alpha-Q-ai, qmoi-enhanced, and any additional repository following the same cross-repo autosync pattern. No force-push or history rewrite is allowed. If branch protection or target-owned workflow evidence is missing, the automation stops and marks the state as blocked rather than claiming success.
+
+### Per-branch completion gate
+Each branch is considered successful only after the branch-specific publication evidence is valid:
+
+- `main` branch: validated production branch and exact SHA proof
+- `autosync-backup` branch: backup publication and audit pass before main promotion
+- Q-version artifact: `Q.0.0.1` directory and companion document added only after the final successful branch state is proven
+
+All branches and final artifacts must remain consistent with the same evidence ledger. The branch sync remains operationally complete only when both repos and both branches are in a verified state, not merely when a local script reports success.
+
 ### Master File Sync
 The following critical files are synced bidirectionally:
 
