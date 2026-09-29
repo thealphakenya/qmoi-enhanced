@@ -28,6 +28,8 @@ def run_git(repo: Path, *args: str, check: bool = True) -> str:
         capture_output=True,
         text=True,
     )
+    if not check and result.returncode != 0:
+        return ""
     if check:
         return result.stdout.strip()
     return result.stdout.strip()
@@ -46,6 +48,18 @@ def repo_metrics(repo: Path, branch: str) -> dict[str, Any]:
     return {"branch": branch, "sha": sha, "files": len(paths), "directories": len(directories)}
 
 
+def commit_exists(repo: Path, sha: str) -> bool:
+    if not sha:
+        return False
+    result = subprocess.run(
+        ["git", "-C", str(repo), "cat-file", "-e", f"{sha}^{{commit}}"],
+        check=False,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    return result.returncode == 0
+
+
 def cross_repo_ancestry(
     source_repo: Path,
     source_branch: str,
@@ -57,16 +71,32 @@ def cross_repo_ancestry(
     if not source or not target:
         return {"source": source, "target": target, "ahead": None, "behind": None, "same_commit": False, "fast_forward_possible": False}
     if source == target:
-        return {"source": source, "target": target, "ahead": 0, "behind": 0, "same_commit": True, "fast_forward_possible": True}
-    target_in_source = subprocess.run(
-        ["git", "-C", str(source_repo), "cat-file", "-e", f"{target}^{{commit}}"],
-        check=False,
-    ).returncode == 0
-    fast_forward = target_in_source and subprocess.run(
+        return {
+            "source": source,
+            "target": target,
+            "ahead": 0,
+            "behind": 0,
+            "same_commit": True,
+            "source_object_available_in_target": True,
+            "target_object_available_in_source": True,
+            "fast_forward_possible": True,
+        }
+    target_in_source = commit_exists(source_repo, target)
+    source_in_target = commit_exists(target_repo, source)
+    is_ancestor = target_in_source and subprocess.run(
         ["git", "-C", str(source_repo), "merge-base", "--is-ancestor", target, source],
         check=False,
     ).returncode == 0
-    return {"source": source, "target": target, "ahead": None, "behind": None, "same_commit": False, "target_object_available_in_source": target_in_source, "fast_forward_possible": fast_forward}
+    return {
+        "source": source,
+        "target": target,
+        "ahead": None,
+        "behind": None,
+        "same_commit": False,
+        "source_object_available_in_target": source_in_target,
+        "target_object_available_in_source": target_in_source,
+        "fast_forward_possible": source_in_target and is_ancestor,
+    }
 
 
 def audit(qmoi: Path, alpha: Path, backup_branch: str) -> dict[str, Any]:
@@ -94,22 +124,48 @@ def audit(qmoi: Path, alpha: Path, backup_branch: str) -> dict[str, Any]:
     }
 
 
-def push_fast_forward(target: Path, source: Path, target_branch: str, source_branch: str) -> None:
+def preflight_fast_forward(
+    target: Path,
+    source: Path,
+    target_branch: str,
+    source_branch: str,
+) -> dict[str, Any]:
     source_sha = run_git(source, "rev-parse", f"origin/{source_branch}")
     target_ref = f"refs/remotes/origin/{target_branch}"
     target_sha = run_git(target, "rev-parse", target_ref, check=False)
+    if not commit_exists(target, source_sha):
+        raise RuntimeError(
+            f"Refusing cross-repository update: source commit {source_sha} is not available in target checkout"
+        )
     if target_sha and target_sha != source_sha:
-        target_in_source = subprocess.run(
-            ["git", "-C", str(source), "cat-file", "-e", f"{target_sha}^{{commit}}"],
-            check=False,
-        ).returncode == 0
+        target_in_source = commit_exists(source, target_sha)
         is_ancestor = target_in_source and subprocess.run(
             ["git", "-C", str(source), "merge-base", "--is-ancestor", target_sha, source_sha],
             check=False,
         ).returncode == 0
         if not is_ancestor:
             raise RuntimeError(f"Refusing non-fast-forward update of {target_branch}: review conflict first")
+    return {
+        "source_branch": source_branch,
+        "source_sha": source_sha,
+        "target_branch": target_branch,
+        "target_sha": target_sha or None,
+        "status": "unchanged" if target_sha == source_sha else "ready",
+    }
+
+
+def push_fast_forward(target: Path, source: Path, target_branch: str, source_branch: str) -> None:
+    plan = preflight_fast_forward(target, source, target_branch, source_branch)
+    if plan["status"] == "unchanged":
+        return
+    source_sha = plan["source_sha"]
     run_git(target, "push", "origin", f"{source_sha}:refs/heads/{target_branch}")
+
+
+def write_report(path: Path | None, report: dict[str, Any]) -> None:
+    if path:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
 def main() -> int:
@@ -137,15 +193,54 @@ def main() -> int:
 
     if args.apply:
         source, target = (qmoi, alpha) if args.direction == "qmoi-to-alpha" else (alpha, qmoi)
-        push_fast_forward(target, source, args.backup_branch, "main")
-        if args.promote:
-            push_fast_forward(target, source, "main", "main")
-        report["applied"] = {"source": str(source), "target": str(target), "backup_branch": args.backup_branch, "promoted": args.promote}
+        branches = [args.backup_branch, "main"] if args.promote else [args.backup_branch]
+        try:
+            preflight = [
+                preflight_fast_forward(target, source, branch, "main")
+                for branch in branches
+            ]
+        except RuntimeError as exc:
+            report["status"] = "blocked"
+            report["apply_preflight"] = {"status": "blocked", "error": str(exc)}
+            report["applied"] = False
+            payload = json.dumps(report, indent=2, sort_keys=True)
+            write_report(args.report, report)
+            print(payload)
+            return 2
+
+        report["apply_preflight"] = {"status": "ready", "branches": preflight}
+        applied_branches = []
+        for branch in branches:
+            try:
+                push_fast_forward(target, source, branch, "main")
+                applied_branches.append(branch)
+            except subprocess.CalledProcessError as exc:
+                report["status"] = "blocked"
+                report["applied"] = {
+                    "source": str(source),
+                    "target": str(target),
+                    "completed_branches": applied_branches,
+                    "failed_branch": branch,
+                    "promoted": False,
+                }
+                report["apply_error"] = {
+                    "type": "push_failed",
+                    "returncode": exc.returncode,
+                }
+                payload = json.dumps(report, indent=2, sort_keys=True)
+                write_report(args.report, report)
+                print(payload)
+                return 2
+        report["applied"] = {
+            "source": str(source),
+            "target": str(target),
+            "completed_branches": applied_branches,
+            "backup_branch": args.backup_branch,
+            "promoted": args.promote,
+        }
 
     payload = json.dumps(report, indent=2, sort_keys=True)
-    if args.report:
-        args.report.parent.mkdir(parents=True, exist_ok=True)
-        args.report.write_text(payload + "\n", encoding="utf-8")
+    write_report(args.report, report)
     print(payload)
     return 0
 

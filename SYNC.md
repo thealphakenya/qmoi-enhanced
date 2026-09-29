@@ -116,6 +116,14 @@ automatic synchronization must not erase work from either repository. The
 existing `branch-sync.yml` legacy force-mirroring job is disabled; the guarded
 workflow is the only automatic branch synchronizer.
 
+Fast-forward eligibility also requires the source commit object to exist in
+the target checkout; equal-looking SHA strings or source-repository ancestry
+alone are insufficient. Before `--promote` applies anything, the sync tool
+preflights both `autosync-backup` and `main`. Missing objects or refs produce a
+blocked JSON report and no push attempt. A remote push failure is recorded with
+completed and failed branch names so partial publication is never reported as
+full synchronization.
+
 The workflow uses `MY_CUSTOM_TOKEN` for write access to both repositories. That
 secret must already exist in each repository's Actions settings; no code-only
 change can grant GitHub write permission. Local Codespaces can use the same
