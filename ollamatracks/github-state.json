@@ -1,6 +1,6 @@
 {
   "schema_version": "4.0",
-  "generated_at": "2026-10-10T05:21:11.147Z",
+  "generated_at": "2026-10-10T05:23:36.778Z",
   "repository": {
     "owner": "thealphakenya",
     "name": "qmoi-enhanced",
@@ -9,10 +9,10 @@
   },
   "tracker": {
     "workflow": "Ollama Autonomous Agent - PR Realtime Tracker",
-    "run_id": 38026993249,
+    "run_id": 38027289744,
     "event": "workflow_run",
     "actor": "kwemoipower",
-    "sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
+    "sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
     "ref": "refs/heads/main"
   },
   "workflows": {
@@ -53,34 +53,82 @@
       "run_number": 755,
       "name": "Ollama Autonomous Agent & Live Tracker",
       "workflow_id": 316417903,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "failure",
       "event": "workflow_run",
       "branch": "main",
       "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
       "base_branch": null,
       "created_at": "2026-10-10T05:17:09Z",
-      "updated_at": "2026-10-10T05:17:12Z",
+      "updated_at": "2026-10-10T05:22:29Z",
       "run_started_at": "2026-10-10T05:17:09Z",
       "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026988096"
     }
   },
   "active_runs": [
     {
-      "id": 38026993249,
-      "run_number": 1723,
+      "id": 38027289744,
+      "run_number": 1724,
       "name": "Ollama Autonomous Agent - PR Realtime Tracker",
       "workflow_id": 335184902,
       "status": "in_progress",
       "conclusion": null,
       "event": "workflow_run",
       "branch": "main",
-      "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
+      "head_sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
       "base_branch": null,
-      "created_at": "2026-10-10T05:17:13Z",
-      "updated_at": "2026-10-10T05:19:32Z",
-      "run_started_at": "2026-10-10T05:17:13Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993249"
+      "created_at": "2026-10-10T05:22:31Z",
+      "updated_at": "2026-10-10T05:22:34Z",
+      "run_started_at": "2026-10-10T05:22:31Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289744"
+    },
+    {
+      "id": 38027289723,
+      "run_number": 552,
+      "name": "Ollama Live Activity Stream",
+      "workflow_id": 361180075,
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "workflow_run",
+      "branch": "main",
+      "head_sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
+      "base_branch": null,
+      "created_at": "2026-10-10T05:22:31Z",
+      "updated_at": "2026-10-10T05:22:34Z",
+      "run_started_at": "2026-10-10T05:22:31Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289723"
+    },
+    {
+      "id": 38027289721,
+      "run_number": 678,
+      "name": "QMOI Live Activity Stream",
+      "workflow_id": 361180076,
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "workflow_run",
+      "branch": "main",
+      "head_sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
+      "base_branch": null,
+      "created_at": "2026-10-10T05:22:31Z",
+      "updated_at": "2026-10-10T05:22:34Z",
+      "run_started_at": "2026-10-10T05:22:31Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289721"
+    },
+    {
+      "id": 38027246262,
+      "run_number": 684,
+      "name": "Push on main",
+      "workflow_id": 361358128,
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "dynamic",
+      "branch": "main",
+      "head_sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
+      "base_branch": null,
+      "created_at": "2026-10-10T05:21:43Z",
+      "updated_at": "2026-10-10T05:21:55Z",
+      "run_started_at": "2026-10-10T05:21:43Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027246262"
     },
     {
       "id": 38027117556,
@@ -97,114 +145,66 @@
       "updated_at": "2026-10-10T05:19:31Z",
       "run_started_at": "2026-10-10T05:19:27Z",
       "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556"
-    },
-    {
-      "id": 38026993310,
-      "run_number": 551,
-      "name": "Ollama Live Activity Stream",
-      "workflow_id": 361180075,
-      "status": "in_progress",
-      "conclusion": null,
-      "event": "workflow_run",
-      "branch": "main",
-      "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
-      "base_branch": null,
-      "created_at": "2026-10-10T05:17:14Z",
-      "updated_at": "2026-10-10T05:19:31Z",
-      "run_started_at": "2026-10-10T05:17:14Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993310"
-    },
-    {
-      "id": 38026993285,
-      "run_number": 677,
-      "name": "QMOI Live Activity Stream",
-      "workflow_id": 361180076,
-      "status": "in_progress",
-      "conclusion": null,
-      "event": "workflow_run",
-      "branch": "main",
-      "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
-      "base_branch": null,
-      "created_at": "2026-10-10T05:17:13Z",
-      "updated_at": "2026-10-10T05:19:00Z",
-      "run_started_at": "2026-10-10T05:17:13Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993285"
-    },
-    {
-      "id": 38026988096,
-      "run_number": 755,
-      "name": "Ollama Autonomous Agent & Live Tracker",
-      "workflow_id": 316417903,
-      "status": "in_progress",
-      "conclusion": null,
-      "event": "workflow_run",
-      "branch": "main",
-      "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
-      "base_branch": null,
-      "created_at": "2026-10-10T05:17:09Z",
-      "updated_at": "2026-10-10T05:17:12Z",
-      "run_started_at": "2026-10-10T05:17:09Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026988096"
     }
   ],
   "runs": [
     {
-      "id": 38026993249,
-      "run_number": 1723,
+      "id": 38027289744,
+      "run_number": 1724,
       "name": "Ollama Autonomous Agent - PR Realtime Tracker",
       "workflow_id": 335184902,
       "status": "in_progress",
       "conclusion": null,
       "event": "workflow_run",
       "branch": "main",
-      "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
+      "head_sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
       "base_branch": null,
-      "created_at": "2026-10-10T05:17:13Z",
-      "updated_at": "2026-10-10T05:19:32Z",
-      "run_started_at": "2026-10-10T05:17:13Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993249",
+      "created_at": "2026-10-10T05:22:31Z",
+      "updated_at": "2026-10-10T05:22:34Z",
+      "run_started_at": "2026-10-10T05:22:31Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289744",
       "jobs": [
         {
-          "id": 114140206805,
-          "run_id": 38026993249,
+          "id": 114140722046,
+          "run_id": 38027289744,
           "name": "Realtime Ollama + PR Reconciliation",
           "status": "in_progress",
           "conclusion": null,
-          "started_at": "2026-10-10T05:19:31Z",
+          "started_at": "2026-10-10T05:22:33Z",
           "completed_at": null,
-          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993249/job/114140206805",
-          "runner_name": "GitHub Actions 1000071796",
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289744/job/114140722046",
+          "runner_name": "GitHub Actions 1000071802",
           "steps": [
             {
               "name": "Set up job",
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-10-10T05:19:32Z",
-              "completed_at": "2026-10-10T05:19:33Z"
+              "started_at": "2026-10-10T05:22:34Z",
+              "completed_at": "2026-10-10T05:22:35Z"
             },
             {
               "name": "Checkout repository default branch",
               "status": "completed",
               "conclusion": "success",
               "number": 2,
-              "started_at": "2026-10-10T05:19:33Z",
-              "completed_at": "2026-10-10T05:21:10Z"
+              "started_at": "2026-10-10T05:22:35Z",
+              "completed_at": "2026-10-10T05:23:36Z"
             },
             {
               "name": "Initialize tracking infrastructure",
               "status": "completed",
               "conclusion": "success",
               "number": 3,
-              "started_at": "2026-10-10T05:21:10Z",
-              "completed_at": "2026-10-10T05:21:11Z"
+              "started_at": "2026-10-10T05:23:36Z",
+              "completed_at": "2026-10-10T05:23:36Z"
             },
             {
               "name": "Collect GitHub workflow, job, PR and check state",
               "status": "in_progress",
               "conclusion": null,
               "number": 4,
-              "started_at": "2026-10-10T05:21:11Z",
+              "started_at": "2026-10-10T05:23:36Z",
               "completed_at": null
             },
             {
@@ -260,444 +260,70 @@
       ]
     },
     {
-      "id": 38027117556,
-      "run_number": 683,
-      "name": "Push on main",
-      "workflow_id": 361358128,
-      "status": "in_progress",
-      "conclusion": null,
-      "event": "dynamic",
-      "branch": "main",
-      "head_sha": "a2eb7e1aaeba059ed594efa7a9d18883cf4b096e",
-      "base_branch": null,
-      "created_at": "2026-10-10T05:19:27Z",
-      "updated_at": "2026-10-10T05:19:31Z",
-      "run_started_at": "2026-10-10T05:19:27Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556",
-      "jobs": [
-        {
-          "id": 114140205310,
-          "run_id": 38027117556,
-          "name": "Analyze (python)",
-          "status": "in_progress",
-          "conclusion": null,
-          "started_at": "2026-10-10T05:19:30Z",
-          "completed_at": null,
-          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556/job/114140205310",
-          "runner_name": "GitHub Actions 1000071791",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-10-10T05:19:31Z",
-              "completed_at": "2026-10-10T05:19:32Z"
-            },
-            {
-              "name": "Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-10-10T05:19:32Z",
-              "completed_at": "2026-10-10T05:19:42Z"
-            },
-            {
-              "name": "Setup proxy for registries",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-10-10T05:19:42Z",
-              "completed_at": "2026-10-10T05:19:42Z"
-            },
-            {
-              "name": "Initialize CodeQL",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-10-10T05:19:42Z",
-              "completed_at": "2026-10-10T05:19:55Z"
-            },
-            {
-              "name": "Perform CodeQL Analysis",
-              "status": "in_progress",
-              "conclusion": null,
-              "number": 5,
-              "started_at": "2026-10-10T05:19:55Z",
-              "completed_at": null
-            },
-            {
-              "name": "Post Perform CodeQL Analysis",
-              "status": "pending",
-              "conclusion": null,
-              "number": 7,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Initialize CodeQL",
-              "status": "pending",
-              "conclusion": null,
-              "number": 8,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Setup proxy for registries",
-              "status": "pending",
-              "conclusion": null,
-              "number": 9,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Checkout repository",
-              "status": "pending",
-              "conclusion": null,
-              "number": 10,
-              "started_at": null,
-              "completed_at": null
-            }
-          ]
-        },
-        {
-          "id": 114140205413,
-          "run_id": 38027117556,
-          "name": "Analyze (actions)",
-          "status": "completed",
-          "conclusion": "success",
-          "started_at": "2026-10-10T05:19:31Z",
-          "completed_at": "2026-10-10T05:20:17Z",
-          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556/job/114140205413",
-          "runner_name": "GitHub Actions 1000071792",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-10-10T05:19:31Z",
-              "completed_at": "2026-10-10T05:19:32Z"
-            },
-            {
-              "name": "Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-10-10T05:19:32Z",
-              "completed_at": "2026-10-10T05:19:41Z"
-            },
-            {
-              "name": "Setup proxy for registries",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-10-10T05:19:41Z",
-              "completed_at": "2026-10-10T05:19:42Z"
-            },
-            {
-              "name": "Initialize CodeQL",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-10-10T05:19:42Z",
-              "completed_at": "2026-10-10T05:19:53Z"
-            },
-            {
-              "name": "Perform CodeQL Analysis",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 5,
-              "started_at": "2026-10-10T05:19:53Z",
-              "completed_at": "2026-10-10T05:20:13Z"
-            },
-            {
-              "name": "Post Perform CodeQL Analysis",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 7,
-              "started_at": "2026-10-10T05:20:13Z",
-              "completed_at": "2026-10-10T05:20:14Z"
-            },
-            {
-              "name": "Post Initialize CodeQL",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 8,
-              "started_at": "2026-10-10T05:20:14Z",
-              "completed_at": "2026-10-10T05:20:14Z"
-            },
-            {
-              "name": "Post Setup proxy for registries",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 9,
-              "started_at": "2026-10-10T05:20:14Z",
-              "completed_at": "2026-10-10T05:20:15Z"
-            },
-            {
-              "name": "Post Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 10,
-              "started_at": "2026-10-10T05:20:15Z",
-              "completed_at": "2026-10-10T05:20:15Z"
-            },
-            {
-              "name": "Complete job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 11,
-              "started_at": "2026-10-10T05:20:15Z",
-              "completed_at": "2026-10-10T05:20:15Z"
-            }
-          ]
-        },
-        {
-          "id": 114140205429,
-          "run_id": 38027117556,
-          "name": "Analyze (rust)",
-          "status": "in_progress",
-          "conclusion": null,
-          "started_at": "2026-10-10T05:19:31Z",
-          "completed_at": null,
-          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556/job/114140205429",
-          "runner_name": "GitHub Actions 1000071794",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-10-10T05:19:31Z",
-              "completed_at": "2026-10-10T05:19:32Z"
-            },
-            {
-              "name": "Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-10-10T05:19:32Z",
-              "completed_at": "2026-10-10T05:19:42Z"
-            },
-            {
-              "name": "Setup proxy for registries",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-10-10T05:19:42Z",
-              "completed_at": "2026-10-10T05:19:42Z"
-            },
-            {
-              "name": "Initialize CodeQL",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-10-10T05:19:42Z",
-              "completed_at": "2026-10-10T05:20:00Z"
-            },
-            {
-              "name": "Perform CodeQL Analysis",
-              "status": "in_progress",
-              "conclusion": null,
-              "number": 5,
-              "started_at": "2026-10-10T05:20:00Z",
-              "completed_at": null
-            },
-            {
-              "name": "Post Perform CodeQL Analysis",
-              "status": "pending",
-              "conclusion": null,
-              "number": 7,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Initialize CodeQL",
-              "status": "pending",
-              "conclusion": null,
-              "number": 8,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Setup proxy for registries",
-              "status": "pending",
-              "conclusion": null,
-              "number": 9,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Checkout repository",
-              "status": "pending",
-              "conclusion": null,
-              "number": 10,
-              "started_at": null,
-              "completed_at": null
-            }
-          ]
-        },
-        {
-          "id": 114140205447,
-          "run_id": 38027117556,
-          "name": "Analyze (javascript-typescript)",
-          "status": "in_progress",
-          "conclusion": null,
-          "started_at": "2026-10-10T05:19:31Z",
-          "completed_at": null,
-          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556/job/114140205447",
-          "runner_name": "GitHub Actions 1000071793",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-10-10T05:19:31Z",
-              "completed_at": "2026-10-10T05:19:32Z"
-            },
-            {
-              "name": "Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-10-10T05:19:32Z",
-              "completed_at": "2026-10-10T05:19:41Z"
-            },
-            {
-              "name": "Setup proxy for registries",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-10-10T05:19:41Z",
-              "completed_at": "2026-10-10T05:19:41Z"
-            },
-            {
-              "name": "Initialize CodeQL",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-10-10T05:19:41Z",
-              "completed_at": "2026-10-10T05:19:53Z"
-            },
-            {
-              "name": "Perform CodeQL Analysis",
-              "status": "in_progress",
-              "conclusion": null,
-              "number": 5,
-              "started_at": "2026-10-10T05:19:53Z",
-              "completed_at": null
-            },
-            {
-              "name": "Post Perform CodeQL Analysis",
-              "status": "pending",
-              "conclusion": null,
-              "number": 7,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Initialize CodeQL",
-              "status": "pending",
-              "conclusion": null,
-              "number": 8,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Setup proxy for registries",
-              "status": "pending",
-              "conclusion": null,
-              "number": 9,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Checkout repository",
-              "status": "pending",
-              "conclusion": null,
-              "number": 10,
-              "started_at": null,
-              "completed_at": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 38026993310,
-      "run_number": 551,
+      "id": 38027289723,
+      "run_number": 552,
       "name": "Ollama Live Activity Stream",
       "workflow_id": 361180075,
       "status": "in_progress",
       "conclusion": null,
       "event": "workflow_run",
       "branch": "main",
-      "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
+      "head_sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
       "base_branch": null,
-      "created_at": "2026-10-10T05:17:14Z",
-      "updated_at": "2026-10-10T05:19:31Z",
-      "run_started_at": "2026-10-10T05:17:14Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993310",
+      "created_at": "2026-10-10T05:22:31Z",
+      "updated_at": "2026-10-10T05:22:34Z",
+      "run_started_at": "2026-10-10T05:22:31Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289723",
       "jobs": [
         {
-          "id": 114140205854,
-          "run_id": 38026993310,
+          "id": 114140721974,
+          "run_id": 38027289723,
           "name": "Ollama live activity stream",
           "status": "in_progress",
           "conclusion": null,
-          "started_at": "2026-10-10T05:19:31Z",
+          "started_at": "2026-10-10T05:22:33Z",
           "completed_at": null,
-          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993310/job/114140205854",
-          "runner_name": "GitHub Actions 1000071795",
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289723/job/114140721974",
+          "runner_name": "GitHub Actions 1000071803",
           "steps": [
             {
               "name": "Set up job",
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-10-10T05:19:32Z",
-              "completed_at": "2026-10-10T05:19:33Z"
+              "started_at": "2026-10-10T05:22:34Z",
+              "completed_at": "2026-10-10T05:22:35Z"
             },
             {
               "name": "Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
+              "status": "in_progress",
+              "conclusion": null,
               "number": 2,
-              "started_at": "2026-10-10T05:19:33Z",
-              "completed_at": "2026-10-10T05:21:09Z"
+              "started_at": "2026-10-10T05:22:35Z",
+              "completed_at": null
             },
             {
               "name": "Setup Python",
-              "status": "completed",
-              "conclusion": "success",
+              "status": "pending",
+              "conclusion": null,
               "number": 3,
-              "started_at": "2026-10-10T05:21:09Z",
-              "completed_at": "2026-10-10T05:21:09Z"
+              "started_at": null,
+              "completed_at": null
             },
             {
               "name": "Generate Ollama and combined activity streams",
-              "status": "completed",
-              "conclusion": "success",
+              "status": "pending",
+              "conclusion": null,
               "number": 4,
-              "started_at": "2026-10-10T05:21:09Z",
-              "completed_at": "2026-10-10T05:21:12Z"
+              "started_at": null,
+              "completed_at": null
             },
             {
               "name": "Upload live activity artifact",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 5,
-              "started_at": "2026-10-10T05:21:12Z",
-              "completed_at": "2026-10-10T05:21:14Z"
-            },
-            {
-              "name": "Post Setup Python",
-              "status": "in_progress",
+              "status": "pending",
               "conclusion": null,
-              "number": 9,
-              "started_at": "2026-10-10T05:21:14Z",
+              "number": 5,
+              "started_at": null,
               "completed_at": null
             },
             {
@@ -713,62 +339,62 @@
       ]
     },
     {
-      "id": 38026993285,
-      "run_number": 677,
+      "id": 38027289721,
+      "run_number": 678,
       "name": "QMOI Live Activity Stream",
       "workflow_id": 361180076,
       "status": "in_progress",
       "conclusion": null,
       "event": "workflow_run",
       "branch": "main",
-      "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
+      "head_sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
       "base_branch": null,
-      "created_at": "2026-10-10T05:17:13Z",
-      "updated_at": "2026-10-10T05:19:00Z",
-      "run_started_at": "2026-10-10T05:17:13Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993285",
+      "created_at": "2026-10-10T05:22:31Z",
+      "updated_at": "2026-10-10T05:22:34Z",
+      "run_started_at": "2026-10-10T05:22:31Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289721",
       "jobs": [
         {
-          "id": 114140112817,
-          "run_id": 38026993285,
+          "id": 114140721653,
+          "run_id": 38027289721,
           "name": "QMOI live activity stream",
           "status": "in_progress",
           "conclusion": null,
-          "started_at": "2026-10-10T05:18:59Z",
+          "started_at": "2026-10-10T05:22:33Z",
           "completed_at": null,
-          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026993285/job/114140112817",
-          "runner_name": "GitHub Actions 1000071790",
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027289721/job/114140721653",
+          "runner_name": "GitHub Actions 1000071801",
           "steps": [
             {
               "name": "Set up job",
               "status": "completed",
               "conclusion": "success",
               "number": 1,
-              "started_at": "2026-10-10T05:19:00Z",
-              "completed_at": "2026-10-10T05:19:01Z"
+              "started_at": "2026-10-10T05:22:34Z",
+              "completed_at": "2026-10-10T05:22:34Z"
             },
             {
               "name": "Checkout repository",
-              "status": "completed",
-              "conclusion": "success",
+              "status": "in_progress",
+              "conclusion": null,
               "number": 2,
-              "started_at": "2026-10-10T05:19:01Z",
-              "completed_at": "2026-10-10T05:21:13Z"
+              "started_at": "2026-10-10T05:22:34Z",
+              "completed_at": null
             },
             {
               "name": "Setup Python",
-              "status": "completed",
-              "conclusion": "success",
+              "status": "pending",
+              "conclusion": null,
               "number": 3,
-              "started_at": "2026-10-10T05:21:13Z",
-              "completed_at": "2026-10-10T05:21:13Z"
+              "started_at": null,
+              "completed_at": null
             },
             {
               "name": "Generate QMOI live activity stream",
-              "status": "in_progress",
+              "status": "pending",
               "conclusion": null,
               "number": 4,
-              "started_at": "2026-10-10T05:21:13Z",
+              "started_at": null,
               "completed_at": null
             },
             {
@@ -776,14 +402,6 @@
               "status": "pending",
               "conclusion": null,
               "number": 5,
-              "started_at": null,
-              "completed_at": null
-            },
-            {
-              "name": "Post Setup Python",
-              "status": "pending",
-              "conclusion": null,
-              "number": 9,
               "started_at": null,
               "completed_at": null
             },
@@ -804,14 +422,14 @@
       "run_number": 755,
       "name": "Ollama Autonomous Agent & Live Tracker",
       "workflow_id": 316417903,
-      "status": "in_progress",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "failure",
       "event": "workflow_run",
       "branch": "main",
       "head_sha": "61eb284f52e25769f0e56c17bfd994de6ff76644",
       "base_branch": null,
       "created_at": "2026-10-10T05:17:09Z",
-      "updated_at": "2026-10-10T05:17:12Z",
+      "updated_at": "2026-10-10T05:22:29Z",
       "run_started_at": "2026-10-10T05:17:09Z",
       "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026988096",
       "jobs": [
@@ -819,10 +437,10 @@
           "id": 114139807815,
           "run_id": 38026988096,
           "name": "Ollama Autonomous Agent + Universal Self-Healing Engine",
-          "status": "in_progress",
-          "conclusion": null,
+          "status": "completed",
+          "conclusion": "failure",
           "started_at": "2026-10-10T05:17:11Z",
-          "completed_at": null,
+          "completed_at": "2026-10-10T05:22:28Z",
           "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38026988096/job/114139807815",
           "runner_name": "GitHub Actions 1000071786",
           "steps": [
@@ -996,73 +614,829 @@
             },
             {
               "name": "Final lightweight validation",
-              "status": "in_progress",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "failure",
               "number": 22,
               "started_at": "2026-10-10T05:20:24Z",
-              "completed_at": null
+              "completed_at": "2026-10-10T05:21:54Z"
             },
             {
               "name": "Validate repository and hosted links",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 23,
-              "started_at": null,
-              "completed_at": null
+              "started_at": "2026-10-10T05:21:54Z",
+              "completed_at": "2026-10-10T05:22:22Z"
             },
             {
               "name": "Publish GitHub Actions summary",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 24,
-              "started_at": null,
-              "completed_at": null
+              "started_at": "2026-10-10T05:22:22Z",
+              "completed_at": "2026-10-10T05:22:22Z"
             },
             {
               "name": "Finalize successful resume evidence",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "skipped",
               "number": 25,
-              "started_at": null,
-              "completed_at": null
+              "started_at": "2026-10-10T05:22:22Z",
+              "completed_at": "2026-10-10T05:22:22Z"
             },
             {
               "name": "Persist final resume evidence",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "skipped",
               "number": 26,
-              "started_at": null,
-              "completed_at": null
+              "started_at": "2026-10-10T05:22:22Z",
+              "completed_at": "2026-10-10T05:22:22Z"
             },
             {
               "name": "Upload autonomous-agent diagnostics",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "success",
               "number": 27,
-              "started_at": null,
-              "completed_at": null
+              "started_at": "2026-10-10T05:22:22Z",
+              "completed_at": "2026-10-10T05:22:25Z"
             },
             {
               "name": "Enforce final health gate",
-              "status": "pending",
-              "conclusion": null,
+              "status": "completed",
+              "conclusion": "failure",
               "number": 28,
-              "started_at": null,
-              "completed_at": null
+              "started_at": "2026-10-10T05:22:25Z",
+              "completed_at": "2026-10-10T05:22:25Z"
             },
             {
               "name": "Post Setup Python",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 55,
+              "started_at": "2026-10-10T05:22:25Z",
+              "completed_at": "2026-10-10T05:22:25Z"
+            },
+            {
+              "name": "Post Checkout trusted default branch",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 56,
+              "started_at": "2026-10-10T05:22:25Z",
+              "completed_at": "2026-10-10T05:22:26Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 57,
+              "started_at": "2026-10-10T05:22:26Z",
+              "completed_at": "2026-10-10T05:22:26Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 38027246262,
+      "run_number": 684,
+      "name": "Push on main",
+      "workflow_id": 361358128,
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "dynamic",
+      "branch": "main",
+      "head_sha": "26d93ab4537259ff2e23d63c9948d0cd2149436d",
+      "base_branch": null,
+      "created_at": "2026-10-10T05:21:43Z",
+      "updated_at": "2026-10-10T05:21:55Z",
+      "run_started_at": "2026-10-10T05:21:43Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027246262",
+      "jobs": [
+        {
+          "id": 114140592759,
+          "run_id": 38027246262,
+          "name": "Analyze (rust)",
+          "status": "in_progress",
+          "conclusion": null,
+          "started_at": "2026-10-10T05:21:46Z",
+          "completed_at": null,
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027246262/job/114140592759",
+          "runner_name": "GitHub Actions 1000071797",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-10T05:21:47Z",
+              "completed_at": "2026-10-10T05:21:49Z"
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-10T05:21:49Z",
+              "completed_at": "2026-10-10T05:21:58Z"
+            },
+            {
+              "name": "Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-10T05:21:58Z",
+              "completed_at": "2026-10-10T05:21:58Z"
+            },
+            {
+              "name": "Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-10T05:21:58Z",
+              "completed_at": "2026-10-10T05:22:14Z"
+            },
+            {
+              "name": "Perform CodeQL Analysis",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-10T05:22:14Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Perform CodeQL Analysis",
               "status": "pending",
               "conclusion": null,
-              "number": 55,
+              "number": 7,
               "started_at": null,
               "completed_at": null
             },
             {
-              "name": "Post Checkout trusted default branch",
+              "name": "Post Initialize CodeQL",
               "status": "pending",
               "conclusion": null,
-              "number": 56,
+              "number": 8,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Setup proxy for registries",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        },
+        {
+          "id": 114140592860,
+          "run_id": 38027246262,
+          "name": "Analyze (actions)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-10T05:21:47Z",
+          "completed_at": "2026-10-10T05:22:47Z",
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027246262/job/114140592860",
+          "runner_name": "GitHub Actions 1000071798",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-10T05:21:48Z",
+              "completed_at": "2026-10-10T05:21:49Z"
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-10T05:21:49Z",
+              "completed_at": "2026-10-10T05:21:59Z"
+            },
+            {
+              "name": "Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-10T05:21:59Z",
+              "completed_at": "2026-10-10T05:21:59Z"
+            },
+            {
+              "name": "Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-10T05:21:59Z",
+              "completed_at": "2026-10-10T05:22:14Z"
+            },
+            {
+              "name": "Perform CodeQL Analysis",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-10T05:22:14Z",
+              "completed_at": "2026-10-10T05:22:43Z"
+            },
+            {
+              "name": "Post Perform CodeQL Analysis",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7,
+              "started_at": "2026-10-10T05:22:43Z",
+              "completed_at": "2026-10-10T05:22:43Z"
+            },
+            {
+              "name": "Post Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-10-10T05:22:43Z",
+              "completed_at": "2026-10-10T05:22:44Z"
+            },
+            {
+              "name": "Post Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-10T05:22:44Z",
+              "completed_at": "2026-10-10T05:22:44Z"
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-10T05:22:44Z",
+              "completed_at": "2026-10-10T05:22:45Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-10T05:22:45Z",
+              "completed_at": "2026-10-10T05:22:45Z"
+            }
+          ]
+        },
+        {
+          "id": 114140592894,
+          "run_id": 38027246262,
+          "name": "Analyze (javascript-typescript)",
+          "status": "in_progress",
+          "conclusion": null,
+          "started_at": "2026-10-10T05:21:47Z",
+          "completed_at": null,
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027246262/job/114140592894",
+          "runner_name": "GitHub Actions 1000071800",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-10T05:21:48Z",
+              "completed_at": "2026-10-10T05:21:49Z"
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-10T05:21:49Z",
+              "completed_at": "2026-10-10T05:21:58Z"
+            },
+            {
+              "name": "Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-10T05:21:58Z",
+              "completed_at": "2026-10-10T05:21:59Z"
+            },
+            {
+              "name": "Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-10T05:21:59Z",
+              "completed_at": "2026-10-10T05:22:15Z"
+            },
+            {
+              "name": "Perform CodeQL Analysis",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-10T05:22:15Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Perform CodeQL Analysis",
+              "status": "pending",
+              "conclusion": null,
+              "number": 7,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Initialize CodeQL",
+              "status": "pending",
+              "conclusion": null,
+              "number": 8,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Setup proxy for registries",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        },
+        {
+          "id": 114140592895,
+          "run_id": 38027246262,
+          "name": "Analyze (python)",
+          "status": "in_progress",
+          "conclusion": null,
+          "started_at": "2026-10-10T05:21:46Z",
+          "completed_at": null,
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027246262/job/114140592895",
+          "runner_name": "GitHub Actions 1000071799",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-10T05:21:47Z",
+              "completed_at": "2026-10-10T05:21:48Z"
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-10T05:21:48Z",
+              "completed_at": "2026-10-10T05:21:58Z"
+            },
+            {
+              "name": "Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-10T05:21:58Z",
+              "completed_at": "2026-10-10T05:21:58Z"
+            },
+            {
+              "name": "Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-10T05:21:58Z",
+              "completed_at": "2026-10-10T05:22:13Z"
+            },
+            {
+              "name": "Perform CodeQL Analysis",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-10T05:22:13Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Perform CodeQL Analysis",
+              "status": "pending",
+              "conclusion": null,
+              "number": 7,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Initialize CodeQL",
+              "status": "pending",
+              "conclusion": null,
+              "number": 8,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Setup proxy for registries",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
+              "started_at": null,
+              "completed_at": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 38027117556,
+      "run_number": 683,
+      "name": "Push on main",
+      "workflow_id": 361358128,
+      "status": "in_progress",
+      "conclusion": null,
+      "event": "dynamic",
+      "branch": "main",
+      "head_sha": "a2eb7e1aaeba059ed594efa7a9d18883cf4b096e",
+      "base_branch": null,
+      "created_at": "2026-10-10T05:19:27Z",
+      "updated_at": "2026-10-10T05:19:31Z",
+      "run_started_at": "2026-10-10T05:19:27Z",
+      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556",
+      "jobs": [
+        {
+          "id": 114140205310,
+          "run_id": 38027117556,
+          "name": "Analyze (python)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-10T05:19:30Z",
+          "completed_at": "2026-10-10T05:22:39Z",
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556/job/114140205310",
+          "runner_name": "GitHub Actions 1000071791",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-10T05:19:31Z",
+              "completed_at": "2026-10-10T05:19:32Z"
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-10T05:19:32Z",
+              "completed_at": "2026-10-10T05:19:42Z"
+            },
+            {
+              "name": "Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-10T05:19:42Z",
+              "completed_at": "2026-10-10T05:19:42Z"
+            },
+            {
+              "name": "Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-10T05:19:42Z",
+              "completed_at": "2026-10-10T05:19:55Z"
+            },
+            {
+              "name": "Perform CodeQL Analysis",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-10T05:19:55Z",
+              "completed_at": "2026-10-10T05:22:36Z"
+            },
+            {
+              "name": "Post Perform CodeQL Analysis",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7,
+              "started_at": "2026-10-10T05:22:36Z",
+              "completed_at": "2026-10-10T05:22:36Z"
+            },
+            {
+              "name": "Post Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-10-10T05:22:36Z",
+              "completed_at": "2026-10-10T05:22:37Z"
+            },
+            {
+              "name": "Post Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-10T05:22:37Z",
+              "completed_at": "2026-10-10T05:22:37Z"
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-10T05:22:37Z",
+              "completed_at": "2026-10-10T05:22:38Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-10T05:22:38Z",
+              "completed_at": "2026-10-10T05:22:38Z"
+            }
+          ]
+        },
+        {
+          "id": 114140205413,
+          "run_id": 38027117556,
+          "name": "Analyze (actions)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-10T05:19:31Z",
+          "completed_at": "2026-10-10T05:20:17Z",
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556/job/114140205413",
+          "runner_name": "GitHub Actions 1000071792",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-10T05:19:31Z",
+              "completed_at": "2026-10-10T05:19:32Z"
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-10T05:19:32Z",
+              "completed_at": "2026-10-10T05:19:41Z"
+            },
+            {
+              "name": "Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-10T05:19:41Z",
+              "completed_at": "2026-10-10T05:19:42Z"
+            },
+            {
+              "name": "Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-10T05:19:42Z",
+              "completed_at": "2026-10-10T05:19:53Z"
+            },
+            {
+              "name": "Perform CodeQL Analysis",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-10T05:19:53Z",
+              "completed_at": "2026-10-10T05:20:13Z"
+            },
+            {
+              "name": "Post Perform CodeQL Analysis",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7,
+              "started_at": "2026-10-10T05:20:13Z",
+              "completed_at": "2026-10-10T05:20:14Z"
+            },
+            {
+              "name": "Post Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-10-10T05:20:14Z",
+              "completed_at": "2026-10-10T05:20:14Z"
+            },
+            {
+              "name": "Post Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-10T05:20:14Z",
+              "completed_at": "2026-10-10T05:20:15Z"
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-10T05:20:15Z",
+              "completed_at": "2026-10-10T05:20:15Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-10T05:20:15Z",
+              "completed_at": "2026-10-10T05:20:15Z"
+            }
+          ]
+        },
+        {
+          "id": 114140205429,
+          "run_id": 38027117556,
+          "name": "Analyze (rust)",
+          "status": "completed",
+          "conclusion": "success",
+          "started_at": "2026-10-10T05:19:31Z",
+          "completed_at": "2026-10-10T05:22:07Z",
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556/job/114140205429",
+          "runner_name": "GitHub Actions 1000071794",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-10T05:19:31Z",
+              "completed_at": "2026-10-10T05:19:32Z"
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-10T05:19:32Z",
+              "completed_at": "2026-10-10T05:19:42Z"
+            },
+            {
+              "name": "Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-10T05:19:42Z",
+              "completed_at": "2026-10-10T05:19:42Z"
+            },
+            {
+              "name": "Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-10T05:19:42Z",
+              "completed_at": "2026-10-10T05:20:00Z"
+            },
+            {
+              "name": "Perform CodeQL Analysis",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-10T05:20:00Z",
+              "completed_at": "2026-10-10T05:22:04Z"
+            },
+            {
+              "name": "Post Perform CodeQL Analysis",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 7,
+              "started_at": "2026-10-10T05:22:04Z",
+              "completed_at": "2026-10-10T05:22:04Z"
+            },
+            {
+              "name": "Post Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 8,
+              "started_at": "2026-10-10T05:22:04Z",
+              "completed_at": "2026-10-10T05:22:05Z"
+            },
+            {
+              "name": "Post Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 9,
+              "started_at": "2026-10-10T05:22:05Z",
+              "completed_at": "2026-10-10T05:22:05Z"
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 10,
+              "started_at": "2026-10-10T05:22:05Z",
+              "completed_at": "2026-10-10T05:22:06Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 11,
+              "started_at": "2026-10-10T05:22:06Z",
+              "completed_at": "2026-10-10T05:22:06Z"
+            }
+          ]
+        },
+        {
+          "id": 114140205447,
+          "run_id": 38027117556,
+          "name": "Analyze (javascript-typescript)",
+          "status": "in_progress",
+          "conclusion": null,
+          "started_at": "2026-10-10T05:19:31Z",
+          "completed_at": null,
+          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/38027117556/job/114140205447",
+          "runner_name": "GitHub Actions 1000071793",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-10T05:19:31Z",
+              "completed_at": "2026-10-10T05:19:32Z"
+            },
+            {
+              "name": "Checkout repository",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-10T05:19:32Z",
+              "completed_at": "2026-10-10T05:19:41Z"
+            },
+            {
+              "name": "Setup proxy for registries",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-10T05:19:41Z",
+              "completed_at": "2026-10-10T05:19:41Z"
+            },
+            {
+              "name": "Initialize CodeQL",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-10T05:19:41Z",
+              "completed_at": "2026-10-10T05:19:53Z"
+            },
+            {
+              "name": "Perform CodeQL Analysis",
+              "status": "in_progress",
+              "conclusion": null,
+              "number": 5,
+              "started_at": "2026-10-10T05:19:53Z",
+              "completed_at": null
+            },
+            {
+              "name": "Post Perform CodeQL Analysis",
+              "status": "pending",
+              "conclusion": null,
+              "number": 7,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Initialize CodeQL",
+              "status": "pending",
+              "conclusion": null,
+              "number": 8,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Setup proxy for registries",
+              "status": "pending",
+              "conclusion": null,
+              "number": 9,
+              "started_at": null,
+              "completed_at": null
+            },
+            {
+              "name": "Post Checkout repository",
+              "status": "pending",
+              "conclusion": null,
+              "number": 10,
               "started_at": null,
               "completed_at": null
             }
@@ -6571,285 +6945,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": 37669728757,
-      "run_number": 742,
-      "name": "Ollama Autonomous Agent & Live Tracker",
-      "workflow_id": 316417903,
-      "status": "completed",
-      "conclusion": "failure",
-      "event": "workflow_run",
-      "branch": "main",
-      "head_sha": "aa4d11c1ca8769d1162f987ee828a48246348966",
-      "base_branch": null,
-      "created_at": "2026-10-07T18:49:07Z",
-      "updated_at": "2026-10-07T18:57:25Z",
-      "run_started_at": "2026-10-07T18:49:07Z",
-      "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/37669728757",
-      "jobs": [
-        {
-          "id": 112958069324,
-          "run_id": 37669728757,
-          "name": "Ollama Autonomous Agent + Universal Self-Healing Engine",
-          "status": "completed",
-          "conclusion": "failure",
-          "started_at": "2026-10-07T18:49:10Z",
-          "completed_at": "2026-10-07T18:57:24Z",
-          "html_url": "https://github.com/thealphakenya/qmoi-enhanced/actions/runs/37669728757/job/112958069324",
-          "runner_name": "GitHub Actions 1000070940",
-          "steps": [
-            {
-              "name": "Set up job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 1,
-              "started_at": "2026-10-07T18:49:11Z",
-              "completed_at": "2026-10-07T18:49:12Z"
-            },
-            {
-              "name": "Checkout trusted default branch",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 2,
-              "started_at": "2026-10-07T18:49:12Z",
-              "completed_at": "2026-10-07T18:51:56Z"
-            },
-            {
-              "name": "Runner and environment preflight",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 3,
-              "started_at": "2026-10-07T18:51:56Z",
-              "completed_at": "2026-10-07T18:51:56Z"
-            },
-            {
-              "name": "Enforce GitHub-hosted runtime contract",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 4,
-              "started_at": "2026-10-07T18:51:56Z",
-              "completed_at": "2026-10-07T18:51:56Z"
-            },
-            {
-              "name": "Setup Python",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 5,
-              "started_at": "2026-10-07T18:51:56Z",
-              "completed_at": "2026-10-07T18:51:58Z"
-            },
-            {
-              "name": "Initialize durable tracking",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 6,
-              "started_at": "2026-10-07T18:51:58Z",
-              "completed_at": "2026-10-07T18:51:58Z"
-            },
-            {
-              "name": "Repair and validate Git repository",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 7,
-              "started_at": "2026-10-07T18:51:58Z",
-              "completed_at": "2026-10-07T18:51:58Z"
-            },
-            {
-              "name": "Install validation and recovery tooling",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 8,
-              "started_at": "2026-10-07T18:51:58Z",
-              "completed_at": "2026-10-07T18:52:06Z"
-            },
-            {
-              "name": "Bootstrap Ollama runtime",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 9,
-              "started_at": "2026-10-07T18:52:06Z",
-              "completed_at": "2026-10-07T18:53:46Z"
-            },
-            {
-              "name": "Universal Autonomous File Auto-Fix Engine",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 10,
-              "started_at": "2026-10-07T18:53:46Z",
-              "completed_at": "2026-10-07T18:53:46Z"
-            },
-            {
-              "name": "Verify autonomous agent source",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 11,
-              "started_at": "2026-10-07T18:53:46Z",
-              "completed_at": "2026-10-07T18:53:46Z"
-            },
-            {
-              "name": "Determine agent execution mode",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 12,
-              "started_at": "2026-10-07T18:53:46Z",
-              "completed_at": "2026-10-07T18:53:46Z"
-            },
-            {
-              "name": "Strictly validate all GitHub workflow YAML",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 13,
-              "started_at": "2026-10-07T18:53:46Z",
-              "completed_at": "2026-10-07T18:53:46Z"
-            },
-            {
-              "name": "Validate Python source syntax",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 14,
-              "started_at": "2026-10-07T18:53:46Z",
-              "completed_at": "2026-10-07T18:53:46Z"
-            },
-            {
-              "name": "Validate agent-owned lint contract",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 15,
-              "started_at": "2026-10-07T18:53:46Z",
-              "completed_at": "2026-10-07T18:53:46Z"
-            },
-            {
-              "name": "Execute repository test suite",
-              "status": "completed",
-              "conclusion": "failure",
-              "number": 16,
-              "started_at": "2026-10-07T18:53:46Z",
-              "completed_at": "2026-10-07T18:55:18Z"
-            },
-            {
-              "name": "Create pre-agent repository checkpoint",
-              "status": "completed",
-              "conclusion": "skipped",
-              "number": 17,
-              "started_at": "2026-10-07T18:55:18Z",
-              "completed_at": "2026-10-07T18:55:18Z"
-            },
-            {
-              "name": "Execute Autonomous Agent with Circuit-Breaker Loop Protection",
-              "status": "completed",
-              "conclusion": "skipped",
-              "number": 18,
-              "started_at": "2026-10-07T18:55:18Z",
-              "completed_at": "2026-10-07T18:55:18Z"
-            },
-            {
-              "name": "Repair Git repository after autonomous agent",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 19,
-              "started_at": "2026-10-07T18:55:18Z",
-              "completed_at": "2026-10-07T18:55:18Z"
-            },
-            {
-              "name": "Commit safe mechanical repairs and workflow updates",
-              "status": "completed",
-              "conclusion": "skipped",
-              "number": 20,
-              "started_at": "2026-10-07T18:55:18Z",
-              "completed_at": "2026-10-07T18:55:18Z"
-            },
-            {
-              "name": "Repository-wide GitHub monitoring snapshot",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 21,
-              "started_at": "2026-10-07T18:55:18Z",
-              "completed_at": "2026-10-07T18:55:21Z"
-            },
-            {
-              "name": "Final lightweight validation",
-              "status": "completed",
-              "conclusion": "failure",
-              "number": 22,
-              "started_at": "2026-10-07T18:55:21Z",
-              "completed_at": "2026-10-07T18:56:50Z"
-            },
-            {
-              "name": "Validate repository and hosted links",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 23,
-              "started_at": "2026-10-07T18:56:50Z",
-              "completed_at": "2026-10-07T18:57:18Z"
-            },
-            {
-              "name": "Publish GitHub Actions summary",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 24,
-              "started_at": "2026-10-07T18:57:18Z",
-              "completed_at": "2026-10-07T18:57:18Z"
-            },
-            {
-              "name": "Finalize successful resume evidence",
-              "status": "completed",
-              "conclusion": "skipped",
-              "number": 25,
-              "started_at": "2026-10-07T18:57:18Z",
-              "completed_at": "2026-10-07T18:57:18Z"
-            },
-            {
-              "name": "Persist final resume evidence",
-              "status": "completed",
-              "conclusion": "skipped",
-              "number": 26,
-              "started_at": "2026-10-07T18:57:18Z",
-              "completed_at": "2026-10-07T18:57:18Z"
-            },
-            {
-              "name": "Upload autonomous-agent diagnostics",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 27,
-              "started_at": "2026-10-07T18:57:18Z",
-              "completed_at": "2026-10-07T18:57:21Z"
-            },
-            {
-              "name": "Enforce final health gate",
-              "status": "completed",
-              "conclusion": "failure",
-              "number": 28,
-              "started_at": "2026-10-07T18:57:21Z",
-              "completed_at": "2026-10-07T18:57:21Z"
-            },
-            {
-              "name": "Post Setup Python",
-              "status": "completed",
-              "conclusion": "skipped",
-              "number": 55,
-              "started_at": "2026-10-07T18:57:21Z",
-              "completed_at": "2026-10-07T18:57:21Z"
-            },
-            {
-              "name": "Post Checkout trusted default branch",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 56,
-              "started_at": "2026-10-07T18:57:21Z",
-              "completed_at": "2026-10-07T18:57:21Z"
-            },
-            {
-              "name": "Complete job",
-              "status": "completed",
-              "conclusion": "success",
-              "number": 57,
-              "started_at": "2026-10-07T18:57:21Z",
-              "completed_at": "2026-10-07T18:57:21Z"
-            }
-          ]
-        }
-      ]
     }
   ],
   "pull_requests": [
@@ -11574,5 +11669,5 @@
     }
   ],
   "manual_run_id": null,
-  "snapshot_hash": "2d636b9a2cdd98f2bee365bdae5cfc45e08ac13f05128014e478a5f2379faee1"
+  "snapshot_hash": "3bff6b7772cef42b70bb1b63d58611b53280d7ab1f05c6835dbaee9cfbba7154"
 }
