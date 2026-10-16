@@ -10,7 +10,7 @@ pandas
 # - aiohttp
 # - black/flake8 (linters)
 pytest>=7.0.0
-coverage>=7.0.0
+coverage>=7.16.1
 requests>=2.28.0
 python-dotenv>=1.0.0
 stripe>=5.0.0

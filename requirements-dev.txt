@@ -6,4 +6,4 @@ Flask>=3.0.3
 PyYAML>=6.0.3
 aiohttp>=3.9.5
 stripe>=10.0.0
-coverage>=7.6.1
+coverage>=7.16.1
