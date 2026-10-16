@@ -107,7 +107,7 @@ jobs:
 
       - name: Collect workflow metrics
         id: metrics
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           MANUAL_RUN_ID: ${{ inputs.run_id }}
           VALIDATION_WORKFLOW_NAME: ${{ env.VALIDATION_WORKFLOW_NAME }}
@@ -787,7 +787,7 @@ jobs:
       # ----------------------------------------------------------------------
 
       - name: Generate validation report
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         env:
           RUN_ID: ${{ needs.collect-workflow-metrics.outputs.monitored_run_id }}
           WORKFLOW_NAME: ${{ needs.collect-workflow-metrics.outputs.workflow_name }}
