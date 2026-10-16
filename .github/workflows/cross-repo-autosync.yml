@@ -32,14 +32,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: true
           token: ${{ secrets.MY_CUSTOM_TOKEN }}
 
       - name: Checkout counterpart repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           repository: ${{ github.repository == env.QMOI_REPOSITORY && env.ALPHA_REPOSITORY || env.QMOI_REPOSITORY }}
           ref: main

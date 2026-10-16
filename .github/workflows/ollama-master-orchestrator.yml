@@ -155,7 +155,7 @@ jobs:
       # ========================================================================
 
       - name: Checkout with full history
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: true
@@ -403,7 +403,7 @@ jobs:
       # ========================================================================
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -674,7 +674,7 @@ jobs:
       # ========================================================================
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -971,7 +971,7 @@ jobs:
       # ========================================================================
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -1210,7 +1210,7 @@ jobs:
       # ========================================================================
 
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
